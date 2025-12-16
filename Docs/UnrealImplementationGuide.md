@@ -22,8 +22,8 @@ Actionable steps to pivot from the planned Unity client to an Unreal Engine–ba
 ## 2) Networking: Client with Authoritative .NET Server
 - Keep the existing TCP/MessagePack protocol. Implement a lightweight **C++ socket layer** (BSD sockets) or integrate a small networking plugin that allows raw TCP.
 - Deserialize **PacketBase** using one of:
-  - **MessagePack-CSharp via C++/CLI bridge** (preferred if you want to reuse the existing serializers).
-  - **MessagePack C++** (embed a lightweight client-side implementation).
+  - **MessagePack-CSharp via C++/CLI bridge** (max compatibility with existing serializers; adds build complexity and Windows focus).
+  - **MessagePack C++** (native and simpler to ship cross-platform; requires explicit schema sync and tests).
 - In all cases, ensure schema parity with `Shared/WorldofEldara.Shared`.
 - Create a `UNetworkClient` UObject:
   - Connect to server host/port.
@@ -78,7 +78,7 @@ Actionable steps to pivot from the planned Unity client to an Unreal Engine–ba
 - **VFX**: Niagara samples from starter content or free marketplace packs.
 
 ## 8) Migration Steps from Unity Plan
-1. **Retire Unity guide references**; update README link (done) and schedule follow-up edits for other Unity mentions (e.g., PROJECT_STRUCTURE.md, IMPLEMENTATION_SUMMARY.md) to reflect Unreal.
+1. **Retire Unity guide references**; update README link (done) and open a follow-up task to update other Unity mentions (PROJECT_STRUCTURE.md, IMPLEMENTATION_SUMMARY.md, any client sections) so docs stay consistent.
 2. **Networking parity**: ensure MessagePack schemas stay identical; add client C++ deserializer tests using `Shared` definitions as reference.
 3. **Input rewrite**: map to Enhanced Input actions (Move, Look, Jump, Sprint, Interact, Ability1-n).
 4. **Movement**: customize CMC settings (max speed, accel, braking) to match server validation constants.

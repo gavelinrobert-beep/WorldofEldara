@@ -4,6 +4,8 @@
 
 We have successfully created the **complete foundation** for a serious, lore-driven PC-based fantasy MMORPG set in the World of Eldara.
 
+> Client note: The client plan has pivoted to Unreal Engine. Any Unity-specific references are legacy and will be updated as the Unreal client is defined.
+
 ---
 
 ## What Was Built

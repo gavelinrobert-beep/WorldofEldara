@@ -1,5 +1,7 @@
 # World of Eldara - Project Structure
 
+> Note: The client plan has pivoted to Unreal Engine. Unity-specific client details below are legacy placeholders and will be revised to match the Unreal client layout.
+
 This document outlines the complete folder structure and architecture for the World of Eldara MMORPG.
 
 ## Root Structure

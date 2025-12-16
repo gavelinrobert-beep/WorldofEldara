@@ -4,7 +4,7 @@
 
 We have successfully created the **complete foundation** for a serious, lore-driven PC-based fantasy MMORPG set in the World of Eldara.
 
-> Client note: The client plan has pivoted to Unreal Engine. Any Unity-specific references are legacy and will be updated as the Unreal client is defined.
+> Client note: The client plan is Unreal Engine; client references below align to the Unreal project.
 
 ---
 
@@ -87,6 +87,16 @@ Complete data structures and network protocol:
 - `Zone.cs`: Zone definitions with lore properties
 - Worldroot density per zone
 - Faction control and PvP rules
+
+### 3a. Quest & World Event Systems (Design ✅)
+
+- **Data-Driven Quests**: Unreal DataAssets (`UEldaraQuestData`) hold title, description, objectives, rewards, prerequisites, repeatable flag, and main-story marker.
+- **Quest States**: `EQuestState { Inactive, Available, Active, Completed, Failed }`; server maintains `TMap<UEldaraQuestData*, EQuestState>` per player and replicates results.
+- **Objectives & Conditions**: Abstract `UEldaraQuestObjective` base (optional flag, `IsComplete`) with kill/collect/talk/explore/escort/defend/survive/choice objectives; reusable condition assets gate availability/branches (race, faction rep, prior choices, corruption thresholds, time-of-day, hidden triggers).
+- **Dialogue Integration**: Dialogue nodes can offer quests, branch on quest state, and record choices that complete/fail paths or unlock hidden/choice-driven quests.
+- **Rewards & World Impact**: Modular XP, items, currency, faction reputation, abilities, titles, cosmetics, and world-state changes (vendors/routes/NPC presence); immediate, delayed, or conditional delivery supported.
+- **Debug Hooks**: Force-complete, reset, simulate player choices, and inspect world-state flags to support QA/live ops.
+- **Corruption & Events**: Zones track `CorruptionLevel` (0–100) with states Pristine/Tainted/Corrupted/Overrun/Lost; corruption shifts via time, player actions, failed events, bosses, and narrative triggers, driving dynamic events (Cleansing, Invasion, Ritual, Defense, Escort, Boss Manifestation) with faction-specific reactions and mutators at high corruption.
 
 ### 3. Authoritative Game Server (.NET 8) ✅
 
@@ -186,11 +196,11 @@ Complete technical documentation:
 - **20 TPS** fixed-rate simulation
 
 ### Client (Future)
-- **Unity 2022.3 LTS**
-- **C# 10+**
-- **Universal Render Pipeline**
-- **New Input System**
-- **UI Toolkit**
+- **Unreal Engine 5.x**
+- **C++20 + Blueprints**
+- **Enhanced Input**
+- **GAS-friendly UI (UMG/CommonUI)**
+- **Niagara VFX**
 
 ### Architecture
 - **Server Authoritative** (no client hacks)
@@ -257,8 +267,8 @@ All lore rules are programmatically enforced:
 
 These are **planned but not required** for the foundation:
 
-### Unity Client
-- [ ] Unity project initialization
+### Unreal Client
+- [ ] Unreal project initialization
 - [ ] Client networking
 - [ ] Character creation UI
 - [ ] 3D game world
@@ -269,7 +279,7 @@ These are **planned but not required** for the foundation:
 ### Advanced Server Features
 - [ ] Combat system (damage calculation, abilities, cooldowns)
 - [ ] NPC AI (behavior trees, patrols, aggro)
-- [ ] Quest system (chains, objectives, rewards)
+- [ ] Quest runtime wiring (server-side conditions/replay/live updates)
 - [ ] Inventory and equipment
 - [ ] Database persistence (PostgreSQL)
 - [ ] Guild system
@@ -343,15 +353,15 @@ These are **planned but not required** for the foundation:
    - Use protocol from `NetworkProtocol.md`
    - Connect to localhost:7777
 
-### For Unity Client Development
+### For Unreal Client Development
 
-1. Create Unity 2022.3 LTS project
-2. Reference `Shared/WorldofEldara.Shared.dll`
-3. Implement networking using shared protocol
-4. Build character creation UI
-5. Create game world scenes
-6. Implement movement with prediction
-7. Add combat visualization
+1. Create Unreal Engine 5.x C++ project (Client/)
+2. Reference `Shared/WorldofEldara.Shared` packet schema for serialization parity
+3. Implement raw TCP networking using the shared protocol
+4. Build character creation UI (UMG/CommonUI)
+5. Stand up prototype maps for starter zones
+6. Implement movement with prediction/reconciliation hooks
+7. Add combat/quest visualization and corruption-aware world presentation
 
 ### For Production Deployment
 
@@ -372,7 +382,7 @@ These are **planned but not required** for the foundation:
 - [x] **Lore-driven design**: All systems respect canonical truth
 - [x] **Server-authoritative**: Client cannot hack game state
 - [x] **Professional architecture**: Production-quality design patterns
-- [x] **Complete foundation**: Ready for Unity client development
+- [x] **Complete foundation**: Ready for Unreal client development
 - [x] **Comprehensive docs**: Anyone can understand and extend
 - [x] **PC-focused**: Not mobile, not browser, not casual
 - [x] **Serious MMO**: In the tradition of WoW, Guild Wars, ESO
@@ -494,12 +504,12 @@ $ dotnet run
 
 ## Next Developer Actions
 
-### Immediate (Unity Client)
-1. Initialize Unity 2022.3 LTS project
-2. Import shared library DLL
-3. Implement networking layer
-4. Create login/character screens
-5. Build game world scene
+### Immediate (Unreal Client)
+1. Initialize Unreal Engine 5.x project
+2. Mirror shared packet schema for serialization parity
+3. Implement TCP networking layer
+4. Create login/character screens (UMG/CommonUI)
+5. Build prototype maps/scenes
 6. Test client-server communication
 
 ### Short-Term (Gameplay)
@@ -538,6 +548,6 @@ This is not a toy project. This is a legitimate MMO foundation that respects the
 **Build**: ✅ Passing  
 **Documentation**: ✅ Complete  
 **Lore**: ✅ Canonical  
-**Next Phase**: Unity Client Development
+**Next Phase**: Unreal Client Development
 
 *This implementation summary was generated at the completion of the foundation phase.*

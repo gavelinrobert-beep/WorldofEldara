@@ -1,6 +1,6 @@
 # Unreal Engine Client Implementation & Migration Guide
 
-Actionable steps to pivot from the planned Unity client to an Unreal Engine–based client while keeping the existing authoritative .NET server and shared protocol.
+Actionable steps to deliver an Unreal Engine–based client while keeping the existing authoritative .NET server and shared protocol.
 
 ## 1) Project Initialization (Unreal Engine 5.x)
 1. Create a **C++ project** (Games → Third Person or Blank) with **Starter Content** enabled for quick prototyping.
@@ -80,8 +80,8 @@ Actionable steps to pivot from the planned Unity client to an Unreal Engine–ba
 - **UI**: Use UMG + CommonUI; start with minimal HUD (chat, action bar, target frame, quest tracker).
 - **VFX**: Niagara samples from starter content or free marketplace packs.
 
-## 8) Migration Steps from Unity Plan
-1. **Retire Unity guide references**; README is updated and disclaimers were added to `PROJECT_STRUCTURE.md` and root `IMPLEMENTATION_SUMMARY.md`. Create a GitHub issue (or backlog ticket) to replace remaining Unity-specific details with Unreal equivalents and assign it in the next sprint.
+## 8) Migration Steps from Legacy Client Plan
+1. **Retire legacy client references**; README and `PROJECT_STRUCTURE.md` are Unreal-aligned. Create a GitHub issue (or backlog ticket) to replace any remaining non-Unreal details and assign it in the next sprint.
 2. **Networking parity**: ensure MessagePack schemas stay identical; add client C++ deserializer tests using `Shared` definitions as reference.
 3. **Input rewrite**: map to Enhanced Input actions (Move, Look, Jump, Sprint, Interact, Ability1-n).
 4. **Movement**: customize CMC settings (max speed, accel, braking) to match server validation constants.

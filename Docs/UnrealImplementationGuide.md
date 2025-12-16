@@ -25,7 +25,9 @@ Actionable steps to pivot from the planned Unity client to an Unreal Engine–ba
   - **MessagePack-CSharp via C++/CLI bridge** (max compatibility with existing serializers; adds build complexity and is Windows-focused).
   - **MessagePack C++** (native and simpler to ship cross-platform; requires explicit schema sync and tests).
 - In all cases, ensure schema parity with `Shared/WorldofEldara.Shared`.
-- **Recommended**: use **MessagePack C++** for cross-platform support and lower build complexity; choose the C++/CLI bridge only if you are Windows-only and want exact reuse of existing serializers.
+- **Recommended**:
+  - Choose **MessagePack C++** when you need cross-platform delivery, minimal build friction, and the team is comfortable maintaining schema sync/tests.
+  - Choose **MessagePack-CSharp via C++/CLI** only if deployment is Windows-only, the team already uses C# serializers, and minimizing serialization drift outweighs added build complexity.
 - Create a `UNetworkClient` UObject:
   - Connect to server host/port.
   - Background thread for socket I/O; game thread enqueues processed packets.
@@ -72,14 +74,14 @@ Actionable steps to pivot from the planned Unity client to an Unreal Engine–ba
 
 ## 7) Asset & Tooling Recommendations (Unreal)
 - **Starter Content + Third Person template** for baseline movement/animations.
-- **ALS Replication** (community) if you need a more advanced locomotion base (validate license/maintenance).
+- **Advanced Locomotion System (ALS) Replication** (community) if you need a more advanced locomotion base with replicated movement states; validate license/maintenance status before adoption.
 - **Lyra Sample** (Epic) for reference on modular gameplay features, GAS patterns, and replication setups.
 - **Free Assets**: “Infinity Blade” packs (environment/props), “Paragon” characters (for prototyping), marketplace free monthly assets.
 - **UI**: Use UMG + CommonUI; start with minimal HUD (chat, action bar, target frame, quest tracker).
 - **VFX**: Niagara samples from starter content or free marketplace packs.
 
 ## 8) Migration Steps from Unity Plan
-1. **Retire Unity guide references**; README is updated and disclaimers were added to `PROJECT_STRUCTURE.md` and root `IMPLEMENTATION_SUMMARY.md`. A follow-up task is still needed to replace remaining Unity-specific details with Unreal equivalents.
+1. **Retire Unity guide references**; README is updated and disclaimers were added to `PROJECT_STRUCTURE.md` and root `IMPLEMENTATION_SUMMARY.md`. Create a tracked task (issue/ticket) to replace remaining Unity-specific details with Unreal equivalents and assign it in the next sprint.
 2. **Networking parity**: ensure MessagePack schemas stay identical; add client C++ deserializer tests using `Shared` definitions as reference.
 3. **Input rewrite**: map to Enhanced Input actions (Move, Look, Jump, Sprint, Interact, Ability1-n).
 4. **Movement**: customize CMC settings (max speed, accel, braking) to match server validation constants.

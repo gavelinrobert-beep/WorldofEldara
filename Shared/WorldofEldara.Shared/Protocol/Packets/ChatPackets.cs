@@ -26,7 +26,7 @@ public static class ChatPackets
         public ulong? TargetEntityId { get; set; } // For whispers
 
         [Key(5)]
-        public long Timestamp { get; set; }
+        public new long Timestamp { get; set; } // Shadows base Timestamp for serialization
     }
 }
 

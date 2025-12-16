@@ -215,6 +215,7 @@ Since the Unity client is not yet implemented, you can:
 - [`PROJECT_STRUCTURE.md`](PROJECT_STRUCTURE.md) - Full project layout
 - [`Docs/Architecture/ServerArchitecture.md`](Docs/Architecture/ServerArchitecture.md) - Server design
 - [`Docs/Architecture/NetworkProtocol.md`](Docs/Architecture/NetworkProtocol.md) - Network protocol spec
+- [`Docs/UnityImplementationGuide.md`](Docs/UnityImplementationGuide.md) - Unity client bring-up and feature milestones
 
 ## 🏗️ Current Status
 

@@ -203,7 +203,7 @@ Edit `Server/WorldofEldara.Server/appsettings.json`:
 
 ### Testing (No Client Yet)
 
-Since the Unity client is not yet implemented, you can:
+Since the Unreal client is not yet implemented, you can:
 
 1. **Use packet sniffer tools** to see network traffic
 2. **Write a test client** using the shared protocol
@@ -236,7 +236,7 @@ Since the Unity client is not yet implemented, you can:
 
 ### 🚧 In Progress
 
-- [ ] Unity client project initialization
+- [ ] Unreal client project initialization
 - [ ] Combat system (server authoritative)
 - [ ] NPC AI behavior trees
 - [ ] Quest system

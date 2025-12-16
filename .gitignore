@@ -1,0 +1,76 @@
+# Build outputs
+**/bin/
+**/obj/
+**/Logs/
+
+# Unity
+Client/[Ll]ibrary/
+Client/[Tt]emp/
+Client/[Oo]bj/
+Client/[Bb]uild/
+Client/[Bb]uilds/
+Client/[Ll]ogs/
+Client/[Uu]ser[Ss]ettings/
+Client/Assets/AssetStoreTools*
+Client/*.csproj
+Client/*.sln
+Client/*.unityproj
+Client/*.suo
+Client/*.tmp
+Client/*.user
+Client/*.userprefs
+Client/*.pidb
+Client/*.booproj
+Client/*.svd
+Client/*.pdb
+Client/*.mdb
+Client/*.opendb
+Client/*.VC.db
+
+# Unity artifacts
+Client/[Aa]ssets/[Ss]treamingAssets/aa*
+Client/[Aa]ssets/[Ss]treamingAssets/aa.meta
+
+# Rider
+.idea/
+*.sln.iml
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Node modules (if any tools use Node)
+node_modules/
+
+# Database files (if local testing)
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+
+# Credentials and secrets
+appsettings.Development.json
+appsettings.Production.json
+*.secret
+*.key

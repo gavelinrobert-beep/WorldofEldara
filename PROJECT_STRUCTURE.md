@@ -37,9 +37,14 @@ Client/
 │       ├── Combat/                     # GAS abilities, cooldown UX
 │       ├── Quest/                      # Quest DataAssets, objective logic stubs
 │       ├── World/                      # Zone presentation, corruption visuals
-│       └── UI/                         # Widget controllers
+│       ├── UI/                         # Widget controllers
+│       └── Plugins/                    # Optional Unreal plugins (e.g., ALS/GAS helpers)
 └── Eldara.uproject
 ```
+
+- **Config/** drives engine, input, and rendering defaults (DX12/Vulkan, Enhanced Input mappings).
+- **Source/Eldara** is modular: Core handles bootstrap/state, Networking mirrors MessagePack schema, Movement wires prediction/reconciliation, Combat uses GAS, Quest holds DataAssets/objectives/conditions, World owns corruption/world-state presentation, UI coordinates UMG/CommonUI widgets.
+- **Content/WorldofEldara** stores authored assets (Blueprints, Data tables/curves, Maps, UI). Saved/DerivedDataCache are generated and ignored by version control.
 
 ## Server/ - Dedicated Game Server
 

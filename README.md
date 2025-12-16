@@ -258,12 +258,15 @@ Since the Unreal client is not yet implemented, you can:
 
 - **Data Assets**: `UEldaraQuestData` holds title, description, objectives, rewards, prerequisites, repeatable flag, and main story flag.
 - **States**:
-  ```cpp
-  UENUM(BlueprintType)
-  enum class EQuestState : uint8 { Inactive, Available, Active, Completed, Failed };
-  ```
-- **Objectives**: `UEldaraQuestObjective` base (BlueprintType, abstract) with `ObjectiveText`, optional flag, and `IsComplete` override; supports kill, talk, collect, explore, survive, choice, escort, defend, and simultaneous objective progress.
-- **Conditions**: Reusable assets gate availability/branches (race, faction rep, prior choices, corruption thresholds, time of day, hidden triggers).
+```cpp
+UENUM(BlueprintType)
+enum class EQuestState : uint8 { Inactive, Available, Active, Completed, Failed };
+```
+- **Objectives**: `UEldaraQuestObjective` base (BlueprintType, abstract) with `ObjectiveText`, optional flag, and `IsComplete` override.
+  - Supports kill, talk, collect, explore, survive, choice, escort, defend.
+  - Multiple objectives can progress simultaneously.
+- **Conditions**: Reusable assets gate availability/branches.
+  - Examples: race, faction rep, prior choices, corruption thresholds, time of day, hidden triggers.
 - **State Management**: Server keeps `TMap<UEldaraQuestData*, EQuestState>` per player; validates objective updates, applies rewards, persists choices, and replicates quest state.
 - **Dialogue Integration**: Nodes offer quests, branch on quest state, and record choices that complete/fail paths or unlock hidden quests.
 - **Rewards**: Modular XP, items, currency, faction reputation, abilities, titles, cosmetics, or world-state changes (immediate or delayed/conditional).

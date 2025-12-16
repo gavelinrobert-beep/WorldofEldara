@@ -1,6 +1,6 @@
 # World of Eldara - Project Structure
 
-> Note: The client plan has pivoted to Unreal Engine. Unity-specific client details below are legacy placeholders and will be revised to match the Unreal client layout.
+> Client plan: Unreal Engine. The layout below reflects the Unreal project structure alongside the authoritative .NET server.
 
 This document outlines the complete folder structure and architecture for the World of Eldara MMORPG.
 
@@ -8,7 +8,7 @@ This document outlines the complete folder structure and architecture for the Wo
 
 ```
 WorldofEldara/
-├── Client/                 # Unity client project
+├── Client/                 # Unreal Engine project
 ├── Server/                 # C# dedicated server
 ├── Shared/                 # Shared code between client and server
 ├── Docs/                   # Documentation
@@ -18,71 +18,27 @@ WorldofEldara/
 └── README.md              # Project overview
 ```
 
-## Client/ - Unity Project
+## Client/ - Unreal Engine Project
 
 ```
 Client/
-├── Assets/
-│   ├── _Project/                      # Main project assets
-│   │   ├── Scripts/
-│   │   │   ├── Core/                  # Core client systems
-│   │   │   │   ├── GameManager.cs
-│   │   │   │   ├── SceneManager.cs
-│   │   │   │   └── InputManager.cs
-│   │   │   ├── Networking/            # Client networking
-│   │   │   │   ├── NetworkClient.cs
-│   │   │   │   ├── ServerConnection.cs
-│   │   │   │   └── PacketHandler.cs
-│   │   │   ├── Character/             # Character systems
-│   │   │   │   ├── CharacterController.cs
-│   │   │   │   ├── CharacterCreation.cs
-│   │   │   │   ├── PlayerStats.cs
-│   │   │   │   └── EquipmentManager.cs
-│   │   │   ├── Movement/              # Movement and camera
-│   │   │   │   ├── PlayerMovement.cs
-│   │   │   │   ├── CameraController.cs
-│   │   │   │   └── ClientPrediction.cs
-│   │   │   ├── Combat/                # Client-side combat
-│   │   │   │   ├── AbilitySystem.cs
-│   │   │   │   ├── CombatUI.cs
-│   │   │   │   └── DamageDisplay.cs
-│   │   │   ├── UI/                    # User interface
-│   │   │   │   ├── ActionBar.cs
-│   │   │   │   ├── CharacterFrame.cs
-│   │   │   │   ├── TargetFrame.cs
-│   │   │   │   ├── ChatWindow.cs
-│   │   │   │   ├── QuestTracker.cs
-│   │   │   │   └── InventoryUI.cs
-│   │   │   ├── NPCs/                  # Client NPC systems
-│   │   │   │   ├── NPCController.cs
-│   │   │   │   └── NPCInteraction.cs
-│   │   │   ├── Quest/                 # Client quest systems
-│   │   │   │   ├── QuestManager.cs
-│   │   │   │   └── QuestUI.cs
-│   │   │   └── VFX/                   # Visual effects
-│   │   │       ├── SpellEffects.cs
-│   │   │       └── CombatVFX.cs
-│   │   ├── Prefabs/                   # Unity prefabs
-│   │   │   ├── Characters/
-│   │   │   │   ├── Player/
-│   │   │   │   └── NPCs/
-│   │   │   ├── UI/
-│   │   │   └── VFX/
-│   │   ├── Scenes/                    # Unity scenes
-│   │   │   ├── MainMenu.unity
-│   │   │   ├── CharacterCreation.unity
-│   │   │   ├── DawnshoreVale.unity    # Covenant starter
-│   │   │   ├── WildrootForest.unity   # Dominion starter
-│   │   │   ├── ShadowfenMarshes.unity # Compact starter
-│   │   │   └── CrossroadsLowlands.unity # Free Realms starter
-│   │   ├── Materials/                 # Materials and shaders
-│   │   ├── Textures/                  # Texture assets
-│   │   ├── Models/                    # 3D models
-│   │   ├── Animations/                # Animation clips
-│   │   └── Audio/                     # Sound effects and music
-│   └── Plugins/                       # Third-party plugins
-├── ProjectSettings/                   # Unity project settings
-└── Packages/                          # Unity package manager
+├── Config/                             # DefaultEngine, DefaultInput, etc.
+├── Content/
+│   └── WorldofEldara/                  # Art, UI, quests, maps
+│       ├── Blueprints/                 # Core, UI, Characters, NPC, Quests
+│       ├── Data/                       # DataAssets/DataTables/Curves
+│       ├── Maps/                       # MainMenu, CharacterCreation, Zone prototypes
+│       └── UI/                         # UMG/CommonUI widgets (chat, quest tracker, HUD)
+├── Source/
+│   └── Eldara/
+│       ├── Core/                       # GameInstance, Subsystems, PlayerController
+│       ├── Networking/                 # Socket client, packet dispatch
+│       ├── Movement/                   # Prediction/reconciliation hooks
+│       ├── Combat/                     # GAS abilities, cooldown UX
+│       ├── Quest/                      # Quest DataAssets, objective logic stubs
+│       ├── World/                      # Zone presentation, corruption visuals
+│       └── UI/                         # Widget controllers
+└── Eldara.uproject
 ```
 
 ## Server/ - Dedicated Game Server
@@ -210,11 +166,11 @@ Tools/
 ## Technology Stack
 
 ### Client
-- **Engine**: Unity 2022.3 LTS
-- **Language**: C# 10
-- **Rendering**: URP (Universal Render Pipeline)
-- **Input**: New Input System
-- **UI**: Unity UI Toolkit
+- **Engine**: Unreal Engine 5.x
+- **Language**: C++20 + Blueprints
+- **Rendering**: Lumen/Nanite (project dependent)
+- **Input**: Enhanced Input
+- **UI**: UMG/CommonUI
 
 ### Server
 - **Framework**: .NET 8
@@ -242,13 +198,13 @@ Tools/
 
 ## Version Control
 
-- **Ignore**: Unity Library, Temp, Obj, Bin folders
+- **Ignore**: Unreal DerivedDataCache, Intermediate, Saved, Binaries
 - **LFS**: Large assets (models, textures, audio)
 - **Branches**: feature/, bugfix/, release/
 
 ## Next Steps
 
-1. Initialize Unity project in Client/
+1. Initialize Unreal project in Client/
 2. Create .NET solution in Server/
 3. Create shared library project
 4. Set up version control properly

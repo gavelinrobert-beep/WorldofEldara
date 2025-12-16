@@ -154,12 +154,12 @@ The server performs graceful shutdown, saving any pending state.
 
 1. **Read the lore**: [`WORLD_LORE.md`](WORLD_LORE.md) - Understand the world
 2. **Explore the code**: Check out the architecture in `Docs/Architecture/`
-3. **Wait for Unity client**: Client is in development
+3. **Track Unreal client bring-up**: Client is in development
 4. **Build your own client**: Use the protocol in `Shared/` library
 
 ## Testing Without a Client
 
-Since the Unity client isn't ready yet, you can:
+Since the Unreal client isn't ready yet, you can:
 
 ### 1. Monitor Server Logs
 
@@ -237,10 +237,10 @@ This confirms the simulation is running smoothly.
 ## What's Next?
 
 The server foundation is complete. Next up:
-1. Unity client development
+1. Unreal client development
 2. Combat system implementation
 3. NPC AI behaviors
-4. Quest system
+4. Quest runtime integration
 5. Database persistence
 
 **Welcome to the World of Eldara. The Worldroot is bleeding. What will you preserve?**

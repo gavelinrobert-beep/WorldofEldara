@@ -92,7 +92,7 @@ If you discover a security vulnerability:
 This is a demonstration project. For production use:
 
 - Monitor CVE databases for dependency vulnerabilities
-- Subscribe to security advisories for .NET, Unity, and dependencies
+- Subscribe to security advisories for .NET, Unreal Engine, and dependencies
 - Regularly update dependencies
 - Conduct security audits quarterly
 

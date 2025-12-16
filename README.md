@@ -1,7 +1,7 @@
 # World of Eldara - PC-Based Fantasy MMORPG
 
 [![.NET](https://img.shields.io/badge/.NET-8.0-purple)](https://dotnet.microsoft.com/)
-[![Unity](https://img.shields.io/badge/Unity-2022.3_LTS-black)](https://unity.com/)
+[![Unreal Engine](https://img.shields.io/badge/Unreal_Engine-5.x-black?logo=unrealengine&logoColor=white)](https://www.unrealengine.com/)
 [![License](https://img.shields.io/badge/license-Proprietary-red)](LICENSE)
 
 **A serious, lore-driven MMORPG set in the World of Eldara.**
@@ -99,11 +99,11 @@ All magic has a **source and consequence**:
 - **Thread-safe architecture** - Concurrent entity management
 
 ### Client (Display + Prediction)
-- **Unity 2022.3 LTS**
-- **C# 10+**
-- **Universal Render Pipeline (URP)**
-- **New Input System**
-- **UI Toolkit**
+- **Unreal Engine 5.x**
+- **C++20 + Blueprints**
+- **Enhanced Input**
+- **UMG/CommonUI + GAS-friendly UI patterns**
+- **Niagara VFX**
 
 ### Shared Library
 - **MessagePack** - Serialization
@@ -113,7 +113,7 @@ All magic has a **source and consequence**:
 
 ```
 WorldofEldara/
-├── Client/                    # Unity client project (future)
+├── Client/                    # Unreal Engine project (prototype)
 ├── Server/                    # .NET 8 authoritative server ✓
 │   └── WorldofEldara.Server/
 │       ├── Core/              # Entity management, bootstrap
@@ -142,7 +142,7 @@ WorldofEldara/
 
 - **.NET 8 SDK** - [Download](https://dotnet.microsoft.com/download/dotnet/8.0)
 - **Git** - For version control
-- **(Future) Unity 2022.3 LTS** - [Download](https://unity.com/releases/editor/archive)
+- **(Optional) Unreal Engine 5.3+** - For client development
 
 ### Running the Server
 
@@ -233,25 +233,51 @@ Since the Unreal client is not yet implemented, you can:
 - [x] Character selection and world entry
 - [x] Basic movement input handling
 - [x] Chat system (zone-based)
+- [x] Quest system architecture (data-driven, branching, persistent impact)
+- [x] World events & corruption model (zone states, thresholds, mutators)
 
 ### 🚧 In Progress
 
 - [ ] Unreal client project initialization
 - [ ] Combat system (server authoritative)
 - [ ] NPC AI behavior trees
-- [ ] Quest system
 
 ### 📋 Planned
 
 - [ ] Client prediction and reconciliation
 - [ ] Complete combat system
 - [ ] NPC AI with patrol and combat behaviors
-- [ ] Quest chains and world state
+- [ ] Quest runtime integration and live content cadence
 - [ ] Inventory and equipment
 - [ ] Guild system
 - [ ] Raid content
 - [ ] World events (Giant awakenings, Void rifts)
 - [ ] Database persistence (PostgreSQL)
+
+## 🧭 Quest System (Data-Driven, Branching, Persistent)
+
+- **Data Assets**: `UEldaraQuestData` holds title, description, objectives, rewards, prerequisites, repeatable flag, and main story flag.
+- **States**:
+  ```cpp
+  UENUM(BlueprintType)
+  enum class EQuestState : uint8 { Inactive, Available, Active, Completed, Failed };
+  ```
+- **Objectives**: `UEldaraQuestObjective` base (BlueprintType, abstract) with `ObjectiveText`, optional flag, and `IsComplete` override; supports kill, talk, collect, explore, survive, choice, escort, defend, and simultaneous objective progress.
+- **Conditions**: Reusable assets gate availability/branches (race, faction rep, prior choices, corruption thresholds, time of day, hidden triggers).
+- **State Management**: Server keeps `TMap<UEldaraQuestData*, EQuestState>` per player; validates objective updates, applies rewards, persists choices, and replicates quest state.
+- **Dialogue Integration**: Nodes offer quests, branch on quest state, and record choices that complete/fail paths or unlock hidden quests.
+- **Rewards**: Modular XP, items, currency, faction reputation, abilities, titles, cosmetics, or world-state changes (immediate or delayed/conditional).
+- **World Impact**: Quests flip world-state flags that drive NPC presence, zone presentation, vendors, travel routes, and future quest unlocks.
+- **Debug/Tooling**: Hooks for force-complete, reset quest, simulate choice, and view world-state flags for QA and live ops.
+
+## 🌑 World Events & Corruption (Persistent, Player-Driven)
+
+- **Corruption Metric**: Each zone tracks `CorruptionLevel` (0–100) with states Pristine, Tainted, Corrupted, Overrun, Lost; visuals/audio always reflect state.
+- **Drivers**: Time, player actions, failed events, bosses, and narrative triggers push corruption; adjacent zones influence one another.
+- **Events**: Threshold-driven event types—Cleansing, Invasion, Ritual, Defense, Escort, Boss Manifestation—respond to corruption instead of random timers.
+- **Outcomes**: Success lowers corruption, restores vendors/travel, and unlocks story arcs; failure escalates enemies, locks quests, and spawns empowered bosses with mutators.
+- **Factions**: Verdant Accord, Void cultists, pirates, etc., react uniquely with their own objectives and rewards.
+- **Persistence & Safety**: World state persists server-side and is replicated to entering players; starter zones have corruption caps and accelerated recovery to protect onboarding.
 
 ## 🎯 Design Philosophy
 
@@ -295,7 +321,7 @@ Proprietary - All rights reserved
 Built as a technical demonstration of:
 - Lore-driven MMO design
 - Server-authoritative architecture
-- .NET 8 + Unity integration
+- .NET 8 + Unreal Engine integration
 - MessagePack networking
 - PC-focused MMORPG development
 

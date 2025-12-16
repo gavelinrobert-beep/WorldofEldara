@@ -76,7 +76,7 @@ All are free (at time of writing) unless noted; verify licenses before shipping.
 - **Characters/Animations**: Unity “Starter Assets – Third Person” (controller + camera); **Mixamo** animations (export as FBX); “Free RPG Hero” pack for a placeholder player model.
 - **UI**: “Fantasy UI Free” or “Simple UI Pack” for menus/bars; TextMeshPro for text.
 - **VFX**: “Cartoon FX Free” (JMO) or “Stylized VFX Free Sample” for spell placeholders.
-- **Tools**: “Behavior Bricks” (open-source BT) or “NodeCanvas” (paid, editor tooling) for BT authoring; “Odin Serializer” not needed if using MessagePack.
+- **Tools**: “Behavior Bricks” (open-source BT) or “NodeCanvas” (paid, editor tooling) for BT authoring. “Odin Serializer” is not needed if using MessagePack.
 
 ## 7) Milestone Order (practical)
 1. Stand up Unity project + connect to server; display networked position + chat.

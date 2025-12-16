@@ -70,9 +70,9 @@ public:
 	float GetAbilityCooldownRemaining(UEldaraAbility* Ability) const;
 
 protected:
-	/** Map of abilities to their cooldown end times */
+	/** Map of ability names to their cooldown end times for better performance */
 	UPROPERTY()
-	TMap<TObjectPtr<UEldaraAbility>, float> AbilityCooldowns;
+	TMap<FName, float> AbilityCooldowns;
 
 	/** List of active effects on this actor */
 	UPROPERTY()

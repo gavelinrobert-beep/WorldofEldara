@@ -1,6 +1,6 @@
 #include "EldaraPlayerController.h"
-#include "../Data/EldaraCharacterCreatePayload.h"
-#include "../Data/EldaraQuestData.h"
+#include "Data/EldaraCharacterCreatePayload.h"
+#include "Data/EldaraQuestData.h"
 
 AEldaraPlayerController::AEldaraPlayerController()
 {

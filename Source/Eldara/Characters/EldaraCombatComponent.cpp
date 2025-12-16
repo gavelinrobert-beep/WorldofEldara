@@ -3,6 +3,7 @@
 #include "EldaraEffect.h"
 #include "EldaraCharacterBase.h"
 #include "GameFramework/Actor.h"
+#include "Engine/World.h"
 
 UEldaraCombatComponent::UEldaraCombatComponent()
 {
@@ -95,7 +96,7 @@ bool UEldaraCombatComponent::IsAbilityOnCooldown(UEldaraAbility* Ability) const
 		return false;
 	}
 
-	const float* CooldownEndTime = AbilityCooldowns.Find(Ability);
+	const float* CooldownEndTime = AbilityCooldowns.Find(Ability->GetFName());
 	if (CooldownEndTime)
 	{
 		return GetWorld()->GetTimeSeconds() < *CooldownEndTime;
@@ -111,7 +112,7 @@ float UEldaraCombatComponent::GetAbilityCooldownRemaining(UEldaraAbility* Abilit
 		return 0.0f;
 	}
 
-	const float* CooldownEndTime = AbilityCooldowns.Find(Ability);
+	const float* CooldownEndTime = AbilityCooldowns.Find(Ability->GetFName());
 	if (CooldownEndTime)
 	{
 		float Remaining = *CooldownEndTime - GetWorld()->GetTimeSeconds();
@@ -178,7 +179,7 @@ void UEldaraCombatComponent::TriggerCooldown(UEldaraAbility* Ability)
 	}
 
 	float CooldownEndTime = GetWorld()->GetTimeSeconds() + Ability->Cooldown;
-	AbilityCooldowns.Add(Ability, CooldownEndTime);
+	AbilityCooldowns.Add(Ability->GetFName(), CooldownEndTime);
 
 	UE_LOG(LogTemp, Log, TEXT("TriggerCooldown: %s cooldown set for %.1f seconds"), 
 		*Ability->GetName(), Ability->Cooldown);

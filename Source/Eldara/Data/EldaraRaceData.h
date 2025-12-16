@@ -49,7 +49,7 @@ public:
 
 	/** Classes this race is allowed to play */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Race")
-	TArray<TSubclassOf<UEldaraClassData>> AllowedClasses;
+	TArray<TObjectPtr<UEldaraClassData>> AllowedClasses;
 
 	/** Base skeletal mesh for this race */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Race")

@@ -51,8 +51,8 @@ Attached to all combat-capable actors (players, NPCs, bosses).
 **Key Functions:**
 ```cpp
 // RPC: Client requests ability activation
-UFUNCTION(Server, Reliable, WithValidation)
-void Server_ActivateAbility(UEldaraAbility* Ability, AActor* Target);
+UFUNCTION(Server, Reliable)
+void Server_ActivateAbility(UEldaraAbility* Ability, AActor* Target); // Validation handled inside implementation
 
 // Can this ability be activated right now?
 bool CanActivateAbility(UEldaraAbility* Ability, AActor* Target);

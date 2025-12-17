@@ -46,12 +46,6 @@ void AEldaraPlayerController::Server_CreateCharacter_Implementation(const FEldar
 	UE_LOG(LogTemp, Log, TEXT("Server_CreateCharacter: Character '%s' created successfully"), *Payload.CharacterName);
 }
 
-bool AEldaraPlayerController::Server_CreateCharacter_Validate(const FEldaraCharacterCreatePayload& Payload)
-{
-	// Basic validation for RPC
-	return Payload.CharacterName.Len() > 0;
-}
-
 bool AEldaraPlayerController::ValidateCharacterCreation(const FEldaraCharacterCreatePayload& Payload, FString& OutErrorMessage)
 {
 	// Validate name

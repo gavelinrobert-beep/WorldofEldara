@@ -119,8 +119,8 @@ struct FEldaraCharacterCreatePayload
 
 ### Server_CreateCharacter RPC
 ```cpp
-UFUNCTION(Server, Reliable, WithValidation)
-void Server_CreateCharacter(const FEldaraCharacterCreatePayload& Payload);
+UFUNCTION(Server, Reliable)
+void Server_CreateCharacter(const FEldaraCharacterCreatePayload& Payload); // Validation executed inside the RPC body
 ```
 
 ### Validation Checks:

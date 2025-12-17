@@ -49,12 +49,6 @@ void UEldaraCombatComponent::Server_ActivateAbility_Implementation(UEldaraAbilit
 	UE_LOG(LogTemp, Log, TEXT("Server_ActivateAbility: %s activated successfully"), *Ability->GetName());
 }
 
-bool UEldaraCombatComponent::Server_ActivateAbility_Validate(UEldaraAbility* Ability, AActor* Target)
-{
-	// Basic validation for RPC
-	return Ability != nullptr;
-}
-
 bool UEldaraCombatComponent::CanActivateAbility(UEldaraAbility* Ability, AActor* Target)
 {
 	if (!Ability)

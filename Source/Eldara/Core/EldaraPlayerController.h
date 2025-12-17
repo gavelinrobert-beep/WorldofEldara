@@ -35,7 +35,7 @@ public:
 	 * Server RPC: Create a new character
 	 * @param Payload Character creation data
 	 */
-	UFUNCTION(Server, Reliable, WithValidation)
+	UFUNCTION(Server, Reliable)
 	void Server_CreateCharacter(const FEldaraCharacterCreatePayload& Payload);
 
 private:

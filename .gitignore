@@ -3,6 +3,18 @@
 **/obj/
 **/Logs/
 
+# Unreal Engine
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+*.VC.db
+*.VC.opendb
+*.sdf
+*.opensdf
+*.sln
+*.sln.DotSettings
+
 # Unity
 Client/[Ll]ibrary/
 Client/[Tt]emp/

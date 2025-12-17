@@ -1,0 +1,17 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "5.3",
+	"Category": "",
+	"Description": "World of Eldara UE5 client scaffold ready for gameplay systems.",
+	"Modules": [
+		{
+			"Name": "Eldara",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"TargetPlatforms": [
+		"Win64",
+		"Linux"
+	]
+}

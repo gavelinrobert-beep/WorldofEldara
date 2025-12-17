@@ -1,0 +1,14 @@
+using UnrealBuildTool;
+using System.Collections.Generic;
+
+public class EldaraEditorTarget : TargetRules
+{
+    public EldaraEditorTarget(TargetInfo Target) : base(Target)
+    {
+        Type = TargetType.Editor;
+        DefaultBuildSettings = BuildSettingsVersion.V5;
+        IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_3;
+
+        ExtraModuleNames.AddRange(new List<string> { "Eldara" });
+    }
+}

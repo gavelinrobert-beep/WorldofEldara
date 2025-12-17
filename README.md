@@ -159,6 +159,14 @@ WorldofEldara/
    dotnet build
    ```
 
+### Bringing up the Unreal client prototype
+
+1. Install **Unreal Engine 5.3+**.
+2. From the repository root, open `Eldara.uproject` (Engine will generate project files and compile the `Eldara` module on first launch).
+3. Editor targets (`EldaraEditor.Target.cs`) are present so you can build from the Unreal Editor or via `UnrealEditor` command line.
+4. Core gameplay classes live in `Source/Eldara` (GameMode, GameInstance, PlayerController, AI, DataAssets).
+5. Default configuration lives in `Config/DefaultEngine.ini` and `Config/DefaultGame.ini` (currently using the engine placeholder map `/Engine/Maps/Entry` with `EldaraGameModeBase`).
+
 3. **Run the server**
    ```bash
    dotnet run

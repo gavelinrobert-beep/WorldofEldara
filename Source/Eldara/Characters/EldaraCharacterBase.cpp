@@ -16,6 +16,8 @@ AEldaraCharacterBase::AEldaraCharacterBase()
 	MaxHealth = 100.0f;
 	Resource = 100.0f;
 	MaxResource = 100.0f;
+	Stamina = 100.0f;
+	MaxStamina = 100.0f;
 
 	// Enable replication
 	bReplicates = true;
@@ -77,12 +79,24 @@ void AEldaraCharacterBase::InitializeStats()
 		Health = MaxHealth;
 		MaxResource = ClassData->BaseStats.Resource;
 		Resource = MaxResource;
+		MaxStamina = ClassData->BaseStats.Stamina;
+		Stamina = MaxStamina;
 
-		UE_LOG(LogTemp, Log, TEXT("%s initialized with ClassData: Health=%.1f, Resource=%.1f"), 
-			*GetName(), MaxHealth, MaxResource);
+		UE_LOG(LogTemp, Log, TEXT("%s initialized with ClassData: Health=%.1f, Resource=%.1f, Stamina=%.1f"), 
+			*GetName(), Health, Resource, Stamina);
 	}
 
-	// TODO: Apply race modifiers
+	if (RaceData)
+	{
+		MaxHealth *= RaceData->HealthModifier;
+		Health = MaxHealth;
+		MaxStamina *= RaceData->StaminaModifier;
+		Stamina = MaxStamina;
+
+		UE_LOG(LogTemp, Log, TEXT("%s applied RaceData modifiers: Health=%.1f, Stamina=%.1f"),
+			*GetName(), MaxHealth, MaxStamina);
+	}
+
 	// TODO: Apply equipment bonuses
 	// TODO: Apply buffs/debuffs
 }
@@ -97,4 +111,6 @@ void AEldaraCharacterBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
 	DOREPLIFETIME(AEldaraCharacterBase, MaxHealth);
 	DOREPLIFETIME(AEldaraCharacterBase, Resource);
 	DOREPLIFETIME(AEldaraCharacterBase, MaxResource);
+	DOREPLIFETIME(AEldaraCharacterBase, Stamina);
+	DOREPLIFETIME(AEldaraCharacterBase, MaxStamina);
 }

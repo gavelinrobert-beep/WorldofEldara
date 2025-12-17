@@ -43,6 +43,14 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Stats")
 	float GetMaxResource() const { return MaxResource; }
 
+	/** Get current stamina */
+	UFUNCTION(BlueprintCallable, Category = "Stats")
+	float GetStamina() const { return Stamina; }
+
+	/** Get maximum stamina */
+	UFUNCTION(BlueprintCallable, Category = "Stats")
+	float GetMaxStamina() const { return MaxStamina; }
+
 	/** Take damage */
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, 
 		class AController* EventInstigator, AActor* DamageCauser) override;
@@ -75,6 +83,14 @@ protected:
 	/** Maximum resource */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stats", Replicated)
 	float MaxResource;
+
+	/** Current stamina (used for dodge/block/sprint) */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stats", Replicated)
+	float Stamina;
+
+	/** Maximum stamina */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stats", Replicated)
+	float MaxStamina;
 
 	/** Combat component */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat")

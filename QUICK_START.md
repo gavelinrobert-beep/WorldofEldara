@@ -215,6 +215,16 @@ var response = MessagePackSerializer.Deserialize<PacketBase>(responseData);
 Console.WriteLine($"Received: {response.GetType().Name}");
 ```
 
+## Let a Friend Connect from Outside Your Network
+
+1. Keep the server running (see steps above) and note the port you expose in `appsettings.json` (default **7777**).
+2. Allow inbound TCP traffic on that port in your OS firewall.
+   - Windows: allow the `dotnet` process or open TCP 7777 in Windows Defender Firewall.
+   - Linux/macOS: open TCP 7777 via `ufw`/`iptables`/`pf` to match your configured port.
+3. If you're behind a home router, add a **port forwarding** rule for TCP 7777 → your machine's local IP.
+4. Give your friend your public IP (or DNS name) and port. They should connect to `your.public.ip:7777` instead of `localhost`.
+5. Verify from another device using `telnet your.public.ip 7777` (or the sample client above with your IP) to confirm the server is reachable.
+
 ## Need Help?
 
 - Read the **README.md** for full overview

@@ -217,9 +217,9 @@ Console.WriteLine($"Received: {response.GetType().Name}");
 
 ## Let a Friend Connect from Outside Your Network
 
-1. Keep the server running (see steps above) and note the port you expose in `appsettings.json` (default **7777**).
+1. Keep the server running (see steps above) and note the port you use in `appsettings.json` (default **7777**).
 2. Allow inbound TCP traffic on that port in your OS firewall.
-   - Windows: allow the `dotnet` process or open the configured TCP port (default 7777) in Windows Defender Firewall.
+   - Windows: either allow the `dotnet` process or create an inbound rule for the configured TCP port (default 7777) in Windows Defender Firewall.
    - Linux/macOS: open the same TCP port via `ufw`/`iptables`/`pf` to match your configured value.
 3. If you're behind a home router, add a **port forwarding** rule for that TCP port → your machine's local IP.
 4. Give your friend your public IP (or DNS name) and port. They should connect to `your.public.ip:[your-port]` (for example `your.public.ip:7777`) instead of `localhost`.

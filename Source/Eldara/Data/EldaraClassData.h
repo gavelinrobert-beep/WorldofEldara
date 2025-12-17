@@ -37,6 +37,10 @@ struct FCharacterStats
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 	float Resource = 100.0f;
 
+	/** Base stamina (dodge/block/sprint) */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
+	float Stamina = 100.0f;
+
 	/** Base armor value */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Stats")
 	float Armor = 10.0f;

@@ -2,12 +2,9 @@
 
 AEldaraGameModeBase::AEldaraGameModeBase()
 {
-	// TODO: Set default classes when they are created
-	// DefaultPawnClass = AEldaraCharacterBase::StaticClass();
-	// PlayerControllerClass = AEldaraPlayerController::StaticClass();
-	// GameStateClass = AEldaraGameState::StaticClass();
-	// PlayerStateClass = AEldaraPlayerState::StaticClass();
-	
+	PlayerControllerClass = nullptr;
+	DefaultPawnClass = nullptr;
+
 	UE_LOG(LogTemp, Log, TEXT("EldaraGameModeBase constructed"));
 }
 

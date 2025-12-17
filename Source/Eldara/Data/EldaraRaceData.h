@@ -39,11 +39,19 @@ class ELDARA_API UEldaraRaceData : public UDataAsset
 	GENERATED_BODY()
 
 public:
+	/** Canonical race identifier (data/serialization) vs DisplayName (player-facing localized) */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Race")
+	FName RaceName;
+
+	/** Lore description of the race (long-form) */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Race", meta = (MultiLine = "true"))
+	FText RaceDescription;
+
 	/** Display name of the race */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Race")
 	FText DisplayName;
 
-	/** Lore description of the race */
+	/** Short-form description for UI (legacy/backward-compatible; prefer RaceDescription for new data) */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Race", meta = (MultiLine = "true"))
 	FText Description;
 
@@ -66,4 +74,12 @@ public:
 	/** Starting zone location for this race */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "World")
 	FVector StartingZoneLocation;
+
+	/** Health modifier applied to base stats */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stats")
+	float HealthModifier = 1.0f;
+
+	/** Stamina modifier applied to base stats */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stats")
+	float StaminaModifier = 1.0f;
 };

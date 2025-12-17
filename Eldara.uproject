@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "5.3",
+	"EngineAssociation": "5.7",
 	"Category": "",
 	"Description": "World of Eldara UE5 client scaffold ready for gameplay systems.",
 	"Modules": [

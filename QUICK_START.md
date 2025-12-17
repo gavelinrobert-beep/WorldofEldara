@@ -223,7 +223,8 @@ Console.WriteLine($"Received: {response.GetType().Name}");
    - Linux/macOS: open the same TCP port via `ufw`/`iptables`/`pf` to match your configured value (e.g., `sudo ufw allow 7777/tcp` on Ubuntu).
 3. If you're behind a home router, add a **port forwarding** rule for that TCP port → your machine's local IP.
 4. Give your friend your public IP (or DNS name) and port. They should connect to `your.public.ip:your-port` (for example `203.0.113.45:7777`) instead of `localhost`.
-5. Verify from another device using `telnet your.public.ip [your-port]` (or the sample client above with your IP/port) to confirm the server is reachable.
+5. Verify from another device using `telnet your.public.ip your-port` (or the sample client above with your IP/port) to confirm the server is reachable.
+> Opening a port to the internet exposes your machine; if you prefer not to, consider connecting over a VPN/private network (e.g., Tailscale/ZeroTier) instead of public port forwarding.
 
 ## Need Help?
 

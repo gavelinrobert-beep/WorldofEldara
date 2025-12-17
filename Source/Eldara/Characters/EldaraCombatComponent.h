@@ -33,7 +33,7 @@ public:
 	 * @param Ability The ability to activate
 	 * @param Target The target actor (can be nullptr for self/ground-targeted abilities)
 	 */
-	UFUNCTION(Server, Reliable, WithValidation)
+	UFUNCTION(Server, Reliable)
 	void Server_ActivateAbility(UEldaraAbility* Ability, AActor* Target);
 
 	/**

@@ -219,9 +219,9 @@ Console.WriteLine($"Received: {response.GetType().Name}");
 
 1. Keep the server running (see steps above) and note the port you use in `appsettings.json` (default **7777**).
 2. Allow inbound TCP traffic on that port in your OS firewall.
-   - Windows: either allow the `dotnet` process or create an inbound rule for the configured TCP port (default 7777) in Windows Defender Firewall. Open Windows Security → Firewall & network protection → Advanced settings → Inbound Rules to add it.
-   - Linux: open the same TCP port with your distro firewall. Ubuntu/Debian: `sudo ufw allow 7777/tcp`; other distros: add an allow rule with `iptables` for your configured port.
-   - macOS: Security & Privacy (or System Settings) → Firewall → Firewall Options → add the app/port (or allow it via `pf`).
+   - Windows: either allow the `dotnet` process when prompted **or** create an inbound port rule. Windows Security → Firewall & network protection → Advanced settings → Inbound Rules → New Rule → Port → TCP `<your-port>` (default 7777) → Allow.
+   - Linux: open the same TCP port with your distro firewall. Ubuntu/Debian: `sudo ufw allow 7777/tcp`; other distros: `sudo iptables -A INPUT -p tcp --dport 7777 -j ACCEPT` (replace 7777 if you changed the port).
+   - macOS: System Settings (or Security & Privacy) → Network → Firewall → Options → add an allow rule for the app or TCP port you configured.
 3. If you're behind a home router, add a **port forwarding** rule for that TCP port → your machine's local IP.
 4. Give your friend your public IP (or DNS name) and port. They should connect to `your-public-ip:port` (for example `203.0.113.45:7777`) instead of `localhost`.
 5. Verify from another device using `telnet 203.0.113.45 7777` (replace with your public IP/port) or the sample client above to confirm the server is reachable.

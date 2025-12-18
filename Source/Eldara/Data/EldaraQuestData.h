@@ -31,7 +31,7 @@ struct FQuestObjective
 
 	/** Type of objective */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Objective")
-	EQuestObjectiveType ObjectiveType;
+	EQuestObjectiveType ObjectiveType = EQuestObjectiveType::Kill;
 
 	/** Description of the objective */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Objective")

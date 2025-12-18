@@ -22,7 +22,7 @@ struct FAppearanceSlot
 
 	/** Number of available options for this slot */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Appearance")
-	int32 OptionCount;
+	int32 OptionCount = 0;
 
 	/** Display name for the slot */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Appearance")

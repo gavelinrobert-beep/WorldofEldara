@@ -8,6 +8,32 @@ class UEldaraRaceData;
 class UEldaraClassData;
 
 /**
+ * Appearance choice key-value pair
+ * RPC-safe alternative to TMap for appearance selections
+ */
+USTRUCT(BlueprintType)
+struct FAppearanceChoice
+{
+	GENERATED_BODY()
+
+	/** Appearance slot name (e.g., "Hair", "Face", "EyeColor") */
+	UPROPERTY(BlueprintReadWrite, Category = "Character Creation")
+	FName SlotName = NAME_None;
+
+	/** Selected option index for this slot */
+	UPROPERTY(BlueprintReadWrite, Category = "Character Creation")
+	int32 OptionIndex = 0;
+
+	FAppearanceChoice() = default;
+
+	FAppearanceChoice(FName InSlotName, int32 InOptionIndex)
+		: SlotName(InSlotName)
+		, OptionIndex(InOptionIndex)
+	{
+	}
+};
+
+/**
  * Character creation payload structure
  * Sent from client to server when creating a new character
  */
@@ -28,9 +54,19 @@ struct FEldaraCharacterCreatePayload
 	UPROPERTY(BlueprintReadWrite, Category = "Character Creation")
 	TObjectPtr<UEldaraClassData> ClassData;
 
-	/** Appearance choices (SlotName → OptionIndex) */
+	/** 
+	 * Appearance choices as array of slot/option pairs (RPC-safe)
+	 * Each entry maps a SlotName (e.g., "Hair") to an OptionIndex (e.g., 3)
+	 * 
+	 * To convert to TMap for lookup:
+	 * TMap<FName, int32> ChoicesMap;
+	 * for (const FAppearanceChoice& Choice : AppearanceChoices)
+	 * {
+	 *     ChoicesMap.Add(Choice.SlotName, Choice.OptionIndex);
+	 * }
+	 */
 	UPROPERTY(BlueprintReadWrite, Category = "Character Creation")
-	TMap<FName, int32> AppearanceChoices;
+	TArray<FAppearanceChoice> AppearanceChoices;
 
 	/** Skin tone color */
 	UPROPERTY(BlueprintReadWrite, Category = "Character Creation")

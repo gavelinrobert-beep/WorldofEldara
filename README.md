@@ -142,7 +142,7 @@ WorldofEldara/
 
 - **.NET 8 SDK** - [Download](https://dotnet.microsoft.com/download/dotnet/8.0)
 - **Git** - For version control
-- **(Optional) Unreal Engine 5.3+** - For client development
+- **(Optional) Unreal Engine 5.7** - For client development
 
 ### Running the Server
 
@@ -161,7 +161,7 @@ WorldofEldara/
 
 ### Bringing up the Unreal client prototype
 
-1. Install **Unreal Engine 5.3+**.
+1. Install **Unreal Engine 5.7**.
 2. From the repository root, open `Eldara.uproject` (Engine will generate project files and compile the `Eldara` module on first launch).
 3. Editor targets (`EldaraEditor.Target.cs`) are present so you can build from the Unreal Editor or via `UnrealEditor` command line.
 4. Core gameplay classes live in `Source/Eldara` (GameMode, GameInstance, PlayerController, AI, DataAssets).

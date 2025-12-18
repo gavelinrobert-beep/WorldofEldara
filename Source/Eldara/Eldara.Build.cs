@@ -17,5 +17,9 @@ public class Eldara : ModuleRules
             "GameplayTasks",
             "UMG"
         });
+
+        // Add Data folder to include paths for cleaner includes
+        PublicIncludePaths.Add(ModuleDirectory);
+        PrivateIncludePaths.Add(ModuleDirectory);
     }
 }

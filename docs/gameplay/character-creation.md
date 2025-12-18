@@ -62,6 +62,16 @@ Server Validation → Character Spawn in Starter Zone
 ### FEldaraCharacterCreatePayload (Network Struct)
 ```cpp
 USTRUCT()
+struct FAppearanceChoice
+{
+    UPROPERTY()
+    FName SlotName;
+
+    UPROPERTY()
+    int32 OptionIndex;
+};
+
+USTRUCT()
 struct FEldaraCharacterCreatePayload
 {
     UPROPERTY()
@@ -74,7 +84,7 @@ struct FEldaraCharacterCreatePayload
     UEldaraClassData* ClassData;
 
     UPROPERTY()
-    TMap<FName, int32> AppearanceChoices; // SlotName → OptionIndex
+    TArray<FAppearanceChoice> AppearanceChoices; // RPC-safe array of slot/option pairs
 
     UPROPERTY()
     FLinearColor SkinTone;

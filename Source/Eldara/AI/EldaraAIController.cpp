@@ -152,7 +152,7 @@ void AEldaraAIController::UpdateBlackboardKeys()
 	AEldaraCharacterBase* ControlledCharacter = Cast<AEldaraCharacterBase>(GetPawn());
 	if (ControlledCharacter)
 	{
-		float HealthPercent = Character->GetHealth() / Character->GetMaxHealth();
+		float HealthPercent = ControlledCharacter->GetHealth() / ControlledCharacter->GetMaxHealth();
 		GetBlackboardComponent()->SetValueAsFloat(EldaraAIKeys::HealthPercent, HealthPercent);
 	}
 

@@ -1,7 +1,7 @@
 #include "EldaraCharacterBase.h"
 #include "EldaraCombatComponent.h"
 #include "Eldara/Data/EldaraRaceData.h"
-#include "Data/EldaraClassData.h"
+#include "Eldara/Data/EldaraClassData.h"
 #include "Net/UnrealNetwork.h"
 
 AEldaraCharacterBase::AEldaraCharacterBase()

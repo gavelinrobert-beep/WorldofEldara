@@ -1,23 +1,27 @@
 using System.Collections.Concurrent;
 using Serilog;
 using WorldofEldara.Shared.Data.Character;
+using WorldofEldara.Shared.Protocol.Packets;
 
 namespace WorldofEldara.Server.Core;
 
 /// <summary>
-/// Manages all entities in the game world (players, NPCs, objects).
-/// Thread-safe for concurrent access from network and simulation threads.
+///     Manages all entities in the game world (players, NPCs, objects).
+///     Thread-safe for concurrent access from network and simulation threads.
 /// </summary>
 public class EntityManager
 {
     private readonly ConcurrentDictionary<ulong, Entity> _entities = new();
-    private ulong _nextEntityId = 1;
     private readonly object _idLock = new();
+    private ulong _nextEntityId = 1;
 
-    public int GetEntityCount() => _entities.Count;
+    public int GetEntityCount()
+    {
+        return _entities.Count;
+    }
 
     /// <summary>
-    /// Generate a new unique entity ID
+    ///     Generate a new unique entity ID
     /// </summary>
     public ulong GenerateEntityId()
     {
@@ -28,7 +32,7 @@ public class EntityManager
     }
 
     /// <summary>
-    /// Add an entity to the world
+    ///     Add an entity to the world
     /// </summary>
     public bool AddEntity(Entity entity)
     {
@@ -43,7 +47,7 @@ public class EntityManager
     }
 
     /// <summary>
-    /// Remove an entity from the world
+    ///     Remove an entity from the world
     /// </summary>
     public bool RemoveEntity(ulong entityId)
     {
@@ -58,7 +62,7 @@ public class EntityManager
     }
 
     /// <summary>
-    /// Get an entity by ID
+    ///     Get an entity by ID
     /// </summary>
     public Entity? GetEntity(ulong entityId)
     {
@@ -67,7 +71,7 @@ public class EntityManager
     }
 
     /// <summary>
-    /// Get player entity by character ID
+    ///     Get player entity by character ID
     /// </summary>
     public PlayerEntity? GetPlayerByCharacterId(ulong characterId)
     {
@@ -77,7 +81,7 @@ public class EntityManager
     }
 
     /// <summary>
-    /// Get all entities in a zone
+    ///     Get all entities in a zone
     /// </summary>
     public List<Entity> GetEntitiesInZone(string zoneId)
     {
@@ -87,37 +91,34 @@ public class EntityManager
     }
 
     /// <summary>
-    /// Get all entities within range of a position
+    ///     Get all entities within range of a position
     /// </summary>
     public List<Entity> GetEntitiesInRange(string zoneId, float x, float y, float z, float range)
     {
-        float rangeSq = range * range;
+        var rangeSq = range * range;
 
         return _entities.Values
             .Where(e => e.ZoneId == zoneId)
             .Where(e =>
             {
-                float dx = e.Position.X - x;
-                float dy = e.Position.Y - y;
-                float dz = e.Position.Z - z;
-                return (dx * dx + dy * dy + dz * dz) <= rangeSq;
+                var dx = e.Position.X - x;
+                var dy = e.Position.Y - y;
+                var dz = e.Position.Z - z;
+                return dx * dx + dy * dy + dz * dz <= rangeSq;
             })
             .ToList();
     }
 
     /// <summary>
-    /// Update all entities (called from simulation thread)
+    ///     Update all entities (called from simulation thread)
     /// </summary>
     public void UpdateAll(float deltaTime)
     {
-        foreach (var entity in _entities.Values)
-        {
-            entity.Update(deltaTime);
-        }
+        foreach (var entity in _entities.Values) entity.Update(deltaTime);
     }
 
     /// <summary>
-    /// Get all player entities
+    ///     Get all player entities
     /// </summary>
     public List<PlayerEntity> GetAllPlayers()
     {
@@ -125,7 +126,7 @@ public class EntityManager
     }
 
     /// <summary>
-    /// Get all NPC entities
+    ///     Get all NPC entities
     /// </summary>
     public List<NPCEntity> GetAllNPCs()
     {
@@ -134,25 +135,25 @@ public class EntityManager
 }
 
 /// <summary>
-/// Base entity class for all world objects
+///     Base entity class for all world objects
 /// </summary>
 public abstract class Entity
 {
     public ulong EntityId { get; set; }
     public string Name { get; set; } = string.Empty;
     public string ZoneId { get; set; } = string.Empty;
-    public Shared.Protocol.Packets.Vector3 Position { get; set; }
-    public Shared.Protocol.Packets.Vector3 Velocity { get; set; }
+    public Vector3 Position { get; set; }
+    public Vector3 Velocity { get; set; }
     public float RotationYaw { get; set; }
     public float RotationPitch { get; set; }
-    public Shared.Protocol.Packets.MovementState MovementState { get; set; }
+    public MovementState MovementState { get; set; }
 
     public abstract EntityType GetEntityType();
     public abstract void Update(float deltaTime);
 }
 
 /// <summary>
-/// Player-controlled entity
+///     Player-controlled entity
 /// </summary>
 public class PlayerEntity : Entity
 {
@@ -169,7 +170,10 @@ public class PlayerEntity : Entity
     // Network
     public object? ClientConnection { get; set; } // Reference to network connection
 
-    public override EntityType GetEntityType() => EntityType.Player;
+    public override EntityType GetEntityType()
+    {
+        return EntityType.Player;
+    }
 
     public override void Update(float deltaTime)
     {
@@ -177,19 +181,15 @@ public class PlayerEntity : Entity
         // This handles decay effects, regeneration, etc.
 
         // Check combat timeout
-        if (IsInCombat && (DateTime.UtcNow - LastCombatTime).TotalSeconds > 5.0f)
-        {
-            IsInCombat = false;
-            // TODO: Trigger out-of-combat effects (regen, etc.)
-        }
-
+        if (IsInCombat && (DateTime.UtcNow - LastCombatTime).TotalSeconds > 5.0f) IsInCombat = false;
+        // TODO: Trigger out-of-combat effects (regen, etc.)
         // TODO: Update buffs/debuffs
         // TODO: Mana/health regeneration
     }
 }
 
 /// <summary>
-/// NPC entity (includes monsters, vendors, quest givers)
+///     NPC entity (includes monsters, vendors, quest givers)
 /// </summary>
 public class NPCEntity : Entity
 {
@@ -205,10 +205,13 @@ public class NPCEntity : Entity
     // AI state
     public NPCAIState AIState { get; set; } = NPCAIState.Idle;
     public ulong? TargetEntityId { get; set; }
-    public Shared.Protocol.Packets.Vector3 SpawnPosition { get; set; }
+    public Vector3 SpawnPosition { get; set; }
     public float LeashDistance { get; set; } = 50.0f;
 
-    public override EntityType GetEntityType() => EntityType.NPC;
+    public override EntityType GetEntityType()
+    {
+        return EntityType.NPC;
+    }
 
     public override void Update(float deltaTime)
     {

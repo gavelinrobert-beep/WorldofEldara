@@ -4,7 +4,7 @@ using WorldofEldara.Shared.Data.World;
 namespace WorldofEldara.Server.World;
 
 /// <summary>
-/// Manages all game zones and their state
+///     Manages all game zones and their state
 /// </summary>
 public class ZoneManager
 {
@@ -32,12 +32,18 @@ public class ZoneManager
         return zone;
     }
 
-    public int GetLoadedZoneCount() => _loadedZones.Count;
+    public int GetLoadedZoneCount()
+    {
+        return _loadedZones.Count;
+    }
 
-    public List<Zone> GetAllZones() => _loadedZones.Values.ToList();
+    public List<Zone> GetAllZones()
+    {
+        return _loadedZones.Values.ToList();
+    }
 
     /// <summary>
-    /// Check if a position is within zone bounds (simplified - would need proper bounds checking)
+    ///     Check if a position is within zone bounds (simplified - would need proper bounds checking)
     /// </summary>
     public bool IsPositionInZone(string zoneId, float x, float y, float z)
     {

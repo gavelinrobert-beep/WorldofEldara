@@ -4,49 +4,36 @@ using WorldofEldara.Shared.Data.Character;
 namespace WorldofEldara.Shared.Data.World;
 
 /// <summary>
-/// Represents a game zone/area in Eldara
+///     Represents a game zone/area in Eldara
 /// </summary>
 [MessagePackObject]
 public class Zone
 {
-    [Key(0)]
-    public string ZoneId { get; set; } = string.Empty;
+    [Key(0)] public string ZoneId { get; set; } = string.Empty;
 
-    [Key(1)]
-    public string Name { get; set; } = string.Empty;
+    [Key(1)] public string Name { get; set; } = string.Empty;
 
-    [Key(2)]
-    public string Description { get; set; } = string.Empty;
+    [Key(2)] public string Description { get; set; } = string.Empty;
 
-    [Key(3)]
-    public int MinLevel { get; set; } = 1;
+    [Key(3)] public int MinLevel { get; set; } = 1;
 
-    [Key(4)]
-    public int MaxLevel { get; set; } = 10;
+    [Key(4)] public int MaxLevel { get; set; } = 10;
 
-    [Key(5)]
-    public ZoneType Type { get; set; }
+    [Key(5)] public ZoneType Type { get; set; }
 
-    [Key(6)]
-    public Faction ControllingFaction { get; set; } = Faction.Neutral;
+    [Key(6)] public Faction ControllingFaction { get; set; } = Faction.Neutral;
 
-    [Key(7)]
-    public float WorldrootDensity { get; set; } = 0.5f; // 0.0 to 1.0
+    [Key(7)] public float WorldrootDensity { get; set; } = 0.5f; // 0.0 to 1.0
 
-    [Key(8)]
-    public bool IsPvPEnabled { get; set; }
+    [Key(8)] public bool IsPvPEnabled { get; set; }
 
-    [Key(9)]
-    public bool IsContestedTerritory { get; set; }
+    [Key(9)] public bool IsContestedTerritory { get; set; }
 
-    [Key(10)]
-    public List<string> ConnectedZones { get; set; } = new();
+    [Key(10)] public List<string> ConnectedZones { get; set; } = new();
 
-    [Key(11)]
-    public WorldPosition SafeSpawnPoint { get; set; } = new();
+    [Key(11)] public WorldPosition SafeSpawnPoint { get; set; } = new();
 
-    [Key(12)]
-    public string LoreDescription { get; set; } = string.Empty;
+    [Key(12)] public string LoreDescription { get; set; } = string.Empty;
 }
 
 public enum ZoneType
@@ -63,14 +50,11 @@ public enum ZoneType
 [MessagePackObject]
 public struct WorldPosition
 {
-    [Key(0)]
-    public float X { get; set; }
+    [Key(0)] public float X { get; set; }
 
-    [Key(1)]
-    public float Y { get; set; }
+    [Key(1)] public float Y { get; set; }
 
-    [Key(2)]
-    public float Z { get; set; }
+    [Key(2)] public float Z { get; set; }
 
     public WorldPosition(float x, float y, float z)
     {
@@ -81,7 +65,7 @@ public struct WorldPosition
 }
 
 /// <summary>
-/// Zone definitions with lore justification
+///     Zone definitions with lore justification
 /// </summary>
 public static class ZoneDefinitions
 {

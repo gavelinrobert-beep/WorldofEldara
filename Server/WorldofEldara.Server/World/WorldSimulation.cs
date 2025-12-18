@@ -1,59 +1,57 @@
-using Serilog;
 using System.Diagnostics;
+using Serilog;
 using WorldofEldara.Server.Core;
 
 namespace WorldofEldara.Server.World;
 
 /// <summary>
-/// Core world simulation loop running at fixed tick rate (20 TPS by default).
-/// This is the authoritative game state manager.
-/// 
-/// Responsibilities:
-/// - Update all entities (players, NPCs, objects)
-/// - Process combat
-/// - Handle AI
-/// - Manage spawns and despawns
-/// - Update world state (day/night, events, etc.)
-/// - Send updates to clients
+///     Core world simulation loop running at fixed tick rate (20 TPS by default).
+///     This is the authoritative game state manager.
+///     Responsibilities:
+///     - Update all entities (players, NPCs, objects)
+///     - Process combat
+///     - Handle AI
+///     - Manage spawns and despawns
+///     - Update world state (day/night, events, etc.)
+///     - Send updates to clients
 /// </summary>
 public class WorldSimulation
 {
-    private readonly float _tickRate;
-    private readonly float _tickDelta;
-    private readonly EntityManager _entityManager;
-    private readonly ZoneManager _zoneManager;
     private readonly SpawnSystem _spawnSystem;
+    private readonly float _tickDelta;
+    private readonly float _tickRate;
+    private readonly Stopwatch _tickTimer = new();
     private readonly TimeManager _timeManager;
+    private bool _isRunning;
 
     private Thread? _simulationThread;
-    private bool _isRunning;
-    private long _currentTick;
-    private readonly Stopwatch _tickTimer = new();
-
-    public long CurrentTick => _currentTick;
-    public EntityManager Entities => _entityManager;
-    public ZoneManager Zones => _zoneManager;
 
     public WorldSimulation(int tickRate = 20)
     {
         _tickRate = tickRate;
         _tickDelta = 1.0f / _tickRate;
 
-        _entityManager = new EntityManager();
-        _zoneManager = new ZoneManager();
-        _spawnSystem = new SpawnSystem(_entityManager, _zoneManager);
+        Entities = new EntityManager();
+        Zones = new ZoneManager();
+        _spawnSystem = new SpawnSystem(Entities, Zones);
         _timeManager = new TimeManager();
 
         Log.Information($"World Simulation initialized at {_tickRate} TPS (Δt = {_tickDelta:F4}s)");
     }
+
+    public long CurrentTick { get; private set; }
+
+    public EntityManager Entities { get; }
+
+    public ZoneManager Zones { get; }
 
     public async Task Initialize()
     {
         Log.Information("Loading world data...");
 
         // Load zones
-        await _zoneManager.LoadZones();
-        Log.Information($"Loaded {_zoneManager.GetLoadedZoneCount()} zones");
+        await Zones.LoadZones();
+        Log.Information($"Loaded {Zones.GetLoadedZoneCount()} zones");
 
         // Initialize spawn points
         await _spawnSystem.Initialize();
@@ -75,7 +73,7 @@ public class WorldSimulation
         }
 
         _isRunning = true;
-        _currentTick = 0;
+        CurrentTick = 0;
 
         _simulationThread = new Thread(SimulationLoop)
         {
@@ -99,24 +97,24 @@ public class WorldSimulation
         _isRunning = false;
         _simulationThread?.Join(TimeSpan.FromSeconds(5));
 
-        Log.Information($"World simulation stopped at tick {_currentTick}");
+        Log.Information($"World simulation stopped at tick {CurrentTick}");
     }
 
     /// <summary>
-    /// Main simulation loop - runs at fixed tick rate
+    ///     Main simulation loop - runs at fixed tick rate
     /// </summary>
     private void SimulationLoop()
     {
         Log.Information("Entering simulation loop...");
         _tickTimer.Start();
 
-        double accumulator = 0.0;
-        long lastTick = _tickTimer.ElapsedMilliseconds;
+        var accumulator = 0.0;
+        var lastTick = _tickTimer.ElapsedMilliseconds;
 
         while (_isRunning)
         {
-            long currentTime = _tickTimer.ElapsedMilliseconds;
-            double deltaTime = (currentTime - lastTick) / 1000.0;
+            var currentTime = _tickTimer.ElapsedMilliseconds;
+            var deltaTime = (currentTime - lastTick) / 1000.0;
             lastTick = currentTime;
 
             accumulator += deltaTime;
@@ -126,16 +124,14 @@ public class WorldSimulation
             {
                 Tick(_tickDelta);
                 accumulator -= _tickDelta;
-                _currentTick++;
+                CurrentTick++;
             }
 
             // Sleep to prevent CPU spinning
             // Calculate how much time we have until next tick
-            double timeUntilNextTick = _tickDelta - accumulator;
+            var timeUntilNextTick = _tickDelta - accumulator;
             if (timeUntilNextTick > 0.001) // Only sleep if > 1ms
-            {
                 Thread.Sleep((int)(timeUntilNextTick * 1000 * 0.9)); // Sleep for 90% of remaining time
-            }
         }
 
         _tickTimer.Stop();
@@ -143,7 +139,7 @@ public class WorldSimulation
     }
 
     /// <summary>
-    /// Single simulation tick - this is where the magic happens
+    ///     Single simulation tick - this is where the magic happens
     /// </summary>
     private void Tick(float deltaTime)
     {
@@ -153,7 +149,7 @@ public class WorldSimulation
             _timeManager.Update(deltaTime);
 
             // 2. Update all entities
-            _entityManager.UpdateAll(deltaTime);
+            Entities.UpdateAll(deltaTime);
 
             // 3. Process combat
             // TODO: Combat system tick
@@ -171,19 +167,18 @@ public class WorldSimulation
             // This happens in NetworkServer based on our entity updates
 
             // Log every 100 ticks (every 5 seconds at 20 TPS)
-            if (_currentTick % 100 == 0)
-            {
-                Log.Debug($"Tick {_currentTick}: {_entityManager.GetEntityCount()} entities, {_zoneManager.GetLoadedZoneCount()} zones loaded");
-            }
+            if (CurrentTick % 100 == 0)
+                Log.Debug(
+                    $"Tick {CurrentTick}: {Entities.GetEntityCount()} entities, {Zones.GetLoadedZoneCount()} zones loaded");
         }
         catch (Exception ex)
         {
-            Log.Error(ex, $"Error during simulation tick {_currentTick}");
+            Log.Error(ex, $"Error during simulation tick {CurrentTick}");
         }
     }
 
     /// <summary>
-    /// Get current server timestamp for synchronization
+    ///     Get current server timestamp for synchronization
     /// </summary>
     public long GetServerTimestamp()
     {

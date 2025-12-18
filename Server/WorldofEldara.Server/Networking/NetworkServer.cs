@@ -1,32 +1,32 @@
-using Serilog;
+using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
-using System.Collections.Concurrent;
+using Serilog;
 using WorldofEldara.Server.World;
 
 namespace WorldofEldara.Server.Networking;
 
 /// <summary>
-/// TCP-based network server for client connections.
-/// Handles:
-/// - Client connections and disconnections
-/// - Packet routing
-/// - Heartbeat/keepalive
-/// - Message serialization
+///     TCP-based network server for client connections.
+///     Handles:
+///     - Client connections and disconnections
+///     - Packet routing
+///     - Heartbeat/keepalive
+///     - Message serialization
 /// </summary>
 public class NetworkServer
 {
-    private readonly int _port;
+    private readonly object _connectionIdLock = new();
+    private readonly ConcurrentDictionary<ulong, ClientConnection> _connections = new();
     private readonly int _maxPlayers;
+    private readonly int _port;
     private readonly WorldSimulation _worldSimulation;
+    private Thread? _acceptThread;
+    private bool _isRunning;
 
     private TcpListener? _listener;
-    private readonly ConcurrentDictionary<ulong, ClientConnection> _connections = new();
-    private bool _isRunning;
-    private Thread? _acceptThread;
 
     private ulong _nextConnectionId = 1;
-    private readonly object _connectionIdLock = new();
 
     public NetworkServer(int port, int maxPlayers, WorldSimulation worldSimulation)
     {
@@ -76,10 +76,7 @@ public class NetworkServer
 
     public async Task Stop()
     {
-        if (!_isRunning)
-        {
-            return;
-        }
+        if (!_isRunning) return;
 
         Log.Information("Stopping network server...");
         _isRunning = false;
@@ -88,10 +85,7 @@ public class NetworkServer
         _listener?.Stop();
 
         // Disconnect all clients
-        foreach (var connection in _connections.Values)
-        {
-            connection.Disconnect("Server shutting down");
-        }
+        foreach (var connection in _connections.Values) connection.Disconnect("Server shutting down");
 
         _connections.Clear();
 
@@ -107,7 +101,6 @@ public class NetworkServer
         Log.Information("Accept loop started");
 
         while (_isRunning)
-        {
             try
             {
                 if (_listener == null) break;
@@ -126,11 +119,8 @@ public class NetworkServer
             catch (Exception ex)
             {
                 if (_isRunning) // Only log if we're still supposed to be running
-                {
                     Log.Error(ex, "Error in accept loop");
-                }
             }
-        }
 
         Log.Information("Accept loop ended");
     }
@@ -161,7 +151,7 @@ public class NetworkServer
     }
 
     /// <summary>
-    /// Called by ClientConnection when it disconnects
+    ///     Called by ClientConnection when it disconnects
     /// </summary>
     internal void OnClientDisconnected(ulong connectionId)
     {
@@ -171,25 +161,20 @@ public class NetworkServer
 
             // Remove player entity if exists
             if (connection.PlayerEntityId.HasValue)
-            {
                 _worldSimulation.Entities.RemoveEntity(connection.PlayerEntityId.Value);
-            }
         }
     }
 
     /// <summary>
-    /// Broadcast a packet to all connected clients
+    ///     Broadcast a packet to all connected clients
     /// </summary>
     public void BroadcastPacket(byte[] packetData)
     {
-        foreach (var connection in _connections.Values)
-        {
-            connection.SendPacket(packetData);
-        }
+        foreach (var connection in _connections.Values) connection.SendPacket(packetData);
     }
 
     /// <summary>
-    /// Broadcast to all clients in a zone
+    ///     Broadcast to all clients in a zone
     /// </summary>
     public void BroadcastToZone(string zoneId, byte[] packetData, ulong? excludeConnectionId = null)
     {
@@ -198,23 +183,20 @@ public class NetworkServer
             if (connection.ConnectionId == excludeConnectionId)
                 continue;
 
-            if (connection.CurrentZoneId == zoneId)
-            {
-                connection.SendPacket(packetData);
-            }
+            if (connection.CurrentZoneId == zoneId) connection.SendPacket(packetData);
         }
     }
 
     /// <summary>
-    /// Send packet to specific connection
+    ///     Send packet to specific connection
     /// </summary>
     public void SendToConnection(ulong connectionId, byte[] packetData)
     {
-        if (_connections.TryGetValue(connectionId, out var connection))
-        {
-            connection.SendPacket(packetData);
-        }
+        if (_connections.TryGetValue(connectionId, out var connection)) connection.SendPacket(packetData);
     }
 
-    public int GetConnectionCount() => _connections.Count;
+    public int GetConnectionCount()
+    {
+        return _connections.Count;
+    }
 }

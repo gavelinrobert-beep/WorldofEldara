@@ -1,7 +1,7 @@
 namespace WorldofEldara.Shared.Constants;
 
 /// <summary>
-/// Core game constants grounded in Eldara lore
+///     Core game constants grounded in Eldara lore
 /// </summary>
 public static class GameConstants
 {
@@ -61,7 +61,7 @@ public static class GameConstants
 }
 
 /// <summary>
-/// Lore-based world zones
+///     Lore-based world zones
 /// </summary>
 public static class ZoneConstants
 {

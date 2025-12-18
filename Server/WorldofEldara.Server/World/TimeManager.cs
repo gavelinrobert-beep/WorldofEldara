@@ -3,11 +3,10 @@ using Serilog;
 namespace WorldofEldara.Server.World;
 
 /// <summary>
-/// Manages world time in Eldara.
-/// 
-/// Lore: Time in Eldara flows according to the Worldroot's perception.
-/// One real day = One Eldara week (7 days).
-/// Allows for day/night cycle and time-based events.
+///     Manages world time in Eldara.
+///     Lore: Time in Eldara flows according to the Worldroot's perception.
+///     One real day = One Eldara week (7 days).
+///     Allows for day/night cycle and time-based events.
 /// </summary>
 public class TimeManager
 {
@@ -31,7 +30,7 @@ public class TimeManager
     }
 
     /// <summary>
-    /// Get current time of day (0.0 = midnight, 0.5 = noon, 1.0 = midnight again)
+    ///     Get current time of day (0.0 = midnight, 0.5 = noon, 1.0 = midnight again)
     /// </summary>
     public float GetTimeOfDay()
     {
@@ -39,16 +38,16 @@ public class TimeManager
     }
 
     /// <summary>
-    /// Check if it's currently day time (6am to 6pm Eldara time)
+    ///     Check if it's currently day time (6am to 6pm Eldara time)
     /// </summary>
     public bool IsDaytime()
     {
-        float timeOfDay = GetTimeOfDay();
+        var timeOfDay = GetTimeOfDay();
         return timeOfDay >= 0.25f && timeOfDay < 0.75f; // 6am to 6pm
     }
 
     /// <summary>
-    /// Get total elapsed Eldara days since server start
+    ///     Get total elapsed Eldara days since server start
     /// </summary>
     public int GetElapsedDays()
     {
@@ -56,29 +55,29 @@ public class TimeManager
     }
 
     /// <summary>
-    /// Get formatted world time string
+    ///     Get formatted world time string
     /// </summary>
     public string GetCurrentWorldTime()
     {
-        int days = GetElapsedDays();
-        float timeOfDay = GetTimeOfDay();
-        int hours = (int)(timeOfDay * 24);
-        int minutes = (int)((timeOfDay * 24 - hours) * 60);
+        var days = GetElapsedDays();
+        var timeOfDay = GetTimeOfDay();
+        var hours = (int)(timeOfDay * 24);
+        var minutes = (int)((timeOfDay * 24 - hours) * 60);
 
         return $"Day {days}, {hours:D2}:{minutes:D2} ({(IsDaytime() ? "Day" : "Night")})";
     }
 
     /// <summary>
-    /// Get Worldroot strain level based on time (lore: memory overflow increases over time)
+    ///     Get Worldroot strain level based on time (lore: memory overflow increases over time)
     /// </summary>
     public float GetWorldrootStrainLevel()
     {
         // Base strain increases slowly over time (endgame narrative driver)
-        float baseStrain = 0.3f + (_elapsedEldaraDays / 10000f); // Very slow increase
+        var baseStrain = 0.3f + _elapsedEldaraDays / 10000f; // Very slow increase
 
         // Fluctuates with time of day (memory is more active at night)
-        float timeOfDay = GetTimeOfDay();
-        float dailyVariance = IsDaytime() ? 0.0f : 0.1f;
+        var timeOfDay = GetTimeOfDay();
+        var dailyVariance = IsDaytime() ? 0.0f : 0.1f;
 
         return Math.Min(baseStrain + dailyVariance, 1.0f);
     }

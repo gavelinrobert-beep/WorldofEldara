@@ -1,36 +1,33 @@
-using Serilog;
 using System.Net.Sockets;
 using MessagePack;
+using Serilog;
+using WorldofEldara.Server.Core;
+using WorldofEldara.Server.World;
+using WorldofEldara.Shared.Data.Character;
 using WorldofEldara.Shared.Protocol;
 using WorldofEldara.Shared.Protocol.Packets;
-using WorldofEldara.Server.World;
-using WorldofEldara.Server.Core;
-using WorldofEldara.Shared.Data.Character;
 
 namespace WorldofEldara.Server.Networking;
 
 /// <summary>
-/// Represents a single client connection.
-/// Handles packet sending/receiving and game state for this client.
+///     Represents a single client connection.
+///     Handles packet sending/receiving and game state for this client.
 /// </summary>
 public class ClientConnection
 {
-    public ulong ConnectionId { get; }
-    public ulong? AccountId { get; private set; }
-    public ulong? PlayerEntityId { get; private set; }
-    public string? CurrentZoneId { get; private set; }
+    private readonly object _sendLock = new();
+    private readonly Queue<byte[]> _sendQueue = new();
+    private readonly NetworkServer _server;
+    private readonly NetworkStream _stream;
 
     private readonly TcpClient _tcpClient;
-    private readonly NetworkStream _stream;
-    private readonly NetworkServer _server;
     private readonly WorldSimulation _worldSimulation;
 
     private bool _isConnected = true;
     private Thread? _receiveThread;
-    private readonly Queue<byte[]> _sendQueue = new();
-    private readonly object _sendLock = new();
 
-    public ClientConnection(ulong connectionId, TcpClient tcpClient, NetworkServer server, WorldSimulation worldSimulation)
+    public ClientConnection(ulong connectionId, TcpClient tcpClient, NetworkServer server,
+        WorldSimulation worldSimulation)
     {
         ConnectionId = connectionId;
         _tcpClient = tcpClient;
@@ -38,6 +35,11 @@ public class ClientConnection
         _server = server;
         _worldSimulation = worldSimulation;
     }
+
+    public ulong ConnectionId { get; }
+    public ulong? AccountId { get; private set; }
+    public ulong? PlayerEntityId { get; private set; }
+    public string? CurrentZoneId { get; private set; }
 
     public void Start()
     {
@@ -93,7 +95,7 @@ public class ClientConnection
                 try
                 {
                     // Write packet length (4 bytes)
-                    byte[] lengthBytes = BitConverter.GetBytes(data.Length);
+                    var lengthBytes = BitConverter.GetBytes(data.Length);
                     _stream.Write(lengthBytes, 0, 4);
 
                     // Write packet data
@@ -111,21 +113,20 @@ public class ClientConnection
 
     private void ReceiveLoop()
     {
-        byte[] lengthBuffer = new byte[4];
+        var lengthBuffer = new byte[4];
 
         while (_isConnected)
-        {
             try
             {
                 // Read packet length
-                int bytesRead = _stream.Read(lengthBuffer, 0, 4);
+                var bytesRead = _stream.Read(lengthBuffer, 0, 4);
                 if (bytesRead != 4)
                 {
                     Disconnect("Invalid packet length");
                     break;
                 }
 
-                int packetLength = BitConverter.ToInt32(lengthBuffer, 0);
+                var packetLength = BitConverter.ToInt32(lengthBuffer, 0);
 
                 // Validate length
                 if (packetLength <= 0 || packetLength > NetworkConstants.MaxPacketSize)
@@ -135,8 +136,8 @@ public class ClientConnection
                 }
 
                 // Read packet data
-                byte[] packetData = new byte[packetLength];
-                int totalRead = 0;
+                var packetData = new byte[packetLength];
+                var totalRead = 0;
                 while (totalRead < packetLength)
                 {
                     bytesRead = _stream.Read(packetData, totalRead, packetLength - totalRead);
@@ -145,13 +146,11 @@ public class ClientConnection
                         Disconnect("Connection closed during packet read");
                         break;
                     }
+
                     totalRead += bytesRead;
                 }
 
-                if (totalRead != packetLength)
-                {
-                    break;
-                }
+                if (totalRead != packetLength) break;
 
                 // Process packet
                 ProcessPacket(packetData);
@@ -167,7 +166,6 @@ public class ClientConnection
                 Disconnect("Receive error");
                 break;
             }
-        }
     }
 
     private void ProcessPacket(byte[] data)
@@ -258,7 +256,8 @@ public class ClientConnection
 
     private void HandleCreateCharacter(CharacterPackets.CreateCharacterRequest request)
     {
-        Log.Information($"Create character request from [{ConnectionId}]: {request.Name} ({request.Race}, {request.Class})");
+        Log.Information(
+            $"Create character request from [{ConnectionId}]: {request.Name} ({request.Race}, {request.Class})");
 
         // Validate lore consistency
         if (!ClassInfo.IsClassAvailableForRace(request.Class, request.Race))
@@ -290,7 +289,7 @@ public class ClientConnection
         };
 
         // Set starting position based on faction
-        string starterZone = FactionInfo.GetStarterZone(character.Faction);
+        var starterZone = FactionInfo.GetStarterZone(character.Faction);
         character.Position = new CharacterPosition
         {
             ZoneId = starterZone,
@@ -344,7 +343,7 @@ public class ClientConnection
             CharacterData = character,
             Name = character.Name,
             ZoneId = character.Position.ZoneId,
-            Position = new Shared.Protocol.Packets.Vector3(character.Position.X, character.Position.Y, character.Position.Z),
+            Position = new Vector3(character.Position.X, character.Position.Y, character.Position.Z),
             ClientConnection = this
         };
 
@@ -417,8 +416,6 @@ public class ClientConnection
 
         // Broadcast to zone
         if (CurrentZoneId != null)
-        {
             _server.BroadcastToZone(CurrentZoneId, MessagePackSerializer.Serialize<PacketBase>(packet));
-        }
     }
 }

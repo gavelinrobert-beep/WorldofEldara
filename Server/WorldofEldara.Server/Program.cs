@@ -4,17 +4,16 @@ using WorldofEldara.Server.Core;
 namespace WorldofEldara.Server;
 
 /// <summary>
-/// World of Eldara - Authoritative Game Server
-/// 
-/// This is a PC-based MMORPG server implementing:
-/// - Server-authoritative gameplay
-/// - 20 TPS world simulation
-/// - Client prediction with reconciliation
-/// - Lore-grounded systems
+///     World of Eldara - Authoritative Game Server
+///     This is a PC-based MMORPG server implementing:
+///     - Server-authoritative gameplay
+///     - 20 TPS world simulation
+///     - Client prediction with reconciliation
+///     - Lore-grounded systems
 /// </summary>
-class Program
+internal class Program
 {
-    static async Task Main(string[] args)
+    private static async Task Main(string[] args)
     {
         // Initialize logging
         Log.Logger = new LoggerConfiguration()

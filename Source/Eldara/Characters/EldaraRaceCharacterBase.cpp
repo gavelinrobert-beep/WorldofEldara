@@ -1,5 +1,5 @@
 #include "EldaraRaceCharacterBase.h"
-#include "Data/EldaraRaceData.h"
+#include "Eldara/Data/EldaraRaceData.h"
 #include "Components/SkeletalMeshComponent.h"
 
 AEldaraRaceCharacterBase::AEldaraRaceCharacterBase()

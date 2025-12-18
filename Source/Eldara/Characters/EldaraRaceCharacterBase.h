@@ -4,6 +4,7 @@
 #include "EldaraCharacterBase.h"
 #include "EldaraRaceCharacterBase.generated.h"
 
+
 class USkeletalMesh;
 
 UCLASS(Abstract)

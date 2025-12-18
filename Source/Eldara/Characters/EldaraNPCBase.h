@@ -2,7 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "EldaraCharacterBase.h"
-#include "Data/EldaraFaction.h"
+#include "Eldara/Data/EldaraFaction.h"
 #include "EldaraNPCBase.generated.h"
 
 /**

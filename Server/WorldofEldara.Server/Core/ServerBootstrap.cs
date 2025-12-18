@@ -1,19 +1,19 @@
-using Serilog;
 using Microsoft.Extensions.Configuration;
+using Serilog;
 using WorldofEldara.Server.Networking;
 using WorldofEldara.Server.World;
 
 namespace WorldofEldara.Server.Core;
 
 /// <summary>
-/// Handles server initialization, startup, and shutdown
+///     Handles server initialization, startup, and shutdown
 /// </summary>
 public class ServerBootstrap
 {
+    private ServerConfig? _config;
     private IConfiguration? _configuration;
     private NetworkServer? _networkServer;
     private WorldSimulation? _worldSimulation;
-    private ServerConfig? _config;
 
     public async Task Initialize()
     {
@@ -22,7 +22,7 @@ public class ServerBootstrap
         // Load configuration
         _configuration = new ConfigurationBuilder()
             .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .AddJsonFile("appsettings.json", false, true)
             .Build();
 
         _config = new ServerConfig();
@@ -49,9 +49,7 @@ public class ServerBootstrap
     public async Task Start()
     {
         if (_networkServer == null || _worldSimulation == null)
-        {
             throw new InvalidOperationException("Server not initialized. Call Initialize() first.");
-        }
 
         Log.Information("Starting server systems...");
 
@@ -90,7 +88,7 @@ public class ServerBootstrap
 }
 
 /// <summary>
-/// Server configuration loaded from appsettings.json
+///     Server configuration loaded from appsettings.json
 /// </summary>
 public class ServerConfig
 {

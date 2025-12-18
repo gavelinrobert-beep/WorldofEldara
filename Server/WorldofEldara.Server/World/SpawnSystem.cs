@@ -1,17 +1,18 @@
 using Serilog;
 using WorldofEldara.Server.Core;
 using WorldofEldara.Shared.Data.Character;
+using WorldofEldara.Shared.Protocol.Packets;
 
 namespace WorldofEldara.Server.World;
 
 /// <summary>
-/// Manages entity spawning and respawning
+///     Manages entity spawning and respawning
 /// </summary>
 public class SpawnSystem
 {
     private readonly EntityManager _entityManager;
-    private readonly ZoneManager _zoneManager;
     private readonly List<SpawnPoint> _spawnPoints = new();
+    private readonly ZoneManager _zoneManager;
 
     public SpawnSystem(EntityManager entityManager, ZoneManager zoneManager)
     {
@@ -38,7 +39,7 @@ public class SpawnSystem
         _spawnPoints.Add(new SpawnPoint
         {
             ZoneId = "zone_thornveil_enclave",
-            Position = new Shared.Protocol.Packets.Vector3(0, 0, 0),
+            Position = new Vector3(0, 0, 0),
             NPCTemplateId = 1001,
             RespawnTime = 30.0f
         });
@@ -85,12 +86,12 @@ public class SpawnSystem
 }
 
 /// <summary>
-/// Represents a spawn point for NPCs/monsters
+///     Represents a spawn point for NPCs/monsters
 /// </summary>
 public class SpawnPoint
 {
     public string ZoneId { get; set; } = string.Empty;
-    public Shared.Protocol.Packets.Vector3 Position { get; set; }
+    public Vector3 Position { get; set; }
     public int NPCTemplateId { get; set; }
     public float RespawnTime { get; set; } = 30.0f; // seconds
     public float TimeSinceLastSpawn { get; set; }
@@ -99,14 +100,10 @@ public class SpawnPoint
     public void Update(float deltaTime)
     {
         if (SpawnedEntityId.HasValue)
-        {
             // Already spawned, don't count time
             TimeSinceLastSpawn = 0;
-        }
         else
-        {
             TimeSinceLastSpawn += deltaTime;
-        }
     }
 
     public bool ShouldSpawn()

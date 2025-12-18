@@ -1,50 +1,51 @@
 using MessagePack;
+using WorldofEldara.Shared.Protocol.Packets;
 
 namespace WorldofEldara.Shared.Protocol;
 
 /// <summary>
-/// Base class for all network packets.
-/// Server is authoritative - client sends requests, server sends updates.
+///     Base class for all network packets.
+///     Server is authoritative - client sends requests, server sends updates.
 /// </summary>
 [MessagePackObject]
-[Union(0, typeof(Packets.AuthPackets.LoginRequest))]
-[Union(1, typeof(Packets.AuthPackets.LoginResponse))]
-[Union(2, typeof(Packets.CharacterPackets.CharacterListRequest))]
-[Union(3, typeof(Packets.CharacterPackets.CharacterListResponse))]
-[Union(4, typeof(Packets.CharacterPackets.CreateCharacterRequest))]
-[Union(5, typeof(Packets.CharacterPackets.CreateCharacterResponse))]
-[Union(6, typeof(Packets.CharacterPackets.SelectCharacterRequest))]
-[Union(7, typeof(Packets.CharacterPackets.SelectCharacterResponse))]
-[Union(10, typeof(Packets.MovementPackets.MovementInputPacket))]
-[Union(11, typeof(Packets.MovementPackets.MovementUpdatePacket))]
-[Union(12, typeof(Packets.MovementPackets.PositionCorrectionPacket))]
-[Union(20, typeof(Packets.CombatPackets.UseAbilityRequest))]
-[Union(21, typeof(Packets.CombatPackets.AbilityResultPacket))]
-[Union(22, typeof(Packets.CombatPackets.DamagePacket))]
-[Union(23, typeof(Packets.CombatPackets.HealingPacket))]
-[Union(24, typeof(Packets.CombatPackets.StatusEffectPacket))]
-[Union(30, typeof(Packets.ChatPackets.ChatMessagePacket))]
-[Union(100, typeof(Packets.WorldPackets.EnterWorldPacket))]
-[Union(101, typeof(Packets.WorldPackets.LeaveWorldPacket))]
-[Union(102, typeof(Packets.WorldPackets.EntitySpawnPacket))]
-[Union(103, typeof(Packets.WorldPackets.EntityDespawnPacket))]
+[Union(0, typeof(AuthPackets.LoginRequest))]
+[Union(1, typeof(AuthPackets.LoginResponse))]
+[Union(2, typeof(CharacterPackets.CharacterListRequest))]
+[Union(3, typeof(CharacterPackets.CharacterListResponse))]
+[Union(4, typeof(CharacterPackets.CreateCharacterRequest))]
+[Union(5, typeof(CharacterPackets.CreateCharacterResponse))]
+[Union(6, typeof(CharacterPackets.SelectCharacterRequest))]
+[Union(7, typeof(CharacterPackets.SelectCharacterResponse))]
+[Union(10, typeof(MovementPackets.MovementInputPacket))]
+[Union(11, typeof(MovementPackets.MovementUpdatePacket))]
+[Union(12, typeof(MovementPackets.PositionCorrectionPacket))]
+[Union(20, typeof(CombatPackets.UseAbilityRequest))]
+[Union(21, typeof(CombatPackets.AbilityResultPacket))]
+[Union(22, typeof(CombatPackets.DamagePacket))]
+[Union(23, typeof(CombatPackets.HealingPacket))]
+[Union(24, typeof(CombatPackets.StatusEffectPacket))]
+[Union(30, typeof(ChatPackets.ChatMessagePacket))]
+[Union(100, typeof(WorldPackets.EnterWorldPacket))]
+[Union(101, typeof(WorldPackets.LeaveWorldPacket))]
+[Union(102, typeof(WorldPackets.EntitySpawnPacket))]
+[Union(103, typeof(WorldPackets.EntityDespawnPacket))]
 public abstract class PacketBase
 {
     /// <summary>
-    /// Packet timestamp (set by sender)
+    ///     Packet timestamp (set by sender)
     /// </summary>
     [IgnoreMember]
     public long Timestamp { get; set; }
 
     /// <summary>
-    /// Sequence number for packet ordering
+    ///     Sequence number for packet ordering
     /// </summary>
     [IgnoreMember]
     public uint SequenceNumber { get; set; }
 }
 
 /// <summary>
-/// Packet types for quick identification
+///     Packet types for quick identification
 /// </summary>
 public enum PacketType : ushort
 {
@@ -110,7 +111,7 @@ public enum PacketType : ushort
 }
 
 /// <summary>
-/// Response codes for client requests
+///     Response codes for client requests
 /// </summary>
 public enum ResponseCode : byte
 {
@@ -139,11 +140,11 @@ public enum ResponseCode : byte
     InvalidTarget = 24,
 
     // Lore-specific errors
-    LoreInconsistency = 100, // Attempted action violates lore (e.g., wrong race-class combo)
+    LoreInconsistency = 100 // Attempted action violates lore (e.g., wrong race-class combo)
 }
 
 /// <summary>
-/// Network constants
+///     Network constants
 /// </summary>
 public static class NetworkConstants
 {

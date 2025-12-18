@@ -18,17 +18,13 @@ struct FAppearanceChoice
 
 	/** Appearance slot name (e.g., "Hair", "Face", "EyeColor") */
 	UPROPERTY(BlueprintReadWrite, Category = "Character Creation")
-	FName SlotName;
+	FName SlotName = NAME_None;
 
 	/** Selected option index for this slot */
 	UPROPERTY(BlueprintReadWrite, Category = "Character Creation")
 	int32 OptionIndex = 0;
 
-	FAppearanceChoice()
-		: SlotName(NAME_None)
-		, OptionIndex(0)
-	{
-	}
+	FAppearanceChoice() = default;
 
 	FAppearanceChoice(FName InSlotName, int32 InOptionIndex)
 		: SlotName(InSlotName)

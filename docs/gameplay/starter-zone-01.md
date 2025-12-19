@@ -307,6 +307,55 @@ Upon completing "The Verdant Shrine" quest:
 - **Weather**: Light mist, occasional rain (no heavy weather)
 - **Lighting**: Soft, mystical (green and blue tones from flora)
 
+## Unreal Engine Build Guide (Thornveil Enclave / Whispering Canopy)
+
+Actionable Unreal steps to stand up the first starter zone using the existing project structure and lore.
+
+### 0) Prep
+- Open `Eldara.uproject` (UE 5.7) from repo root; let the editor generate project files.
+- Create a dedicated map: `Content/WorldofEldara/Maps/Thornveil/WhisperingCanopy.umap`.
+- Enable **World Partition** + **One File Per Actor** to keep iteration fast.
+- Set GameMode to `EldaraGameModeBase` (already in `Config/DefaultGame.ini`) and use the shared `Eldara` module for code hooks.
+
+### 1) Greybox Blockout (aligns to Main Areas)
+- **Root's Embrace**: Flat safe spawn, short sightlines, gentle slopes.
+- **Whispering Glade**: Open clearing hub with radial paths.
+- **Ruptured Root**: Corruption pit; carve trench with height change for line-of-sight breaks.
+- **Canopy Watch**: Platforms linked by ramps/ladders; add fall volumes for testing.
+- **Verdant Shrine**: Circular boss arena with clean navmesh; leave room for rune mesh and boss VFX.
+- Use simple cubes/planes; bake in traversal intent (cover, jumps, choke points) before art.
+
+### 2) Lore-Grounded Set Dressing
+- **Worldroot memory**: Place a giant root spine through the zone; add pulsing emissive material near the Ruptured Root.
+- **Bioluminescent flora**: Blue/green emissive mushrooms and vines to sell the Thornveil biome.
+- **Faction identity (Covenant)**: Covenant banners near hubs; stone-and-wood motifs, no metal spires.
+- **Memory Echoes**: Place 2–3 interactable lore tablets (DataAsset or Blueprint) that play VO/text about the Worldroot crisis.
+
+### 3) NPCs & Spawners
+- Create NPC Blueprints for Elder Tharivol, Keeper Syliana, Scout Aeloria, Herbalist Talon; tag them with faction **Covenant**.
+- Enemy spawners by band: small wildlife near Root's Embrace, elites inside Ruptured Root, flying actors near Canopy Watch.
+- Place boss spawn volume for **Sorrow Stag** at Verdant Shrine; reserve space for add spawners.
+
+### 4) Quests & Interactables (server-auth pattern)
+- Author quest DataAssets matching the chain ("Awakening" → "The Verdant Shrine") and bind to quest giver Blueprints.
+- Use simple interactables for breach seals (Quest 7) and Worldroot fragment (Quest 10); trigger server events instead of local state.
+- Add gatherable **Silverpetal** herb nodes in Whispering Glade with shared respawn timers.
+
+### 5) Traversal, Navmesh, Lighting
+- Bake NavMesh per World Partition cell; verify elites still find patrol loops in Ruptured Root trench.
+- Add jump pads/ramps for Canopy Watch verticality; place fall-damage volumes tuned for starter safety.
+- Lighting pass: soft green key light, cooler shadows; ensure night readability via bioluminescent props.
+
+### 6) Integration & Testing
+- Hook map into `DefaultGame.ini` as the startup map for local playtests under `[/Script/EngineSettings.GameMapsSettings]`: `GameDefaultMap=/Game/WorldofEldara/Maps/Thornveil/WhisperingCanopy`.
+- Smoke test with 2 clients: spawn → chat → movement → combat → quest accept/complete → boss kill.
+- Record perf: aim for 60 FPS with 20 test bots in Whispering Glade; profile Nanite/Lumen costs.
+
+### 7) Content Checkpoints
+- **Exit criteria for greybox**: All main paths traversable, quests trigger, boss placeholder kills, zero blocker nav holes.
+- **Exit criteria for art pass**: Biome reads as Thornveil Enclave, corruption VFX present, Covenant visual identity visible from spawn.
+- **Exit criteria for polish**: Voice lines hooked for Elder Tharivol/keeper beats, Memory Echo tablets playable, side quests reachable without confusion.
+
 ## Development Phases
 
 ### Phase 1: Greybox (2-3 weeks)

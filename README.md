@@ -224,6 +224,7 @@ Since the Unreal client is not yet implemented, you can:
 - [`Docs/Architecture/ServerArchitecture.md`](Docs/Architecture/ServerArchitecture.md) - Server design
 - [`Docs/Architecture/NetworkProtocol.md`](Docs/Architecture/NetworkProtocol.md) - Network protocol spec
 - [`Docs/UnrealImplementationGuide.md`](Docs/UnrealImplementationGuide.md) - Unreal client bring-up and feature milestones
+- [`docs/gameplay/starter-zone-01.md`](docs/gameplay/starter-zone-01.md) - Whispering Canopy starter zone spec + Unreal build guide
 
 ## 🏗️ Current Status
 

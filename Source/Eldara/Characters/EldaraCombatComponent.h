@@ -8,6 +8,28 @@
 class UEldaraAbility;
 class UEldaraEffect;
 
+/** Runtime state for an applied UEldaraEffect (duration, ticking, instigator) */
+USTRUCT()
+struct FActiveEffectRuntime
+{
+	GENERATED_BODY()
+
+	UPROPERTY()
+	TObjectPtr<UEldaraEffect> Effect;
+
+	UPROPERTY()
+	TWeakObjectPtr<AActor> InstigatorActor;
+
+	UPROPERTY()
+	float RemainingTime = 0.0f;
+
+	UPROPERTY()
+	float NextTickTime = 0.0f;
+
+	UPROPERTY()
+	int32 Stacks = 1;
+};
+
 /**
  * Combat Component
  * Handles ability activation, cooldowns, and effect application
@@ -78,6 +100,13 @@ protected:
 	UPROPERTY()
 	TArray<TObjectPtr<UEldaraEffect>> ActiveEffects;
 
+	/** Internal active effect tracking */
+	UPROPERTY()
+	TArray<struct FActiveEffectRuntime> ActiveEffectRuntime;
+
+	UPROPERTY()
+	TMap<TObjectPtr<UEldaraEffect>, int32> EffectIndexMap;
+
 	/** Validate ability activation (cooldown, resources, range, etc.) */
 	bool ValidateAbilityActivation(UEldaraAbility* Ability, AActor* Target, FString& OutErrorMessage);
 
@@ -89,4 +118,13 @@ protected:
 
 	/** Update active effects (tick DoTs/HoTs) */
 	void UpdateActiveEffects(float DeltaTime);
+
+	/** Apply a single effect tick or instant payload */
+	void ApplyEffectMagnitude(UEldaraEffect* Effect, AActor* Target, AActor* Instigator);
+
+	/** Helper to get owning character for resource/vitals */
+	class AEldaraCharacterBase* GetOwnerCharacter() const;
+
+	/** Rebuild effect lookup for fast stacking checks */
+	void RebuildEffectIndexMap();
 };

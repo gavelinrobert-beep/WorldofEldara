@@ -19,6 +19,14 @@ public:
 	/** Called when the game instance is initialized */
 	virtual void Init() override;
 
+	/** Save current state to slot */
+	UFUNCTION(BlueprintCallable, Category = "Save")
+	bool SaveCurrentState(const FString& SlotName);
+
+	/** Load a state and apply to world */
+	UFUNCTION(BlueprintCallable, Category = "Save")
+	bool LoadState(const FString& SlotName);
+
 	/** World state version for tracking server-side world changes */
 	UPROPERTY(BlueprintReadOnly, Category = "World State")
 	int32 WorldStateVersion;
@@ -26,4 +34,7 @@ public:
 protected:
 	/** Initialize world state data */
 	void InitializeWorldState();
+
+	/** Resolve player character for save/load helpers */
+	class AEldaraCharacterBase* GetPrimaryPlayerCharacter() const;
 };

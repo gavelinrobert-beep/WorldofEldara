@@ -3,6 +3,8 @@
 #include "Eldara/Data/EldaraRaceData.h"
 #include "Eldara/Data/EldaraClassData.h"
 #include "Net/UnrealNetwork.h"
+#include "Internationalization/Text.h"
+#include "Misc/ConfigCacheIni.h"
 
 AEldaraCharacterBase::AEldaraCharacterBase()
 {
@@ -18,6 +20,17 @@ AEldaraCharacterBase::AEldaraCharacterBase()
 	MaxResource = 100.0f;
 	Stamina = 100.0f;
 	MaxStamina = 100.0f;
+	FString ConfigDefaultName;
+	if (GConfig && GConfig->GetString(TEXT("/Script/Eldara.EldaraCharacterBase"), TEXT("DefaultCharacterName"), ConfigDefaultName, GGameIni))
+	{
+		CharacterName = ConfigDefaultName;
+	}
+	else
+	{
+		CharacterName = NSLOCTEXT("Eldara", "DefaultCharacterName", "Wanderer").ToString();
+	}
+	Level = 1;
+	Experience = 0;
 
 	// Enable replication
 	bReplicates = true;
@@ -33,6 +46,73 @@ void AEldaraCharacterBase::BeginPlay()
 void AEldaraCharacterBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+}
+
+void AEldaraCharacterBase::SetRaceAndClass(UEldaraRaceData* InRace, UEldaraClassData* InClass)
+{
+	RaceData = InRace;
+	ClassData = InClass;
+	InitializeStats();
+}
+
+void AEldaraCharacterBase::SetVitals(float NewHealth, float NewResource, float NewStamina)
+{
+	Health = FMath::Clamp(NewHealth, 0.0f, MaxHealth);
+	Resource = FMath::Clamp(NewResource, 0.0f, MaxResource);
+	Stamina = FMath::Clamp(NewStamina, 0.0f, MaxStamina);
+}
+
+void AEldaraCharacterBase::SetCharacterName(const FString& NewName)
+{
+	CharacterName = NewName;
+}
+
+void AEldaraCharacterBase::SetLevel(int32 NewLevel)
+{
+	Level = FMath::Max(1, NewLevel);
+}
+
+void AEldaraCharacterBase::SetExperience(int32 NewExperience)
+{
+	Experience = FMath::Max(0, NewExperience);
+}
+
+bool AEldaraCharacterBase::ConsumeResource(float Amount, EResourceType ResourceType, FString& OutErrorMessage)
+{
+	switch (ResourceType)
+	{
+	case EResourceType::Health:
+		if (Health < Amount)
+		{
+			OutErrorMessage = TEXT("Not enough health");
+			return false;
+		}
+		Health -= Amount;
+		return true;
+	case EResourceType::Mana:
+	case EResourceType::Rage:
+	case EResourceType::Energy:
+	case EResourceType::Focus:
+	case EResourceType::Corruption:
+	default:
+		if (Resource < Amount)
+		{
+			OutErrorMessage = TEXT("Not enough resource");
+			return false;
+		}
+		Resource -= Amount;
+		return true;
+	}
+}
+
+void AEldaraCharacterBase::RestoreResource(float Amount)
+{
+	Resource = FMath::Clamp(Resource + Amount, 0.0f, MaxResource);
+}
+
+void AEldaraCharacterBase::ApplyHealing(float Amount)
+{
+	Health = FMath::Clamp(Health + Amount, 0.0f, MaxHealth);
 }
 
 float AEldaraCharacterBase::TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, 
@@ -107,6 +187,9 @@ void AEldaraCharacterBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
 
 	DOREPLIFETIME(AEldaraCharacterBase, RaceData);
 	DOREPLIFETIME(AEldaraCharacterBase, ClassData);
+	DOREPLIFETIME(AEldaraCharacterBase, CharacterName);
+	DOREPLIFETIME(AEldaraCharacterBase, Level);
+	DOREPLIFETIME(AEldaraCharacterBase, Experience);
 	DOREPLIFETIME(AEldaraCharacterBase, Health);
 	DOREPLIFETIME(AEldaraCharacterBase, MaxHealth);
 	DOREPLIFETIME(AEldaraCharacterBase, Resource);

@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "EldaraAbility.h"
 #include "EldaraCharacterBase.generated.h"
 
 // Forward declarations
@@ -27,6 +28,39 @@ protected:
 public:
 	virtual void Tick(float DeltaTime) override;
 
+	/** Assign race/class data (used by save/load or creation flows) */
+	UFUNCTION(BlueprintCallable, Category = "Character")
+	void SetRaceAndClass(UEldaraRaceData* InRace, UEldaraClassData* InClass);
+
+	/** Bulk set vitals from external systems (clamped to max values) */
+	UFUNCTION(BlueprintCallable, Category = "Stats")
+	void SetVitals(float NewHealth, float NewResource, float NewStamina);
+
+	/** Accessors for data assets */
+	UFUNCTION(BlueprintCallable, Category = "Character")
+	UEldaraRaceData* GetRaceData() const { return RaceData; }
+
+	UFUNCTION(BlueprintCallable, Category = "Character")
+	UEldaraClassData* GetClassData() const { return ClassData; }
+
+	UFUNCTION(BlueprintCallable, Category = "Character")
+	FString GetCharacterName() const { return CharacterName; }
+
+	UFUNCTION(BlueprintCallable, Category = "Character")
+	void SetCharacterName(const FString& NewName);
+
+	UFUNCTION(BlueprintCallable, Category = "Character")
+	int32 GetLevel() const { return Level; }
+
+	UFUNCTION(BlueprintCallable, Category = "Character")
+	void SetLevel(int32 NewLevel);
+
+	UFUNCTION(BlueprintCallable, Category = "Character")
+	int32 GetExperience() const { return Experience; }
+
+	UFUNCTION(BlueprintCallable, Category = "Character")
+	void SetExperience(int32 NewExperience);
+
 	/** Get current health */
 	UFUNCTION(BlueprintCallable, Category = "Stats")
 	float GetHealth() const { return Health; }
@@ -51,6 +85,15 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Stats")
 	float GetMaxStamina() const { return MaxStamina; }
 
+	/** Consume resource for abilities */
+	bool ConsumeResource(float Amount, EResourceType ResourceType, FString& OutErrorMessage);
+
+	/** Restore resource pool */
+	void RestoreResource(float Amount);
+
+	/** Heal the character (clamped) */
+	void ApplyHealing(float Amount);
+
 	/** Take damage */
 	virtual float TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, 
 		class AController* EventInstigator, AActor* DamageCauser) override;
@@ -67,6 +110,17 @@ protected:
 	/** Class data for this character */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Character", Replicated)
 	TObjectPtr<UEldaraClassData> ClassData;
+
+	/** Player/NPC display name */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character", Replicated)
+	FString CharacterName;
+
+	/** Current level (persisted) */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character", Replicated)
+	int32 Level = 1;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Character", Replicated)
+	int32 Experience = 0;
 
 	/** Current health */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Stats", Replicated)

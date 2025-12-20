@@ -2,7 +2,13 @@ using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
 using Serilog;
+using WorldofEldara.Server.Core;
 using WorldofEldara.Server.World;
+using WorldofEldara.Shared.Protocol.Packets;
+using MessagePack;
+using WorldofEldara.Shared.Data.Character;
+using WorldofEldara.Shared.Protocol;
+using ProtocolEntityType = WorldofEldara.Shared.Protocol.Packets.EntityType;
 
 namespace WorldofEldara.Server.Networking;
 
@@ -38,6 +44,8 @@ public class NetworkServer
     public async Task Initialize()
     {
         Log.Information("Network server initialized");
+        _worldSimulation.Entities.EntityAdded += OnEntityAdded;
+        _worldSimulation.Entities.EntityRemoved += OnEntityRemoved;
         await Task.CompletedTask;
     }
 
@@ -198,5 +206,59 @@ public class NetworkServer
     public int GetConnectionCount()
     {
         return _connections.Count;
+    }
+
+    private void OnEntityAdded(Entity entity)
+    {
+        try
+        {
+            var spawnPacket = new WorldPackets.EntitySpawnPacket
+            {
+                EntityId = entity.EntityId,
+                Type = (ProtocolEntityType)(int)entity.GetEntityType(),
+                Name = entity.Name,
+                Position = entity.Position,
+                RotationYaw = entity.RotationYaw
+            };
+
+            if (entity is PlayerEntity player)
+            {
+                spawnPacket.CharacterData = player.CharacterData;
+            }
+            else if (entity is NPCEntity npc)
+            {
+                spawnPacket.NPCData = new NPCData
+                {
+                    NPCTemplateId = npc.NPCTemplateId,
+                    Name = npc.Name,
+                    Level = npc.Level,
+                    Faction = npc.Faction,
+                    IsHostile = npc.IsHostile,
+                    IsQuestGiver = npc.IsQuestGiver,
+                    IsVendor = npc.IsVendor,
+                    MaxHealth = npc.MaxHealth,
+                    CurrentHealth = npc.CurrentHealth
+                };
+            }
+
+            BroadcastToZone(entity.ZoneId, MessagePackSerializer.Serialize<PacketBase>(spawnPacket));
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Failed to broadcast entity spawn");
+        }
+    }
+
+    private void OnEntityRemoved(Entity entity)
+    {
+        try
+        {
+            var despawn = new WorldPackets.EntityDespawnPacket { EntityId = entity.EntityId };
+            BroadcastToZone(entity.ZoneId, MessagePackSerializer.Serialize<PacketBase>(despawn));
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Failed to broadcast entity despawn");
+        }
     }
 }

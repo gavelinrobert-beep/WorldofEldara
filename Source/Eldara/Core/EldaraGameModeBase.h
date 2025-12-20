@@ -19,7 +19,4 @@ public:
 protected:
 	/** Called when the game mode is initialized */
 	virtual void BeginPlay() override;
-
-	// TODO: Set default pawn, player controller, game state, and player state classes
-	// These will be configured once the respective classes are created
 };

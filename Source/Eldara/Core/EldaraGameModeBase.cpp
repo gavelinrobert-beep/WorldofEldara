@@ -1,9 +1,10 @@
 #include "EldaraGameModeBase.h"
 #include "../Characters/EldaraCharacterBase.h"
+#include "EldaraPlayerController.h"
 
 AEldaraGameModeBase::AEldaraGameModeBase()
 {
-	PlayerControllerClass = nullptr;
+	PlayerControllerClass = AEldaraPlayerController::StaticClass();
 	DefaultPawnClass = AEldaraCharacterBase::StaticClass();
 
 	UE_LOG(LogTemp, Log, TEXT("EldaraGameModeBase constructed"));

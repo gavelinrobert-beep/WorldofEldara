@@ -50,7 +50,7 @@ public:
 	void SetCharacterName(const FString& NewName);
 
 	UFUNCTION(BlueprintCallable, Category = "Character")
-	int32 GetLevel() const { return Level; }
+	int32 GetCharacterLevel() const { return Level; }
 
 	UFUNCTION(BlueprintCallable, Category = "Character")
 	void SetLevel(int32 NewLevel);

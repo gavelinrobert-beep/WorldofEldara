@@ -7,6 +7,7 @@
 #include "GameFramework/Pawn.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/DamageType.h"
+#include "Engine/EngineTypes.h"
 
 UEldaraCombatComponent::UEldaraCombatComponent()
 {

@@ -8,6 +8,7 @@
 #include "GameFramework/Controller.h"
 #include "GameFramework/DamageType.h"
 #include "Engine/EngineTypes.h"
+#include "Engine/DamageEvents.h"
 
 UEldaraCombatComponent::UEldaraCombatComponent()
 {

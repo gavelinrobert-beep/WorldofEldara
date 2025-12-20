@@ -36,7 +36,7 @@ bool UEldaraGameInstance::SaveCurrentState(const FString& SlotName)
 	SaveObject->CharacterName = PlayerCharacter->GetCharacterName();
 	SaveObject->RaceData = PlayerCharacter->GetRaceData();
 	SaveObject->ClassData = PlayerCharacter->GetClassData();
-	SaveObject->Level = PlayerCharacter->GetLevel();
+	SaveObject->Level = PlayerCharacter->GetCharacterLevel();
 	SaveObject->Experience = PlayerCharacter->GetExperience();
 	SaveObject->Health = PlayerCharacter->GetHealth();
 	SaveObject->Resource = PlayerCharacter->GetResource();

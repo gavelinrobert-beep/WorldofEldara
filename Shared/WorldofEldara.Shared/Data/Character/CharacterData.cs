@@ -216,3 +216,16 @@ public enum DamageType
     Spirit, // Consciousness attacks
     Temporal // Damage across timelines (rare, High Elf specialty)
 }
+
+/// <summary>
+///     Resource types used by classes and abilities. Mirrors client-side enumeration.
+/// </summary>
+public enum EResourceType : byte
+{
+    Health = 0,
+    Mana = 1,
+    Rage = 2,
+    Energy = 3,
+    Focus = 4,
+    Corruption = 5
+}

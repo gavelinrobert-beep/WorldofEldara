@@ -22,6 +22,7 @@ public class WorldSimulation
     private readonly float _tickRate;
     private readonly Stopwatch _tickTimer = new();
     private readonly TimeManager _timeManager;
+    private Networking.NetworkServer? _networkServer;
     private bool _isRunning;
 
     private Thread? _simulationThread;
@@ -62,6 +63,12 @@ public class WorldSimulation
         Log.Information($"World time initialized: {_timeManager.GetCurrentWorldTime()}");
 
         Log.Information("World initialization complete");
+    }
+
+    public void AttachNetworkServer(Networking.NetworkServer networkServer)
+    {
+        _networkServer = networkServer;
+        _spawnSystem.AttachNetworkServer(networkServer);
     }
 
     public void Start()

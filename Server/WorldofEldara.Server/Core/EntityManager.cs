@@ -15,6 +15,9 @@ public class EntityManager
     private readonly object _idLock = new();
     private ulong _nextEntityId = 1;
 
+    public event Action<Entity>? EntityAdded;
+    public event Action<Entity>? EntityRemoved;
+
     public int GetEntityCount()
     {
         return _entities.Count;
@@ -39,6 +42,7 @@ public class EntityManager
         if (_entities.TryAdd(entity.EntityId, entity))
         {
             Log.Debug($"Entity {entity.EntityId} ({entity.Name}) added to world");
+            EntityAdded?.Invoke(entity);
             return true;
         }
 
@@ -54,6 +58,7 @@ public class EntityManager
         if (_entities.TryRemove(entityId, out var entity))
         {
             Log.Debug($"Entity {entityId} ({entity.Name}) removed from world");
+            EntityRemoved?.Invoke(entity);
             return true;
         }
 

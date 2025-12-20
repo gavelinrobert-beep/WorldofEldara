@@ -42,6 +42,7 @@ public class ServerBootstrap
         Log.Information("Initializing network server...");
         _networkServer = new NetworkServer(_config.Port, _config.MaxPlayers, _worldSimulation);
         await _networkServer.Initialize();
+        _worldSimulation.AttachNetworkServer(_networkServer);
 
         Log.Information("Server initialization complete.");
     }

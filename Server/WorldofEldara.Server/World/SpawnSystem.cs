@@ -13,11 +13,18 @@ public class SpawnSystem
     private readonly EntityManager _entityManager;
     private readonly List<SpawnPoint> _spawnPoints = new();
     private readonly ZoneManager _zoneManager;
+    private readonly object _spawnLock = new();
+    private Networking.NetworkServer? _networkServer;
 
     public SpawnSystem(EntityManager entityManager, ZoneManager zoneManager)
     {
         _entityManager = entityManager;
         _zoneManager = zoneManager;
+    }
+
+    public void AttachNetworkServer(Networking.NetworkServer networkServer)
+    {
+        _networkServer = networkServer;
     }
 
     public async Task Initialize()
@@ -54,6 +61,12 @@ public class SpawnSystem
         {
             spawnPoint.Update(deltaTime);
 
+            if (spawnPoint.SpawnedEntityId.HasValue &&
+                _entityManager.GetEntity(spawnPoint.SpawnedEntityId.Value) == null)
+            {
+                spawnPoint.OnDespawned();
+            }
+
             if (spawnPoint.ShouldSpawn())
             {
                 SpawnNPC(spawnPoint);
@@ -64,24 +77,29 @@ public class SpawnSystem
 
     private void SpawnNPC(SpawnPoint spawnPoint)
     {
-        var npc = new NPCEntity
+        lock (_spawnLock)
         {
-            EntityId = _entityManager.GenerateEntityId(),
-            Name = $"NPC_{spawnPoint.NPCTemplateId}",
-            ZoneId = spawnPoint.ZoneId,
-            Position = spawnPoint.Position,
-            SpawnPosition = spawnPoint.Position,
-            NPCTemplateId = spawnPoint.NPCTemplateId,
-            Level = 1,
-            MaxHealth = 100,
-            CurrentHealth = 100,
-            Faction = Faction.Neutral,
-            IsHostile = false,
-            LeashDistance = 50.0f
-        };
+            var npc = new NPCEntity
+            {
+                EntityId = _entityManager.GenerateEntityId(),
+                Name = $"NPC_{spawnPoint.NPCTemplateId}",
+                ZoneId = spawnPoint.ZoneId,
+                Position = spawnPoint.Position,
+                SpawnPosition = spawnPoint.Position,
+                NPCTemplateId = spawnPoint.NPCTemplateId,
+                Level = 1,
+                MaxHealth = 120,
+                CurrentHealth = 120,
+                Faction = Faction.Neutral,
+                IsHostile = false,
+                LeashDistance = 50.0f
+            };
 
-        _entityManager.AddEntity(npc);
-        spawnPoint.SpawnedEntityId = npc.EntityId;
+            if (_entityManager.AddEntity(npc))
+            {
+                spawnPoint.SpawnedEntityId = npc.EntityId;
+            }
+        }
     }
 }
 

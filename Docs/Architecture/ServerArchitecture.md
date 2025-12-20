@@ -349,6 +349,28 @@ Server behavior controlled by `appsettings.json`:
 - Worldroot density affects gameplay
 - Faction hostility rules enforced
 
+## Operational How-Tos
+
+### Server Responsibilities
+- Owns simulation, combat resolution, NPC AI, and day/night time progression.
+- Broadcasts authoritative entity spawns, despawns, movement, and combat events.
+- Rejects invalid actions (range checks, lore rules) and reconciles client prediction.
+
+### Client Responsibilities
+- Present data from the server (no authority) and perform local prediction for movement.
+- Send intent-only packets: login, character selection, movement input, ability usage, chat.
+- Render entities/NPCs from spawn packets and apply movement/combat updates received from the server.
+
+### Adding a New NPC
+1. Define its template (stats/behavior) in shared data or your content source of truth.
+2. Add a spawn point in `SpawnSystem` (or your data-driven table) with zone, position, and template ID.
+3. Ensure the template’s faction/hostility flags are correct; the server will spawn and broadcast it automatically.
+
+### Adding a New Zone
+1. Add an entry to `ZoneDefinitions` with ID, name, level range, faction control, and spawn-safe location.
+2. Wire spawn points (vendors, patrols, hostiles) in `SpawnSystem` or your data-driven table for that zone.
+3. Restart the server; the zone will load with its metadata and begin spawning configured NPCs.
+
 ---
 
 **This is a living document. Update as architecture evolves.**

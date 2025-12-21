@@ -35,6 +35,22 @@ public sealed record NpcDefinition
 /// </summary>
 public static class NpcDefinitions
 {
+    private const int SentinelArmor = 10;
+    private const int GuardArmor = 8;
+    private const float SentinelMovementSpeed = GameConstants.BaseRunSpeed - 0.5f;
+    private const float GuardMovementSpeed = GameConstants.BaseRunSpeed;
+    private const int SentinelHealth = 220;
+    private const int GuardHealth = 200;
+    private const int SentinelStamina = 120;
+    private const int GuardStamina = 130;
+    private static readonly IReadOnlyList<int> SentinelAbilities = new[] { AbilityBook.NPCMeleeId };
+    private static readonly IReadOnlyList<int> GuardAbilities = new[] { AbilityBook.BasicStrikeId };
+
+    private static ResourceSnapshot CreateResourcePool(int health, int stamina)
+    {
+        return new ResourceSnapshot(health, health, 0, 0, stamina, stamina);
+    }
+
     public static readonly IReadOnlyDictionary<int, NpcDefinition> Templates = new Dictionary<int, NpcDefinition>
     {
         [1] = new NpcDefinition
@@ -45,9 +61,9 @@ public static class NpcDefinitions
             MaxLevel = 6,
             Faction = Faction.VerdantCircles,
             SpawnZoneId = ZoneConstants.ThornveilEnclave,
-            Stats = StatSnapshot.Empty with { Armor = 10, MovementSpeed = 6.5f },
-            Resources = new ResourceSnapshot(220, 220, 0, 0, 120, 120),
-            AbilityIds = new[] { AbilityBook.NPCMeleeId }
+            Stats = StatSnapshot.Empty with { Armor = SentinelArmor, MovementSpeed = SentinelMovementSpeed },
+            Resources = CreateResourcePool(SentinelHealth, SentinelStamina),
+            AbilityIds = SentinelAbilities
         },
         [2] = new NpcDefinition
         {
@@ -57,9 +73,9 @@ public static class NpcDefinitions
             MaxLevel = 4,
             Faction = Faction.UnitedKingdoms,
             SpawnZoneId = ZoneConstants.Borderkeep,
-            Stats = StatSnapshot.Empty with { Armor = 8, MovementSpeed = 7f },
-            Resources = new ResourceSnapshot(200, 200, 0, 0, 130, 130),
-            AbilityIds = new[] { AbilityBook.BasicStrikeId }
+            Stats = StatSnapshot.Empty with { Armor = GuardArmor, MovementSpeed = GuardMovementSpeed },
+            Resources = CreateResourcePool(GuardHealth, GuardStamina),
+            AbilityIds = GuardAbilities
         }
     };
 }

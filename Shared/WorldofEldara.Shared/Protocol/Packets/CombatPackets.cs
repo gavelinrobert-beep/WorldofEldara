@@ -142,12 +142,12 @@ public struct CombatEventMetadata
 
     [Key(2)] public string ProtocolVersion { get; set; }
 
-    public static CombatEventMetadata Create(long serverTime = 0)
+    public static CombatEventMetadata Create(long? serverTime = null)
     {
         return new CombatEventMetadata
         {
             EventId = Guid.NewGuid(),
-            ServerTime = serverTime,
+            ServerTime = serverTime ?? DateTime.UtcNow.Ticks,
             ProtocolVersion = ProtocolVersions.Current
         };
     }

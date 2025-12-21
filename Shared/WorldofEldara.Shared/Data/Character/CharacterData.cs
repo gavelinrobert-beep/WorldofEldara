@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using MessagePack;
 using WorldofEldara.Shared.Protocol;
 
@@ -46,8 +45,10 @@ public class CharacterData
     // Last played timestamp
     [Key(15)] public DateTime LastPlayedAt { get; set; }
 
-    [IgnoreMember]
-    public ResourceSnapshot Resources => ResourceSnapshot.FromStats(Stats);
+    public ResourceSnapshot GetResourceSnapshot()
+    {
+        return ResourceSnapshot.FromStats(Stats);
+    }
 
     /// <summary>
     ///     Validate character data for lore consistency

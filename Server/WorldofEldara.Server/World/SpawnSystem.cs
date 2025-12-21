@@ -11,6 +11,7 @@ namespace WorldofEldara.Server.World;
 /// </summary>
 public class SpawnSystem
 {
+    private const string TrainingSentinelName = "Greenwatch Sentinel";
     private readonly EntityManager _entityManager;
     private readonly List<SpawnPoint> _spawnPoints = new();
     private readonly ZoneManager _zoneManager;
@@ -118,7 +119,7 @@ public class SpawnSystem
             TimeSinceLastSpawn = 20.0f,
             MaxAliveInZone = 2,
             DaytimeOnly = true,
-            OverrideName = "Greenwatch Sentinel",
+            OverrideName = TrainingSentinelName,
             IsHostileOverride = true,
             FactionOverride = Faction.VerdantCircles,
             PatrolPauseDuration = 1.25f,

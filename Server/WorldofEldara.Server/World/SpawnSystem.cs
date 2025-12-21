@@ -48,10 +48,63 @@ public class SpawnSystem
             ZoneId = "zone_thornveil_enclave",
             Position = new Vector3(0, 0, 0),
             NPCTemplateId = 1001,
-            RespawnTime = 30.0f
+            RespawnTime = 30.0f,
+            TimeSinceLastSpawn = 30.0f
         });
 
-        // TODO: Add more spawn points
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = "zone_temporal_steppes",
+            Position = new Vector3(10, 5, 0),
+            NPCTemplateId = 1002,
+            RespawnTime = 30.0f,
+            TimeSinceLastSpawn = 30.0f
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = "zone_borderkeep",
+            Position = new Vector3(-8, -4, 0),
+            NPCTemplateId = 1003,
+            RespawnTime = 30.0f,
+            TimeSinceLastSpawn = 30.0f
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = "zone_untamed_reaches",
+            Position = new Vector3(6, -12, 0),
+            NPCTemplateId = 1004,
+            RespawnTime = 35.0f,
+            TimeSinceLastSpawn = 35.0f
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = "zone_carved_valleys",
+            Position = new Vector3(-12, 3, 0),
+            NPCTemplateId = 1005,
+            RespawnTime = 35.0f,
+            TimeSinceLastSpawn = 35.0f
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = "zone_scarred_highlands",
+            Position = new Vector3(4, 14, 0),
+            NPCTemplateId = 1006,
+            RespawnTime = 40.0f,
+            TimeSinceLastSpawn = 40.0f
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = "zone_blackwake_haven",
+            Position = new Vector3(-2, 18, 0),
+            NPCTemplateId = 1007,
+            RespawnTime = 40.0f,
+            TimeSinceLastSpawn = 40.0f
+        });
     }
 
     public void Update(float deltaTime)
@@ -79,6 +132,7 @@ public class SpawnSystem
     {
         lock (_spawnLock)
         {
+            var zone = _zoneManager.GetZone(spawnPoint.ZoneId);
             var npc = new NPCEntity
             {
                 EntityId = _entityManager.GenerateEntityId(),
@@ -90,8 +144,8 @@ public class SpawnSystem
                 Level = 1,
                 MaxHealth = 120,
                 CurrentHealth = 120,
-                Faction = Faction.Neutral,
-                IsHostile = false,
+                Faction = zone?.ControllingFaction ?? Faction.Neutral,
+                IsHostile = zone?.IsPvPEnabled ?? false,
                 LeashDistance = 50.0f
             };
 

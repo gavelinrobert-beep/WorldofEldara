@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -6,10 +7,12 @@ using MessagePack;
 using Serilog;
 using WorldofEldara.Server.Core;
 using WorldofEldara.Server.World;
+using WorldofEldara.Shared.Constants;
 using WorldofEldara.Shared.Data.Character;
 using WorldofEldara.Shared.Data.Combat;
 using WorldofEldara.Shared.Protocol;
 using WorldofEldara.Shared.Protocol.Packets;
+using WorldofEldara.Shared.Data.World;
 using ProtocolEntityType = WorldofEldara.Shared.Protocol.Packets.EntityType;
 
 namespace WorldofEldara.Server.Networking;
@@ -40,6 +43,10 @@ public class ClientConnection
         _server = server;
         _worldSimulation = worldSimulation;
     }
+
+    private static readonly ConcurrentDictionary<ulong, List<CharacterData>> AccountCharacters = new();
+    private static ulong _nextCharacterId = 10000;
+    private static readonly object CharacterIdLock = new();
 
     public ulong ConnectionId { get; }
     public ulong? AccountId { get; private set; }
@@ -231,6 +238,7 @@ public class ClientConnection
         // For now, accept any login
 
         AccountId = 1000 + ConnectionId; // Fake account ID
+        AccountCharacters.TryAdd(AccountId.Value, new List<CharacterData>());
 
         var response = new AuthPackets.LoginResponse
         {
@@ -250,10 +258,27 @@ public class ClientConnection
         // TODO: Load from database
         // For now, return empty list
 
+        if (!AccountId.HasValue)
+        {
+            SendPacket(MessagePackSerializer.Serialize<PacketBase>(new CharacterPackets.CharacterListResponse
+            {
+                Result = ResponseCode.NotAuthenticated,
+                Characters = new List<CharacterData>()
+            }));
+            return;
+        }
+
+        var characters = AccountCharacters.GetOrAdd(AccountId.Value, _ => new List<CharacterData>());
+        List<CharacterData> snapshot;
+        lock (characters)
+        {
+            snapshot = characters.ToList();
+        }
+
         var response = new CharacterPackets.CharacterListResponse
         {
             Result = ResponseCode.Success,
-            Characters = new List<CharacterData>()
+            Characters = snapshot
         };
 
         SendPacket(MessagePackSerializer.Serialize<PacketBase>(response));
@@ -265,6 +290,26 @@ public class ClientConnection
             $"Create character request from [{ConnectionId}]: {request.Name} ({request.Race}, {request.Class})");
 
         // Validate lore consistency
+        if (!AccountId.HasValue)
+        {
+            SendPacket(MessagePackSerializer.Serialize<PacketBase>(new CharacterPackets.CreateCharacterResponse
+            {
+                Result = ResponseCode.NotAuthenticated,
+                Message = "Login required"
+            }));
+            return;
+        }
+
+        if (!IsNameValid(request.Name))
+        {
+            SendPacket(MessagePackSerializer.Serialize<PacketBase>(new CharacterPackets.CreateCharacterResponse
+            {
+                Result = ResponseCode.InvalidName,
+                Message = "Name must be 3-16 letters, apostrophes or hyphens"
+            }));
+            return;
+        }
+
         if (!ClassInfo.IsClassAvailableForRace(request.Class, request.Race))
         {
             var errorResponse = new CharacterPackets.CreateCharacterResponse
@@ -276,36 +321,53 @@ public class ClientConnection
             return;
         }
 
-        // Create character
-        var character = new CharacterData
+        var accountCharacters = AccountCharacters.GetOrAdd(AccountId.Value, _ => new List<CharacterData>());
+        CharacterData character;
+        lock (accountCharacters)
         {
-            CharacterId = 10000 + ConnectionId, // Fake ID
-            AccountId = AccountId ?? 0,
-            Name = request.Name,
-            Race = request.Race,
-            Class = request.Class,
-            Faction = request.Faction,
-            TotemSpirit = request.TotemSpirit,
-            Level = 1,
-            ExperiencePoints = 0,
-            Appearance = request.Appearance,
-            CreatedAt = DateTime.UtcNow,
-            LastPlayedAt = DateTime.UtcNow
-        };
+            if (accountCharacters.Any(c => string.Equals(c.Name, request.Name, StringComparison.OrdinalIgnoreCase)))
+            {
+                SendPacket(MessagePackSerializer.Serialize<PacketBase>(new CharacterPackets.CreateCharacterResponse
+                {
+                    Result = ResponseCode.NameTaken,
+                    Message = "Name already taken on this account"
+                }));
+                return;
+            }
 
-        // Set starting position based on faction
-        var starterZone = FactionInfo.GetStarterZone(character.Faction);
-        character.Position = new CharacterPosition
-        {
-            ZoneId = starterZone,
-            X = 0,
-            Y = 0,
-            Z = 0
-        };
+            // Create character
+            var characterId = GenerateCharacterId();
+            character = new CharacterData
+            {
+                CharacterId = characterId,
+                AccountId = AccountId ?? 0,
+                Name = request.Name,
+                Race = request.Race,
+                Class = request.Class,
+                Faction = request.Faction,
+                TotemSpirit = request.TotemSpirit,
+                Level = 1,
+                ExperiencePoints = 0,
+                Appearance = request.Appearance,
+                CreatedAt = DateTime.UtcNow,
+                LastPlayedAt = DateTime.UtcNow
+            };
 
-        ApplyClassArchetype(character);
+            // Set starting position based on faction
+            var starterZone = FactionInfo.GetStarterZoneId(character.Faction);
+            var zoneDef = ZoneDefinitions.GetZone(starterZone) ?? ZoneDefinitions.GetZone(ZoneConstants.Borderkeep);
+            character.Position = new CharacterPosition
+            {
+                ZoneId = starterZone,
+                X = zoneDef?.SafeSpawnPoint.X ?? 0,
+                Y = zoneDef?.SafeSpawnPoint.Y ?? 0,
+                Z = zoneDef?.SafeSpawnPoint.Z ?? 0
+            };
 
-        // TODO: Save to database
+            ApplyClassArchetype(character);
+
+            accountCharacters.Add(character);
+        }
 
         var response = new CharacterPackets.CreateCharacterResponse
         {
@@ -321,28 +383,35 @@ public class ClientConnection
     {
         Log.Information($"Select character request from [{ConnectionId}]: {request.CharacterId}");
 
-        // TODO: Load character from database
-        // For now, create fake character
-
-        var character = new CharacterData
+        if (!AccountId.HasValue)
         {
-            CharacterId = request.CharacterId,
-            AccountId = AccountId ?? 0,
-            Name = "TestCharacter",
-            Race = Race.Human,
-            Class = Class.UnboundWarrior,
-            Faction = Faction.UnitedKingdoms,
-            Level = 1,
-            Position = new CharacterPosition
+            SendPacket(MessagePackSerializer.Serialize<PacketBase>(new CharacterPackets.SelectCharacterResponse
             {
-                ZoneId = "zone_borderkeep",
-                X = 0,
-                Y = 0,
-                Z = 0
-            }
-        };
+                Result = ResponseCode.NotAuthenticated,
+                Message = "Login required"
+            }));
+            return;
+        }
+
+        var accountCharacters = AccountCharacters.GetOrAdd(AccountId.Value, _ => new List<CharacterData>());
+        CharacterData? character;
+        lock (accountCharacters)
+        {
+            character = accountCharacters.FirstOrDefault(c => c.CharacterId == request.CharacterId);
+        }
+
+        if (character == null)
+        {
+            SendPacket(MessagePackSerializer.Serialize<PacketBase>(new CharacterPackets.SelectCharacterResponse
+            {
+                Result = ResponseCode.NotFound,
+                Message = "Character not found"
+            }));
+            return;
+        }
 
         ApplyClassArchetype(character);
+        character.LastPlayedAt = DateTime.UtcNow;
 
         // Create player entity in world
         var playerEntity = new PlayerEntity
@@ -419,13 +488,56 @@ public class ClientConnection
         var player = _worldSimulation.Entities.GetEntity(PlayerEntityId.Value) as PlayerEntity;
         if (player == null) return;
 
-        // TODO: Process movement input with server reconciliation
-        // For now, just update position directly (not production-ready)
+        var deltaTime = Math.Clamp(packet.DeltaTime, 0f, 0.25f);
+        if (deltaTime <= 0) deltaTime = 1f / 20f;
 
+        var desiredState = packet.Input;
+        var speed = player.CharacterData.Stats.MovementSpeed *
+                    (desiredState.Sprint ? GameConstants.SprintMultiplier : 1f);
+
+        var dirX = desiredState.Forward;
+        var dirY = desiredState.Strafe;
+        var magnitude = Math.Sqrt(dirX * dirX + dirY * dirY);
+        if (magnitude > 1e-3)
+        {
+            dirX = (float)(dirX / magnitude);
+            dirY = (float)(dirY / magnitude);
+        }
+
+        var displacement = new Vector3(
+            player.Position.X + dirX * speed * deltaTime,
+            player.Position.Y + dirY * speed * deltaTime,
+            player.Position.Z);
+
+        // Authoritative position update
         player.LastProcessedInputSequence = packet.InputSequence;
-        player.Position = packet.PredictedPosition;
-        player.RotationYaw = packet.PredictedRotationYaw;
+        player.Velocity = new Vector3(dirX * speed, dirY * speed, 0);
+        if (!_worldSimulation.Zones.IsPositionInZone(player.ZoneId, displacement.X, displacement.Y, displacement.Z))
+        {
+            player.Velocity = new Vector3(0, 0, 0);
+        }
+        else
+        {
+            player.Position = displacement;
+        }
+        player.RotationYaw = desiredState.LookYaw;
+        player.RotationPitch = desiredState.LookPitch;
+        player.MovementState = magnitude > 0.1 ? MovementState.Running : MovementState.Idle;
+        if (Math.Abs(player.Velocity.X) < 0.001f && Math.Abs(player.Velocity.Y) < 0.001f)
+            player.MovementState = MovementState.Idle;
         player.LastInputTime = DateTime.UtcNow;
+
+        // Reconciliation if client prediction diverges
+        var predictionError = Distance(player.Position, packet.PredictedPosition);
+        if (predictionError > 1.0f)
+            SendPacket(MessagePackSerializer.Serialize<PacketBase>(new MovementPackets.PositionCorrectionPacket
+            {
+                LastProcessedInput = packet.InputSequence,
+                AuthoritativePosition = player.Position,
+                AuthoritativeVelocity = player.Velocity,
+                AuthoritativeRotationYaw = player.RotationYaw,
+                ServerTimestamp = _worldSimulation.GetServerTimestamp()
+            }));
 
         var movementUpdate = new MovementPackets.MovementUpdatePacket
         {
@@ -438,9 +550,12 @@ public class ClientConnection
             ServerTimestamp = _worldSimulation.GetServerTimestamp()
         };
 
+        var serialized = MessagePackSerializer.Serialize<PacketBase>(movementUpdate);
+
+        // Send authoritative update back to mover and broadcast to others in zone
+        SendPacket(serialized);
         if (CurrentZoneId != null)
-            _server.BroadcastToZone(CurrentZoneId, MessagePackSerializer.Serialize<PacketBase>(movementUpdate),
-                ConnectionId);
+            _server.BroadcastToZone(CurrentZoneId, serialized, ConnectionId);
     }
 
     private void HandleUseAbility(CombatPackets.UseAbilityRequest packet)
@@ -523,9 +638,34 @@ public class ClientConnection
 
         Log.Information($"Chat from [{ConnectionId}] ({packet.Channel}): {packet.Message}");
 
-        // Broadcast to zone
-        if (CurrentZoneId != null)
-            _server.BroadcastToZone(CurrentZoneId, MessagePackSerializer.Serialize<PacketBase>(packet));
+        var player = _worldSimulation.Entities.GetEntity(PlayerEntityId.Value) as PlayerEntity;
+        if (player == null || CurrentZoneId == null) return;
+
+        var outbound = new ChatPackets.ChatMessagePacket
+        {
+            Channel = packet.Channel,
+            SenderEntityId = player.EntityId,
+            SenderName = player.Name,
+            Message = packet.Message,
+            TargetEntityId = packet.TargetEntityId,
+            Timestamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()
+        };
+
+        var serialized = MessagePackSerializer.Serialize<PacketBase>(outbound);
+
+        if (packet.Channel == ChatChannel.Whisper && packet.TargetEntityId.HasValue)
+        {
+            var target = _worldSimulation.Entities.GetEntity(packet.TargetEntityId.Value) as PlayerEntity;
+            if (target?.ClientConnection is ClientConnection targetConnection)
+            {
+                targetConnection.SendPacket(serialized);
+                SendPacket(serialized);
+            }
+
+            return;
+        }
+
+        _server.BroadcastToZone(CurrentZoneId, serialized);
     }
 
     private static float Distance(Vector3 a, Vector3 b)
@@ -585,6 +725,21 @@ public class ClientConnection
     {
         var archetype = ClassArchetypes.Get(ClassArchetypes.MapToArchetype(character.Class));
         character.Stats = CloneStats(archetype.BaseStats);
+    }
+
+    private static ulong GenerateCharacterId()
+    {
+        lock (CharacterIdLock)
+        {
+            return _nextCharacterId++;
+        }
+    }
+
+    private static bool IsNameValid(string name)
+    {
+        if (string.IsNullOrWhiteSpace(name)) return false;
+        if (name.Length < GameConstants.MinNameLength || name.Length > GameConstants.MaxNameLength) return false;
+        return name.All(c => GameConstants.NameAllowedCharacters.Contains(c));
     }
 
     private static CharacterStats CloneStats(CharacterStats source)

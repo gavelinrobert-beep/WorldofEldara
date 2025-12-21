@@ -1,3 +1,5 @@
+using WorldofEldara.Shared.Constants;
+
 namespace WorldofEldara.Shared.Data.Character;
 
 /// <summary>
@@ -169,7 +171,7 @@ public static class FactionInfo
     }
 
     /// <summary>
-    ///     Get starter zone for faction
+    ///     Get starter zone display name for faction
     /// </summary>
     public static string GetStarterZone(Faction faction)
     {
@@ -183,6 +185,24 @@ public static class FactionInfo
             Faction.DominionWarhost => "The Scarred Highlands",
             Faction.VoidCompact => "Blackwake Haven",
             _ => "Unknown"
+        };
+    }
+
+    /// <summary>
+    ///     Get starter zone identifier aligned with server zone definitions
+    /// </summary>
+    public static string GetStarterZoneId(Faction faction)
+    {
+        return faction switch
+        {
+            Faction.VerdantCircles => ZoneConstants.ThornveilEnclave,
+            Faction.AscendantLeague => ZoneConstants.TemporalSteppes,
+            Faction.UnitedKingdoms => ZoneConstants.Borderkeep,
+            Faction.TotemClansWildborn => ZoneConstants.UntamedReaches,
+            Faction.TotemClansPathbound => ZoneConstants.CarvedValleys,
+            Faction.DominionWarhost => ZoneConstants.ScarredHighlands,
+            Faction.VoidCompact => ZoneConstants.BlackwakeHaven,
+            _ => ZoneConstants.Borderkeep
         };
     }
 

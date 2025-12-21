@@ -113,6 +113,63 @@ public static class ZoneDefinitions
             LoreDescription = "Humans from all walks of life gather here, united by their mysterious nature."
         },
 
+        ["zone_untamed_reaches"] = new Zone
+        {
+            ZoneId = "zone_untamed_reaches",
+            Name = "The Untamed Reaches",
+            Description = "Wildborn Therakai hunting grounds infused with totem spirits.",
+            MinLevel = 1,
+            MaxLevel = 10,
+            Type = ZoneType.StarterZone,
+            ControllingFaction = Faction.TotemClansWildborn,
+            WorldrootDensity = 0.6f,
+            IsPvPEnabled = false,
+            LoreDescription = "Instinct rules here. Totem echoes stalk every ridge."
+        },
+
+        ["zone_carved_valleys"] = new Zone
+        {
+            ZoneId = "zone_carved_valleys",
+            Name = "The Carved Valleys",
+            Description = "Pathbound Therakai refuge that balances instinct with chosen memory.",
+            MinLevel = 1,
+            MaxLevel = 10,
+            Type = ZoneType.StarterZone,
+            ControllingFaction = Faction.TotemClansPathbound,
+            WorldrootDensity = 0.55f,
+            IsPvPEnabled = false,
+            LoreDescription = "Stone totems mark choices remembered; spirits watch silently."
+        },
+
+        ["zone_scarred_highlands"] = new Zone
+        {
+            ZoneId = "zone_scarred_highlands",
+            Name = "The Scarred Highlands",
+            Description = "Gronnak warfront built atop a reality wound.",
+            MinLevel = 1,
+            MaxLevel = 10,
+            Type = ZoneType.StarterZone,
+            ControllingFaction = Faction.DominionWarhost,
+            WorldrootDensity = 0.2f,
+            IsPvPEnabled = true,
+            IsContestedTerritory = true,
+            LoreDescription = "Dominion Warhost drills here, consuming god-fragments to harden themselves."
+        },
+
+        ["zone_blackwake_haven"] = new Zone
+        {
+            ZoneId = "zone_blackwake_haven",
+            Name = "Blackwake Haven",
+            Description = "Void Compact enclave where outcasts study entropy safely.",
+            MinLevel = 1,
+            MaxLevel = 10,
+            Type = ZoneType.StarterZone,
+            ControllingFaction = Faction.VoidCompact,
+            WorldrootDensity = 0.1f,
+            IsPvPEnabled = false,
+            LoreDescription = "Phase-shifted caverns hum with Null-static; survival requires discipline."
+        },
+
         ["zone_vharos_warfront"] = new Zone
         {
             ZoneId = "zone_vharos_warfront",

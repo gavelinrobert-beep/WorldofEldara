@@ -11,6 +11,10 @@ void AEldaraPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	CachedNetwork = GetGameInstance()
+		? GetGameInstance()->GetSubsystem<UEldaraNetworkSubsystem>()
+		: nullptr;
+
 	UE_LOG(LogTemp, Log, TEXT("EldaraPlayerController: Player controller started"));
 }
 
@@ -18,9 +22,14 @@ void AEldaraPlayerController::PlayerTick(float DeltaTime)
 {
 	Super::PlayerTick(DeltaTime);
 
-	UEldaraNetworkSubsystem* Network = GetGameInstance()
-		? GetGameInstance()->GetSubsystem<UEldaraNetworkSubsystem>()
-		: nullptr;
+	if (!CachedNetwork)
+	{
+		CachedNetwork = GetGameInstance()
+			? GetGameInstance()->GetSubsystem<UEldaraNetworkSubsystem>()
+			: nullptr;
+	}
+
+	UEldaraNetworkSubsystem* Network = CachedNetwork;
 	if (!Network)
 	{
 		return;

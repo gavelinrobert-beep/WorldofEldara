@@ -48,4 +48,8 @@ private:
 
 	/** Validate race and class combination */
 	bool ValidateRaceClassCombo(const FEldaraCharacterCreatePayload& Payload, FString& OutErrorMessage);
+
+	/** Cached pointer to the network subsystem */
+	UPROPERTY()
+	class UEldaraNetworkSubsystem* CachedNetwork = nullptr;
 };

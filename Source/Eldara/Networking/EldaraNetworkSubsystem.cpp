@@ -211,11 +211,6 @@ bool UEldaraNetworkSubsystem::ReceivePacket(TArray<uint8>& OutPacket)
 		PartialBuffer.Reset();
 	}
 
-	if (ExpectedPacketSize <= 0)
-	{
-		return false;
-	}
-
 	if (!Socket->HasPendingData(PendingSize))
 	{
 		return false;
@@ -561,16 +556,16 @@ bool UEldaraNetworkSubsystem::ParseEntitySpawn(FMsgPackReader& Reader, FEldaraEn
 	// NPCData (optional)
 	if (Len >= 7)
 	{
-		int32 OffsetBefore = Reader.Offset;
+		FMsgPackReader NpcReader = Reader;
 		uint32 NpcLen = 0;
-		if (Reader.ReadArrayHeader(NpcLen) && NpcLen >= 5)
+		if (NpcReader.ReadArrayHeader(NpcLen) && NpcLen >= 5)
 		{
-			if (!Reader.SkipValue()) // TemplateId
+			if (!NpcReader.SkipValue()) // TemplateId
 			{
 				return false;
 			}
 			FString NpcName;
-			if (!Reader.ReadString(NpcName))
+			if (!NpcReader.ReadString(NpcName))
 			{
 				return false;
 			}
@@ -580,26 +575,27 @@ bool UEldaraNetworkSubsystem::ParseEntitySpawn(FMsgPackReader& Reader, FEldaraEn
 			}
 
 			int64 Level = 0;
-			if (Reader.ReadInt64(Level))
+			if (NpcReader.ReadInt64(Level))
 			{
 				const int64 Clamped = FMath::Clamp<int64>(Level, TNumericLimits<int32>::Min(), TNumericLimits<int32>::Max());
 				OutSpawn.Level = static_cast<int32>(Clamped);
 			}
 
-			if (!Reader.SkipValue()) // Faction
+			if (!NpcReader.SkipValue()) // Faction
 			{
 				return false;
 			}
 
 			bool bHostile = false;
-			if (Reader.ReadBool(bHostile))
+			if (NpcReader.ReadBool(bHostile))
 			{
 				OutSpawn.bIsHostile = bHostile;
 			}
+
+			Reader = NpcReader;
 		}
 		else
 		{
-			Reader.Offset = OffsetBefore;
 			if (!Reader.SkipValue())
 			{
 				return false;
@@ -662,9 +658,12 @@ void UEldaraNetworkSubsystem::HandleMovementUpdate(const FEldaraMovementUpdate& 
 	}
 	else if (!LocalPlayer.IsNull() && LocalEntityId == 0)
 	{
-		TargetActor = LocalPlayer.Get();
-		LocalEntityId = Update.EntityId;
-		EntityActors.Add(Update.EntityId, TargetActor);
+		if (AActor* LocalActor = LocalPlayer.Get())
+		{
+			TargetActor = LocalActor;
+			LocalEntityId = Update.EntityId;
+			EntityActors.Add(Update.EntityId, TargetActor);
+		}
 	}
 
 	if (!TargetActor)
@@ -714,7 +713,6 @@ void UEldaraNetworkSubsystem::HandlePlayerSpawn(const FEldaraPlayerSpawn& Spawn)
 		return;
 	}
 
-	PlayerActor->SetActorLocation(Spawn.Position);
 	PlayerActor->SetCharacterName(Spawn.CharacterName);
 
 	LocalPlayer = PlayerActor;
@@ -1184,17 +1182,19 @@ bool UEldaraNetworkSubsystem::FMsgPackReader::SkipValue()
 	if ((Lead & 0xF0) == 0x90 || Lead == 0xDC || Lead == 0xDD)
 	{
 		uint32 Elements = 0;
-		if (Lead == 0xDC || Lead == 0xDD)
-		{
-			--Offset;
-			if (!ReadArrayHeader(Elements))
-			{
-				return false;
-			}
-		}
-		else
+		if ((Lead & 0xF0) == 0x90)
 		{
 			Elements = Lead & 0x0F;
+		}
+		else if (Lead == 0xDC)
+		{
+			if (!ReadBytes(2, Ptr)) return false;
+			Elements = (Ptr[0] << 8) | Ptr[1];
+		}
+		else if (Lead == 0xDD)
+		{
+			if (!ReadBytes(4, Ptr)) return false;
+			Elements = (Ptr[0] << 24) | (Ptr[1] << 16) | (Ptr[2] << 8) | Ptr[3];
 		}
 
 		for (uint32 i = 0; i < Elements; ++i)
@@ -1211,17 +1211,19 @@ bool UEldaraNetworkSubsystem::FMsgPackReader::SkipValue()
 	if ((Lead & 0xF0) == 0x80 || Lead == 0xDE || Lead == 0xDF)
 	{
 		uint32 Pairs = 0;
-		if (Lead == 0xDE || Lead == 0xDF)
-		{
-			--Offset;
-			if (!ReadMapHeader(Pairs))
-			{
-				return false;
-			}
-		}
-		else
+		if ((Lead & 0xF0) == 0x80)
 		{
 			Pairs = Lead & 0x0F;
+		}
+		else if (Lead == 0xDE)
+		{
+			if (!ReadBytes(2, Ptr)) return false;
+			Pairs = (Ptr[0] << 8) | Ptr[1];
+		}
+		else if (Lead == 0xDF)
+		{
+			if (!ReadBytes(4, Ptr)) return false;
+			Pairs = (Ptr[0] << 24) | (Ptr[1] << 16) | (Ptr[2] << 8) | Ptr[3];
 		}
 
 		for (uint32 i = 0; i < Pairs; ++i)

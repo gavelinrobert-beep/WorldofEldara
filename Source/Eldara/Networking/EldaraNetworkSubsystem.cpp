@@ -6,15 +6,23 @@
 #include "Engine/World.h"
 #include "GameFramework/Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "HAL/NumericLimits.h"
 #include "IPAddress.h"
 #include "Internationalization/StringConversion.h"
 #include "Sockets.h"
 #include "SocketSubsystem.h"
 #include "Stats/Stats.h"
 
+void UEldaraNetworkSubsystem::FSocketDeleter::operator()(FSocket* InSocket) const
+{
+	if (InSocket)
+	{
+		ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->DestroySocket(InSocket);
+	}
+}
+
 UEldaraNetworkSubsystem::UEldaraNetworkSubsystem()
-	: Socket(nullptr)
-	, ExpectedPacketSize(-1)
+	: ExpectedPacketSize(-1)
 	, ConnectedPort(0)
 	, LocalEntityId(0)
 	, LocalCharacterId(0)
@@ -49,7 +57,7 @@ bool UEldaraNetworkSubsystem::ConnectToServer(const FString& Host, int32 Port)
 		return false;
 	}
 
-	Socket = SocketSubsystem->CreateSocket(NAME_Stream, TEXT("EldaraClientSocket"), false);
+	Socket.Reset(SocketSubsystem->CreateSocket(NAME_Stream, TEXT("EldaraClientSocket"), false));
 	if (!Socket)
 	{
 		UE_LOG(LogEldara, Warning, TEXT("Failed to create socket"));
@@ -93,8 +101,7 @@ void UEldaraNetworkSubsystem::Disconnect()
 	if (Socket)
 	{
 		Socket->Close();
-		ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->DestroySocket(Socket);
-		Socket = nullptr;
+		Socket.Reset();
 	}
 
 	ExpectedPacketSize = -1;
@@ -194,7 +201,7 @@ bool UEldaraNetworkSubsystem::ReceivePacket(TArray<uint8>& OutPacket)
 		}
 
 		ExpectedPacketSize = SizeBytes[0] | (SizeBytes[1] << 8) | (SizeBytes[2] << 16) | (SizeBytes[3] << 24);
-		if (ExpectedPacketSize <= 0 || ExpectedPacketSize > 32768)
+		if (ExpectedPacketSize <= 0 || ExpectedPacketSize > MaxPacketSize)
 		{
 			UE_LOG(LogEldara, Warning, TEXT("Invalid packet size %d"), ExpectedPacketSize);
 			Disconnect();
@@ -398,7 +405,10 @@ bool UEldaraNetworkSubsystem::ParsePlayerSpawn(FMsgPackReader& Reader, FEldaraPl
 		return false;
 	}
 
-	Reader.SkipValue(); // Resources
+	if (!Reader.SkipValue()) // Resources
+	{
+		return false;
+	}
 
 	FString Zone;
 	if (!Reader.ReadString(Zone))
@@ -414,8 +424,10 @@ bool UEldaraNetworkSubsystem::ParsePlayerSpawn(FMsgPackReader& Reader, FEldaraPl
 	}
 	OutSpawn.ServerTime = ServerTime;
 
-	Reader.SkipValue(); // Abilities
-	Reader.SkipValue(); // Protocol
+	if (!Reader.SkipValue() || !Reader.SkipValue())
+	{
+		return false;
+	}
 
 	return true;
 }
@@ -433,18 +445,26 @@ bool UEldaraNetworkSubsystem::ParseCharacterSnapshot(FMsgPackReader& Reader, FEl
 		return false;
 	}
 
-	Reader.ReadString(OutSpawn.CharacterName);
+	if (!Reader.ReadString(OutSpawn.CharacterName))
+	{
+		return false;
+	}
 
-	Reader.SkipValue(); // Race
-	Reader.SkipValue(); // Class
-	Reader.SkipValue(); // Faction
-	Reader.SkipValue(); // Level
-	Reader.SkipValue(); // Stats
-	Reader.SkipValue(); // Resources
+	if (!Reader.SkipValue() || !Reader.SkipValue() || !Reader.SkipValue() || !Reader.SkipValue() || !Reader.SkipValue()
+		|| !Reader.SkipValue())
+	{
+		return false;
+	}
 
-	ParseCharacterPosition(Reader, OutSpawn);
+	if (!ParseCharacterPosition(Reader, OutSpawn))
+	{
+		return false;
+	}
 
-	Reader.SkipValue(); // Known abilities
+	if (!Reader.SkipValue()) // Known abilities
+	{
+		return false;
+	}
 	FString ZoneId;
 	if (Reader.ReadString(ZoneId))
 	{
@@ -453,9 +473,15 @@ bool UEldaraNetworkSubsystem::ParseCharacterSnapshot(FMsgPackReader& Reader, FEl
 			OutSpawn.ZoneId = ZoneId;
 		}
 	}
+	else
+	{
+		return false;
+	}
 
-	Reader.SkipValue(); // Last played
-	Reader.SkipValue(); // Version
+	if (!Reader.SkipValue() || !Reader.SkipValue())
+	{
+		return false;
+	}
 
 	return true;
 }
@@ -469,18 +495,20 @@ bool UEldaraNetworkSubsystem::ParseCharacterPosition(FMsgPackReader& Reader, FEl
 	}
 
 	FString Zone;
-	Reader.ReadString(Zone);
+	if (!Reader.ReadString(Zone))
+	{
+		return false;
+	}
 	if (!Zone.IsEmpty())
 	{
 		OutSpawn.ZoneId = Zone;
 	}
 
 	float X = 0.f, Y = 0.f, Z = 0.f, Yaw = 0.f, Pitch = 0.f;
-	Reader.ReadFloat(X);
-	Reader.ReadFloat(Y);
-	Reader.ReadFloat(Z);
-	Reader.ReadFloat(Yaw);
-	Reader.ReadFloat(Pitch);
+	if (!Reader.ReadFloat(X) || !Reader.ReadFloat(Y) || !Reader.ReadFloat(Z) || !Reader.ReadFloat(Yaw) || !Reader.ReadFloat(Pitch))
+	{
+		return false;
+	}
 
 	OutSpawn.Position = FVector(X, Y, Z);
 	return true;
@@ -500,17 +528,34 @@ bool UEldaraNetworkSubsystem::ParseEntitySpawn(FMsgPackReader& Reader, FEldaraEn
 	}
 
 	int64 RawType = 0;
-	Reader.ReadInt64(RawType);
+	if (!Reader.ReadInt64(RawType))
+	{
+		return false;
+	}
 	OutSpawn.Type = static_cast<EEldaraEntityType>(RawType);
 
-	Reader.ReadString(OutSpawn.Name);
-	ParseVector3(Reader, OutSpawn.Position);
-	Reader.ReadFloat(OutSpawn.RotationYaw);
+	if (!Reader.ReadString(OutSpawn.Name))
+	{
+		return false;
+	}
+
+	if (!ParseVector3(Reader, OutSpawn.Position))
+	{
+		return false;
+	}
+
+	if (!Reader.ReadFloat(OutSpawn.RotationYaw))
+	{
+		return false;
+	}
 
 	// CharacterData (ignored)
 	if (Len >= 6)
 	{
-		Reader.SkipValue();
+		if (!Reader.SkipValue())
+		{
+			return false;
+		}
 	}
 
 	// NPCData (optional)
@@ -520,9 +565,15 @@ bool UEldaraNetworkSubsystem::ParseEntitySpawn(FMsgPackReader& Reader, FEldaraEn
 		uint32 NpcLen = 0;
 		if (Reader.ReadArrayHeader(NpcLen) && NpcLen >= 5)
 		{
-			Reader.SkipValue(); // TemplateId
+			if (!Reader.SkipValue()) // TemplateId
+			{
+				return false;
+			}
 			FString NpcName;
-			Reader.ReadString(NpcName);
+			if (!Reader.ReadString(NpcName))
+			{
+				return false;
+			}
 			if (!NpcName.IsEmpty())
 			{
 				OutSpawn.Name = NpcName;
@@ -531,10 +582,14 @@ bool UEldaraNetworkSubsystem::ParseEntitySpawn(FMsgPackReader& Reader, FEldaraEn
 			int64 Level = 0;
 			if (Reader.ReadInt64(Level))
 			{
-				OutSpawn.Level = static_cast<int32>(Level);
+				const int64 Clamped = FMath::Clamp<int64>(Level, TNumericLimits<int32>::Min(), TNumericLimits<int32>::Max());
+				OutSpawn.Level = static_cast<int32>(Clamped);
 			}
 
-			Reader.SkipValue(); // Faction
+			if (!Reader.SkipValue()) // Faction
+			{
+				return false;
+			}
 
 			bool bHostile = false;
 			if (Reader.ReadBool(bHostile))
@@ -545,14 +600,20 @@ bool UEldaraNetworkSubsystem::ParseEntitySpawn(FMsgPackReader& Reader, FEldaraEn
 		else
 		{
 			Reader.Offset = OffsetBefore;
-			Reader.SkipValue();
+			if (!Reader.SkipValue())
+			{
+				return false;
+			}
 		}
 	}
 
 	// Skip remaining payload
 	for (uint32 Index = 7; Index < Len; ++Index)
 	{
-		Reader.SkipValue();
+		if (!Reader.SkipValue())
+		{
+			return false;
+		}
 	}
 
 	return true;
@@ -751,9 +812,28 @@ void UEldaraNetworkSubsystem::SendRawPacket(const TArray<uint8>& Payload)
 	LengthBytes[2] = (Length >> 16) & 0xFF;
 	LengthBytes[3] = (Length >> 24) & 0xFF;
 
-	int32 Sent = 0;
-	Socket->Send(LengthBytes, 4, Sent);
-	Socket->Send(Payload.GetData(), Payload.Num(), Sent);
+	auto SendAll = [this](const uint8* Data, int32 LengthToSend) -> bool
+	{
+		int32 Remaining = LengthToSend;
+		while (Remaining > 0)
+		{
+			int32 SentBytes = 0;
+			if (!Socket->Send(Data, Remaining, SentBytes) || SentBytes <= 0)
+			{
+				return false;
+			}
+
+			Remaining -= SentBytes;
+			Data += SentBytes;
+		}
+		return true;
+	};
+
+	if (!SendAll(LengthBytes, 4) || !SendAll(Payload.GetData(), Payload.Num()))
+	{
+		UE_LOG(LogEldara, Warning, TEXT("Failed to send network packet"));
+		Disconnect();
+	}
 }
 
 bool UEldaraNetworkSubsystem::FMsgPackReader::ReadBytes(int32 Count, const uint8*& OutPtr)
@@ -1229,7 +1309,7 @@ void UEldaraNetworkSubsystem::FMsgPackWriter::WriteInt(int64 Value)
 
 	if (Value >= -32)
 	{
-		OutBuffer.Add(static_cast<uint8>(0xE0 | (Value + 32)));
+		OutBuffer.Add(static_cast<uint8>(Value));
 		return;
 	}
 

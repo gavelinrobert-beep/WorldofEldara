@@ -219,6 +219,13 @@ private:
 		void WriteBool(bool bValue);
 	};
 
+	struct FSocketDeleter
+	{
+		void operator()(FSocket* InSocket) const;
+	};
+
+	using FEldaraSocketPtr = TUniquePtr<FSocket, FSocketDeleter>;
+
 	bool ReceivePacket(TArray<uint8>& OutPacket);
 	void ProcessPacket(const TArray<uint8>& PacketData);
 
@@ -239,7 +246,9 @@ private:
 
 	void SendRawPacket(const TArray<uint8>& Payload);
 
-	FSocket* Socket;
+	static constexpr int32 MaxPacketSize = 32768;
+
+	FEldaraSocketPtr Socket;
 	int32 ExpectedPacketSize;
 	TArray<uint8> PartialBuffer;
 	FString ConnectedHost;

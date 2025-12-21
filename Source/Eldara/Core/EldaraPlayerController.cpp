@@ -33,11 +33,6 @@ void AEldaraPlayerController::PlayerTick(float DeltaTime)
 	}
 
 	const FVector InputVector = ControlledPawn->GetLastMovementInputVector();
-	if (InputVector.IsNearlyZero(0.001f))
-	{
-		return;
-	}
-
 	const FVector PawnLocation = ControlledPawn->GetActorLocation();
 	const FRotator ControlRot = GetControlRotation();
 	Network->SendMovementInput(FVector2D(InputVector.X, InputVector.Y), ControlRot, DeltaTime, PawnLocation);

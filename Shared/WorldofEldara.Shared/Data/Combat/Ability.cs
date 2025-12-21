@@ -78,6 +78,25 @@ public class Ability
     }
 }
 
+[MessagePackObject]
+public sealed record AbilitySummary(
+    [property: Key(0)] int AbilityId,
+    [property: Key(1)] string Name,
+    [property: Key(2)] AbilityType Type,
+    [property: Key(3)] MagicSource MagicSource,
+    [property: Key(4)] DamageType DamageType,
+    [property: Key(5)] TargetType TargetType,
+    [property: Key(6)] float Range,
+    [property: Key(7)] float Cooldown,
+    [property: Key(8)] int ManaCost)
+{
+    public static AbilitySummary From(Ability ability)
+    {
+        return new AbilitySummary(ability.AbilityId, ability.Name, ability.Type, ability.MagicSource, ability.DamageType,
+            ability.TargetType, ability.Range, ability.Cooldown, ability.ManaCost);
+    }
+}
+
 public enum AbilityType
 {
     PhysicalDamage,

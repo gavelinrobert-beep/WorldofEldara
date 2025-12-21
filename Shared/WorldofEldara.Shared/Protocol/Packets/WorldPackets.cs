@@ -1,5 +1,7 @@
 using MessagePack;
 using WorldofEldara.Shared.Data.Character;
+using WorldofEldara.Shared.Data.Combat;
+using WorldofEldara.Shared.Protocol;
 
 namespace WorldofEldara.Shared.Protocol.Packets;
 
@@ -16,6 +18,24 @@ public static class WorldPackets
         [Key(1)] public string ZoneId { get; set; } = string.Empty;
 
         [Key(2)] public long ServerTime { get; set; }
+
+        [Key(3)] public string ProtocolVersion { get; set; } = ProtocolVersions.Current;
+    }
+
+    [MessagePackObject]
+    public class PlayerSpawnPacket : PacketBase
+    {
+        [Key(0)] public CharacterSnapshot Character { get; set; } = new();
+
+        [Key(1)] public ResourceSnapshot Resources { get; set; } = ResourceSnapshot.Empty;
+
+        [Key(2)] public string ZoneId { get; set; } = string.Empty;
+
+        [Key(3)] public long ServerTime { get; set; }
+
+        [Key(4)] public IReadOnlyList<AbilitySummary> Abilities { get; set; } = Array.Empty<AbilitySummary>();
+
+        [Key(5)] public string ProtocolVersion { get; set; } = ProtocolVersions.Current;
     }
 
     [MessagePackObject]
@@ -42,6 +62,10 @@ public static class WorldPackets
         [Key(5)] public CharacterData? CharacterData { get; set; } // For player entities
 
         [Key(6)] public NPCData? NPCData { get; set; } // For NPC entities
+
+        [Key(7)] public ResourceSnapshot? Resources { get; set; }
+
+        [Key(8)] public IReadOnlyList<int>? AbilityIds { get; set; }
     }
 
     [MessagePackObject]
@@ -81,4 +105,8 @@ public class NPCData
     [Key(7)] public int MaxHealth { get; set; }
 
     [Key(8)] public int CurrentHealth { get; set; }
+
+    [Key(9)] public ResourceSnapshot Resources { get; set; } = ResourceSnapshot.Empty;
+
+    [Key(10)] public IReadOnlyList<int> AbilityIds { get; set; } = Array.Empty<int>();
 }

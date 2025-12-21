@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using MessagePack;
+using WorldofEldara.Shared.Protocol;
 
 namespace WorldofEldara.Shared.Data.Character;
 
@@ -43,6 +45,9 @@ public class CharacterData
 
     // Last played timestamp
     [Key(15)] public DateTime LastPlayedAt { get; set; }
+
+    [IgnoreMember]
+    public ResourceSnapshot Resources => ResourceSnapshot.FromStats(Stats);
 
     /// <summary>
     ///     Validate character data for lore consistency
@@ -110,6 +115,11 @@ public class CharacterStats
 
     // Movement
     [Key(15)] public float MovementSpeed { get; set; } = 7.0f; // meters per second
+
+    // Stamina resource (movement/combat endurance)
+    [Key(16)] public int MaxStamina { get; set; } = 100;
+
+    [Key(17)] public int CurrentStamina { get; set; } = 100;
 }
 
 /// <summary>
@@ -197,6 +207,97 @@ public class EquipmentSlots
     [Key(14)] public ulong? Necklace { get; set; }
 }
 
+[MessagePackObject]
+public sealed record ResourceSnapshot(
+    [property: Key(0)] int MaxHealth,
+    [property: Key(1)] int CurrentHealth,
+    [property: Key(2)] int MaxMana,
+    [property: Key(3)] int CurrentMana,
+    [property: Key(4)] int MaxStamina,
+    [property: Key(5)] int CurrentStamina)
+{
+    public static ResourceSnapshot Empty { get; } = new(0, 0, 0, 0, 0, 0);
+
+    public static ResourceSnapshot FromStats(CharacterStats stats)
+    {
+        return new ResourceSnapshot(stats.MaxHealth, stats.CurrentHealth, stats.MaxMana, stats.CurrentMana,
+            stats.MaxStamina, stats.CurrentStamina);
+    }
+}
+
+[MessagePackObject]
+public sealed record StatSnapshot(
+    [property: Key(0)] int Strength,
+    [property: Key(1)] int Agility,
+    [property: Key(2)] int Intellect,
+    [property: Key(3)] int Stamina,
+    [property: Key(4)] int Willpower,
+    [property: Key(5)] int AttackPower,
+    [property: Key(6)] int SpellPower,
+    [property: Key(7)] float CriticalChance,
+    [property: Key(8)] float CriticalDamage,
+    [property: Key(9)] int Armor,
+    [property: Key(10)] float MovementSpeed)
+{
+    public static StatSnapshot Empty { get; } = new(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+    public static StatSnapshot From(CharacterStats stats)
+    {
+        return new StatSnapshot(stats.Strength, stats.Agility, stats.Intellect, stats.Stamina, stats.Willpower,
+            stats.AttackPower, stats.SpellPower, stats.CriticalChance, stats.CriticalDamage, stats.Armor,
+            stats.MovementSpeed);
+    }
+}
+
+[MessagePackObject]
+public sealed record CharacterSnapshot
+{
+    [Key(0)] public ulong CharacterId { get; init; }
+
+    [Key(1)] public string Name { get; init; } = string.Empty;
+
+    [Key(2)] public Race Race { get; init; }
+
+    [Key(3)] public Class Class { get; init; }
+
+    [Key(4)] public Faction Faction { get; init; }
+
+    [Key(5)] public int Level { get; init; }
+
+    [Key(6)] public StatSnapshot Stats { get; init; } = StatSnapshot.Empty;
+
+    [Key(7)] public ResourceSnapshot Resources { get; init; } = ResourceSnapshot.Empty;
+
+    [Key(8)] public CharacterPosition Position { get; init; } = new();
+
+    [Key(9)] public IReadOnlyList<int> KnownAbilities { get; init; } = Array.Empty<int>();
+
+    [Key(10)] public string ZoneId { get; init; } = string.Empty;
+
+    [Key(11)] public DateTime LastPlayedAt { get; init; }
+
+    [Key(12)] public string Version { get; init; } = ProtocolVersions.Current;
+
+    public static CharacterSnapshot FromCharacter(CharacterData character, IReadOnlyList<int>? abilities = null)
+    {
+        return new CharacterSnapshot
+        {
+            CharacterId = character.CharacterId,
+            Name = character.Name,
+            Race = character.Race,
+            Class = character.Class,
+            Faction = character.Faction,
+            Level = character.Level,
+            Stats = StatSnapshot.From(character.Stats),
+            Resources = ResourceSnapshot.FromStats(character.Stats),
+            Position = character.Position,
+            KnownAbilities = abilities ?? Array.Empty<int>(),
+            ZoneId = character.Position.ZoneId,
+            LastPlayedAt = character.LastPlayedAt
+        };
+    }
+}
+
 /// <summary>
 ///     Damage types based on Eldara's magic systems
 /// </summary>
@@ -227,5 +328,6 @@ public enum EResourceType : byte
     Rage = 2,
     Energy = 3,
     Focus = 4,
-    Corruption = 5
+    Corruption = 5,
+    Stamina = 6
 }

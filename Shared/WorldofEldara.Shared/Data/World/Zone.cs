@@ -64,6 +64,22 @@ public struct WorldPosition
     }
 }
 
+[MessagePackObject]
+public sealed record ZoneSummary(
+    [property: Key(0)] string ZoneId,
+    [property: Key(1)] string Name,
+    [property: Key(2)] int MinLevel,
+    [property: Key(3)] int MaxLevel,
+    [property: Key(4)] ZoneType Type,
+    [property: Key(5)] Faction ControllingFaction)
+{
+    public static ZoneSummary FromZone(Zone zone)
+    {
+        return new ZoneSummary(zone.ZoneId, zone.Name, zone.MinLevel, zone.MaxLevel, zone.Type,
+            zone.ControllingFaction);
+    }
+}
+
 /// <summary>
 ///     Zone definitions with lore justification
 /// </summary>

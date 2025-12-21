@@ -15,6 +15,8 @@ public static class AuthPackets
         [Key(1)] public string PasswordHash { get; set; } = string.Empty; // Client-side hashed
 
         [Key(2)] public string ClientVersion { get; set; } = string.Empty;
+
+        [Key(3)] public string ProtocolVersion { get; set; } = ProtocolVersions.Current;
     }
 
     [MessagePackObject]
@@ -27,5 +29,7 @@ public static class AuthPackets
         [Key(2)] public ulong AccountId { get; set; }
 
         [Key(3)] public string SessionToken { get; set; } = string.Empty;
+
+        [Key(4)] public string ServerProtocolVersion { get; set; } = ProtocolVersions.Current;
     }
 }

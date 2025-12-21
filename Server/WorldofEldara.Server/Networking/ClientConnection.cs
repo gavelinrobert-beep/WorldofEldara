@@ -488,8 +488,9 @@ public class ClientConnection
         var player = _worldSimulation.Entities.GetEntity(PlayerEntityId.Value) as PlayerEntity;
         if (player == null) return;
 
-        var deltaTime = Math.Clamp(packet.DeltaTime, 0f, 0.25f);
+        var deltaTime = packet.DeltaTime;
         if (deltaTime <= 0) deltaTime = 1f / 20f;
+        deltaTime = Math.Min(deltaTime, 0.25f);
 
         var desiredState = packet.Input;
         var speed = player.CharacterData.Stats.MovementSpeed *
@@ -497,11 +498,13 @@ public class ClientConnection
 
         var dirX = desiredState.Forward;
         var dirY = desiredState.Strafe;
-        var magnitude = Math.Sqrt(dirX * dirX + dirY * dirY);
-        if (magnitude > 1e-3)
+        var magnitudeSq = dirX * dirX + dirY * dirY;
+        var magnitude = 0f;
+        if (magnitudeSq > 1e-6f)
         {
-            dirX = (float)(dirX / magnitude);
-            dirY = (float)(dirY / magnitude);
+            magnitude = (float)Math.Sqrt(magnitudeSq);
+            dirX /= magnitude;
+            dirY /= magnitude;
         }
 
         var displacement = new Vector3(
@@ -522,9 +525,10 @@ public class ClientConnection
         }
         player.RotationYaw = desiredState.LookYaw;
         player.RotationPitch = desiredState.LookPitch;
-        player.MovementState = magnitude > 0.1 ? MovementState.Running : MovementState.Idle;
-        if (Math.Abs(player.Velocity.X) < 0.001f && Math.Abs(player.Velocity.Y) < 0.001f)
-            player.MovementState = MovementState.Idle;
+        player.MovementState = magnitudeSq > 0.01f &&
+                               (Math.Abs(player.Velocity.X) > 0.001f || Math.Abs(player.Velocity.Y) > 0.001f)
+            ? MovementState.Running
+            : MovementState.Idle;
         player.LastInputTime = DateTime.UtcNow;
 
         // Reconciliation if client prediction diverges

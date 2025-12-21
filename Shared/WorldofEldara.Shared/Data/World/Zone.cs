@@ -82,7 +82,8 @@ public static class ZoneDefinitions
             ControllingFaction = Faction.VerdantCircles,
             WorldrootDensity = 1.0f,
             IsPvPEnabled = false,
-            LoreDescription = "Trees remember every footstep. Younger Sylvaen train here to hear the Green Memory."
+            LoreDescription = "Trees remember every footstep. Younger Sylvaen train here to hear the Green Memory.",
+            SafeSpawnPoint = new WorldPosition(0, 0, 0)
         },
 
         ["zone_temporal_steppes"] = new Zone
@@ -96,7 +97,8 @@ public static class ZoneDefinitions
             ControllingFaction = Faction.AscendantLeague,
             WorldrootDensity = 0.3f,
             IsPvPEnabled = false,
-            LoreDescription = "Ruins phase in and out of existence. High Elves study Edit Nodes."
+            LoreDescription = "Ruins phase in and out of existence. High Elves study Edit Nodes.",
+            SafeSpawnPoint = new WorldPosition(10, 5, 0)
         },
 
         ["zone_borderkeep"] = new Zone
@@ -110,7 +112,8 @@ public static class ZoneDefinitions
             ControllingFaction = Faction.UnitedKingdoms,
             WorldrootDensity = 0.4f,
             IsPvPEnabled = false,
-            LoreDescription = "Humans from all walks of life gather here, united by their mysterious nature."
+            LoreDescription = "Humans from all walks of life gather here, united by their mysterious nature.",
+            SafeSpawnPoint = new WorldPosition(-8, -4, 0)
         },
 
         ["zone_untamed_reaches"] = new Zone
@@ -124,7 +127,8 @@ public static class ZoneDefinitions
             ControllingFaction = Faction.TotemClansWildborn,
             WorldrootDensity = 0.6f,
             IsPvPEnabled = false,
-            LoreDescription = "Instinct rules here. Totem echoes stalk every ridge."
+            LoreDescription = "Instinct rules here. Totem echoes stalk every ridge.",
+            SafeSpawnPoint = new WorldPosition(6, -12, 0)
         },
 
         ["zone_carved_valleys"] = new Zone
@@ -138,7 +142,8 @@ public static class ZoneDefinitions
             ControllingFaction = Faction.TotemClansPathbound,
             WorldrootDensity = 0.55f,
             IsPvPEnabled = false,
-            LoreDescription = "Stone totems mark choices remembered; spirits watch silently."
+            LoreDescription = "Stone totems mark choices remembered; spirits watch silently.",
+            SafeSpawnPoint = new WorldPosition(-12, 3, 0)
         },
 
         ["zone_scarred_highlands"] = new Zone
@@ -153,7 +158,8 @@ public static class ZoneDefinitions
             WorldrootDensity = 0.2f,
             IsPvPEnabled = true,
             IsContestedTerritory = true,
-            LoreDescription = "Dominion Warhost drills here, consuming god-fragments to harden themselves."
+            LoreDescription = "Dominion Warhost drills here, consuming god-fragments to harden themselves.",
+            SafeSpawnPoint = new WorldPosition(4, 14, 0)
         },
 
         ["zone_blackwake_haven"] = new Zone
@@ -167,7 +173,8 @@ public static class ZoneDefinitions
             ControllingFaction = Faction.VoidCompact,
             WorldrootDensity = 0.1f,
             IsPvPEnabled = false,
-            LoreDescription = "Phase-shifted caverns hum with Null-static; survival requires discipline."
+            LoreDescription = "Phase-shifted caverns hum with Null-static; survival requires discipline.",
+            SafeSpawnPoint = new WorldPosition(-2, 18, 0)
         },
 
         ["zone_vharos_warfront"] = new Zone

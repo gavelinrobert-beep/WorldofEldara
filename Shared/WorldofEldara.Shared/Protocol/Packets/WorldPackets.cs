@@ -73,6 +73,16 @@ public static class WorldPackets
     {
         [Key(0)] public ulong EntityId { get; set; }
     }
+
+    [MessagePackObject]
+    public class NPCStateUpdatePacket : PacketBase
+    {
+        [Key(0)] public ulong EntityId { get; set; }
+
+        [Key(1)] public NPCState State { get; set; }
+
+        [Key(2)] public ulong? TargetEntityId { get; set; }
+    }
 }
 
 public enum EntityType
@@ -83,6 +93,13 @@ public enum EntityType
     Object,
     Vehicle,
     Pet
+}
+
+public enum NPCState
+{
+    Idle = 0,
+    Patrol = 1,
+    Combat = 2
 }
 
 [MessagePackObject]

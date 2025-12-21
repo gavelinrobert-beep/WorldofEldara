@@ -1,10 +1,14 @@
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using MessagePack;
 using Serilog;
 using WorldofEldara.Server.World;
+using WorldofEldara.Server.Networking;
 using WorldofEldara.Shared.Data.Character;
 using WorldofEldara.Shared.Data.Combat;
+using WorldofEldara.Shared.Protocol;
 using WorldofEldara.Shared.Protocol.Packets;
 
 namespace WorldofEldara.Server.Core;
@@ -246,10 +250,13 @@ public class NPCEntity : Entity
     private const float PatrolSpeedMultiplier = 0.6f;
     private const int MinNpcDamage = 5;
     private const int DamagePerLevel = 3;
+    private const int NpcBasicAttackAbilityId = 0;
+    private const DamageType NpcDamageType = DamageType.Physical;
     private float _attackTimer;
     private float _combatResetTimer;
     private float _patrolPauseTimer;
     private float _targetScanCooldown;
+    private NPCAIState _aiState = NPCAIState.Idle;
 
     public int NPCTemplateId { get; set; }
     public Faction Faction { get; set; }
@@ -273,9 +280,20 @@ public class NPCEntity : Entity
     public EntityManager? EntityManager { get; set; }
     public ZoneManager? ZoneManager { get; set; }
     public TimeManager? TimeManager { get; set; }
+    public NetworkServer? NetworkServer { get; set; }
+    public Func<long>? ServerTimeProvider { get; set; }
 
     // AI state
-    public NPCAIState AIState { get; set; } = NPCAIState.Idle;
+    public NPCAIState AIState
+    {
+        get => _aiState;
+        set
+        {
+            if (_aiState == value) return;
+            _aiState = value;
+            BroadcastState();
+        }
+    }
     public ulong? TargetEntityId { get; set; }
     public Vector3 SpawnPosition { get; set; }
     public float LeashDistance { get; set; } = 50.0f;
@@ -321,6 +339,56 @@ public class NPCEntity : Entity
         }
     }
 
+    private void BroadcastState()
+    {
+        if (NetworkServer == null) return;
+
+        var protocolState = AIState switch
+        {
+            NPCAIState.Combat => NPCState.Combat,
+            NPCAIState.Patrolling => NPCState.Patrol,
+            _ => NPCState.Idle
+        };
+
+        var statePacket = new WorldPackets.NPCStateUpdatePacket
+        {
+            EntityId = EntityId,
+            State = protocolState,
+            TargetEntityId = TargetEntityId
+        };
+
+        NetworkServer.BroadcastToZone(ZoneId, MessagePackSerializer.Serialize<PacketBase>(statePacket));
+    }
+
+    private void BroadcastNpcDamage(PlayerEntity target, int damageAmount)
+    {
+        if (NetworkServer == null) return;
+
+        var metadata = CombatEventMetadata.Create(ServerTimeProvider?.Invoke());
+        var remainingHealth = target.CharacterData.Stats.CurrentHealth;
+        var damage = new CombatPackets.DamagePacket
+        {
+            SourceEntityId = EntityId,
+            TargetEntityId = target.EntityId,
+            AbilityId = NpcBasicAttackAbilityId,
+            DamageType = NpcDamageType,
+            Amount = damageAmount,
+            IsCritical = false,
+            RemainingHealth = remainingHealth,
+            IsFatal = remainingHealth <= 0,
+            Metadata = metadata
+        };
+
+        var combatEvent = new CombatPackets.CombatEventPacket
+        {
+            EventType = CombatEventType.Damage,
+            Metadata = metadata,
+            Damage = damage
+        };
+
+        NetworkServer.BroadcastToZone(ZoneId, MessagePackSerializer.Serialize<PacketBase>(combatEvent));
+    }
+
     private bool IsActiveBasedOnTime()
     {
         if (TimeManager == null) return true;
@@ -343,7 +411,12 @@ public class NPCEntity : Entity
 
         var target = EntityManager.GetEntitiesInRange(ZoneId, Position.X, Position.Y, Position.Z, AggroRange)
             .OfType<PlayerEntity>()
-            .FirstOrDefault(player => player.CharacterData.Stats.CurrentHealth > 0);
+            .Where(player => player.CharacterData.Stats.CurrentHealth > 0)
+            .Select(player => new { Player = player, Distance = Distance(Position, player.Position) })
+            .OrderBy(entry => entry.Distance)
+            .ThenBy(entry => entry.Player.EntityId)
+            .Select(entry => entry.Player)
+            .FirstOrDefault();
 
         if (target == null) return;
 
@@ -419,18 +492,26 @@ public class NPCEntity : Entity
 
         if (_attackTimer >= AttackCooldown)
         {
-            _attackTimer = 0f;
-            var damage = Math.Max(MinNpcDamage, Level * DamagePerLevel);
-            target.CharacterData.Stats.CurrentHealth =
-                Math.Max(0, target.CharacterData.Stats.CurrentHealth - damage);
-            target.MarkCombatEngaged();
-            _combatResetTimer = 0f;
+            PerformAttack(target);
+        }
+    }
 
-            if (target.CharacterData.Stats.CurrentHealth <= 0)
-            {
-                EntityManager?.RemoveEntity(target.EntityId);
-                ResetToReturn();
-            }
+    private void PerformAttack(PlayerEntity target)
+    {
+        _attackTimer = 0f;
+        _combatResetTimer = 0f;
+
+        var damage = Math.Max(MinNpcDamage, Level * DamagePerLevel);
+        target.CharacterData.Stats.CurrentHealth =
+            Math.Max(0, target.CharacterData.Stats.CurrentHealth - damage);
+        target.MarkCombatEngaged();
+
+        BroadcastNpcDamage(target, damage);
+
+        if (target.CharacterData.Stats.CurrentHealth <= 0)
+        {
+            EntityManager?.RemoveEntity(target.EntityId);
+            ResetToReturn();
         }
     }
 

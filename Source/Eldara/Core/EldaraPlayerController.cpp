@@ -24,9 +24,14 @@ void AEldaraPlayerController::PlayerTick(float DeltaTime)
 
 	if (!CachedNetwork)
 	{
-		CachedNetwork = GetGameInstance()
-			? GetGameInstance()->GetSubsystem<UEldaraNetworkSubsystem>()
-			: nullptr;
+		NetworkLookupCooldown -= DeltaTime;
+		if (NetworkLookupCooldown <= 0.f)
+		{
+			CachedNetwork = GetGameInstance()
+				? GetGameInstance()->GetSubsystem<UEldaraNetworkSubsystem>()
+				: nullptr;
+			NetworkLookupCooldown = 1.0f;
+		}
 	}
 
 	UEldaraNetworkSubsystem* Network = CachedNetwork;

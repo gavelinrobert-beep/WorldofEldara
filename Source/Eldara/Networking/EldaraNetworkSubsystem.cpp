@@ -13,6 +13,12 @@
 #include "SocketSubsystem.h"
 #include "Stats/Stats.h"
 
+namespace
+{
+constexpr int32 DefaultRemoteLevel = 1;
+constexpr bool bDefaultRemoteHostile = false;
+}
+
 void UEldaraNetworkSubsystem::FSocketDeleter::operator()(FSocket* InSocket) const
 {
 	if (InSocket)
@@ -656,20 +662,24 @@ void UEldaraNetworkSubsystem::HandleMovementUpdate(const FEldaraMovementUpdate& 
 	{
 		TargetActor = Found->Get();
 	}
-	else if (!LocalPlayer.IsNull() && LocalEntityId == 0)
+	else if (LocalEntityId == 0 && LocalCharacterId != 0 && LocalPlayer.IsValid())
 	{
 		if (AActor* LocalActor = LocalPlayer.Get())
 		{
-			TargetActor = LocalActor;
-			LocalEntityId = Update.EntityId;
-			EntityActors.Add(Update.EntityId, TargetActor);
+			const bool bMatchesLocal = LocalActor->GetActorLocation().Equals(Update.Position, 50.f);
+			if (bMatchesLocal)
+			{
+				TargetActor = LocalActor;
+				LocalEntityId = Update.EntityId;
+				EntityActors.Add(Update.EntityId, TargetActor);
+			}
 		}
 	}
 
 	if (!TargetActor)
 	{
 		HandleEntitySpawn(FEldaraEntitySpawn{Update.EntityId, EEldaraEntityType::Player, TEXT("Unknown"),
-			Update.Position, Update.RotationYaw, 1, false});
+			Update.Position, Update.RotationYaw, DefaultRemoteLevel, bDefaultRemoteHostile});
 		if (const TWeakObjectPtr<AActor>* Spawned = EntityActors.Find(Update.EntityId))
 		{
 			TargetActor = Spawned->Get();
@@ -1105,6 +1115,28 @@ bool UEldaraNetworkSubsystem::FMsgPackReader::ReadInt64(int64& Out)
 
 bool UEldaraNetworkSubsystem::FMsgPackReader::ReadUInt64(uint64& Out)
 {
+	if (Offset >= Buffer.Num())
+	{
+		return false;
+	}
+
+	const uint8 Lead = Buffer[Offset];
+	if (Lead == 0xCF)
+	{
+		++Offset; // consume lead byte
+		const uint8* Ptr = nullptr;
+		if (!ReadBytes(8, Ptr))
+		{
+			return false;
+		}
+
+		Out = (static_cast<uint64>(Ptr[0]) << 56) | (static_cast<uint64>(Ptr[1]) << 48) |
+			(static_cast<uint64>(Ptr[2]) << 40) | (static_cast<uint64>(Ptr[3]) << 32) |
+			(static_cast<uint64>(Ptr[4]) << 24) | (static_cast<uint64>(Ptr[5]) << 16) |
+			(static_cast<uint64>(Ptr[6]) << 8) | Ptr[7];
+		return true;
+	}
+
 	int64 Signed = 0;
 	if (!ReadInt64(Signed))
 	{

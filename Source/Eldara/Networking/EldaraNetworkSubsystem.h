@@ -11,23 +11,6 @@ class AEldaraCharacterBase;
 class AEldaraNPCBase;
 
 USTRUCT(BlueprintType)
-struct FEldaraVector3
-{
-	GENERATED_BODY()
-
-	UPROPERTY(BlueprintReadOnly, Category = "Eldara|Network")
-	float X = 0.f;
-
-	UPROPERTY(BlueprintReadOnly, Category = "Eldara|Network")
-	float Y = 0.f;
-
-	UPROPERTY(BlueprintReadOnly, Category = "Eldara|Network")
-	float Z = 0.f;
-
-	FVector AsVector() const { return FVector(X, Y, Z); }
-};
-
-USTRUCT(BlueprintType)
 struct FEldaraMovementUpdate
 {
 	GENERATED_BODY()

@@ -52,4 +52,7 @@ private:
 	/** Cached pointer to the network subsystem */
 	UPROPERTY()
 	class UEldaraNetworkSubsystem* CachedNetwork = nullptr;
+
+	/** Cooldown before retrying subsystem lookup to avoid per-tick overhead */
+	float NetworkLookupCooldown = 0.0f;
 };

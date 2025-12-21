@@ -3,6 +3,11 @@
 #include "Eldara/Data/EldaraQuestData.h"
 #include "Eldara/Networking/EldaraNetworkSubsystem.h"
 
+namespace
+{
+constexpr float NetworkLookupInterval = 1.0f;
+}
+
 AEldaraPlayerController::AEldaraPlayerController()
 {
 }
@@ -30,7 +35,7 @@ void AEldaraPlayerController::PlayerTick(float DeltaTime)
 			CachedNetwork = GetGameInstance()
 				? GetGameInstance()->GetSubsystem<UEldaraNetworkSubsystem>()
 				: nullptr;
-			NetworkLookupCooldown = 1.0f;
+			NetworkLookupCooldown = NetworkLookupInterval;
 		}
 	}
 

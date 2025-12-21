@@ -17,6 +17,7 @@ namespace
 {
 constexpr int32 DefaultRemoteLevel = 1;
 constexpr bool bDefaultRemoteHostile = false;
+constexpr float LocalEntityMatchTolerance = 50.f;
 }
 
 void UEldaraNetworkSubsystem::FSocketDeleter::operator()(FSocket* InSocket) const
@@ -583,7 +584,8 @@ bool UEldaraNetworkSubsystem::ParseEntitySpawn(FMsgPackReader& Reader, FEldaraEn
 			int64 Level = 0;
 			if (NpcReader.ReadInt64(Level))
 			{
-				const int64 Clamped = FMath::Clamp<int64>(Level, TNumericLimits<int32>::Min(), TNumericLimits<int32>::Max());
+				const int64 Clamped = FMath::Clamp(Level, static_cast<int64>(TNumericLimits<int32>::Min()),
+					static_cast<int64>(TNumericLimits<int32>::Max()));
 				OutSpawn.Level = static_cast<int32>(Clamped);
 			}
 
@@ -666,7 +668,7 @@ void UEldaraNetworkSubsystem::HandleMovementUpdate(const FEldaraMovementUpdate& 
 	{
 		if (AActor* LocalActor = LocalPlayer.Get())
 		{
-			const bool bMatchesLocal = LocalActor->GetActorLocation().Equals(Update.Position, 50.f);
+			const bool bMatchesLocal = LocalActor->GetActorLocation().Equals(Update.Position, LocalEntityMatchTolerance);
 			if (bMatchesLocal)
 			{
 				TargetActor = LocalActor;
@@ -678,8 +680,15 @@ void UEldaraNetworkSubsystem::HandleMovementUpdate(const FEldaraMovementUpdate& 
 
 	if (!TargetActor)
 	{
-		HandleEntitySpawn(FEldaraEntitySpawn{Update.EntityId, EEldaraEntityType::Player, TEXT("Unknown"),
-			Update.Position, Update.RotationYaw, DefaultRemoteLevel, bDefaultRemoteHostile});
+		FEldaraEntitySpawn SpawnData;
+		SpawnData.EntityId = Update.EntityId;
+		SpawnData.Type = EEldaraEntityType::Player;
+		SpawnData.Name = TEXT("Unknown");
+		SpawnData.Position = Update.Position;
+		SpawnData.RotationYaw = Update.RotationYaw;
+		SpawnData.Level = DefaultRemoteLevel;
+		SpawnData.bIsHostile = bDefaultRemoteHostile;
+		HandleEntitySpawn(SpawnData);
 		if (const TWeakObjectPtr<AActor>* Spawned = EntityActors.Find(Update.EntityId))
 		{
 			TargetActor = Spawned->Get();

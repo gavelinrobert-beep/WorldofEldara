@@ -365,6 +365,7 @@ public class NPCEntity : Entity
         if (NetworkServer == null) return;
 
         var metadata = CombatEventMetadata.Create(ServerTimeProvider?.Invoke());
+        var remainingHealth = target.CharacterData.Stats.CurrentHealth;
         var damage = new CombatPackets.DamagePacket
         {
             SourceEntityId = EntityId,
@@ -373,8 +374,8 @@ public class NPCEntity : Entity
             DamageType = NpcDamageType,
             Amount = damageAmount,
             IsCritical = false,
-            RemainingHealth = target.CharacterData.Stats.CurrentHealth,
-            IsFatal = target.CharacterData.Stats.CurrentHealth <= 0,
+            RemainingHealth = remainingHealth,
+            IsFatal = remainingHealth <= 0,
             Metadata = metadata
         };
 
@@ -411,8 +412,10 @@ public class NPCEntity : Entity
         var target = EntityManager.GetEntitiesInRange(ZoneId, Position.X, Position.Y, Position.Z, AggroRange)
             .OfType<PlayerEntity>()
             .Where(player => player.CharacterData.Stats.CurrentHealth > 0)
-            .OrderBy(player => Distance(Position, player.Position))
-            .ThenBy(player => player.EntityId)
+            .Select(player => new { Player = player, Distance = Distance(Position, player.Position) })
+            .OrderBy(entry => entry.Distance)
+            .ThenBy(entry => entry.Player.EntityId)
+            .Select(entry => entry.Player)
             .FirstOrDefault();
 
         if (target == null) return;

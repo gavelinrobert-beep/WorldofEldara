@@ -95,12 +95,11 @@ public enum EntityType
     Pet
 }
 
-[MessagePackObject]
 public enum NPCState
 {
-    [Key(0)] Idle = 0,
-    [Key(1)] Patrol = 1,
-    [Key(2)] Combat = 2
+    Idle = 0,
+    Patrol = 1,
+    Combat = 2
 }
 
 [MessagePackObject]

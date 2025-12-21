@@ -667,9 +667,9 @@ public class ClientConnection
             return;
         }
 
-        if (!HasRequiredResources(player, ability, out var resourceMessage))
+        if (!HasRequiredResources(player, ability, out var resourceMessage, out var resourceCode))
         {
-            SendAbilityResult(ResponseCode.NotEnoughMana, player, ability.AbilityId, packet.InputSequence,
+            SendAbilityResult(resourceCode, player, ability.AbilityId, packet.InputSequence,
                 resourceMessage);
             return;
         }
@@ -738,15 +738,18 @@ public class ClientConnection
         };
     }
 
-    private bool HasRequiredResources(PlayerEntity caster, Ability ability, out string message)
+    private bool HasRequiredResources(PlayerEntity caster, Ability ability, out string message,
+        out ResponseCode responseCode)
     {
         message = string.Empty;
+        responseCode = ResponseCode.Success;
         if (ability.ManaCost <= 0) return true;
 
         var (current, _, label) = GetResourceSnapshot(caster);
         if (current >= ability.ManaCost) return true;
 
         message = $"Not enough {label}";
+        responseCode = label == "mana" ? ResponseCode.NotEnoughMana : ResponseCode.InsufficientResources;
         return false;
     }
 
@@ -779,7 +782,7 @@ public class ClientConnection
         {
             EResourceType.Mana => (caster.CharacterData.Stats.CurrentMana, ResourcePool.Mana, "mana"),
             EResourceType.Stamina => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "stamina"),
-            EResourceType.Rage => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "rage"),
+            EResourceType.Rage => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "rage"), // Shared physical pool until dedicated resources exist
             EResourceType.Energy => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "energy"),
             EResourceType.Focus => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "focus"),
             EResourceType.Corruption => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "corruption"),
@@ -879,15 +882,23 @@ public class ClientConnection
         if (target is PlayerEntity playerTarget)
         {
             reduction = damageType == DamageType.Physical
-                ? Math.Min(CombatConstants.MaxArmorReduction,
-                    playerTarget.CharacterData.Stats.Armor /
-                    (playerTarget.CharacterData.Stats.Armor + CombatConstants.ArmorMitigationConstant))
+                ? CalculateArmorReduction(playerTarget.CharacterData.Stats)
                 : playerTarget.CharacterData.Stats.Resistances.TryGetValue(damageType, out var res)
                     ? Math.Min(res, CombatConstants.MaxResistanceReduction)
                     : 0f;
         }
 
         return (int)Math.Max(0, rawAmount * (1 - reduction));
+    }
+
+    private static float CalculateArmorReduction(CharacterStats stats)
+    {
+        var armor = stats.Armor;
+        var denominator = armor + CombatConstants.ArmorMitigationConstant;
+        if (denominator <= 0) return 0f;
+
+        var reduction = armor / denominator;
+        return Math.Min(CombatConstants.MaxArmorReduction, reduction);
     }
 
     private void HandleEntityDeath(Entity target)

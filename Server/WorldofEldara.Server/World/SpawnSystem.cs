@@ -4,6 +4,7 @@ using WorldofEldara.Server.Core;
 using WorldofEldara.Shared.Data.Character;
 using WorldofEldara.Shared.Protocol.Packets;
 using System.Linq;
+using WorldofEldara.Shared.Data.Quest;
 
 namespace WorldofEldara.Server.World;
 
@@ -56,6 +57,7 @@ public class SpawnSystem
             ZoneId = "zone_thornveil_enclave",
             Position = new Vector3(0, 0, 0),
             NPCTemplateId = 1001,
+            OverrideName = "Elder Tharivol",
             RespawnTime = 30.0f,
             TimeSinceLastSpawn = 30.0f
         });
@@ -65,6 +67,7 @@ public class SpawnSystem
             ZoneId = "zone_temporal_steppes",
             Position = new Vector3(10, 5, 0),
             NPCTemplateId = 1002,
+            OverrideName = "Instructor Lethril",
             RespawnTime = 30.0f,
             TimeSinceLastSpawn = 30.0f
         });
@@ -74,6 +77,7 @@ public class SpawnSystem
             ZoneId = "zone_borderkeep",
             Position = new Vector3(-8, -4, 0),
             NPCTemplateId = 1003,
+            OverrideName = "Scout Maerith",
             RespawnTime = 30.0f,
             TimeSinceLastSpawn = 30.0f
         });
@@ -212,7 +216,8 @@ public class SpawnSystem
                 ZoneManager = _zoneManager,
                 TimeManager = _timeManager,
                 NetworkServer = _networkServer,
-                ServerTimeProvider = _serverTimeProvider
+                ServerTimeProvider = _serverTimeProvider,
+                IsQuestGiver = QuestCatalog.IsQuestNpc(spawnPoint.NPCTemplateId)
             };
 
             if (spawnPoint.PatrolPath.Any())

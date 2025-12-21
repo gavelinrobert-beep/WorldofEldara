@@ -35,6 +35,12 @@ namespace WorldofEldara.Shared.Protocol;
 [Union((int)PacketType.PlayerSpawn, typeof(WorldPackets.PlayerSpawnPacket))]
 [Union((int)PacketType.EntityDespawn, typeof(WorldPackets.EntityDespawnPacket))]
 [Union((int)PacketType.NPCStateUpdate, typeof(WorldPackets.NPCStateUpdatePacket))]
+[Union((int)PacketType.QuestAcceptRequest, typeof(QuestPackets.QuestAcceptRequest))]
+[Union((int)PacketType.QuestAcceptResponse, typeof(QuestPackets.QuestAcceptResponse))]
+[Union((int)PacketType.QuestProgressUpdate, typeof(QuestPackets.QuestProgressUpdate))]
+[Union((int)PacketType.QuestDialogueRequest, typeof(QuestPackets.QuestDialogueRequest))]
+[Union((int)PacketType.QuestDialogueResponse, typeof(QuestPackets.QuestDialogueResponse))]
+[Union((int)PacketType.QuestLogSnapshot, typeof(QuestPackets.QuestLogSnapshot))]
 public abstract class PacketBase
 {
     /// <summary>
@@ -102,10 +108,13 @@ public enum PacketType : ushort
     UnequipItem = 204,
 
     // Quest (250-299)
-    QuestAccept = 250,
-    QuestComplete = 251,
-    QuestUpdate = 252,
+    QuestAcceptRequest = 250,
+    QuestAcceptResponse = 251,
+    QuestProgressUpdate = 252,
     QuestAbandon = 253,
+    QuestDialogueRequest = 254,
+    QuestDialogueResponse = 255,
+    QuestLogSnapshot = 256,
 
     // Social (300-349)
     GroupInvite = 300,

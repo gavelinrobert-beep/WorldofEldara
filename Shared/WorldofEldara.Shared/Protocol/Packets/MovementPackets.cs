@@ -1,4 +1,5 @@
 using MessagePack;
+using WorldofEldara.Shared.Protocol;
 
 namespace WorldofEldara.Shared.Protocol.Packets;
 
@@ -60,6 +61,25 @@ public static class MovementPackets
         [Key(3)] public float AuthoritativeRotationYaw { get; set; }
 
         [Key(4)] public long ServerTimestamp { get; set; }
+    }
+
+    /// <summary>
+    ///     Lightweight authoritative state broadcast for sync (e.g., after teleport or prediction drift).
+    /// </summary>
+    [MessagePackObject]
+    public class MovementSyncPacket : PacketBase
+    {
+        [Key(0)] public ulong EntityId { get; set; }
+
+        [Key(1)] public Vector3 Position { get; set; }
+
+        [Key(2)] public Vector3 Velocity { get; set; }
+
+        [Key(3)] public MovementState State { get; set; }
+
+        [Key(4)] public long ServerTimestamp { get; set; }
+
+        [Key(5)] public string ProtocolVersion { get; set; } = ProtocolVersions.Current;
     }
 }
 

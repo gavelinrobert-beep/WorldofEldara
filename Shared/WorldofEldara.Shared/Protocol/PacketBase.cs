@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using MessagePack;
 using WorldofEldara.Shared.Protocol.Packets;
 
@@ -8,27 +9,31 @@ namespace WorldofEldara.Shared.Protocol;
 ///     Server is authoritative - client sends requests, server sends updates.
 /// </summary>
 [MessagePackObject]
-[Union(0, typeof(AuthPackets.LoginRequest))]
-[Union(1, typeof(AuthPackets.LoginResponse))]
-[Union(2, typeof(CharacterPackets.CharacterListRequest))]
-[Union(3, typeof(CharacterPackets.CharacterListResponse))]
-[Union(4, typeof(CharacterPackets.CreateCharacterRequest))]
-[Union(5, typeof(CharacterPackets.CreateCharacterResponse))]
-[Union(6, typeof(CharacterPackets.SelectCharacterRequest))]
-[Union(7, typeof(CharacterPackets.SelectCharacterResponse))]
-[Union(10, typeof(MovementPackets.MovementInputPacket))]
-[Union(11, typeof(MovementPackets.MovementUpdatePacket))]
-[Union(12, typeof(MovementPackets.PositionCorrectionPacket))]
-[Union(20, typeof(CombatPackets.UseAbilityRequest))]
-[Union(21, typeof(CombatPackets.AbilityResultPacket))]
-[Union(22, typeof(CombatPackets.DamagePacket))]
-[Union(23, typeof(CombatPackets.HealingPacket))]
-[Union(24, typeof(CombatPackets.StatusEffectPacket))]
-[Union(30, typeof(ChatPackets.ChatMessagePacket))]
-[Union(100, typeof(WorldPackets.EnterWorldPacket))]
-[Union(101, typeof(WorldPackets.LeaveWorldPacket))]
-[Union(102, typeof(WorldPackets.EntitySpawnPacket))]
-[Union(103, typeof(WorldPackets.EntityDespawnPacket))]
+[Union((int)PacketType.LoginRequest, typeof(AuthPackets.LoginRequest))]
+[Union((int)PacketType.LoginResponse, typeof(AuthPackets.LoginResponse))]
+[Union((int)PacketType.CharacterListRequest, typeof(CharacterPackets.CharacterListRequest))]
+[Union((int)PacketType.CharacterListResponse, typeof(CharacterPackets.CharacterListResponse))]
+[Union((int)PacketType.CreateCharacterRequest, typeof(CharacterPackets.CreateCharacterRequest))]
+[Union((int)PacketType.CreateCharacterResponse, typeof(CharacterPackets.CreateCharacterResponse))]
+[Union((int)PacketType.SelectCharacterRequest, typeof(CharacterPackets.SelectCharacterRequest))]
+[Union((int)PacketType.SelectCharacterResponse, typeof(CharacterPackets.SelectCharacterResponse))]
+[Union((int)PacketType.MovementInput, typeof(MovementPackets.MovementInputPacket))]
+[Union((int)PacketType.MovementUpdate, typeof(MovementPackets.MovementUpdatePacket))]
+[Union((int)PacketType.PositionCorrection, typeof(MovementPackets.PositionCorrectionPacket))]
+[Union((int)PacketType.MovementSync, typeof(MovementPackets.MovementSyncPacket))]
+[Union((int)PacketType.UseAbilityRequest, typeof(CombatPackets.UseAbilityRequest))]
+[Union((int)PacketType.AbilityResult, typeof(CombatPackets.AbilityResultPacket))]
+[Union((int)PacketType.Damage, typeof(CombatPackets.DamagePacket))]
+[Union((int)PacketType.Healing, typeof(CombatPackets.HealingPacket))]
+[Union((int)PacketType.StatusEffect, typeof(CombatPackets.StatusEffectPacket))]
+[Union((int)PacketType.ThreatUpdate, typeof(CombatPackets.ThreatUpdatePacket))]
+[Union((int)PacketType.CombatEvent, typeof(CombatPackets.CombatEventPacket))]
+[Union((int)PacketType.ChatMessage, typeof(ChatPackets.ChatMessagePacket))]
+[Union((int)PacketType.EnterWorld, typeof(WorldPackets.EnterWorldPacket))]
+[Union((int)PacketType.LeaveWorld, typeof(WorldPackets.LeaveWorldPacket))]
+[Union((int)PacketType.EntitySpawn, typeof(WorldPackets.EntitySpawnPacket))]
+[Union((int)PacketType.PlayerSpawn, typeof(WorldPackets.PlayerSpawnPacket))]
+[Union((int)PacketType.EntityDespawn, typeof(WorldPackets.EntityDespawnPacket))]
 public abstract class PacketBase
 {
     /// <summary>
@@ -65,6 +70,7 @@ public enum PacketType : ushort
     MovementInput = 10,
     MovementUpdate = 11,
     PositionCorrection = 12,
+    MovementSync = 13,
 
     // Combat (20-29)
     UseAbilityRequest = 20,
@@ -73,6 +79,7 @@ public enum PacketType : ushort
     Healing = 23,
     StatusEffect = 24,
     ThreatUpdate = 25,
+    CombatEvent = 26,
 
     // Chat (30-39)
     ChatMessage = 30,
@@ -83,6 +90,7 @@ public enum PacketType : ushort
     EntitySpawn = 102,
     EntityDespawn = 103,
     EntityUpdate = 104,
+    PlayerSpawn = 105,
 
     // Inventory (200-249)
     InventoryUpdate = 200,
@@ -108,6 +116,16 @@ public enum PacketType : ushort
     ServerHeartbeat = 1000,
     ServerShutdown = 1001,
     ServerError = 1002
+}
+
+/// <summary>
+///     Protocol versioning helper to keep client/server aligned.
+/// </summary>
+public static class ProtocolVersions
+{
+    public const string Current = "1.0.0";
+
+    public static readonly IReadOnlyList<string> Supported = new[] { Current };
 }
 
 /// <summary>

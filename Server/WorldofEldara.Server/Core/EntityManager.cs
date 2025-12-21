@@ -166,8 +166,10 @@ public class PlayerEntity : Entity
 {
     private const float CombatTimeoutSeconds = 5.0f;
     private const float OutOfCombatRegenRatePercent = 0.01f;
+    private const float OutOfCombatRegenTickSeconds = 0.5f;
     private float _healthRegenBuffer;
     private float _timeSinceCombat;
+    private float _regenTickTimer;
 
     public ulong AccountId { get; set; }
     public CharacterData CharacterData { get; set; } = new();
@@ -199,6 +201,7 @@ public class PlayerEntity : Entity
         if (IsInCombat)
         {
             _timeSinceCombat += deltaTime;
+            _regenTickTimer = 0f;
             if (_timeSinceCombat >= CombatTimeoutSeconds)
             {
                 IsInCombat = false;
@@ -207,14 +210,20 @@ public class PlayerEntity : Entity
         }
         else
         {
-            var regenRate = Math.Max(1f, CharacterData.Stats.MaxHealth * OutOfCombatRegenRatePercent);
-            _healthRegenBuffer += regenRate * deltaTime;
-            var healAmount = (int)_healthRegenBuffer;
-            if (healAmount > 0)
+            _regenTickTimer += deltaTime;
+            if (_regenTickTimer >= OutOfCombatRegenTickSeconds)
             {
-                CharacterData.Stats.CurrentHealth =
-                    Math.Min(CharacterData.Stats.MaxHealth, CharacterData.Stats.CurrentHealth + healAmount);
-                _healthRegenBuffer -= healAmount;
+                var regenRate = Math.Max(1f, CharacterData.Stats.MaxHealth * OutOfCombatRegenRatePercent);
+                _healthRegenBuffer += regenRate * OutOfCombatRegenTickSeconds;
+                var healAmount = (int)_healthRegenBuffer;
+                if (healAmount > 0)
+                {
+                    CharacterData.Stats.CurrentHealth =
+                        Math.Min(CharacterData.Stats.MaxHealth, CharacterData.Stats.CurrentHealth + healAmount);
+                    _healthRegenBuffer -= healAmount;
+                }
+
+                _regenTickTimer -= OutOfCombatRegenTickSeconds;
             }
         }
     }

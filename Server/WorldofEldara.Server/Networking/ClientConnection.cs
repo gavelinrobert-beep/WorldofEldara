@@ -743,54 +743,54 @@ public class ClientConnection
         message = string.Empty;
         if (ability.ManaCost <= 0) return true;
 
-        var cost = ability.ManaCost;
+        var (current, _, label) = GetResourceSnapshot(caster);
+        if (current >= ability.ManaCost) return true;
 
-        switch (caster.ResourceType)
-        {
-            case EResourceType.Mana:
-                if (caster.CharacterData.Stats.CurrentMana >= cost) return true;
-                message = "Not enough mana";
-                return false;
-            case EResourceType.Stamina:
-            case EResourceType.Rage:
-            case EResourceType.Energy:
-            case EResourceType.Focus:
-            case EResourceType.Corruption:
-                if (caster.CharacterData.Stats.CurrentStamina >= cost) return true;
-                message = "Not enough stamina";
-                return false;
-            default:
-                if (caster.CharacterData.Stats.CurrentMana >= cost) return true;
-                message = "Not enough resources";
-                return false;
-        }
+        message = $"Not enough {label}";
+        return false;
     }
 
     private void ConsumeResources(PlayerEntity caster, Ability ability)
     {
         if (ability.ManaCost <= 0) return;
 
-        var cost = ability.ManaCost;
+        var (_, pool, _) = GetResourceSnapshot(caster);
+        SpendResource(caster, pool, ability.ManaCost);
+    }
 
-        switch (caster.ResourceType)
+    private static void SpendResource(PlayerEntity caster, ResourcePool pool, int cost)
+    {
+        switch (pool)
         {
-            case EResourceType.Mana:
+            case ResourcePool.Mana:
                 caster.CharacterData.Stats.CurrentMana =
                     Math.Max(0, caster.CharacterData.Stats.CurrentMana - cost);
                 break;
-            case EResourceType.Stamina:
-            case EResourceType.Rage:
-            case EResourceType.Energy:
-            case EResourceType.Focus:
-            case EResourceType.Corruption:
+            case ResourcePool.Stamina:
                 caster.CharacterData.Stats.CurrentStamina =
                     Math.Max(0, caster.CharacterData.Stats.CurrentStamina - cost);
                 break;
-            default:
-                caster.CharacterData.Stats.CurrentMana =
-                    Math.Max(0, caster.CharacterData.Stats.CurrentMana - cost);
-                break;
         }
+    }
+
+    private (int current, ResourcePool pool, string label) GetResourceSnapshot(PlayerEntity caster)
+    {
+        return caster.ResourceType switch
+        {
+            EResourceType.Mana => (caster.CharacterData.Stats.CurrentMana, ResourcePool.Mana, "mana"),
+            EResourceType.Stamina => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "stamina"),
+            EResourceType.Rage => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "rage"),
+            EResourceType.Energy => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "energy"),
+            EResourceType.Focus => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "focus"),
+            EResourceType.Corruption => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "corruption"),
+            _ => (caster.CharacterData.Stats.CurrentMana, ResourcePool.Mana, "resources")
+        };
+    }
+
+    private enum ResourcePool
+    {
+        Mana,
+        Stamina
     }
 
     private void ExecuteAbility(PlayerEntity caster, Entity target, Ability ability, DateTime now,

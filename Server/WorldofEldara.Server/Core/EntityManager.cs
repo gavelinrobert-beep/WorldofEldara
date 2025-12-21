@@ -1,8 +1,10 @@
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 using Serilog;
 using WorldofEldara.Server.World;
 using WorldofEldara.Shared.Data.Character;
+using WorldofEldara.Shared.Data.Combat;
 using WorldofEldara.Shared.Protocol.Packets;
 
 namespace WorldofEldara.Server.Core;
@@ -175,11 +177,16 @@ public class PlayerEntity : Entity
     public CharacterData CharacterData { get; set; } = new();
     public DateTime LastInputTime { get; set; }
     public uint LastProcessedInputSequence { get; set; }
+    public HashSet<int> KnownAbilities { get; } = new();
+    public Dictionary<int, DateTime> AbilityCooldowns { get; } = new();
+    public DateTime GlobalCooldownEnd { get; set; }
+    public EResourceType ResourceType { get; set; }
 
     // Combat state
     public ulong? TargetEntityId { get; set; }
     public bool IsInCombat { get; set; }
     public DateTime LastCombatTime { get; set; }
+    public bool IsAlive => CharacterData.Stats.CurrentHealth > 0;
 
     // Network
     public object? ClientConnection { get; set; } // Reference to network connection

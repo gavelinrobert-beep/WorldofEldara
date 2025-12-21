@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using Serilog;
@@ -224,6 +225,8 @@ public class NetworkServer
             if (entity is PlayerEntity player)
             {
                 spawnPacket.CharacterData = player.CharacterData;
+                spawnPacket.Resources = ResourceSnapshot.FromStats(player.CharacterData.Stats);
+                spawnPacket.AbilityIds = player.KnownAbilities.ToList();
             }
             else if (entity is NPCEntity npc)
             {

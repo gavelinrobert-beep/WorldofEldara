@@ -410,7 +410,7 @@ public class ClientConnection
             return;
         }
 
-        ApplyClassArchetype(character);
+        var archetype = ApplyClassArchetype(character);
         character.LastPlayedAt = DateTime.UtcNow;
 
         // Create player entity in world
@@ -422,8 +422,11 @@ public class ClientConnection
             Name = character.Name,
             ZoneId = character.Position.ZoneId,
             Position = new Vector3(character.Position.X, character.Position.Y, character.Position.Z),
-            ClientConnection = this
+            ClientConnection = this,
+            ResourceType = archetype.ResourceType
         };
+        playerEntity.KnownAbilities.UnionWith(archetype.StartingAbilityIds);
+        playerEntity.GlobalCooldownEnd = DateTime.UtcNow;
 
         _worldSimulation.Entities.AddEntity(playerEntity);
         PlayerEntityId = playerEntity.EntityId;
@@ -446,6 +449,19 @@ public class ClientConnection
             ServerTime = _worldSimulation.GetServerTimestamp()
         };
         SendPacket(MessagePackSerializer.Serialize<PacketBase>(enterWorld));
+
+        var playerSnapshot = CharacterSnapshot.FromCharacter(character, playerEntity.KnownAbilities.ToList());
+        var abilitySummaries = playerEntity.KnownAbilities
+            .Select(id => AbilitySummary.From(AbilityBook.GetAbility(id)))
+            .ToList();
+        SendPacket(MessagePackSerializer.Serialize<PacketBase>(new WorldPackets.PlayerSpawnPacket
+        {
+            Character = playerSnapshot,
+            Resources = ResourceSnapshot.FromStats(character.Stats),
+            ZoneId = character.Position.ZoneId,
+            ServerTime = _worldSimulation.GetServerTimestamp(),
+            Abilities = abilitySummaries
+        }));
 
         // Send existing entities in the same zone to the player for initial sync
         foreach (var entity in _worldSimulation.Entities.GetEntitiesInZone(playerEntity.ZoneId)
@@ -566,10 +582,17 @@ public class ClientConnection
     {
         if (!PlayerEntityId.HasValue) return;
 
-        Log.Debug($"Player [{ConnectionId}] using ability {packet.AbilityId}");
-
         var player = _worldSimulation.Entities.GetEntity(PlayerEntityId.Value) as PlayerEntity;
         if (player == null) return;
+
+        if (!player.IsAlive)
+        {
+            SendAbilityResult(ResponseCode.InvalidRequest, player, packet.AbilityId, packet.InputSequence,
+                "You are dead");
+            return;
+        }
+
+        Log.Debug($"Player [{ConnectionId}] using ability {packet.AbilityId}");
 
         Ability ability;
         try
@@ -578,64 +601,80 @@ public class ClientConnection
         }
         catch (KeyNotFoundException)
         {
-            SendPacket(MessagePackSerializer.Serialize<PacketBase>(new CombatPackets.AbilityResultPacket
-            {
-                Result = ResponseCode.InvalidRequest,
-                CasterEntityId = player.EntityId,
-                AbilityId = packet.AbilityId,
-                InputSequence = packet.InputSequence,
-                Message = "Unknown ability"
-            }));
+            SendAbilityResult(ResponseCode.InvalidRequest, player, packet.AbilityId, packet.InputSequence,
+                "Unknown ability");
             return;
         }
 
-        var target = packet.TargetEntityId.HasValue
-            ? _worldSimulation.Entities.GetEntity(packet.TargetEntityId.Value)
-            : null;
-
-        if (target == null)
+        if (ability.AllowedClasses.Count > 0 && !ability.AllowedClasses.Contains(player.CharacterData.Class))
         {
-            SendPacket(MessagePackSerializer.Serialize<PacketBase>(new CombatPackets.AbilityResultPacket
-            {
-                Result = ResponseCode.InvalidTarget,
-                CasterEntityId = player.EntityId,
-                AbilityId = packet.AbilityId,
-                InputSequence = packet.InputSequence,
-                Message = "No valid target"
-            }));
+            SendAbilityResult(ResponseCode.InvalidRequest, player, ability.AbilityId, packet.InputSequence,
+                "Class cannot use this ability");
+            return;
+        }
+
+        if (player.CharacterData.Level < ability.RequiredLevel)
+        {
+            SendAbilityResult(ResponseCode.InvalidRequest, player, ability.AbilityId, packet.InputSequence,
+                "Level too low");
+            return;
+        }
+
+        if (!player.KnownAbilities.Contains(ability.AbilityId))
+        {
+            SendAbilityResult(ResponseCode.InvalidRequest, player, ability.AbilityId, packet.InputSequence,
+                "Ability not known");
+            return;
+        }
+
+        var target = ResolveTarget(player, ability, packet);
+        if (target == null || target.ZoneId != player.ZoneId)
+        {
+            SendAbilityResult(ResponseCode.InvalidTarget, player, ability.AbilityId, packet.InputSequence,
+                "No valid target");
+            return;
+        }
+
+        if (!IsTargetAlive(target))
+        {
+            SendAbilityResult(ResponseCode.InvalidTarget, player, ability.AbilityId, packet.InputSequence,
+                "Target already defeated");
             return;
         }
 
         var distance = Distance(player.Position, target.Position);
         if (distance > ability.Range)
         {
-            SendPacket(MessagePackSerializer.Serialize<PacketBase>(new CombatPackets.AbilityResultPacket
-            {
-                Result = ResponseCode.NotInRange,
-                CasterEntityId = player.EntityId,
-                AbilityId = packet.AbilityId,
-                InputSequence = packet.InputSequence,
-                Message = "Target out of range"
-            }));
+            SendAbilityResult(ResponseCode.NotInRange, player, ability.AbilityId, packet.InputSequence,
+                "Target out of range");
             return;
         }
 
-        player.MarkCombatEngaged();
-
-        var isCrit = Random.Shared.NextDouble() < player.CharacterData.Stats.CriticalChance;
-        var damage = ability.CalculateValue(player.CharacterData.Stats, isCrit);
-
-        ApplyDamage(target, damage, ability.DamageType, isCrit, ability.AbilityId);
-
-        var result = new CombatPackets.AbilityResultPacket
+        var now = DateTime.UtcNow;
+        if (ability.TriggersGlobalCooldown && player.GlobalCooldownEnd > now)
         {
-            Result = ResponseCode.Success,
-            CasterEntityId = player.EntityId,
-            AbilityId = packet.AbilityId,
-            InputSequence = packet.InputSequence,
-            Message = "Ability executed"
-        };
-        SendPacket(MessagePackSerializer.Serialize<PacketBase>(result));
+            var remaining = (player.GlobalCooldownEnd - now).TotalSeconds;
+            SendAbilityResult(ResponseCode.OnCooldown, player, ability.AbilityId, packet.InputSequence,
+                $"Global cooldown ({remaining:F1}s)");
+            return;
+        }
+
+        if (player.AbilityCooldowns.TryGetValue(ability.AbilityId, out var readyAt) && readyAt > now)
+        {
+            var remaining = (readyAt - now).TotalSeconds;
+            SendAbilityResult(ResponseCode.OnCooldown, player, ability.AbilityId, packet.InputSequence,
+                $"Cooldown ({remaining:F1}s)");
+            return;
+        }
+
+        if (!HasRequiredResources(player, ability, out var resourceMessage, out var resourceCode))
+        {
+            SendAbilityResult(resourceCode, player, ability.AbilityId, packet.InputSequence,
+                resourceMessage);
+            return;
+        }
+
+        ExecuteAbility(player, target, ability, now, packet.InputSequence);
     }
 
     private void HandleChatMessage(ChatPackets.ChatMessagePacket packet)
@@ -682,61 +721,267 @@ public class ClientConnection
         return (float)Math.Sqrt(dx * dx + dy * dy + dz * dz);
     }
 
-    private void ApplyDamage(Entity target, int amount, DamageType damageType, bool isCrit, int abilityId)
+    private Entity? ResolveTarget(PlayerEntity caster, Ability ability, CombatPackets.UseAbilityRequest packet)
     {
-        if (target is PlayerEntity playerTarget)
+        if (ability.TargetType == TargetType.Self) return caster;
+        if (!packet.TargetEntityId.HasValue) return null;
+        return _worldSimulation.Entities.GetEntity(packet.TargetEntityId.Value);
+    }
+
+    private static bool IsTargetAlive(Entity target)
+    {
+        return target switch
         {
-            playerTarget.MarkCombatEngaged();
-            playerTarget.CharacterData.Stats.CurrentHealth =
-                Math.Max(0, playerTarget.CharacterData.Stats.CurrentHealth - amount);
+            PlayerEntity player => player.CharacterData.Stats.CurrentHealth > 0,
+            NPCEntity npc => npc.CurrentHealth > 0,
+            _ => true
+        };
+    }
 
-            BroadcastDamage(playerTarget.EntityId, amount, damageType, isCrit,
-                playerTarget.CharacterData.Stats.CurrentHealth, playerTarget.ZoneId, abilityId);
+    private bool HasRequiredResources(PlayerEntity caster, Ability ability, out string message,
+        out ResponseCode responseCode)
+    {
+        message = string.Empty;
+        responseCode = ResponseCode.Success;
+        if (ability.ManaCost <= 0) return true;
 
-            if (playerTarget.CharacterData.Stats.CurrentHealth <= 0)
-            {
-                _worldSimulation.Entities.RemoveEntity(playerTarget.EntityId);
-            }
-        }
-        else if (target is NPCEntity npc)
+        var (current, _, label) = GetResourceSnapshot(caster);
+        if (current >= ability.ManaCost) return true;
+
+        message = $"Not enough {label}";
+        responseCode = label == "mana" ? ResponseCode.NotEnoughMana : ResponseCode.InsufficientResources;
+        return false;
+    }
+
+    private void ConsumeResources(PlayerEntity caster, Ability ability)
+    {
+        if (ability.ManaCost <= 0) return;
+
+        var (_, pool, _) = GetResourceSnapshot(caster);
+        SpendResource(caster, pool, ability.ManaCost);
+    }
+
+    private static void SpendResource(PlayerEntity caster, ResourcePool pool, int cost)
+    {
+        switch (pool)
         {
-            if (PlayerEntityId.HasValue)
-            {
-                npc.TargetEntityId = PlayerEntityId.Value;
-                npc.AIState = NPCAIState.Combat;
-            }
-            npc.CurrentHealth = Math.Max(0, npc.CurrentHealth - amount);
-            BroadcastDamage(npc.EntityId, amount, damageType, isCrit, npc.CurrentHealth, npc.ZoneId, abilityId);
-
-            if (npc.CurrentHealth <= 0)
-            {
-                _worldSimulation.Entities.RemoveEntity(npc.EntityId);
-            }
+            case ResourcePool.Mana:
+                caster.CharacterData.Stats.CurrentMana =
+                    Math.Max(0, caster.CharacterData.Stats.CurrentMana - cost);
+                break;
+            case ResourcePool.Stamina:
+                caster.CharacterData.Stats.CurrentStamina =
+                    Math.Max(0, caster.CharacterData.Stats.CurrentStamina - cost);
+                break;
         }
     }
 
-    private void BroadcastDamage(ulong targetId, int amount, DamageType damageType, bool isCrit, int remainingHealth,
-        string zoneId, int abilityId)
+    private (int current, ResourcePool pool, string label) GetResourceSnapshot(PlayerEntity caster)
     {
-        var packet = new CombatPackets.DamagePacket
+        return caster.ResourceType switch
         {
-            SourceEntityId = PlayerEntityId ?? 0,
+            EResourceType.Mana => (caster.CharacterData.Stats.CurrentMana, ResourcePool.Mana, "mana"),
+            EResourceType.Stamina => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "stamina"),
+            EResourceType.Rage => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "rage"), // Shared physical pool until dedicated resources exist
+            EResourceType.Energy => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "energy"),
+            EResourceType.Focus => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "focus"),
+            EResourceType.Corruption => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "corruption"),
+            _ => (caster.CharacterData.Stats.CurrentMana, ResourcePool.Mana, "resources")
+        };
+    }
+
+    private enum ResourcePool
+    {
+        Mana,
+        Stamina
+    }
+
+    private void ExecuteAbility(PlayerEntity caster, Entity target, Ability ability, DateTime now,
+        uint inputSequence)
+    {
+        caster.TargetEntityId = target.EntityId;
+
+        ConsumeResources(caster, ability);
+        if (ability.Cooldown > 0) caster.AbilityCooldowns[ability.AbilityId] = now.AddSeconds(ability.Cooldown);
+        if (ability.TriggersGlobalCooldown)
+        {
+            var gcd = ability.GlobalCooldown > 0 ? ability.GlobalCooldown : CombatConstants.DefaultGlobalCooldown;
+            caster.GlobalCooldownEnd = now.AddSeconds(gcd);
+        }
+
+        caster.MarkCombatEngaged();
+        if (target is PlayerEntity targetPlayer) targetPlayer.MarkCombatEngaged();
+
+        var isCrit = ability.CanCrit && Random.Shared.NextDouble() < caster.CharacterData.Stats.CriticalChance;
+        var value = ability.CalculateValue(caster.CharacterData.Stats, isCrit);
+
+        switch (ability.Type)
+        {
+            case AbilityType.Healing:
+                ApplyHealing(caster, target, value, isCrit, ability.AbilityId);
+                break;
+            case AbilityType.PhysicalDamage or AbilityType.MeleeDamage or AbilityType.SpellDamage:
+                ApplyDamage(caster, target, value, ability.DamageType, isCrit, ability.AbilityId);
+                break;
+        }
+
+        SendAbilityResult(ResponseCode.Success, caster, ability.AbilityId, inputSequence, "Ability executed");
+    }
+
+    private void ApplyDamage(PlayerEntity source, Entity target, int rawAmount, DamageType damageType, bool isCrit,
+        int abilityId)
+    {
+        if (target is NPCEntity npc)
+        {
+            npc.TargetEntityId ??= source.EntityId;
+            npc.AIState = NPCAIState.Combat;
+        }
+
+        var finalAmount = ApplyMitigation(target, damageType, rawAmount);
+
+        if (target is PlayerEntity playerTarget)
+        {
+            playerTarget.CharacterData.Stats.CurrentHealth =
+                Math.Max(0, playerTarget.CharacterData.Stats.CurrentHealth - finalAmount);
+            BroadcastDamage(source.EntityId, playerTarget.EntityId, finalAmount, damageType, isCrit,
+                playerTarget.CharacterData.Stats.CurrentHealth, playerTarget.ZoneId, abilityId);
+
+            if (playerTarget.CharacterData.Stats.CurrentHealth <= 0) HandleEntityDeath(playerTarget);
+        }
+        else if (target is NPCEntity npcTarget)
+        {
+            npcTarget.CurrentHealth = Math.Max(0, npcTarget.CurrentHealth - finalAmount);
+            BroadcastDamage(source.EntityId, npcTarget.EntityId, finalAmount, damageType, isCrit, npcTarget.CurrentHealth,
+                npcTarget.ZoneId, abilityId);
+            if (npcTarget.CurrentHealth <= 0) HandleEntityDeath(npcTarget);
+        }
+    }
+
+    private void ApplyHealing(PlayerEntity source, Entity target, int amount, bool isCrit, int abilityId)
+    {
+        if (target is PlayerEntity playerTarget)
+        {
+            playerTarget.CharacterData.Stats.CurrentHealth =
+                Math.Min(playerTarget.CharacterData.Stats.MaxHealth,
+                    playerTarget.CharacterData.Stats.CurrentHealth + amount);
+            BroadcastHealing(source.EntityId, playerTarget.EntityId, abilityId, amount, isCrit,
+                playerTarget.CharacterData.Stats.CurrentHealth, playerTarget.ZoneId);
+        }
+        else if (target is NPCEntity npcTarget)
+        {
+            npcTarget.CurrentHealth = Math.Min(npcTarget.MaxHealth, npcTarget.CurrentHealth + amount);
+            BroadcastHealing(source.EntityId, npcTarget.EntityId, abilityId, amount, isCrit, npcTarget.CurrentHealth,
+                npcTarget.ZoneId);
+        }
+    }
+
+    private static int ApplyMitigation(Entity target, DamageType damageType, int rawAmount)
+    {
+        var reduction = 0f;
+
+        if (target is PlayerEntity playerTarget)
+        {
+            reduction = damageType == DamageType.Physical
+                ? CalculateArmorReduction(playerTarget.CharacterData.Stats)
+                : playerTarget.CharacterData.Stats.Resistances.TryGetValue(damageType, out var res)
+                    ? Math.Min(res, CombatConstants.MaxResistanceReduction)
+                    : 0f;
+        }
+
+        return (int)Math.Max(0, rawAmount * (1 - reduction));
+    }
+
+    private static float CalculateArmorReduction(CharacterStats stats)
+    {
+        var armor = stats.Armor;
+        var denominator = armor + CombatConstants.ArmorMitigationConstant;
+        if (denominator <= 0) return 0f;
+
+        var reduction = armor / denominator;
+        return Math.Min(CombatConstants.MaxArmorReduction, reduction);
+    }
+
+    private void HandleEntityDeath(Entity target)
+    {
+        _worldSimulation.Entities.RemoveEntity(target.EntityId);
+    }
+
+    private void BroadcastDamage(ulong sourceId, ulong targetId, int amount, DamageType damageType, bool isCrit,
+        int remainingHealth, string zoneId, int abilityId)
+    {
+        var metadata = CombatEventMetadata.Create(_worldSimulation.GetServerTimestamp());
+        var damage = new CombatPackets.DamagePacket
+        {
+            SourceEntityId = sourceId,
             TargetEntityId = targetId,
             AbilityId = abilityId,
             DamageType = damageType,
             Amount = amount,
             IsCritical = isCrit,
             RemainingHealth = remainingHealth,
-            IsFatal = remainingHealth <= 0
+            IsFatal = remainingHealth <= 0,
+            Metadata = metadata
         };
 
-        _server.BroadcastToZone(zoneId, MessagePackSerializer.Serialize<PacketBase>(packet));
+        var combatEvent = new CombatPackets.CombatEventPacket
+        {
+            EventType = CombatEventType.Damage,
+            Metadata = metadata,
+            Damage = damage
+        };
+
+        BroadcastCombatEvent(combatEvent, zoneId);
     }
 
-    private static void ApplyClassArchetype(CharacterData character)
+    private void BroadcastHealing(ulong sourceId, ulong targetId, int abilityId, int amount, bool isCrit,
+        int remainingHealth, string zoneId)
+    {
+        var metadata = CombatEventMetadata.Create(_worldSimulation.GetServerTimestamp());
+        var healing = new CombatPackets.HealingPacket
+        {
+            SourceEntityId = sourceId,
+            TargetEntityId = targetId,
+            AbilityId = abilityId,
+            Amount = amount,
+            IsCritical = isCrit,
+            RemainingHealth = remainingHealth,
+            Metadata = metadata
+        };
+
+        var combatEvent = new CombatPackets.CombatEventPacket
+        {
+            EventType = CombatEventType.Healing,
+            Metadata = metadata,
+            Healing = healing
+        };
+
+        BroadcastCombatEvent(combatEvent, zoneId);
+    }
+
+    private void BroadcastCombatEvent(CombatPackets.CombatEventPacket combatEvent, string zoneId)
+    {
+        _server.BroadcastToZone(zoneId, MessagePackSerializer.Serialize<PacketBase>(combatEvent));
+    }
+
+    private void SendAbilityResult(ResponseCode code, PlayerEntity caster, int abilityId, uint inputSequence,
+        string message)
+    {
+        var result = new CombatPackets.AbilityResultPacket
+        {
+            Result = code,
+            CasterEntityId = caster.EntityId,
+            AbilityId = abilityId,
+            InputSequence = inputSequence,
+            Message = message
+        };
+        SendPacket(MessagePackSerializer.Serialize<PacketBase>(result));
+    }
+
+    private static ClassArchetype ApplyClassArchetype(CharacterData character)
     {
         var archetype = ClassArchetypes.Get(ClassArchetypes.MapToArchetype(character.Class));
         character.Stats = CloneStats(archetype.BaseStats);
+        return archetype;
     }
 
     private static ulong GenerateCharacterId()
@@ -773,7 +1018,9 @@ public class ClientConnection
             CriticalDamage = source.CriticalDamage,
             Armor = source.Armor,
             Resistances = new Dictionary<DamageType, float>(source.Resistances),
-            MovementSpeed = source.MovementSpeed
+            MovementSpeed = source.MovementSpeed,
+            MaxStamina = source.MaxStamina,
+            CurrentStamina = source.CurrentStamina
         };
     }
 }

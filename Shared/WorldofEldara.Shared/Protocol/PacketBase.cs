@@ -156,6 +156,7 @@ public enum ResponseCode : byte
     OnCooldown = 22,
     Interrupted = 23,
     InvalidTarget = 24,
+    InsufficientResources = 25,
 
     // Lore-specific errors
     LoreInconsistency = 100 // Attempted action violates lore (e.g., wrong race-class combo)

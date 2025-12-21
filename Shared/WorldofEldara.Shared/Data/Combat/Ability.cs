@@ -201,6 +201,7 @@ public static class CombatConstants
     public const float MeleeRange = 5.0f;
     public const float MaxSpellRange = 40.0f;
     public const float MaxTargetRange = 50.0f;
+    public const float ArmorMitigationConstant = 400.0f;
 
     // Damage reduction caps
     public const float MaxArmorReduction = 0.75f; // 75% max physical reduction

@@ -1,3 +1,4 @@
+using System;
 using Serilog;
 using WorldofEldara.Server.Core;
 using WorldofEldara.Shared.Data.Character;
@@ -16,14 +17,17 @@ public class SpawnSystem
     private readonly List<SpawnPoint> _spawnPoints = new();
     private readonly ZoneManager _zoneManager;
     private readonly TimeManager _timeManager;
+    private readonly Func<long> _serverTimeProvider;
     private readonly object _spawnLock = new();
     private Networking.NetworkServer? _networkServer;
 
-    public SpawnSystem(EntityManager entityManager, ZoneManager zoneManager, TimeManager timeManager)
+    public SpawnSystem(EntityManager entityManager, ZoneManager zoneManager, TimeManager timeManager,
+        Func<long> serverTimeProvider)
     {
         _entityManager = entityManager;
         _zoneManager = zoneManager;
         _timeManager = timeManager;
+        _serverTimeProvider = serverTimeProvider;
     }
 
     public void AttachNetworkServer(Networking.NetworkServer networkServer)
@@ -206,7 +210,9 @@ public class SpawnSystem
                 ActiveDuringNightOnly = spawnPoint.NightOnly,
                 EntityManager = _entityManager,
                 ZoneManager = _zoneManager,
-                TimeManager = _timeManager
+                TimeManager = _timeManager,
+                NetworkServer = _networkServer,
+                ServerTimeProvider = _serverTimeProvider
             };
 
             if (spawnPoint.PatrolPath.Any())

@@ -34,6 +34,7 @@ namespace WorldofEldara.Shared.Protocol;
 [Union((int)PacketType.EntitySpawn, typeof(WorldPackets.EntitySpawnPacket))]
 [Union((int)PacketType.PlayerSpawn, typeof(WorldPackets.PlayerSpawnPacket))]
 [Union((int)PacketType.EntityDespawn, typeof(WorldPackets.EntityDespawnPacket))]
+[Union((int)PacketType.NPCStateUpdate, typeof(WorldPackets.NPCStateUpdatePacket))]
 public abstract class PacketBase
 {
     /// <summary>
@@ -91,6 +92,7 @@ public enum PacketType : ushort
     EntityDespawn = 103,
     EntityUpdate = 104,
     PlayerSpawn = 105,
+    NPCStateUpdate = 106,
 
     // Inventory (200-249)
     InventoryUpdate = 200,

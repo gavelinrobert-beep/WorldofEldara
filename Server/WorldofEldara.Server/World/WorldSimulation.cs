@@ -35,7 +35,7 @@ public class WorldSimulation
         Entities = new EntityManager();
         Zones = new ZoneManager();
         _timeManager = new TimeManager();
-        _spawnSystem = new SpawnSystem(Entities, Zones, _timeManager);
+        _spawnSystem = new SpawnSystem(Entities, Zones, _timeManager, GetServerTimestamp);
 
         Log.Information($"World Simulation initialized at {_tickRate} TPS (Δt = {_tickDelta:F4}s)");
     }

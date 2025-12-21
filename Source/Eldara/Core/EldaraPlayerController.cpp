@@ -1,6 +1,7 @@
 #include "EldaraPlayerController.h"
 #include "Eldara/Data/EldaraCharacterCreatePayload.h"
 #include "Eldara/Data/EldaraQuestData.h"
+#include "Eldara/Networking/EldaraNetworkSubsystem.h"
 
 AEldaraPlayerController::AEldaraPlayerController()
 {
@@ -11,6 +12,35 @@ void AEldaraPlayerController::BeginPlay()
 	Super::BeginPlay();
 	
 	UE_LOG(LogTemp, Log, TEXT("EldaraPlayerController: Player controller started"));
+}
+
+void AEldaraPlayerController::PlayerTick(float DeltaTime)
+{
+	Super::PlayerTick(DeltaTime);
+
+	UEldaraNetworkSubsystem* Network = GetGameInstance()
+		? GetGameInstance()->GetSubsystem<UEldaraNetworkSubsystem>()
+		: nullptr;
+	if (!Network)
+	{
+		return;
+	}
+
+	APawn* ControlledPawn = GetPawn();
+	if (!ControlledPawn)
+	{
+		return;
+	}
+
+	const FVector InputVector = ControlledPawn->GetLastMovementInputVector();
+	if (InputVector.IsNearlyZero(0.001f))
+	{
+		return;
+	}
+
+	const FVector PawnLocation = ControlledPawn->GetActorLocation();
+	const FRotator ControlRot = GetControlRotation();
+	Network->SendMovementInput(FVector2D(InputVector.X, InputVector.Y), ControlRot, DeltaTime, PawnLocation);
 }
 
 void AEldaraPlayerController::RequestQuestAccept(UEldaraQuestData* QuestData)

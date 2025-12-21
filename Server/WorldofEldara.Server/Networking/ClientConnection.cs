@@ -667,10 +667,10 @@ public class ClientConnection
             return;
         }
 
-        if (ability.ManaCost > 0 && player.CharacterData.Stats.CurrentMana < ability.ManaCost)
+        if (!HasRequiredResources(player, ability, out var resourceMessage))
         {
             SendAbilityResult(ResponseCode.NotEnoughMana, player, ability.AbilityId, packet.InputSequence,
-                "Not enough mana");
+                resourceMessage);
             return;
         }
 
@@ -738,12 +738,67 @@ public class ClientConnection
         };
     }
 
+    private bool HasRequiredResources(PlayerEntity caster, Ability ability, out string message)
+    {
+        message = string.Empty;
+        if (ability.ManaCost <= 0) return true;
+
+        var cost = ability.ManaCost;
+
+        switch (caster.ResourceType)
+        {
+            case EResourceType.Mana:
+                if (caster.CharacterData.Stats.CurrentMana >= cost) return true;
+                message = "Not enough mana";
+                return false;
+            case EResourceType.Stamina:
+            case EResourceType.Rage:
+            case EResourceType.Energy:
+            case EResourceType.Focus:
+            case EResourceType.Corruption:
+                if (caster.CharacterData.Stats.CurrentStamina >= cost) return true;
+                message = "Not enough stamina";
+                return false;
+            default:
+                if (caster.CharacterData.Stats.CurrentMana >= cost) return true;
+                message = "Not enough resources";
+                return false;
+        }
+    }
+
+    private void ConsumeResources(PlayerEntity caster, Ability ability)
+    {
+        if (ability.ManaCost <= 0) return;
+
+        var cost = ability.ManaCost;
+
+        switch (caster.ResourceType)
+        {
+            case EResourceType.Mana:
+                caster.CharacterData.Stats.CurrentMana =
+                    Math.Max(0, caster.CharacterData.Stats.CurrentMana - cost);
+                break;
+            case EResourceType.Stamina:
+            case EResourceType.Rage:
+            case EResourceType.Energy:
+            case EResourceType.Focus:
+            case EResourceType.Corruption:
+                caster.CharacterData.Stats.CurrentStamina =
+                    Math.Max(0, caster.CharacterData.Stats.CurrentStamina - cost);
+                break;
+            default:
+                caster.CharacterData.Stats.CurrentMana =
+                    Math.Max(0, caster.CharacterData.Stats.CurrentMana - cost);
+                break;
+        }
+    }
+
     private void ExecuteAbility(PlayerEntity caster, Entity target, Ability ability, DateTime now,
         uint inputSequence)
     {
         caster.TargetEntityId = target.EntityId;
 
-        if (ability.ManaCost > 0) caster.CharacterData.Stats.CurrentMana -= ability.ManaCost;
+        ConsumeResources(caster, ability);
         if (ability.Cooldown > 0) caster.AbilityCooldowns[ability.AbilityId] = now.AddSeconds(ability.Cooldown);
         if (ability.TriggersGlobalCooldown)
         {

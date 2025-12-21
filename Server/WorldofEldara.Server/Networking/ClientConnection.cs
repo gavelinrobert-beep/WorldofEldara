@@ -780,7 +780,6 @@ public class ClientConnection
         }
 
         var finalAmount = ApplyMitigation(target, damageType, rawAmount);
-        if (finalAmount < 0) finalAmount = 0;
 
         if (target is PlayerEntity playerTarget)
         {
@@ -827,7 +826,7 @@ public class ClientConnection
             reduction = damageType == DamageType.Physical
                 ? Math.Min(CombatConstants.MaxArmorReduction,
                     playerTarget.CharacterData.Stats.Armor /
-                    (playerTarget.CharacterData.Stats.Armor + 400f))
+                    (playerTarget.CharacterData.Stats.Armor + CombatConstants.ArmorMitigationConstant))
                 : playerTarget.CharacterData.Stats.Resistances.TryGetValue(damageType, out var res)
                     ? Math.Min(res, CombatConstants.MaxResistanceReduction)
                     : 0f;

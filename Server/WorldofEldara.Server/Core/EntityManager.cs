@@ -165,6 +165,7 @@ public abstract class Entity
 public class PlayerEntity : Entity
 {
     private const float CombatTimeoutSeconds = 5.0f;
+    private const float OutOfCombatRegenRatePercent = 0.01f;
     private float _healthRegenBuffer;
     private float _timeSinceCombat;
 
@@ -206,7 +207,7 @@ public class PlayerEntity : Entity
         }
         else
         {
-            var regenRate = Math.Max(1f, CharacterData.Stats.MaxHealth * 0.01f);
+            var regenRate = Math.Max(1f, CharacterData.Stats.MaxHealth * OutOfCombatRegenRatePercent);
             _healthRegenBuffer += regenRate * deltaTime;
             var healAmount = (int)_healthRegenBuffer;
             if (healAmount > 0)
@@ -226,6 +227,9 @@ public class NPCEntity : Entity
 {
     private const float CombatResetSeconds = 6.0f;
     private const float TargetScanIntervalSeconds = 0.5f;
+    private const float PatrolSpeedMultiplier = 0.6f;
+    private const int MinNpcDamage = 5;
+    private const int DamagePerLevel = 3;
     private float _attackTimer;
     private float _combatResetTimer;
     private float _patrolPauseTimer;
@@ -358,7 +362,7 @@ public class NPCEntity : Entity
             return;
         }
 
-        MoveTowards(waypoint, deltaTime, MovementSpeed * 0.6f);
+        MoveTowards(waypoint, deltaTime, MovementSpeed * PatrolSpeedMultiplier);
         MovementState = MovementState.Walking;
     }
 
@@ -400,7 +404,7 @@ public class NPCEntity : Entity
         if (_attackTimer >= AttackCooldown)
         {
             _attackTimer = 0f;
-            var damage = Math.Max(5, Level * 3);
+            var damage = Math.Max(MinNpcDamage, Level * DamagePerLevel);
             target.CharacterData.Stats.CurrentHealth =
                 Math.Max(0, target.CharacterData.Stats.CurrentHealth - damage);
             target.MarkCombatEngaged();

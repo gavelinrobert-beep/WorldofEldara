@@ -425,7 +425,7 @@ public class ClientConnection
             ClientConnection = this,
             ResourceType = archetype.ResourceType
         };
-        playerEntity.KnownAbilities.UnionWith(archetype.StartingAbilityIds);
+        playerEntity.KnownAbilities.UnionWith(ClassArchetypes.GetAbilitiesForLevel(character.Class, character.Level));
         playerEntity.GlobalCooldownEnd = DateTime.UtcNow;
 
         _worldSimulation.Entities.AddEntity(playerEntity);
@@ -785,7 +785,8 @@ public class ClientConnection
             EResourceType.Rage => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "rage"), // Shared physical pool until dedicated resources exist
             EResourceType.Energy => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "energy"),
             EResourceType.Focus => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "focus"),
-            EResourceType.Corruption => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "corruption"),
+            EResourceType.Corruption => (caster.CharacterData.Stats.CurrentMana, ResourcePool.Mana,
+                "corruption"), // Dominion magic currently uses the mana pool until a bespoke corruption resource exists
             _ => (caster.CharacterData.Stats.CurrentMana, ResourcePool.Mana, "resources")
         };
     }
@@ -979,8 +980,8 @@ public class ClientConnection
 
     private static ClassArchetype ApplyClassArchetype(CharacterData character)
     {
-        var archetype = ClassArchetypes.Get(ClassArchetypes.MapToArchetype(character.Class));
-        character.Stats = CloneStats(archetype.BaseStats);
+        var archetype = ClassArchetypes.Get(character.Class);
+        character.Stats = ClassArchetypes.BuildStatsForLevel(character.Class, character.Level);
         return archetype;
     }
 
@@ -999,28 +1000,4 @@ public class ClientConnection
         return name.All(c => GameConstants.NameAllowedCharacters.Contains(c));
     }
 
-    private static CharacterStats CloneStats(CharacterStats source)
-    {
-        return new CharacterStats
-        {
-            Strength = source.Strength,
-            Agility = source.Agility,
-            Intellect = source.Intellect,
-            Stamina = source.Stamina,
-            Willpower = source.Willpower,
-            MaxHealth = source.MaxHealth,
-            CurrentHealth = source.CurrentHealth,
-            MaxMana = source.MaxMana,
-            CurrentMana = source.CurrentMana,
-            AttackPower = source.AttackPower,
-            SpellPower = source.SpellPower,
-            CriticalChance = source.CriticalChance,
-            CriticalDamage = source.CriticalDamage,
-            Armor = source.Armor,
-            Resistances = new Dictionary<DamageType, float>(source.Resistances),
-            MovementSpeed = source.MovementSpeed,
-            MaxStamina = source.MaxStamina,
-            CurrentStamina = source.CurrentStamina
-        };
-    }
 }

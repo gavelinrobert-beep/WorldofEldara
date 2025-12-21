@@ -314,8 +314,7 @@ public class NPCEntity : Entity
 
         var target = EntityManager.GetEntitiesInRange(ZoneId, Position.X, Position.Y, Position.Z, AggroRange)
             .OfType<PlayerEntity>()
-            .FirstOrDefault(player =>
-                player.CharacterData.Stats.CurrentHealth > 0 && player.CharacterData.Faction != Faction);
+            .FirstOrDefault(player => player.CharacterData.Stats.CurrentHealth > 0);
 
         if (target == null) return;
 

@@ -15,7 +15,9 @@ public class Eldara : ModuleRules
             "EnhancedInput",
             "AIModule",
             "GameplayTasks",
-            "UMG"
+            "UMG",
+            "Networking",
+            "Sockets"
         });
 
         // Add Data folder to include paths for cleaner includes

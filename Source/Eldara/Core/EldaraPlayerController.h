@@ -22,6 +22,7 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
+	virtual void PlayerTick(float DeltaTime) override;
 
 public:
 	/**
@@ -47,4 +48,11 @@ private:
 
 	/** Validate race and class combination */
 	bool ValidateRaceClassCombo(const FEldaraCharacterCreatePayload& Payload, FString& OutErrorMessage);
+
+	/** Cached pointer to the network subsystem */
+	UPROPERTY()
+	class UEldaraNetworkSubsystem* CachedNetwork = nullptr;
+
+	/** Cooldown before retrying subsystem lookup to avoid per-tick overhead */
+	float NetworkLookupCooldown = 0.0f;
 };

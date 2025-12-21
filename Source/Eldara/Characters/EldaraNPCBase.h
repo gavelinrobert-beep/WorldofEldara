@@ -3,6 +3,7 @@
 #include "CoreMinimal.h"
 #include "EldaraCharacterBase.h"
 #include "Eldara/Data/EldaraFaction.h"
+#include "Eldara/Networking/EldaraProtocolTypes.h"
 #include "EldaraNPCBase.generated.h"
 
 /**
@@ -23,4 +24,11 @@ public:
 	/** Faction alignment for this NPC */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "NPC")
 	EEldaraFaction Faction = EEldaraFaction::Neutral;
+
+	/** Server-driven state for visualization */
+	UPROPERTY(BlueprintReadOnly, Category = "NPC")
+	EEldaraNPCServerState ServerState = EEldaraNPCServerState::Idle;
+
+	/** Apply authoritative state update from server */
+	void ApplyServerState(EEldaraNPCServerState NewState) { ServerState = NewState; }
 };

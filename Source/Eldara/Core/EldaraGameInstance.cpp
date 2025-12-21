@@ -3,6 +3,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "Engine/World.h"
 #include "../Characters/EldaraCharacterBase.h"
+#include "Eldara/Networking/EldaraNetworkSubsystem.h"
 
 UEldaraGameInstance::UEldaraGameInstance()
 {
@@ -14,6 +15,20 @@ void UEldaraGameInstance::Init()
 	Super::Init();
 	
 	InitializeWorldState();
+	
+	// Connect to authoritative server using configured host/port (defaults to localhost:7777)
+	FString Host = TEXT("127.0.0.1");
+	int32 Port = 7777;
+	if (GConfig)
+	{
+		GConfig->GetString(TEXT("/Script/Eldara.EldaraNetworkSubsystem"), TEXT("Host"), Host, GGameIni);
+		GConfig->GetInt(TEXT("/Script/Eldara.EldaraNetworkSubsystem"), TEXT("Port"), Port, GGameIni);
+	}
+
+	if (UEldaraNetworkSubsystem* Network = GetSubsystem<UEldaraNetworkSubsystem>())
+	{
+		Network->ConnectToServer(Host, Port);
+	}
 	
 	UE_LOG(LogTemp, Log, TEXT("EldaraGameInstance initialized. WorldStateVersion: %d"), WorldStateVersion);
 }

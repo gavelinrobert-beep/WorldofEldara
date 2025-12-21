@@ -216,6 +216,8 @@ Since the Unreal client is not yet implemented, you can:
 1. **Use packet sniffer tools** to see network traffic
 2. **Write a test client** using the shared protocol
 3. **Read the logs** to verify server operation
+4. **Remember**: characters are persisted in-memory only for the running server process (no database yet). Restarting the server clears created characters.
+5. **Movement**: the server reconciles movement using class movement speed and will correct client prediction if it diverges.
 
 ## 📚 Documentation
 

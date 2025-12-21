@@ -12,6 +12,7 @@ namespace WorldofEldara.Server.Quest;
 /// </summary>
 public class QuestSystem
 {
+    private const string FallbackNpcPrefix = "NPC_";
     private readonly ConcurrentDictionary<ulong, PlayerQuestLog> _playerQuests = new();
     private readonly Func<long> _serverTimeProvider;
 
@@ -94,7 +95,7 @@ public class QuestSystem
         int? npcTemplateOverride = null)
     {
         var npcTemplateId = npcTemplateOverride ?? npc?.NPCTemplateId;
-        var npcName = npc?.Name ?? (npcTemplateId.HasValue ? $"NPC_{npcTemplateId}" : "Unknown NPC");
+        var npcName = npc?.Name ?? (npcTemplateId.HasValue ? $"{FallbackNpcPrefix}{npcTemplateId}" : "Unknown NPC");
 
         var updatedStates = npcTemplateId.HasValue
             ? ApplyDialogueProgress(player, npcTemplateId.Value)
@@ -160,10 +161,12 @@ public class QuestSystem
 
                 if (!matchingObjectives.Any()) continue;
 
+                var matchingObjectiveIds = matchingObjectives.Select(o => o.ObjectiveId).ToHashSet();
+
                 var progressedObjectives = state.Objectives
                     .Select(progress =>
                     {
-                        if (matchingObjectives.Any(o => o.ObjectiveId == progress.ObjectiveId) && !progress.Completed)
+                        if (matchingObjectiveIds.Contains(progress.ObjectiveId) && !progress.Completed)
                         {
                             var current = Math.Min(progress.Target, progress.Current + 1);
                             return progress with { Current = current, Completed = current >= progress.Target };
@@ -194,9 +197,11 @@ public class QuestSystem
     private static bool AllRequiredObjectivesComplete(IEnumerable<QuestObjectiveProgress> progress,
         QuestDefinition definition)
     {
+        var objectivesById = definition.Objectives.ToDictionary(o => o.ObjectiveId);
+
         return progress.All(p =>
         {
-            var objective = definition.Objectives.First(o => o.ObjectiveId == p.ObjectiveId);
+            var objective = objectivesById[p.ObjectiveId];
             return p.Completed || objective.Optional;
         });
     }

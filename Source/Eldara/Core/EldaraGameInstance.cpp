@@ -145,9 +145,11 @@ void UEldaraGameInstance::EnsurePersistenceProvider()
 		return;
 	}
 
-	UClass* ProviderClass = DefaultPersistenceProviderClass
-		? *DefaultPersistenceProviderClass
-		: UEldaraLocalPersistenceProvider::StaticClass();
+	UClass* ProviderClass = DefaultPersistenceProviderClass.Get();
+	if (!ProviderClass)
+	{
+		ProviderClass = UEldaraLocalPersistenceProvider::StaticClass();
+	}
 
 	UObject* ProviderObject = NewObject<UObject>(this, ProviderClass);
 	if (ProviderObject && ProviderObject->GetClass()->ImplementsInterface(UEldaraPersistenceProvider::StaticClass()))

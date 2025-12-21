@@ -785,7 +785,8 @@ public class ClientConnection
             EResourceType.Rage => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "rage"), // Shared physical pool until dedicated resources exist
             EResourceType.Energy => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "energy"),
             EResourceType.Focus => (caster.CharacterData.Stats.CurrentStamina, ResourcePool.Stamina, "focus"),
-            EResourceType.Corruption => (caster.CharacterData.Stats.CurrentMana, ResourcePool.Mana, "corruption"),
+            EResourceType.Corruption => (caster.CharacterData.Stats.CurrentMana, ResourcePool.Mana,
+                "corruption"), // Dominion magic currently uses the mana pool until a bespoke corruption resource exists
             _ => (caster.CharacterData.Stats.CurrentMana, ResourcePool.Mana, "resources")
         };
     }

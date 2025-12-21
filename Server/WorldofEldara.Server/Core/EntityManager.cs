@@ -206,7 +206,6 @@ public class PlayerEntity : Entity
         }
         else
         {
-            _timeSinceCombat = 0f;
             var regenRate = Math.Max(1f, CharacterData.Stats.MaxHealth * 0.01f);
             _healthRegenBuffer += regenRate * deltaTime;
             var healAmount = (int)_healthRegenBuffer;
@@ -226,9 +225,11 @@ public class PlayerEntity : Entity
 public class NPCEntity : Entity
 {
     private const float CombatResetSeconds = 6.0f;
+    private const float TargetScanIntervalSeconds = 0.5f;
     private float _attackTimer;
     private float _combatResetTimer;
     private float _patrolPauseTimer;
+    private float _targetScanCooldown;
 
     public int NPCTemplateId { get; set; }
     public Faction Faction { get; set; }
@@ -284,11 +285,11 @@ public class NPCEntity : Entity
             case NPCAIState.Idle:
                 Velocity = new Vector3(0, 0, 0);
                 MovementState = MovementState.Idle;
-                TryAcquireTarget();
+                TryAcquireTarget(deltaTime);
                 if (PatrolPath.Count > 0) AIState = NPCAIState.Patrolling;
                 break;
             case NPCAIState.Patrolling:
-                TryAcquireTarget();
+                TryAcquireTarget(deltaTime);
                 UpdatePatrol(deltaTime);
                 break;
             case NPCAIState.Combat:
@@ -308,9 +309,17 @@ public class NPCEntity : Entity
         return true;
     }
 
-    private void TryAcquireTarget()
+    private void TryAcquireTarget(float deltaTime)
     {
         if (!IsHostile || EntityManager == null) return;
+
+        if (_targetScanCooldown > 0f)
+        {
+            _targetScanCooldown -= deltaTime;
+            return;
+        }
+
+        _targetScanCooldown = TargetScanIntervalSeconds;
 
         var target = EntityManager.GetEntitiesInRange(ZoneId, Position.X, Position.Y, Position.Z, AggroRange)
             .OfType<PlayerEntity>()

@@ -168,8 +168,9 @@ public class SpawnSystem
 
         if (spawnPoint.MaxAliveInZone > 0)
         {
-            var aliveInZone = _entityManager.GetAllNPCs()
-                .Count(npc => npc.ZoneId == spawnPoint.ZoneId && npc.NPCTemplateId == spawnPoint.NPCTemplateId);
+            var aliveInZone = _entityManager.GetEntitiesInZone(spawnPoint.ZoneId)
+                .OfType<NPCEntity>()
+                .Count(npc => npc.NPCTemplateId == spawnPoint.NPCTemplateId);
             if (aliveInZone >= spawnPoint.MaxAliveInZone) return false;
         }
 

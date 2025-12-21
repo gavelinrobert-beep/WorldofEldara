@@ -49,6 +49,10 @@ protected:
 	/** Ensure we have a provider (creates default SaveGame provider) */
 	void EnsurePersistenceProvider();
 
+	/** Configurable provider class so backends can be swapped without code changes */
+	UPROPERTY(EditDefaultsOnly, Category = "Persistence", meta = (MustImplement = "EldaraPersistenceProvider"))
+	TSubclassOf<UObject> DefaultPersistenceProviderClass;
+
 	UPROPERTY()
 	TScriptInterface<IEldaraPersistenceProvider> PersistenceProvider;
 };

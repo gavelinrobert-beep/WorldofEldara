@@ -9,6 +9,7 @@
 UEldaraGameInstance::UEldaraGameInstance()
 {
 	WorldStateVersion = 0;
+	DefaultPersistenceProviderClass = UEldaraLocalPersistenceProvider::StaticClass();
 }
 
 void UEldaraGameInstance::Init()
@@ -144,6 +145,25 @@ void UEldaraGameInstance::EnsurePersistenceProvider()
 		return;
 	}
 
+	UClass* ProviderClass = DefaultPersistenceProviderClass
+		? *DefaultPersistenceProviderClass
+		: UEldaraLocalPersistenceProvider::StaticClass();
+
+	UObject* ProviderObject = NewObject<UObject>(this, ProviderClass);
+	if (ProviderObject && ProviderObject->GetClass()->ImplementsInterface(UEldaraPersistenceProvider::StaticClass()))
+	{
+		PersistenceProvider = ProviderObject;
+		return;
+	}
+
 	UEldaraLocalPersistenceProvider* LocalProvider = NewObject<UEldaraLocalPersistenceProvider>(this);
 	PersistenceProvider = LocalProvider;
+	if (!ProviderObject)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("EnsurePersistenceProvider: Failed to create provider, defaulting to local SaveGame provider"));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("EnsurePersistenceProvider: Provider class did not implement persistence interface, defaulting to local SaveGame provider"));
+	}
 }

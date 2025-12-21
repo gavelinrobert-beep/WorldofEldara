@@ -620,6 +620,8 @@ public class ClientConnection
             return;
         }
 
+        player.MarkCombatEngaged();
+
         var isCrit = Random.Shared.NextDouble() < player.CharacterData.Stats.CriticalChance;
         var damage = ability.CalculateValue(player.CharacterData.Stats, isCrit);
 
@@ -684,6 +686,7 @@ public class ClientConnection
     {
         if (target is PlayerEntity playerTarget)
         {
+            playerTarget.MarkCombatEngaged();
             playerTarget.CharacterData.Stats.CurrentHealth =
                 Math.Max(0, playerTarget.CharacterData.Stats.CurrentHealth - amount);
 
@@ -697,6 +700,11 @@ public class ClientConnection
         }
         else if (target is NPCEntity npc)
         {
+            if (PlayerEntityId.HasValue)
+            {
+                npc.TargetEntityId = PlayerEntityId.Value;
+                npc.AIState = NPCAIState.Combat;
+            }
             npc.CurrentHealth = Math.Max(0, npc.CurrentHealth - amount);
             BroadcastDamage(npc.EntityId, amount, damageType, isCrit, npc.CurrentHealth, npc.ZoneId, abilityId);
 

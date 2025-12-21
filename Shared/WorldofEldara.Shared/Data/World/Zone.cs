@@ -177,6 +177,21 @@ public static class ZoneDefinitions
             SafeSpawnPoint = new WorldPosition(-2, 18, 0)
         },
 
+        ["zone_greenwatch_training"] = new Zone
+        {
+            ZoneId = "zone_greenwatch_training",
+            Name = "Greenwatch Training Grounds",
+            Description = "Controlled grove where Verdant sentinels learn to respond to threats.",
+            MinLevel = 1,
+            MaxLevel = 5,
+            Type = ZoneType.StarterZone,
+            ControllingFaction = Faction.VerdantCircles,
+            WorldrootDensity = 0.9f,
+            IsPvPEnabled = false,
+            LoreDescription = "The Worldroot hums quietly here while trainees drill under Greenwatch oversight.",
+            SafeSpawnPoint = new WorldPosition(20, -8, 0)
+        },
+
         ["zone_vharos_warfront"] = new Zone
         {
             ZoneId = "zone_vharos_warfront",

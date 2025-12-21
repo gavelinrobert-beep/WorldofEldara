@@ -65,6 +65,7 @@ bool UEldaraGameInstance::SaveCurrentState(const FString& SlotName)
 	Snapshot.Stamina = PlayerCharacter->GetStamina();
 	Snapshot.Transform = PlayerCharacter->GetActorTransform();
 	Snapshot.WorldState.Version = WorldStateVersion;
+	// TODO: Populate Inventory and QuestProgress when those gameplay systems expose persistent data.
 
 	const bool bSaved = Provider->SavePlayerSnapshot(SlotName, Snapshot);
 	UE_LOG(LogTemp, Log, TEXT("SaveCurrentState: Slot '%s' save %s"), *SlotName, bSaved ? TEXT("succeeded") : TEXT("failed"));

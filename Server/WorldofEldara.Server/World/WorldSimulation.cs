@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Serilog;
 using WorldofEldara.Server.Core;
+using WorldofEldara.Server.Quest;
 
 namespace WorldofEldara.Server.World;
 
@@ -36,6 +37,7 @@ public class WorldSimulation
         Zones = new ZoneManager();
         _timeManager = new TimeManager();
         _spawnSystem = new SpawnSystem(Entities, Zones, _timeManager, GetServerTimestamp);
+        Quests = new QuestSystem(GetServerTimestamp);
 
         Log.Information($"World Simulation initialized at {_tickRate} TPS (Δt = {_tickDelta:F4}s)");
     }
@@ -45,6 +47,8 @@ public class WorldSimulation
     public EntityManager Entities { get; }
 
     public ZoneManager Zones { get; }
+
+    public QuestSystem Quests { get; }
 
     public async Task Initialize()
     {

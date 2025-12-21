@@ -10,6 +10,7 @@ using WorldofEldara.Server.World;
 using WorldofEldara.Shared.Constants;
 using WorldofEldara.Shared.Data.Character;
 using WorldofEldara.Shared.Data.Combat;
+using WorldofEldara.Shared.Data.Quest;
 using WorldofEldara.Shared.Protocol;
 using WorldofEldara.Shared.Protocol.Packets;
 using WorldofEldara.Shared.Data.World;
@@ -215,6 +216,14 @@ public class ClientConnection
 
                 case ChatPackets.ChatMessagePacket chatMessage:
                     HandleChatMessage(chatMessage);
+                    break;
+
+                case QuestPackets.QuestAcceptRequest questAccept:
+                    HandleQuestAccept(questAccept);
+                    break;
+
+                case QuestPackets.QuestDialogueRequest dialogueRequest:
+                    HandleQuestDialogue(dialogueRequest);
                     break;
 
                 default:
@@ -461,6 +470,15 @@ public class ClientConnection
             ZoneId = character.Position.ZoneId,
             ServerTime = _worldSimulation.GetServerTimestamp(),
             Abilities = abilitySummaries
+        }));
+
+        // Sync quest log for this character (server authoritative)
+        var questStates = _worldSimulation.Quests.GetQuestStates(character.CharacterId);
+        var questDefinitions = _worldSimulation.Quests.GetDefinitionsForStates(questStates);
+        SendPacket(MessagePackSerializer.Serialize<PacketBase>(new QuestPackets.QuestLogSnapshot
+        {
+            Definitions = questDefinitions,
+            States = questStates
         }));
 
         // Send existing entities in the same zone to the player for initial sync
@@ -711,6 +729,54 @@ public class ClientConnection
         }
 
         _server.BroadcastToZone(CurrentZoneId, serialized);
+    }
+
+    private void HandleQuestAccept(QuestPackets.QuestAcceptRequest request)
+    {
+        if (!PlayerEntityId.HasValue) return;
+
+        var player = _worldSimulation.Entities.GetEntity(PlayerEntityId.Value) as PlayerEntity;
+        if (player == null) return;
+
+        var result = _worldSimulation.Quests.AcceptQuest(player, request.QuestId);
+        var response = new QuestPackets.QuestAcceptResponse
+        {
+            Result = result.Code,
+            Message = result.Message,
+            State = result.State,
+            Definition = result.Definition
+        };
+
+        SendPacket(MessagePackSerializer.Serialize<PacketBase>(response));
+
+        if (result.Code == ResponseCode.Success && result.State != null)
+            SendQuestUpdate(result.State, result.Definition);
+    }
+
+    private void HandleQuestDialogue(QuestPackets.QuestDialogueRequest request)
+    {
+        if (!PlayerEntityId.HasValue) return;
+
+        var player = _worldSimulation.Entities.GetEntity(PlayerEntityId.Value) as PlayerEntity;
+        if (player == null) return;
+
+        var npc = _worldSimulation.Entities.GetEntity(request.NpcEntityId) as NPCEntity;
+        var dialogue = _worldSimulation.Quests.BuildDialogue(player, npc, request.NpcTemplateId);
+
+        SendPacket(MessagePackSerializer.Serialize<PacketBase>(dialogue));
+
+        foreach (var updated in dialogue.UpdatedStates) SendQuestUpdate(updated);
+    }
+
+    private void SendQuestUpdate(QuestStateData state, QuestDefinition? definition = null)
+    {
+        var update = new QuestPackets.QuestProgressUpdate
+        {
+            State = state,
+            Definition = definition
+        };
+
+        SendPacket(MessagePackSerializer.Serialize<PacketBase>(update));
     }
 
     private static float Distance(Vector3 a, Vector3 b)

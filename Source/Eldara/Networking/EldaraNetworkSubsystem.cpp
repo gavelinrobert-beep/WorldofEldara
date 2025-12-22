@@ -6,12 +6,12 @@
 #include "Engine/World.h"
 #include "GameFramework/Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
-#include "HAL/NumericLimits.h"
 #include "IPAddress.h"
 #include "Internationalization/StringConversion.h"
 #include "Sockets.h"
 #include "SocketSubsystem.h"
 #include "Stats/Stats.h"
+#include <limits>
 
 namespace
 {
@@ -21,7 +21,7 @@ constexpr float LocalEntityMatchTolerance = 50.f;
 
 int32 ClampUint64ToInt32(uint64 Value)
 {
-	const uint64 MaxInt32 = static_cast<uint64>(TNumericLimits<int32>::Max());
+	const uint64 MaxInt32 = static_cast<uint64>(std::numeric_limits<int32>::max());
 	const uint64 Clamped = FMath::Clamp<uint64>(Value, 0, MaxInt32);
 	return static_cast<int32>(Clamped);
 }
@@ -603,8 +603,8 @@ bool UEldaraNetworkSubsystem::ParseEntitySpawn(FMsgPackReader& Reader, FEldaraEn
 			int64 Level = 0;
 			if (NpcReader.ReadInt64(Level))
 			{
-				const int64 Clamped = FMath::Clamp(Level, static_cast<int64>(TNumericLimits<int32>::Min()),
-					static_cast<int64>(TNumericLimits<int32>::Max()));
+				const int64 Clamped = FMath::Clamp(Level, static_cast<int64>(std::numeric_limits<int32>::min()),
+					static_cast<int64>(std::numeric_limits<int32>::max()));
 				OutSpawn.Level = static_cast<int32>(Clamped);
 			}
 

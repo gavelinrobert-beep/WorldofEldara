@@ -10,6 +10,7 @@
 #include "Containers/StringConv.h"
 #include "Sockets.h"
 #include "SocketSubsystem.h"
+#include "IPv4Address.h"
 #include "Stats/Stats.h"
 #include <limits>
 
@@ -18,6 +19,8 @@ namespace
 constexpr int32 DefaultRemoteLevel = 1;
 constexpr bool bDefaultRemoteHostile = false;
 constexpr float LocalEntityMatchTolerance = 50.f;
+
+using FMsgPackReader = UEldaraNetworkSubsystem::FMsgPackReader;
 
 int32 ClampUint64ToInt32(uint64 Value)
 {
@@ -619,7 +622,7 @@ bool UEldaraNetworkSubsystem::ParseEntitySpawn(FMsgPackReader& Reader, FEldaraEn
 				OutSpawn.bIsHostile = bHostile;
 			}
 
-			Reader = NpcReader;
+			Reader.Offset = NpcReader.Offset;
 		}
 		else
 		{

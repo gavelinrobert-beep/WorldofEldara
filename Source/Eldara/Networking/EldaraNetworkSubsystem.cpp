@@ -7,7 +7,7 @@
 #include "GameFramework/Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "IPAddress.h"
-#include "Internationalization/StringConversion.h"
+#include "Containers/StringConv.h"
 #include "Sockets.h"
 #include "SocketSubsystem.h"
 #include "Stats/Stats.h"
@@ -1005,7 +1005,7 @@ bool UEldaraNetworkSubsystem::FMsgPackReader::ReadString(FString& Out)
 		return false;
 	}
 
-	FUTF8ToTCHAR Converter(reinterpret_cast<const ANSICHAR*>(Ptr), Length);
+	const auto Converter = StringCast<TCHAR>(reinterpret_cast<const UTF8CHAR*>(Ptr), Length);
 	Out = FString(Converter.Length(), Converter.Get());
 	return true;
 }

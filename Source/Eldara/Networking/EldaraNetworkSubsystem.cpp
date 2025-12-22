@@ -18,6 +18,25 @@ namespace
 constexpr int32 DefaultRemoteLevel = 1;
 constexpr bool bDefaultRemoteHostile = false;
 constexpr float LocalEntityMatchTolerance = 50.f;
+
+int32 ClampUint64ToInt32(uint64 Value)
+{
+	const uint64 MaxInt32 = static_cast<uint64>(TNumericLimits<int32>::Max());
+	const uint64 Clamped = FMath::Clamp<uint64>(Value, 0, MaxInt32);
+	return static_cast<int32>(Clamped);
+}
+
+bool ReadClampedUint64(FMsgPackReader& Reader, int32& OutValue)
+{
+	uint64 Value64 = 0;
+	if (!Reader.ReadUInt64(Value64))
+	{
+		return false;
+	}
+
+	OutValue = ClampUint64ToInt32(Value64);
+	return true;
+}
 }
 
 void UEldaraNetworkSubsystem::FSocketDeleter::operator()(FSocket* InSocket) const
@@ -339,12 +358,10 @@ bool UEldaraNetworkSubsystem::ParseMovementUpdate(FMsgPackReader& Reader, FEldar
 		return false;
 	}
 
-	uint64 EntityId64 = 0;
-	if (!Reader.ReadUInt64(EntityId64))
+	if (!ReadClampedUint64(Reader, OutUpdate.EntityId))
 	{
 		return false;
 	}
-	OutUpdate.EntityId = static_cast<int32>(FMath::Clamp<uint64>(EntityId64, 0, static_cast<uint64>(TNumericLimits<int32>::Max())));
 
 	if (!ParseVector3(Reader, OutUpdate.Position))
 	{
@@ -444,12 +461,10 @@ bool UEldaraNetworkSubsystem::ParseCharacterSnapshot(FMsgPackReader& Reader, FEl
 		return false;
 	}
 
-	uint64 CharacterId64 = 0;
-	if (!Reader.ReadUInt64(CharacterId64))
+	if (!ReadClampedUint64(Reader, OutSpawn.CharacterId))
 	{
 		return false;
 	}
-	OutSpawn.CharacterId = static_cast<int32>(FMath::Clamp<uint64>(CharacterId64, 0, static_cast<uint64>(TNumericLimits<int32>::Max())));
 
 	if (!Reader.ReadString(OutSpawn.CharacterName))
 	{
@@ -528,12 +543,10 @@ bool UEldaraNetworkSubsystem::ParseEntitySpawn(FMsgPackReader& Reader, FEldaraEn
 		return false;
 	}
 
-	uint64 EntityId64 = 0;
-	if (!Reader.ReadUInt64(EntityId64))
+	if (!ReadClampedUint64(Reader, OutSpawn.EntityId))
 	{
 		return false;
 	}
-	OutSpawn.EntityId = static_cast<int32>(FMath::Clamp<uint64>(EntityId64, 0, static_cast<uint64>(TNumericLimits<int32>::Max())));
 
 	int64 RawType = 0;
 	if (!Reader.ReadInt64(RawType))
@@ -637,14 +650,7 @@ bool UEldaraNetworkSubsystem::ParseEntityDespawn(FMsgPackReader& Reader, int32& 
 		return false;
 	}
 
-	uint64 EntityId64 = 0;
-	if (!Reader.ReadUInt64(EntityId64))
-	{
-		return false;
-	}
-
-	OutEntityId = static_cast<int32>(FMath::Clamp<uint64>(EntityId64, 0, static_cast<uint64>(TNumericLimits<int32>::Max())));
-	return true;
+	return ReadClampedUint64(Reader, OutEntityId);
 }
 
 bool UEldaraNetworkSubsystem::ParseNPCStateUpdate(FMsgPackReader& Reader, int32& OutEntityId,
@@ -656,12 +662,10 @@ bool UEldaraNetworkSubsystem::ParseNPCStateUpdate(FMsgPackReader& Reader, int32&
 		return false;
 	}
 
-	uint64 EntityId64 = 0;
-	if (!Reader.ReadUInt64(EntityId64))
+	if (!ReadClampedUint64(Reader, OutEntityId))
 	{
 		return false;
 	}
-	OutEntityId = static_cast<int32>(FMath::Clamp<uint64>(EntityId64, 0, static_cast<uint64>(TNumericLimits<int32>::Max())));
 
 	int64 RawState = 0;
 	if (!Reader.ReadInt64(RawState))

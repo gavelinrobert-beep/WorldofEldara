@@ -145,6 +145,8 @@ public class QuestSystem
 
     public IReadOnlyList<QuestProgressResult> RegisterKill(PlayerEntity player, NPCEntity npc)
     {
+        if (player == null || npc == null) return Array.Empty<QuestProgressResult>();
+
         var log = GetLog(player.CharacterData.CharacterId);
         var updates = new List<QuestProgressResult>();
 

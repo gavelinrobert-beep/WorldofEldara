@@ -22,6 +22,20 @@ public class SpawnSystem
     private readonly Func<long> _serverTimeProvider;
     private readonly object _spawnLock = new();
     private Networking.NetworkServer? _networkServer;
+    private static readonly List<Vector3> Zone01SaplingPatrol = new()
+    {
+        new Vector3(8, 2, 0),
+        new Vector3(10, 4, 0),
+        new Vector3(12, 2, 0),
+        new Vector3(10, 0, 0)
+    };
+
+    private static readonly List<Vector3> Zone01RazorFernPatrol = new()
+    {
+        new Vector3(-4, -1, 0),
+        new Vector3(-6, -3, 0),
+        new Vector3(-2, -3, 0)
+    };
 
     public SpawnSystem(EntityManager entityManager, ZoneManager zoneManager, TimeManager timeManager,
         Func<long> serverTimeProvider)
@@ -83,13 +97,7 @@ public class SpawnSystem
             IsHostileOverride = true,
             FactionOverride = Faction.Neutral,
             Tag = "zone01_hostile",
-            PatrolPath = new List<Vector3>
-            {
-                new Vector3(8, 2, 0),
-                new Vector3(10, 4, 0),
-                new Vector3(12, 2, 0),
-                new Vector3(10, 0, 0)
-            }
+            PatrolPath = new List<Vector3>(Zone01SaplingPatrol)
         });
 
         _spawnPoints.Add(new SpawnPoint
@@ -111,12 +119,7 @@ public class SpawnSystem
             FactionOverride = Faction.Neutral,
             Tag = "zone01_hostile",
             PatrolPauseDuration = 0.6f,
-            PatrolPath = new List<Vector3>
-            {
-                new Vector3(-4, -1, 0),
-                new Vector3(-6, -3, 0),
-                new Vector3(-2, -3, 0)
-            }
+            PatrolPath = new List<Vector3>(Zone01RazorFernPatrol)
         });
 
         // Thornveil Enclave - Sylvaen starter

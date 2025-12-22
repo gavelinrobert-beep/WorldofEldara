@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using System.Threading;
 using MessagePack;
 using Serilog;
 using WorldofEldara.Server.Core;
@@ -990,54 +991,58 @@ public class ClientConnection
     {
         if (!_worldSimulation.Entities.RemoveEntity(player.EntityId)) return;
 
+        _ = RespawnPlayerAsync(player);
+    }
+
+    private async Task RespawnPlayerAsync(PlayerEntity player)
+    {
         const int respawnDelayMs = 3000;
-        _ = Task.Run(async () =>
+
+        try
         {
-            try
+            await Task.Delay(respawnDelayMs);
+            if (!Volatile.Read(ref _isConnected)) return;
+
+            var spawn = ZoneDefinitions.GetZone(player.ZoneId)?.SafeSpawnPoint
+                        ?? ZoneDefinitions.GetZone(ZoneConstants.Zone01)?.SafeSpawnPoint
+                        ?? new WorldPosition(0, 0, 0);
+
+            player.CharacterData.Stats.CurrentHealth = player.CharacterData.Stats.MaxHealth;
+            player.CharacterData.Stats.CurrentMana = player.CharacterData.Stats.MaxMana;
+            player.CharacterData.Stats.CurrentStamina = player.CharacterData.Stats.MaxStamina;
+            player.CharacterData.Position = new CharacterPosition
             {
-                await Task.Delay(respawnDelayMs);
-                if (!_isConnected) return;
+                ZoneId = player.ZoneId,
+                X = spawn.X,
+                Y = spawn.Y,
+                Z = spawn.Z
+            };
+            player.Position = new Vector3(spawn.X, spawn.Y, spawn.Z);
+            player.Velocity = new Vector3(0, 0, 0);
+            player.MovementState = MovementState.Idle;
+            player.IsInCombat = false;
+            player.TargetEntityId = null;
+            player.LastInputTime = DateTime.UtcNow;
 
-                var zone = ZoneDefinitions.GetZone(player.ZoneId) ?? ZoneDefinitions.GetZone(ZoneConstants.Zone01);
-                var spawn = zone?.SafeSpawnPoint ?? new WorldPosition(0, 0, 0);
+            _worldSimulation.Entities.AddEntity(player);
 
-                player.CharacterData.Stats.CurrentHealth = player.CharacterData.Stats.MaxHealth;
-                player.CharacterData.Stats.CurrentMana = player.CharacterData.Stats.MaxMana;
-                player.CharacterData.Stats.CurrentStamina = player.CharacterData.Stats.MaxStamina;
-                player.CharacterData.Position = new CharacterPosition
-                {
-                    ZoneId = player.ZoneId,
-                    X = spawn.X,
-                    Y = spawn.Y,
-                    Z = spawn.Z
-                };
-                player.Position = new Vector3(spawn.X, spawn.Y, spawn.Z);
-                player.Velocity = new Vector3(0, 0, 0);
-                player.MovementState = MovementState.Idle;
-                player.IsInCombat = false;
-                player.TargetEntityId = null;
-                player.LastInputTime = DateTime.UtcNow;
+            var abilitySummaries = player.KnownAbilities
+                .Select(id => AbilitySummary.From(AbilityBook.GetAbility(id)))
+                .ToList();
 
-                _worldSimulation.Entities.AddEntity(player);
-
-                var abilitySummaries = player.KnownAbilities
-                    .Select(id => AbilitySummary.From(AbilityBook.GetAbility(id)))
-                    .ToList();
-
-                SendPacket(MessagePackSerializer.Serialize<PacketBase>(new WorldPackets.PlayerSpawnPacket
-                {
-                    Character = CharacterSnapshot.FromCharacter(player.CharacterData, player.KnownAbilities.ToList()),
-                    Resources = ResourceSnapshot.FromStats(player.CharacterData.Stats),
-                    ZoneId = player.ZoneId,
-                    ServerTime = _worldSimulation.GetServerTimestamp(),
-                    Abilities = abilitySummaries
-                }));
-            }
-            catch (Exception ex)
+            SendPacket(MessagePackSerializer.Serialize<PacketBase>(new WorldPackets.PlayerSpawnPacket
             {
-                Log.Error(ex, "Failed to respawn player {PlayerId}", player.EntityId);
-            }
-        });
+                Character = CharacterSnapshot.FromCharacter(player.CharacterData, player.KnownAbilities.ToList()),
+                Resources = ResourceSnapshot.FromStats(player.CharacterData.Stats),
+                ZoneId = player.ZoneId,
+                ServerTime = _worldSimulation.GetServerTimestamp(),
+                Abilities = abilitySummaries
+            }));
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Failed to respawn player {PlayerId}", player.EntityId);
+        }
     }
 
     private void OnNpcDeath(NPCEntity npc, Entity? killer)

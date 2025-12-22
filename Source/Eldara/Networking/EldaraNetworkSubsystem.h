@@ -16,7 +16,7 @@ struct FEldaraMovementUpdate
 	GENERATED_BODY()
 
 	UPROPERTY(BlueprintReadOnly, Category = "Eldara|Network")
-	uint64 EntityId = 0;
+	int32 EntityId = 0;
 
 	UPROPERTY(BlueprintReadOnly, Category = "Eldara|Network")
 	FVector Position = FVector::ZeroVector;
@@ -43,7 +43,7 @@ struct FEldaraEntitySpawn
 	GENERATED_BODY()
 
 	UPROPERTY(BlueprintReadOnly, Category = "Eldara|Network")
-	uint64 EntityId = 0;
+	int32 EntityId = 0;
 
 	UPROPERTY(BlueprintReadOnly, Category = "Eldara|Network")
 	EEldaraEntityType Type = EEldaraEntityType::Player;
@@ -70,7 +70,7 @@ struct FEldaraPlayerSpawn
 	GENERATED_BODY()
 
 	UPROPERTY(BlueprintReadOnly, Category = "Eldara|Network")
-	uint64 CharacterId = 0;
+	int32 CharacterId = 0;
 
 	UPROPERTY(BlueprintReadOnly, Category = "Eldara|Network")
 	FString CharacterName;
@@ -89,7 +89,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnEldaraConnected);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnEldaraDisconnected, const FString&, Reason);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnEldaraPlayerSpawned, const FEldaraPlayerSpawn&, Spawn);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnEldaraEntitySpawned, const FEldaraEntitySpawn&, Spawn);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnEldaraEntityDespawned, uint64, EntityId);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnEldaraEntityDespawned, int32, EntityId);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnEldaraMovementUpdate, const FEldaraMovementUpdate&, Movement);
 
 /**
@@ -218,14 +218,14 @@ private:
 	bool ParseCharacterSnapshot(FMsgPackReader& Reader, FEldaraPlayerSpawn& OutSpawn);
 	bool ParseCharacterPosition(FMsgPackReader& Reader, FEldaraPlayerSpawn& OutSpawn);
 	bool ParseEntitySpawn(FMsgPackReader& Reader, FEldaraEntitySpawn& OutSpawn);
-	bool ParseEntityDespawn(FMsgPackReader& Reader, uint64& OutEntityId);
-	bool ParseNPCStateUpdate(FMsgPackReader& Reader, uint64& OutEntityId, EEldaraNPCServerState& OutState);
+	bool ParseEntityDespawn(FMsgPackReader& Reader, int32& OutEntityId);
+	bool ParseNPCStateUpdate(FMsgPackReader& Reader, int32& OutEntityId, EEldaraNPCServerState& OutState);
 
 	void HandleMovementUpdate(const FEldaraMovementUpdate& Update);
 	void HandlePlayerSpawn(const FEldaraPlayerSpawn& Spawn);
 	void HandleEntitySpawn(const FEldaraEntitySpawn& Spawn);
-	void HandleEntityDespawn(uint64 EntityId);
-	void HandleNPCState(uint64 EntityId, EEldaraNPCServerState State);
+	void HandleEntityDespawn(int32 EntityId);
+	void HandleNPCState(int32 EntityId, EEldaraNPCServerState State);
 
 	void SendRawPacket(const TArray<uint8>& Payload);
 
@@ -237,10 +237,10 @@ private:
 	FString ConnectedHost;
 	int32 ConnectedPort;
 
-	uint64 LocalEntityId;
-	uint64 LocalCharacterId;
+	int32 LocalEntityId;
+	int32 LocalCharacterId;
 	uint32 LocalInputSequence;
 
-	TMap<uint64, TWeakObjectPtr<AActor>> EntityActors;
+	TMap<int32, TWeakObjectPtr<AActor>> EntityActors;
 	TWeakObjectPtr<AEldaraCharacterBase> LocalPlayer;
 };

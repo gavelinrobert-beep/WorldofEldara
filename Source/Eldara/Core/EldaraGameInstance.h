@@ -50,7 +50,7 @@ protected:
 	void EnsurePersistenceProvider();
 
 	/** Configurable provider class so backends can be swapped without code changes */
-	UPROPERTY(EditDefaultsOnly, Category = "Persistence", meta = (MustImplement = "EldaraPersistenceProvider"))
+	UPROPERTY(EditDefaultsOnly, Category = "Persistence", meta = (MustImplement = "/Script/Eldara.EldaraPersistenceProvider"))
 	TSubclassOf<UObject> DefaultPersistenceProviderClass;
 
 	UPROPERTY()

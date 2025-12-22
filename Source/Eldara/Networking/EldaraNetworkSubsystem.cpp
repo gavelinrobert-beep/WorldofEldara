@@ -308,7 +308,7 @@ void UEldaraNetworkSubsystem::ProcessPacket(const TArray<uint8>& PacketData)
 	}
 	case EPacketType::EntityDespawn:
 	{
-		uint64 EntityId = 0;
+		int32 EntityId = 0;
 		if (ParseEntityDespawn(Reader, EntityId))
 		{
 			HandleEntityDespawn(EntityId);
@@ -317,7 +317,7 @@ void UEldaraNetworkSubsystem::ProcessPacket(const TArray<uint8>& PacketData)
 	}
 	case EPacketType::NPCStateUpdate:
 	{
-		uint64 EntityId = 0;
+		int32 EntityId = 0;
 		EEldaraNPCServerState State = EEldaraNPCServerState::Idle;
 		if (ParseNPCStateUpdate(Reader, EntityId, State))
 		{
@@ -339,10 +339,12 @@ bool UEldaraNetworkSubsystem::ParseMovementUpdate(FMsgPackReader& Reader, FEldar
 		return false;
 	}
 
-	if (!Reader.ReadUInt64(OutUpdate.EntityId))
+	uint64 EntityId64 = 0;
+	if (!Reader.ReadUInt64(EntityId64))
 	{
 		return false;
 	}
+	OutUpdate.EntityId = static_cast<int32>(FMath::Clamp<uint64>(EntityId64, 0, static_cast<uint64>(TNumericLimits<int32>::Max())));
 
 	if (!ParseVector3(Reader, OutUpdate.Position))
 	{
@@ -442,10 +444,12 @@ bool UEldaraNetworkSubsystem::ParseCharacterSnapshot(FMsgPackReader& Reader, FEl
 		return false;
 	}
 
-	if (!Reader.ReadUInt64(OutSpawn.CharacterId))
+	uint64 CharacterId64 = 0;
+	if (!Reader.ReadUInt64(CharacterId64))
 	{
 		return false;
 	}
+	OutSpawn.CharacterId = static_cast<int32>(FMath::Clamp<uint64>(CharacterId64, 0, static_cast<uint64>(TNumericLimits<int32>::Max())));
 
 	if (!Reader.ReadString(OutSpawn.CharacterName))
 	{
@@ -524,10 +528,12 @@ bool UEldaraNetworkSubsystem::ParseEntitySpawn(FMsgPackReader& Reader, FEldaraEn
 		return false;
 	}
 
-	if (!Reader.ReadUInt64(OutSpawn.EntityId))
+	uint64 EntityId64 = 0;
+	if (!Reader.ReadUInt64(EntityId64))
 	{
 		return false;
 	}
+	OutSpawn.EntityId = static_cast<int32>(FMath::Clamp<uint64>(EntityId64, 0, static_cast<uint64>(TNumericLimits<int32>::Max())));
 
 	int64 RawType = 0;
 	if (!Reader.ReadInt64(RawType))
@@ -623,7 +629,7 @@ bool UEldaraNetworkSubsystem::ParseEntitySpawn(FMsgPackReader& Reader, FEldaraEn
 	return true;
 }
 
-bool UEldaraNetworkSubsystem::ParseEntityDespawn(FMsgPackReader& Reader, uint64& OutEntityId)
+bool UEldaraNetworkSubsystem::ParseEntityDespawn(FMsgPackReader& Reader, int32& OutEntityId)
 {
 	uint32 Len = 0;
 	if (!Reader.ReadArrayHeader(Len) || Len < 1)
@@ -631,10 +637,17 @@ bool UEldaraNetworkSubsystem::ParseEntityDespawn(FMsgPackReader& Reader, uint64&
 		return false;
 	}
 
-	return Reader.ReadUInt64(OutEntityId);
+	uint64 EntityId64 = 0;
+	if (!Reader.ReadUInt64(EntityId64))
+	{
+		return false;
+	}
+
+	OutEntityId = static_cast<int32>(FMath::Clamp<uint64>(EntityId64, 0, static_cast<uint64>(TNumericLimits<int32>::Max())));
+	return true;
 }
 
-bool UEldaraNetworkSubsystem::ParseNPCStateUpdate(FMsgPackReader& Reader, uint64& OutEntityId,
+bool UEldaraNetworkSubsystem::ParseNPCStateUpdate(FMsgPackReader& Reader, int32& OutEntityId,
 	EEldaraNPCServerState& OutState)
 {
 	uint32 Len = 0;
@@ -643,10 +656,12 @@ bool UEldaraNetworkSubsystem::ParseNPCStateUpdate(FMsgPackReader& Reader, uint64
 		return false;
 	}
 
-	if (!Reader.ReadUInt64(OutEntityId))
+	uint64 EntityId64 = 0;
+	if (!Reader.ReadUInt64(EntityId64))
 	{
 		return false;
 	}
+	OutEntityId = static_cast<int32>(FMath::Clamp<uint64>(EntityId64, 0, static_cast<uint64>(TNumericLimits<int32>::Max())));
 
 	int64 RawState = 0;
 	if (!Reader.ReadInt64(RawState))
@@ -788,7 +803,7 @@ void UEldaraNetworkSubsystem::HandleEntitySpawn(const FEldaraEntitySpawn& Spawn)
 	OnEntitySpawn.Broadcast(Spawn);
 }
 
-void UEldaraNetworkSubsystem::HandleEntityDespawn(uint64 EntityId)
+void UEldaraNetworkSubsystem::HandleEntityDespawn(int32 EntityId)
 {
 	if (const TWeakObjectPtr<AActor>* Found = EntityActors.Find(EntityId))
 	{
@@ -801,7 +816,7 @@ void UEldaraNetworkSubsystem::HandleEntityDespawn(uint64 EntityId)
 	}
 }
 
-void UEldaraNetworkSubsystem::HandleNPCState(uint64 EntityId, EEldaraNPCServerState State)
+void UEldaraNetworkSubsystem::HandleNPCState(int32 EntityId, EEldaraNPCServerState State)
 {
 	const TWeakObjectPtr<AActor>* Found = EntityActors.Find(EntityId);
 	if (!Found)

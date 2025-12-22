@@ -510,7 +510,10 @@ public class NPCEntity : Entity
 
         if (target.CharacterData.Stats.CurrentHealth <= 0)
         {
-            EntityManager?.RemoveEntity(target.EntityId);
+            if (target.ClientConnection is ClientConnection connection)
+                connection.HandleEntityDeath(target, this);
+            else
+                EntityManager?.RemoveEntity(target.EntityId);
             ResetToReturn();
         }
     }

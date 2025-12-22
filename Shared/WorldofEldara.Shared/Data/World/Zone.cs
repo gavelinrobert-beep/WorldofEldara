@@ -87,6 +87,22 @@ public static class ZoneDefinitions
 {
     public static readonly Dictionary<string, Zone> Zones = new()
     {
+        ["zone_01"] = new Zone
+        {
+            ZoneId = "zone_01",
+            Name = "Verdant Outskirts",
+            Description = "A controlled grove carved out as the first proving ground for new adventurers.",
+            MinLevel = 1,
+            MaxLevel = 5,
+            Type = ZoneType.StarterZone,
+            ControllingFaction = Faction.VerdantCircles,
+            WorldrootDensity = 0.8f,
+            IsPvPEnabled = false,
+            LoreDescription =
+                "The Verdant Circles allow outsiders to train here under watchful boughs while learning to respect the Worldroot.",
+            SafeSpawnPoint = new WorldPosition(2, 2, 0)
+        },
+
         ["zone_thornveil_enclave"] = new Zone
         {
             ZoneId = "zone_thornveil_enclave",

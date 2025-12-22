@@ -1,5 +1,6 @@
 using System.Collections.Concurrent;
 using WorldofEldara.Server.Core;
+using System.Linq;
 using WorldofEldara.Shared.Data.Quest;
 using WorldofEldara.Shared.Protocol;
 using WorldofEldara.Shared.Protocol.Packets;
@@ -141,6 +142,58 @@ public class QuestSystem
         };
     }
 
+    public IReadOnlyList<QuestProgressResult> RegisterKill(PlayerEntity player, NPCEntity npc)
+    {
+        var log = GetLog(player.CharacterData.CharacterId);
+        var updates = new List<QuestProgressResult>();
+
+        lock (log.Sync)
+        {
+            foreach (var (questId, state) in log.Quests.ToList())
+            {
+                if (state.State != QuestState.Active) continue;
+
+                var definition = QuestCatalog.Get(questId);
+                var matchingObjectives = definition.Objectives
+                    .Where(o => o.ObjectiveType == QuestObjectiveType.Kill &&
+                                o.TargetNpcTemplateId == npc.NPCTemplateId)
+                    .ToList();
+
+                if (!matchingObjectives.Any()) continue;
+
+                var matchingIds = matchingObjectives.Select(o => o.ObjectiveId).ToHashSet();
+                var progressedObjectives = state.Objectives
+                    .Select(progress =>
+                    {
+                        if (!matchingIds.Contains(progress.ObjectiveId) || progress.Completed)
+                            return progress;
+
+                        var current = Math.Min(progress.Target, progress.Current + 1);
+                        return progress with { Current = current, Completed = current >= progress.Target };
+                    })
+                    .ToList();
+
+                var isComplete = AllRequiredObjectivesComplete(progressedObjectives, definition);
+                var updatedState = state with
+                {
+                    Objectives = progressedObjectives,
+                    State = isComplete ? QuestState.Completed : QuestState.Active,
+                    CompletedAt = isComplete
+                        ? DateTimeOffset.FromUnixTimeMilliseconds(_serverTimeProvider()).UtcDateTime
+                        : state.CompletedAt
+                };
+
+                log.Quests[questId] = updatedState;
+
+                if (isComplete) ApplyRewards(definition, player);
+
+                updates.Add(new QuestProgressResult(CloneState(updatedState), definition));
+            }
+        }
+
+        return updates;
+    }
+
     private IReadOnlyList<QuestStateData> ApplyDialogueProgress(PlayerEntity player, int npcTemplateId)
     {
         var log = GetLog(player.CharacterData.CharacterId);
@@ -206,6 +259,12 @@ public class QuestSystem
         });
     }
 
+    private static void ApplyRewards(QuestDefinition definition, PlayerEntity player)
+    {
+        if (definition.Rewards.Experience > 0)
+            player.CharacterData.ExperiencePoints += definition.Rewards.Experience;
+    }
+
     private static QuestStateData CloneState(QuestStateData state)
     {
         return new QuestStateData
@@ -255,3 +314,5 @@ public sealed record QuestAcceptResult(
     string Message,
     QuestStateData? State,
     QuestDefinition? Definition);
+
+public sealed record QuestProgressResult(QuestStateData State, QuestDefinition Definition);

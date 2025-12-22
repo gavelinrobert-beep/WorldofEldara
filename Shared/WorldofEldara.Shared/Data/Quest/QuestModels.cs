@@ -135,6 +135,7 @@ public static class QuestCatalog
 {
     public const int AwakeningId = 10001;
     public const int WorldrootsPainId = 10002;
+    public const int VerdantOutskirtsCullId = 20001;
 
     private static readonly IReadOnlyDictionary<int, QuestDefinition> Definitions =
         new Dictionary<int, QuestDefinition>
@@ -165,6 +166,33 @@ public static class QuestCatalog
                     Gold = 5
                 },
                 AcceptDialogue = "The worldroot stirs. Go, meet Instructor Lethril and steel yourself."
+            },
+            [VerdantOutskirtsCullId] = new QuestDefinition
+            {
+                QuestId = VerdantOutskirtsCullId,
+                Title = "Cull the Hollowed",
+                Description = "Warden Elaris asks you to thin the corrupted growths encroaching on the training glade.",
+                MinimumLevel = 1,
+                IsRepeatable = true,
+                GiverNpcTemplateId = 5001,
+                TurnInNpcTemplateId = 5001,
+                Objectives = new[]
+                {
+                    new QuestObjectiveDefinition
+                    {
+                        ObjectiveId = 1,
+                        ObjectiveType = QuestObjectiveType.Kill,
+                        TargetCount = 5,
+                        TargetNpcTemplateId = 6001,
+                        Description = "Cull the Hollow Saplings threatening the grove."
+                    }
+                },
+                Rewards = new QuestReward
+                {
+                    Experience = 150
+                },
+                AcceptDialogue = "Those Hollow Saplings are testing our defenses. Prove you can keep the grove safe.",
+                CompletionDialogue = "Good. The roots will breathe easier for a time. Return whenever the rot regrows."
             },
             [WorldrootsPainId] = new QuestDefinition
             {

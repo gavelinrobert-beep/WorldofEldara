@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
+using System.Threading.Tasks;
 using MessagePack;
 using Serilog;
 using WorldofEldara.Server.Core;
@@ -363,7 +364,7 @@ public class ClientConnection
             };
 
             // Set starting position based on faction
-            var starterZone = FactionInfo.GetStarterZoneId(character.Faction);
+            var starterZone = ZoneConstants.Zone01;
             var zoneDef = ZoneDefinitions.GetZone(starterZone) ?? ZoneDefinitions.GetZone(ZoneConstants.Borderkeep);
             character.Position = new CharacterPosition
             {
@@ -913,14 +914,14 @@ public class ClientConnection
             BroadcastDamage(source.EntityId, playerTarget.EntityId, finalAmount, damageType, isCrit,
                 playerTarget.CharacterData.Stats.CurrentHealth, playerTarget.ZoneId, abilityId);
 
-            if (playerTarget.CharacterData.Stats.CurrentHealth <= 0) HandleEntityDeath(playerTarget);
+            if (playerTarget.CharacterData.Stats.CurrentHealth <= 0) HandleEntityDeath(playerTarget, source);
         }
         else if (target is NPCEntity npcTarget)
         {
             npcTarget.CurrentHealth = Math.Max(0, npcTarget.CurrentHealth - finalAmount);
             BroadcastDamage(source.EntityId, npcTarget.EntityId, finalAmount, damageType, isCrit, npcTarget.CurrentHealth,
                 npcTarget.ZoneId, abilityId);
-            if (npcTarget.CurrentHealth <= 0) HandleEntityDeath(npcTarget);
+            if (npcTarget.CurrentHealth <= 0) HandleEntityDeath(npcTarget, source);
         }
     }
 
@@ -968,9 +969,84 @@ public class ClientConnection
         return Math.Min(CombatConstants.MaxArmorReduction, reduction);
     }
 
-    private void HandleEntityDeath(Entity target)
+    internal void HandleEntityDeath(Entity target, Entity? killer)
     {
-        _worldSimulation.Entities.RemoveEntity(target.EntityId);
+        switch (target)
+        {
+            case PlayerEntity player:
+                OnPlayerDeath(player, killer);
+                break;
+            case NPCEntity npc:
+                OnNpcDeath(npc, killer);
+                break;
+            default:
+                _worldSimulation.Entities.RemoveEntity(target.EntityId);
+                break;
+        }
+    }
+
+    private void OnPlayerDeath(PlayerEntity player, Entity? killer)
+    {
+        if (!_worldSimulation.Entities.RemoveEntity(player.EntityId)) return;
+
+        const int respawnDelayMs = 3000;
+        _ = Task.Run(async () =>
+        {
+            await Task.Delay(respawnDelayMs);
+            if (!_isConnected) return;
+
+            var zone = ZoneDefinitions.GetZone(player.ZoneId) ?? ZoneDefinitions.GetZone(ZoneConstants.Zone01);
+            var spawn = zone?.SafeSpawnPoint ?? new WorldPosition(0, 0, 0);
+
+            player.CharacterData.Stats.CurrentHealth = player.CharacterData.Stats.MaxHealth;
+            player.CharacterData.Stats.CurrentMana = player.CharacterData.Stats.MaxMana;
+            player.CharacterData.Stats.CurrentStamina = player.CharacterData.Stats.MaxStamina;
+            player.CharacterData.Position = new CharacterPosition
+            {
+                ZoneId = player.ZoneId,
+                X = spawn.X,
+                Y = spawn.Y,
+                Z = spawn.Z
+            };
+            player.Position = new Vector3(spawn.X, spawn.Y, spawn.Z);
+            player.Velocity = new Vector3(0, 0, 0);
+            player.MovementState = MovementState.Idle;
+            player.IsInCombat = false;
+            player.TargetEntityId = null;
+            player.LastInputTime = DateTime.UtcNow;
+
+            _worldSimulation.Entities.AddEntity(player);
+
+            var abilitySummaries = player.KnownAbilities
+                .Select(id => AbilitySummary.From(AbilityBook.GetAbility(id)))
+                .ToList();
+
+            SendPacket(MessagePackSerializer.Serialize<PacketBase>(new WorldPackets.PlayerSpawnPacket
+            {
+                Character = CharacterSnapshot.FromCharacter(player.CharacterData, player.KnownAbilities.ToList()),
+                Resources = ResourceSnapshot.FromStats(player.CharacterData.Stats),
+                ZoneId = player.ZoneId,
+                ServerTime = _worldSimulation.GetServerTimestamp(),
+                Abilities = abilitySummaries
+            }));
+        });
+    }
+
+    private void OnNpcDeath(NPCEntity npc, Entity? killer)
+    {
+        if (!_worldSimulation.Entities.RemoveEntity(npc.EntityId)) return;
+
+        if (killer is PlayerEntity playerKiller)
+        {
+            var updates = _worldSimulation.Quests.RegisterKill(playerKiller, npc);
+            foreach (var update in updates)
+            {
+                if (playerKiller.ClientConnection is ClientConnection killerConnection)
+                    killerConnection.SendQuestUpdate(update.State, update.Definition);
+                else
+                    SendQuestUpdate(update.State, update.Definition);
+            }
+        }
     }
 
     private void BroadcastDamage(ulong sourceId, ulong targetId, int amount, DamageType damageType, bool isCrit,

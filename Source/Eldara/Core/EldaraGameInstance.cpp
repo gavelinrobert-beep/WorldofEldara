@@ -99,6 +99,7 @@ bool UEldaraGameInstance::LoadState(const FString& SlotName)
 	UEldaraRaceData* RaceAsset = Snapshot.RaceData.Get();
 	if (!RaceAsset && !Snapshot.RaceData.IsNull())
 	{
+		// TODO: Switch to async asset loading to avoid hitching when streaming large data assets.
 		RaceAsset = Snapshot.RaceData.LoadSynchronous();
 	}
 

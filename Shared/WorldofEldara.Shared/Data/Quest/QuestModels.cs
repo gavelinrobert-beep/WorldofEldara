@@ -184,6 +184,7 @@ public static class QuestCatalog
                         ObjectiveType = QuestObjectiveType.Kill,
                         TargetCount = 5,
                         TargetNpcTemplateId = 6001,
+                        TargetTag = "zone01_hostile",
                         Description = "Cull the Hollow Saplings threatening the grove."
                     }
                 },

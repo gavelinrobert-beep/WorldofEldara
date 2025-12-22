@@ -1,6 +1,7 @@
 using System.Collections.Concurrent;
 using WorldofEldara.Server.Core;
 using System.Linq;
+using System;
 using WorldofEldara.Shared.Data.Quest;
 using WorldofEldara.Shared.Protocol;
 using WorldofEldara.Shared.Protocol.Packets;
@@ -156,7 +157,9 @@ public class QuestSystem
                 var definition = QuestCatalog.Get(questId);
                 var matchingObjectives = definition.Objectives
                     .Where(o => o.ObjectiveType == QuestObjectiveType.Kill &&
-                                o.TargetNpcTemplateId == npc.NPCTemplateId)
+                                (o.TargetNpcTemplateId == npc.NPCTemplateId ||
+                                 (!string.IsNullOrWhiteSpace(o.TargetTag) && !string.IsNullOrWhiteSpace(npc.Tag) &&
+                                  string.Equals(o.TargetTag, npc.Tag, StringComparison.OrdinalIgnoreCase))))
                     .ToList();
 
                 if (!matchingObjectives.Any()) continue;

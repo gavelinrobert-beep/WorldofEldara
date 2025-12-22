@@ -259,6 +259,7 @@ public class NPCEntity : Entity
     private NPCAIState _aiState = NPCAIState.Idle;
 
     public int NPCTemplateId { get; set; }
+    public string? Tag { get; set; }
     public Faction Faction { get; set; }
     public bool IsHostile { get; set; }
     public bool IsQuestGiver { get; set; }

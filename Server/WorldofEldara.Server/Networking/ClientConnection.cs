@@ -364,6 +364,7 @@ public class ClientConnection
             };
 
             // Set starting position based on faction
+            // Vertical slice: funnel all new characters into the shared starter loop
             var starterZone = ZoneConstants.Zone01;
             var zoneDef = ZoneDefinitions.GetZone(starterZone) ?? ZoneDefinitions.GetZone(ZoneConstants.Borderkeep);
             character.Position = new CharacterPosition

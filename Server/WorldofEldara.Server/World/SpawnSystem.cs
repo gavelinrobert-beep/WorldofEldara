@@ -82,6 +82,7 @@ public class SpawnSystem
             AttackCooldown = 1.8f,
             IsHostileOverride = true,
             FactionOverride = Faction.Neutral,
+            Tag = "zone01_hostile",
             PatrolPath = new List<Vector3>
             {
                 new Vector3(8, 2, 0),
@@ -108,6 +109,7 @@ public class SpawnSystem
             AttackCooldown = 1.2f,
             IsHostileOverride = true,
             FactionOverride = Faction.Neutral,
+            Tag = "zone01_hostile",
             PatrolPauseDuration = 0.6f,
             PatrolPath = new List<Vector3>
             {
@@ -278,6 +280,7 @@ public class SpawnSystem
                 PatrolPauseDuration = spawnPoint.PatrolPauseDuration > 0 ? spawnPoint.PatrolPauseDuration : 1.0f,
                 ActiveDuringDaytimeOnly = spawnPoint.DaytimeOnly,
                 ActiveDuringNightOnly = spawnPoint.NightOnly,
+                Tag = spawnPoint.Tag,
                 EntityManager = _entityManager,
                 ZoneManager = _zoneManager,
                 TimeManager = _timeManager,
@@ -317,6 +320,7 @@ public class SpawnPoint
     public string? OverrideName { get; set; }
     public bool? IsHostileOverride { get; set; }
     public Faction? FactionOverride { get; set; }
+    public string? Tag { get; set; }
     public float MovementSpeed { get; set; } = 3.5f;
     public float AggroRange { get; set; } = 12.0f;
     public float AttackRange { get; set; } = 2.5f;

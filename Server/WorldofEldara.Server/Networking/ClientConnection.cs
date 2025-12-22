@@ -992,43 +992,50 @@ public class ClientConnection
         const int respawnDelayMs = 3000;
         _ = Task.Run(async () =>
         {
-            await Task.Delay(respawnDelayMs);
-            if (!_isConnected) return;
-
-            var zone = ZoneDefinitions.GetZone(player.ZoneId) ?? ZoneDefinitions.GetZone(ZoneConstants.Zone01);
-            var spawn = zone?.SafeSpawnPoint ?? new WorldPosition(0, 0, 0);
-
-            player.CharacterData.Stats.CurrentHealth = player.CharacterData.Stats.MaxHealth;
-            player.CharacterData.Stats.CurrentMana = player.CharacterData.Stats.MaxMana;
-            player.CharacterData.Stats.CurrentStamina = player.CharacterData.Stats.MaxStamina;
-            player.CharacterData.Position = new CharacterPosition
+            try
             {
-                ZoneId = player.ZoneId,
-                X = spawn.X,
-                Y = spawn.Y,
-                Z = spawn.Z
-            };
-            player.Position = new Vector3(spawn.X, spawn.Y, spawn.Z);
-            player.Velocity = new Vector3(0, 0, 0);
-            player.MovementState = MovementState.Idle;
-            player.IsInCombat = false;
-            player.TargetEntityId = null;
-            player.LastInputTime = DateTime.UtcNow;
+                await Task.Delay(respawnDelayMs);
+                if (!_isConnected) return;
 
-            _worldSimulation.Entities.AddEntity(player);
+                var zone = ZoneDefinitions.GetZone(player.ZoneId) ?? ZoneDefinitions.GetZone(ZoneConstants.Zone01);
+                var spawn = zone?.SafeSpawnPoint ?? new WorldPosition(0, 0, 0);
 
-            var abilitySummaries = player.KnownAbilities
-                .Select(id => AbilitySummary.From(AbilityBook.GetAbility(id)))
-                .ToList();
+                player.CharacterData.Stats.CurrentHealth = player.CharacterData.Stats.MaxHealth;
+                player.CharacterData.Stats.CurrentMana = player.CharacterData.Stats.MaxMana;
+                player.CharacterData.Stats.CurrentStamina = player.CharacterData.Stats.MaxStamina;
+                player.CharacterData.Position = new CharacterPosition
+                {
+                    ZoneId = player.ZoneId,
+                    X = spawn.X,
+                    Y = spawn.Y,
+                    Z = spawn.Z
+                };
+                player.Position = new Vector3(spawn.X, spawn.Y, spawn.Z);
+                player.Velocity = new Vector3(0, 0, 0);
+                player.MovementState = MovementState.Idle;
+                player.IsInCombat = false;
+                player.TargetEntityId = null;
+                player.LastInputTime = DateTime.UtcNow;
 
-            SendPacket(MessagePackSerializer.Serialize<PacketBase>(new WorldPackets.PlayerSpawnPacket
+                _worldSimulation.Entities.AddEntity(player);
+
+                var abilitySummaries = player.KnownAbilities
+                    .Select(id => AbilitySummary.From(AbilityBook.GetAbility(id)))
+                    .ToList();
+
+                SendPacket(MessagePackSerializer.Serialize<PacketBase>(new WorldPackets.PlayerSpawnPacket
+                {
+                    Character = CharacterSnapshot.FromCharacter(player.CharacterData, player.KnownAbilities.ToList()),
+                    Resources = ResourceSnapshot.FromStats(player.CharacterData.Stats),
+                    ZoneId = player.ZoneId,
+                    ServerTime = _worldSimulation.GetServerTimestamp(),
+                    Abilities = abilitySummaries
+                }));
+            }
+            catch (Exception ex)
             {
-                Character = CharacterSnapshot.FromCharacter(player.CharacterData, player.KnownAbilities.ToList()),
-                Resources = ResourceSnapshot.FromStats(player.CharacterData.Stats),
-                ZoneId = player.ZoneId,
-                ServerTime = _worldSimulation.GetServerTimestamp(),
-                Abilities = abilitySummaries
-            }));
+                Log.Error(ex, "Failed to respawn player {PlayerId}", player.EntityId);
+            }
         });
     }
 
@@ -1043,8 +1050,6 @@ public class ClientConnection
             {
                 if (playerKiller.ClientConnection is ClientConnection killerConnection)
                     killerConnection.SendQuestUpdate(update.State, update.Definition);
-                else
-                    SendQuestUpdate(update.State, update.Definition);
             }
         }
     }

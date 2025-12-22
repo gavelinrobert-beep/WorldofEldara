@@ -156,7 +156,7 @@ void UEldaraGameInstance::EnsurePersistenceProvider()
 	if (ProviderClass->ImplementsInterface(UEldaraPersistenceProvider::StaticClass()))
 	{
 		ProviderObject = NewObject<UObject>(this, ProviderClass);
-		if (ProviderObject && ProviderObject->GetClass()->ImplementsInterface(UEldaraPersistenceProvider::StaticClass()))
+		if (ProviderObject)
 		{
 			PersistenceProvider = ProviderObject;
 			return;

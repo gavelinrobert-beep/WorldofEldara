@@ -10,7 +10,12 @@ UEldaraSaveGame* UEldaraLocalPersistenceProvider::LoadExistingSave(const FString
 		return nullptr;
 	}
 
-	return Cast<UEldaraSaveGame>(UGameplayStatics::LoadGameFromSlot(SlotName, 0));
+	UEldaraSaveGame* Loaded = Cast<UEldaraSaveGame>(UGameplayStatics::LoadGameFromSlot(SlotName, 0));
+	if (!Loaded)
+	{
+		UE_LOG(LogTemp, Error, TEXT("LoadExistingSave: Slot '%s' exists but is not UEldaraSaveGame. Save data may be corrupted."), *SlotName);
+	}
+	return Loaded;
 }
 
 UEldaraSaveGame* UEldaraLocalPersistenceProvider::LoadOrCreateSave(const FString& SlotName) const

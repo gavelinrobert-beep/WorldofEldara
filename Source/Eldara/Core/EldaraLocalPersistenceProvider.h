@@ -9,6 +9,7 @@ class UEldaraSaveGame;
 /**
  * Default local SaveGame-backed provider.
  * Can be swapped with a DB-backed provider without touching gameplay code.
+ * Operations are single-threaded and rewrite the full save payload, so coordinate callers to avoid conflicting writes.
  */
 UCLASS()
 class ELDARA_API UEldaraLocalPersistenceProvider : public UObject, public IEldaraPersistenceProvider

@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/SaveGame.h"
+#include "EldaraPersistenceTypes.h"
 #include "EldaraSaveGame.generated.h"
 
 class UEldaraRaceData;
@@ -48,4 +49,22 @@ public:
 	/** Transform in the world */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Save")
 	FTransform SavedTransform;
+
+	/** Inventory snapshot (string IDs for now; replace with item definitions when available) */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Save")
+	TArray<FEldaraInventoryItem> Inventory;
+
+	/** Quest progress snapshot */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Save")
+	TArray<FEldaraQuestProgress> QuestProgress;
+
+	/** World state snapshot */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Save")
+	FEldaraWorldStateSnapshot WorldState;
+
+	/** Copy data from a persistence snapshot into this SaveGame instance */
+	void ApplySnapshot(const FEldaraPlayerPersistenceSnapshot& Snapshot);
+
+	/** Produce a persistence snapshot representing this SaveGame instance */
+	FEldaraPlayerPersistenceSnapshot ToSnapshot() const;
 };

@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
+#include "EldaraPersistenceProvider.h"
 #include "EldaraGameInstance.generated.h"
 
 /**
@@ -31,10 +32,27 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "World State")
 	int32 WorldStateVersion;
 
+	/** Replace or retrieve the active persistence provider */
+	UFUNCTION(BlueprintCallable, Category = "Persistence")
+	void SetPersistenceProvider(TScriptInterface<IEldaraPersistenceProvider> InProvider) { PersistenceProvider = InProvider; }
+
+	UFUNCTION(BlueprintCallable, Category = "Persistence")
+	TScriptInterface<IEldaraPersistenceProvider> GetPersistenceProvider() const { return PersistenceProvider; }
+
 protected:
 	/** Initialize world state data */
 	void InitializeWorldState();
 
 	/** Resolve player character for save/load helpers */
 	class AEldaraCharacterBase* GetPrimaryPlayerCharacter() const;
+
+	/** Ensure we have a provider (creates default SaveGame provider) */
+	void EnsurePersistenceProvider();
+
+	/** Configurable provider class so backends can be swapped without code changes */
+	UPROPERTY(EditDefaultsOnly, Category = "Persistence", meta = (MustImplement = "EldaraPersistenceProvider"))
+	TSubclassOf<UObject> DefaultPersistenceProviderClass;
+
+	UPROPERTY()
+	TScriptInterface<IEldaraPersistenceProvider> PersistenceProvider;
 };

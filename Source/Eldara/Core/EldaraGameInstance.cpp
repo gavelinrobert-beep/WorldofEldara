@@ -4,15 +4,19 @@
 #include "Engine/World.h"
 #include "../Characters/EldaraCharacterBase.h"
 #include "Eldara/Networking/EldaraNetworkSubsystem.h"
+#include "EldaraLocalPersistenceProvider.h"
 
 UEldaraGameInstance::UEldaraGameInstance()
 {
 	WorldStateVersion = 0;
+	DefaultPersistenceProviderClass = UEldaraLocalPersistenceProvider::StaticClass();
 }
 
 void UEldaraGameInstance::Init()
 {
 	Super::Init();
+
+	EnsurePersistenceProvider();
 	
 	InitializeWorldState();
 	
@@ -42,41 +46,34 @@ bool UEldaraGameInstance::SaveCurrentState(const FString& SlotName)
 		return false;
 	}
 
-	UEldaraSaveGame* SaveObject = Cast<UEldaraSaveGame>(UGameplayStatics::CreateSaveGameObject(UEldaraSaveGame::StaticClass()));
-	if (!SaveObject)
+	EnsurePersistenceProvider();
+	IEldaraPersistenceProvider* Provider = PersistenceProvider ? PersistenceProvider.GetInterface() : nullptr;
+	if (!Provider)
 	{
+		UE_LOG(LogTemp, Warning, TEXT("SaveCurrentState: No persistence provider available"));
 		return false;
 	}
 
-	SaveObject->CharacterName = PlayerCharacter->GetCharacterName();
-	SaveObject->RaceData = PlayerCharacter->GetRaceData();
-	SaveObject->ClassData = PlayerCharacter->GetClassData();
-	SaveObject->Level = PlayerCharacter->GetCharacterLevel();
-	SaveObject->Experience = PlayerCharacter->GetExperience();
-	SaveObject->Health = PlayerCharacter->GetHealth();
-	SaveObject->Resource = PlayerCharacter->GetResource();
-	SaveObject->Stamina = PlayerCharacter->GetStamina();
-	SaveObject->SavedTransform = PlayerCharacter->GetActorTransform();
+	FEldaraPlayerPersistenceSnapshot Snapshot;
+	Snapshot.CharacterName = PlayerCharacter->GetCharacterName();
+	Snapshot.RaceData = PlayerCharacter->GetRaceData();
+	Snapshot.ClassData = PlayerCharacter->GetClassData();
+	Snapshot.Level = PlayerCharacter->GetCharacterLevel();
+	Snapshot.Experience = PlayerCharacter->GetExperience();
+	Snapshot.Health = PlayerCharacter->GetHealth();
+	Snapshot.Resource = PlayerCharacter->GetResource();
+	Snapshot.Stamina = PlayerCharacter->GetStamina();
+	Snapshot.Transform = PlayerCharacter->GetActorTransform();
+	Snapshot.WorldState.Version = WorldStateVersion;
+	// TODO: Populate Inventory and QuestProgress when those gameplay systems expose persistent data.
 
-	const bool bSaved = UGameplayStatics::SaveGameToSlot(SaveObject, SlotName, 0);
+	const bool bSaved = Provider->SavePlayerSnapshot(SlotName, Snapshot);
 	UE_LOG(LogTemp, Log, TEXT("SaveCurrentState: Slot '%s' save %s"), *SlotName, bSaved ? TEXT("succeeded") : TEXT("failed"));
 	return bSaved;
 }
 
 bool UEldaraGameInstance::LoadState(const FString& SlotName)
 {
-	if (!UGameplayStatics::DoesSaveGameExist(SlotName, 0))
-	{
-		UE_LOG(LogTemp, Warning, TEXT("LoadState: Slot '%s' not found"), *SlotName);
-		return false;
-	}
-
-	UEldaraSaveGame* Loaded = Cast<UEldaraSaveGame>(UGameplayStatics::LoadGameFromSlot(SlotName, 0));
-	if (!Loaded)
-	{
-		return false;
-	}
-
 	AEldaraCharacterBase* PlayerCharacter = GetPrimaryPlayerCharacter();
 	if (!PlayerCharacter)
 	{
@@ -84,26 +81,44 @@ bool UEldaraGameInstance::LoadState(const FString& SlotName)
 		return false;
 	}
 
-	UEldaraRaceData* RaceAsset = Loaded->RaceData.Get();
-	if (!RaceAsset && !Loaded->RaceData.IsNull())
+	EnsurePersistenceProvider();
+	IEldaraPersistenceProvider* Provider = PersistenceProvider ? PersistenceProvider.GetInterface() : nullptr;
+	if (!Provider)
 	{
-		RaceAsset = Loaded->RaceData.LoadSynchronous();
+		UE_LOG(LogTemp, Warning, TEXT("LoadState: No persistence provider available"));
+		return false;
 	}
 
-	UEldaraClassData* ClassAsset = Loaded->ClassData.Get();
-	if (!ClassAsset && !Loaded->ClassData.IsNull())
+	FEldaraPlayerPersistenceSnapshot Snapshot;
+	if (!Provider->LoadPlayerSnapshot(SlotName, Snapshot))
 	{
-		ClassAsset = Loaded->ClassData.LoadSynchronous();
+		UE_LOG(LogTemp, Warning, TEXT("LoadState: Slot '%s' not found"), *SlotName);
+		return false;
+	}
+
+	UEldaraRaceData* RaceAsset = Snapshot.RaceData.Get();
+	if (!RaceAsset && !Snapshot.RaceData.IsNull())
+	{
+		// TODO: Switch to async asset loading to avoid hitching when streaming large data assets.
+		RaceAsset = Snapshot.RaceData.LoadSynchronous();
+	}
+
+	UEldaraClassData* ClassAsset = Snapshot.ClassData.Get();
+	if (!ClassAsset && !Snapshot.ClassData.IsNull())
+	{
+		ClassAsset = Snapshot.ClassData.LoadSynchronous();
 	}
 
 	PlayerCharacter->SetRaceAndClass(RaceAsset, ClassAsset);
-	PlayerCharacter->SetVitals(Loaded->Health, Loaded->Resource, Loaded->Stamina);
-	PlayerCharacter->SetCharacterName(Loaded->CharacterName);
-	PlayerCharacter->SetLevel(Loaded->Level);
-	PlayerCharacter->SetExperience(Loaded->Experience);
-	PlayerCharacter->SetActorTransform(Loaded->SavedTransform);
+	PlayerCharacter->SetVitals(Snapshot.Health, Snapshot.Resource, Snapshot.Stamina);
+	PlayerCharacter->SetCharacterName(Snapshot.CharacterName);
+	PlayerCharacter->SetLevel(Snapshot.Level);
+	PlayerCharacter->SetExperience(Snapshot.Experience);
+	PlayerCharacter->SetActorTransform(Snapshot.Transform);
 
-	UE_LOG(LogTemp, Log, TEXT("LoadState: Slot '%s' applied to %s"), *SlotName, *PlayerCharacter->GetName());
+	WorldStateVersion = Snapshot.WorldState.Version;
+
+	UE_LOG(LogTemp, Log, TEXT("LoadState: Slot '%s' applied to %s (WorldState v%d)"), *SlotName, *PlayerCharacter->GetName(), WorldStateVersion);
 	return true;
 }
 
@@ -123,4 +138,34 @@ AEldaraCharacterBase* UEldaraGameInstance::GetPrimaryPlayerCharacter() const
 
 	APawn* Pawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
 	return Pawn ? Cast<AEldaraCharacterBase>(Pawn) : nullptr;
+}
+
+void UEldaraGameInstance::EnsurePersistenceProvider()
+{
+	if (PersistenceProvider)
+	{
+		return;
+	}
+
+	UClass* ProviderClass = DefaultPersistenceProviderClass.Get();
+	if (!ProviderClass)
+	{
+		ProviderClass = UEldaraLocalPersistenceProvider::StaticClass();
+	}
+
+	UObject* ProviderObject = nullptr;
+	if (ProviderClass->ImplementsInterface(UEldaraPersistenceProvider::StaticClass()))
+	{
+		ProviderObject = NewObject<UObject>(this, ProviderClass);
+		if (ProviderObject)
+		{
+			PersistenceProvider = ProviderObject;
+			return;
+		}
+	}
+
+	UEldaraLocalPersistenceProvider* LocalProvider = NewObject<UEldaraLocalPersistenceProvider>(this);
+	PersistenceProvider = LocalProvider;
+	UE_LOG(LogTemp, Warning, TEXT("EnsurePersistenceProvider: Provider '%s' missing interface or failed to initialize, defaulting to local SaveGame provider"),
+		ProviderClass ? *ProviderClass->GetName() : TEXT("None"));
 }

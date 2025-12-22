@@ -18,6 +18,25 @@ namespace
 constexpr int32 DefaultRemoteLevel = 1;
 constexpr bool bDefaultRemoteHostile = false;
 constexpr float LocalEntityMatchTolerance = 50.f;
+
+int32 ClampUint64ToInt32(uint64 Value)
+{
+	const uint64 MaxInt32 = static_cast<uint64>(TNumericLimits<int32>::Max());
+	const uint64 Clamped = FMath::Clamp<uint64>(Value, 0, MaxInt32);
+	return static_cast<int32>(Clamped);
+}
+
+bool ReadClampedUint64(FMsgPackReader& Reader, int32& OutValue)
+{
+	uint64 Value64 = 0;
+	if (!Reader.ReadUInt64(Value64))
+	{
+		return false;
+	}
+
+	OutValue = ClampUint64ToInt32(Value64);
+	return true;
+}
 }
 
 void UEldaraNetworkSubsystem::FSocketDeleter::operator()(FSocket* InSocket) const
@@ -308,7 +327,7 @@ void UEldaraNetworkSubsystem::ProcessPacket(const TArray<uint8>& PacketData)
 	}
 	case EPacketType::EntityDespawn:
 	{
-		uint64 EntityId = 0;
+		int32 EntityId = 0;
 		if (ParseEntityDespawn(Reader, EntityId))
 		{
 			HandleEntityDespawn(EntityId);
@@ -317,7 +336,7 @@ void UEldaraNetworkSubsystem::ProcessPacket(const TArray<uint8>& PacketData)
 	}
 	case EPacketType::NPCStateUpdate:
 	{
-		uint64 EntityId = 0;
+		int32 EntityId = 0;
 		EEldaraNPCServerState State = EEldaraNPCServerState::Idle;
 		if (ParseNPCStateUpdate(Reader, EntityId, State))
 		{
@@ -339,7 +358,7 @@ bool UEldaraNetworkSubsystem::ParseMovementUpdate(FMsgPackReader& Reader, FEldar
 		return false;
 	}
 
-	if (!Reader.ReadUInt64(OutUpdate.EntityId))
+	if (!ReadClampedUint64(Reader, OutUpdate.EntityId))
 	{
 		return false;
 	}
@@ -442,7 +461,7 @@ bool UEldaraNetworkSubsystem::ParseCharacterSnapshot(FMsgPackReader& Reader, FEl
 		return false;
 	}
 
-	if (!Reader.ReadUInt64(OutSpawn.CharacterId))
+	if (!ReadClampedUint64(Reader, OutSpawn.CharacterId))
 	{
 		return false;
 	}
@@ -524,7 +543,7 @@ bool UEldaraNetworkSubsystem::ParseEntitySpawn(FMsgPackReader& Reader, FEldaraEn
 		return false;
 	}
 
-	if (!Reader.ReadUInt64(OutSpawn.EntityId))
+	if (!ReadClampedUint64(Reader, OutSpawn.EntityId))
 	{
 		return false;
 	}
@@ -623,7 +642,7 @@ bool UEldaraNetworkSubsystem::ParseEntitySpawn(FMsgPackReader& Reader, FEldaraEn
 	return true;
 }
 
-bool UEldaraNetworkSubsystem::ParseEntityDespawn(FMsgPackReader& Reader, uint64& OutEntityId)
+bool UEldaraNetworkSubsystem::ParseEntityDespawn(FMsgPackReader& Reader, int32& OutEntityId)
 {
 	uint32 Len = 0;
 	if (!Reader.ReadArrayHeader(Len) || Len < 1)
@@ -631,10 +650,10 @@ bool UEldaraNetworkSubsystem::ParseEntityDespawn(FMsgPackReader& Reader, uint64&
 		return false;
 	}
 
-	return Reader.ReadUInt64(OutEntityId);
+	return ReadClampedUint64(Reader, OutEntityId);
 }
 
-bool UEldaraNetworkSubsystem::ParseNPCStateUpdate(FMsgPackReader& Reader, uint64& OutEntityId,
+bool UEldaraNetworkSubsystem::ParseNPCStateUpdate(FMsgPackReader& Reader, int32& OutEntityId,
 	EEldaraNPCServerState& OutState)
 {
 	uint32 Len = 0;
@@ -643,7 +662,7 @@ bool UEldaraNetworkSubsystem::ParseNPCStateUpdate(FMsgPackReader& Reader, uint64
 		return false;
 	}
 
-	if (!Reader.ReadUInt64(OutEntityId))
+	if (!ReadClampedUint64(Reader, OutEntityId))
 	{
 		return false;
 	}
@@ -788,7 +807,7 @@ void UEldaraNetworkSubsystem::HandleEntitySpawn(const FEldaraEntitySpawn& Spawn)
 	OnEntitySpawn.Broadcast(Spawn);
 }
 
-void UEldaraNetworkSubsystem::HandleEntityDespawn(uint64 EntityId)
+void UEldaraNetworkSubsystem::HandleEntityDespawn(int32 EntityId)
 {
 	if (const TWeakObjectPtr<AActor>* Found = EntityActors.Find(EntityId))
 	{
@@ -801,7 +820,7 @@ void UEldaraNetworkSubsystem::HandleEntityDespawn(uint64 EntityId)
 	}
 }
 
-void UEldaraNetworkSubsystem::HandleNPCState(uint64 EntityId, EEldaraNPCServerState State)
+void UEldaraNetworkSubsystem::HandleNPCState(int32 EntityId, EEldaraNPCServerState State)
 {
 	const TWeakObjectPtr<AActor>* Found = EntityActors.Find(EntityId);
 	if (!Found)

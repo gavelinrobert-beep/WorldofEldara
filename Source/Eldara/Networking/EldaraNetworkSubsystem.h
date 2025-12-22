@@ -145,28 +145,29 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Eldara|Network")
 	TSubclassOf<AEldaraNPCBase> RemoteNPCClass;
 
-private:
-	enum class EPacketType : uint16
-	{
-		LoginRequest = 0,
-		LoginResponse = 1,
-		MovementInput = 10,
-		MovementUpdate = 11,
-		PositionCorrection = 12,
-		MovementSync = 13,
-		ChatMessage = 30,
-		EnterWorld = 100,
-		LeaveWorld = 101,
-		EntitySpawn = 102,
-		EntityDespawn = 103,
-		PlayerSpawn = 105,
-		NPCStateUpdate = 106
-	};
+	private:
+		enum class EPacketType : uint16
+		{
+			LoginRequest = 0,
+			LoginResponse = 1,
+			MovementInput = 10,
+			MovementUpdate = 11,
+			PositionCorrection = 12,
+			MovementSync = 13,
+			ChatMessage = 30,
+			EnterWorld = 100,
+			LeaveWorld = 101,
+			EntitySpawn = 102,
+			EntityDespawn = 103,
+			PlayerSpawn = 105,
+			NPCStateUpdate = 106
+		};
 
-	struct FMsgPackReader
-	{
-		const TArray<uint8>& Buffer;
-		int32 Offset = 0;
+	public:
+		struct FMsgPackReader
+		{
+			const TArray<uint8>& Buffer;
+			int32 Offset = 0;
 
 		explicit FMsgPackReader(const TArray<uint8>& InBuffer)
 			: Buffer(InBuffer)
@@ -202,10 +203,11 @@ private:
 		void WriteBool(bool bValue);
 	};
 
-	struct FSocketDeleter
-	{
-		void operator()(FSocket* InSocket) const;
-	};
+	private:
+		struct FSocketDeleter
+		{
+			void operator()(FSocket* InSocket) const;
+		};
 
 	using FEldaraSocketPtr = TUniquePtr<FSocket, FSocketDeleter>;
 

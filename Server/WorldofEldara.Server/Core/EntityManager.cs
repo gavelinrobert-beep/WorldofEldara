@@ -259,6 +259,7 @@ public class NPCEntity : Entity
     private NPCAIState _aiState = NPCAIState.Idle;
 
     public int NPCTemplateId { get; set; }
+    public string? Tag { get; set; }
     public Faction Faction { get; set; }
     public bool IsHostile { get; set; }
     public bool IsQuestGiver { get; set; }
@@ -510,7 +511,10 @@ public class NPCEntity : Entity
 
         if (target.CharacterData.Stats.CurrentHealth <= 0)
         {
-            EntityManager?.RemoveEntity(target.EntityId);
+            if (target.ClientConnection is ClientConnection connection)
+                connection.HandleEntityDeath(target, this);
+            else
+                EntityManager?.RemoveEntity(target.EntityId);
             ResetToReturn();
         }
     }

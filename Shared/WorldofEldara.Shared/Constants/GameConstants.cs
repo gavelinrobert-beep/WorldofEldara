@@ -65,6 +65,9 @@ public static class GameConstants
 /// </summary>
 public static class ZoneConstants
 {
+    // Vertical slice starter zone
+    public const string Zone01 = "zone_01";
+
     // Starter Zones (Level 1-10)
     public const string ThornveilEnclave = "zone_thornveil_enclave";
     public const string TemporalSteppes = "zone_temporal_steppes";

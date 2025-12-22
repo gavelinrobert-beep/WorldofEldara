@@ -5,6 +5,7 @@ using WorldofEldara.Shared.Data.Character;
 using WorldofEldara.Shared.Protocol.Packets;
 using System.Linq;
 using WorldofEldara.Shared.Data.Quest;
+using WorldofEldara.Shared.Constants;
 
 namespace WorldofEldara.Server.World;
 
@@ -21,6 +22,20 @@ public class SpawnSystem
     private readonly Func<long> _serverTimeProvider;
     private readonly object _spawnLock = new();
     private Networking.NetworkServer? _networkServer;
+    private static readonly List<Vector3> Zone01SaplingPatrol = new()
+    {
+        new Vector3(8, 2, 0),
+        new Vector3(10, 4, 0),
+        new Vector3(12, 2, 0),
+        new Vector3(10, 0, 0)
+    };
+
+    private static readonly List<Vector3> Zone01RazorFernPatrol = new()
+    {
+        new Vector3(-4, -1, 0),
+        new Vector3(-6, -3, 0),
+        new Vector3(-2, -3, 0)
+    };
 
     public SpawnSystem(EntityManager entityManager, ZoneManager zoneManager, TimeManager timeManager,
         Func<long> serverTimeProvider)
@@ -51,6 +66,62 @@ public class SpawnSystem
 
     private void CreateStarterZoneSpawns()
     {
+        // Vertical slice Zone_01
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(2, 2, 0),
+            NPCTemplateId = 5001,
+            OverrideName = "Warden Elaris",
+            RespawnTime = 10.0f,
+            TimeSinceLastSpawn = 10.0f,
+            IsHostileOverride = false,
+            FactionOverride = Faction.VerdantCircles
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(8, 2, 0),
+            NPCTemplateId = 6001,
+            OverrideName = "Hollow Sapling",
+            RespawnTime = 12.0f,
+            TimeSinceLastSpawn = 12.0f,
+            MaxAliveInZone = 4,
+            MaxHealth = 110,
+            Level = 1,
+            MovementSpeed = 2.8f,
+            AggroRange = 9.0f,
+            AttackRange = 2.0f,
+            AttackCooldown = 1.8f,
+            IsHostileOverride = true,
+            FactionOverride = Faction.Neutral,
+            Tag = "zone01_hostile",
+            PatrolPath = new List<Vector3>(Zone01SaplingPatrol)
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(-4, -1, 0),
+            NPCTemplateId = 6002,
+            OverrideName = "Razor Fern",
+            RespawnTime = 10.0f,
+            TimeSinceLastSpawn = 10.0f,
+            MaxAliveInZone = 4,
+            MaxHealth = 90,
+            Level = 2,
+            MovementSpeed = 3.8f,
+            AggroRange = 13.0f,
+            AttackRange = 2.6f,
+            AttackCooldown = 1.2f,
+            IsHostileOverride = true,
+            FactionOverride = Faction.Neutral,
+            Tag = "zone01_hostile",
+            PatrolPauseDuration = 0.6f,
+            PatrolPath = new List<Vector3>(Zone01RazorFernPatrol)
+        });
+
         // Thornveil Enclave - Sylvaen starter
         _spawnPoints.Add(new SpawnPoint
         {
@@ -212,6 +283,7 @@ public class SpawnSystem
                 PatrolPauseDuration = spawnPoint.PatrolPauseDuration > 0 ? spawnPoint.PatrolPauseDuration : 1.0f,
                 ActiveDuringDaytimeOnly = spawnPoint.DaytimeOnly,
                 ActiveDuringNightOnly = spawnPoint.NightOnly,
+                Tag = spawnPoint.Tag,
                 EntityManager = _entityManager,
                 ZoneManager = _zoneManager,
                 TimeManager = _timeManager,
@@ -251,6 +323,7 @@ public class SpawnPoint
     public string? OverrideName { get; set; }
     public bool? IsHostileOverride { get; set; }
     public Faction? FactionOverride { get; set; }
+    public string? Tag { get; set; }
     public float MovementSpeed { get; set; } = 3.5f;
     public float AggroRange { get; set; } = 12.0f;
     public float AttackRange { get; set; } = 2.5f;

@@ -10,7 +10,7 @@
 #include "Containers/StringConv.h"
 #include "Sockets.h"
 #include "SocketSubsystem.h"
-#include "IPv4Address.h"
+#include "Interfaces/IPv4/IPv4Address.h"
 #include "Stats/Stats.h"
 #include <limits>
 

@@ -76,6 +76,7 @@ public static class ZoneConstants
     public const string CarvedValleys = "zone_carved_valleys";
     public const string ScarredHighlands = "zone_scarred_highlands";
     public const string BlackwakeHaven = "zone_blackwake_haven";
+    public const string BriarwatchCrossing = "zone_briarwatch_crossing";
 
     // Mid-level Zones (Level 10-40)
     public const string ElarThalasApproach = "zone_elarthalas_approach";

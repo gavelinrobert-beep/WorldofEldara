@@ -1,4 +1,5 @@
 using MessagePack;
+using WorldofEldara.Shared.Constants;
 using WorldofEldara.Shared.Data.Character;
 
 namespace WorldofEldara.Shared.Data.World;
@@ -103,9 +104,9 @@ public static class ZoneDefinitions
             SafeSpawnPoint = new WorldPosition(2, 2, 0)
         },
 
-        ["zone_thornveil_enclave"] = new Zone
+        [ZoneConstants.ThornveilEnclave] = new Zone
         {
-            ZoneId = "zone_thornveil_enclave",
+            ZoneId = ZoneConstants.ThornveilEnclave,
             Name = "Thornveil Enclave",
             Description = "Ancient forest where the Worldroot's presence is strongest",
             MinLevel = 1,
@@ -115,7 +116,25 @@ public static class ZoneDefinitions
             WorldrootDensity = 1.0f,
             IsPvPEnabled = false,
             LoreDescription = "Trees remember every footstep. Younger Sylvaen train here to hear the Green Memory.",
-            SafeSpawnPoint = new WorldPosition(0, 0, 0)
+            SafeSpawnPoint = new WorldPosition(0, 0, 0),
+            ConnectedZones = new List<string> { ZoneConstants.BriarwatchCrossing }
+        },
+
+        [ZoneConstants.BriarwatchCrossing] = new Zone
+        {
+            ZoneId = ZoneConstants.BriarwatchCrossing,
+            Name = "Briarwatch Crossing",
+            Description = "A secondary Sylvaen hub built atop living bridges that span Thornveil's river canopies.",
+            MinLevel = 6,
+            MaxLevel = 18,
+            Type = ZoneType.City,
+            ControllingFaction = Faction.VerdantCircles,
+            WorldrootDensity = 0.9f,
+            IsPvPEnabled = false,
+            LoreDescription =
+                "Keepers anchor the Crossing to channel travelers safely deeper into Thornveil, trading sap-crafted supplies and stories.",
+            ConnectedZones = new List<string> { ZoneConstants.ThornveilEnclave },
+            SafeSpawnPoint = new WorldPosition(12, 4, 0)
         },
 
         ["zone_temporal_steppes"] = new Zone

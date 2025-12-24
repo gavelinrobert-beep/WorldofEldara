@@ -136,6 +136,8 @@ public static class QuestCatalog
     public const int AwakeningId = 10001;
     public const int WorldrootsPainId = 10002;
     public const int VerdantOutskirtsCullId = 20001;
+    public const int BriarwatchWelcomeId = 30001;
+    public const int BriarwatchSuppliesId = 30002;
 
     private static readonly IReadOnlyDictionary<int, QuestDefinition> Definitions =
         new Dictionary<int, QuestDefinition>
@@ -226,6 +228,67 @@ public static class QuestCatalog
                 },
                 AcceptDialogue = "The Worldroot aches. Learn what Scout Maerith has seen.",
                 CompletionDialogue = "Maerith's report is grim. We must act before the rot spreads further."
+            },
+            [BriarwatchWelcomeId] = new QuestDefinition
+            {
+                QuestId = BriarwatchWelcomeId,
+                Title = "Welcome to Briarwatch",
+                Description = "Keeper Aelwyn wants you to meet the quartermaster overseeing the Crossing's supply lines.",
+                MinimumLevel = 6,
+                GiverNpcTemplateId = 1101,
+                TurnInNpcTemplateId = 1102,
+                Objectives = new[]
+                {
+                    new QuestObjectiveDefinition
+                    {
+                        ObjectiveId = 1,
+                        ObjectiveType = QuestObjectiveType.Talk,
+                        TargetCount = 1,
+                        TargetNpcTemplateId = 1102,
+                        Description = "Speak with Quartermaster Liora in Briarwatch Crossing."
+                    }
+                },
+                Rewards = new QuestReward
+                {
+                    Experience = 320,
+                    Gold = 8,
+                    ReputationFaction = Faction.VerdantCircles,
+                    ReputationAmount = 20
+                },
+                AcceptDialogue = "We hold this Crossing for all who respect the Worldroot. Quartermaster Liora will outfit you.",
+                CompletionDialogue = "Keeper Aelwyn keeps the roots calm. Let's get you supplied for the routes ahead."
+            },
+            [BriarwatchSuppliesId] = new QuestDefinition
+            {
+                QuestId = BriarwatchSuppliesId,
+                Title = "Bridge to Thornveil",
+                Description =
+                    "Quartermaster Liora has packaged aid for Thornveil Enclave. Deliver it to Elder Tharivol.",
+                MinimumLevel = 6,
+                GiverNpcTemplateId = 1102,
+                TurnInNpcTemplateId = 1001,
+                Prerequisites = new[] { BriarwatchWelcomeId },
+                Objectives = new[]
+                {
+                    new QuestObjectiveDefinition
+                    {
+                        ObjectiveId = 1,
+                        ObjectiveType = QuestObjectiveType.Talk,
+                        TargetCount = 1,
+                        TargetNpcTemplateId = 1001,
+                        Description = "Bring the sealed satchel to Elder Tharivol in Thornveil Enclave."
+                    }
+                },
+                Rewards = new QuestReward
+                {
+                    Experience = 420,
+                    Gold = 12,
+                    ReputationFaction = Faction.VerdantCircles,
+                    ReputationAmount = 35
+                },
+                AcceptDialogue =
+                    "Our bridges stand because Thornveil stands. Carry this satchel to Elder Tharivol and let the Enclave know the Crossing is secure.",
+                CompletionDialogue = "So Briarwatch stands ready. Their vigilance will keep the branches open."
             }
         };
 

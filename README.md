@@ -73,6 +73,7 @@ All magic has a **source and consequence**:
 
 **Starter Zones** (1-10): Faction-specific, lore-integrated
 - Thornveil Enclave (Sylvaen)
+- Briarwatch Crossing (Sylvaen secondary hub linked to Thornveil)
 - Temporal Steppes (High Elves)
 - Borderkeep (Humans)
 - The Untamed Reaches (Wildborn Therakai)

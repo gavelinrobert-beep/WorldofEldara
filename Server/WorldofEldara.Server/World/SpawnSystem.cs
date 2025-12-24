@@ -135,6 +135,30 @@ public class SpawnSystem
 
         _spawnPoints.Add(new SpawnPoint
         {
+            ZoneId = ZoneConstants.BriarwatchCrossing,
+            Position = new Vector3(12, 4, 0),
+            NPCTemplateId = 1101,
+            OverrideName = "Keeper Aelwyn",
+            RespawnTime = 30.0f,
+            TimeSinceLastSpawn = 30.0f,
+            IsHostileOverride = false,
+            FactionOverride = Faction.VerdantCircles
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.BriarwatchCrossing,
+            Position = new Vector3(14, 6, 0),
+            NPCTemplateId = 1102,
+            OverrideName = "Quartermaster Liora",
+            RespawnTime = 30.0f,
+            TimeSinceLastSpawn = 30.0f,
+            IsHostileOverride = false,
+            FactionOverride = Faction.VerdantCircles
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
             ZoneId = "zone_temporal_steppes",
             Position = new Vector3(10, 5, 0),
             NPCTemplateId = 1002,

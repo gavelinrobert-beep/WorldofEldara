@@ -76,6 +76,28 @@ public static class NpcDefinitions
             Stats = StatSnapshot.Empty with { Armor = GuardArmor, MovementSpeed = GuardMovementSpeed },
             Resources = CreateResourcePool(GuardHealth, GuardStamina),
             AbilityIds = GuardAbilities
+        },
+        [1101] = new NpcDefinition
+        {
+            TemplateId = 1101,
+            Name = "Keeper Aelwyn",
+            MinLevel = 8,
+            MaxLevel = 10,
+            Faction = Faction.VerdantCircles,
+            SpawnZoneId = ZoneConstants.BriarwatchCrossing,
+            Stats = StatSnapshot.Empty with { MovementSpeed = GuardMovementSpeed },
+            Resources = CreateResourcePool(GuardHealth, GuardStamina)
+        },
+        [1102] = new NpcDefinition
+        {
+            TemplateId = 1102,
+            Name = "Quartermaster Liora",
+            MinLevel = 8,
+            MaxLevel = 12,
+            Faction = Faction.VerdantCircles,
+            SpawnZoneId = ZoneConstants.BriarwatchCrossing,
+            Stats = StatSnapshot.Empty with { MovementSpeed = GuardMovementSpeed },
+            Resources = CreateResourcePool(GuardHealth + 20, GuardStamina + 10)
         }
     };
 }

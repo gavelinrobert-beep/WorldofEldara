@@ -96,7 +96,7 @@ void UWorldHUDWidget::BuildHealthResourceBlock(UCanvasPanel* RootCanvas)
 		ResourceTextSlot->SetVerticalAlignment(EVerticalAlignment::VAlign_Center);
 
 		UOverlaySlot* ResourceOverlaySlot = Overlay->AddChildToOverlay(ResourceOverlay);
-		ResourceOverlaySlot->SetPadding(FMargin::ZeroMargin);
+		ResourceOverlaySlot->SetPadding(FMargin(0.f));
 	}
 
 	USizeBox* VitalsBox = WidgetTree->ConstructWidget<USizeBox>(USizeBox::StaticClass(), TEXT("VitalsSizeBox"));
@@ -104,10 +104,10 @@ void UWorldHUDWidget::BuildHealthResourceBlock(UCanvasPanel* RootCanvas)
 	VitalsBox->SetHeightOverride(BarHeight * 2.f + VitalsPadding);
 	VitalsBox->AddChild(Overlay);
 
-	UCanvasPanelSlot* Slot = RootCanvas->AddChildToCanvas(VitalsBox);
-	Slot->SetAnchors(FAnchors(0.f, 0.f, 0.f, 0.f));
-	Slot->SetOffsets(FMargin(BlockPadding, BlockPadding, 0.f, 0.f));
-	Slot->SetAutoSize(true);
+	UCanvasPanelSlot* VitalsCanvasSlot = RootCanvas->AddChildToCanvas(VitalsBox);
+	VitalsCanvasSlot->SetAnchors(FAnchors(0.f, 0.f, 0.f, 0.f));
+	VitalsCanvasSlot->SetOffsets(FMargin(BlockPadding, BlockPadding, 0.f, 0.f));
+	VitalsCanvasSlot->SetAutoSize(true);
 }
 
 void UWorldHUDWidget::BuildMinimapBlock(UCanvasPanel* RootCanvas)
@@ -137,11 +137,11 @@ void UWorldHUDWidget::BuildMinimapBlock(UCanvasPanel* RootCanvas)
 	MinimapBox->SetHeightOverride(180.f);
 	MinimapBox->AddChild(MinimapBorder);
 
-	UCanvasPanelSlot* Slot = RootCanvas->AddChildToCanvas(MinimapBox);
-	Slot->SetAnchors(FAnchors(1.f, 0.f, 1.f, 0.f));
-	Slot->SetAlignment(FVector2D(1.f, 0.f));
-	Slot->SetOffsets(FMargin(-BlockPadding, BlockPadding, 0.f, 0.f));
-	Slot->SetAutoSize(true);
+	UCanvasPanelSlot* MinimapCanvasSlot = RootCanvas->AddChildToCanvas(MinimapBox);
+	MinimapCanvasSlot->SetAnchors(FAnchors(1.f, 0.f, 1.f, 0.f));
+	MinimapCanvasSlot->SetAlignment(FVector2D(1.f, 0.f));
+	MinimapCanvasSlot->SetOffsets(FMargin(-BlockPadding, BlockPadding, 0.f, 0.f));
+	MinimapCanvasSlot->SetAutoSize(true);
 }
 
 void UWorldHUDWidget::BuildActionBarBlock(UCanvasPanel* RootCanvas)
@@ -154,7 +154,6 @@ void UWorldHUDWidget::BuildActionBarBlock(UCanvasPanel* RootCanvas)
 		USizeBox* ButtonBox = WidgetTree->ConstructWidget<USizeBox>(USizeBox::StaticClass(), *SlotName);
 		ButtonBox->SetWidthOverride(ActionBarButtonWidth);
 		ButtonBox->SetHeightOverride(ActionBarButtonHeight);
-		ButtonBox->SetPadding(ActionButtonPadding);
 
 		UBorder* ButtonBorder = WidgetTree->ConstructWidget<UBorder>(UBorder::StaticClass());
 		ButtonBorder->SetBrushColor(FLinearColor(0.f, 0.f, 0.f, 0.4f));
@@ -166,8 +165,9 @@ void UWorldHUDWidget::BuildActionBarBlock(UCanvasPanel* RootCanvas)
 		ButtonBorder->SetContent(Label);
 		ButtonBox->AddChild(ButtonBorder);
 
-		UHorizontalBoxSlot* Slot = ActionBar->AddChildToHorizontalBox(ButtonBox);
-		Slot->SetVerticalAlignment(EVerticalAlignment::VAlign_Bottom);
+		UHorizontalBoxSlot* ActionBarSlot = ActionBar->AddChildToHorizontalBox(ButtonBox);
+		ActionBarSlot->SetVerticalAlignment(EVerticalAlignment::VAlign_Bottom);
+		ActionBarSlot->SetPadding(ActionButtonPadding);
 	}
 
 	const float ButtonWidthWithPadding = ActionBarButtonWidth + ActionButtonPadding.Left + ActionButtonPadding.Right;
@@ -178,10 +178,10 @@ void UWorldHUDWidget::BuildActionBarBlock(UCanvasPanel* RootCanvas)
 	ActionBarBox->SetHeightOverride(ButtonHeightWithPadding);
 	ActionBarBox->AddChild(ActionBar);
 
-	UCanvasPanelSlot* Slot = RootCanvas->AddChildToCanvas(ActionBarBox);
-	Slot->SetAnchors(FAnchors(0.5f, 1.f, 0.5f, 1.f));
-	Slot->SetAlignment(FVector2D(0.5f, 1.f));
-	Slot->SetOffsets(FMargin(0.f, -BlockPadding, 0.f, 0.f));
+	UCanvasPanelSlot* ActionBarCanvasSlot = RootCanvas->AddChildToCanvas(ActionBarBox);
+	ActionBarCanvasSlot->SetAnchors(FAnchors(0.5f, 1.f, 0.5f, 1.f));
+	ActionBarCanvasSlot->SetAlignment(FVector2D(0.5f, 1.f));
+	ActionBarCanvasSlot->SetOffsets(FMargin(0.f, -BlockPadding, 0.f, 0.f));
 }
 
 void UWorldHUDWidget::UpdateVitals(float CurrentHealth, float MaxHealth, float CurrentResource, float MaxResource)

@@ -95,7 +95,8 @@ void UWorldHUDWidget::BuildHealthResourceBlock(UCanvasPanel* RootCanvas)
 		ResourceTextSlot->SetHorizontalAlignment(EHorizontalAlignment::HAlign_Center);
 		ResourceTextSlot->SetVerticalAlignment(EVerticalAlignment::VAlign_Center);
 
-		Overlay->AddChildToOverlay(ResourceOverlay);
+		UOverlaySlot* ResourceOverlaySlot = Overlay->AddChildToOverlay(ResourceOverlay);
+		ResourceOverlaySlot->SetPadding(FMargin::ZeroMargin);
 	}
 
 	USizeBox* VitalsBox = WidgetTree->ConstructWidget<USizeBox>(USizeBox::StaticClass(), TEXT("VitalsSizeBox"));

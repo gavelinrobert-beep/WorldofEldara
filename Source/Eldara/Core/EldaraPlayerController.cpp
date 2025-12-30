@@ -12,11 +12,12 @@ namespace
 {
 constexpr float NetworkLookupInterval = 1.0f;
 constexpr float MinimapLocationTolerance = 10.f;
+constexpr int32 DefaultActionLabelCount = 6;
 
 TArray<FText> BuildDefaultActionLabels()
 {
 	TArray<FText> Labels;
-	Labels.Reserve(6);
+	Labels.Reserve(DefaultActionLabelCount);
 	Labels.Add(LOCTEXT("Action1", "1: Attack"));
 	Labels.Add(LOCTEXT("Action2", "2: Block"));
 	Labels.Add(LOCTEXT("Action3", "3: Interrupt"));

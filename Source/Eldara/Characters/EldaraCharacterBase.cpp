@@ -231,26 +231,16 @@ void AEldaraCharacterBase::MoveRight(float Value)
 
 FVector AEldaraCharacterBase::GetFlatForwardDirection() const
 {
-	if (!Controller)
-	{
-		return FVector::ZeroVector;
-	}
-
-	constexpr float FlatAxisRotation = 0.f;
-	const FRotator YawRotation(FlatAxisRotation, Controller->GetControlRotation().Yaw, FlatAxisRotation);
-
-	return YawRotation.Vector();
+	return GetFlatYawRotation().Vector();
 }
 
 FVector AEldaraCharacterBase::GetFlatRightDirection() const
 {
-	if (!Controller)
-	{
-		return FVector::ZeroVector;
-	}
+	return GetFlatYawRotation().RotateVector(FVector::RightVector);
+}
 
-	constexpr float FlatAxisRotation = 0.f;
-	const FRotator YawRotation(FlatAxisRotation, Controller->GetControlRotation().Yaw, FlatAxisRotation);
-
-	return YawRotation.RotateVector(FVector::RightVector);
+FRotator AEldaraCharacterBase::GetFlatYawRotation() const
+{
+	const FRotator ControlRotation = Controller ? Controller->GetControlRotation() : FRotator::ZeroRotator;
+	return FRotator(0.f, ControlRotation.Yaw, 0.f);
 }

@@ -307,6 +307,64 @@ Upon completing "The Verdant Shrine" quest:
 - **Weather**: Light mist, occasional rain (no heavy weather)
 - **Lighting**: Soft, mystical (green and blue tones from flora)
 
+## Starter Zone Build Checklist (Unreal assets)
+
+This section maps the Whispering Canopy slice to concrete Unreal folders, assets, and behavior targets so the team can stand up the starter zone quickly. Use the default Unreal scale of **1 uu = 1 cm** for the conversions below.
+
+### Core folders and key assets
+- `Content/World/StarterZone/Maps/`: `StarterZone_P` (persistent) plus sublevels `StarterZone_Lighting` and `StarterZone_Gameplay`.
+- `Content/World/StarterZone/Environment/`: landscape heightmap, foliage clusters, rock/prop static meshes.
+- `Content/World/StarterZone/Nav/`: `SM_NavMeshBoundsVolume` placement and Recast settings tuned for a small tiled area.
+- `Content/World/StarterZone/AI/`: Behavior Trees (`BT_Starter_Melee`, `BT_Starter_Ranged`), Blackboards (`BB_Starter_Enemy`), optional EQS, AIControllers (`BP_AI_ForestSprite`, `BP_AI_Thornling`).
+- `Content/World/StarterZone/NPC/`: `BP_NPC_Greeter`, `BP_NPC_QuestGiver`, `BP_NPC_Vendor` (optional), dialogue data assets.
+- `Content/World/StarterZone/Enemies/`: `BP_Enemy_ForestSprite` (melee) and `BP_Enemy_Thornling` (ranged) plus their BT/BB links.
+- `Content/Data/Quests/`: DataAssets or DataTables for kill/collect quests.
+- `Content/Data/Items/`: Starter gear/consumables and loot tables.
+- `Content/Data/Spawns/`: `BP_SpawnVolume` variants per archetype with timers/respawn caps.
+- `Content/UI/`: Tutorial tips, quest log hooks, and objective markers.
+
+### Map layout beats
+- **Spawn Hub (safe):** PlayerStart cluster with a safe-radius volume, Greeter + QuestGiver + optional Vendor, and tutorial widgets.
+- **Path Out:** Short lane to a melee Combat Pocket (ForestSprites).
+- **Side Pocket:** Gathering or ranged enemy (Thornlings) pocket.
+- **Loop Back:** Return path to QuestGiver with a landmark (rock arch or stump tower) for orientation.
+- **Bounds:** Blocking volumes or cliffs to prevent leaving the prototype space; soft fall volumes, no death pits.
+
+### NPCs and quest chain (IDs kept consistent)
+- **Greeter (`NPC_Starter_Greeter`):** One-line welcome, movement/camera tips, optional potion/weapon grant.
+- **QuestGiver (`NPC_Starter_QuestGiver`):** Two micro-quests  
+  - **Kill Quest (`Q_Starter_Kill01`)**: “Cull 3 Forest Sprites.”  
+  - **Collect Quest (`Q_Starter_Collect01`)**: “Gather 5 Thorny Pods” (from Thornlings or pickup actors).  
+  - **Rewards:** Starter weapon/armor, small currency, pointer to next zone.
+- Optional **Vendor (`NPC_Starter_Vendor`)** with starter consumables.
+
+### Enemies and AI behavior
+- **ForestSprite (melee):** Detection radius of 800 Unreal units (uu) / 8 m; BT flow = Sense (AISense_Sight) → MoveTo target → Melee task; abort on lost sight.
+- **Thornling (ranged):** Keeps distance; BT flow = Maintain radius MoveTo → Fire projectile task → optional strafe.
+- Perception: Sight only, tuned to the compact playspace; hearing optional.
+- Spawning: `BP_SpawnVolume` with concurrent cap, timer-based respawn delay per pocket.
+
+### Data-driven setup
+- DataTables or PrimaryDataAssets for enemy stats (HP, damage, move speed, exp), loot tables (item + weight), quests (id, steps, counts, rewards), and NPC dialogue (ids like `NPC_Starter_Greeter`).
+- Keep identifiers aligned: `Zone_Starter`, `Q_Starter_Kill01`, `Q_Starter_Collect01`, `Enemy_ForestSprite`, `Enemy_Thornling`.
+
+### Player safety & onboarding
+- Apply brief spawn invulnerability volume/buff at hub.
+- Tutorial prompts for movement, jump, inventory, map, quest log.
+- Show prompts on first spawn only to reduce clutter for returning players.
+- Soft walls and gentle fall volumes; no lethal pits in the slice.
+
+### Navmesh & performance notes
+- NavMesh bounds sized to 12,000 uu per side (120 m) covering the hub and combat pockets.
+- Tile size 300 uu (3 m); cell size 30 uu (0.3 m) to keep tile counts low while keeping pocket pathing precise.
+- Enable runtime nav generation only if iteration demands it; otherwise keep static.
+- Simple collision on foliage/rocks; ensure LODs and culling on distant props/effects.
+
+### Integration hooks
+- Map should reference `EldaraGameModeBase` (`/Script/Eldara.EldaraGameModeBase`) and `EldaraGameInstance` (`/Script/Eldara.EldaraGameInstance`) as configured in `Config/DefaultEngine.ini`.
+- PlayerStart logic: if persistence exists, respect saved location; otherwise spawn at hub.
+- Quest/inventory UI should surface the starter quests and loot drops; AIControllers should auto-assign BT/BB assets.
+
 ## Unreal Engine Build Guide (Thornveil Enclave / Whispering Canopy)
 
 Actionable Unreal steps to stand up the first starter zone using the existing project structure and lore.

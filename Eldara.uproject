@@ -13,5 +13,11 @@
 	"TargetPlatforms": [
 		"Win64",
 		"Linux"
+	],
+	"Plugins": [
+		{
+			"Name": "LudusAI",
+			"Enabled": false
+		}
 	]
 }

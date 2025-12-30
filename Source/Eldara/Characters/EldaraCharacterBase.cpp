@@ -216,7 +216,7 @@ void AEldaraCharacterBase::MoveForward(float Value)
 		return;
 	}
 
-	AddMovementInput(GetMovementDirection(EAxis::X), Value);
+	AddMovementInput(GetFlatForwardDirection(), Value);
 }
 
 void AEldaraCharacterBase::MoveRight(float Value)
@@ -226,19 +226,31 @@ void AEldaraCharacterBase::MoveRight(float Value)
 		return;
 	}
 
-	AddMovementInput(GetMovementDirection(EAxis::Y), Value);
+	AddMovementInput(GetFlatRightDirection(), Value);
 }
 
-FVector AEldaraCharacterBase::GetMovementDirection(EAxis::Type Axis) const
+FVector AEldaraCharacterBase::GetFlatForwardDirection() const
 {
 	if (!Controller)
 	{
 		return FVector::ZeroVector;
 	}
 
-	const FRotator YawRotation(0.f, Controller->GetControlRotation().Yaw, 0.f);
+	constexpr float FlatAxisRotation = 0.f;
+	const FRotator YawRotation(FlatAxisRotation, Controller->GetControlRotation().Yaw, FlatAxisRotation);
 
-	return Axis == EAxis::X
-		? YawRotation.Vector()
-		: YawRotation.RotateVector(FVector::RightVector);
+	return YawRotation.Vector();
+}
+
+FVector AEldaraCharacterBase::GetFlatRightDirection() const
+{
+	if (!Controller)
+	{
+		return FVector::ZeroVector;
+	}
+
+	constexpr float FlatAxisRotation = 0.f;
+	const FRotator YawRotation(FlatAxisRotation, Controller->GetControlRotation().Yaw, FlatAxisRotation);
+
+	return YawRotation.RotateVector(FVector::RightVector);
 }

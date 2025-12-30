@@ -170,7 +170,15 @@ void UWorldHUDWidget::BuildActionBarBlock(UCanvasPanel* RootCanvas)
 		Slot->SetVerticalAlignment(EVerticalAlignment::VAlign_Bottom);
 	}
 
-	UCanvasPanelSlot* Slot = RootCanvas->AddChildToCanvas(ActionBar);
+	const float ButtonWidthWithPadding = ActionBarButtonWidth + ActionButtonPadding.Left + ActionButtonPadding.Right;
+	const float ButtonHeightWithPadding = ActionBarButtonHeight + ActionButtonPadding.Top + ActionButtonPadding.Bottom;
+
+	USizeBox* ActionBarBox = WidgetTree->ConstructWidget<USizeBox>(USizeBox::StaticClass(), TEXT("ActionBarBox"));
+	ActionBarBox->SetWidthOverride(ButtonWidthWithPadding * 10.f);
+	ActionBarBox->SetHeightOverride(ButtonHeightWithPadding);
+	ActionBarBox->AddChild(ActionBar);
+
+	UCanvasPanelSlot* Slot = RootCanvas->AddChildToCanvas(ActionBarBox);
 	Slot->SetAnchors(FAnchors(0.5f, 1.f, 0.5f, 1.f));
 	Slot->SetAlignment(FVector2D(0.5f, 1.f));
 	Slot->SetOffsets(FMargin(0.f, -BlockPadding, 0.f, 0.f));

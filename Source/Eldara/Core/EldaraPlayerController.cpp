@@ -49,7 +49,7 @@ void AEldaraPlayerController::PlayerTick(float DeltaTime)
 {
 	Super::PlayerTick(DeltaTime);
 
-	if (!HUDWidget)
+	if (!HUDWidget && !bHUDInitAttempted)
 	{
 		EnsureHUD();
 	}
@@ -182,6 +182,8 @@ bool AEldaraPlayerController::ValidateRaceClassCombo(const FEldaraCharacterCreat
 
 void AEldaraPlayerController::EnsureHUD()
 {
+	bHUDInitAttempted = true;
+
 	if (HUDWidget)
 	{
 		return;
@@ -202,6 +204,8 @@ void AEldaraPlayerController::UpdateHUD()
 	{
 		return;
 	}
+
+	bHUDInitAttempted = true;
 
 	AEldaraCharacterBase* Character = Cast<AEldaraCharacterBase>(GetPawn());
 	if (!Character)
@@ -231,7 +235,8 @@ void AEldaraPlayerController::UpdateHUD()
 	}
 
 	const FVector CurrentLocation = Character->GetActorLocation();
-	const bool bLocationChanged = !bHasCachedLocation || !CurrentLocation.Equals(LastLocation, MinimapLocationTolerance);
+	const float LocationToleranceSquared = FMath::Square(MinimapLocationTolerance);
+	const bool bLocationChanged = !bHasCachedLocation || FVector::DistSquared(CurrentLocation, LastLocation) > LocationToleranceSquared;
 	if (bLocationChanged)
 	{
 		HUDWidget->UpdateMinimapLocation(CurrentLocation);

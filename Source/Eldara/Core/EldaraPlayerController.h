@@ -59,6 +59,7 @@ private:
 
 	UPROPERTY()
 	UWorldHUDWidget* HUDWidget = nullptr;
+	bool bHUDInitAttempted = false;
 
 	float LastHealth = -1.f;
 	float LastMaxHealth = -1.f;

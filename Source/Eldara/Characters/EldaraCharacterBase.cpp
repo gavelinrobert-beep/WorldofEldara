@@ -5,6 +5,7 @@
 #include "Net/UnrealNetwork.h"
 #include "Internationalization/Text.h"
 #include "Misc/ConfigCacheIni.h"
+#include "GameFramework/Controller.h"
 
 AEldaraCharacterBase::AEldaraCharacterBase()
 {
@@ -46,6 +47,16 @@ void AEldaraCharacterBase::BeginPlay()
 void AEldaraCharacterBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+}
+
+void AEldaraCharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+
+	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &AEldaraCharacterBase::MoveForward);
+	PlayerInputComponent->BindAxis(TEXT("MoveRight"), this, &AEldaraCharacterBase::MoveRight);
+	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &APawn::AddControllerYawInput);
+	PlayerInputComponent->BindAxis(TEXT("LookUp"), this, &APawn::AddControllerPitchInput);
 }
 
 void AEldaraCharacterBase::SetRaceAndClass(UEldaraRaceData* InRace, UEldaraClassData* InClass)
@@ -196,4 +207,34 @@ void AEldaraCharacterBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
 	DOREPLIFETIME(AEldaraCharacterBase, MaxResource);
 	DOREPLIFETIME(AEldaraCharacterBase, Stamina);
 	DOREPLIFETIME(AEldaraCharacterBase, MaxStamina);
+}
+
+void AEldaraCharacterBase::MoveForward(float Value)
+{
+	if (!Controller || FMath::IsNearlyZero(Value))
+	{
+		return;
+	}
+
+	AddMovementInput(GetFlatForwardDirection(), Value);
+}
+
+void AEldaraCharacterBase::MoveRight(float Value)
+{
+	if (!Controller || FMath::IsNearlyZero(Value))
+	{
+		return;
+	}
+
+	AddMovementInput(GetFlatRightDirection(), Value);
+}
+
+FVector AEldaraCharacterBase::GetFlatForwardDirection() const
+{
+	return GetFlatYawRotation().Vector();
+}
+
+FVector AEldaraCharacterBase::GetFlatRightDirection() const
+{
+	return GetFlatYawRotation().RotateVector(FVector::RightVector);
 }

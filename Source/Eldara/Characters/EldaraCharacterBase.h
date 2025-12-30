@@ -27,6 +27,7 @@ protected:
 
 public:
 	virtual void Tick(float DeltaTime) override;
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	/** Assign race/class data (used by save/load or creation flows) */
 	UFUNCTION(BlueprintCallable, Category = "Character")
@@ -158,4 +159,18 @@ protected:
 
 	/** Setup replication */
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
+private:
+	void MoveForward(float Value);
+	void MoveRight(float Value);
+	/** Yaw-only rotation that ignores pitch/roll for horizontal movement */
+	FORCEINLINE FRotator GetFlatYawRotation() const
+	{
+		const FRotator ControlRotation = Controller ? Controller->GetControlRotation() : FRotator::ZeroRotator;
+		return FRotator(0.f, ControlRotation.Yaw, 0.f);
+	}
+	/** Forward direction using only yaw so movement stays on a flat plane */
+	FVector GetFlatForwardDirection() const;
+	/** Right direction using only yaw so movement stays on a flat plane */
+	FVector GetFlatRightDirection() const;
 };

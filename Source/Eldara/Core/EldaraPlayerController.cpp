@@ -2,10 +2,30 @@
 #include "Eldara/Data/EldaraCharacterCreatePayload.h"
 #include "Eldara/Data/EldaraQuestData.h"
 #include "Eldara/Networking/EldaraNetworkSubsystem.h"
+#include "Eldara/UI/WorldHUDWidget.h"
+#include "Eldara/Characters/EldaraCharacterBase.h"
+#include "Internationalization/Text.h"
+
+#define LOCTEXT_NAMESPACE "AEldaraPlayerController"
 
 namespace
 {
 constexpr float NetworkLookupInterval = 1.0f;
+constexpr float MinimapLocationTolerance = 10.f;
+constexpr int32 DefaultActionLabelCount = 6;
+
+TArray<FText> BuildDefaultActionLabels()
+{
+	TArray<FText> Labels;
+	Labels.Reserve(DefaultActionLabelCount);
+	Labels.Add(LOCTEXT("Action1", "1: Attack"));
+	Labels.Add(LOCTEXT("Action2", "2: Block"));
+	Labels.Add(LOCTEXT("Action3", "3: Interrupt"));
+	Labels.Add(LOCTEXT("Action4", "4: Potion"));
+	Labels.Add(LOCTEXT("Action5", "5: Mount"));
+	Labels.Add(LOCTEXT("Action6", "6: Map"));
+	return Labels;
+}
 }
 
 AEldaraPlayerController::AEldaraPlayerController()
@@ -20,12 +40,20 @@ void AEldaraPlayerController::BeginPlay()
 		? GetGameInstance()->GetSubsystem<UEldaraNetworkSubsystem>()
 		: nullptr;
 
+	EnsureHUD();
+
 	UE_LOG(LogTemp, Log, TEXT("EldaraPlayerController: Player controller started"));
 }
 
 void AEldaraPlayerController::PlayerTick(float DeltaTime)
 {
 	Super::PlayerTick(DeltaTime);
+
+	if (!HUDWidget && !bHUDInitAttempted)
+	{
+		EnsureHUD();
+	}
+	UpdateHUD();
 
 	if (!CachedNetwork)
 	{
@@ -151,3 +179,70 @@ bool AEldaraPlayerController::ValidateRaceClassCombo(const FEldaraCharacterCreat
 
 	return true;
 }
+
+void AEldaraPlayerController::EnsureHUD()
+{
+	bHUDInitAttempted = true;
+
+	if (HUDWidget)
+	{
+		return;
+	}
+
+	HUDWidget = CreateWidget<UWorldHUDWidget>(this, UWorldHUDWidget::StaticClass());
+	if (HUDWidget)
+	{
+		HUDWidget->AddToViewport();
+
+		HUDWidget->SetActionBarLabels(BuildDefaultActionLabels());
+	}
+}
+
+void AEldaraPlayerController::UpdateHUD()
+{
+	if (!HUDWidget)
+	{
+		return;
+	}
+
+	bHUDInitAttempted = true;
+
+	AEldaraCharacterBase* Character = Cast<AEldaraCharacterBase>(GetPawn());
+	if (!Character)
+	{
+		return;
+	}
+
+	const float CurrentHealth = Character->GetHealth();
+	const float CurrentMaxHealth = Character->GetMaxHealth();
+	const float CurrentResource = Character->GetResource();
+	const float CurrentMaxResource = Character->GetMaxResource();
+	const bool bVitalsChanged =
+		!bHasCachedVitals ||
+		!FMath::IsNearlyEqual(CurrentHealth, LastHealth) ||
+		!FMath::IsNearlyEqual(CurrentMaxHealth, LastMaxHealth) ||
+		!FMath::IsNearlyEqual(CurrentResource, LastResource) ||
+		!FMath::IsNearlyEqual(CurrentMaxResource, LastMaxResource);
+
+	if (bVitalsChanged)
+	{
+		HUDWidget->UpdateVitals(CurrentHealth, CurrentMaxHealth, CurrentResource, CurrentMaxResource);
+		LastHealth = CurrentHealth;
+		LastMaxHealth = CurrentMaxHealth;
+		LastResource = CurrentResource;
+		LastMaxResource = CurrentMaxResource;
+		bHasCachedVitals = true;
+	}
+
+	const FVector CurrentLocation = Character->GetActorLocation();
+	const float LocationToleranceSquared = FMath::Square(MinimapLocationTolerance);
+	const bool bLocationChanged = !bHasCachedLocation || FVector::DistSquared(CurrentLocation, LastLocation) > LocationToleranceSquared;
+	if (bLocationChanged)
+	{
+		HUDWidget->UpdateMinimapLocation(CurrentLocation);
+		LastLocation = CurrentLocation;
+		bHasCachedLocation = true;
+	}
+}
+
+#undef LOCTEXT_NAMESPACE

@@ -207,16 +207,16 @@ void AEldaraPlayerController::UpdateHUD()
 
 	bHUDInitAttempted = true;
 
-	AEldaraCharacterBase* Character = Cast<AEldaraCharacterBase>(GetPawn());
-	if (!Character)
+	AEldaraCharacterBase* ControlledCharacter = Cast<AEldaraCharacterBase>(GetPawn());
+	if (!ControlledCharacter)
 	{
 		return;
 	}
 
-	const float CurrentHealth = Character->GetHealth();
-	const float CurrentMaxHealth = Character->GetMaxHealth();
-	const float CurrentResource = Character->GetResource();
-	const float CurrentMaxResource = Character->GetMaxResource();
+	const float CurrentHealth = ControlledCharacter->GetHealth();
+	const float CurrentMaxHealth = ControlledCharacter->GetMaxHealth();
+	const float CurrentResource = ControlledCharacter->GetResource();
+	const float CurrentMaxResource = ControlledCharacter->GetMaxResource();
 	const bool bVitalsChanged =
 		!bHasCachedVitals ||
 		!FMath::IsNearlyEqual(CurrentHealth, LastHealth) ||
@@ -234,7 +234,7 @@ void AEldaraPlayerController::UpdateHUD()
 		bHasCachedVitals = true;
 	}
 
-	const FVector CurrentLocation = Character->GetActorLocation();
+	const FVector CurrentLocation = ControlledCharacter->GetActorLocation();
 	const float LocationToleranceSquared = FMath::Square(MinimapLocationTolerance);
 	const bool bLocationChanged = !bHasCachedLocation || FVector::DistSquared(CurrentLocation, LastLocation) > LocationToleranceSquared;
 	if (bLocationChanged)

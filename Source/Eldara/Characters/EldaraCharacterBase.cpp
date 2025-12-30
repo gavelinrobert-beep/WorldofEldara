@@ -238,9 +238,3 @@ FVector AEldaraCharacterBase::GetFlatRightDirection() const
 {
 	return GetFlatYawRotation().RotateVector(FVector::RightVector);
 }
-
-FRotator AEldaraCharacterBase::GetFlatYawRotation() const
-{
-	const FRotator ControlRotation = Controller ? Controller->GetControlRotation() : FRotator::ZeroRotator;
-	return FRotator(0.f, ControlRotation.Yaw, 0.f);
-}

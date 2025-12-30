@@ -6,7 +6,6 @@
 #include "Internationalization/Text.h"
 #include "Misc/ConfigCacheIni.h"
 #include "GameFramework/Controller.h"
-#include "Math/RotationMatrix.h"
 
 AEldaraCharacterBase::AEldaraCharacterBase()
 {
@@ -53,11 +52,6 @@ void AEldaraCharacterBase::Tick(float DeltaTime)
 void AEldaraCharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
-	if (!PlayerInputComponent)
-	{
-		return;
-	}
 
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &AEldaraCharacterBase::MoveForward);
 	PlayerInputComponent->BindAxis(TEXT("MoveRight"), this, &AEldaraCharacterBase::MoveRight);
@@ -242,8 +236,9 @@ FVector AEldaraCharacterBase::GetMovementDirection(EAxis::Type Axis) const
 		return FVector::ZeroVector;
 	}
 
-	const FRotator ControlRotation = Controller->GetControlRotation();
-	const FRotator YawRotation(0.f, ControlRotation.Yaw, 0.f);
+	const FRotator YawRotation(0.f, Controller->GetControlRotation().Yaw, 0.f);
 
-	return FRotationMatrix(YawRotation).GetUnitAxis(Axis);
+	return Axis == EAxis::X
+		? YawRotation.Vector()
+		: YawRotation.RotateVector(FVector::RightVector);
 }

@@ -222,11 +222,7 @@ void AEldaraCharacterBase::MoveForward(float Value)
 		return;
 	}
 
-	const FRotator ControlRotation = Controller->GetControlRotation();
-	const FRotator YawRotation(0.f, ControlRotation.Yaw, 0.f);
-
-	const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
-	AddMovementInput(Direction, Value);
+	AddMovementInput(GetMovementDirection(EAxis::X), Value);
 }
 
 void AEldaraCharacterBase::MoveRight(float Value)
@@ -236,9 +232,13 @@ void AEldaraCharacterBase::MoveRight(float Value)
 		return;
 	}
 
+	AddMovementInput(GetMovementDirection(EAxis::Y), Value);
+}
+
+FVector AEldaraCharacterBase::GetMovementDirection(EAxis::Type Axis) const
+{
 	const FRotator ControlRotation = Controller->GetControlRotation();
 	const FRotator YawRotation(0.f, ControlRotation.Yaw, 0.f);
 
-	const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
-	AddMovementInput(Direction, Value);
+	return FRotationMatrix(YawRotation).GetUnitAxis(Axis);
 }

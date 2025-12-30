@@ -163,4 +163,5 @@ protected:
 private:
 	void MoveForward(float Value);
 	void MoveRight(float Value);
+	FVector GetMovementDirection(EAxis::Type Axis) const;
 };

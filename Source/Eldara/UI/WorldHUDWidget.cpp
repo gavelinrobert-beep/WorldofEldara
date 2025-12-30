@@ -73,8 +73,8 @@ void UWorldHUDWidget::BuildHealthResourceBlock(UCanvasPanel* RootCanvas)
 		HealthTextSlot->SetHorizontalAlignment(EHorizontalAlignment::HAlign_Center);
 		HealthTextSlot->SetVerticalAlignment(EVerticalAlignment::VAlign_Center);
 
-		HealthOverlay->SetPadding(VitalsOverlayPadding);
-		Overlay->AddChildToOverlay(HealthOverlay);
+		UOverlaySlot* HealthOverlaySlot = Overlay->AddChildToOverlay(HealthOverlay);
+		HealthOverlaySlot->SetPadding(VitalsOverlayPadding);
 	}
 
 	// Resource

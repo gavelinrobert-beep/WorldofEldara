@@ -4,10 +4,27 @@
 #include "Eldara/Networking/EldaraNetworkSubsystem.h"
 #include "Eldara/UI/WorldHUDWidget.h"
 #include "Eldara/Characters/EldaraCharacterBase.h"
+#include "Internationalization/Text.h"
+
+#define LOCTEXT_NAMESPACE "AEldaraPlayerController"
 
 namespace
 {
 constexpr float NetworkLookupInterval = 1.0f;
+constexpr float MinimapLocationTolerance = 10.f;
+
+TArray<FText> BuildDefaultActionLabels()
+{
+	TArray<FText> Labels;
+	Labels.Reserve(6);
+	Labels.Add(LOCTEXT("Action1", "1: Attack"));
+	Labels.Add(LOCTEXT("Action2", "2: Block"));
+	Labels.Add(LOCTEXT("Action3", "3: Interrupt"));
+	Labels.Add(LOCTEXT("Action4", "4: Potion"));
+	Labels.Add(LOCTEXT("Action5", "5: Mount"));
+	Labels.Add(LOCTEXT("Action6", "6: Map"));
+	return Labels;
+}
 }
 
 AEldaraPlayerController::AEldaraPlayerController()
@@ -174,14 +191,7 @@ void AEldaraPlayerController::EnsureHUD()
 	{
 		HUDWidget->AddToViewport();
 
-		TArray<FText> Labels;
-		Labels.Add(FText::FromString(TEXT("1: Attack")));
-		Labels.Add(FText::FromString(TEXT("2: Block")));
-		Labels.Add(FText::FromString(TEXT("3: Interrupt")));
-		Labels.Add(FText::FromString(TEXT("4: Potion")));
-		Labels.Add(FText::FromString(TEXT("5: Mount")));
-		Labels.Add(FText::FromString(TEXT("6: Map")));
-		HUDWidget->SetActionBarLabels(Labels);
+		HUDWidget->SetActionBarLabels(BuildDefaultActionLabels());
 	}
 }
 
@@ -220,7 +230,7 @@ void AEldaraPlayerController::UpdateHUD()
 	}
 
 	const FVector CurrentLocation = Character->GetActorLocation();
-	const bool bLocationChanged = !bHasCachedLocation || !CurrentLocation.Equals(LastLocation, 1.f);
+	const bool bLocationChanged = !bHasCachedLocation || !CurrentLocation.Equals(LastLocation, MinimapLocationTolerance);
 	if (bLocationChanged)
 	{
 		HUDWidget->UpdateMinimapLocation(CurrentLocation);
@@ -228,3 +238,5 @@ void AEldaraPlayerController::UpdateHUD()
 		bHasCachedLocation = true;
 	}
 }
+
+#undef LOCTEXT_NAMESPACE

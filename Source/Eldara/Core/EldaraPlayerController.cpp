@@ -2,6 +2,8 @@
 #include "Eldara/Data/EldaraCharacterCreatePayload.h"
 #include "Eldara/Data/EldaraQuestData.h"
 #include "Eldara/Networking/EldaraNetworkSubsystem.h"
+#include "Eldara/UI/WorldHUDWidget.h"
+#include "Eldara/Characters/EldaraCharacterBase.h"
 
 namespace
 {
@@ -20,12 +22,17 @@ void AEldaraPlayerController::BeginPlay()
 		? GetGameInstance()->GetSubsystem<UEldaraNetworkSubsystem>()
 		: nullptr;
 
+	EnsureHUD();
+
 	UE_LOG(LogTemp, Log, TEXT("EldaraPlayerController: Player controller started"));
 }
 
 void AEldaraPlayerController::PlayerTick(float DeltaTime)
 {
 	Super::PlayerTick(DeltaTime);
+
+	EnsureHUD();
+	UpdateHUD();
 
 	if (!CachedNetwork)
 	{
@@ -150,4 +157,44 @@ bool AEldaraPlayerController::ValidateRaceClassCombo(const FEldaraCharacterCreat
 	// TODO: Implement lore-based validation
 
 	return true;
+}
+
+void AEldaraPlayerController::EnsureHUD()
+{
+	if (HUDWidget)
+	{
+		return;
+	}
+
+	HUDWidget = CreateWidget<UWorldHUDWidget>(this, UWorldHUDWidget::StaticClass());
+	if (HUDWidget)
+	{
+		HUDWidget->AddToViewport();
+
+		TArray<FText> Labels;
+		Labels.Add(FText::FromString(TEXT("1: Attack")));
+		Labels.Add(FText::FromString(TEXT("2: Block")));
+		Labels.Add(FText::FromString(TEXT("3: Interrupt")));
+		Labels.Add(FText::FromString(TEXT("4: Potion")));
+		Labels.Add(FText::FromString(TEXT("5: Mount")));
+		Labels.Add(FText::FromString(TEXT("6: Map")));
+		HUDWidget->SetActionBarLabels(Labels);
+	}
+}
+
+void AEldaraPlayerController::UpdateHUD()
+{
+	if (!HUDWidget)
+	{
+		return;
+	}
+
+	AEldaraCharacterBase* Character = Cast<AEldaraCharacterBase>(GetPawn());
+	if (!Character)
+	{
+		return;
+	}
+
+	HUDWidget->UpdateVitals(Character->GetHealth(), Character->GetMaxHealth(), Character->GetResource(), Character->GetMaxResource());
+	HUDWidget->UpdateMinimapLocation(Character->GetActorLocation());
 }

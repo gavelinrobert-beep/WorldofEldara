@@ -237,6 +237,11 @@ void AEldaraCharacterBase::MoveRight(float Value)
 
 FVector AEldaraCharacterBase::GetMovementDirection(EAxis::Type Axis) const
 {
+	if (!Controller)
+	{
+		return FVector::ZeroVector;
+	}
+
 	const FRotator ControlRotation = Controller->GetControlRotation();
 	const FRotator YawRotation(0.f, ControlRotation.Yaw, 0.f);
 

@@ -17,6 +17,8 @@ namespace
 	constexpr float BarWidth = 250.f;
 	constexpr float BarHeight = 18.f;
 	constexpr float BlockPadding = 8.f;
+	constexpr float VitalsPadding = 4.f;
+	constexpr float MinimapLocationPadding = 8.f;
 	constexpr float ActionBarButtonWidth = 60.f;
 	constexpr float ActionBarButtonHeight = 42.f;
 }
@@ -69,7 +71,7 @@ void UWorldHUDWidget::BuildHealthResourceBlock(UCanvasPanel* RootCanvas)
 		HealthTextSlot->SetHorizontalAlignment(EHorizontalAlignment::HAlign_Center);
 		HealthTextSlot->SetVerticalAlignment(EVerticalAlignment::VAlign_Center);
 
-		HealthOverlay->SetPadding(FMargin(0.f, 0.f, 0.f, 4.f));
+		HealthOverlay->SetPadding(FMargin(0.f, 0.f, 0.f, VitalsPadding));
 		Overlay->AddChildToOverlay(HealthOverlay);
 	}
 
@@ -96,7 +98,7 @@ void UWorldHUDWidget::BuildHealthResourceBlock(UCanvasPanel* RootCanvas)
 
 	USizeBox* VitalsBox = WidgetTree->ConstructWidget<USizeBox>(USizeBox::StaticClass(), TEXT("VitalsSizeBox"));
 	VitalsBox->SetWidthOverride(BarWidth);
-	VitalsBox->SetHeightOverride(BarHeight * 2.f + 4.f);
+	VitalsBox->SetHeightOverride(BarHeight * 2.f + VitalsPadding);
 	VitalsBox->AddChild(Overlay);
 
 	UCanvasPanelSlot* Slot = RootCanvas->AddChildToCanvas(VitalsBox);
@@ -123,7 +125,7 @@ void UWorldHUDWidget::BuildMinimapBlock(UCanvasPanel* RootCanvas)
 	UOverlaySlot* LocationSlot = MinimapOverlay->AddChildToOverlay(MinimapText);
 	LocationSlot->SetHorizontalAlignment(EHorizontalAlignment::HAlign_Center);
 	LocationSlot->SetVerticalAlignment(EVerticalAlignment::VAlign_Bottom);
-	LocationSlot->SetPadding(FMargin(0.f, 0.f, 0.f, 8.f));
+	LocationSlot->SetPadding(FMargin(0.f, 0.f, 0.f, MinimapLocationPadding));
 
 	MinimapBorder->SetContent(MinimapOverlay);
 

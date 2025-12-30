@@ -31,7 +31,10 @@ void AEldaraPlayerController::PlayerTick(float DeltaTime)
 {
 	Super::PlayerTick(DeltaTime);
 
-	EnsureHUD();
+	if (!HUDWidget)
+	{
+		EnsureHUD();
+	}
 	UpdateHUD();
 
 	if (!CachedNetwork)

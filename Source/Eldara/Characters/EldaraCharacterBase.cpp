@@ -5,6 +5,8 @@
 #include "Net/UnrealNetwork.h"
 #include "Internationalization/Text.h"
 #include "Misc/ConfigCacheIni.h"
+#include "GameFramework/Controller.h"
+#include "Math/RotationMatrix.h"
 
 AEldaraCharacterBase::AEldaraCharacterBase()
 {
@@ -46,6 +48,21 @@ void AEldaraCharacterBase::BeginPlay()
 void AEldaraCharacterBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+}
+
+void AEldaraCharacterBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+{
+	Super::SetupPlayerInputComponent(PlayerInputComponent);
+
+	if (!PlayerInputComponent)
+	{
+		return;
+	}
+
+	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &AEldaraCharacterBase::MoveForward);
+	PlayerInputComponent->BindAxis(TEXT("MoveRight"), this, &AEldaraCharacterBase::MoveRight);
+	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &APawn::AddControllerYawInput);
+	PlayerInputComponent->BindAxis(TEXT("LookUp"), this, &APawn::AddControllerPitchInput);
 }
 
 void AEldaraCharacterBase::SetRaceAndClass(UEldaraRaceData* InRace, UEldaraClassData* InClass)
@@ -196,4 +213,32 @@ void AEldaraCharacterBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>&
 	DOREPLIFETIME(AEldaraCharacterBase, MaxResource);
 	DOREPLIFETIME(AEldaraCharacterBase, Stamina);
 	DOREPLIFETIME(AEldaraCharacterBase, MaxStamina);
+}
+
+void AEldaraCharacterBase::MoveForward(float Value)
+{
+	if (!Controller || FMath::IsNearlyZero(Value))
+	{
+		return;
+	}
+
+	const FRotator ControlRotation = Controller->GetControlRotation();
+	const FRotator YawRotation(0.f, ControlRotation.Yaw, 0.f);
+
+	const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
+	AddMovementInput(Direction, Value);
+}
+
+void AEldaraCharacterBase::MoveRight(float Value)
+{
+	if (!Controller || FMath::IsNearlyZero(Value))
+	{
+		return;
+	}
+
+	const FRotator ControlRotation = Controller->GetControlRotation();
+	const FRotator YawRotation(0.f, ControlRotation.Yaw, 0.f);
+
+	const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
+	AddMovementInput(Direction, Value);
 }

@@ -27,6 +27,7 @@ protected:
 
 public:
 	virtual void Tick(float DeltaTime) override;
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	/** Assign race/class data (used by save/load or creation flows) */
 	UFUNCTION(BlueprintCallable, Category = "Character")
@@ -158,4 +159,8 @@ protected:
 
 	/** Setup replication */
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
+private:
+	void MoveForward(float Value);
+	void MoveRight(float Value);
 };

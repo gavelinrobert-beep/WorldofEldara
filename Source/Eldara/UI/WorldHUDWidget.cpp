@@ -21,6 +21,8 @@ namespace
 	constexpr float MinimapLocationPadding = 8.f;
 	constexpr float ActionBarButtonWidth = 60.f;
 	constexpr float ActionBarButtonHeight = 42.f;
+	const FMargin VitalsOverlayPadding(0.f, 0.f, 0.f, VitalsPadding);
+	const FMargin ActionButtonPadding(2.f);
 }
 
 void UWorldHUDWidget::NativeConstruct()
@@ -71,7 +73,7 @@ void UWorldHUDWidget::BuildHealthResourceBlock(UCanvasPanel* RootCanvas)
 		HealthTextSlot->SetHorizontalAlignment(EHorizontalAlignment::HAlign_Center);
 		HealthTextSlot->SetVerticalAlignment(EVerticalAlignment::VAlign_Center);
 
-		HealthOverlay->SetPadding(FMargin(0.f, 0.f, 0.f, VitalsPadding));
+		HealthOverlay->SetPadding(VitalsOverlayPadding);
 		Overlay->AddChildToOverlay(HealthOverlay);
 	}
 
@@ -147,10 +149,11 @@ void UWorldHUDWidget::BuildActionBarBlock(UCanvasPanel* RootCanvas)
 
 	for (int32 Index = 0; Index < 10; ++Index)
 	{
-		USizeBox* ButtonBox = WidgetTree->ConstructWidget<USizeBox>(USizeBox::StaticClass(), *FString::Printf(TEXT("ActionSlot_%d"), Index));
+		const FString SlotName = FString::Printf(TEXT("ActionSlot_%d"), Index);
+		USizeBox* ButtonBox = WidgetTree->ConstructWidget<USizeBox>(USizeBox::StaticClass(), *SlotName);
 		ButtonBox->SetWidthOverride(ActionBarButtonWidth);
 		ButtonBox->SetHeightOverride(ActionBarButtonHeight);
-		ButtonBox->SetPadding(FMargin(2.f));
+		ButtonBox->SetPadding(ActionButtonPadding);
 
 		UBorder* ButtonBorder = WidgetTree->ConstructWidget<UBorder>(UBorder::StaticClass());
 		ButtonBorder->SetBrushColor(FLinearColor(0.f, 0.f, 0.f, 0.4f));

@@ -198,6 +198,33 @@ void AEldaraPlayerController::UpdateHUD()
 		return;
 	}
 
-	HUDWidget->UpdateVitals(Character->GetHealth(), Character->GetMaxHealth(), Character->GetResource(), Character->GetMaxResource());
-	HUDWidget->UpdateMinimapLocation(Character->GetActorLocation());
+	const float CurrentHealth = Character->GetHealth();
+	const float CurrentMaxHealth = Character->GetMaxHealth();
+	const float CurrentResource = Character->GetResource();
+	const float CurrentMaxResource = Character->GetMaxResource();
+	const bool bVitalsChanged =
+		!bHasCachedVitals ||
+		!FMath::IsNearlyEqual(CurrentHealth, LastHealth) ||
+		!FMath::IsNearlyEqual(CurrentMaxHealth, LastMaxHealth) ||
+		!FMath::IsNearlyEqual(CurrentResource, LastResource) ||
+		!FMath::IsNearlyEqual(CurrentMaxResource, LastMaxResource);
+
+	if (bVitalsChanged)
+	{
+		HUDWidget->UpdateVitals(CurrentHealth, CurrentMaxHealth, CurrentResource, CurrentMaxResource);
+		LastHealth = CurrentHealth;
+		LastMaxHealth = CurrentMaxHealth;
+		LastResource = CurrentResource;
+		LastMaxResource = CurrentMaxResource;
+		bHasCachedVitals = true;
+	}
+
+	const FVector CurrentLocation = Character->GetActorLocation();
+	const bool bLocationChanged = !bHasCachedLocation || !CurrentLocation.Equals(LastLocation, 1.f);
+	if (bLocationChanged)
+	{
+		HUDWidget->UpdateMinimapLocation(CurrentLocation);
+		LastLocation = CurrentLocation;
+		bHasCachedLocation = true;
+	}
 }

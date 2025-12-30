@@ -60,6 +60,14 @@ private:
 	UPROPERTY()
 	UWorldHUDWidget* HUDWidget = nullptr;
 
+	float LastHealth = -1.f;
+	float LastMaxHealth = -1.f;
+	float LastResource = -1.f;
+	float LastMaxResource = -1.f;
+	FVector LastLocation = FVector::ZeroVector;
+	bool bHasCachedVitals = false;
+	bool bHasCachedLocation = false;
+
 	/** Cooldown before retrying subsystem lookup to avoid per-tick overhead */
 	float NetworkLookupCooldown = 0.0f;
 };

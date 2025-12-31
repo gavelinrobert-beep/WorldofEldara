@@ -42,6 +42,9 @@ void AEldaraPlayerController::BeginPlay()
 
 	EnsureHUD();
 
+	SetInputMode(FInputModeGameOnly());
+	bShowMouseCursor = false;
+
 	UE_LOG(LogTemp, Log, TEXT("EldaraPlayerController: Player controller started"));
 }
 

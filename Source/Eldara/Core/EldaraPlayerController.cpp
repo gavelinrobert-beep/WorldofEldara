@@ -43,8 +43,10 @@ void AEldaraPlayerController::BeginPlay()
 	EnsureHUD();
 
 	// Keep viewport focus for movement in editor/PIE sessions
+#if WITH_EDITOR
 	SetInputMode(FInputModeGameOnly());
 	bShowMouseCursor = false;
+#endif
 
 	UE_LOG(LogTemp, Log, TEXT("EldaraPlayerController: Player controller started"));
 }

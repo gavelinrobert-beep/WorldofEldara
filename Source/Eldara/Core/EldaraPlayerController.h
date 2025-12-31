@@ -24,6 +24,7 @@ public:
 protected:
 	virtual void BeginPlay() override;
 	virtual void PlayerTick(float DeltaTime) override;
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
 public:
 	/**
@@ -68,6 +69,8 @@ private:
 	FVector LastLocation = FVector::ZeroVector;
 	bool bHasCachedVitals = false;
 	bool bHasCachedLocation = false;
+	bool bStoredMouseCursorState = false;
+	bool bHasStoredMouseCursorState = false;
 
 	/** Cooldown before retrying subsystem lookup to avoid per-tick overhead */
 	float NetworkLookupCooldown = 0.0f;

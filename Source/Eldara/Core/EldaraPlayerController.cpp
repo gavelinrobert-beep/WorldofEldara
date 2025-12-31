@@ -44,8 +44,14 @@ void AEldaraPlayerController::BeginPlay()
 
 	// Keep viewport focus for movement in editor/PIE sessions
 #if WITH_EDITOR
-	SetInputMode(FInputModeGameOnly());
-	bShowMouseCursor = false;
+	if (GetWorld() && GetWorld()->IsPlayInEditor())
+	{
+		bStoredMouseCursorState = bShowMouseCursor;
+		bHasStoredMouseCursorState = true;
+
+		SetInputMode(FInputModeGameOnly());
+		bShowMouseCursor = false;
+	}
 #endif
 
 	UE_LOG(LogTemp, Log, TEXT("EldaraPlayerController: Player controller started"));
@@ -249,6 +255,19 @@ void AEldaraPlayerController::UpdateHUD()
 		LastLocation = CurrentLocation;
 		bHasCachedLocation = true;
 	}
+}
+
+void AEldaraPlayerController::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+#if WITH_EDITOR
+	if (GetWorld() && GetWorld()->IsPlayInEditor() && bHasStoredMouseCursorState)
+	{
+		bShowMouseCursor = bStoredMouseCursorState;
+		bHasStoredMouseCursorState = false;
+	}
+#endif
+
+	Super::EndPlay(EndPlayReason);
 }
 
 #undef LOCTEXT_NAMESPACE

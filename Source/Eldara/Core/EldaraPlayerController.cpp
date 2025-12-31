@@ -42,6 +42,7 @@ void AEldaraPlayerController::BeginPlay()
 
 	EnsureHUD();
 
+	// Keep viewport focus for movement in editor/PIE sessions
 	SetInputMode(FInputModeGameOnly());
 	bShowMouseCursor = false;
 

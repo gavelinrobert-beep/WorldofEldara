@@ -168,6 +168,14 @@ WorldofEldara/
 4. Core gameplay classes live in `Source/Eldara` (GameMode, GameInstance, PlayerController, AI, DataAssets).
 5. Default configuration lives in `Config/DefaultEngine.ini` and `Config/DefaultGame.ini` (currently using the engine placeholder map `/Engine/Maps/Entry` with `EldaraGameModeBase`).
 
+#### Quick Unreal sanity check (no engine required)
+
+Run a lightweight validation of the Unreal project wiring:
+
+```bash
+python unreal_project_check.py
+```
+
 3. **Run the server**
    ```bash
    dotnet run

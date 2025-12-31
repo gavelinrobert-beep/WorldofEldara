@@ -10,18 +10,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 UPROJECT = ROOT / "Eldara.uproject"
-
-errors: list[str] = []
-warnings: list[str] = []
-
-
-def fail(message: str) -> None:
-    errors.append(message)
-
-
-def require_file(path: Path, label: str) -> None:
-    if not path.is_file():
-        fail(f"{label} is missing at {path.relative_to(ROOT)}")
+REQUIRED_DEPENDENCIES = frozenset({"EnhancedInput", "AIModule", "UMG", "Networking", "Sockets"})
+DEPENDENCY_BLOCK_PATTERN = re.compile(
+    r"PublicDependencyModuleNames\.AddRange\(\s*new\s*\[\]\s*\{([^}]+)\}\s*\)",
+    re.DOTALL,
+)
+MODULE_NAME_PATTERN = re.compile(r"\"([A-Za-z0-9_]+)\"")
 
 
 def get_ini_value(text: str, key: str) -> str | None:
@@ -29,7 +23,24 @@ def get_ini_value(text: str, key: str) -> str | None:
     return match.group(1).strip() if match else None
 
 
+def parse_dependency_modules(build_text: str) -> set[str]:
+    modules: set[str] = set()
+    # Matches PublicDependencyModuleNames.AddRange(new[] { "Core", "Engine", ... });
+    for block in DEPENDENCY_BLOCK_PATTERN.findall(build_text):
+        modules.update(MODULE_NAME_PATTERN.findall(block))
+    return modules
+
+
 def main() -> int:
+    errors: list[str] = []
+
+    def fail(message: str) -> None:
+        errors.append(message)
+
+    def require_file(path: Path, label: str) -> None:
+        if not path.is_file():
+            fail(f"{label} is missing at {path.relative_to(ROOT)}")
+
     try:
         project_data = json.loads(UPROJECT.read_text())
     except FileNotFoundError:
@@ -65,13 +76,14 @@ def main() -> int:
     source_root = ROOT / "Source"
     require_file(source_root / "Eldara.Target.cs", "Game target file")
     require_file(source_root / "EldaraEditor.Target.cs", "Editor target file")
-    require_file(source_root / "Eldara" / "Eldara.Build.cs", "Eldara.Build.cs")
+    eldara_build_path = source_root / "Eldara" / "Eldara.Build.cs"
+    require_file(eldara_build_path, "Eldara.Build.cs")
 
-    build_path = source_root / "Eldara" / "Eldara.Build.cs"
-    if build_path.is_file():
-        build_text = build_path.read_text()
-        for dep in ("EnhancedInput", "AIModule", "UMG", "Networking", "Sockets"):
-            if dep not in build_text:
+    if eldara_build_path.is_file():
+        build_text = eldara_build_path.read_text()
+        dependencies = parse_dependency_modules(build_text)
+        for dep in REQUIRED_DEPENDENCIES:
+            if dep not in dependencies:
                 fail(f"Eldara.Build.cs should depend on {dep}")
 
     engine_ini_path = ROOT / "Config" / "DefaultEngine.ini"
@@ -95,16 +107,9 @@ def main() -> int:
         print("[FAIL] Unreal project check failed:", file=sys.stderr)
         for issue in errors:
             print(f" - {issue}", file=sys.stderr)
-        if warnings:
-            print("Warnings:", file=sys.stderr)
-            for warning in warnings:
-                print(f" - {warning}", file=sys.stderr)
         return 1
 
     print("[PASS] Unreal project check succeeded.")
-    if warnings:
-        for warning in warnings:
-            print(f"Warning: {warning}")
     return 0
 
 

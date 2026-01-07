@@ -73,6 +73,10 @@ ehthumbs.db
 # Node modules (if any tools use Node)
 node_modules/
 
+# UI build artifacts
+ui/dist/
+ui/package-lock.json
+
 # Database files (if local testing)
 *.db
 *.sqlite

@@ -214,9 +214,9 @@ const EldaraWorldMap: React.FC = () => {
           gap: '12px',
           fontSize: '13px'
         }}>
-          {starterZones.map((starter, index) => (
+          {starterZones.map((starter) => (
             <div 
-              key={index}
+              key={starter.race}
               style={{
                 padding: '8px 12px',
                 backgroundColor: '#0f1419',

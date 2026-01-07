@@ -10,17 +10,55 @@ This document outlines the complete world map structure for World of Eldara, inc
 
 Each playable race begins their journey in a specific starter zone aligned with their faction and cultural background. These zones provide the initial leveling experience (levels 1-10) and introduce players to the game's core mechanics, lore, and their race's unique perspective on Eldara's conflicts.
 
+**Map UI Representation**: Starter zones are visually represented on the interactive world map with faction-colored pin markers positioned at lore-accurate cardinal locations. Each pin includes a tooltip showing the race, starter zone name, faction affiliation, and cardinal direction. Players can use the "Starter" tier filter to highlight or dim these zones.
+
 ### Starter Zone Mappings
 
-| Race | Starter Zone | Region | Faction |
-|------|-------------|---------|---------|
-| **Sylvaen** | Thornveil Enclave | Worldroot Expanse | Verdant Circles |
-| **High Elves (Aelthar)** | Temporal Steppes | Verdaniel's Continuity Reach | Ascendant League |
-| **Humans** | Borderkeep | Central Territories | United Kingdoms |
-| **Therakai – Wildborn** | The Untamed Reaches | Vael's Shattered Totem Wilds | Wildborn Clans |
-| **Therakai – Pathbound** | The Carved Valleys | Vael's Shattered Totem Wilds | Pathbound Clans |
-| **Gronnak** | The Scarred Highlands | Korrath/Null Scars | Dominion Warhost |
-| **Void-Touched** | Blackwake Haven | Nereth's Silent Fens | Void Compact |
+| Race | Starter Zone | Region | Faction | Cardinal |
+|------|-------------|---------|---------|----------|
+| **Sylvaen** | Thornveil Enclave | Worldroot Expanse | Verdant Circles | West |
+| **High Elves (Aelthar)** | Temporal Steppes | Verdaniel's Continuity Reach | Ascendant League | North |
+| **Humans** | Borderkeep | Central Territories | United Kingdoms | Central |
+| **Therakai – Wildborn** | The Untamed Reaches | Vael's Shattered Totem Wilds | Wildborn Clans | East |
+| **Therakai – Pathbound** | The Carved Valleys | Vael's Shattered Totem Wilds | Pathbound Clans | East |
+| **Gronnak** | The Scarred Highlands | Korrath/Null Scars | Dominion Warhost | South |
+| **Void-Touched** | Blackwake Haven | Nereth's Silent Fens | Void Compact | Southeast |
+
+### Map UI Cues
+
+The interactive world map includes several visual cues to aid worldbuilding and navigation:
+
+**Tier Filters**: Players can toggle visibility for different progression tiers:
+- **Starter Zones**: All level 1-10 starter zones with faction-aligned pins
+- **Tier 1-2**: Early to mid-level regions (15-35)
+- **Tier 3-4**: Mid to high-level regions (25-60)
+- **Endgame**: High-level and endgame content (50-65+)
+
+Non-selected tiers are dimmed but remain visible for context.
+
+**Visual Markers**:
+- **Pin Markers**: Faction-colored pins indicate starter zones (1-10)
+- **Star Marker**: Golden star on Worldroot indicates the shared early hub where all races converge
+- **Region Circles**: Standard circular markers for main progression regions
+- **Progression Lines**: Subtle dashed lines show:
+  - Starter zones → Worldroot (very subtle, faction-colored)
+  - Main progression paths between regions (medium opacity)
+
+**Legend**: The map includes a comprehensive legend showing:
+- Progression path lines (dashed)
+- Region markers (circles, clickable)
+- Starter zone pins (location markers)
+- Worldroot shared hub (star)
+
+**Cardinal Layout Hint**: A compact spatial reference bar displays the cardinal positions of major regions (e.g., "Thornveil (W) · Temporal Expanse (N) · Human Kingdoms (C) · Vharos (E) · Krag'Thuun (S) · Shattered Isles (SE)").
+
+**Sidebar**: An independently scrollable sidebar contains:
+- Progression overview
+- Traversal system notes
+- Complete starter zones list with faction info
+- Selected region details (when clicked)
+
+This ensures all content remains accessible on smaller viewports without cluttering the main map view.
 
 ### Starter Zone Design Philosophy
 

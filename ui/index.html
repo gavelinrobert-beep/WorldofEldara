@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eldara World Map - Interactive Demo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #0a0e1a 0%, #1a1f2e 100%);
+      color: #e0e0e0;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: rgba(26, 32, 48, 0.6);
+      border-radius: 8px;
+      border: 1px solid #2a3040;
+    }
+    header h1 {
+      font-size: 32px;
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
+    header p {
+      color: #a0a0a0;
+      font-size: 16px;
+    }
+    #root {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .info-panel {
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(26, 32, 48, 0.6);
+      border-radius: 8px;
+      border: 1px solid #2a3040;
+    }
+    .info-panel h2 {
+      color: #ffd700;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+    .info-panel ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .info-panel li {
+      padding: 8px 0;
+      border-bottom: 1px solid #2a3040;
+      color: #cccccc;
+    }
+    .info-panel li:last-child {
+      border-bottom: none;
+    }
+    .feature {
+      margin: 8px 0;
+    }
+    .feature strong {
+      color: #a0e0ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🗺️ World of Eldara - Interactive Map</h1>
+      <p>Explore the regions of Eldara and discover the progression paths</p>
+    </header>
+
+    <div id="root"></div>
+
+    <div class="info-panel">
+      <h2>About This Map</h2>
+      <div class="feature">
+        <strong>Full Region Labels:</strong> All region names displayed without truncation (Worldroot, Verdaniel, Vael, Korrath, Nereth, Astrae, Null Scars)
+      </div>
+      <div class="feature">
+        <strong>Progression Paths:</strong> Visual representation showing parallel options:
+        <ul>
+          <li>• Worldroot (1-10) → Verdaniel (15-35) or Vael (25-45)</li>
+          <li>• Verdaniel/Vael → Korrath (35-60) or Nereth (35-60)</li>
+          <li>• Korrath/Nereth → Astrae (50-65)</li>
+          <li>• Astrae → Null Scars (60+)</li>
+        </ul>
+      </div>
+      <div class="feature">
+        <strong>Traversal Unlocks:</strong> Each region displays its required unlock item (Root bridges, Seed Sigil, Totem Shard/Wind lanes, Banner Commendation, Veil Token, Star Prism, Null Anchor Kit)
+      </div>
+      <div class="feature">
+        <strong>Lore Hooks:</strong> Hover over regions to see short lore descriptions connecting to canonical world documents
+      </div>
+      <div class="feature">
+        <strong>Interactive Features:</strong> Click to focus a region (others become de-emphasized), hover for detailed tooltips
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import React from 'https://esm.sh/react@18.2.0';
+    import ReactDOM from 'https://esm.sh/react-dom@18.2.0/client';
+    import EldaraWorldMap from './EldaraWorldMap.tsx';
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(EldaraWorldMap));
+  </script>
+</body>
+</html>

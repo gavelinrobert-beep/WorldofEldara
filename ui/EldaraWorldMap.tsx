@@ -136,6 +136,26 @@ const progressionPaths = [
   { from: 'astrae', to: 'null-scars' }
 ];
 
+interface StarterZone {
+  race: string;
+  zone: string;
+  region: string;
+}
+
+// Starter zones represent specific starting locations for each race.
+// Note: Some zones are sub-locations or adjacent areas not shown as main progression
+// regions on the map (e.g., Central Territories, combined region boundaries).
+// This aligns with world_map_design.md canonical mappings.
+const starterZones: StarterZone[] = [
+  { race: 'Sylvaen', zone: 'Thornveil Enclave', region: 'Worldroot' },
+  { race: 'High Elves (Aelthar)', zone: 'Temporal Steppes', region: 'Verdaniel' },
+  { race: 'Humans', zone: 'Borderkeep', region: 'Central Territories' },
+  { race: 'Therakai – Wildborn', zone: 'The Untamed Reaches', region: 'Vael' },
+  { race: 'Therakai – Pathbound', zone: 'The Carved Valleys', region: 'Vael' },
+  { race: 'Gronnak', zone: 'The Scarred Highlands', region: 'Korrath/Null Scars' },
+  { race: 'Void-Touched', zone: 'Blackwake Haven', region: 'Nereth' }
+];
+
 const EldaraWorldMap: React.FC = () => {
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
   const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
@@ -157,7 +177,7 @@ const EldaraWorldMap: React.FC = () => {
   return (
     <div className="eldara-world-map" style={{ 
       width: '100%', 
-      maxWidth: '900px', 
+      maxWidth: '1200px', 
       margin: '0 auto',
       padding: '20px',
       backgroundColor: '#0a0e1a',
@@ -171,6 +191,58 @@ const EldaraWorldMap: React.FC = () => {
         <p style={{ color: '#a0a0a0', fontSize: '14px' }}>
           Click a region to focus. Hover for details.
         </p>
+      </div>
+
+      {/* Starter Zones Reference Panel */}
+      <div style={{
+        marginBottom: '20px',
+        padding: '16px',
+        backgroundColor: '#1a2030',
+        border: '2px solid #4a5060',
+        borderRadius: '6px',
+        color: '#e0e0e0'
+      }}>
+        <h3 style={{ 
+          margin: '0 0 12px 0', 
+          color: '#ffd700', 
+          fontSize: '16px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px'
+        }}>
+          <span>🗺️</span> Starter Zones (Levels 1-10, Faction-Aligned)
+        </h3>
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
+          gap: '12px',
+          fontSize: '13px'
+        }}>
+          {starterZones.map((starter) => (
+            <div 
+              key={starter.race}
+              style={{
+                padding: '8px 12px',
+                backgroundColor: '#0f1419',
+                borderLeft: '3px solid #4a7c2f',
+                borderRadius: '3px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4px'
+              }}
+            >
+              <div style={{ color: '#a0e0ff', fontWeight: 'bold' }}>
+                {starter.race}
+              </div>
+              <div style={{ color: '#cccccc', fontSize: '12px' }}>
+                📍 {starter.zone}
+              </div>
+              <div style={{ color: '#888888', fontSize: '11px', fontStyle: 'italic' }}>
+                Region: {starter.region}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       <svg 

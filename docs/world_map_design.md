@@ -6,6 +6,31 @@ This document outlines the complete world map structure for World of Eldara, inc
 
 ---
 
+## Starter Zones (Levels 1-10, Faction-Aligned)
+
+Each playable race begins their journey in a specific starter zone aligned with their faction and cultural background. These zones provide the initial leveling experience (levels 1-10) and introduce players to the game's core mechanics, lore, and their race's unique perspective on Eldara's conflicts.
+
+### Starter Zone Mappings
+
+| Race | Starter Zone | Region | Faction |
+|------|-------------|---------|---------|
+| **Sylvaen** | Thornveil Enclave | Worldroot Expanse | Verdant Circles |
+| **High Elves (Aelthar)** | Temporal Steppes | Verdaniel's Continuity Reach | Ascendant League |
+| **Humans** | Borderkeep | Central Territories | United Kingdoms |
+| **Therakai – Wildborn** | The Untamed Reaches | Vael's Shattered Totem Wilds | Wildborn Clans |
+| **Therakai – Pathbound** | The Carved Valleys | Vael's Shattered Totem Wilds | Pathbound Clans |
+| **Gronnak** | The Scarred Highlands | Korrath/Null Scars | Dominion Warhost |
+| **Void-Touched** | Blackwake Haven | Nereth's Silent Fens | Void Compact |
+
+### Starter Zone Design Philosophy
+
+- **Faction Introduction**: Each starter zone immediately establishes the player's faction identity and introduces key NPCs, conflicts, and philosophical positions.
+- **Lore Integration**: Starter zones provide foundational lore about the Worldroot, gods, and cosmic conflicts relevant to each race's perspective.
+- **Mechanical Tutorials**: Core gameplay systems (combat, traversal, crafting, quest mechanics) are introduced gradually through zone-specific quest chains.
+- **Divergent Paths**: After completing their racial starter zone (level 10), players can choose which mid-tier region to explore first, allowing for non-linear progression.
+
+---
+
 ## World Layout & Region Order
 
 ### Continental Structure

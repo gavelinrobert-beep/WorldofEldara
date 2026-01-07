@@ -142,6 +142,10 @@ interface StarterZone {
   region: string;
 }
 
+// Starter zones represent specific starting locations for each race.
+// Note: Some zones are sub-locations or adjacent areas not shown as main progression
+// regions on the map (e.g., Central Territories, combined region boundaries).
+// This aligns with world_map_design.md canonical mappings.
 const starterZones: StarterZone[] = [
   { race: 'Sylvaen', zone: 'Thornveil Enclave', region: 'Worldroot' },
   { race: 'High Elves (Aelthar)', zone: 'Temporal Steppes', region: 'Verdaniel' },

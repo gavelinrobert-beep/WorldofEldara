@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["*.tsx", "EldaraWorldMap.tsx"],
+  "include": ["*.tsx"],
   "exclude": ["vite.config.ts"]
 }

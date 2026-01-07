@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eldara World Map - Visualization</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #0a0e1a 0%, #1a1f2e 100%);
+      color: #e0e0e0;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+      padding: 20px;
+      background: rgba(26, 32, 48, 0.6);
+      border-radius: 8px;
+      border: 1px solid #2a3040;
+    }
+    header h1 {
+      font-size: 32px;
+      color: #ffd700;
+      margin-bottom: 10px;
+    }
+    header p {
+      color: #a0a0a0;
+      font-size: 16px;
+    }
+    .map-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      backgroundColor: #0a0e1a;
+      border-radius: 8px;
+    }
+    .map-title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .map-title h2 {
+      color: #e0e0e0;
+      margin-bottom: 8px;
+      font-size: 24px;
+    }
+    .map-title p {
+      color: #a0a0a0;
+      font-size: 14px;
+    }
+    svg {
+      background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
+      border-radius: 4px;
+      border: 1px solid #2a3040;
+      display: block;
+      margin: 0 auto;
+    }
+    .region-circle {
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .region-circle:hover {
+      filter: brightness(1.2);
+    }
+    .region-circle.selected {
+      stroke: #ffd700 !important;
+      stroke-width: 3 !important;
+    }
+    .region-circle.dimmed {
+      opacity: 0.3;
+      filter: saturate(30%);
+    }
+    .region-text {
+      pointer-events: none;
+      user-select: none;
+    }
+    .details-panel {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #1a2030;
+      border: 2px solid #4a5060;
+      border-radius: 6px;
+      color: #e0e0e0;
+      display: none;
+    }
+    .details-panel.visible {
+      display: block;
+    }
+    .details-panel h3 {
+      margin: 0 0 12px 0;
+      color: #ffd700;
+      font-size: 20px;
+    }
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+    .details-grid strong {
+      color: #a0e0ff;
+    }
+    .detail-box {
+      padding: 8px 12px;
+      background-color: #0f1419;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+    .unlock-box {
+      border-left: 3px solid #ffd700;
+    }
+    .lore-box {
+      border-left: 3px solid #a0e0ff;
+    }
+    .detail-box strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+    .detail-box .content {
+      color: #cccccc;
+      line-height: 1.5;
+    }
+    .info-panel {
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(26, 32, 48, 0.6);
+      border-radius: 8px;
+      border: 1px solid #2a3040;
+    }
+    .info-panel h2 {
+      color: #ffd700;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+    .feature {
+      margin: 12px 0;
+      padding: 12px;
+      background: rgba(15, 20, 35, 0.5);
+      border-left: 3px solid #4a7c2f;
+      border-radius: 4px;
+    }
+    .feature strong {
+      color: #a0e0ff;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .feature ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 6px;
+    }
+    .feature li {
+      padding: 4px 0;
+      color: #cccccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🗺️ World of Eldara - Interactive Map</h1>
+      <p>Explore the regions of Eldara and discover the progression paths</p>
+    </header>
+
+    <div class="map-container">
+      <div class="map-title">
+        <h2>World of Eldara - Progression Map</h2>
+        <p>Click a region to focus. Hover for quick info.</p>
+      </div>
+
+      <svg id="world-map" width="900" height="600" viewBox="0 0 900 600"></svg>
+
+      <div id="details-panel" class="details-panel"></div>
+    </div>
+
+    <div class="info-panel">
+      <h2>Map Features</h2>
+      <div class="feature">
+        <strong>Full Region Labels</strong>
+        All region names displayed without truncation: Worldroot, Verdaniel, Vael, Korrath, Nereth, Astrae, Null Scars
+      </div>
+      <div class="feature">
+        <strong>Progression Paths</strong>
+        Visual representation showing parallel options:
+        <ul>
+          <li>• Worldroot (1-10) → Verdaniel (15-35) or Vael (25-45)</li>
+          <li>• Verdaniel/Vael → Korrath (35-60) or Nereth (35-60)</li>
+          <li>• Korrath/Nereth → Astrae (50-65)</li>
+          <li>• Astrae → Null Scars (60+)</li>
+        </ul>
+      </div>
+      <div class="feature">
+        <strong>Traversal Unlocks</strong>
+        Each region displays its required unlock item: Root bridges, Seed Sigil, Totem Shard/Wind lanes, Banner Commendation, Veil Token, Star Prism, Null Anchor Kit
+      </div>
+      <div class="feature">
+        <strong>Lore Integration</strong>
+        All lore hooks connect to WORLD_LORE.md canonical documentation
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const regions = [
+      {
+        id: 'worldroot',
+        name: 'Worldroot',
+        levelRange: '1-10',
+        minLevel: 1,
+        maxLevel: 10,
+        hub: 'Thornveil Enclave',
+        traversalUnlock: 'Root bridges',
+        loreHook: 'The planetary nervous system strains under accumulated memory. Wells overflow with forgotten histories.',
+        color: '#2d5016',
+        position: { x: 200, y: 300 },
+        size: 80,
+        tier: 'Starter',
+        progressionOrder: 1
+      },
+      {
+        id: 'verdaniel',
+        name: 'Verdaniel',
+        levelRange: '15-35',
+        minLevel: 15,
+        maxLevel: 35,
+        hub: 'Memory Wastes',
+        traversalUnlock: 'Seed Sigil',
+        loreHook: 'Ancient seed vaults hold the memories of extinct civilizations, waiting to bloom again.',
+        color: '#4a7c2f',
+        position: { x: 350, y: 250 },
+        size: 90,
+        tier: 'Mid-Level',
+        progressionOrder: 2
+      },
+      {
+        id: 'vael',
+        name: 'Vael',
+        levelRange: '25-45',
+        minLevel: 25,
+        maxLevel: 45,
+        hub: 'Vharos Warfront',
+        traversalUnlock: 'Totem Shard/Wind lanes',
+        loreHook: 'Fractured totem spirits cry out across the wilderness. The shattered god\'s fragments seek unity.',
+        color: '#8b4513',
+        position: { x: 500, y: 300 },
+        size: 90,
+        tier: 'Mid-Level',
+        progressionOrder: 3
+      },
+      {
+        id: 'korrath',
+        name: 'Korrath',
+        levelRange: '35-60',
+        minLevel: 35,
+        maxLevel: 60,
+        hub: 'Scarred Highlands',
+        traversalUnlock: 'Banner Commendation',
+        loreHook: 'The warfront never sleeps. God-eaters march beneath banners soaked in divine blood.',
+        color: '#8b0000',
+        position: { x: 400, y: 450 },
+        size: 95,
+        tier: 'High-Level',
+        progressionOrder: 4
+      },
+      {
+        id: 'nereth',
+        name: 'Nereth',
+        levelRange: '35-60',
+        minLevel: 35,
+        maxLevel: 60,
+        hub: 'Temporal Maze',
+        traversalUnlock: 'Veil Token',
+        loreHook: 'The veil between life and death tears. A broken god of passage leaves undeath in its wake.',
+        color: '#2f2f4f',
+        position: { x: 250, y: 450 },
+        size: 95,
+        tier: 'High-Level',
+        progressionOrder: 5
+      },
+      {
+        id: 'astrae',
+        name: 'Astrae',
+        levelRange: '50-65',
+        minLevel: 50,
+        maxLevel: 65,
+        hub: 'The Isle of Giants',
+        traversalUnlock: 'Star Prism',
+        loreHook: 'Missing observatories drift through frozen time. The god of knowledge is trapped, watching eternally.',
+        color: '#4169e1',
+        position: { x: 600, y: 200 },
+        size: 85,
+        tier: 'Endgame',
+        progressionOrder: 6
+      },
+      {
+        id: 'null-scars',
+        name: 'Null Scars',
+        levelRange: '60+',
+        minLevel: 60,
+        maxLevel: 70,
+        hub: 'The Null Threshold',
+        traversalUnlock: 'Null Anchor Kit',
+        loreHook: 'Where reality meets erasure. Anchors prevent the void from consuming memory itself.',
+        color: '#1a1a2e',
+        position: { x: 700, y: 350 },
+        size: 100,
+        tier: 'Endgame',
+        progressionOrder: 7
+      }
+    ];
+
+    const progressionPaths = [
+      { from: 'worldroot', to: 'verdaniel' },
+      { from: 'worldroot', to: 'vael' },
+      { from: 'verdaniel', to: 'korrath' },
+      { from: 'verdaniel', to: 'nereth' },
+      { from: 'vael', to: 'korrath' },
+      { from: 'vael', to: 'nereth' },
+      { from: 'korrath', to: 'astrae' },
+      { from: 'nereth', to: 'astrae' },
+      { from: 'astrae', to: 'null-scars' }
+    ];
+
+    let selectedRegion = null;
+    const svg = document.getElementById('world-map');
+    const detailsPanel = document.getElementById('details-panel');
+
+    function drawMap() {
+      svg.innerHTML = '';
+
+      // Draw paths
+      const pathsGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      progressionPaths.forEach((path, index) => {
+        const fromRegion = regions.find(r => r.id === path.from);
+        const toRegion = regions.find(r => r.id === path.to);
+        if (!fromRegion || !toRegion) return;
+
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', fromRegion.position.x);
+        line.setAttribute('y1', fromRegion.position.y);
+        line.setAttribute('x2', toRegion.position.x);
+        line.setAttribute('y2', toRegion.position.y);
+        line.setAttribute('stroke', '#3a4050');
+        line.setAttribute('stroke-width', '2');
+        line.setAttribute('stroke-dasharray', '5,5');
+        
+        let opacity = 0.5;
+        if (selectedRegion) {
+          opacity = (path.from === selectedRegion || path.to === selectedRegion) ? 0.8 : 0.2;
+        }
+        line.setAttribute('opacity', opacity);
+        pathsGroup.appendChild(line);
+      });
+      svg.appendChild(pathsGroup);
+
+      // Draw regions
+      regions.forEach(region => {
+        const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+
+        // Circle
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute('cx', region.position.x);
+        circle.setAttribute('cy', region.position.y);
+        circle.setAttribute('r', region.size / 2);
+        circle.setAttribute('fill', region.color);
+        circle.setAttribute('stroke', '#4a5060');
+        circle.setAttribute('stroke-width', '1');
+        circle.classList.add('region-circle');
+        circle.setAttribute('data-region-id', region.id);
+        
+        if (selectedRegion) {
+          if (region.id === selectedRegion) {
+            circle.classList.add('selected');
+          } else {
+            circle.classList.add('dimmed');
+          }
+        }
+
+        circle.addEventListener('click', () => handleRegionClick(region.id));
+
+        // Name
+        const nameText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        nameText.setAttribute('x', region.position.x);
+        nameText.setAttribute('y', region.position.y - 5);
+        nameText.setAttribute('text-anchor', 'middle');
+        nameText.setAttribute('fill', '#ffffff');
+        nameText.setAttribute('font-size', '14');
+        nameText.setAttribute('font-weight', 'bold');
+        nameText.classList.add('region-text');
+        nameText.textContent = region.name;
+        if (selectedRegion && region.id !== selectedRegion) {
+          nameText.setAttribute('opacity', '0.3');
+        }
+
+        // Level
+        const levelText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        levelText.setAttribute('x', region.position.x);
+        levelText.setAttribute('y', region.position.y + 10);
+        levelText.setAttribute('text-anchor', 'middle');
+        levelText.setAttribute('fill', '#cccccc');
+        levelText.setAttribute('font-size', '12');
+        levelText.classList.add('region-text');
+        levelText.textContent = region.levelRange;
+        if (selectedRegion && region.id !== selectedRegion) {
+          levelText.setAttribute('opacity', '0.3');
+        }
+
+        // Badge
+        const badgeG = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        badgeG.setAttribute('transform', `translate(${region.position.x}, ${region.position.y + region.size / 2 + 15})`);
+        
+        const badgeRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        badgeRect.setAttribute('x', '-45');
+        badgeRect.setAttribute('y', '-10');
+        badgeRect.setAttribute('width', '90');
+        badgeRect.setAttribute('height', '20');
+        badgeRect.setAttribute('fill', '#1a2030');
+        badgeRect.setAttribute('stroke', '#4a5060');
+        badgeRect.setAttribute('stroke-width', '1');
+        badgeRect.setAttribute('rx', '4');
+        badgeRect.classList.add('region-text');
+        if (selectedRegion && region.id !== selectedRegion) {
+          badgeRect.setAttribute('opacity', '0.3');
+        }
+
+        const badgeText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        badgeText.setAttribute('x', '0');
+        badgeText.setAttribute('y', '4');
+        badgeText.setAttribute('text-anchor', 'middle');
+        badgeText.setAttribute('fill', '#ffd700');
+        badgeText.setAttribute('font-size', '10');
+        badgeText.classList.add('region-text');
+        badgeText.textContent = `🔓 ${region.traversalUnlock}`;
+        if (selectedRegion && region.id !== selectedRegion) {
+          badgeText.setAttribute('opacity', '0.3');
+        }
+
+        badgeG.appendChild(badgeRect);
+        badgeG.appendChild(badgeText);
+
+        g.appendChild(circle);
+        g.appendChild(nameText);
+        g.appendChild(levelText);
+        g.appendChild(badgeG);
+        svg.appendChild(g);
+      });
+
+      // Legend
+      const legendG = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      legendG.setAttribute('transform', 'translate(20, 520)');
+
+      const legendRect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      legendRect.setAttribute('x', '0');
+      legendRect.setAttribute('y', '0');
+      legendRect.setAttribute('width', '200');
+      legendRect.setAttribute('height', '70');
+      legendRect.setAttribute('fill', '#1a2030');
+      legendRect.setAttribute('stroke', '#4a5060');
+      legendRect.setAttribute('stroke-width', '1');
+      legendRect.setAttribute('rx', '4');
+      legendRect.setAttribute('opacity', '0.9');
+
+      const legendTitle = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      legendTitle.setAttribute('x', '10');
+      legendTitle.setAttribute('y', '20');
+      legendTitle.setAttribute('fill', '#ffd700');
+      legendTitle.setAttribute('font-size', '12');
+      legendTitle.setAttribute('font-weight', 'bold');
+      legendTitle.textContent = 'Progression Legend';
+
+      const legendLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      legendLine.setAttribute('x1', '10');
+      legendLine.setAttribute('y1', '30');
+      legendLine.setAttribute('x2', '40');
+      legendLine.setAttribute('y2', '30');
+      legendLine.setAttribute('stroke', '#3a4050');
+      legendLine.setAttribute('stroke-width', '2');
+      legendLine.setAttribute('stroke-dasharray', '5,5');
+
+      const legendLineText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      legendLineText.setAttribute('x', '45');
+      legendLineText.setAttribute('y', '34');
+      legendLineText.setAttribute('fill', '#cccccc');
+      legendLineText.setAttribute('font-size', '10');
+      legendLineText.textContent = 'Parallel paths';
+
+      const legendCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      legendCircle.setAttribute('cx', '20');
+      legendCircle.setAttribute('cy', '50');
+      legendCircle.setAttribute('r', '8');
+      legendCircle.setAttribute('fill', '#4a7c2f');
+      legendCircle.setAttribute('stroke', '#4a5060');
+      legendCircle.setAttribute('stroke-width', '1');
+
+      const legendCircleText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      legendCircleText.setAttribute('x', '35');
+      legendCircleText.setAttribute('y', '55');
+      legendCircleText.setAttribute('fill', '#cccccc');
+      legendCircleText.setAttribute('font-size', '10');
+      legendCircleText.textContent = 'Region (clickable)';
+
+      legendG.appendChild(legendRect);
+      legendG.appendChild(legendTitle);
+      legendG.appendChild(legendLine);
+      legendG.appendChild(legendLineText);
+      legendG.appendChild(legendCircle);
+      legendG.appendChild(legendCircleText);
+      svg.appendChild(legendG);
+    }
+
+    function handleRegionClick(regionId) {
+      selectedRegion = (selectedRegion === regionId) ? null : regionId;
+      drawMap();
+      updateDetailsPanel();
+    }
+
+    function updateDetailsPanel() {
+      if (!selectedRegion) {
+        detailsPanel.classList.remove('visible');
+        return;
+      }
+
+      const region = regions.find(r => r.id === selectedRegion);
+      if (!region) return;
+
+      detailsPanel.innerHTML = `
+        <h3>${region.name}</h3>
+        <div class="details-grid">
+          <div><strong>Tier:</strong> ${region.tier}</div>
+          <div><strong>Level Range:</strong> ${region.levelRange}</div>
+          <div><strong>Hub:</strong> ${region.hub}</div>
+          <div><strong>Progression:</strong> Step ${region.progressionOrder}</div>
+        </div>
+        <div class="detail-box unlock-box">
+          <strong style="color: #ffd700;">🔓 Traversal Unlock:</strong>
+          <div class="content">${region.traversalUnlock}</div>
+        </div>
+        <div class="detail-box lore-box">
+          <strong style="color: #a0e0ff;">📖 Lore:</strong>
+          <div class="content">${region.loreHook}</div>
+        </div>
+      `;
+      detailsPanel.classList.add('visible');
+    }
+
+    // Initial draw
+    drawMap();
+  </script>
+</body>
+</html>

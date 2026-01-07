@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { MapPin, Lock } from 'lucide-react';
 
 interface Region {
   id: string;

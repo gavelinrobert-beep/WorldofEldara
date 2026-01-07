@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["*.tsx", "*.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["*.tsx", "EldaraWorldMap.tsx"],
+  "exclude": ["vite.config.ts"]
 }

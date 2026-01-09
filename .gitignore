@@ -98,3 +98,6 @@ CMakeCache.txt
 CMakeFiles/
 *.cmake
 !CMakeLists.txt
+
+# CodeQL build artifacts
+_codeql_build_dir/

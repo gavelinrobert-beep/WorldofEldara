@@ -90,3 +90,14 @@ appsettings.Development.json
 appsettings.Production.json
 *.secret
 *.key
+
+# CMake build artifacts
+build/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+*.cmake
+!CMakeLists.txt
+
+# CodeQL build artifacts
+_codeql_build_dir/

@@ -99,7 +99,19 @@ All magic has a **source and consequence**:
 - **20 TPS** - Fixed tick rate world simulation
 - **Thread-safe architecture** - Concurrent entity management
 
-### Client (Display + Prediction)
+### Client Options
+
+#### Option 1: Henky3D Engine (OpenGL 4.6 Core)
+- **C++20** - Modern C++ with best practices
+- **OpenGL 4.6 Core** - Modern graphics via GLAD loader
+- **GLFW 3.4** - Cross-platform windowing
+- **EnTT** - Entity Component System
+- **GLM 1.0.1** - Mathematics library
+- **ImGui** - Immediate-mode GUI for debug/tools
+- **Depth prepass + Forward shading** - Optimized rendering pipeline
+- **Real-time shadows** - Directional light shadow mapping
+
+#### Option 2: Unreal Engine (Legacy/Prototype)
 - **Unreal Engine 5.x**
 - **C++20 + Blueprints**
 - **Enhanced Input**
@@ -114,6 +126,11 @@ All magic has a **source and consequence**:
 
 ```
 WorldofEldara/
+├── game/                      # Henky3D game client ✓
+│   ├── main.cpp               # Game bootstrap entry point
+│   └── CMakeLists.txt         # Game executable build config
+├── external/                  # External dependencies
+│   └── Henky3D/               # Henky3D engine (submodule) ✓
 ├── Client/                    # Unreal Engine project (prototype)
 ├── Server/                    # .NET 8 authoritative server ✓
 │   └── WorldofEldara.Server/
@@ -126,12 +143,15 @@ WorldofEldara/
 │       ├── Data/              # Character, combat, world data
 │       ├── Protocol/          # Network packets
 │       └── Constants/         # Game constants
+├── shaders/                   # Shaders directory (for custom shaders)
+├── assets/                    # Game assets directory
 ├── Docs/                      # Documentation ✓
 │   ├── Architecture/          # Server & network architecture
 │   └── Design/                # Game design documents
 ├── Tools/                     # Development tools (future)
-├── WORLD_LORE.md             # Canonical lore document ✓
-└── PROJECT_STRUCTURE.md      # Full project layout ✓
+├── CMakeLists.txt             # Root build configuration ✓
+├── WORLD_LORE.md              # Canonical lore document ✓
+└── PROJECT_STRUCTURE.md       # Full project layout ✓
 ```
 
 **✓** = Implemented  
@@ -175,6 +195,93 @@ Run a lightweight validation of the Unreal project wiring:
 ```bash
 python unreal_project_check.py
 ```
+
+### Building the Henky3D Game Client
+
+The World of Eldara now includes an alternative rendering/engine layer using **Henky3D** (OpenGL 4.6 Core). This provides a minimal but functional game bootstrap for development and testing.
+
+#### Prerequisites
+
+- **CMake 3.20+** - Build system
+- **C++20 Compiler** - MSVC 2019+, GCC 13+, or Clang 15+
+- **OpenGL 4.5+** - Modern GPU with OpenGL 4.5 or higher
+- **Linux**: X11 development libraries (`libx11-dev`, `libxrandr-dev`, `libxinerama-dev`, `libxcursor-dev`, `libxi-dev`, `libgl1-mesa-dev`)
+- **Windows**: Visual Studio 2019+ with C++ development tools
+
+#### Building
+
+1. **Initialize the Henky3D submodule** (first-time setup)
+   ```bash
+   git submodule update --init --recursive
+   ```
+
+2. **Create build directory**
+   ```bash
+   mkdir build
+   cd build
+   ```
+
+3. **Configure with CMake**
+   ```bash
+   cmake .. -DCMAKE_BUILD_TYPE=Release
+   ```
+
+4. **Build the game**
+   ```bash
+   cmake --build . --config Release -j$(nproc)
+   ```
+
+#### Running the Game
+
+From the repository root:
+
+```bash
+./build/bin/WorldofEldaraGame
+```
+
+**Note**: The executable must be run from the repository root directory so it can find shaders at `external/Henky3D/shaders/`.
+
+You should see:
+```
+==========================================
+  World of Eldara - Henky3D Edition
+  The Worldroot is bleeding. Memory awaits.
+==========================================
+[INFO] Engine initialized successfully
+[INFO] Resolution: 1280x720
+[INFO] Scene initialized with placeholder cube (representing the Worldroot)
+[INFO] Game loop started
+```
+
+#### Controls
+
+- **Mouse**: Look around (when camera control is enabled)
+- **WASD**: Move camera forward/back/left/right
+- **Q/E**: Move camera down/up
+- **ImGui Panel**: Toggle camera controls, adjust settings, enable/disable shadows and depth prepass
+
+#### What You'll See
+
+- A rotating cube representing the **Worldroot** (the core of Eldara)
+- Real-time lighting with directional shadows
+- Debug UI showing FPS, draw calls, and scene statistics
+- Camera fly-through controls for scene exploration
+
+#### Asset and Shader Paths
+
+- **Shaders**: Located at `external/Henky3D/shaders/` (automatically loaded by the engine)
+- **Assets**: Place additional assets in the `assets/` directory (planned for future use)
+- **Working Directory**: Always run the executable from the repository root
+
+#### Environment Variables (Optional)
+
+If you need to override asset paths:
+```bash
+export HENKY_ASSET_DIR=/path/to/custom/assets
+./build/bin/WorldofEldaraGame
+```
+
+*(Note: Environment variable support is planned but not yet implemented)*
 
 3. **Run the server**
    ```bash
@@ -255,12 +362,16 @@ Since the Unreal client is not yet implemented, you can:
 - [x] Chat system (zone-based)
 - [x] Quest system architecture (data-driven, branching, persistent impact)
 - [x] World events & corruption model (zone states, thresholds, mutators)
+- [x] **Henky3D engine integration** - Rendering/engine layer via submodule
+- [x] **WorldofEldaraGame executable** - Minimal game bootstrap with Henky3D
+- [x] **CMake build system** - Full build pipeline for Henky3D and game
 
 ### 🚧 In Progress
 
 - [ ] Unreal client project initialization
 - [ ] Combat system (server authoritative)
 - [ ] NPC AI behavior trees
+- [ ] Network integration between Henky3D client and .NET server
 
 ### 📋 Planned
 

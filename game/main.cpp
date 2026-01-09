@@ -26,6 +26,12 @@
 
 using namespace Henky3D;
 
+// Scene constants
+namespace {
+    constexpr glm::vec3 SCENE_BOUNDS_MIN = glm::vec3(-5.0f, -5.0f, -5.0f);
+    constexpr glm::vec3 SCENE_BOUNDS_MAX = glm::vec3(5.0f, 5.0f, 5.0f);
+}
+
 class WorldofEldaraGame {
 public:
     WorldofEldaraGame() {
@@ -193,7 +199,7 @@ private:
             auto& camera = m_ECS->GetComponent<Camera>(m_CameraEntity);
             camera.AspectRatio = static_cast<float>(m_Window->GetWidth()) / static_cast<float>(m_Window->GetHeight());
 
-            // Get directional light from scene
+            // Get directional light from scene (fallback to default if not found)
             glm::vec3 lightDirection = glm::vec3(0.5f, -1.0f, 0.3f);
             glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 0.9f, 1.0f);
             auto lightView = m_ECS->GetRegistry().view<Light>();
@@ -207,10 +213,8 @@ private:
             }
             
             // Compute light view-projection for shadows
-            glm::vec3 sceneBoundsMin = glm::vec3(-5.0f, -5.0f, -5.0f);
-            glm::vec3 sceneBoundsMax = glm::vec3(5.0f, 5.0f, 5.0f);
             glm::mat4 lightViewProj = ShadowMap::ComputeLightViewProjection(
-                lightDirection, sceneBoundsMin, sceneBoundsMax);
+                lightDirection, SCENE_BOUNDS_MIN, SCENE_BOUNDS_MAX);
 
             PerFrameConstants perFrameConstants;
             glm::mat4 view = camera.GetViewMatrix();
@@ -312,8 +316,8 @@ private:
     float m_DeltaTime = 0.0f;
     float m_TotalTime = 0.0f;
     
-    // Camera controls
-    bool m_EnableCameraControl = false;
+    // Camera controls - enabled by default for better initial experience
+    bool m_EnableCameraControl = true;
     float m_CameraMoveSpeed = 5.0f;
     float m_CameraLookSpeed = 0.1f;
     

@@ -186,7 +186,7 @@ SceneLoader::TreeHandles SceneLoader::CreateSimpleTree() {
         {{-hw, trunkHeight, -hw}, {-1, 0, 0}, {0, 0, 1, 1}, {0, 1}},
     };
     
-    trunk.Vertices.assign(trunkVerts, trunkVerts + 16);
+    trunk.Vertices.assign(trunkVerts, trunkVerts + sizeof(trunkVerts) / sizeof(trunkVerts[0]));
     
     uint32_t trunkIndices[] = {
         0, 1, 2,  2, 3, 0,
@@ -195,7 +195,7 @@ SceneLoader::TreeHandles SceneLoader::CreateSimpleTree() {
         12, 13, 14, 14, 15, 12
     };
     
-    trunk.Indices.assign(trunkIndices, trunkIndices + 24);
+    trunk.Indices.assign(trunkIndices, trunkIndices + sizeof(trunkIndices) / sizeof(trunkIndices[0]));
     trunk.BoundsMin = glm::vec3(-hw, 0, -hw);
     trunk.BoundsMax = glm::vec3(hw, trunkHeight, hw);
     
@@ -251,7 +251,7 @@ SceneLoader::TreeHandles SceneLoader::CreateSimpleTree() {
         {{-fs, -fs, fs}, {0, -1, 0}, {1, 0, 0, 1}, {0, 1}},
     };
     
-    foliage.Vertices.assign(foliageVerts, foliageVerts + 24);
+    foliage.Vertices.assign(foliageVerts, foliageVerts + sizeof(foliageVerts) / sizeof(foliageVerts[0]));
     
     uint32_t foliageIndices[] = {
         0, 1, 2,  2, 3, 0,
@@ -262,7 +262,7 @@ SceneLoader::TreeHandles SceneLoader::CreateSimpleTree() {
         20, 21, 22, 22, 23, 20
     };
     
-    foliage.Indices.assign(foliageIndices, foliageIndices + 36);
+    foliage.Indices.assign(foliageIndices, foliageIndices + sizeof(foliageIndices) / sizeof(foliageIndices[0]));
     foliage.BoundsMin = glm::vec3(-fs, -fs, -fs);
     foliage.BoundsMax = glm::vec3(fs, fs, fs);
     

@@ -5,6 +5,7 @@
  * It initializes the Henky3D rendering engine and displays a simple scene.
  */
 
+#include "SceneLoader.h"
 #include "engine/core/Window.h"
 #include "engine/core/Timer.h"
 #include "engine/input/Input.h"
@@ -28,8 +29,8 @@ using namespace Henky3D;
 
 // Scene constants
 namespace {
-    constexpr glm::vec3 SCENE_BOUNDS_MIN = glm::vec3(-5.0f, -5.0f, -5.0f);
-    constexpr glm::vec3 SCENE_BOUNDS_MAX = glm::vec3(5.0f, 5.0f, 5.0f);
+    constexpr glm::vec3 SCENE_BOUNDS_MIN = glm::vec3(-30.0f, -5.0f, -30.0f);
+    constexpr glm::vec3 SCENE_BOUNDS_MAX = glm::vec3(30.0f, 10.0f, 30.0f);
 }
 
 class WorldofEldaraGame {
@@ -109,7 +110,8 @@ private:
         auto cameraEntity = m_ECS->CreateEntity();
         auto& camera = m_ECS->AddComponent<Camera>(cameraEntity);
         camera.AspectRatio = static_cast<float>(m_Window->GetWidth()) / static_cast<float>(m_Window->GetHeight());
-        camera.Position = { 0.0f, 2.0f, 5.0f };
+        camera.Position = { 0.0f, 5.0f, 15.0f };
+        camera.Pitch = -15.0f;  // Look down slightly
         m_CameraEntity = cameraEntity;
 
         // Create light entity - representing Eldara's sun
@@ -119,16 +121,11 @@ private:
         light.Direction = { -0.3f, -1.0f, 0.5f };
         light.Color = { 1.0f, 0.95f, 0.9f, 1.0f };  // Warm sunlight
 
-        // Create a placeholder cube representing the Worldroot
-        auto cubeEntity = m_ECS->CreateEntity();
-        auto& cubeTransform = m_ECS->AddComponent<Transform>(cubeEntity);
-        cubeTransform.Position = { 0.0f, 0.0f, 0.0f };
-        cubeTransform.Scale = { 1.0f, 1.0f, 1.0f };
-        m_ECS->AddComponent<Renderable>(cubeEntity);
-        m_ECS->AddComponent<BoundingBox>(cubeEntity);
-        m_CubeEntity = cubeEntity;
+        // Load demo scene with ground and trees
+        SceneLoader sceneLoader(m_Renderer->GetAssetRegistry(), m_ECS.get());
+        sceneLoader.LoadDemoScene();
 
-        std::cout << "[INFO] Scene initialized with placeholder cube (representing the Worldroot)" << std::endl;
+        std::cout << "[INFO] Demo scene initialized with ground and trees" << std::endl;
     }
 
     void Update(float deltaTime) {
@@ -136,13 +133,6 @@ private:
         
         // Update transform system
         TransformSystem::UpdateTransforms(m_ECS.get());
-        
-        // Rotate the cube slowly
-        if (m_ECS->HasComponent<Transform>(m_CubeEntity)) {
-            auto& transform = m_ECS->GetComponent<Transform>(m_CubeEntity);
-            transform.Rotation.y += deltaTime * 0.5f;  // Rotate around Y axis
-            transform.MarkDirty();
-        }
 
         // Update camera controls if enabled
         if (m_EnableCameraControl) {
@@ -288,8 +278,8 @@ private:
         
         ImGui::Separator();
         ImGui::TextWrapped("Welcome to World of Eldara!");
-        ImGui::TextWrapped("This is a minimal bootstrap using the Henky3D engine.");
-        ImGui::TextWrapped("The cube represents the Worldroot - the core of Eldara.");
+        ImGui::TextWrapped("Demo scene: Ground plane with procedural trees.");
+        ImGui::TextWrapped("Trees are composed of trunk + foliage meshes.");
         
         ImGui::End();
 
@@ -310,7 +300,6 @@ private:
     std::unique_ptr<ECSWorld> m_ECS;
     
     entt::entity m_CameraEntity;
-    entt::entity m_CubeEntity;
     
     bool m_Running = true;
     float m_DeltaTime = 0.0f;

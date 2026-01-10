@@ -93,15 +93,18 @@ cd ..
 - ✅ ImGui debug overlay
 - ✅ FPS counter and performance stats
 - ✅ Configurable rendering options (shadows, depth prepass, bias)
+- ✅ **Asset loading system (stb_image, cgltf)**
+- ✅ **Texture loading (PNG/JPG with sRGB/linear format detection)**
+- ✅ **glTF 2.0 mesh loading with materials**
+- ✅ **Procedural mesh generation (ground plane, trees)**
+- ✅ **Demo scene with ground and tree instances**
 
 ### In Progress
-- 🚧 Asset loading system (GLTF models)
-- 🚧 Material system
-- 🚧 Texture loading (KTX2 format)
 - 🚧 Network integration with .NET server
+- 🚧 Advanced glTF features (animations, skins, multiple primitives)
 
 ### Planned
-- 📋 PBR material system
+- 📋 PBR material system (metallic/roughness workflow)
 - 📋 Multiple light types (point, spot)
 - 📋 Post-processing effects
 - 📋 Particle systems

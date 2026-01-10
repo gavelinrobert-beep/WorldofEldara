@@ -128,9 +128,21 @@ All magic has a **source and consequence**:
 WorldofEldara/
 ├── game/                      # Henky3D game client ✓
 │   ├── main.cpp               # Game bootstrap entry point
+│   ├── SceneLoader.cpp/.h     # Scene loading and procedural mesh generation
 │   └── CMakeLists.txt         # Game executable build config
 ├── external/                  # External dependencies
 │   └── Henky3D/               # Henky3D engine (submodule) ✓
+│       ├── src/engine/        # Engine source code
+│       │   ├── graphics/      # Renderer, AssetRegistry, materials, shaders
+│       │   ├── ecs/           # Entity Component System
+│       │   ├── core/          # Window, Timer
+│       │   └── input/         # Input handling
+│       ├── external/          # Engine dependencies (GLFW, GLM, EnTT, ImGui, GLAD)
+│       │   └── include/       # stb_image.h, cgltf.h
+│       └── shaders/           # GLSL shaders (Forward, Shadow, DepthPrepass)
+├── assets/                    # Game assets directory ✓
+│   ├── textures/              # PNG/JPG textures
+│   └── models/                # glTF 2.0 models
 ├── Client/                    # Unreal Engine project (prototype)
 ├── Server/                    # .NET 8 authoritative server ✓
 │   └── WorldofEldara.Server/
@@ -143,14 +155,13 @@ WorldofEldara/
 │       ├── Data/              # Character, combat, world data
 │       ├── Protocol/          # Network packets
 │       └── Constants/         # Game constants
-├── shaders/                   # Shaders directory (for custom shaders)
-├── assets/                    # Game assets directory
 ├── Docs/                      # Documentation ✓
 │   ├── Architecture/          # Server & network architecture
 │   └── Design/                # Game design documents
 ├── Tools/                     # Development tools (future)
 ├── CMakeLists.txt             # Root build configuration ✓
 ├── WORLD_LORE.md              # Canonical lore document ✓
+├── HENKY3D_INTEGRATION.md     # Henky3D integration guide ✓
 └── PROJECT_STRUCTURE.md       # Full project layout ✓
 ```
 
@@ -233,13 +244,14 @@ The World of Eldara now includes an alternative rendering/engine layer using **H
 
 #### Running the Game
 
-From the repository root:
+From the build directory:
 
 ```bash
-./build/bin/WorldofEldaraGame
+cd build/bin
+./WorldofEldaraGame
 ```
 
-**Note**: The executable must be run from the repository root directory so it can find shaders at `external/Henky3D/shaders/`.
+**Note**: The executable finds shaders at `../../external/Henky3D/shaders/` and assets at `../../assets/` when run from the `build/bin` directory.
 
 You should see:
 ```
@@ -249,20 +261,27 @@ You should see:
 ==========================================
 [INFO] Engine initialized successfully
 [INFO] Resolution: 1280x720
-[INFO] Scene initialized with placeholder cube (representing the Worldroot)
+Default textures initialized
+Created ground plane: 441 vertices, 800 indices
+Created simple tree (trunk + foliage)
+Created ground plane
+Created 8 trees
+Demo scene loaded successfully!
+[INFO] Demo scene initialized with ground and trees
 [INFO] Game loop started
 ```
 
 #### Controls
 
-- **Mouse**: Look around (when camera control is enabled)
+- **Mouse**: Look around (camera control enabled by default)
 - **WASD**: Move camera forward/back/left/right
 - **Q/E**: Move camera down/up
 - **ImGui Panel**: Toggle camera controls, adjust settings, enable/disable shadows and depth prepass
 
 #### What You'll See
 
-- A rotating cube representing the **Worldroot** (the core of Eldara)
+- A **ground plane** (green) tiled across the scene
+- **8 procedural trees** with brown trunks and green foliage scattered across the ground
 - Real-time lighting with directional shadows
 - Debug UI showing FPS, draw calls, and scene statistics
 - Camera fly-through controls for scene exploration
@@ -270,18 +289,68 @@ You should see:
 #### Asset and Shader Paths
 
 - **Shaders**: Located at `external/Henky3D/shaders/` (automatically loaded by the engine)
-- **Assets**: Place additional assets in the `assets/` directory (planned for future use)
-- **Working Directory**: Always run the executable from the repository root
+- **Assets**: Custom assets can be placed in `assets/textures/` and `assets/models/`
+  - Textures: PNG, JPG (automatic sRGB/linear format detection)
+  - Models: glTF 2.0 format (.gltf)
+- **Working Directory**: Run the executable from `build/bin/` directory
+
+#### Asset Pipeline Features
+
+The engine now includes a complete asset loading pipeline:
+
+**Texture Loading**
+- Supports PNG and JPG formats via stb_image
+- Automatic mipmap generation
+- Smart format detection:
+  - sRGB for albedo/diffuse/base color textures
+  - Linear for normal maps and ORM (occlusion/roughness/metalness) textures
+- Anisotropic filtering support (up to 16x)
+- Texture caching to avoid duplicate loads
+
+**Mesh Loading**
+- glTF 2.0 support via cgltf
+- Loads vertex positions, normals, tangents, and UV coordinates
+- Supports indexed geometry for efficiency
+- Material import with PBR parameters
+- Automatic bounding box calculation
+
+**Scene Loading**
+- Procedural mesh generation (planes, cubes, basic shapes)
+- Entity instancing with varied transforms
+- Material assignment per mesh
+- Hierarchical scene structure via ECS
+
+#### Adding Custom Assets
+
+**Textures:**
+Place texture files in `assets/textures/`. Use descriptive names with keywords:
+- `grass_albedo.png` - Will be loaded as sRGB
+- `grass_normal.png` - Will be loaded as linear
+- `bark_color.jpg` - Will be loaded as sRGB
+
+**Models:**
+Place glTF files in `assets/models/`:
+```cpp
+// In your scene loader or game code:
+auto treeModel = assetRegistry->LoadGLTF(L"../../assets/models/tree.gltf");
+```
+
+The loader will automatically:
+- Parse the glTF file structure
+- Load embedded or external textures
+- Create materials with PBR parameters
+- Upload geometry to GPU buffers
 
 #### Environment Variables (Optional)
 
 If you need to override asset paths:
 ```bash
 export HENKY_ASSET_DIR=/path/to/custom/assets
-./build/bin/WorldofEldaraGame
+cd build/bin
+./WorldofEldaraGame
 ```
 
-*(Note: Environment variable support is planned but not yet implemented)*
+*(Note: Environment variable support is planned but not yet fully implemented)*
 
 3. **Run the server**
    ```bash

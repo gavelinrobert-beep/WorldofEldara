@@ -17,7 +17,7 @@ fi
 # Initialize submodules if needed
 if [ ! -f "external/Henky3D/CMakeLists.txt" ]; then
     echo "[INFO] Initializing Henky3D submodule..."
-    git submodule update --init --recursive
+    git submodule update --init
 fi
 
 # Create build directory

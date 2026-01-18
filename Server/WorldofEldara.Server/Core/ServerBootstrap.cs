@@ -28,6 +28,27 @@ public class ServerBootstrap
         _config = new ServerConfig();
         _configuration.GetSection("Server").Bind(_config);
 
+        if (_config.Port < 1 || _config.Port > 65535)
+        {
+            var message = $"Invalid server configuration: Port must be between 1 and 65535. Current value: {_config.Port}.";
+            Log.Error(message);
+            throw new InvalidOperationException(message);
+        }
+
+        if (_config.MaxPlayers <= 0)
+        {
+            var message = $"Invalid server configuration: MaxPlayers must be greater than 0. Current value: {_config.MaxPlayers}.";
+            Log.Error(message);
+            throw new InvalidOperationException(message);
+        }
+
+        if (_config.TickRate <= 0)
+        {
+            var message = $"Invalid server configuration: TickRate must be greater than 0. Current value: {_config.TickRate}.";
+            Log.Error(message);
+            throw new InvalidOperationException(message);
+        }
+
         Log.Information($"Server Name: {_config.Name}");
         Log.Information($"Port: {_config.Port}");
         Log.Information($"Max Players: {_config.MaxPlayers}");

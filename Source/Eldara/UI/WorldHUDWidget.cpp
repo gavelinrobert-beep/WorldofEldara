@@ -30,6 +30,12 @@ namespace
 	constexpr float ChatPanelHeight = 170.f;
 	constexpr float TargetFrameWidth = 300.f;
 	constexpr float TargetFrameHeight = 70.f;
+	const FText QuestTrackerTitleText = NSLOCTEXT("WorldHUD", "QuestTrackerTitle", "Quest Tracker");
+	const FText QuestTrackerBodyText = NSLOCTEXT("WorldHUD", "QuestTrackerBody", "• [0/3] Speak with the Thornveil Guide\n• [1/5] Gather Worldroot Fragments\n• Return to Briarwatch Crossing");
+	const FText ChatTitleText = NSLOCTEXT("WorldHUD", "ChatTitle", "Chat");
+	const FText ChatBodyText = NSLOCTEXT("WorldHUD", "ChatBody", "[General] Elaria: Welcome to Thornveil.\n[Party] Kael: Ready to head out?\n[System] Server sync complete.");
+	const FText TargetNamePlaceholderText = NSLOCTEXT("WorldHUD", "TargetNamePlaceholder", "Target: None");
+	const FText TargetHealthPlaceholderText = NSLOCTEXT("WorldHUD", "TargetHealthPlaceholder", "Health: -- / --");
 	const FMargin VitalsOverlayPadding(0.f, 0.f, 0.f, VitalsPadding);
 	const FMargin ActionButtonPadding(2.f);
 }
@@ -204,16 +210,17 @@ void UWorldHUDWidget::BuildQuestTrackerBlock(UCanvasPanel* RootCanvas)
 
 	UVerticalBox* QuestBox = WidgetTree->ConstructWidget<UVerticalBox>(UVerticalBox::StaticClass(), TEXT("QuestTrackerBox"));
 	UTextBlock* QuestTitle = WidgetTree->ConstructWidget<UTextBlock>(UTextBlock::StaticClass(), TEXT("QuestTrackerTitle"));
-	QuestTitle->SetText(FText::FromString(TEXT("Quest Tracker")));
+	QuestTitle->SetText(QuestTrackerTitleText);
 	QuestTitle->SetJustification(ETextJustify::Center);
 
 	UVerticalBoxSlot* TitleSlot = QuestBox->AddChildToVerticalBox(QuestTitle);
 	TitleSlot->SetPadding(FMargin(0.f, 0.f, 0.f, 4.f));
 
 	QuestTrackerText = WidgetTree->ConstructWidget<UTextBlock>(UTextBlock::StaticClass(), TEXT("QuestTrackerText"));
-	QuestTrackerText->SetText(FText::FromString(TEXT("• [0/3] Speak with the Thornveil Guide\n• [1/5] Gather Worldroot Fragments\n• Return to Briarwatch Crossing")));
+	QuestTrackerText->SetText(QuestTrackerBodyText);
 	QuestTrackerText->SetAutoWrapText(true);
-	QuestBox->AddChildToVerticalBox(QuestTrackerText);
+	UVerticalBoxSlot* QuestBodySlot = QuestBox->AddChildToVerticalBox(QuestTrackerText);
+	QuestBodySlot->SetPadding(FMargin(0.f, 0.f, 0.f, 2.f));
 
 	QuestBorder->SetContent(QuestBox);
 
@@ -237,12 +244,13 @@ void UWorldHUDWidget::BuildChatBlock(UCanvasPanel* RootCanvas)
 
 	UVerticalBox* ChatBox = WidgetTree->ConstructWidget<UVerticalBox>(UVerticalBox::StaticClass(), TEXT("ChatBox"));
 	UTextBlock* ChatTitle = WidgetTree->ConstructWidget<UTextBlock>(UTextBlock::StaticClass(), TEXT("ChatTitle"));
-	ChatTitle->SetText(FText::FromString(TEXT("Chat")));
+	ChatTitle->SetText(ChatTitleText);
 	ChatTitle->SetJustification(ETextJustify::Center);
-	ChatBox->AddChildToVerticalBox(ChatTitle);
+	UVerticalBoxSlot* ChatTitleSlot = ChatBox->AddChildToVerticalBox(ChatTitle);
+	ChatTitleSlot->SetPadding(FMargin(0.f, 0.f, 0.f, 4.f));
 
 	ChatLogText = WidgetTree->ConstructWidget<UTextBlock>(UTextBlock::StaticClass(), TEXT("ChatLogText"));
-	ChatLogText->SetText(FText::FromString(TEXT("[General] Elaria: Welcome to Thornveil.\n[Party] Kael: Ready to head out?\n[System] Server sync complete.")));
+	ChatLogText->SetText(ChatBodyText);
 	ChatLogText->SetAutoWrapText(true);
 	ChatBox->AddChildToVerticalBox(ChatLogText);
 
@@ -268,11 +276,11 @@ void UWorldHUDWidget::BuildTargetFrameBlock(UCanvasPanel* RootCanvas)
 
 	UVerticalBox* TargetBox = WidgetTree->ConstructWidget<UVerticalBox>(UVerticalBox::StaticClass(), TEXT("TargetFrameBox"));
 	TargetNameText = WidgetTree->ConstructWidget<UTextBlock>(UTextBlock::StaticClass(), TEXT("TargetNameText"));
-	TargetNameText->SetText(FText::FromString(TEXT("Target: None")));
+	TargetNameText->SetText(TargetNamePlaceholderText);
 	TargetNameText->SetJustification(ETextJustify::Center);
 
 	TargetHealthText = WidgetTree->ConstructWidget<UTextBlock>(UTextBlock::StaticClass(), TEXT("TargetHealthText"));
-	TargetHealthText->SetText(FText::FromString(TEXT("Health: -- / --")));
+	TargetHealthText->SetText(TargetHealthPlaceholderText);
 	TargetHealthText->SetJustification(ETextJustify::Center);
 
 	TargetBox->AddChildToVerticalBox(TargetNameText);

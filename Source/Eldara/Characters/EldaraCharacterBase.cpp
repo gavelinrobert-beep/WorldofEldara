@@ -10,6 +10,13 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 
+namespace
+{
+	constexpr float DefaultCameraArmLength = 320.f;
+	constexpr float DefaultRotationRateYaw = 540.f;
+	constexpr float DefaultWalkSpeed = 450.f;
+}
+
 AEldaraCharacterBase::AEldaraCharacterBase()
 {
 	PrimaryActorTick.bCanEverTick = true;
@@ -20,7 +27,7 @@ AEldaraCharacterBase::AEldaraCharacterBase()
 	// Create camera boom and follow camera for viewport play
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
-	CameraBoom->TargetArmLength = 320.f;
+	CameraBoom->TargetArmLength = DefaultCameraArmLength;
 	CameraBoom->bUsePawnControlRotation = true;
 	CameraBoom->bDoCollisionTest = true;
 
@@ -35,8 +42,8 @@ AEldaraCharacterBase::AEldaraCharacterBase()
 	if (UCharacterMovementComponent* MovementComponent = GetCharacterMovement())
 	{
 		MovementComponent->bOrientRotationToMovement = true;
-		MovementComponent->RotationRate = FRotator(0.f, 540.f, 0.f);
-		MovementComponent->MaxWalkSpeed = 450.f;
+		MovementComponent->RotationRate = FRotator(0.f, DefaultRotationRateYaw, 0.f);
+		MovementComponent->MaxWalkSpeed = DefaultWalkSpeed;
 	}
 
 	// Initialize stats with default values

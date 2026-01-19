@@ -4,6 +4,11 @@
 #include "Engine/StaticMeshActor.h"
 #include "UObject/ConstructorHelpers.h"
 
+namespace
+{
+	const FVector PreviewGroundScale(25.f, 25.f, 1.f);
+}
+
 AEldaraGameModeBase::AEldaraGameModeBase()
 {
 	PlayerControllerClass = AEldaraPlayerController::StaticClass();
@@ -47,7 +52,9 @@ void AEldaraGameModeBase::SpawnViewportPreviewGround()
 		return;
 	}
 
-	AStaticMeshActor* GroundActor = World->SpawnActor<AStaticMeshActor>();
+	FActorSpawnParameters SpawnParams;
+	SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
+	AStaticMeshActor* GroundActor = World->SpawnActor<AStaticMeshActor>(FVector::ZeroVector, FRotator::ZeroRotator, SpawnParams);
 	if (!GroundActor)
 	{
 		return;
@@ -62,7 +69,7 @@ void AEldaraGameModeBase::SpawnViewportPreviewGround()
 	MeshComponent->SetStaticMesh(PreviewGroundMesh);
 	MeshComponent->SetMobility(EComponentMobility::Static);
 	MeshComponent->SetCollisionProfileName(TEXT("BlockAll"));
-	GroundActor->SetActorScale3D(FVector(25.f, 25.f, 1.f));
+	GroundActor->SetActorScale3D(PreviewGroundScale);
 	GroundActor->SetActorLocation(FVector(0.f, 0.f, 0.f));
 #endif
 }

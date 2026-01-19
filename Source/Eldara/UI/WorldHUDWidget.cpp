@@ -8,6 +8,8 @@
 #include "Components/ProgressBar.h"
 #include "Components/SizeBox.h"
 #include "Components/TextBlock.h"
+#include "Components/VerticalBox.h"
+#include "Components/VerticalBoxSlot.h"
 #include "Components/Overlay.h"
 #include "Components/OverlaySlot.h"
 #include "Blueprint/WidgetTree.h"
@@ -21,6 +23,19 @@ namespace
 	constexpr float MinimapLocationPadding = 8.f;
 	constexpr float ActionBarButtonWidth = 60.f;
 	constexpr float ActionBarButtonHeight = 42.f;
+	constexpr float QuestTrackerWidth = 240.f;
+	constexpr float QuestTrackerHeight = 160.f;
+	constexpr float QuestTrackerTopOffset = 200.f;
+	constexpr float ChatPanelWidth = 360.f;
+	constexpr float ChatPanelHeight = 170.f;
+	constexpr float TargetFrameWidth = 300.f;
+	constexpr float TargetFrameHeight = 70.f;
+	const FText QuestTrackerTitleText = NSLOCTEXT("WorldHUD", "QuestTrackerTitle", "Quest Tracker");
+	const FText QuestTrackerBodyText = NSLOCTEXT("WorldHUD", "QuestTrackerBody", "• [0/3] Speak with the Thornveil Guide\n• [1/5] Gather Worldroot Fragments\n• Return to Briarwatch Crossing");
+	const FText ChatTitleText = NSLOCTEXT("WorldHUD", "ChatTitle", "Chat");
+	const FText ChatBodyText = NSLOCTEXT("WorldHUD", "ChatBody", "[General] Elaria: Welcome to Thornveil.\n[Party] Kael: Ready to head out?\n[System] Server sync complete.");
+	const FText TargetNamePlaceholderText = NSLOCTEXT("WorldHUD", "TargetNamePlaceholder", "Target: None");
+	const FText TargetHealthPlaceholderText = NSLOCTEXT("WorldHUD", "TargetHealthPlaceholder", "Health: -- / --");
 	const FMargin VitalsOverlayPadding(0.f, 0.f, 0.f, VitalsPadding);
 	const FMargin ActionButtonPadding(2.f);
 }
@@ -49,6 +64,9 @@ void UWorldHUDWidget::EnsureWidgetTree()
 	BuildHealthResourceBlock(RootCanvas);
 	BuildMinimapBlock(RootCanvas);
 	BuildActionBarBlock(RootCanvas);
+	BuildQuestTrackerBlock(RootCanvas);
+	BuildChatBlock(RootCanvas);
+	BuildTargetFrameBlock(RootCanvas);
 }
 
 void UWorldHUDWidget::BuildHealthResourceBlock(UCanvasPanel* RootCanvas)
@@ -182,6 +200,104 @@ void UWorldHUDWidget::BuildActionBarBlock(UCanvasPanel* RootCanvas)
 	ActionBarCanvasSlot->SetAnchors(FAnchors(0.5f, 1.f, 0.5f, 1.f));
 	ActionBarCanvasSlot->SetAlignment(FVector2D(0.5f, 1.f));
 	ActionBarCanvasSlot->SetOffsets(FMargin(0.f, -BlockPadding, 0.f, 0.f));
+}
+
+void UWorldHUDWidget::BuildQuestTrackerBlock(UCanvasPanel* RootCanvas)
+{
+	UBorder* QuestBorder = WidgetTree->ConstructWidget<UBorder>(UBorder::StaticClass(), TEXT("QuestTrackerBorder"));
+	QuestBorder->SetBrushColor(FLinearColor(0.f, 0.f, 0.f, 0.55f));
+	QuestBorder->SetPadding(FMargin(6.f));
+
+	UVerticalBox* QuestBox = WidgetTree->ConstructWidget<UVerticalBox>(UVerticalBox::StaticClass(), TEXT("QuestTrackerBox"));
+	UTextBlock* QuestTitle = WidgetTree->ConstructWidget<UTextBlock>(UTextBlock::StaticClass(), TEXT("QuestTrackerTitle"));
+	QuestTitle->SetText(QuestTrackerTitleText);
+	QuestTitle->SetJustification(ETextJustify::Center);
+
+	UVerticalBoxSlot* TitleSlot = QuestBox->AddChildToVerticalBox(QuestTitle);
+	TitleSlot->SetPadding(FMargin(0.f, 0.f, 0.f, 4.f));
+
+	QuestTrackerText = WidgetTree->ConstructWidget<UTextBlock>(UTextBlock::StaticClass(), TEXT("QuestTrackerText"));
+	QuestTrackerText->SetText(QuestTrackerBodyText);
+	QuestTrackerText->SetAutoWrapText(true);
+	UVerticalBoxSlot* QuestBodySlot = QuestBox->AddChildToVerticalBox(QuestTrackerText);
+	QuestBodySlot->SetPadding(FMargin(0.f, 0.f, 0.f, 2.f));
+
+	QuestBorder->SetContent(QuestBox);
+
+	USizeBox* QuestBoxSize = WidgetTree->ConstructWidget<USizeBox>(USizeBox::StaticClass(), TEXT("QuestTrackerSizeBox"));
+	QuestBoxSize->SetWidthOverride(QuestTrackerWidth);
+	QuestBoxSize->SetHeightOverride(QuestTrackerHeight);
+	QuestBoxSize->AddChild(QuestBorder);
+
+	UCanvasPanelSlot* QuestCanvasSlot = RootCanvas->AddChildToCanvas(QuestBoxSize);
+	QuestCanvasSlot->SetAnchors(FAnchors(1.f, 0.f, 1.f, 0.f));
+	QuestCanvasSlot->SetAlignment(FVector2D(1.f, 0.f));
+	QuestCanvasSlot->SetOffsets(FMargin(-BlockPadding, BlockPadding + QuestTrackerTopOffset, 0.f, 0.f));
+	QuestCanvasSlot->SetAutoSize(true);
+}
+
+void UWorldHUDWidget::BuildChatBlock(UCanvasPanel* RootCanvas)
+{
+	UBorder* ChatBorder = WidgetTree->ConstructWidget<UBorder>(UBorder::StaticClass(), TEXT("ChatBorder"));
+	ChatBorder->SetBrushColor(FLinearColor(0.f, 0.f, 0.f, 0.55f));
+	ChatBorder->SetPadding(FMargin(6.f));
+
+	UVerticalBox* ChatBox = WidgetTree->ConstructWidget<UVerticalBox>(UVerticalBox::StaticClass(), TEXT("ChatBox"));
+	UTextBlock* ChatTitle = WidgetTree->ConstructWidget<UTextBlock>(UTextBlock::StaticClass(), TEXT("ChatTitle"));
+	ChatTitle->SetText(ChatTitleText);
+	ChatTitle->SetJustification(ETextJustify::Center);
+	UVerticalBoxSlot* ChatTitleSlot = ChatBox->AddChildToVerticalBox(ChatTitle);
+	ChatTitleSlot->SetPadding(FMargin(0.f, 0.f, 0.f, 4.f));
+
+	ChatLogText = WidgetTree->ConstructWidget<UTextBlock>(UTextBlock::StaticClass(), TEXT("ChatLogText"));
+	ChatLogText->SetText(ChatBodyText);
+	ChatLogText->SetAutoWrapText(true);
+	ChatBox->AddChildToVerticalBox(ChatLogText);
+
+	ChatBorder->SetContent(ChatBox);
+
+	USizeBox* ChatSizeBox = WidgetTree->ConstructWidget<USizeBox>(USizeBox::StaticClass(), TEXT("ChatSizeBox"));
+	ChatSizeBox->SetWidthOverride(ChatPanelWidth);
+	ChatSizeBox->SetHeightOverride(ChatPanelHeight);
+	ChatSizeBox->AddChild(ChatBorder);
+
+	UCanvasPanelSlot* ChatCanvasSlot = RootCanvas->AddChildToCanvas(ChatSizeBox);
+	ChatCanvasSlot->SetAnchors(FAnchors(0.f, 1.f, 0.f, 1.f));
+	ChatCanvasSlot->SetAlignment(FVector2D(0.f, 1.f));
+	ChatCanvasSlot->SetOffsets(FMargin(BlockPadding, -BlockPadding, 0.f, 0.f));
+	ChatCanvasSlot->SetAutoSize(true);
+}
+
+void UWorldHUDWidget::BuildTargetFrameBlock(UCanvasPanel* RootCanvas)
+{
+	UBorder* TargetBorder = WidgetTree->ConstructWidget<UBorder>(UBorder::StaticClass(), TEXT("TargetFrameBorder"));
+	TargetBorder->SetBrushColor(FLinearColor(0.f, 0.f, 0.f, 0.55f));
+	TargetBorder->SetPadding(FMargin(6.f));
+
+	UVerticalBox* TargetBox = WidgetTree->ConstructWidget<UVerticalBox>(UVerticalBox::StaticClass(), TEXT("TargetFrameBox"));
+	TargetNameText = WidgetTree->ConstructWidget<UTextBlock>(UTextBlock::StaticClass(), TEXT("TargetNameText"));
+	TargetNameText->SetText(TargetNamePlaceholderText);
+	TargetNameText->SetJustification(ETextJustify::Center);
+
+	TargetHealthText = WidgetTree->ConstructWidget<UTextBlock>(UTextBlock::StaticClass(), TEXT("TargetHealthText"));
+	TargetHealthText->SetText(TargetHealthPlaceholderText);
+	TargetHealthText->SetJustification(ETextJustify::Center);
+
+	TargetBox->AddChildToVerticalBox(TargetNameText);
+	TargetBox->AddChildToVerticalBox(TargetHealthText);
+
+	TargetBorder->SetContent(TargetBox);
+
+	USizeBox* TargetSizeBox = WidgetTree->ConstructWidget<USizeBox>(USizeBox::StaticClass(), TEXT("TargetFrameSizeBox"));
+	TargetSizeBox->SetWidthOverride(TargetFrameWidth);
+	TargetSizeBox->SetHeightOverride(TargetFrameHeight);
+	TargetSizeBox->AddChild(TargetBorder);
+
+	UCanvasPanelSlot* TargetCanvasSlot = RootCanvas->AddChildToCanvas(TargetSizeBox);
+	TargetCanvasSlot->SetAnchors(FAnchors(0.5f, 0.f, 0.5f, 0.f));
+	TargetCanvasSlot->SetAlignment(FVector2D(0.5f, 0.f));
+	TargetCanvasSlot->SetOffsets(FMargin(0.f, BlockPadding, 0.f, 0.f));
+	TargetCanvasSlot->SetAutoSize(true);
 }
 
 void UWorldHUDWidget::UpdateVitals(float CurrentHealth, float MaxHealth, float CurrentResource, float MaxResource)

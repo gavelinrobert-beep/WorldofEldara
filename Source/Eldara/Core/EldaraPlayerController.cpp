@@ -10,9 +10,9 @@
 
 namespace
 {
-constexpr float NetworkLookupInterval = 1.0f;
-constexpr float MinimapLocationTolerance = 10.f;
-constexpr int32 DefaultActionLabelCount = 6;
+	constexpr float NetworkLookupInterval = 1.0f;
+	constexpr float MinimapLocationTolerance = 10.f;
+	constexpr int32 DefaultActionLabelCount = 10;
 
 TArray<FText> BuildDefaultActionLabels()
 {
@@ -24,12 +24,19 @@ TArray<FText> BuildDefaultActionLabels()
 	Labels.Add(LOCTEXT("Action4", "4: Potion"));
 	Labels.Add(LOCTEXT("Action5", "5: Mount"));
 	Labels.Add(LOCTEXT("Action6", "6: Map"));
+	Labels.Add(LOCTEXT("Action7", "7: Quest Log"));
+	Labels.Add(LOCTEXT("Action8", "8: Friends"));
+	Labels.Add(LOCTEXT("Action9", "9: Emote"));
+	Labels.Add(LOCTEXT("Action10", "0: System"));
 	return Labels;
 }
 }
 
 AEldaraPlayerController::AEldaraPlayerController()
 {
+	bShowMouseCursor = false;
+	bEnableClickEvents = false;
+	bEnableMouseOverEvents = false;
 }
 
 void AEldaraPlayerController::BeginPlay()

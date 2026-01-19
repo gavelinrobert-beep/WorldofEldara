@@ -9,6 +9,8 @@
 class UEldaraRaceData;
 class UEldaraClassData;
 class UEldaraCombatComponent;
+class USpringArmComponent;
+class UCameraComponent;
 
 /**
  * Base Character class for all characters in World of Eldara
@@ -150,6 +152,14 @@ protected:
 	/** Combat component */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat")
 	TObjectPtr<UEldaraCombatComponent> CombatComponent;
+
+	/** Camera boom to keep camera offset from character */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
+	TObjectPtr<USpringArmComponent> CameraBoom;
+
+	/** Follow camera for viewport play */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
+	TObjectPtr<UCameraComponent> FollowCamera;
 
 	/** Handle death */
 	virtual void HandleDeath();

@@ -19,4 +19,10 @@ public:
 protected:
 	/** Called when the game mode is initialized */
 	virtual void BeginPlay() override;
+
+private:
+	void SpawnViewportPreviewGround();
+
+	UPROPERTY()
+	TObjectPtr<class UStaticMesh> PreviewGroundMesh;
 };

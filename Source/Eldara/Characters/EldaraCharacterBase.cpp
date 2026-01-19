@@ -6,6 +6,16 @@
 #include "Internationalization/Text.h"
 #include "Misc/ConfigCacheIni.h"
 #include "GameFramework/Controller.h"
+#include "GameFramework/CharacterMovementComponent.h"
+#include "GameFramework/SpringArmComponent.h"
+#include "Camera/CameraComponent.h"
+
+namespace
+{
+	constexpr float DefaultCameraArmLength = 320.f;
+	constexpr float DefaultRotationRateYaw = 540.f;
+	constexpr float DefaultWalkSpeed = 450.f;
+}
 
 AEldaraCharacterBase::AEldaraCharacterBase()
 {
@@ -13,6 +23,28 @@ AEldaraCharacterBase::AEldaraCharacterBase()
 
 	// Create combat component
 	CombatComponent = CreateDefaultSubobject<UEldaraCombatComponent>(TEXT("CombatComponent"));
+
+	// Create camera boom and follow camera for viewport play
+	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
+	CameraBoom->SetupAttachment(RootComponent);
+	CameraBoom->TargetArmLength = DefaultCameraArmLength;
+	CameraBoom->bUsePawnControlRotation = true;
+	CameraBoom->bDoCollisionTest = true;
+
+	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
+	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
+	FollowCamera->bUsePawnControlRotation = false;
+
+	bUseControllerRotationYaw = false;
+	bUseControllerRotationPitch = false;
+	bUseControllerRotationRoll = false;
+
+	if (UCharacterMovementComponent* MovementComponent = GetCharacterMovement())
+	{
+		MovementComponent->bOrientRotationToMovement = true;
+		MovementComponent->RotationRate = FRotator(0.f, DefaultRotationRateYaw, 0.f);
+		MovementComponent->MaxWalkSpeed = DefaultWalkSpeed;
+	}
 
 	// Initialize stats with default values
 	Health = 100.0f;

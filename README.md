@@ -99,9 +99,17 @@ All magic has a **source and consequence**:
 - **20 TPS** - Fixed tick rate world simulation
 - **Thread-safe architecture** - Concurrent entity management
 
-### Client Options
+### Client (Primary)
 
-#### Option 1: Henky3D Engine (OpenGL 4.6 Core)
+#### Unreal Engine (Active Client)
+- **Unreal Engine 5.x**
+- **C++20 + Blueprints**
+- **Enhanced Input**
+- **UMG/CommonUI + GAS-friendly UI patterns**
+- **Niagara VFX**
+- **Viewport-ready third-person camera + MMO HUD scaffolding**
+
+#### Henky3D Engine (On Hold)
 - **C++20** - Modern C++ with best practices
 - **OpenGL 4.6 Core** - Modern graphics via GLAD loader
 - **GLFW 3.4** - Cross-platform windowing
@@ -111,13 +119,6 @@ All magic has a **source and consequence**:
 - **Depth prepass + Forward shading** - Optimized rendering pipeline
 - **Real-time shadows** - Directional light shadow mapping
 
-#### Option 2: Unreal Engine (Legacy/Prototype)
-- **Unreal Engine 5.x**
-- **C++20 + Blueprints**
-- **Enhanced Input**
-- **UMG/CommonUI + GAS-friendly UI patterns**
-- **Niagara VFX**
-
 ### Shared Library
 - **MessagePack** - Serialization
 - **Lore-grounded data structures** - Race, Class, Faction, Combat
@@ -126,6 +127,10 @@ All magic has a **source and consequence**:
 
 ```
 WorldofEldara/
+├── Config/                    # Unreal Engine project config
+├── Content/                   # Unreal Engine content (starter/placeholder)
+├── Source/                    # Unreal Engine C++ modules
+├── Eldara.uproject            # Unreal Engine project file
 ├── game/                      # Henky3D game client ✓
 │   ├── main.cpp               # Game bootstrap entry point
 │   ├── SceneLoader.cpp/.h     # Scene loading and procedural mesh generation
@@ -143,7 +148,7 @@ WorldofEldara/
 ├── assets/                    # Game assets directory ✓
 │   ├── textures/              # PNG/JPG textures
 │   └── models/                # glTF 2.0 models
-├── Client/                    # Unreal Engine project (prototype)
+├── Client/                    # Legacy Unreal client placeholder (unused)
 ├── Server/                    # .NET 8 authoritative server ✓
 │   └── WorldofEldara.Server/
 │       ├── Core/              # Entity management, bootstrap

@@ -52,7 +52,7 @@ public:
 
 	/** Get list of all active quests */
 	UFUNCTION(BlueprintCallable, Category = "Quest")
-	TArray<FEldaraActiveQuest> GetActiveQuests() const { return ActiveQuests; }
+	const TArray<FEldaraActiveQuest>& GetActiveQuests() const { return ActiveQuests; }
 
 	/** Update progress on a quest objective */
 	UFUNCTION(BlueprintCallable, Category = "Quest")

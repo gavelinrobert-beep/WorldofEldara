@@ -1,9 +1,11 @@
 #include "EldaraQuestSubsystem.h"
 
+DEFINE_LOG_CATEGORY_STATIC(LogEldaraQuest, Log, All);
+
 void UEldaraQuestSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
-	UE_LOG(LogTemp, Log, TEXT("EldaraQuestSubsystem initialized"));
+	UE_LOG(LogEldaraQuest, Log, TEXT("EldaraQuestSubsystem initialized"));
 }
 
 void UEldaraQuestSubsystem::Deinitialize()
@@ -32,11 +34,7 @@ bool UEldaraQuestSubsystem::AcceptQuest(UEldaraQuestData* QuestData)
 	NewQuest.bRewardsClaimed = false;
 
 	// Initialize objective progress
-	NewQuest.ObjectiveProgress.SetNum(QuestData->Objectives.Num());
-	for (int32& Progress : NewQuest.ObjectiveProgress)
-	{
-		Progress = 0;
-	}
+	NewQuest.ObjectiveProgress.Init(0, QuestData->Objectives.Num());
 
 	ActiveQuests.Add(NewQuest);
 	return true;

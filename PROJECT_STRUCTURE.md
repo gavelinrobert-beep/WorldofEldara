@@ -8,7 +8,12 @@ This document outlines the complete folder structure and architecture for the Wo
 
 ```
 WorldofEldara/
-├── Client/                 # Unreal Engine project
+├── Config/                 # Unreal Engine project config
+├── Content/                # Unreal Engine content
+├── Source/                 # Unreal Engine C++ modules
+├── Eldara.uproject         # Unreal Engine project file
+├── game/                   # Henky3D client (on hold)
+├── external/               # Henky3D engine submodule (on hold)
 ├── Server/                 # C# dedicated server
 ├── Shared/                 # Shared code between client and server
 ├── Docs/                   # Documentation
@@ -18,28 +23,27 @@ WorldofEldara/
 └── README.md              # Project overview
 ```
 
-## Client/ - Unreal Engine Project
+## Unreal Engine Project Layout (Root-Level)
 
 ```
-Client/
-├── Config/                             # DefaultEngine, DefaultInput, etc.
-├── Content/
-│   └── WorldofEldara/                  # Art, UI, quests, maps
-│       ├── Blueprints/                 # Core, UI, Characters, NPC, Quests
-│       ├── Data/                       # DataAssets/DataTables/Curves
-│       ├── Maps/                       # MainMenu, CharacterCreation, Zone prototypes
-│       └── UI/                         # UMG/CommonUI widgets (chat, quest tracker, HUD)
-├── Source/
-│   └── Eldara/
-│       ├── Core/                       # GameInstance, Subsystems, PlayerController
-│       ├── Networking/                 # Socket client, packet dispatch
-│       ├── Movement/                   # Prediction/reconciliation hooks
-│       ├── Combat/                     # GAS abilities, cooldown UX
-│       ├── Quest/                      # Quest DataAssets, objective logic stubs
-│       ├── World/                      # Zone presentation, corruption visuals
-│       ├── UI/                         # Widget controllers
-│       └── Plugins/                    # Optional Unreal plugins (e.g., ALS/GAS helpers)
-└── Eldara.uproject
+Config/                             # DefaultEngine, DefaultInput, etc.
+Content/
+└── WorldofEldara/                  # Art, UI, quests, maps
+    ├── Blueprints/                 # Core, UI, Characters, NPC, Quests
+    ├── Data/                       # DataAssets/DataTables/Curves
+    ├── Maps/                       # MainMenu, CharacterCreation, Zone prototypes
+    └── UI/                         # UMG/CommonUI widgets (chat, quest tracker, HUD)
+Source/
+└── Eldara/
+    ├── Core/                       # GameInstance, Subsystems, PlayerController
+    ├── Networking/                 # Socket client, packet dispatch
+    ├── Movement/                   # Prediction/reconciliation hooks
+    ├── Combat/                     # GAS abilities, cooldown UX
+    ├── Quest/                      # Quest DataAssets, objective logic stubs
+    ├── World/                      # Zone presentation, corruption visuals
+    ├── UI/                         # Widget controllers
+    └── Plugins/                    # Optional Unreal plugins (e.g., ALS/GAS helpers)
+Eldara.uproject
 ```
 
 - **Config/** drives engine, input, and rendering defaults (DX12/Vulkan, Enhanced Input mappings).

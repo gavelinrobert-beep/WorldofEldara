@@ -1,6 +1,7 @@
 # Henky3D Integration Guide
 
 This document describes the integration of the Henky3D graphics engine into the World of Eldara project.
+Henky3D is currently on hold while the Unreal Engine client is the active path, so treat this guide as reference material.
 
 ## Overview
 

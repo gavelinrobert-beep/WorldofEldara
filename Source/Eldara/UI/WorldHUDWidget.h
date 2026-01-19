@@ -7,6 +7,7 @@
 class UProgressBar;
 class UTextBlock;
 class UHorizontalBox;
+class UVerticalBox;
 
 /**
  * Minimal MMO-style HUD (health/resource, minimap placeholder, action bar)
@@ -49,11 +50,26 @@ private:
 	UTextBlock* MinimapText = nullptr;
 
 	UPROPERTY()
+	UTextBlock* QuestTrackerText = nullptr;
+
+	UPROPERTY()
+	UTextBlock* ChatLogText = nullptr;
+
+	UPROPERTY()
+	UTextBlock* TargetNameText = nullptr;
+
+	UPROPERTY()
+	UTextBlock* TargetHealthText = nullptr;
+
+	UPROPERTY()
 	UHorizontalBox* ActionBar = nullptr;
 
 	void BuildHealthResourceBlock(class UCanvasPanel* RootCanvas);
 	void BuildMinimapBlock(class UCanvasPanel* RootCanvas);
 	void BuildActionBarBlock(class UCanvasPanel* RootCanvas);
+	void BuildQuestTrackerBlock(class UCanvasPanel* RootCanvas);
+	void BuildChatBlock(class UCanvasPanel* RootCanvas);
+	void BuildTargetFrameBlock(class UCanvasPanel* RootCanvas);
 
 	void ApplyVitalsToWidget(float Current, float Max, UProgressBar* Bar, UTextBlock* Text, const FLinearColor& Tint);
 };

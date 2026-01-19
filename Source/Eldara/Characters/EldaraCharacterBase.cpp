@@ -6,6 +6,9 @@
 #include "Internationalization/Text.h"
 #include "Misc/ConfigCacheIni.h"
 #include "GameFramework/Controller.h"
+#include "GameFramework/CharacterMovementComponent.h"
+#include "GameFramework/SpringArmComponent.h"
+#include "Camera/CameraComponent.h"
 
 AEldaraCharacterBase::AEldaraCharacterBase()
 {
@@ -13,6 +16,28 @@ AEldaraCharacterBase::AEldaraCharacterBase()
 
 	// Create combat component
 	CombatComponent = CreateDefaultSubobject<UEldaraCombatComponent>(TEXT("CombatComponent"));
+
+	// Create camera boom and follow camera for viewport play
+	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
+	CameraBoom->SetupAttachment(RootComponent);
+	CameraBoom->TargetArmLength = 320.f;
+	CameraBoom->bUsePawnControlRotation = true;
+	CameraBoom->bDoCollisionTest = true;
+
+	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
+	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
+	FollowCamera->bUsePawnControlRotation = false;
+
+	bUseControllerRotationYaw = false;
+	bUseControllerRotationPitch = false;
+	bUseControllerRotationRoll = false;
+
+	if (UCharacterMovementComponent* MovementComponent = GetCharacterMovement())
+	{
+		MovementComponent->bOrientRotationToMovement = true;
+		MovementComponent->RotationRate = FRotator(0.f, 540.f, 0.f);
+		MovementComponent->MaxWalkSpeed = 450.f;
+	}
 
 	// Initialize stats with default values
 	Health = 100.0f;

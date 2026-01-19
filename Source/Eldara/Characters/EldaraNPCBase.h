@@ -17,6 +17,10 @@ class ELDARA_API AEldaraNPCBase : public AEldaraCharacterBase
 public:
 	AEldaraNPCBase();
 
+	/** Unique identifier for this NPC (for quest tracking, dialogue, etc.) */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "NPC")
+	FName NPCId;
+
 	/** Display name for this NPC */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "NPC")
 	FText NPCName;

@@ -83,6 +83,10 @@ class ELDARA_API UEldaraQuestData : public UDataAsset
 	GENERATED_BODY()
 
 public:
+	/** Unique identifier for this quest */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Quest")
+	FName QuestId;
+
 	/** Quest name */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Quest")
 	FText QuestName;

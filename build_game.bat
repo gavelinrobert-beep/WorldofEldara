@@ -41,9 +41,9 @@ echo   Build Complete!
 echo ==========================================
 echo.
 echo To run the game:
-echo   build\bin\Release\WorldofEldaraGame.exe
+echo   cd build\bin\Release ^&^& WorldofEldaraGame.exe
 echo.
-echo Note: Run from the repository root directory.
+echo Note: Run from build\bin\Release so shader paths resolve.
 echo.
 
 cd ..

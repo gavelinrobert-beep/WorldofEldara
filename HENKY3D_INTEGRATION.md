@@ -59,6 +59,8 @@ git submodule update --init --recursive
 ./build_game.sh
 ```
 
+**Linux dependency note:** GLFW requires X11 development headers. Install `libx11-dev` (or `xorg-dev` on some distros) if CMake reports missing `X11_X11_INCLUDE_PATH` or `X11_X11_LIB`.
+
 ### Quick Build (Windows)
 
 ```batch
@@ -75,9 +77,9 @@ cmake .. -DCMAKE_BUILD_TYPE=Release
 # Build
 cmake --build . --config Release --parallel
 
-# Run (from repository root)
-cd ..
-./build/bin/WorldofEldaraGame
+# Run (from build/bin so shader paths resolve)
+cd bin
+./WorldofEldaraGame
 ```
 
 ## Current Features

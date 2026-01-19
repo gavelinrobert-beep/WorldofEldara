@@ -251,7 +251,7 @@ cd build/bin
 ./WorldofEldaraGame
 ```
 
-**Note**: The executable finds shaders at `../../external/Henky3D/shaders/` and assets at `../../assets/` when run from the `build/bin` directory.
+**Note**: The executable finds shaders at `../../../shaders/` (copied from `external/Henky3D/shaders/`) and assets at `../../assets/` when run from the `build/bin` directory.
 
 You should see:
 ```

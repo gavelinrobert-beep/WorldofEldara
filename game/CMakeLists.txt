@@ -1,8 +1,4 @@
-add_executable(WorldofEldaraGame 
-    main.cpp
-    SceneLoader.cpp
-    SceneLoader.h
-)
+add_executable(WorldofEldaraGame main.cpp)
 
 # Link against Henky3DEngine which transitively provides all necessary includes
 target_link_libraries(WorldofEldaraGame PRIVATE

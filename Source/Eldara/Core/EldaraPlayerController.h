@@ -42,6 +42,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Quest")
 	void LoadQuestProgressSnapshot(const FString& SlotName);
 
+	UFUNCTION(BlueprintCallable, Category = "Quest")
+	void SaveQuestProgress();
+
+	UFUNCTION(BlueprintCallable, Category = "Quest")
+	void LoadQuestProgress();
+
 	/**
 	 * Server RPC: Create a new character
 	 * @param Payload Character creation data

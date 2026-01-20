@@ -36,6 +36,15 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Quest")
 	bool LoadQuestProgressSnapshot(const FString& SlotName);
 
+	UFUNCTION(BlueprintCallable, Category = "Quest")
+	FString GetDefaultQuestSlotName() const;
+
+	UFUNCTION(BlueprintCallable, Category = "Quest")
+	int32 GetQuestSaveVersion() const;
+
+	UFUNCTION(BlueprintCallable, Category = "Quest")
+	FString BuildQuestSlotName(const FString& BaseSlot) const;
+
 	/** World state version for tracking server-side world changes */
 	UPROPERTY(BlueprintReadOnly, Category = "World State")
 	int32 WorldStateVersion;
@@ -63,4 +72,8 @@ protected:
 
 	UPROPERTY()
 	TScriptInterface<IEldaraPersistenceProvider> PersistenceProvider;
+
+private:
+	static constexpr int32 QuestSaveVersion = 1;
+	static const FString DefaultQuestSlot;
 };

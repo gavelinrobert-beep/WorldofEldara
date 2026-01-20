@@ -2,6 +2,15 @@
 
 DEFINE_LOG_CATEGORY_STATIC(LogEldaraQuest, Log, All);
 
+namespace
+{
+	int32 ResolveCompletedObjectiveCount(int32 Stage, int32 ObjectiveCount)
+	{
+		// Stage is stored as the count of objectives already completed in the snapshot.
+		return FMath::Clamp(Stage, 0, ObjectiveCount);
+	}
+}
+
 void UEldaraQuestSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
@@ -120,6 +129,9 @@ bool UEldaraQuestSubsystem::MarkQuestProgressSnapshot(FName QuestId, int32 Stage
 	}
 
 	ActiveQuest->bIsCompleted = bCompleted;
+	const int32 CompletedObjectives = bCompleted
+		? ActiveQuest->ObjectiveProgress.Num()
+		: ResolveCompletedObjectiveCount(Stage, ActiveQuest->ObjectiveProgress.Num());
 	for (int32 Index = 0; Index < ActiveQuest->ObjectiveProgress.Num(); ++Index)
 	{
 		if (QuestData->Objectives.IsValidIndex(Index))
@@ -128,22 +140,11 @@ bool UEldaraQuestSubsystem::MarkQuestProgressSnapshot(FName QuestId, int32 Stage
 			{
 				ActiveQuest->ObjectiveProgress[Index] = QuestData->Objectives[Index].TargetCount;
 			}
-			else if (Stage > 0)
-			{
-				const int32 StageValue = FMath::Clamp(Stage, 0, ActiveQuest->ObjectiveProgress.Num());
-				const float ProgressRatio = static_cast<float>(Index + 1) / static_cast<float>(ActiveQuest->ObjectiveProgress.Num());
-				if (ProgressRatio <= (StageValue / static_cast<float>(ActiveQuest->ObjectiveProgress.Num())))
-				{
-					ActiveQuest->ObjectiveProgress[Index] = QuestData->Objectives[Index].TargetCount;
-				}
-				else
-				{
-					ActiveQuest->ObjectiveProgress[Index] = 0;
-				}
-			}
 			else
 			{
-				ActiveQuest->ObjectiveProgress[Index] = 0;
+				ActiveQuest->ObjectiveProgress[Index] = Index < CompletedObjectives
+					? QuestData->Objectives[Index].TargetCount
+					: 0;
 			}
 		}
 	}

@@ -34,6 +34,14 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Quest")
 	void RequestQuestAccept(UEldaraQuestData* QuestData);
 
+	/** Save active quest progress to a local slot */
+	UFUNCTION(BlueprintCallable, Category = "Quest")
+	void SaveQuestProgressSnapshot(const FString& SlotName);
+
+	/** Load active quest progress from a local slot */
+	UFUNCTION(BlueprintCallable, Category = "Quest")
+	void LoadQuestProgressSnapshot(const FString& SlotName);
+
 	/**
 	 * Server RPC: Create a new character
 	 * @param Payload Character creation data

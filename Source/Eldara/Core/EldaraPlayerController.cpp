@@ -5,6 +5,7 @@
 #include "Eldara/Quest/EldaraQuestSubsystem.h"
 #include "Eldara/UI/WorldHUDWidget.h"
 #include "Eldara/Characters/EldaraCharacterBase.h"
+#include "Eldara/Core/EldaraGameInstance.h"
 #include "Internationalization/Text.h"
 
 #define LOCTEXT_NAMESPACE "AEldaraPlayerController"
@@ -125,6 +126,32 @@ void AEldaraPlayerController::RequestQuestAccept(UEldaraQuestData* QuestData)
 	// TODO: Send quest accept request to server
 	// TODO: Validate quest prerequisites (level, faction, previous quests)
 	UE_LOG(LogTemp, Log, TEXT("RequestQuestAccept: %s"), *QuestData->QuestName.ToString());
+}
+
+void AEldaraPlayerController::SaveQuestProgressSnapshot(const FString& SlotName)
+{
+	if (!GetGameInstance())
+	{
+		return;
+	}
+
+	if (UEldaraGameInstance* EldaraInstance = Cast<UEldaraGameInstance>(GetGameInstance()))
+	{
+		EldaraInstance->SaveQuestProgressSnapshot(SlotName);
+	}
+}
+
+void AEldaraPlayerController::LoadQuestProgressSnapshot(const FString& SlotName)
+{
+	if (!GetGameInstance())
+	{
+		return;
+	}
+
+	if (UEldaraGameInstance* EldaraInstance = Cast<UEldaraGameInstance>(GetGameInstance()))
+	{
+		EldaraInstance->LoadQuestProgressSnapshot(SlotName);
+	}
 }
 
 void AEldaraPlayerController::Server_CreateCharacter_Implementation(const FEldaraCharacterCreatePayload& Payload)

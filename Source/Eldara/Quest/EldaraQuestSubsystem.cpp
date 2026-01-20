@@ -11,6 +11,7 @@ void UEldaraQuestSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 void UEldaraQuestSubsystem::Deinitialize()
 {
 	ActiveQuests.Empty();
+	QuestAssetLookup.Empty();
 	Super::Deinitialize();
 }
 
@@ -20,6 +21,8 @@ bool UEldaraQuestSubsystem::AcceptQuest(UEldaraQuestData* QuestData)
 	{
 		return false;
 	}
+
+	RegisterQuestAsset(QuestData);
 
 	// Check if already active
 	if (FindActiveQuest(QuestData))
@@ -37,6 +40,7 @@ bool UEldaraQuestSubsystem::AcceptQuest(UEldaraQuestData* QuestData)
 	NewQuest.ObjectiveProgress.Init(0, QuestData->Objectives.Num());
 
 	ActiveQuests.Add(NewQuest);
+	UE_LOG(LogEldaraQuest, Log, TEXT("AcceptQuest: %s"), *QuestData->QuestName.ToString());
 	return true;
 }
 
@@ -86,6 +90,63 @@ bool UEldaraQuestSubsystem::CompleteQuest(UEldaraQuestData* QuestData)
 	return true;
 }
 
+bool UEldaraQuestSubsystem::MarkQuestProgressSnapshot(FName QuestId, int32 Stage, bool bCompleted)
+{
+	if (QuestId.IsNone())
+	{
+		return false;
+	}
+
+	UEldaraQuestData* QuestData = FindQuestAsset(QuestId);
+	if (!QuestData)
+	{
+		UE_LOG(LogEldaraQuest, Warning, TEXT("MarkQuestProgressSnapshot: Quest asset not registered for '%s'"), *QuestId.ToString());
+		return false;
+	}
+
+	FEldaraActiveQuest* ActiveQuest = FindActiveQuest(QuestData);
+	if (!ActiveQuest)
+	{
+		AcceptQuest(QuestData);
+		ActiveQuest = FindActiveQuest(QuestData);
+	}
+
+	if (!ActiveQuest)
+	{
+		return false;
+	}
+
+	ActiveQuest->bIsCompleted = bCompleted;
+	for (int32 Index = 0; Index < ActiveQuest->ObjectiveProgress.Num(); ++Index)
+	{
+		if (QuestData->Objectives.IsValidIndex(Index))
+		{
+			ActiveQuest->ObjectiveProgress[Index] = bCompleted ? QuestData->Objectives[Index].TargetCount : 0;
+		}
+	}
+
+	if (!bCompleted && Stage > 0 && ActiveQuest->ObjectiveProgress.Num() > 0)
+	{
+		const int32 LastIndex = FMath::Clamp(Stage - 1, 0, ActiveQuest->ObjectiveProgress.Num() - 1);
+		if (QuestData->Objectives.IsValidIndex(LastIndex))
+		{
+			ActiveQuest->ObjectiveProgress[LastIndex] = QuestData->Objectives[LastIndex].TargetCount;
+		}
+	}
+
+	return true;
+}
+
+void UEldaraQuestSubsystem::RegisterQuestAsset(UEldaraQuestData* QuestData)
+{
+	if (!QuestData || QuestData->QuestId.IsNone())
+	{
+		return;
+	}
+
+	QuestAssetLookup.FindOrAdd(QuestData->QuestId) = QuestData;
+}
+
 FEldaraActiveQuest* UEldaraQuestSubsystem::FindActiveQuest(UEldaraQuestData* QuestData)
 {
 	for (FEldaraActiveQuest& Quest : ActiveQuests)
@@ -95,5 +156,15 @@ FEldaraActiveQuest* UEldaraQuestSubsystem::FindActiveQuest(UEldaraQuestData* Que
 			return &Quest;
 		}
 	}
+	return nullptr;
+}
+
+UEldaraQuestData* UEldaraQuestSubsystem::FindQuestAsset(FName QuestId) const
+{
+	if (const TObjectPtr<UEldaraQuestData>* Found = QuestAssetLookup.Find(QuestId))
+	{
+		return Found->Get();
+	}
+
 	return nullptr;
 }

@@ -12,12 +12,7 @@
 AEldaraAIController::AEldaraAIController()
 {
 	// Create perception component
-	UAIPerceptionComponent* PerceptionComponent = CreateDefaultSubobject<UAIPerceptionComponent>(TEXT("PerceptionComponent"));
-	SetPerceptionComponent(*PerceptionComponent);
-	if (PerceptionComponent)
-	{
-		PerceptionComponent->OnTargetPerceptionUpdated.AddDynamic(this, &AEldaraAIController::OnTargetPerceptionUpdated);
-	}
+	SetPerceptionComponent(*CreateDefaultSubobject<UAIPerceptionComponent>(TEXT("PerceptionComponent")));
 
 	// TODO: Configure perception senses (sight, hearing, damage)
 	// This would typically be done in a config or per-enemy basis
@@ -26,6 +21,11 @@ AEldaraAIController::AEldaraAIController()
 void AEldaraAIController::BeginPlay()
 {
 	Super::BeginPlay();
+
+	if (UAIPerceptionComponent* PerceptionComponent = GetPerceptionComponent())
+	{
+		PerceptionComponent->OnTargetPerceptionUpdated.AddUniqueDynamic(this, &AEldaraAIController::OnTargetPerceptionUpdated);
+	}
 }
 
 void AEldaraAIController::OnPossess(APawn* InPawn)

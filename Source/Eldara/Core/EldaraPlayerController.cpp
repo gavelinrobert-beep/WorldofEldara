@@ -113,11 +113,13 @@ void AEldaraPlayerController::RequestQuestAccept(UEldaraQuestData* QuestData)
 		return;
 	}
 
-	if (UEldaraQuestSubsystem* QuestSubsystem = GetGameInstance()
-		? GetGameInstance()->GetSubsystem<UEldaraQuestSubsystem>()
-		: nullptr)
+	UGameInstance* GameInstance = GetGameInstance();
+	if (GameInstance)
 	{
-		QuestSubsystem->AcceptQuest(QuestData);
+		if (UEldaraQuestSubsystem* QuestSubsystem = GameInstance->GetSubsystem<UEldaraQuestSubsystem>())
+		{
+			QuestSubsystem->AcceptQuest(QuestData);
+		}
 	}
 
 	// TODO: Send quest accept request to server

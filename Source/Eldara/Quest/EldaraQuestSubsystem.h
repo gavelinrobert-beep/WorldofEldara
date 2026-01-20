@@ -34,7 +34,7 @@ struct FEldaraActiveQuest
  * Quest management subsystem
  * Handles active quest tracking and provides Blueprint-accessible quest list
  */
-UCLASS()
+UCLASS(Config=Game)
 class ELDARA_API UEldaraQuestSubsystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
@@ -42,6 +42,9 @@ class ELDARA_API UEldaraQuestSubsystem : public UGameInstanceSubsystem
 public:
 	/** Initialize the subsystem */
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
+
+	/** Load quest assets configured for persistence lookup */
+	virtual void PostInitialize() override;
 
 	/** Deinitialize the subsystem */
 	virtual void Deinitialize() override;
@@ -74,6 +77,9 @@ protected:
 	/** List of currently active quests */
 	UPROPERTY(BlueprintReadOnly, Category = "Quest")
 	TArray<FEldaraActiveQuest> ActiveQuests;
+
+	UPROPERTY(EditDefaultsOnly, Config, Category = "Quest")
+	TArray<TSoftObjectPtr<UEldaraQuestData>> QuestAssetPaths;
 
 	/** Quest data lookup for persistence */
 	UPROPERTY()

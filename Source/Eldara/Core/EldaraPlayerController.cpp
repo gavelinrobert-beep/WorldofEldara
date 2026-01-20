@@ -141,6 +141,22 @@ void AEldaraPlayerController::SaveQuestProgressSnapshot(const FString& SlotName)
 	}
 }
 
+void AEldaraPlayerController::SaveQuestProgress()
+{
+	if (UEldaraGameInstance* EldaraInstance = GetGameInstance<UEldaraGameInstance>())
+	{
+		SaveQuestProgressSnapshot(EldaraInstance->GetDefaultQuestSlotName());
+	}
+}
+
+void AEldaraPlayerController::LoadQuestProgress()
+{
+	if (UEldaraGameInstance* EldaraInstance = GetGameInstance<UEldaraGameInstance>())
+	{
+		LoadQuestProgressSnapshot(EldaraInstance->GetDefaultQuestSlotName());
+	}
+}
+
 void AEldaraPlayerController::LoadQuestProgressSnapshot(const FString& SlotName)
 {
 	if (!GetGameInstance())

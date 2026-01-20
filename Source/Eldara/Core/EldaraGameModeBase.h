@@ -4,6 +4,8 @@
 #include "GameFramework/GameModeBase.h"
 #include "EldaraGameModeBase.generated.h"
 
+class AController;
+
 /**
  * Base Game Mode for World of Eldara
  * Manages game rules, player spawning, and game flow
@@ -19,6 +21,7 @@ public:
 protected:
 	/** Called when the game mode is initialized */
 	virtual void BeginPlay() override;
+	virtual void Logout(AController* Exiting) override;
 
 private:
 	void SpawnViewportPreviewGround();

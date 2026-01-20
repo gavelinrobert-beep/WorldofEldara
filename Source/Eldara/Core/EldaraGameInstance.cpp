@@ -7,6 +7,8 @@
 #include "EldaraLocalPersistenceProvider.h"
 #include "Eldara/Quest/EldaraQuestSubsystem.h"
 
+const FString UEldaraGameInstance::DefaultQuestSlot = TEXT("EldaraQuestProgress");
+
 UEldaraGameInstance::UEldaraGameInstance()
 {
 	WorldStateVersion = 0;
@@ -70,6 +72,7 @@ bool UEldaraGameInstance::SaveCurrentState(const FString& SlotName)
 
 	const bool bSaved = Provider->SavePlayerSnapshot(SlotName, Snapshot);
 	UE_LOG(LogTemp, Log, TEXT("SaveCurrentState: Slot '%s' save %s"), *SlotName, bSaved ? TEXT("succeeded") : TEXT("failed"));
+
 	return bSaved;
 }
 
@@ -139,6 +142,7 @@ bool UEldaraGameInstance::SaveQuestProgressSnapshot(const FString& SlotName)
 		return false;
 	}
 
+	const FString EffectiveSlot = BuildQuestSlotName(SlotName);
 	if (UEldaraQuestSubsystem* QuestSubsystem = GetSubsystem<UEldaraQuestSubsystem>())
 	{
 		TArray<FEldaraQuestProgress> Progress;
@@ -168,8 +172,8 @@ bool UEldaraGameInstance::SaveQuestProgressSnapshot(const FString& SlotName)
 			Progress.Add(Entry);
 		}
 
-		const bool bSaved = Provider->SaveQuestProgress(SlotName, Progress);
-		UE_LOG(LogTemp, Log, TEXT("SaveQuestProgressSnapshot: Slot '%s' save %s (%d quests)"), *SlotName, bSaved ? TEXT("succeeded") : TEXT("failed"), Progress.Num());
+		const bool bSaved = Provider->SaveQuestProgress(EffectiveSlot, Progress);
+		UE_LOG(LogTemp, Log, TEXT("SaveQuestProgressSnapshot: Slot '%s' save %s (%d quests)"), *EffectiveSlot, bSaved ? TEXT("succeeded") : TEXT("failed"), Progress.Num());
 		return bSaved;
 	}
 
@@ -193,10 +197,11 @@ bool UEldaraGameInstance::LoadQuestProgressSnapshot(const FString& SlotName)
 		return false;
 	}
 
+	const FString EffectiveSlot = BuildQuestSlotName(SlotName);
 	TArray<FEldaraQuestProgress> Progress;
-	if (!Provider->LoadQuestProgress(SlotName, Progress))
+	if (!Provider->LoadQuestProgress(EffectiveSlot, Progress))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("LoadQuestProgressSnapshot: Slot '%s' not found"), *SlotName);
+		UE_LOG(LogTemp, Warning, TEXT("LoadQuestProgressSnapshot: Slot '%s' not found"), *EffectiveSlot);
 		return false;
 	}
 
@@ -219,8 +224,23 @@ bool UEldaraGameInstance::LoadQuestProgressSnapshot(const FString& SlotName)
 		bApplied = true;
 	}
 
-	UE_LOG(LogTemp, Log, TEXT("LoadQuestProgressSnapshot: Slot '%s' applied (%d entries)"), *SlotName, Progress.Num());
+	UE_LOG(LogTemp, Log, TEXT("LoadQuestProgressSnapshot: Slot '%s' applied (%d entries)"), *EffectiveSlot, Progress.Num());
 	return bApplied;
+}
+
+FString UEldaraGameInstance::GetDefaultQuestSlotName() const
+{
+	return DefaultQuestSlot;
+}
+
+int32 UEldaraGameInstance::GetQuestSaveVersion() const
+{
+	return QuestSaveVersion;
+}
+
+FString UEldaraGameInstance::BuildQuestSlotName(const FString& BaseSlot) const
+{
+	return FString::Printf(TEXT("%s_v%d"), *BaseSlot, QuestSaveVersion);
 }
 
 void UEldaraGameInstance::InitializeWorldState()

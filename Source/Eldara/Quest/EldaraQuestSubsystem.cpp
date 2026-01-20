@@ -17,6 +17,34 @@ void UEldaraQuestSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 	UE_LOG(LogEldaraQuest, Log, TEXT("EldaraQuestSubsystem initialized"));
 }
 
+void UEldaraQuestSubsystem::PostInitialize()
+{
+	Super::PostInitialize();
+
+	for (const TSoftObjectPtr<UEldaraQuestData>& QuestPath : QuestAssetPaths)
+	{
+		if (QuestPath.IsNull())
+		{
+			continue;
+		}
+
+		UEldaraQuestData* QuestData = QuestPath.Get();
+		if (!QuestData)
+		{
+			QuestData = QuestPath.LoadSynchronous();
+		}
+
+		if (QuestData)
+		{
+			RegisterQuestAsset(QuestData);
+		}
+		else
+		{
+			UE_LOG(LogEldaraQuest, Warning, TEXT("PostInitialize: Failed to load quest asset for %s"), *QuestPath.ToString());
+		}
+	}
+}
+
 void UEldaraQuestSubsystem::Deinitialize()
 {
 	ActiveQuests.Empty();

@@ -132,9 +132,10 @@ bool UEldaraQuestSubsystem::MarkQuestProgressSnapshot(FName QuestId, int32 Stage
 	const int32 CompletedObjectives = bCompleted
 		? ActiveQuest->ObjectiveProgress.Num()
 		: ResolveCompletedObjectiveCount(Stage, ActiveQuest->ObjectiveProgress.Num());
+	const int32 ObjectiveCount = QuestData->Objectives.Num();
 	for (int32 Index = 0; Index < ActiveQuest->ObjectiveProgress.Num(); ++Index)
 	{
-		if (QuestData->Objectives.IsValidIndex(Index))
+		if (Index < ObjectiveCount)
 		{
 			if (bCompleted)
 			{

@@ -17,6 +17,10 @@ class ELDARA_API AEldaraNPCBase : public AEldaraCharacterBase
 public:
 	AEldaraNPCBase();
 
+	/** Optional behavior tree for this NPC */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "AI")
+	TObjectPtr<class UBehaviorTree> BehaviorTreeAsset;
+
 	/** Unique identifier for this NPC (for quest tracking, dialogue, etc.) */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "NPC")
 	FName NPCId;

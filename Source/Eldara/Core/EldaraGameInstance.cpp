@@ -5,6 +5,7 @@
 #include "../Characters/EldaraCharacterBase.h"
 #include "Eldara/Networking/EldaraNetworkSubsystem.h"
 #include "EldaraLocalPersistenceProvider.h"
+#include "Eldara/Quest/EldaraQuestSubsystem.h"
 
 UEldaraGameInstance::UEldaraGameInstance()
 {
@@ -120,6 +121,106 @@ bool UEldaraGameInstance::LoadState(const FString& SlotName)
 
 	UE_LOG(LogTemp, Log, TEXT("LoadState: Slot '%s' applied to %s (WorldState v%d)"), *SlotName, *PlayerCharacter->GetName(), WorldStateVersion);
 	return true;
+}
+
+bool UEldaraGameInstance::SaveQuestProgressSnapshot(const FString& SlotName)
+{
+	EnsurePersistenceProvider();
+	IEldaraPersistenceProvider* Provider = PersistenceProvider ? PersistenceProvider.GetInterface() : nullptr;
+	if (!Provider)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("SaveQuestProgressSnapshot: No persistence provider available"));
+		return false;
+	}
+
+	if (!SlotName.Len())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("SaveQuestProgressSnapshot: SlotName is empty"));
+		return false;
+	}
+
+	if (UEldaraQuestSubsystem* QuestSubsystem = GetSubsystem<UEldaraQuestSubsystem>())
+	{
+		TArray<FEldaraQuestProgress> Progress;
+		const TArray<FEldaraActiveQuest>& ActiveQuests = QuestSubsystem->GetActiveQuests();
+		Progress.Reserve(ActiveQuests.Num());
+		for (const FEldaraActiveQuest& Quest : ActiveQuests)
+		{
+			if (!Quest.QuestData)
+			{
+				continue;
+			}
+
+			int32 CompletedObjectives = 0;
+			for (int32 Index = 0; Index < Quest.ObjectiveProgress.Num(); ++Index)
+			{
+				if (Quest.QuestData->Objectives.IsValidIndex(Index)
+					&& Quest.ObjectiveProgress[Index] >= Quest.QuestData->Objectives[Index].TargetCount)
+				{
+					++CompletedObjectives;
+				}
+			}
+
+			FEldaraQuestProgress Entry;
+			Entry.QuestId = Quest.QuestData->QuestId;
+			Entry.Stage = Quest.bIsCompleted ? Quest.ObjectiveProgress.Num() : CompletedObjectives;
+			Entry.bCompleted = Quest.bIsCompleted;
+			Progress.Add(Entry);
+		}
+
+		const bool bSaved = Provider->SaveQuestProgress(SlotName, Progress);
+		UE_LOG(LogTemp, Log, TEXT("SaveQuestProgressSnapshot: Slot '%s' save %s (%d quests)"), *SlotName, bSaved ? TEXT("succeeded") : TEXT("failed"), Progress.Num());
+		return bSaved;
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("SaveQuestProgressSnapshot: Quest subsystem unavailable"));
+	return false;
+}
+
+bool UEldaraGameInstance::LoadQuestProgressSnapshot(const FString& SlotName)
+{
+	EnsurePersistenceProvider();
+	IEldaraPersistenceProvider* Provider = PersistenceProvider ? PersistenceProvider.GetInterface() : nullptr;
+	if (!Provider)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("LoadQuestProgressSnapshot: No persistence provider available"));
+		return false;
+	}
+
+	if (!SlotName.Len())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("LoadQuestProgressSnapshot: SlotName is empty"));
+		return false;
+	}
+
+	TArray<FEldaraQuestProgress> Progress;
+	if (!Provider->LoadQuestProgress(SlotName, Progress))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("LoadQuestProgressSnapshot: Slot '%s' not found"), *SlotName);
+		return false;
+	}
+
+	UEldaraQuestSubsystem* QuestSubsystem = GetSubsystem<UEldaraQuestSubsystem>();
+	if (!QuestSubsystem)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("LoadQuestProgressSnapshot: Quest subsystem unavailable"));
+		return false;
+	}
+
+	bool bApplied = false;
+	for (const FEldaraQuestProgress& Entry : Progress)
+	{
+		if (Entry.QuestId.IsNone())
+		{
+			continue;
+		}
+
+		QuestSubsystem->MarkQuestProgressSnapshot(Entry.QuestId, Entry.Stage, Entry.bCompleted);
+		bApplied = true;
+	}
+
+	UE_LOG(LogTemp, Log, TEXT("LoadQuestProgressSnapshot: Slot '%s' applied (%d entries)"), *SlotName, Progress.Num());
+	return bApplied;
 }
 
 void UEldaraGameInstance::InitializeWorldState()

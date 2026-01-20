@@ -62,11 +62,26 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Quest")
 	bool CompleteQuest(UEldaraQuestData* QuestData);
 
+	/** Apply persisted quest progress using the QuestId lookup */
+	UFUNCTION(BlueprintCallable, Category = "Quest")
+	bool MarkQuestProgressSnapshot(FName QuestId, int32 Stage, bool bCompleted);
+
+	/** Register a quest asset for persistence lookup */
+	UFUNCTION(BlueprintCallable, Category = "Quest")
+	void RegisterQuestAsset(UEldaraQuestData* QuestData);
+
 protected:
 	/** List of currently active quests */
 	UPROPERTY(BlueprintReadOnly, Category = "Quest")
 	TArray<FEldaraActiveQuest> ActiveQuests;
 
+	/** Quest data lookup for persistence */
+	UPROPERTY()
+	TMap<FName, TObjectPtr<UEldaraQuestData>> QuestAssetLookup;
+
 	/** Find active quest by quest data */
 	FEldaraActiveQuest* FindActiveQuest(UEldaraQuestData* QuestData);
+
+	/** Find quest asset by quest id */
+	UEldaraQuestData* FindQuestAsset(FName QuestId) const;
 };

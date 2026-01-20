@@ -14,8 +14,23 @@ AEldaraAIController::AEldaraAIController()
 	// Create perception component
 	SetPerceptionComponent(*CreateDefaultSubobject<UAIPerceptionComponent>(TEXT("PerceptionComponent")));
 
-	// TODO: Configure perception senses (sight, hearing, damage)
-	// This would typically be done in a config or per-enemy basis
+	SightConfig = NewObject<UAISenseConfig_Sight>(this, TEXT("SightConfig"));
+	if (SightConfig)
+	{
+		SightConfig->SightRadius = 1500.0f;
+		SightConfig->LoseSightRadius = 1800.0f;
+		SightConfig->PeripheralVisionAngleDegrees = 70.0f;
+		SightConfig->SetMaxAge(5.0f);
+		SightConfig->DetectionByAffiliation.bDetectEnemies = true;
+		SightConfig->DetectionByAffiliation.bDetectFriendlies = true;
+		SightConfig->DetectionByAffiliation.bDetectNeutrals = true;
+
+		if (UAIPerceptionComponent* PerceptionComponent = GetPerceptionComponent())
+		{
+			PerceptionComponent->ConfigureSense(*SightConfig);
+			PerceptionComponent->SetDominantSense(SightConfig->GetSenseImplementation());
+		}
+	}
 }
 
 void AEldaraAIController::BeginPlay()
@@ -133,7 +148,22 @@ void AEldaraAIController::OnTargetPerceptionUpdated(AActor* Actor, FAIStimulus S
 	// TODO: Implement perception response
 	// - Add threat when seeing/hearing player
 	// - Update blackboard keys (HasLineOfSight, etc.)
-	
+
+	if (!Actor)
+	{
+		return;
+	}
+
+	if (UBlackboardComponent* Blackboard = GetBlackboardComponent())
+	{
+		Blackboard->SetValueAsBool(EldaraAIKeys::HasLineOfSight, Stimulus.WasSuccessfullySensed());
+		if (Stimulus.WasSuccessfullySensed())
+		{
+			Blackboard->SetValueAsObject(EldaraAIKeys::TargetActor, Actor);
+			Blackboard->SetValueAsVector(EldaraAIKeys::TargetLocation, Actor->GetActorLocation());
+		}
+	}
+
 	if (Stimulus.WasSuccessfullySensed())
 	{
 		UE_LOG(LogTemp, Log, TEXT("OnTargetPerceptionUpdated: %s sensed %s"), 

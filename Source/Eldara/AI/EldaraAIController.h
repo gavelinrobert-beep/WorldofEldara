@@ -8,6 +8,7 @@
 // Forward declarations
 class UBehaviorTree;
 class UBlackboardComponent;
+class UAISenseConfig_Sight;
 
 /**
  * AI Controller for NPCs and enemies in World of Eldara
@@ -64,6 +65,10 @@ protected:
 	/** Current behavior tree */
 	UPROPERTY()
 	TObjectPtr<UBehaviorTree> CurrentBehaviorTree;
+
+	/** Sight perception config */
+	UPROPERTY()
+	TObjectPtr<UAISenseConfig_Sight> SightConfig;
 
 	/** Perception component callback */
 	UFUNCTION()

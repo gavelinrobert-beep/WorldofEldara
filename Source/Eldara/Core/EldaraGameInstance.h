@@ -28,6 +28,14 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Save")
 	bool LoadState(const FString& SlotName);
 
+	/** Persist active quest progress (lightweight snapshot for local testing) */
+	UFUNCTION(BlueprintCallable, Category = "Quest")
+	bool SaveQuestProgressSnapshot(const FString& SlotName);
+
+	/** Load quest progress into the quest subsystem */
+	UFUNCTION(BlueprintCallable, Category = "Quest")
+	bool LoadQuestProgressSnapshot(const FString& SlotName);
+
 	/** World state version for tracking server-side world changes */
 	UPROPERTY(BlueprintReadOnly, Category = "World State")
 	int32 WorldStateVersion;

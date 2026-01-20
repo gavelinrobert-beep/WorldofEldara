@@ -7,6 +7,7 @@
 #include "Perception/AISenseConfig_Hearing.h"
 #include "Perception/AISenseConfig_Damage.h"
 #include "../Characters/EldaraCharacterBase.h"
+#include "../Characters/EldaraNPCBase.h"
 
 AEldaraAIController::AEldaraAIController()
 {
@@ -20,6 +21,11 @@ AEldaraAIController::AEldaraAIController()
 void AEldaraAIController::BeginPlay()
 {
 	Super::BeginPlay();
+
+	if (UAIPerceptionComponent* PerceptionComponent = GetPerceptionComponent())
+	{
+		PerceptionComponent->OnTargetPerceptionUpdated.AddUniqueDynamic(this, &AEldaraAIController::OnTargetPerceptionUpdated);
+	}
 }
 
 void AEldaraAIController::OnPossess(APawn* InPawn)
@@ -28,16 +34,13 @@ void AEldaraAIController::OnPossess(APawn* InPawn)
 
 	UE_LOG(LogTemp, Log, TEXT("EldaraAIController: Possessed %s"), *InPawn->GetName());
 
-	// TODO: Get behavior tree from possessed pawn's data
-	// For now, this is a placeholder. In production, each enemy type would
-	// have a reference to its specific behavior tree asset.
-	
-	// Example of how this would work:
-	// AEldaraCharacterBase* Character = Cast<AEldaraCharacterBase>(InPawn);
-	// if (Character && Character->BehaviorTreeAsset)
-	// {
-	//     InitializeBehaviorTree(Character->BehaviorTreeAsset);
-	// }
+	if (AEldaraNPCBase* NPC = Cast<AEldaraNPCBase>(InPawn))
+	{
+		if (NPC->BehaviorTreeAsset)
+		{
+			InitializeBehaviorTree(NPC->BehaviorTreeAsset);
+		}
+	}
 
 	// Initialize blackboard keys
 	UpdateBlackboardKeys();

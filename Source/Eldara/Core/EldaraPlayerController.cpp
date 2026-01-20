@@ -2,6 +2,7 @@
 #include "Eldara/Data/EldaraCharacterCreatePayload.h"
 #include "Eldara/Data/EldaraQuestData.h"
 #include "Eldara/Networking/EldaraNetworkSubsystem.h"
+#include "Eldara/Quest/EldaraQuestSubsystem.h"
 #include "Eldara/UI/WorldHUDWidget.h"
 #include "Eldara/Characters/EldaraCharacterBase.h"
 #include "Internationalization/Text.h"
@@ -110,6 +111,15 @@ void AEldaraPlayerController::RequestQuestAccept(UEldaraQuestData* QuestData)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("RequestQuestAccept: QuestData is null"));
 		return;
+	}
+
+	UGameInstance* GameInstance = GetGameInstance();
+	if (GameInstance)
+	{
+		if (UEldaraQuestSubsystem* QuestSubsystem = GameInstance->GetSubsystem<UEldaraQuestSubsystem>())
+		{
+			QuestSubsystem->AcceptQuest(QuestData);
+		}
 	}
 
 	// TODO: Send quest accept request to server

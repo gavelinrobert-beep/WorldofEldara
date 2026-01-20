@@ -121,16 +121,18 @@ bool UEldaraQuestSubsystem::MarkQuestProgressSnapshot(FName QuestId, int32 Stage
 	{
 		if (QuestData->Objectives.IsValidIndex(Index))
 		{
-			ActiveQuest->ObjectiveProgress[Index] = bCompleted ? QuestData->Objectives[Index].TargetCount : 0;
-		}
-	}
-
-	if (!bCompleted && Stage > 0 && ActiveQuest->ObjectiveProgress.Num() > 0)
-	{
-		const int32 LastIndex = FMath::Clamp(Stage - 1, 0, ActiveQuest->ObjectiveProgress.Num() - 1);
-		if (QuestData->Objectives.IsValidIndex(LastIndex))
-		{
-			ActiveQuest->ObjectiveProgress[LastIndex] = QuestData->Objectives[LastIndex].TargetCount;
+			if (bCompleted)
+			{
+				ActiveQuest->ObjectiveProgress[Index] = QuestData->Objectives[Index].TargetCount;
+			}
+			else if (Stage > 0 && Index < Stage)
+			{
+				ActiveQuest->ObjectiveProgress[Index] = QuestData->Objectives[Index].TargetCount;
+			}
+			else
+			{
+				ActiveQuest->ObjectiveProgress[Index] = 0;
+			}
 		}
 	}
 

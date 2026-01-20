@@ -14,7 +14,7 @@ AEldaraAIController::AEldaraAIController()
 	// Create perception component
 	SetPerceptionComponent(*CreateDefaultSubobject<UAIPerceptionComponent>(TEXT("PerceptionComponent")));
 
-	UAISenseConfig_Sight* SightConfig = CreateDefaultSubobject<UAISenseConfig_Sight>(TEXT("SightConfig"));
+	UAISenseConfig_Sight* SightConfig = NewObject<UAISenseConfig_Sight>(this, TEXT("SightConfig"));
 	if (SightConfig)
 	{
 		SightConfig->SightRadius = 1500.0f;

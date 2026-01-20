@@ -107,7 +107,10 @@ bool UEldaraQuestSubsystem::MarkQuestProgressSnapshot(FName QuestId, int32 Stage
 	FEldaraActiveQuest* ActiveQuest = FindActiveQuest(QuestData);
 	if (!ActiveQuest)
 	{
-		AcceptQuest(QuestData);
+		if (!AcceptQuest(QuestData))
+		{
+			return false;
+		}
 		ActiveQuest = FindActiveQuest(QuestData);
 	}
 
@@ -125,9 +128,18 @@ bool UEldaraQuestSubsystem::MarkQuestProgressSnapshot(FName QuestId, int32 Stage
 			{
 				ActiveQuest->ObjectiveProgress[Index] = QuestData->Objectives[Index].TargetCount;
 			}
-			else if (Stage > 0 && Index < Stage)
+			else if (Stage > 0)
 			{
-				ActiveQuest->ObjectiveProgress[Index] = QuestData->Objectives[Index].TargetCount;
+				const int32 StageValue = FMath::Clamp(Stage, 0, ActiveQuest->ObjectiveProgress.Num());
+				const float ProgressRatio = static_cast<float>(Index + 1) / static_cast<float>(ActiveQuest->ObjectiveProgress.Num());
+				if (ProgressRatio <= (StageValue / static_cast<float>(ActiveQuest->ObjectiveProgress.Num())))
+				{
+					ActiveQuest->ObjectiveProgress[Index] = QuestData->Objectives[Index].TargetCount;
+				}
+				else
+				{
+					ActiveQuest->ObjectiveProgress[Index] = 0;
+				}
 			}
 			else
 			{

@@ -151,15 +151,25 @@ bool UEldaraGameInstance::SaveQuestProgressSnapshot(const FString& SlotName)
 				continue;
 			}
 
+			int32 CompletedObjectives = 0;
+			for (int32 Index = 0; Index < Quest.ObjectiveProgress.Num(); ++Index)
+			{
+				if (Quest.QuestData->Objectives.IsValidIndex(Index)
+					&& Quest.ObjectiveProgress[Index] >= Quest.QuestData->Objectives[Index].TargetCount)
+				{
+					++CompletedObjectives;
+				}
+			}
+
 			FEldaraQuestProgress Entry;
 			Entry.QuestId = Quest.QuestData->QuestId;
-			Entry.Stage = Quest.bIsCompleted ? Quest.ObjectiveProgress.Num() : 0;
+			Entry.Stage = Quest.bIsCompleted ? Quest.ObjectiveProgress.Num() : CompletedObjectives;
 			Entry.bCompleted = Quest.bIsCompleted;
 			Progress.Add(Entry);
 		}
 
 		const bool bSaved = Provider->SaveQuestProgress(SlotName, Progress);
-		UE_LOG(LogTemp, Log, TEXT("SaveQuestProgressSnapshot: Slot '%s' save %s"), *SlotName, bSaved ? TEXT("succeeded") : TEXT("failed"));
+		UE_LOG(LogTemp, Log, TEXT("SaveQuestProgressSnapshot: Slot '%s' save %s (%d quests)"), *SlotName, bSaved ? TEXT("succeeded") : TEXT("failed"), Progress.Num());
 		return bSaved;
 	}
 

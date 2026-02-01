@@ -15,7 +15,41 @@ class ELDARA_API FPacketSerializer
 {
 public:
 	/**
-	 * Serialize a packet to MessagePack format
+	 * Serialize a typed packet to MessagePack format (Template version - preferred)
+	 * @param Packet The packet to serialize
+	 * @param OutBytes Output buffer to write the serialized data
+	 * @return True if serialization succeeded, false otherwise
+	 */
+	template<typename T>
+	static bool Serialize(const T& Packet, TArray<uint8>& OutBytes)
+	{
+		static_assert(TIsDerivedFrom<T, FPacketBase>::Value, "T must derive from FPacketBase");
+		
+		// Clear the output buffer
+		OutBytes.Reset();
+		
+		// Use compile-time type detection to serialize the correct packet type
+		if constexpr (TIsSame<T, FLoginRequest>::Value)
+		{
+			SerializeLoginRequest(Packet, OutBytes);
+			return true;
+		}
+		// Add more packet types here as they are implemented
+		// else if constexpr (TIsSame<T, FCharacterListRequest>::Value)
+		// {
+		//     SerializeCharacterListRequest(Packet, OutBytes);
+		//     return true;
+		// }
+		else
+		{
+			UE_LOG(LogTemp, Error, TEXT("PacketSerializer: No serialization implementation for this packet type"));
+			return false;
+		}
+	}
+
+	/**
+	 * Serialize a packet to MessagePack format (Base version - for non-templated calls)
+	 * Note: This version has limited type detection capabilities
 	 * @param Packet The packet to serialize
 	 * @param OutBytes Output buffer to write the serialized data
 	 * @return True if serialization succeeded, false otherwise

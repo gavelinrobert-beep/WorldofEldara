@@ -6,6 +6,7 @@
 #include "Networking.h"
 #include "NetworkTypes.h"
 #include "NetworkPackets.h"
+#include "PacketSerializer.h"
 #include "NetworkSubsystem.generated.h"
 
 /**
@@ -47,7 +48,37 @@ public:
 	void SendPacket(const T& Packet)
 	{
 		static_assert(TIsDerivedFrom<T, FPacketBase>::Value, "T must derive from FPacketBase");
-		SerializeAndSend(Packet);
+		
+		if (!ConnectionSocket || !bIsConnected)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("NetworkSubsystem: Cannot send packet - not connected"));
+			return;
+		}
+		
+		// Serialize the packet using MessagePack format (templated version for proper type detection)
+		TArray<uint8> SerializedData;
+		if (!FPacketSerializer::Serialize(Packet, SerializedData))
+		{
+			UE_LOG(LogTemp, Error, TEXT("NetworkSubsystem: Failed to serialize packet"));
+			return;
+		}
+		
+		// Send the serialized data
+		int32 BytesSent = 0;
+		if (!ConnectionSocket->Send(SerializedData.GetData(), SerializedData.Num(), BytesSent))
+		{
+			UE_LOG(LogTemp, Error, TEXT("NetworkSubsystem: Failed to send packet"));
+			return;
+		}
+		
+		if (BytesSent != SerializedData.Num())
+		{
+			UE_LOG(LogTemp, Warning, TEXT("NetworkSubsystem: Partial send (%d of %d bytes)"), BytesSent, SerializedData.Num());
+		}
+		else
+		{
+			UE_LOG(LogTemp, Log, TEXT("NetworkSubsystem: Successfully sent packet (%d bytes)"), BytesSent);
+		}
 	}
 
 	/**
@@ -74,16 +105,4 @@ private:
 	 * Called periodically by a timer
 	 */
 	void CheckForData();
-	
-	/**
-	 * Serialize and send a packet to the server
-	 * Currently a placeholder implementation
-	 * @param Packet The packet to serialize and send
-	 */
-	void SerializeAndSend(const FPacketBase& Packet);
-	
-	/**
-	 * Helper function to get the packet type as a string
-	 */
-	FString GetPacketTypeName(const FPacketBase& Packet) const;
 };

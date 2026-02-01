@@ -2,7 +2,6 @@
 #include "SocketSubsystem.h"
 #include "IPAddress.h"
 #include "TimerManager.h"
-#include "PacketSerializer.h"
 
 void UNetworkSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
@@ -169,47 +168,4 @@ void UNetworkSubsystem::CheckForData()
 		UE_LOG(LogTemp, Warning, TEXT("NetworkSubsystem: Connection lost"));
 		Disconnect();
 	}
-}
-
-void UNetworkSubsystem::SerializeAndSend(const FPacketBase& Packet)
-{
-	if (!ConnectionSocket || !bIsConnected)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("NetworkSubsystem: Cannot send packet - not connected"));
-		return;
-	}
-	
-	// Serialize the packet using MessagePack format
-	TArray<uint8> SerializedData;
-	if (!FPacketSerializer::Serialize(Packet, SerializedData))
-	{
-		UE_LOG(LogTemp, Error, TEXT("NetworkSubsystem: Failed to serialize packet"));
-		return;
-	}
-	
-	// Send the serialized data
-	int32 BytesSent = 0;
-	if (!ConnectionSocket->Send(SerializedData.GetData(), SerializedData.Num(), BytesSent))
-	{
-		UE_LOG(LogTemp, Error, TEXT("NetworkSubsystem: Failed to send packet"));
-		return;
-	}
-	
-	if (BytesSent != SerializedData.Num())
-	{
-		UE_LOG(LogTemp, Warning, TEXT("NetworkSubsystem: Partial send (%d of %d bytes)"), BytesSent, SerializedData.Num());
-	}
-	else
-	{
-		UE_LOG(LogTemp, Log, TEXT("NetworkSubsystem: Successfully sent packet (%d bytes)"), BytesSent);
-	}
-}
-
-FString UNetworkSubsystem::GetPacketTypeName(const FPacketBase& Packet) const
-{
-	// Try to get the struct name using reflection
-	// FPacketBase is a USTRUCT, so derived types should have StaticStruct()
-	// We need to use the actual derived type's StaticStruct, not the base
-	// For now, return a generic name since we can't easily get the derived type at runtime
-	return TEXT("Packet");
 }

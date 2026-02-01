@@ -121,23 +121,23 @@ void FPacketSerializer::WriteInt(TArray<uint8>& OutBytes, int32 Value)
 		OutBytes.Add(MessagePackFormat::Uint8);
 		OutBytes.Add(static_cast<uint8>(Value));
 	}
-	else if (Value >= -32768 && Value <= 32767)
+	else if (Value >= -32768 && Value < -128)
 	{
-		// int16
+		// int16: Negative values from -32768 to -129
 		OutBytes.Add(MessagePackFormat::Int16);
 		OutBytes.Add((Value >> 8) & 0xFF);
 		OutBytes.Add(Value & 0xFF);
 	}
-	else if (Value >= 0 && Value <= 65535)
+	else if (Value > 255 && Value <= 65535)
 	{
-		// uint16: For larger positive values
+		// uint16: Positive values from 256 to 65535
 		OutBytes.Add(MessagePackFormat::Uint16);
 		OutBytes.Add((Value >> 8) & 0xFF);
 		OutBytes.Add(Value & 0xFF);
 	}
 	else
 	{
-		// int32
+		// int32: For all other values (negative beyond int16 range or positive beyond uint16 range)
 		OutBytes.Add(MessagePackFormat::Int32);
 		OutBytes.Add((Value >> 24) & 0xFF);
 		OutBytes.Add((Value >> 16) & 0xFF);
@@ -170,32 +170,32 @@ void FPacketSerializer::WriteInt64(TArray<uint8>& OutBytes, int64 Value)
 		OutBytes.Add(MessagePackFormat::Uint8);
 		OutBytes.Add(static_cast<uint8>(Value));
 	}
-	else if (Value >= -32768 && Value <= 32767)
+	else if (Value >= -32768 && Value < -128)
 	{
-		// int16
+		// int16: Negative values from -32768 to -129
 		OutBytes.Add(MessagePackFormat::Int16);
 		OutBytes.Add((Value >> 8) & 0xFF);
 		OutBytes.Add(Value & 0xFF);
 	}
-	else if (Value >= 0 && Value <= 65535)
+	else if (Value > 255 && Value <= 65535)
 	{
-		// uint16: For larger positive values
+		// uint16: Positive values from 256 to 65535
 		OutBytes.Add(MessagePackFormat::Uint16);
 		OutBytes.Add((Value >> 8) & 0xFF);
 		OutBytes.Add(Value & 0xFF);
 	}
-	else if (Value >= -2147483648LL && Value <= 2147483647LL)
+	else if (Value >= -2147483648LL && Value < -32768)
 	{
-		// int32
+		// int32: Negative values from -2147483648 to -32769
 		OutBytes.Add(MessagePackFormat::Int32);
 		OutBytes.Add((Value >> 24) & 0xFF);
 		OutBytes.Add((Value >> 16) & 0xFF);
 		OutBytes.Add((Value >> 8) & 0xFF);
 		OutBytes.Add(Value & 0xFF);
 	}
-	else if (Value >= 0 && Value <= 4294967295ULL)
+	else if (Value > 65535 && Value <= 4294967295ULL)
 	{
-		// uint32: For larger positive values
+		// uint32: Positive values from 65536 to 4294967295
 		OutBytes.Add(MessagePackFormat::Uint32);
 		OutBytes.Add((Value >> 24) & 0xFF);
 		OutBytes.Add((Value >> 16) & 0xFF);
@@ -204,7 +204,7 @@ void FPacketSerializer::WriteInt64(TArray<uint8>& OutBytes, int64 Value)
 	}
 	else
 	{
-		// int64
+		// int64: For all other values (very large positive or negative)
 		OutBytes.Add(MessagePackFormat::Int64);
 		OutBytes.Add((Value >> 56) & 0xFF);
 		OutBytes.Add((Value >> 48) & 0xFF);
@@ -313,25 +313,23 @@ void FPacketSerializer::SerializeLoginRequest(const FLoginRequest& Packet, TArra
 
 int32 FPacketSerializer::GetPacketTypeFromInstance(const FPacketBase& Packet)
 {
-	// Since we can't easily use RTTI or virtual methods on USTRUCT types,
-	// we need to use a different approach. One option is to check the struct type
-	// using UScriptStruct, but that requires access to the static struct.
-	// For now, we'll use a simple pointer-based approach.
+	// WARNING: This function is a fallback for the base Serialize(FPacketBase&) method.
+	// The preferred approach is to use the templated Serialize<T>(const T&) method,
+	// which uses compile-time type detection and is called from NetworkSubsystem::SendPacket.
+	//
+	// Since FPacketBase is a USTRUCT (not a UClass), we cannot use RTTI or virtual methods
+	// to determine the actual packet type at runtime. The templated version avoids this
+	// problem by using compile-time type information.
+	//
+	// For the proof-of-concept, this always returns LoginRequest (0). If you need to support
+	// multiple packet types with the base Serialize method, consider:
+	// 1. Adding a PacketType field to FPacketBase
+	// 2. Using only the templated Serialize<T> method (recommended)
+	// 3. Implementing a type registry system
 	
-	// Check if this is a LoginRequest by attempting a static_cast
-	// Note: This is a simple approach for proof-of-concept
-	// A more robust solution would add a virtual GetPacketType() method to FPacketBase
-	// or use a type registry system
+	UE_LOG(LogTemp, Warning, TEXT("PacketSerializer: Using base Serialize method with limited type detection. Consider using templated SendPacket instead."));
 	
-	// For now, we'll use the struct size as a heuristic to identify the packet type
-	// This is not ideal but works for our proof-of-concept
-	
-	// Try to identify based on pointer comparison
-	// Since we can't easily determine the actual type at runtime with USTRUCTs,
-	// we'll assume LoginRequest for now and log a warning
-	// In a production system, you'd want to add a type field or use a proper type system
-	
-	// For the proof-of-concept, we'll return LoginRequest (0) as default
-	// This should be improved in a production system
+	// For the proof-of-concept, assume LoginRequest
+	// This should be improved before adding more packet types
 	return 0; // LoginRequest
 }

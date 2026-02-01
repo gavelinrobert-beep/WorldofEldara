@@ -2,6 +2,7 @@
 #include "SocketSubsystem.h"
 #include "IPAddress.h"
 #include "TimerManager.h"
+#include "PacketSerializer.h"
 
 void UNetworkSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
@@ -178,24 +179,30 @@ void UNetworkSubsystem::SerializeAndSend(const FPacketBase& Packet)
 		return;
 	}
 	
-	// Placeholder implementation
-	// In a real implementation, this would serialize the packet using MessagePack or similar
-	FString PacketTypeName = GetPacketTypeName(Packet);
-	UE_LOG(LogTemp, Log, TEXT("NetworkSubsystem: Sending packet of type: %s (Timestamp: %lld, Sequence: %d)"), 
-		*PacketTypeName, Packet.Timestamp, Packet.SequenceNumber);
+	// Serialize the packet using MessagePack format
+	TArray<uint8> SerializedData;
+	if (!FPacketSerializer::Serialize(Packet, SerializedData))
+	{
+		UE_LOG(LogTemp, Error, TEXT("NetworkSubsystem: Failed to serialize packet"));
+		return;
+	}
 	
-	// TODO: Implement actual serialization and sending
-	// For now, just log the intent
-	// 
-	// Example of what the real implementation might look like:
-	// TArray<uint8> SerializedData;
-	// MessagePackSerializer::Serialize(Packet, SerializedData);
-	// 
-	// int32 BytesSent = 0;
-	// if (!ConnectionSocket->Send(SerializedData.GetData(), SerializedData.Num(), BytesSent))
-	// {
-	//     UE_LOG(LogTemp, Error, TEXT("NetworkSubsystem: Failed to send packet"));
-	// }
+	// Send the serialized data
+	int32 BytesSent = 0;
+	if (!ConnectionSocket->Send(SerializedData.GetData(), SerializedData.Num(), BytesSent))
+	{
+		UE_LOG(LogTemp, Error, TEXT("NetworkSubsystem: Failed to send packet"));
+		return;
+	}
+	
+	if (BytesSent != SerializedData.Num())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("NetworkSubsystem: Partial send (%d of %d bytes)"), BytesSent, SerializedData.Num());
+	}
+	else
+	{
+		UE_LOG(LogTemp, Log, TEXT("NetworkSubsystem: Successfully sent packet (%d bytes)"), BytesSent);
+	}
 }
 
 FString UNetworkSubsystem::GetPacketTypeName(const FPacketBase& Packet) const

@@ -91,7 +91,9 @@ if (UNetworkSubsystem* NetSubsystem = GetGameInstance()->GetSubsystem<UNetworkSu
 To add serialization support for a new packet type:
 
 1. Add the packet struct to `NetworkPackets.h` (if not already present)
-2. Add the Union Key constant to `NetworkTypes.h` (in `EPacketType` enum)
+2. Verify the Union Key is defined in `NetworkTypes.h` (in `EPacketType` enum)
+   - Union Keys are the numeric values in the enum (e.g., `LoginRequest = 0`)
+   - These correspond to the C# server's Union attribute keys
 3. Implement a `Serialize[PacketName]` private method in `PacketSerializer.cpp`
 4. Add a `constexpr if` branch in the templated `Serialize` method in `PacketSerializer.h`
 
@@ -101,7 +103,7 @@ To add serialization support for a new packet type:
 // In PacketSerializer.h - Add to the template Serialize method:
 else if constexpr (TIsSame<T, FCharacterListRequest>::Value)
 {
-    SerializeCharacterListRequest(Packet, OutBytes);
+    SerializeCharacterListRequest(static_cast<const FCharacterListRequest&>(Packet), OutBytes);
     return true;
 }
 

@@ -31,13 +31,13 @@ public:
 		// Use compile-time type detection to serialize the correct packet type
 		if constexpr (TIsSame<T, FLoginRequest>::Value)
 		{
-			SerializeLoginRequest(Packet, OutBytes);
+			SerializeLoginRequest(static_cast<const FLoginRequest&>(Packet), OutBytes);
 			return true;
 		}
 		// Add more packet types here as they are implemented
 		// else if constexpr (TIsSame<T, FCharacterListRequest>::Value)
 		// {
-		//     SerializeCharacterListRequest(Packet, OutBytes);
+		//     SerializeCharacterListRequest(static_cast<const FCharacterListRequest&>(Packet), OutBytes);
 		//     return true;
 		// }
 		else

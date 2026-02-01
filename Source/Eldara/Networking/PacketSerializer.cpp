@@ -185,7 +185,7 @@ void FPacketSerializer::WriteInt64(TArray<uint8>& OutBytes, int64 Value)
 		OutBytes.Add((Value >> 8) & 0xFF);
 		OutBytes.Add(Value & 0xFF);
 	}
-	else if (Value >= std::numeric_limits<int32>::min() && Value < -32768)
+	else if (Value >= std::numeric_limits<int32>::min() && Value <= -32769)
 	{
 		// int32: Negative values from INT32_MIN to -32769
 		OutBytes.Add(MessagePackFormat::Int32);

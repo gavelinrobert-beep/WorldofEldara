@@ -1,4 +1,5 @@
 #include "PacketSerializer.h"
+#include <limits>
 
 // MessagePack format constants
 namespace MessagePackFormat
@@ -184,18 +185,18 @@ void FPacketSerializer::WriteInt64(TArray<uint8>& OutBytes, int64 Value)
 		OutBytes.Add((Value >> 8) & 0xFF);
 		OutBytes.Add(Value & 0xFF);
 	}
-	else if (Value >= -2147483648LL && Value < -32768)
+	else if (Value >= std::numeric_limits<int32>::min() && Value < -32768)
 	{
-		// int32: Negative values from -2147483648 to -32769
+		// int32: Negative values from INT32_MIN to -32769
 		OutBytes.Add(MessagePackFormat::Int32);
 		OutBytes.Add((Value >> 24) & 0xFF);
 		OutBytes.Add((Value >> 16) & 0xFF);
 		OutBytes.Add((Value >> 8) & 0xFF);
 		OutBytes.Add(Value & 0xFF);
 	}
-	else if (Value > 65535 && Value <= 4294967295ULL)
+	else if (Value > 65535 && Value <= std::numeric_limits<uint32>::max())
 	{
-		// uint32: Positive values from 65536 to 4294967295
+		// uint32: Positive values from 65536 to UINT32_MAX
 		OutBytes.Add(MessagePackFormat::Uint32);
 		OutBytes.Add((Value >> 24) & 0xFF);
 		OutBytes.Add((Value >> 16) & 0xFF);

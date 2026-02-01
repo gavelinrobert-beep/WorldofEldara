@@ -8,9 +8,6 @@ void UNetworkSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 	Super::Initialize(Collection);
 	
 	UE_LOG(LogTemp, Log, TEXT("NetworkSubsystem: Initialized"));
-	
-	ConnectionSocket = nullptr;
-	bIsConnected = false;
 }
 
 void UNetworkSubsystem::Deinitialize()
@@ -92,7 +89,7 @@ bool UNetworkSubsystem::ConnectToGameServer(FString IpAddress, int32 Port)
 			PollTimerHandle,
 			this,
 			&UNetworkSubsystem::CheckForData,
-			0.016f, // ~60 times per second
+			PollInterval,
 			true
 		);
 	}
@@ -203,13 +200,9 @@ void UNetworkSubsystem::SerializeAndSend(const FPacketBase& Packet)
 
 FString UNetworkSubsystem::GetPacketTypeName(const FPacketBase& Packet) const
 {
-	// Get the struct name using reflection
-	// This is a simple way to identify the packet type for logging
-	const UScriptStruct* ScriptStruct = Packet.StaticStruct();
-	if (ScriptStruct)
-	{
-		return ScriptStruct->GetName();
-	}
-	
-	return TEXT("Unknown");
+	// Try to get the struct name using reflection
+	// FPacketBase is a USTRUCT, so derived types should have StaticStruct()
+	// We need to use the actual derived type's StaticStruct, not the base
+	// For now, return a generic name since we can't easily get the derived type at runtime
+	return TEXT("Packet");
 }

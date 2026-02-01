@@ -57,6 +57,9 @@ public:
 	bool IsConnected() const { return bIsConnected; }
 
 private:
+	/** Polling interval for checking socket data (60 times per second) */
+	static constexpr float PollInterval = 0.016f;
+	
 	/** The TCP socket connection to the server */
 	FSocket* ConnectionSocket = nullptr;
 	

@@ -109,16 +109,29 @@ void FPacketSerializer::WriteInt(TArray<uint8>& OutBytes, int32 Value)
 		// Negative fixint: 0xe0 - 0xff
 		OutBytes.Add(static_cast<uint8>(Value & 0xFF));
 	}
-	else if (Value >= -128 && Value <= 127)
+	else if (Value >= -128 && Value < -32)
 	{
-		// int8
+		// int8: Values from -128 to -33
 		OutBytes.Add(MessagePackFormat::Int8);
 		OutBytes.Add(static_cast<uint8>(Value & 0xFF));
+	}
+	else if (Value >= 128 && Value <= 255)
+	{
+		// uint8: Positive values from 128 to 255
+		OutBytes.Add(MessagePackFormat::Uint8);
+		OutBytes.Add(static_cast<uint8>(Value));
 	}
 	else if (Value >= -32768 && Value <= 32767)
 	{
 		// int16
 		OutBytes.Add(MessagePackFormat::Int16);
+		OutBytes.Add((Value >> 8) & 0xFF);
+		OutBytes.Add(Value & 0xFF);
+	}
+	else if (Value >= 0 && Value <= 65535)
+	{
+		// uint16: For larger positive values
+		OutBytes.Add(MessagePackFormat::Uint16);
 		OutBytes.Add((Value >> 8) & 0xFF);
 		OutBytes.Add(Value & 0xFF);
 	}
@@ -145,11 +158,17 @@ void FPacketSerializer::WriteInt64(TArray<uint8>& OutBytes, int64 Value)
 		// Negative fixint: 0xe0 - 0xff
 		OutBytes.Add(static_cast<uint8>(Value & 0xFF));
 	}
-	else if (Value >= -128 && Value <= 127)
+	else if (Value >= -128 && Value < -32)
 	{
-		// int8
+		// int8: Values from -128 to -33
 		OutBytes.Add(MessagePackFormat::Int8);
 		OutBytes.Add(static_cast<uint8>(Value & 0xFF));
+	}
+	else if (Value >= 128 && Value <= 255)
+	{
+		// uint8: Positive values from 128 to 255
+		OutBytes.Add(MessagePackFormat::Uint8);
+		OutBytes.Add(static_cast<uint8>(Value));
 	}
 	else if (Value >= -32768 && Value <= 32767)
 	{
@@ -158,10 +177,26 @@ void FPacketSerializer::WriteInt64(TArray<uint8>& OutBytes, int64 Value)
 		OutBytes.Add((Value >> 8) & 0xFF);
 		OutBytes.Add(Value & 0xFF);
 	}
+	else if (Value >= 0 && Value <= 65535)
+	{
+		// uint16: For larger positive values
+		OutBytes.Add(MessagePackFormat::Uint16);
+		OutBytes.Add((Value >> 8) & 0xFF);
+		OutBytes.Add(Value & 0xFF);
+	}
 	else if (Value >= -2147483648LL && Value <= 2147483647LL)
 	{
 		// int32
 		OutBytes.Add(MessagePackFormat::Int32);
+		OutBytes.Add((Value >> 24) & 0xFF);
+		OutBytes.Add((Value >> 16) & 0xFF);
+		OutBytes.Add((Value >> 8) & 0xFF);
+		OutBytes.Add(Value & 0xFF);
+	}
+	else if (Value >= 0 && Value <= 4294967295ULL)
+	{
+		// uint32: For larger positive values
+		OutBytes.Add(MessagePackFormat::Uint32);
 		OutBytes.Add((Value >> 24) & 0xFF);
 		OutBytes.Add((Value >> 16) & 0xFF);
 		OutBytes.Add((Value >> 8) & 0xFF);

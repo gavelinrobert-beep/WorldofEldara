@@ -17,8 +17,10 @@ The C# server uses `MessagePack-CSharp` with `[Union]` attributes. The wire form
 LoginRequest has Union Key 0. The serialized format is:
 
 ```
-[ 0, [ Timestamp, SequenceNumber, Username, PasswordHash, ClientVersion, ProtocolVersion ] ]
+[ 0, [ Username, PasswordHash, ClientVersion, ProtocolVersion ] ]
 ```
+
+Note: `Timestamp` and `SequenceNumber` from `PacketBase` are NOT serialized because the C# server marks them with `[IgnoreMember]` attribute.
 
 ## MessagePack Format Reference
 
@@ -116,11 +118,11 @@ void FPacketSerializer::SerializeCharacterListRequest(const FCharacterListReques
     // Write union key (2 for CharacterListRequest)
     WriteInt(OutBytes, 2);
     
-    // Write field array
-    WriteArrayHeader(OutBytes, 3); // Timestamp, SequenceNumber, AccountId
-    WriteInt64(OutBytes, Packet.Timestamp);
-    WriteInt(OutBytes, Packet.SequenceNumber);
+    // Write field array (1 field: AccountId)
+    // Note: Timestamp and SequenceNumber are NOT serialized (marked with [IgnoreMember] in C#)
+    WriteArrayHeader(OutBytes, 1);
     WriteInt64(OutBytes, Packet.AccountId);
+}
 }
 ```
 

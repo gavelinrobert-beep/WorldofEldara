@@ -102,8 +102,8 @@ public:
 		FinalPacket.Reserve(4 + PayloadSize);
 		
 		// Add 4-byte length prefix (Little Endian) using AddUninitialized for efficiency
-		int32 SizeIndex = FinalPacket.AddUninitialized(4);
-		uint8* SizePtr = FinalPacket.GetData() + SizeIndex;
+		FinalPacket.AddUninitialized(4);
+		uint8* SizePtr = FinalPacket.GetData();
 		
 		// Write length as Little Endian bytes explicitly
 		SizePtr[0] = static_cast<uint8>(PayloadSize & 0xFF);

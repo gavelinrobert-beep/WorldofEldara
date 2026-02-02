@@ -321,7 +321,7 @@ struct FDamagePacket : public FPacketBase
 	int32 AbilityId = 0;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
-	EDamageType DamageType = EDamageType::Physical;
+	ENetDamageType DamageType = ENetDamageType::Physical;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
 	int32 Amount = 0;

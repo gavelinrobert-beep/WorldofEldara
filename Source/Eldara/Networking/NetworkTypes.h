@@ -139,7 +139,7 @@ enum class EMovementState : uint8
 };
 
 UENUM(BlueprintType)
-enum class EDamageType : uint8
+enum class ENetDamageType : uint8
 {
 	Physical,
 	Nature,
@@ -319,7 +319,7 @@ struct FAbilitySummary
 	int32 MagicSource = 0;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
-	EDamageType DamageType = EDamageType::Physical;
+	ENetDamageType DamageType = ENetDamageType::Physical;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
 	int32 TargetType = 0;
@@ -542,7 +542,7 @@ struct FQuestObjectiveDefinition
 };
 
 USTRUCT(BlueprintType)
-struct FQuestReward
+struct FNetQuestReward
 {
 	GENERATED_BODY()
 
@@ -589,7 +589,7 @@ struct FQuestDefinition
 	TArray<FQuestObjectiveDefinition> Objectives;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
-	FQuestReward Rewards;
+	FNetQuestReward Rewards;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
 	int32 GiverNpcTemplateId = 0;

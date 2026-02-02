@@ -8,7 +8,7 @@
 // ============================================================================
 
 UENUM(BlueprintType)
-enum class EPacketType : uint8
+enum class EPacketType : uint16
 {
 	// Authentication (0-9)
 	LoginRequest = 0,

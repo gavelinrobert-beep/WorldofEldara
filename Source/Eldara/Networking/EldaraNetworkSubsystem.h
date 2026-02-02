@@ -35,10 +35,29 @@ public:
 	bool ConnectToGameServer(FString IpAddress = "127.0.0.1", int32 Port = 7777);
 
 	/**
+	 * Connect to the server (alias for ConnectToGameServer)
+	 * @param IpAddress The IP address to connect to (default: 127.0.0.1)
+	 * @param Port The port to connect to (default: 7777)
+	 * @return True if connection was successful, false otherwise
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Eldara|Networking")
+	bool ConnectToServer(FString IpAddress = "127.0.0.1", int32 Port = 7777);
+
+	/**
 	 * Disconnect from the game server
 	 */
 	UFUNCTION(BlueprintCallable, Category = "Eldara|Networking")
 	void Disconnect();
+
+	/**
+	 * Send movement input to the server
+	 * @param Input 2D movement input (X=forward/back, Y=left/right)
+	 * @param Rotation Player rotation
+	 * @param DeltaTime Time since last update
+	 * @param Position Current player position
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Eldara|Networking")
+	void SendMovementInput(FVector2D Input, FRotator Rotation, float DeltaTime, FVector Position);
 
 	/**
 	 * Send a packet to the server

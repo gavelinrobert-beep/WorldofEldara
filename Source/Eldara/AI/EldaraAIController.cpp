@@ -25,10 +25,10 @@ AEldaraAIController::AEldaraAIController()
 		SightConfig->DetectionByAffiliation.bDetectFriendlies = true;
 		SightConfig->DetectionByAffiliation.bDetectNeutrals = true;
 
-		if (UAIPerceptionComponent* PerceptionComponent = GetPerceptionComponent())
+		if (UAIPerceptionComponent* LocalPerceptionComponent = GetPerceptionComponent())
 		{
-			PerceptionComponent->ConfigureSense(*SightConfig);
-			PerceptionComponent->SetDominantSense(SightConfig->GetSenseImplementation());
+			LocalPerceptionComponent->ConfigureSense(*SightConfig);
+			LocalPerceptionComponent->SetDominantSense(SightConfig->GetSenseImplementation());
 		}
 	}
 }
@@ -37,9 +37,9 @@ void AEldaraAIController::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (UAIPerceptionComponent* PerceptionComponent = GetPerceptionComponent())
+	if (UAIPerceptionComponent* LocalPerceptionComponent = GetPerceptionComponent())
 	{
-		PerceptionComponent->OnTargetPerceptionUpdated.AddUniqueDynamic(this, &AEldaraAIController::OnTargetPerceptionUpdated);
+		LocalPerceptionComponent->OnTargetPerceptionUpdated.AddUniqueDynamic(this, &AEldaraAIController::OnTargetPerceptionUpdated);
 	}
 }
 
@@ -154,13 +154,13 @@ void AEldaraAIController::OnTargetPerceptionUpdated(AActor* Actor, FAIStimulus S
 		return;
 	}
 
-	if (UBlackboardComponent* Blackboard = GetBlackboardComponent())
+	if (UBlackboardComponent* LocalBlackboard = GetBlackboardComponent())
 	{
-		Blackboard->SetValueAsBool(EldaraAIKeys::HasLineOfSight, Stimulus.WasSuccessfullySensed());
+		LocalBlackboard->SetValueAsBool(EldaraAIKeys::HasLineOfSight, Stimulus.WasSuccessfullySensed());
 		if (Stimulus.WasSuccessfullySensed())
 		{
-			Blackboard->SetValueAsObject(EldaraAIKeys::TargetActor, Actor);
-			Blackboard->SetValueAsVector(EldaraAIKeys::TargetLocation, Actor->GetActorLocation());
+			LocalBlackboard->SetValueAsObject(EldaraAIKeys::TargetActor, Actor);
+			LocalBlackboard->SetValueAsVector(EldaraAIKeys::TargetLocation, Actor->GetActorLocation());
 		}
 	}
 

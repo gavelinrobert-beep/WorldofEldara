@@ -97,6 +97,12 @@ bool UEldaraNetworkSubsystem::ConnectToGameServer(FString IpAddress, int32 Port)
 	return true;
 }
 
+bool UEldaraNetworkSubsystem::ConnectToServer(FString IpAddress, int32 Port)
+{
+	// Alias for ConnectToGameServer
+	return ConnectToGameServer(IpAddress, Port);
+}
+
 void UEldaraNetworkSubsystem::Disconnect()
 {
 	// Stop polling timer
@@ -168,4 +174,20 @@ void UEldaraNetworkSubsystem::CheckForData()
 		UE_LOG(LogTemp, Warning, TEXT("EldaraNetworkSubsystem: Connection lost"));
 		Disconnect();
 	}
+}
+
+void UEldaraNetworkSubsystem::SendMovementInput(FVector2D Input, FRotator Rotation, float DeltaTime, FVector Position)
+{
+	// TODO: Implement proper movement packet sending
+	// For now, just log the call
+	UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: SendMovementInput called - Input:(%.2f,%.2f) Rotation:(%.1f,%.1f,%.1f) DeltaTime:%.3f Position:(%.1f,%.1f,%.1f)"),
+		Input.X, Input.Y, Rotation.Pitch, Rotation.Yaw, Rotation.Roll, DeltaTime, Position.X, Position.Y, Position.Z);
+	
+	// When implementing, create and send FMovementInputPacket here
+	// Example:
+	// FMovementInputPacket Packet;
+	// Packet.Forward = Input.X;
+	// Packet.Strafe = Input.Y;
+	// ... populate other fields ...
+	// SendPacket(Packet);
 }

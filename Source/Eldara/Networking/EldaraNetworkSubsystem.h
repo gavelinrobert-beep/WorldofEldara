@@ -92,14 +92,24 @@ public:
 		
 		// Prepend 4-byte length prefix (Little Endian) as expected by C# server
 		int32 PayloadSize = SerializedData.Num();
+		if (PayloadSize <= 0)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("EldaraNetworkSubsystem: Cannot send empty packet"));
+			return;
+		}
+		
 		TArray<uint8> FinalPacket;
 		FinalPacket.Reserve(4 + PayloadSize);
 		
-		// Add 4-byte length prefix (Little Endian)
-		FinalPacket.Add(static_cast<uint8>(PayloadSize & 0xFF));
-		FinalPacket.Add(static_cast<uint8>((PayloadSize >> 8) & 0xFF));
-		FinalPacket.Add(static_cast<uint8>((PayloadSize >> 16) & 0xFF));
-		FinalPacket.Add(static_cast<uint8>((PayloadSize >> 24) & 0xFF));
+		// Add 4-byte length prefix (Little Endian) using AddUninitialized for efficiency
+		int32 SizeIndex = FinalPacket.AddUninitialized(4);
+		uint8* SizePtr = FinalPacket.GetData() + SizeIndex;
+		
+		// Write length as Little Endian bytes explicitly
+		SizePtr[0] = static_cast<uint8>(PayloadSize & 0xFF);
+		SizePtr[1] = static_cast<uint8>((PayloadSize >> 8) & 0xFF);
+		SizePtr[2] = static_cast<uint8>((PayloadSize >> 16) & 0xFF);
+		SizePtr[3] = static_cast<uint8>((PayloadSize >> 24) & 0xFF);
 		
 		// Append the serialized payload
 		FinalPacket.Append(SerializedData);

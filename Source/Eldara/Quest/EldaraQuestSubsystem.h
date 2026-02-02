@@ -43,9 +43,6 @@ public:
 	/** Initialize the subsystem */
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 
-	/** Load quest assets configured for persistence lookup */
-	virtual void PostInitialize() override;
-
 	/** Deinitialize the subsystem */
 	virtual void Deinitialize() override;
 

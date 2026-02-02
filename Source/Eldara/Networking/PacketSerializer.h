@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Templates/IsSame.h"
 #include "NetworkTypes.h"
 #include "NetworkPackets.h"
 

@@ -15,12 +15,8 @@ void UEldaraQuestSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
 	UE_LOG(LogEldaraQuest, Log, TEXT("EldaraQuestSubsystem initialized"));
-}
 
-void UEldaraQuestSubsystem::PostInitialize()
-{
-	Super::PostInitialize();
-
+	// Load quest assets configured for persistence lookup
 	for (const TSoftObjectPtr<UEldaraQuestData>& QuestPath : QuestAssetPaths)
 	{
 		if (QuestPath.IsNull())
@@ -40,7 +36,7 @@ void UEldaraQuestSubsystem::PostInitialize()
 		}
 		else
 		{
-			UE_LOG(LogEldaraQuest, Warning, TEXT("PostInitialize: Failed to load quest asset for %s"), *QuestPath.ToString());
+			UE_LOG(LogEldaraQuest, Warning, TEXT("Initialize: Failed to load quest asset for %s"), *QuestPath.ToString());
 		}
 	}
 }

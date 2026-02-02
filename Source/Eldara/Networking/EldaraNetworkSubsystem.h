@@ -99,6 +99,7 @@ public:
 		}
 		
 		// Check against maximum packet size (8KB as defined in C# NetworkConstants.MaxPacketSize)
+		// Note: C# server validates the payload size only (excluding the length prefix)
 		if (PayloadSize > MaxPacketSize)
 		{
 			UE_LOG(LogTemp, Error, TEXT("EldaraNetworkSubsystem: Packet too large (%d bytes, max %d bytes)"), PayloadSize, MaxPacketSize);

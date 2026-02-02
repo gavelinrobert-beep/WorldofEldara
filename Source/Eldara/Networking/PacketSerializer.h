@@ -1,7 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Templates/IsSame.h"
+#include <type_traits>
 #include "NetworkTypes.h"
 #include "NetworkPackets.h"
 
@@ -30,13 +30,13 @@ public:
 		OutBytes.Reset();
 		
 		// Use compile-time type detection to serialize the correct packet type
-		if constexpr (TIsSame<T, FLoginRequest>::Value)
+		if constexpr (std::is_same_v<T, FLoginRequest>)
 		{
 			SerializeLoginRequest(static_cast<const FLoginRequest&>(Packet), OutBytes);
 			return true;
 		}
 		// Add more packet types here as they are implemented
-		// else if constexpr (TIsSame<T, FCharacterListRequest>::Value)
+		// else if constexpr (std::is_same_v<T, FCharacterListRequest>)
 		// {
 		//     SerializeCharacterListRequest(static_cast<const FCharacterListRequest&>(Packet), OutBytes);
 		//     return true;

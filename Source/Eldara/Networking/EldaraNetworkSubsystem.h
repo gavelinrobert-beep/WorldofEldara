@@ -98,6 +98,13 @@ public:
 			return;
 		}
 		
+		// Check for potential integer overflow when adding length prefix
+		if (PayloadSize > INT32_MAX - 4)
+		{
+			UE_LOG(LogTemp, Error, TEXT("EldaraNetworkSubsystem: Packet too large (%d bytes)"), PayloadSize);
+			return;
+		}
+		
 		TArray<uint8> FinalPacket;
 		FinalPacket.Reserve(4 + PayloadSize);
 		
@@ -128,7 +135,7 @@ public:
 		}
 		else
 		{
-			UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: Successfully sent packet (%d bytes payload, %d bytes total)"), PayloadSize, BytesSent);
+			UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: Successfully sent packet (%d bytes payload, %d bytes total)"), PayloadSize, FinalPacket.Num());
 		}
 	}
 

@@ -191,3 +191,26 @@ void UEldaraNetworkSubsystem::SendMovementInput(FVector2D Input, FRotator Rotati
 	// ... populate other fields ...
 	// SendPacket(Packet);
 }
+
+void UEldaraNetworkSubsystem::SendLogin(FString Username, FString PasswordHash)
+{
+	if (!bIsConnected)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("EldaraNetworkSubsystem: Cannot send login - not connected"));
+		return;
+	}
+	
+	// Create and populate login request packet
+	FLoginRequest Packet;
+	Packet.Username = Username;
+	Packet.PasswordHash = PasswordHash;
+	Packet.ClientVersion = "1.0.0";
+	Packet.ProtocolVersion = "1.0.0";
+	Packet.Timestamp = FDateTime::UtcNow().ToUnixTimestamp();
+	Packet.SequenceNumber = 0;
+	
+	// Send the packet
+	SendPacket(Packet);
+	
+	UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: Login request sent for user: %s"), *Username);
+}

@@ -60,6 +60,14 @@ public:
 	void SendMovementInput(FVector2D Input, FRotator Rotation, float DeltaTime, FVector Position);
 
 	/**
+	 * Send login request to the server
+	 * @param Username The username for authentication
+	 * @param PasswordHash The hashed password for authentication
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Eldara|Networking")
+	void SendLogin(FString Username, FString PasswordHash);
+
+	/**
 	 * Send a packet to the server
 	 * Template function for sending typed packets
 	 */

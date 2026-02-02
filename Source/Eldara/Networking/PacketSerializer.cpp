@@ -298,16 +298,16 @@ void FPacketSerializer::SerializeLoginRequest(const FLoginRequest& Packet, TArra
 	// Write union key (0 for LoginRequest)
 	WriteInt(OutBytes, 0);
 	
-	// Write inner array header (6 fields: Timestamp, SequenceNumber, Username, PasswordHash, ClientVersion, ProtocolVersion)
-	WriteArrayHeader(OutBytes, 6);
+	// Write inner array header (4 fields: Username, PasswordHash, ClientVersion, ProtocolVersion)
+	// Note: Timestamp and SequenceNumber are NOT serialized because the C# server
+	// has [IgnoreMember] on these fields in PacketBase
+	WriteArrayHeader(OutBytes, 4);
 	
-	// Write fields in order
-	WriteInt64(OutBytes, Packet.Timestamp);
-	WriteInt(OutBytes, Packet.SequenceNumber);
-	WriteString(OutBytes, Packet.Username);
-	WriteString(OutBytes, Packet.PasswordHash);
-	WriteString(OutBytes, Packet.ClientVersion);
-	WriteString(OutBytes, Packet.ProtocolVersion);
+	// Write fields in order (matching C# LoginRequest [Key] attributes)
+	WriteString(OutBytes, Packet.Username);      // [Key(0)]
+	WriteString(OutBytes, Packet.PasswordHash);  // [Key(1)]
+	WriteString(OutBytes, Packet.ClientVersion); // [Key(2)]
+	WriteString(OutBytes, Packet.ProtocolVersion); // [Key(3)]
 	
 	UE_LOG(LogTemp, Log, TEXT("PacketSerializer: Serialized LoginRequest (Size: %d bytes)"), OutBytes.Num());
 }

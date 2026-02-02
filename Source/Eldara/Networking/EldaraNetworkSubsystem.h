@@ -99,7 +99,6 @@ public:
 		}
 		
 		// Check against maximum packet size (8KB as defined in C# NetworkConstants.MaxPacketSize)
-		constexpr int32 MaxPacketSize = 8192;
 		if (PayloadSize > MaxPacketSize)
 		{
 			UE_LOG(LogTemp, Error, TEXT("EldaraNetworkSubsystem: Packet too large (%d bytes, max %d bytes)"), PayloadSize, MaxPacketSize);
@@ -108,7 +107,7 @@ public:
 		
 		// Allocate final packet buffer with length prefix + payload in a single allocation
 		TArray<uint8> FinalPacket;
-		FinalPacket.SetNumUninitialized(4 + PayloadSize);
+		FinalPacket.SetNumUninitialized(LengthPrefixSize + PayloadSize);
 		uint8* PacketData = FinalPacket.GetData();
 		
 		// Write 4-byte length prefix as Little Endian bytes
@@ -118,7 +117,7 @@ public:
 		PacketData[3] = static_cast<uint8>((PayloadSize >> 24) & 0xFF);
 		
 		// Copy the serialized payload after the length prefix
-		FMemory::Memcpy(PacketData + 4, SerializedData.GetData(), PayloadSize);
+		FMemory::Memcpy(PacketData + LengthPrefixSize, SerializedData.GetData(), PayloadSize);
 		
 		// Send the final packet with length prefix
 		int32 BytesSent = 0;
@@ -145,6 +144,10 @@ public:
 	bool IsConnected() const { return bIsConnected; }
 
 private:
+	/** Network protocol constants matching C# server NetworkConstants */
+	static constexpr int32 MaxPacketSize = 8192;  // 8KB - C# NetworkConstants.MaxPacketSize
+	static constexpr int32 LengthPrefixSize = 4;  // 4-byte int32 length prefix
+	
 	/** Polling interval for checking socket data (60 times per second) */
 	static constexpr float PollInterval = 0.016f;
 	

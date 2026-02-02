@@ -90,21 +90,35 @@ public:
 			return;
 		}
 		
-		// Send the serialized data
+		// Prepend 4-byte length prefix (Little Endian) as expected by C# server
+		int32 PayloadSize = SerializedData.Num();
+		TArray<uint8> FinalPacket;
+		FinalPacket.Reserve(4 + PayloadSize);
+		
+		// Add 4-byte length prefix (Little Endian)
+		FinalPacket.Add(static_cast<uint8>(PayloadSize & 0xFF));
+		FinalPacket.Add(static_cast<uint8>((PayloadSize >> 8) & 0xFF));
+		FinalPacket.Add(static_cast<uint8>((PayloadSize >> 16) & 0xFF));
+		FinalPacket.Add(static_cast<uint8>((PayloadSize >> 24) & 0xFF));
+		
+		// Append the serialized payload
+		FinalPacket.Append(SerializedData);
+		
+		// Send the final packet with length prefix
 		int32 BytesSent = 0;
-		if (!ConnectionSocket->Send(SerializedData.GetData(), SerializedData.Num(), BytesSent))
+		if (!ConnectionSocket->Send(FinalPacket.GetData(), FinalPacket.Num(), BytesSent))
 		{
 			UE_LOG(LogTemp, Error, TEXT("EldaraNetworkSubsystem: Failed to send packet"));
 			return;
 		}
 		
-		if (BytesSent != SerializedData.Num())
+		if (BytesSent != FinalPacket.Num())
 		{
-			UE_LOG(LogTemp, Warning, TEXT("EldaraNetworkSubsystem: Partial send (%d of %d bytes)"), BytesSent, SerializedData.Num());
+			UE_LOG(LogTemp, Warning, TEXT("EldaraNetworkSubsystem: Partial send (%d of %d bytes)"), BytesSent, FinalPacket.Num());
 		}
 		else
 		{
-			UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: Successfully sent packet (%d bytes)"), BytesSent);
+			UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: Successfully sent packet (%d bytes payload, %d bytes total)"), PayloadSize, BytesSent);
 		}
 	}
 

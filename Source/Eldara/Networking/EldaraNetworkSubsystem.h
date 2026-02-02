@@ -90,21 +90,51 @@ public:
 			return;
 		}
 		
-		// Send the serialized data
+		// Prepend 4-byte length prefix (Little Endian) as expected by C# server
+		int32 PayloadSize = SerializedData.Num();
+		if (PayloadSize <= 0)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("EldaraNetworkSubsystem: Cannot send empty packet"));
+			return;
+		}
+		
+		// Check against maximum packet size (8KB as defined in C# NetworkConstants.MaxPacketSize)
+		// Note: C# server validates the payload size only (excluding the length prefix)
+		if (PayloadSize > MaxPacketSize)
+		{
+			UE_LOG(LogTemp, Error, TEXT("EldaraNetworkSubsystem: Packet too large (%d bytes, max %d bytes)"), PayloadSize, MaxPacketSize);
+			return;
+		}
+		
+		// Allocate final packet buffer with length prefix + payload in a single allocation
+		TArray<uint8> FinalPacket;
+		FinalPacket.SetNumUninitialized(LengthPrefixSize + PayloadSize);
+		uint8* PacketData = FinalPacket.GetData();
+		
+		// Write 4-byte length prefix as Little Endian bytes
+		PacketData[0] = static_cast<uint8>(PayloadSize & 0xFF);
+		PacketData[1] = static_cast<uint8>((PayloadSize >> 8) & 0xFF);
+		PacketData[2] = static_cast<uint8>((PayloadSize >> 16) & 0xFF);
+		PacketData[3] = static_cast<uint8>((PayloadSize >> 24) & 0xFF);
+		
+		// Copy the serialized payload after the length prefix
+		FMemory::Memcpy(PacketData + LengthPrefixSize, SerializedData.GetData(), PayloadSize);
+		
+		// Send the final packet with length prefix
 		int32 BytesSent = 0;
-		if (!ConnectionSocket->Send(SerializedData.GetData(), SerializedData.Num(), BytesSent))
+		if (!ConnectionSocket->Send(FinalPacket.GetData(), FinalPacket.Num(), BytesSent))
 		{
 			UE_LOG(LogTemp, Error, TEXT("EldaraNetworkSubsystem: Failed to send packet"));
 			return;
 		}
 		
-		if (BytesSent != SerializedData.Num())
+		if (BytesSent != FinalPacket.Num())
 		{
-			UE_LOG(LogTemp, Warning, TEXT("EldaraNetworkSubsystem: Partial send (%d of %d bytes)"), BytesSent, SerializedData.Num());
+			UE_LOG(LogTemp, Warning, TEXT("EldaraNetworkSubsystem: Partial send (%d of %d bytes)"), BytesSent, FinalPacket.Num());
 		}
 		else
 		{
-			UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: Successfully sent packet (%d bytes)"), BytesSent);
+			UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: Successfully sent packet (%d bytes payload, %d bytes total)"), PayloadSize, FinalPacket.Num());
 		}
 	}
 
@@ -115,6 +145,10 @@ public:
 	bool IsConnected() const { return bIsConnected; }
 
 private:
+	/** Network protocol constants matching C# server NetworkConstants */
+	static constexpr int32 MaxPacketSize = 8192;  // 8KB - C# NetworkConstants.MaxPacketSize
+	static constexpr int32 LengthPrefixSize = 4;  // 4-byte int32 length prefix
+	
 	/** Polling interval for checking socket data (60 times per second) */
 	static constexpr float PollInterval = 0.016f;
 	

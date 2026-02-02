@@ -36,7 +36,7 @@ public:
 			return true;
 		}
 		// Add more packet types here as they are implemented
-		// else if constexpr (TIsSame<T, FCharacterListRequest>::Value)
+		// else if constexpr (std::is_same_v<T, FCharacterListRequest>)
 		// {
 		//     SerializeCharacterListRequest(static_cast<const FCharacterListRequest&>(Packet), OutBytes);
 		//     return true;

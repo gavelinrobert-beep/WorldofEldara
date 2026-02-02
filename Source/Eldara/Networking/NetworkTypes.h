@@ -7,7 +7,7 @@
 // ENUMS
 // ============================================================================
 
-UENUM(BlueprintType)
+UENUM()
 enum class EPacketType : uint16
 {
 	// Authentication (0-9)

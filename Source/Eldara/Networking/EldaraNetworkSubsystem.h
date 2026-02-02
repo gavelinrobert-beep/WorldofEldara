@@ -98,28 +98,27 @@ public:
 			return;
 		}
 		
-		// Check for potential integer overflow when adding length prefix
-		if (PayloadSize > INT32_MAX - 4)
+		// Check against maximum packet size (8KB as defined in C# NetworkConstants.MaxPacketSize)
+		constexpr int32 MaxPacketSize = 8192;
+		if (PayloadSize > MaxPacketSize)
 		{
-			UE_LOG(LogTemp, Error, TEXT("EldaraNetworkSubsystem: Packet too large (%d bytes)"), PayloadSize);
+			UE_LOG(LogTemp, Error, TEXT("EldaraNetworkSubsystem: Packet too large (%d bytes, max %d bytes)"), PayloadSize, MaxPacketSize);
 			return;
 		}
 		
+		// Allocate final packet buffer with length prefix + payload in a single allocation
 		TArray<uint8> FinalPacket;
-		FinalPacket.Reserve(4 + PayloadSize);
+		FinalPacket.SetNumUninitialized(4 + PayloadSize);
+		uint8* PacketData = FinalPacket.GetData();
 		
-		// Add 4-byte length prefix (Little Endian) using AddUninitialized for efficiency
-		FinalPacket.AddUninitialized(4);
-		uint8* SizePtr = FinalPacket.GetData();
+		// Write 4-byte length prefix as Little Endian bytes
+		PacketData[0] = static_cast<uint8>(PayloadSize & 0xFF);
+		PacketData[1] = static_cast<uint8>((PayloadSize >> 8) & 0xFF);
+		PacketData[2] = static_cast<uint8>((PayloadSize >> 16) & 0xFF);
+		PacketData[3] = static_cast<uint8>((PayloadSize >> 24) & 0xFF);
 		
-		// Write length as Little Endian bytes explicitly
-		SizePtr[0] = static_cast<uint8>(PayloadSize & 0xFF);
-		SizePtr[1] = static_cast<uint8>((PayloadSize >> 8) & 0xFF);
-		SizePtr[2] = static_cast<uint8>((PayloadSize >> 16) & 0xFF);
-		SizePtr[3] = static_cast<uint8>((PayloadSize >> 24) & 0xFF);
-		
-		// Append the serialized payload
-		FinalPacket.Append(SerializedData);
+		// Copy the serialized payload after the length prefix
+		FMemory::Memcpy(PacketData + 4, SerializedData.GetData(), PayloadSize);
 		
 		// Send the final packet with length prefix
 		int32 BytesSent = 0;

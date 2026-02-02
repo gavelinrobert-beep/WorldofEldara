@@ -316,7 +316,7 @@ int32 FPacketSerializer::GetPacketTypeFromInstance(const FPacketBase& Packet)
 {
 	// WARNING: This function is a fallback for the base Serialize(FPacketBase&) method.
 	// The preferred approach is to use the templated Serialize<T>(const T&) method,
-	// which uses compile-time type detection and is called from NetworkSubsystem::SendPacket.
+	// which uses compile-time type detection and is called from EldaraNetworkSubsystem::SendPacket.
 	//
 	// Since FPacketBase is a USTRUCT (not a UClass), we cannot use RTTI or virtual methods
 	// to determine the actual packet type at runtime. The templated version avoids this

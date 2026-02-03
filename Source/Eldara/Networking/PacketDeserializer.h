@@ -49,6 +49,11 @@ private:
 	static bool ReadRotator(const TArray<uint8>& InBytes, FRotator& OutValue);
 	
 	/**
+	 * Helper to skip a MessagePack value without parsing it
+	 */
+	static bool SkipValue(const TArray<uint8>& InBytes);
+	
+	/**
 	 * Helper to read a single byte at current position
 	 */
 	static bool ReadByte(const TArray<uint8>& InBytes, uint8& OutByte);

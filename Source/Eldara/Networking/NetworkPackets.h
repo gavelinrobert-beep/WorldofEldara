@@ -70,7 +70,7 @@ struct FLoginResponse : public FPacketBase
 	GENERATED_BODY()
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
-	bool Success = false;
+	EResponseCode Result = EResponseCode::Success;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
 	FString Message;
@@ -80,6 +80,9 @@ struct FLoginResponse : public FPacketBase
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
 	FString SessionToken;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Network")
+	FString ServerProtocolVersion;
 };
 
 // ============================================================================
@@ -98,6 +101,9 @@ USTRUCT(BlueprintType)
 struct FCharacterListResponse : public FPacketBase
 {
 	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Network")
+	EResponseCode Result = EResponseCode::Success;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
 	TArray<FCharacterInfo> Characters;
@@ -136,13 +142,13 @@ struct FCreateCharacterResponse : public FPacketBase
 	GENERATED_BODY()
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
-	bool Success = false;
+	EResponseCode Result = EResponseCode::Success;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
 	FString Message;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
-	int64 CharacterId = 0;
+	FCharacterInfo Character;
 };
 
 USTRUCT(BlueprintType)
@@ -160,10 +166,13 @@ struct FSelectCharacterResponse : public FPacketBase
 	GENERATED_BODY()
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
-	bool Success = false;
+	EResponseCode Result = EResponseCode::Success;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
 	FString Message;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Network")
+	FCharacterInfo Character;
 };
 
 // ============================================================================

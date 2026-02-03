@@ -1,31 +1,5 @@
 #include "PacketDeserializer.h"
-
-// MessagePack format constants (same as serializer)
-namespace MessagePackFormat
-{
-	constexpr uint8 FixIntMax = 0x7f;
-	constexpr uint8 NegativeFixIntMin = 0xe0;
-	constexpr uint8 Uint8 = 0xcc;
-	constexpr uint8 Uint16 = 0xcd;
-	constexpr uint8 Uint32 = 0xce;
-	constexpr uint8 Uint64 = 0xcf;
-	constexpr uint8 Int8 = 0xd0;
-	constexpr uint8 Int16 = 0xd1;
-	constexpr uint8 Int32 = 0xd2;
-	constexpr uint8 Int64 = 0xd3;
-	constexpr uint8 Float32 = 0xca;
-	constexpr uint8 Float64 = 0xcb;
-	constexpr uint8 FixStrMask = 0xa0;
-	constexpr uint8 Str8 = 0xd9;
-	constexpr uint8 Str16 = 0xda;
-	constexpr uint8 Str32 = 0xdb;
-	constexpr uint8 FixArrayMask = 0x90;
-	constexpr uint8 Array16 = 0xdc;
-	constexpr uint8 Array32 = 0xdd;
-	constexpr uint8 False = 0xc2;
-	constexpr uint8 True = 0xc3;
-	constexpr uint8 Nil = 0xc0;
-}
+#include "MessagePackFormat.h"
 
 int32 FPacketDeserializer::ReadPosition = 0;
 

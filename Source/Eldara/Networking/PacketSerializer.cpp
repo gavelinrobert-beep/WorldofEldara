@@ -1,47 +1,6 @@
 #include "PacketSerializer.h"
+#include "MessagePackFormat.h"
 #include <limits>
-
-// MessagePack format constants
-namespace MessagePackFormat
-{
-	// Positive fixint: 0x00 - 0x7f (0 to 127)
-	// Negative fixint: 0xe0 - 0xff (-32 to -1)
-	constexpr uint8 FixIntMin = 0x00;
-	constexpr uint8 FixIntMax = 0x7f;
-	constexpr uint8 NegativeFixIntMin = 0xe0;
-	
-	// Integer types
-	constexpr uint8 Uint8 = 0xcc;
-	constexpr uint8 Uint16 = 0xcd;
-	constexpr uint8 Uint32 = 0xce;
-	constexpr uint8 Uint64 = 0xcf;
-	constexpr uint8 Int8 = 0xd0;
-	constexpr uint8 Int16 = 0xd1;
-	constexpr uint8 Int32 = 0xd2;
-	constexpr uint8 Int64 = 0xd3;
-	
-	// Float types
-	constexpr uint8 Float32 = 0xca;
-	constexpr uint8 Float64 = 0xcb;
-	
-	// String types
-	constexpr uint8 FixStrMask = 0xa0;  // 0xa0 - 0xbf (0 to 31 bytes)
-	constexpr uint8 Str8 = 0xd9;
-	constexpr uint8 Str16 = 0xda;
-	constexpr uint8 Str32 = 0xdb;
-	
-	// Array types
-	constexpr uint8 FixArrayMask = 0x90;  // 0x90 - 0x9f (0 to 15 elements)
-	constexpr uint8 Array16 = 0xdc;
-	constexpr uint8 Array32 = 0xdd;
-	
-	// Boolean types
-	constexpr uint8 False = 0xc2;
-	constexpr uint8 True = 0xc3;
-	
-	// Nil
-	constexpr uint8 Nil = 0xc0;
-}
 
 bool FPacketSerializer::Serialize(const FPacketBase& Packet, TArray<uint8>& OutBytes)
 {

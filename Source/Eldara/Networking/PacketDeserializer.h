@@ -54,6 +54,11 @@ private:
 	static bool SkipValue(const TArray<uint8>& InBytes);
 	
 	/**
+	 * Helper to peek at a byte without advancing read position
+	 */
+	static bool PeekByte(const TArray<uint8>& InBytes, uint8& OutByte);
+	
+	/**
 	 * Helper to read a single byte at current position
 	 */
 	static bool ReadByte(const TArray<uint8>& InBytes, uint8& OutByte);

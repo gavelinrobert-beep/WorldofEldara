@@ -14,6 +14,17 @@ bool FPacketDeserializer::ReadByte(const TArray<uint8>& InBytes, uint8& OutByte)
 	return true;
 }
 
+bool FPacketDeserializer::PeekByte(const TArray<uint8>& InBytes, uint8& OutByte)
+{
+	if (ReadPosition >= InBytes.Num())
+	{
+		UE_LOG(LogTemp, Error, TEXT("PacketDeserializer: Read past end of buffer"));
+		return false;
+	}
+	OutByte = InBytes[ReadPosition]; // Don't increment
+	return true;
+}
+
 bool FPacketDeserializer::ReadArrayHeader(const TArray<uint8>& InBytes, int32& OutCount)
 {
 	uint8 Byte;
@@ -603,7 +614,11 @@ bool FPacketDeserializer::DeserializeCharacterListResponse(const TArray<uint8>& 
 	{
 		FCharacterInfo CharInfo;
 		
-		// Each character is an array of fields (CharacterData has 16 fields from C# server)
+		// Each CharacterData from C# server has 16 fields:
+		// 0: CharacterId, 1: AccountId, 2: Name, 3: Race, 4: Class, 5: Faction, 6: Level,
+		// 7: ExperiencePoints, 8: Stats, 9: Position, 10: Appearance, 11: Equipment,
+		// 12: FactionStandings, 13: TotemSpirit, 14: CreatedAt, 15: LastPlayedAt
+		// We only need fields: 0, 2, 3, 4, 6
 		int32 CharFieldCount;
 		if (!ReadArrayHeader(InBytes, CharFieldCount))
 		{
@@ -611,11 +626,9 @@ bool FPacketDeserializer::DeserializeCharacterListResponse(const TArray<uint8>& 
 			return false;
 		}
 		
-		// Read character fields: CharacterId, AccountId, Name, Race, Class, Faction, Level, ExperiencePoints, Stats, Position, Appearance, Equipment, FactionStandings, TotemSpirit, CreatedAt, LastPlayedAt
-		// We only need the first 7 fields for FCharacterInfo (CharacterId, skip AccountId, Name, Race, Class, skip Faction, Level)
 		if (CharFieldCount < 7)
 		{
-			UE_LOG(LogTemp, Error, TEXT("PacketDeserializer: Character has too few fields: %d"), CharFieldCount);
+			UE_LOG(LogTemp, Error, TEXT("PacketDeserializer: Character has too few fields: %d (expected at least 7)"), CharFieldCount);
 			return false;
 		}
 		
@@ -651,8 +664,8 @@ bool FPacketDeserializer::DeserializeCharacterListResponse(const TArray<uint8>& 
 		if (!ReadInt(InBytes, CharInfo.Level))
 			return false;
 		
-		// Skip remaining fields we don't need yet
-		for (int32 j = 7; j < CharFieldCount; j++)
+		// Skip remaining fields (7 through CharFieldCount-1)
+		for (int32 FieldIndex = 7; FieldIndex < CharFieldCount; FieldIndex++)
 		{
 			if (!SkipValue(InBytes))
 				return false;
@@ -697,20 +710,19 @@ bool FPacketDeserializer::DeserializeCreateCharacterResponse(const TArray<uint8>
 	
 	// Read Character (may be null/nil on failure)
 	uint8 NextByte;
-	if (!ReadByte(InBytes, NextByte))
+	if (!PeekByte(InBytes, NextByte))
 		return false;
 	
 	if (NextByte == MessagePackFormat::Nil)
 	{
-		// Character is null - creation failed
+		// Character is null - creation failed, consume the nil byte
+		ReadByte(InBytes, NextByte);
 		UE_LOG(LogTemp, Log, TEXT("PacketDeserializer: CreateCharacterResponse - Result: %d, Message: %s, Character: null"),
 			static_cast<int32>(OutPacket.Result), *OutPacket.Message);
 	}
 	else
 	{
-		// Backtrack and read character data
-		ReadPosition--;
-		
+		// Read character data
 		int32 CharFieldCount;
 		if (!ReadArrayHeader(InBytes, CharFieldCount))
 		{
@@ -720,7 +732,7 @@ bool FPacketDeserializer::DeserializeCreateCharacterResponse(const TArray<uint8>
 		
 		if (CharFieldCount < 7)
 		{
-			UE_LOG(LogTemp, Error, TEXT("PacketDeserializer: Character has too few fields: %d"), CharFieldCount);
+			UE_LOG(LogTemp, Error, TEXT("PacketDeserializer: Character has too few fields: %d (expected at least 7)"), CharFieldCount);
 			return false;
 		}
 		
@@ -756,8 +768,8 @@ bool FPacketDeserializer::DeserializeCreateCharacterResponse(const TArray<uint8>
 		if (!ReadInt(InBytes, OutPacket.Character.Level))
 			return false;
 		
-		// Skip extra fields
-		for (int32 i = 7; i < CharFieldCount; i++)
+		// Skip remaining fields (7 through CharFieldCount-1)
+		for (int32 FieldIndex = 7; FieldIndex < CharFieldCount; FieldIndex++)
 		{
 			if (!SkipValue(InBytes))
 				return false;
@@ -800,19 +812,19 @@ bool FPacketDeserializer::DeserializeSelectCharacterResponse(const TArray<uint8>
 	
 	// Read Character (may be null)
 	uint8 NextByte;
-	if (!ReadByte(InBytes, NextByte))
+	if (!PeekByte(InBytes, NextByte))
 		return false;
 	
 	if (NextByte == MessagePackFormat::Nil)
 	{
+		// Character is null, consume the nil byte
+		ReadByte(InBytes, NextByte);
 		UE_LOG(LogTemp, Log, TEXT("PacketDeserializer: SelectCharacterResponse - Result: %d, Message: %s, Character: null"),
 			static_cast<int32>(OutPacket.Result), *OutPacket.Message);
 	}
 	else
 	{
-		// Backtrack and read character
-		ReadPosition--;
-		
+		// Read character data
 		int32 CharFieldCount;
 		if (!ReadArrayHeader(InBytes, CharFieldCount))
 		{
@@ -822,7 +834,7 @@ bool FPacketDeserializer::DeserializeSelectCharacterResponse(const TArray<uint8>
 		
 		if (CharFieldCount < 7)
 		{
-			UE_LOG(LogTemp, Error, TEXT("PacketDeserializer: Character has too few fields: %d"), CharFieldCount);
+			UE_LOG(LogTemp, Error, TEXT("PacketDeserializer: Character has too few fields: %d (expected at least 7)"), CharFieldCount);
 			return false;
 		}
 		
@@ -858,8 +870,8 @@ bool FPacketDeserializer::DeserializeSelectCharacterResponse(const TArray<uint8>
 		if (!ReadInt(InBytes, OutPacket.Character.Level))
 			return false;
 		
-		// Skip extra fields
-		for (int32 i = 7; i < CharFieldCount; i++)
+		// Skip remaining fields (7 through CharFieldCount-1)
+		for (int32 FieldIndex = 7; FieldIndex < CharFieldCount; FieldIndex++)
 		{
 			if (!SkipValue(InBytes))
 				return false;

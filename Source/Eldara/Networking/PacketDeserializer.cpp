@@ -388,12 +388,14 @@ bool FPacketDeserializer::SkipValue(const TArray<uint8>& InBytes)
 	if ((Byte & 0xf0) == MessagePackFormat::FixArrayMask)
 	{
 		int32 Count = Byte & 0x0f;
-		for (int32 i = 0; i < Count; i++)
-		{
-			if (!SkipValue(InBytes))
-				return false;
-		}
-		return true;
+		return SkipArray(InBytes, Count);
+	}
+	
+	// FixMap (0x80 - 0x8f) - THIS IS THE 0x80 ERROR FIX!
+	if ((Byte & 0xf0) == MessagePackFormat::FixMapMask)
+	{
+		int32 Count = Byte & 0x0f;
+		return SkipMap(InBytes, Count);
 	}
 	
 	// Handle specific types
@@ -489,12 +491,7 @@ bool FPacketDeserializer::SkipValue(const TArray<uint8>& InBytes)
 			if (!ReadByte(InBytes, High) || !ReadByte(InBytes, Low))
 				return false;
 			int32 Count = (High << 8) | Low;
-			for (int32 i = 0; i < Count; i++)
-			{
-				if (!SkipValue(InBytes))
-					return false;
-			}
-			return true;
+			return SkipArray(InBytes, Count);
 		}
 		
 		case MessagePackFormat::Array32:
@@ -503,18 +500,199 @@ bool FPacketDeserializer::SkipValue(const TArray<uint8>& InBytes)
 			if (!ReadByte(InBytes, B1) || !ReadByte(InBytes, B2) || !ReadByte(InBytes, B3) || !ReadByte(InBytes, B4))
 				return false;
 			int32 Count = (B1 << 24) | (B2 << 16) | (B3 << 8) | B4;
-			for (int32 i = 0; i < Count; i++)
-			{
-				if (!SkipValue(InBytes))
-					return false;
-			}
-			return true;
+			return SkipArray(InBytes, Count);
+		}
+		
+		case MessagePackFormat::Map16:
+		{
+			uint8 High, Low;
+			if (!ReadByte(InBytes, High) || !ReadByte(InBytes, Low))
+				return false;
+			int32 Count = (High << 8) | Low;
+			return SkipMap(InBytes, Count);
+		}
+		
+		case MessagePackFormat::Map32:
+		{
+			uint8 B1, B2, B3, B4;
+			if (!ReadByte(InBytes, B1) || !ReadByte(InBytes, B2) || !ReadByte(InBytes, B3) || !ReadByte(InBytes, B4))
+				return false;
+			int32 Count = (B1 << 24) | (B2 << 16) | (B3 << 8) | B4;
+			return SkipMap(InBytes, Count);
 		}
 		
 		default:
 			UE_LOG(LogTemp, Error, TEXT("PacketDeserializer: Cannot skip unknown MessagePack type: 0x%02X"), Byte);
 			return false;
 	}
+}
+
+bool FPacketDeserializer::SkipArray(const TArray<uint8>& InBytes, int32 ArraySize)
+{
+	for (int32 i = 0; i < ArraySize; i++)
+	{
+		if (!SkipValue(InBytes))
+			return false;
+	}
+	return true;
+}
+
+bool FPacketDeserializer::SkipMap(const TArray<uint8>& InBytes, int32 MapSize)
+{
+	// Map has key-value pairs, so skip 2x the size
+	for (int32 i = 0; i < MapSize * 2; i++)
+	{
+		if (!SkipValue(InBytes))
+			return false;
+	}
+	return true;
+}
+
+bool FPacketDeserializer::ReadCharacterPosition(const TArray<uint8>& InBytes, FVector& OutPosition, FRotator& OutRotation, FString& OutZoneId)
+{
+	// CharacterPosition is array of 6 fields: [ZoneId, X, Y, Z, RotationYaw, RotationPitch]
+	int32 FieldCount;
+	if (!ReadArrayHeader(InBytes, FieldCount) || FieldCount != 6)
+	{
+		UE_LOG(LogTemp, Error, TEXT("PacketDeserializer: Invalid CharacterPosition field count: %d"), FieldCount);
+		return false;
+	}
+	
+	if (!ReadString(InBytes, OutZoneId))
+		return false;
+	
+	float X, Y, Z, Yaw, Pitch;
+	if (!ReadFloat(InBytes, X) || !ReadFloat(InBytes, Y) || !ReadFloat(InBytes, Z))
+		return false;
+	if (!ReadFloat(InBytes, Yaw) || !ReadFloat(InBytes, Pitch))
+		return false;
+	
+	OutPosition = FVector(X, Y, Z);
+	OutRotation = FRotator(Pitch, Yaw, 0.0f);
+	
+	return true;
+}
+
+bool FPacketDeserializer::ReadCharacterStats(const TArray<uint8>& InBytes, int32& OutCurrentHealth, int32& OutMaxHealth, int32& OutLevel)
+{
+	// CharacterStats is array of 18 fields
+	// We only care about: MaxHealth (5), CurrentHealth (6)
+	int32 FieldCount;
+	if (!ReadArrayHeader(InBytes, FieldCount) || FieldCount != 18)
+	{
+		UE_LOG(LogTemp, Error, TEXT("PacketDeserializer: Invalid CharacterStats field count: %d"), FieldCount);
+		return false;
+	}
+	
+	// Skip fields 0-4 (Strength, Agility, Intellect, Stamina, Willpower)
+	for (int32 i = 0; i < 5; i++)
+	{
+		if (!SkipValue(InBytes))
+			return false;
+	}
+	
+	// Read MaxHealth (5), CurrentHealth (6)
+	if (!ReadInt(InBytes, OutMaxHealth) || !ReadInt(InBytes, OutCurrentHealth))
+		return false;
+	
+	// Skip remaining fields (7-17)
+	for (int32 i = 7; i < 18; i++)
+	{
+		if (!SkipValue(InBytes))
+			return false;
+	}
+	
+	OutLevel = 1; // Will be set from outer CharacterData Level field
+	
+	return true;
+}
+
+bool FPacketDeserializer::ReadCharacterData(const TArray<uint8>& InBytes, FCharacterInfo& OutCharacter)
+{
+	// CharacterData is array of 16 fields
+	int32 FieldCount;
+	if (!ReadArrayHeader(InBytes, FieldCount) || FieldCount != 16)
+	{
+		UE_LOG(LogTemp, Error, TEXT("PacketDeserializer: Invalid CharacterData field count: %d (expected 16)"), FieldCount);
+		return false;
+	}
+	
+	// Field 0: CharacterId
+	if (!ReadInt64(InBytes, OutCharacter.CharacterId))
+		return false;
+	
+	// Field 1: AccountId (skip, we don't need it)
+	if (!SkipValue(InBytes))
+		return false;
+	
+	// Field 2: Name
+	if (!ReadString(InBytes, OutCharacter.Name))
+		return false;
+	
+	// Field 3: Race
+	int32 RaceInt;
+	if (!ReadInt(InBytes, RaceInt))
+		return false;
+	OutCharacter.Race = static_cast<ERace>(RaceInt);
+	
+	// Field 4: Class
+	int32 ClassInt;
+	if (!ReadInt(InBytes, ClassInt))
+		return false;
+	OutCharacter.Class = static_cast<EClass>(ClassInt);
+	
+	// Field 5: Faction (skip for now)
+	if (!SkipValue(InBytes))
+		return false;
+	
+	// Field 6: Level
+	if (!ReadInt(InBytes, OutCharacter.Level))
+		return false;
+	
+	// Field 7: ExperiencePoints (skip)
+	if (!SkipValue(InBytes))
+		return false;
+	
+	// Field 8: CharacterStats (nested object, 18 fields)
+	int32 CurrentHealth, MaxHealth, Level;
+	if (!ReadCharacterStats(InBytes, CurrentHealth, MaxHealth, Level))
+		return false;
+	
+	// Field 9: CharacterPosition (nested object, 6 fields)
+	FVector Position;
+	FRotator Rotation;
+	FString ZoneId;
+	if (!ReadCharacterPosition(InBytes, Position, Rotation, ZoneId))
+		return false;
+	
+	// Field 10: CharacterAppearance (nested object, 10 fields) - skip for now
+	if (!SkipValue(InBytes))
+		return false;
+	
+	// Field 11: EquipmentSlots (nested object, 15 fields) - skip for now
+	if (!SkipValue(InBytes))
+		return false;
+	
+	// Field 12: FactionStandings (Map) - skip
+	if (!SkipValue(InBytes))
+		return false;
+	
+	// Field 13: TotemSpirit (nullable int) - skip for now
+	if (!SkipValue(InBytes))
+		return false;
+	
+	// Field 14: CreatedAt (DateTime/timestamp) - skip
+	if (!SkipValue(InBytes))
+		return false;
+	
+	// Field 15: LastPlayedAt (DateTime/timestamp) - skip
+	if (!SkipValue(InBytes))
+		return false;
+	
+	UE_LOG(LogTemp, Log, TEXT("PacketDeserializer: Successfully read CharacterData - ID: %lld, Name: %s, Race: %d, Class: %d, Level: %d"),
+		OutCharacter.CharacterId, *OutCharacter.Name, (int32)OutCharacter.Race, (int32)OutCharacter.Class, OutCharacter.Level);
+	
+	return true;
 }
 
 bool FPacketDeserializer::Deserialize(const TArray<uint8>& InBytes, int32& OutPacketType)
@@ -710,70 +888,21 @@ bool FPacketDeserializer::DeserializeCreateCharacterResponse(const TArray<uint8>
 	
 	// Read Character (may be null/nil on failure)
 	uint8 NextByte;
-	if (!PeekByte(InBytes, NextByte))
+	if (!ReadByte(InBytes, NextByte))
 		return false;
 	
 	if (NextByte == MessagePackFormat::Nil)
 	{
-		// Character is null - creation failed, consume the nil byte
-		ReadByte(InBytes, NextByte);
 		UE_LOG(LogTemp, Log, TEXT("PacketDeserializer: CreateCharacterResponse - Result: %d, Message: %s, Character: null"),
 			static_cast<int32>(OutPacket.Result), *OutPacket.Message);
 	}
 	else
 	{
-		// Read character data
-		int32 CharFieldCount;
-		if (!ReadArrayHeader(InBytes, CharFieldCount))
-		{
-			UE_LOG(LogTemp, Error, TEXT("PacketDeserializer: Invalid character data"));
-			return false;
-		}
+		// Backtrack and read full CharacterData
+		ReadPosition--;
 		
-		if (CharFieldCount < 7)
-		{
-			UE_LOG(LogTemp, Error, TEXT("PacketDeserializer: Character has too few fields: %d (expected at least 7)"), CharFieldCount);
+		if (!ReadCharacterData(InBytes, OutPacket.Character))
 			return false;
-		}
-		
-		// Field 0: CharacterId
-		if (!ReadInt64(InBytes, OutPacket.Character.CharacterId))
-			return false;
-		
-		// Field 1: AccountId (skip)
-		if (!SkipValue(InBytes))
-			return false;
-		
-		// Field 2: Name
-		if (!ReadString(InBytes, OutPacket.Character.Name))
-			return false;
-		
-		// Field 3: Race
-		int32 RaceInt;
-		if (!ReadInt(InBytes, RaceInt))
-			return false;
-		OutPacket.Character.Race = static_cast<ERace>(RaceInt);
-		
-		// Field 4: Class
-		int32 ClassInt;
-		if (!ReadInt(InBytes, ClassInt))
-			return false;
-		OutPacket.Character.Class = static_cast<EClass>(ClassInt);
-		
-		// Field 5: Faction (skip)
-		if (!SkipValue(InBytes))
-			return false;
-		
-		// Field 6: Level
-		if (!ReadInt(InBytes, OutPacket.Character.Level))
-			return false;
-		
-		// Skip remaining fields (7 through CharFieldCount-1)
-		for (int32 FieldIndex = 7; FieldIndex < CharFieldCount; FieldIndex++)
-		{
-			if (!SkipValue(InBytes))
-				return false;
-		}
 		
 		UE_LOG(LogTemp, Log, TEXT("PacketDeserializer: CreateCharacterResponse - Result: %d, CharacterId: %lld, Name: %s"),
 			static_cast<int32>(OutPacket.Result), OutPacket.Character.CharacterId, *OutPacket.Character.Name);
@@ -812,70 +941,21 @@ bool FPacketDeserializer::DeserializeSelectCharacterResponse(const TArray<uint8>
 	
 	// Read Character (may be null)
 	uint8 NextByte;
-	if (!PeekByte(InBytes, NextByte))
+	if (!ReadByte(InBytes, NextByte))
 		return false;
 	
 	if (NextByte == MessagePackFormat::Nil)
 	{
-		// Character is null, consume the nil byte
-		ReadByte(InBytes, NextByte);
 		UE_LOG(LogTemp, Log, TEXT("PacketDeserializer: SelectCharacterResponse - Result: %d, Message: %s, Character: null"),
 			static_cast<int32>(OutPacket.Result), *OutPacket.Message);
 	}
 	else
 	{
-		// Read character data
-		int32 CharFieldCount;
-		if (!ReadArrayHeader(InBytes, CharFieldCount))
-		{
-			UE_LOG(LogTemp, Error, TEXT("PacketDeserializer: Invalid character data"));
-			return false;
-		}
+		// Backtrack and read full CharacterData
+		ReadPosition--;
 		
-		if (CharFieldCount < 7)
-		{
-			UE_LOG(LogTemp, Error, TEXT("PacketDeserializer: Character has too few fields: %d (expected at least 7)"), CharFieldCount);
+		if (!ReadCharacterData(InBytes, OutPacket.Character))
 			return false;
-		}
-		
-		// Field 0: CharacterId
-		if (!ReadInt64(InBytes, OutPacket.Character.CharacterId))
-			return false;
-		
-		// Field 1: AccountId (skip)
-		if (!SkipValue(InBytes))
-			return false;
-		
-		// Field 2: Name
-		if (!ReadString(InBytes, OutPacket.Character.Name))
-			return false;
-		
-		// Field 3: Race
-		int32 RaceInt;
-		if (!ReadInt(InBytes, RaceInt))
-			return false;
-		OutPacket.Character.Race = static_cast<ERace>(RaceInt);
-		
-		// Field 4: Class
-		int32 ClassInt;
-		if (!ReadInt(InBytes, ClassInt))
-			return false;
-		OutPacket.Character.Class = static_cast<EClass>(ClassInt);
-		
-		// Field 5: Faction (skip)
-		if (!SkipValue(InBytes))
-			return false;
-		
-		// Field 6: Level
-		if (!ReadInt(InBytes, OutPacket.Character.Level))
-			return false;
-		
-		// Skip remaining fields (7 through CharFieldCount-1)
-		for (int32 FieldIndex = 7; FieldIndex < CharFieldCount; FieldIndex++)
-		{
-			if (!SkipValue(InBytes))
-				return false;
-		}
 		
 		UE_LOG(LogTemp, Log, TEXT("PacketDeserializer: SelectCharacterResponse - Result: %d, CharacterId: %lld, Name: %s"),
 			static_cast<int32>(OutPacket.Result), OutPacket.Character.CharacterId, *OutPacket.Character.Name);

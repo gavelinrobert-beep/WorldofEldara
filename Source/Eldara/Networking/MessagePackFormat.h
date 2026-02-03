@@ -55,4 +55,14 @@ namespace MessagePackFormat
 	
 	// Nil
 	constexpr uint8 Nil = 0xc0;
+	
+	// Extension types (timestamps, custom types)
+	constexpr uint8 FixExt1 = 0xd4;
+	constexpr uint8 FixExt2 = 0xd5;
+	constexpr uint8 FixExt4 = 0xd6;
+	constexpr uint8 FixExt8 = 0xd7;  // DateTime/timestamp (8-byte)
+	constexpr uint8 FixExt16 = 0xd8;
+	constexpr uint8 Ext8 = 0xc7;
+	constexpr uint8 Ext16 = 0xc8;
+	constexpr uint8 Ext32 = 0xc9;
 }

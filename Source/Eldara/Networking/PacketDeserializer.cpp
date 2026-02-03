@@ -602,19 +602,19 @@ bool FPacketDeserializer::ReadCharacterData(const TArray<uint8>& InBytes, FChara
 	if (!SkipValue(InBytes))
 		return false;
 	
-	// Field 8: CharacterStats (nested object, 18 fields) - skip entire object
+	// Field 8: CharacterStats (nested object) - skip entire object
 	if (!SkipValue(InBytes))
 		return false;
 	
-	// Field 9: CharacterPosition (nested object, 6 fields) - skip entire object
+	// Field 9: CharacterPosition (nested object) - skip entire object
 	if (!SkipValue(InBytes))
 		return false;
 	
-	// Field 10: CharacterAppearance (nested object, 10 fields) - skip entire object
+	// Field 10: CharacterAppearance (nested object) - skip entire object
 	if (!SkipValue(InBytes))
 		return false;
 	
-	// Field 11: EquipmentSlots (nested object, 15 fields) - skip entire object
+	// Field 11: EquipmentSlots (nested object) - skip entire object
 	if (!SkipValue(InBytes))
 		return false;
 	

@@ -584,7 +584,7 @@ bool FPacketDeserializer::SkipValue(const TArray<uint8>& InBytes)
 			uint8 B1, B2, B3, B4;
 			if (!ReadByte(InBytes, B1) || !ReadByte(InBytes, B2) || !ReadByte(InBytes, B3) || !ReadByte(InBytes, B4))
 				return false;
-			int32 Length = (B1 << 24) | (B2 << 16) | (B3 << 8) | B4;
+			uint32 Length = (static_cast<uint32>(B1) << 24) | (B2 << 16) | (B3 << 8) | B4;
 			ReadPosition += 1 + Length; // type byte + data
 			return ReadPosition <= InBytes.Num();
 		}

@@ -1,0 +1,209 @@
+{
+  "BlueprintName": "BP_ConnectTest",
+  "BlueprintType": "Actor",
+  "Description": "Test Blueprint for automatic character creation flow after login",
+  "EventGraph": {
+    "Nodes": [
+      {
+        "NodeType": "Event",
+        "EventName": "BeginPlay",
+        "Position": {"X": 0, "Y": 0},
+        "Outputs": ["Exec"]
+      },
+      {
+        "NodeType": "GetGameInstance",
+        "Position": {"X": 200, "Y": 0},
+        "Inputs": ["Exec"],
+        "Outputs": ["Exec", "GameInstance"]
+      },
+      {
+        "NodeType": "CastTo",
+        "CastToClass": "EldaraGameInstance",
+        "Position": {"X": 400, "Y": 0},
+        "Inputs": ["Exec", "Object"],
+        "Outputs": ["Exec", "AsEldaraGameInstance"]
+      },
+      {
+        "NodeType": "FunctionCall",
+        "Function": "GetNetworkSubsystem",
+        "ObjectClass": "EldaraGameInstance",
+        "Position": {"X": 600, "Y": 0},
+        "Inputs": ["Exec", "Target"],
+        "Outputs": ["Exec", "ReturnValue"]
+      },
+      {
+        "NodeType": "FunctionCall",
+        "Function": "ConnectToServer",
+        "ObjectClass": "EldaraNetworkSubsystem",
+        "Position": {"X": 800, "Y": 0},
+        "Inputs": {
+          "Exec": true,
+          "Target": "NetworkSubsystem",
+          "IpAddress": "127.0.0.1",
+          "Port": 7777
+        },
+        "Outputs": ["Exec", "ReturnValue"]
+      },
+      {
+        "NodeType": "Delay",
+        "DelayDuration": 0.5,
+        "Position": {"X": 1000, "Y": 0},
+        "Inputs": ["Exec"],
+        "Outputs": ["Exec"]
+      },
+      {
+        "NodeType": "FunctionCall",
+        "Function": "SendLogin",
+        "ObjectClass": "EldaraNetworkSubsystem",
+        "Position": {"X": 1200, "Y": 0},
+        "Inputs": {
+          "Exec": true,
+          "Target": "NetworkSubsystem",
+          "Username": "testuser",
+          "PasswordHash": "testhash"
+        },
+        "Outputs": ["Exec"]
+      },
+      {
+        "NodeType": "Delay",
+        "DelayDuration": 2.0,
+        "Position": {"X": 1400, "Y": 0},
+        "Comment": "Wait for login to complete",
+        "Inputs": ["Exec"],
+        "Outputs": ["Exec"]
+      },
+      {
+        "NodeType": "GetGameInstance",
+        "Position": {"X": 1600, "Y": 0},
+        "Inputs": ["Exec"],
+        "Outputs": ["Exec", "GameInstance"]
+      },
+      {
+        "NodeType": "CastTo",
+        "CastToClass": "EldaraGameInstance",
+        "Position": {"X": 1800, "Y": 0},
+        "Inputs": ["Exec", "Object"],
+        "Outputs": ["Exec", "AsEldaraGameInstance"]
+      },
+      {
+        "NodeType": "FunctionCall",
+        "Function": "GetNetworkSubsystem",
+        "ObjectClass": "EldaraGameInstance",
+        "Position": {"X": 2000, "Y": 0},
+        "Inputs": ["Exec", "Target"],
+        "Outputs": ["Exec", "ReturnValue"]
+      },
+      {
+        "NodeType": "FunctionCall",
+        "Function": "SendCharacterListRequest",
+        "ObjectClass": "EldaraNetworkSubsystem",
+        "Position": {"X": 2200, "Y": 0},
+        "Comment": "NEW: Request character list",
+        "Inputs": {
+          "Exec": true,
+          "Target": "NetworkSubsystem"
+        },
+        "Outputs": ["Exec"]
+      },
+      {
+        "NodeType": "Delay",
+        "DelayDuration": 2.0,
+        "Position": {"X": 2400, "Y": 0},
+        "Comment": "Wait for server response (assume no characters)",
+        "Inputs": ["Exec"],
+        "Outputs": ["Exec"]
+      },
+      {
+        "NodeType": "MakeStruct",
+        "StructType": "CharacterAppearance",
+        "Position": {"X": 2600, "Y": 100},
+        "Inputs": {
+          "FaceType": 0,
+          "HairStyle": 0,
+          "HairColor": 0,
+          "SkinTone": 0,
+          "EyeColor": 0,
+          "Height": 1.0,
+          "BuildType": 0.5,
+          "FurPattern": 0,
+          "FurColor": 0,
+          "VoidIntensity": 0.0
+        },
+        "Outputs": ["CharacterAppearance"]
+      },
+      {
+        "NodeType": "FunctionCall",
+        "Function": "SendCreateCharacter",
+        "ObjectClass": "EldaraNetworkSubsystem",
+        "Position": {"X": 2600, "Y": 0},
+        "Comment": "NEW: Create default character 'Hero'",
+        "Inputs": {
+          "Exec": true,
+          "Target": "NetworkSubsystem",
+          "Name": "Hero",
+          "Race": "Sylvaen",
+          "Class": "MemoryWarden",
+          "Faction": "VerdantCircles",
+          "TotemSpirit": "None",
+          "Appearance": "From MakeStruct node"
+        },
+        "Outputs": ["Exec"]
+      },
+      {
+        "NodeType": "Delay",
+        "DelayDuration": 2.0,
+        "Position": {"X": 2800, "Y": 0},
+        "Comment": "Wait for character creation",
+        "Inputs": ["Exec"],
+        "Outputs": ["Exec"]
+      },
+      {
+        "NodeType": "FunctionCall",
+        "Function": "SendSelectCharacter",
+        "ObjectClass": "EldaraNetworkSubsystem",
+        "Position": {"X": 3000, "Y": 0},
+        "Comment": "NEW: Select character ID 1",
+        "Inputs": {
+          "Exec": true,
+          "Target": "NetworkSubsystem",
+          "CharacterId": 1
+        },
+        "Outputs": ["Exec"]
+      },
+      {
+        "NodeType": "PrintString",
+        "Position": {"X": 3200, "Y": 0},
+        "Inputs": {
+          "Exec": true,
+          "InString": "Entering world with character...",
+          "Duration": 5.0,
+          "TextColor": {"R": 0, "G": 255, "B": 0, "A": 255}
+        },
+        "Outputs": ["Exec"]
+      }
+    ],
+    "Comments": [
+      "This Blueprint automatically connects to the server, logs in, and creates a test character.",
+      "The character creation flow is hardcoded for POC - production should wait for server responses.",
+      "Expected log output:",
+      "  - EldaraNetworkSubsystem: Connected to 127.0.0.1:7777",
+      "  - EldaraNetworkSubsystem: Login request sent for user: testuser",
+      "  - EldaraNetworkSubsystem: Character list request sent",
+      "  - EldaraNetworkSubsystem: Create character request sent for 'Hero'",
+      "  - EldaraNetworkSubsystem: Select character request sent (ID: 1)",
+      "  - Entering world with character..."
+    ]
+  },
+  "EnumValues": {
+    "ERace::Sylvaen": 1,
+    "EClass::MemoryWarden": 1,
+    "EFaction::VerdantCircles": 1,
+    "ETotemSpirit::None": 0
+  },
+  "Notes": [
+    "This is a specification document, not an actual Blueprint asset.",
+    "Use this as a reference when creating the Blueprint manually in Unreal Editor.",
+    "All node connections should follow the sequence indicated by the Position.X values.",
+    "The NetworkSubsystem reference should be cached after the first retrieval to avoid redundant calls."
+  ]
+}

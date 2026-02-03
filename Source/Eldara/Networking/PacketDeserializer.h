@@ -54,6 +54,17 @@ private:
 	static bool SkipValue(const TArray<uint8>& InBytes);
 	
 	/**
+	 * Skip unknown/unneeded MessagePack maps and arrays
+	 */
+	static bool SkipMap(const TArray<uint8>& InBytes, int32 MapSize);
+	static bool SkipArray(const TArray<uint8>& InBytes, int32 ArraySize);
+	
+	/**
+	 * Read CharacterData (full 16-field object)
+	 */
+	static bool ReadCharacterData(const TArray<uint8>& InBytes, FCharacterInfo& OutCharacter);
+	
+	/**
 	 * Helper to peek at a byte without advancing read position
 	 */
 	static bool PeekByte(const TArray<uint8>& InBytes, uint8& OutByte);

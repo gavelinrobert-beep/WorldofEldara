@@ -44,6 +44,11 @@ namespace MessagePackFormat
 	constexpr uint8 Array16 = 0xdc;
 	constexpr uint8 Array32 = 0xdd;
 	
+	// Maps
+	constexpr uint8 FixMapMask = 0x80;  // 0x80 - 0x8f (0 to 15 key-value pairs)
+	constexpr uint8 Map16 = 0xde;
+	constexpr uint8 Map32 = 0xdf;
+	
 	// Boolean
 	constexpr uint8 False = 0xc2;
 	constexpr uint8 True = 0xc3;

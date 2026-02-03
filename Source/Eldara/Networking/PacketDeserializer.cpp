@@ -548,65 +548,6 @@ bool FPacketDeserializer::SkipMap(const TArray<uint8>& InBytes, int32 MapSize)
 	return true;
 }
 
-bool FPacketDeserializer::ReadCharacterPosition(const TArray<uint8>& InBytes, FVector& OutPosition, FRotator& OutRotation, FString& OutZoneId)
-{
-	// CharacterPosition is array of 6 fields: [ZoneId, X, Y, Z, RotationYaw, RotationPitch]
-	int32 FieldCount;
-	if (!ReadArrayHeader(InBytes, FieldCount) || FieldCount != 6)
-	{
-		UE_LOG(LogTemp, Error, TEXT("PacketDeserializer: Invalid CharacterPosition field count: %d"), FieldCount);
-		return false;
-	}
-	
-	if (!ReadString(InBytes, OutZoneId))
-		return false;
-	
-	float X, Y, Z, Yaw, Pitch;
-	if (!ReadFloat(InBytes, X) || !ReadFloat(InBytes, Y) || !ReadFloat(InBytes, Z))
-		return false;
-	if (!ReadFloat(InBytes, Yaw) || !ReadFloat(InBytes, Pitch))
-		return false;
-	
-	OutPosition = FVector(X, Y, Z);
-	OutRotation = FRotator(Pitch, Yaw, 0.0f);
-	
-	return true;
-}
-
-bool FPacketDeserializer::ReadCharacterStats(const TArray<uint8>& InBytes, int32& OutCurrentHealth, int32& OutMaxHealth, int32& OutLevel)
-{
-	// CharacterStats is array of 18 fields
-	// We only care about: MaxHealth (5), CurrentHealth (6)
-	int32 FieldCount;
-	if (!ReadArrayHeader(InBytes, FieldCount) || FieldCount != 18)
-	{
-		UE_LOG(LogTemp, Error, TEXT("PacketDeserializer: Invalid CharacterStats field count: %d"), FieldCount);
-		return false;
-	}
-	
-	// Skip fields 0-4 (Strength, Agility, Intellect, Stamina, Willpower)
-	for (int32 i = 0; i < 5; i++)
-	{
-		if (!SkipValue(InBytes))
-			return false;
-	}
-	
-	// Read MaxHealth (5), CurrentHealth (6)
-	if (!ReadInt(InBytes, OutMaxHealth) || !ReadInt(InBytes, OutCurrentHealth))
-		return false;
-	
-	// Skip remaining fields (7-17)
-	for (int32 i = 7; i < 18; i++)
-	{
-		if (!SkipValue(InBytes))
-			return false;
-	}
-	
-	OutLevel = 1; // Will be set from outer CharacterData Level field
-	
-	return true;
-}
-
 bool FPacketDeserializer::ReadCharacterData(const TArray<uint8>& InBytes, FCharacterInfo& OutCharacter)
 {
 	// CharacterData is array of 16 fields
@@ -653,23 +594,19 @@ bool FPacketDeserializer::ReadCharacterData(const TArray<uint8>& InBytes, FChara
 	if (!SkipValue(InBytes))
 		return false;
 	
-	// Field 8: CharacterStats (nested object, 18 fields)
-	int32 CurrentHealth, MaxHealth, Level;
-	if (!ReadCharacterStats(InBytes, CurrentHealth, MaxHealth, Level))
-		return false;
-	
-	// Field 9: CharacterPosition (nested object, 6 fields)
-	FVector Position;
-	FRotator Rotation;
-	FString ZoneId;
-	if (!ReadCharacterPosition(InBytes, Position, Rotation, ZoneId))
-		return false;
-	
-	// Field 10: CharacterAppearance (nested object, 10 fields) - skip for now
+	// Field 8: CharacterStats (nested object, 18 fields) - skip entire object
 	if (!SkipValue(InBytes))
 		return false;
 	
-	// Field 11: EquipmentSlots (nested object, 15 fields) - skip for now
+	// Field 9: CharacterPosition (nested object, 6 fields) - skip entire object
+	if (!SkipValue(InBytes))
+		return false;
+	
+	// Field 10: CharacterAppearance (nested object, 10 fields) - skip entire object
+	if (!SkipValue(InBytes))
+		return false;
+	
+	// Field 11: EquipmentSlots (nested object, 15 fields) - skip entire object
 	if (!SkipValue(InBytes))
 		return false;
 	

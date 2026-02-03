@@ -888,19 +888,19 @@ bool FPacketDeserializer::DeserializeCreateCharacterResponse(const TArray<uint8>
 	
 	// Read Character (may be null/nil on failure)
 	uint8 NextByte;
-	if (!ReadByte(InBytes, NextByte))
+	if (!PeekByte(InBytes, NextByte))
 		return false;
 	
 	if (NextByte == MessagePackFormat::Nil)
 	{
+		// Character is null - consume the nil byte
+		ReadByte(InBytes, NextByte);
 		UE_LOG(LogTemp, Log, TEXT("PacketDeserializer: CreateCharacterResponse - Result: %d, Message: %s, Character: null"),
 			static_cast<int32>(OutPacket.Result), *OutPacket.Message);
 	}
 	else
 	{
-		// Backtrack and read full CharacterData
-		ReadPosition--;
-		
+		// Read full CharacterData (array header will be read by ReadCharacterData)
 		if (!ReadCharacterData(InBytes, OutPacket.Character))
 			return false;
 		
@@ -941,19 +941,19 @@ bool FPacketDeserializer::DeserializeSelectCharacterResponse(const TArray<uint8>
 	
 	// Read Character (may be null)
 	uint8 NextByte;
-	if (!ReadByte(InBytes, NextByte))
+	if (!PeekByte(InBytes, NextByte))
 		return false;
 	
 	if (NextByte == MessagePackFormat::Nil)
 	{
+		// Character is null - consume the nil byte
+		ReadByte(InBytes, NextByte);
 		UE_LOG(LogTemp, Log, TEXT("PacketDeserializer: SelectCharacterResponse - Result: %d, Message: %s, Character: null"),
 			static_cast<int32>(OutPacket.Result), *OutPacket.Message);
 	}
 	else
 	{
-		// Backtrack and read full CharacterData
-		ReadPosition--;
-		
+		// Read full CharacterData (array header will be read by ReadCharacterData)
 		if (!ReadCharacterData(InBytes, OutPacket.Character))
 			return false;
 		

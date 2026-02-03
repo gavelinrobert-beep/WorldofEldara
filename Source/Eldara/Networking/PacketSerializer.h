@@ -35,6 +35,21 @@ public:
 			SerializeLoginRequest(static_cast<const FLoginRequest&>(Packet), OutBytes);
 			return true;
 		}
+		else if constexpr (std::is_same_v<T, FCharacterListRequest>)
+		{
+			SerializeCharacterListRequest(static_cast<const FCharacterListRequest&>(Packet), OutBytes);
+			return true;
+		}
+		else if constexpr (std::is_same_v<T, FCreateCharacterRequest>)
+		{
+			SerializeCreateCharacterRequest(static_cast<const FCreateCharacterRequest&>(Packet), OutBytes);
+			return true;
+		}
+		else if constexpr (std::is_same_v<T, FSelectCharacterRequest>)
+		{
+			SerializeSelectCharacterRequest(static_cast<const FSelectCharacterRequest&>(Packet), OutBytes);
+			return true;
+		}
 		// Add more packet types here as they are implemented
 		// else if constexpr (std::is_same_v<T, FCharacterListRequest>)
 		// {
@@ -110,6 +125,10 @@ private:
 	 * @param OutBytes Output buffer
 	 */
 	static void SerializeLoginRequest(const FLoginRequest& Packet, TArray<uint8>& OutBytes);
+
+	static void SerializeCharacterListRequest(const FCharacterListRequest& Packet, TArray<uint8>& OutBytes);
+	static void SerializeCreateCharacterRequest(const FCreateCharacterRequest& Packet, TArray<uint8>& OutBytes);
+	static void SerializeSelectCharacterRequest(const FSelectCharacterRequest& Packet, TArray<uint8>& OutBytes);
 
 	/**
 	 * Determine the packet type from the base packet

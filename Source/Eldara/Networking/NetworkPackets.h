@@ -71,9 +71,8 @@ USTRUCT(BlueprintType)
 struct FCharacterListRequest : public FPacketBase
 {
 	GENERATED_BODY()
-
-	UPROPERTY(BlueprintReadWrite, Category = "Network")
-	int64 AccountId = 0;
+	
+	FCharacterListRequest() { }
 };
 
 USTRUCT(BlueprintType)
@@ -100,13 +99,13 @@ struct FCreateCharacterRequest : public FPacketBase
 	FString Name;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
-	ERace Race = ERace::None;
+	ERace Race = ERace::Sylvaen;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
-	EClass Class = EClass::None;
+	EClass Class = EClass::MemoryWarden;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
-	EFaction Faction = EFaction::Neutral;
+	EFaction Faction = EFaction::VerdantCircles;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
 	ETotemSpirit TotemSpirit = ETotemSpirit::None;

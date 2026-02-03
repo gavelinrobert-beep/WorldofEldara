@@ -124,6 +124,10 @@ void UEldaraNetworkSubsystem::Disconnect()
 		ConnectionSocket = nullptr;
 	}
 	
+	// Clear receive buffers
+	ReceiveBuffer.Empty();
+	ExpectedPacketSize = 0;
+	
 	bIsConnected = false;
 	UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: Disconnected"));
 }

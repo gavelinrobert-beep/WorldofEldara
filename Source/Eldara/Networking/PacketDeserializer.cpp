@@ -555,7 +555,8 @@ bool FPacketDeserializer::SkipMap(const TArray<uint8>& InBytes, int32 MapSize)
 bool FPacketDeserializer::ReadCharacterData(const TArray<uint8>& InBytes, FCharacterInfo& OutCharacter)
 {
 	// CharacterData is array of at least 16 fields
-	// NOTE: This must match the C# server's CharacterData structure.
+	// NOTE: This must match the C# server's CharacterData structure in 
+	// Shared/WorldofEldara.Shared/Data/Character/CharacterData.cs
 	// We require at least 16 fields but allow more for forward compatibility.
 	constexpr int32 MinimumCharacterDataFields = 16;
 	int32 FieldCount;

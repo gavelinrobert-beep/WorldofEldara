@@ -139,10 +139,16 @@ void UEldaraNetworkSubsystem::CheckForData()
 		return;
 	}
 	
+	// === ADD THIS LOG ===
+	UE_LOG(LogTemp, VeryVerbose, TEXT("EldaraNetworkSubsystem: CheckForData - checking for data..."));
+	
 	// Check if there's pending data
 	uint32 PendingDataSize = 0;
 	if (ConnectionSocket->HasPendingData(PendingDataSize))
 	{
+		// === ADD THIS LOG ===
+		UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: HasPendingData returned TRUE - %d bytes pending"), PendingDataSize);
+		
 		// Allocate buffer for received data
 		TArray<uint8> ReceivedData;
 		ReceivedData.SetNumUninitialized(PendingDataSize);
@@ -151,19 +157,33 @@ void UEldaraNetworkSubsystem::CheckForData()
 		int32 BytesRead = 0;
 		if (ConnectionSocket->Recv(ReceivedData.GetData(), PendingDataSize, BytesRead))
 		{
+			// === ADD THIS LOG ===
+			UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: Successfully read %d bytes from socket"), BytesRead);
+			
 			if (BytesRead > 0)
 			{
+				// === ADD THIS LOG ===
+				UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: Appending %d bytes to ReceiveBuffer (current size: %d)"), 
+					BytesRead, ReceiveBuffer.Num());
+				
 				// Append to receive buffer
 				ReceiveBuffer.Append(ReceivedData.GetData(), BytesRead);
 				
 				// Process complete packets from buffer
 				while (true)
 				{
+					// === ADD THIS LOG ===
+					UE_LOG(LogTemp, VeryVerbose, TEXT("EldaraNetworkSubsystem: ReceiveBuffer has %d bytes, ExpectedPacketSize: %d"), 
+						ReceiveBuffer.Num(), ExpectedPacketSize);
+					
 					// If we don't have an expected packet size yet, try to read the length prefix
 					if (ExpectedPacketSize == 0)
 					{
 						if (ReceiveBuffer.Num() < LengthPrefixSize)
 						{
+							// === ADD THIS LOG ===
+							UE_LOG(LogTemp, VeryVerbose, TEXT("EldaraNetworkSubsystem: Waiting for length prefix (%d/%d bytes)"), 
+								ReceiveBuffer.Num(), LengthPrefixSize);
 							// Not enough data for length prefix yet
 							break;
 						}
@@ -171,6 +191,9 @@ void UEldaraNetworkSubsystem::CheckForData()
 						// Read 4-byte length prefix (Little Endian)
 						ExpectedPacketSize = ReceiveBuffer[0] | (ReceiveBuffer[1] << 8) | 
 						                    (ReceiveBuffer[2] << 16) | (ReceiveBuffer[3] << 24);
+						
+						// === ADD THIS LOG ===
+						UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: Read length prefix - expecting %d byte packet"), ExpectedPacketSize);
 						
 						// Validate packet size
 						if (ExpectedPacketSize <= 0 || ExpectedPacketSize > MaxPacketSize)
@@ -180,34 +203,57 @@ void UEldaraNetworkSubsystem::CheckForData()
 							return;
 						}
 						
+						// === ADD THIS LOG ===
+						UE_LOG(LogTemp, VeryVerbose, TEXT("EldaraNetworkSubsystem: Removing %d byte length prefix"), LengthPrefixSize);
+						
 						// Remove length prefix from buffer
-						ReceiveBuffer.RemoveAt(0, LengthPrefixSize, false);
+						ReceiveBuffer.RemoveAt(0, LengthPrefixSize, EAllowShrinking::No);
 					}
 					
 					// Check if we have the complete packet
 					if (ReceiveBuffer.Num() < ExpectedPacketSize)
 					{
+						// === ADD THIS LOG ===
+						UE_LOG(LogTemp, VeryVerbose, TEXT("EldaraNetworkSubsystem: Waiting for complete packet (%d/%d bytes)"), 
+							ReceiveBuffer.Num(), ExpectedPacketSize);
 						// Need more data
 						break;
 					}
+					
+					// === ADD THIS LOG ===
+					UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: Complete packet received (%d bytes), processing..."), ExpectedPacketSize);
 					
 					// Extract packet data
 					TArray<uint8> PacketData;
 					PacketData.Append(ReceiveBuffer.GetData(), ExpectedPacketSize);
 					
 					// Remove packet from buffer
-					ReceiveBuffer.RemoveAt(0, ExpectedPacketSize, false);
+					ReceiveBuffer.RemoveAt(0, ExpectedPacketSize, EAllowShrinking::No);
+					
+					// === ADD THIS LOG ===
+					UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: Calling ProcessReceivedData with %d bytes"), PacketData.Num());
 					
 					// Process the packet
 					ProcessReceivedData(PacketData);
 					
 					// Reset for next packet
 					ExpectedPacketSize = 0;
+					
+					// === ADD THIS LOG ===
+					UE_LOG(LogTemp, VeryVerbose, TEXT("EldaraNetworkSubsystem: Packet processed, checking for more packets..."));
 				}
+			}
+			else
+			{
+				// === ADD THIS LOG ===
+				UE_LOG(LogTemp, Warning, TEXT("EldaraNetworkSubsystem: Recv succeeded but BytesRead = 0"));
 			}
 		}
 		else
 		{
+			// === ADD THIS LOG ===
+			UE_LOG(LogTemp, Warning, TEXT("EldaraNetworkSubsystem: Recv() returned false even though HasPendingData was true"));
+			
 			// Error reading from socket
 			ESocketErrors Error = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->GetLastErrorCode();
 			if (Error != SE_EWOULDBLOCK && Error != SE_NO_ERROR)
@@ -217,18 +263,32 @@ void UEldaraNetworkSubsystem::CheckForData()
 			}
 		}
 	}
+	else
+	{
+		// === ADD THIS LOG (only once per second to avoid spam) ===
+		static float LogTimer = 0.0f;
+		LogTimer += PollInterval;
+		if (LogTimer >= 1.0f)
+		{
+			UE_LOG(LogTemp, VeryVerbose, TEXT("EldaraNetworkSubsystem: No pending data on socket"));
+			LogTimer = 0.0f;
+		}
+	}
 	
 	// Check socket state
 	ESocketConnectionState State = ConnectionSocket->GetConnectionState();
 	if (State == SCS_ConnectionError || State == SCS_NotConnected)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("EldaraNetworkSubsystem: Connection lost"));
+		UE_LOG(LogTemp, Warning, TEXT("EldaraNetworkSubsystem: Connection lost (State: %d)"), (int32)State);
 		Disconnect();
 	}
 }
 
 void UEldaraNetworkSubsystem::ProcessReceivedData(const TArray<uint8>& Data)
 {
+	// === ADD THIS LOG ===
+	UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: ProcessReceivedData called with %d bytes"), Data.Num());
+	
 	// Determine packet type
 	int32 PacketType = -1;
 	if (!FPacketDeserializer::Deserialize(Data, PacketType))
@@ -236,6 +296,9 @@ void UEldaraNetworkSubsystem::ProcessReceivedData(const TArray<uint8>& Data)
 		UE_LOG(LogTemp, Error, TEXT("EldaraNetworkSubsystem: Failed to determine packet type"));
 		return;
 	}
+	
+	// === ADD THIS LOG ===
+	UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: Received packet type %d, routing to deserializer..."), PacketType);
 	
 	// Deserialize based on packet type
 	switch (PacketType)

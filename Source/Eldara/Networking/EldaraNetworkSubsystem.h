@@ -7,6 +7,7 @@
 #include "NetworkTypes.h"
 #include "NetworkPackets.h"
 #include "PacketSerializer.h"
+#include "PacketDeserializer.h"
 #include "EldaraNetworkSubsystem.generated.h"
 
 /**
@@ -19,6 +20,29 @@ class ELDARA_API UEldaraNetworkSubsystem : public UGameInstanceSubsystem
 	GENERATED_BODY()
 
 public:
+	// Delegates for server responses
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnLoginResponse, FLoginResponse, Response);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnCharacterListResponse, FCharacterListResponse, Response);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnCreateCharacterResponse, FCreateCharacterResponse, Response);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnSelectCharacterResponse, FSelectCharacterResponse, Response);
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMovementUpdateResponse, FMovementUpdateResponse, Response);
+
+	// Blueprint-assignable events
+	UPROPERTY(BlueprintAssignable, Category = "Eldara|Networking")
+	FOnLoginResponse OnLoginResponse;
+
+	UPROPERTY(BlueprintAssignable, Category = "Eldara|Networking")
+	FOnCharacterListResponse OnCharacterListResponse;
+
+	UPROPERTY(BlueprintAssignable, Category = "Eldara|Networking")
+	FOnCreateCharacterResponse OnCreateCharacterResponse;
+
+	UPROPERTY(BlueprintAssignable, Category = "Eldara|Networking")
+	FOnSelectCharacterResponse OnSelectCharacterResponse;
+
+	UPROPERTY(BlueprintAssignable, Category = "Eldara|Networking")
+	FOnMovementUpdateResponse OnMovementUpdateResponse;
+
 	/** Initialize the subsystem */
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 	
@@ -192,4 +216,16 @@ private:
 	 * Called periodically by a timer
 	 */
 	void CheckForData();
+	
+	/**
+	 * Process received packet data
+	 * @param Data Raw packet data (without length prefix)
+	 */
+	void ProcessReceivedData(const TArray<uint8>& Data);
+	
+	/** Buffer for assembling multi-part packets */
+	TArray<uint8> ReceiveBuffer;
+	
+	/** Expected size of the current packet being received */
+	int32 ExpectedPacketSize = 0;
 };

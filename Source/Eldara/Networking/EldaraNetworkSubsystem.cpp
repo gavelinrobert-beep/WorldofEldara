@@ -124,6 +124,10 @@ void UEldaraNetworkSubsystem::Disconnect()
 		ConnectionSocket = nullptr;
 	}
 	
+	// Clear receive buffers
+	ReceiveBuffer.Empty();
+	ExpectedPacketSize = 0;
+	
 	bIsConnected = false;
 	UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: Disconnected"));
 }
@@ -149,10 +153,57 @@ void UEldaraNetworkSubsystem::CheckForData()
 		{
 			if (BytesRead > 0)
 			{
-				UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: Received %d bytes of data"), BytesRead);
+				// Append to receive buffer
+				ReceiveBuffer.Append(ReceivedData.GetData(), BytesRead);
 				
-				// TODO: Parse and handle the received packet
-				// For now, just log that we received something
+				// Process complete packets from buffer
+				while (true)
+				{
+					// If we don't have an expected packet size yet, try to read the length prefix
+					if (ExpectedPacketSize == 0)
+					{
+						if (ReceiveBuffer.Num() < LengthPrefixSize)
+						{
+							// Not enough data for length prefix yet
+							break;
+						}
+						
+						// Read 4-byte length prefix (Little Endian)
+						ExpectedPacketSize = ReceiveBuffer[0] | (ReceiveBuffer[1] << 8) | 
+						                    (ReceiveBuffer[2] << 16) | (ReceiveBuffer[3] << 24);
+						
+						// Validate packet size
+						if (ExpectedPacketSize <= 0 || ExpectedPacketSize > MaxPacketSize)
+						{
+							UE_LOG(LogTemp, Error, TEXT("EldaraNetworkSubsystem: Invalid packet size: %d"), ExpectedPacketSize);
+							Disconnect();
+							return;
+						}
+						
+						// Remove length prefix from buffer
+						ReceiveBuffer.RemoveAt(0, LengthPrefixSize, false);
+					}
+					
+					// Check if we have the complete packet
+					if (ReceiveBuffer.Num() < ExpectedPacketSize)
+					{
+						// Need more data
+						break;
+					}
+					
+					// Extract packet data
+					TArray<uint8> PacketData;
+					PacketData.Append(ReceiveBuffer.GetData(), ExpectedPacketSize);
+					
+					// Remove packet from buffer
+					ReceiveBuffer.RemoveAt(0, ExpectedPacketSize, false);
+					
+					// Process the packet
+					ProcessReceivedData(PacketData);
+					
+					// Reset for next packet
+					ExpectedPacketSize = 0;
+				}
 			}
 		}
 		else
@@ -173,6 +224,75 @@ void UEldaraNetworkSubsystem::CheckForData()
 	{
 		UE_LOG(LogTemp, Warning, TEXT("EldaraNetworkSubsystem: Connection lost"));
 		Disconnect();
+	}
+}
+
+void UEldaraNetworkSubsystem::ProcessReceivedData(const TArray<uint8>& Data)
+{
+	// Determine packet type
+	int32 PacketType = -1;
+	if (!FPacketDeserializer::Deserialize(Data, PacketType))
+	{
+		UE_LOG(LogTemp, Error, TEXT("EldaraNetworkSubsystem: Failed to determine packet type"));
+		return;
+	}
+	
+	// Deserialize based on packet type
+	switch (PacketType)
+	{
+		case 1: // LoginResponse
+		{
+			FLoginResponse Response;
+			if (FPacketDeserializer::DeserializeLoginResponse(Data, Response))
+			{
+				OnLoginResponse.Broadcast(Response);
+			}
+			break;
+		}
+		
+		case 3: // CharacterListResponse
+		{
+			FCharacterListResponse Response;
+			if (FPacketDeserializer::DeserializeCharacterListResponse(Data, Response))
+			{
+				OnCharacterListResponse.Broadcast(Response);
+			}
+			break;
+		}
+		
+		case 5: // CreateCharacterResponse
+		{
+			FCreateCharacterResponse Response;
+			if (FPacketDeserializer::DeserializeCreateCharacterResponse(Data, Response))
+			{
+				OnCreateCharacterResponse.Broadcast(Response);
+			}
+			break;
+		}
+		
+		case 7: // SelectCharacterResponse
+		{
+			FSelectCharacterResponse Response;
+			if (FPacketDeserializer::DeserializeSelectCharacterResponse(Data, Response))
+			{
+				OnSelectCharacterResponse.Broadcast(Response);
+			}
+			break;
+		}
+		
+		case 11: // MovementUpdateResponse
+		{
+			FMovementUpdateResponse Response;
+			if (FPacketDeserializer::DeserializeMovementUpdateResponse(Data, Response))
+			{
+				OnMovementUpdateResponse.Broadcast(Response);
+			}
+			break;
+		}
+		
+		default:
+			UE_LOG(LogTemp, Warning, TEXT("EldaraNetworkSubsystem: Unhandled packet type %d"), PacketType);
+			break;
 	}
 }
 

@@ -42,13 +42,35 @@ struct FLoginRequest : public FPacketBase
 	FString ProtocolVersion;
 };
 
+// MessagePack deserialization structures
+USTRUCT(BlueprintType)
+struct FCharacterInfo
+{
+	GENERATED_BODY()
+	
+	UPROPERTY(BlueprintReadWrite, Category = "Network")
+	int64 CharacterId = 0;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "Network")
+	FString Name;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "Network")
+	ERace Race = ERace::None;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "Network")
+	EClass Class = EClass::None;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "Network")
+	int32 Level = 1;
+};
+
 USTRUCT(BlueprintType)
 struct FLoginResponse : public FPacketBase
 {
 	GENERATED_BODY()
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
-	EResponseCode Result = EResponseCode::Success;
+	bool Success = false;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
 	FString Message;
@@ -58,9 +80,6 @@ struct FLoginResponse : public FPacketBase
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
 	FString SessionToken;
-
-	UPROPERTY(BlueprintReadWrite, Category = "Network")
-	FString ServerProtocolVersion;
 };
 
 // ============================================================================
@@ -81,10 +100,7 @@ struct FCharacterListResponse : public FPacketBase
 	GENERATED_BODY()
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
-	EResponseCode Result = EResponseCode::Success;
-
-	UPROPERTY(BlueprintReadWrite, Category = "Network")
-	TArray<FCharacterData> Characters;
+	TArray<FCharacterInfo> Characters;
 };
 
 USTRUCT(BlueprintType)
@@ -120,16 +136,13 @@ struct FCreateCharacterResponse : public FPacketBase
 	GENERATED_BODY()
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
-	EResponseCode Result = EResponseCode::Success;
+	bool Success = false;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
 	FString Message;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
-	FCharacterData Character;
-
-	UPROPERTY(BlueprintReadWrite, Category = "Network")
-	bool bHasCharacter = false;
+	int64 CharacterId = 0;
 };
 
 USTRUCT(BlueprintType)
@@ -147,16 +160,10 @@ struct FSelectCharacterResponse : public FPacketBase
 	GENERATED_BODY()
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
-	EResponseCode Result = EResponseCode::Success;
+	bool Success = false;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
 	FString Message;
-
-	UPROPERTY(BlueprintReadWrite, Category = "Network")
-	FCharacterData Character;
-
-	UPROPERTY(BlueprintReadWrite, Category = "Network")
-	bool bHasCharacter = false;
 };
 
 // ============================================================================
@@ -254,6 +261,24 @@ struct FMovementSyncPacket : public FPacketBase
 
 	UPROPERTY(BlueprintReadWrite, Category = "Network")
 	FString ProtocolVersion;
+};
+
+USTRUCT(BlueprintType)
+struct FMovementUpdateResponse : public FPacketBase
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, Category = "Network")
+	int64 EntityId = 0;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Network")
+	FVector Position = FVector::ZeroVector;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Network")
+	FRotator Rotation = FRotator::ZeroRotator;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Network")
+	FVector Velocity = FVector::ZeroVector;
 };
 
 // ============================================================================

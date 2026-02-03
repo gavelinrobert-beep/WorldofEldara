@@ -539,9 +539,13 @@ bool FPacketDeserializer::SkipArray(const TArray<uint8>& InBytes, int32 ArraySiz
 
 bool FPacketDeserializer::SkipMap(const TArray<uint8>& InBytes, int32 MapSize)
 {
-	// Map has key-value pairs, so skip 2x the size
-	for (int32 i = 0; i < MapSize * 2; i++)
+	// Map has key-value pairs, so we need to skip both key and value for each entry
+	for (int32 i = 0; i < MapSize; i++)
 	{
+		// Skip key
+		if (!SkipValue(InBytes))
+			return false;
+		// Skip value
 		if (!SkipValue(InBytes))
 			return false;
 	}
@@ -551,6 +555,8 @@ bool FPacketDeserializer::SkipMap(const TArray<uint8>& InBytes, int32 MapSize)
 bool FPacketDeserializer::ReadCharacterData(const TArray<uint8>& InBytes, FCharacterInfo& OutCharacter)
 {
 	// CharacterData is array of 16 fields
+	// NOTE: This field count must match the C# server's CharacterData structure.
+	// If the server schema changes, this deserializer must be updated accordingly.
 	int32 FieldCount;
 	if (!ReadArrayHeader(InBytes, FieldCount) || FieldCount != 16)
 	{

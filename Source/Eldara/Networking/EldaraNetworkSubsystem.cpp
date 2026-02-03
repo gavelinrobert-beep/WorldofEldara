@@ -217,66 +217,31 @@ void UEldaraNetworkSubsystem::SendLogin(FString Username, FString PasswordHash)
 
 void UEldaraNetworkSubsystem::SendCharacterListRequest()
 {
-	if (!bIsConnected)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("EldaraNetworkSubsystem: Cannot send character list request - not connected"));
-		return;
-	}
-	
-	// Create and populate character list request packet
-	FCharacterListRequest Packet;
-	Packet.AccountId = 0; // Server will use session token to identify account
-	Packet.Timestamp = FDateTime::UtcNow().ToUnixTimestamp();
-	Packet.SequenceNumber = 0;
-	
-	// Send the packet
-	SendPacket(Packet);
-	
+	FCharacterListRequest Request;
+	SendPacket(Request);
 	UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: Character list request sent"));
 }
 
 void UEldaraNetworkSubsystem::SendCreateCharacter(FString Name, ERace Race, EClass Class, EFaction Faction, ETotemSpirit TotemSpirit, FCharacterAppearance Appearance)
 {
-	if (!bIsConnected)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("EldaraNetworkSubsystem: Cannot send create character request - not connected"));
-		return;
-	}
+	FCreateCharacterRequest Request;
+	Request.AccountId = 0; // AccountId set to 0 as server derives account from session token
+	Request.Name = Name;
+	Request.Race = Race;
+	Request.Class = Class;
+	Request.Faction = Faction;
+	Request.TotemSpirit = TotemSpirit;
+	Request.Appearance = Appearance;
 	
-	// Create and populate create character request packet
-	FCreateCharacterRequest Packet;
-	Packet.AccountId = 0; // Server will use session token to identify account
-	Packet.Name = Name;
-	Packet.Race = Race;
-	Packet.Class = Class;
-	Packet.Faction = Faction;
-	Packet.TotemSpirit = TotemSpirit;
-	Packet.Appearance = Appearance;
-	Packet.Timestamp = FDateTime::UtcNow().ToUnixTimestamp();
-	Packet.SequenceNumber = 0;
-	
-	// Send the packet
-	SendPacket(Packet);
-	
+	SendPacket(Request);
 	UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: Create character request sent for '%s'"), *Name);
 }
 
 void UEldaraNetworkSubsystem::SendSelectCharacter(int64 CharacterId)
 {
-	if (!bIsConnected)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("EldaraNetworkSubsystem: Cannot send select character request - not connected"));
-		return;
-	}
+	FSelectCharacterRequest Request;
+	Request.CharacterId = CharacterId;
 	
-	// Create and populate select character request packet
-	FSelectCharacterRequest Packet;
-	Packet.CharacterId = CharacterId;
-	Packet.Timestamp = FDateTime::UtcNow().ToUnixTimestamp();
-	Packet.SequenceNumber = 0;
-	
-	// Send the packet
-	SendPacket(Packet);
-	
+	SendPacket(Request);
 	UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: Select character request sent (ID: %lld)"), CharacterId);
 }

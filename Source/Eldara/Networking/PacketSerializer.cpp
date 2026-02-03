@@ -67,6 +67,27 @@ bool FPacketSerializer::Serialize(const FPacketBase& Packet, TArray<uint8>& OutB
 			return true;
 		}
 		
+		case 2: // CharacterListRequest
+		{
+			const FCharacterListRequest* CharListReq = static_cast<const FCharacterListRequest*>(&Packet);
+			SerializeCharacterListRequest(*CharListReq, OutBytes);
+			return true;
+		}
+
+		case 4: // CreateCharacterRequest
+		{
+			const FCreateCharacterRequest* CreateReq = static_cast<const FCreateCharacterRequest*>(&Packet);
+			SerializeCreateCharacterRequest(*CreateReq, OutBytes);
+			return true;
+		}
+
+		case 6: // SelectCharacterRequest
+		{
+			const FSelectCharacterRequest* SelectReq = static_cast<const FSelectCharacterRequest*>(&Packet);
+			SerializeSelectCharacterRequest(*SelectReq, OutBytes);
+			return true;
+		}
+		
 		default:
 			UE_LOG(LogTemp, Error, TEXT("PacketSerializer: Serialization not implemented for packet type %d"), PacketType);
 			return false;
@@ -314,23 +335,79 @@ void FPacketSerializer::SerializeLoginRequest(const FLoginRequest& Packet, TArra
 
 int32 FPacketSerializer::GetPacketTypeFromInstance(const FPacketBase& Packet)
 {
-	// WARNING: This function is a fallback for the base Serialize(FPacketBase&) method.
-	// The preferred approach is to use the templated Serialize<T>(const T&) method,
-	// which uses compile-time type detection and is called from EldaraNetworkSubsystem::SendPacket.
-	//
-	// Since FPacketBase is a USTRUCT (not a UClass), we cannot use RTTI or virtual methods
-	// to determine the actual packet type at runtime. The templated version avoids this
-	// problem by using compile-time type information.
-	//
-	// For the proof-of-concept, this always returns LoginRequest (0). If you need to support
-	// multiple packet types with the base Serialize method, consider:
-	// 1. Adding a PacketType field to FPacketBase
-	// 2. Using only the templated Serialize<T> method (recommended)
-	// 3. Implementing a type registry system
+	// Check packet type using Unreal's type system
+	const UScriptStruct* StructType = Packet.StaticStruct();
 	
-	UE_LOG(LogTemp, Warning, TEXT("PacketSerializer: Using base Serialize method with limited type detection. Consider using templated SendPacket instead."));
+	if (StructType == FLoginRequest::StaticStruct())
+		return 0;
+	if (StructType == FCharacterListRequest::StaticStruct())
+		return 2;
+	if (StructType == FCreateCharacterRequest::StaticStruct())
+		return 4;
+	if (StructType == FSelectCharacterRequest::StaticStruct())
+		return 6;
+	if (StructType == FMovementInputPacket::StaticStruct())
+		return 10;
 	
-	// For the proof-of-concept, assume LoginRequest
-	// This should be improved before adding more packet types
-	return 0; // LoginRequest
+	return -1;
+}
+
+void FPacketSerializer::SerializeCharacterListRequest(const FCharacterListRequest& Packet, TArray<uint8>& OutBytes)
+{
+	// Wire format: [ UnionKey, [ ] ]
+	// CharacterListRequest has no fields
+	
+	WriteArrayHeader(OutBytes, 2);
+	WriteInt(OutBytes, 2); // Packet ID for CharacterListRequest
+	WriteArrayHeader(OutBytes, 0); // Empty array (no fields)
+	
+	UE_LOG(LogTemp, Log, TEXT("PacketSerializer: Serialized CharacterListRequest (Size: %d bytes)"), OutBytes.Num());
+}
+
+void FPacketSerializer::SerializeCreateCharacterRequest(const FCreateCharacterRequest& Packet, TArray<uint8>& OutBytes)
+{
+	// Wire format: [ UnionKey, [ AccountId, Name, Race, Class, Faction, TotemSpirit, Appearance ] ]
+	// Field order must match C# CreateCharacterRequest [Key] attributes:
+	// [Key(0)] AccountId, [Key(1)] Name, [Key(2)] Race, [Key(3)] Class,
+	// [Key(4)] Faction, [Key(5)] TotemSpirit, [Key(6)] Appearance
+	
+	WriteArrayHeader(OutBytes, 2);
+	WriteInt(OutBytes, 4); // Packet ID for CreateCharacterRequest
+	WriteArrayHeader(OutBytes, 7); // 7 fields
+	
+	// Write fields in C# order
+	WriteInt64(OutBytes, Packet.AccountId);
+	WriteString(OutBytes, Packet.Name);
+	WriteInt(OutBytes, static_cast<int32>(Packet.Race));
+	WriteInt(OutBytes, static_cast<int32>(Packet.Class));
+	WriteInt(OutBytes, static_cast<int32>(Packet.Faction));
+	WriteInt(OutBytes, static_cast<int32>(Packet.TotemSpirit));
+	
+	// Serialize Appearance struct as MessagePack array (10 fields)
+	WriteArrayHeader(OutBytes, 10);
+	WriteInt(OutBytes, Packet.Appearance.FaceType);
+	WriteInt(OutBytes, Packet.Appearance.HairStyle);
+	WriteInt(OutBytes, Packet.Appearance.HairColor);
+	WriteInt(OutBytes, Packet.Appearance.SkinTone);
+	WriteInt(OutBytes, Packet.Appearance.EyeColor);
+	WriteFloat(OutBytes, Packet.Appearance.Height);
+	WriteFloat(OutBytes, Packet.Appearance.BuildType);
+	WriteInt(OutBytes, Packet.Appearance.FurPattern);
+	WriteInt(OutBytes, Packet.Appearance.FurColor);
+	WriteFloat(OutBytes, Packet.Appearance.VoidIntensity);
+	
+	UE_LOG(LogTemp, Log, TEXT("PacketSerializer: Serialized CreateCharacterRequest (Size: %d bytes)"), OutBytes.Num());
+}
+
+void FPacketSerializer::SerializeSelectCharacterRequest(const FSelectCharacterRequest& Packet, TArray<uint8>& OutBytes)
+{
+	// Wire format: [ UnionKey, [ CharacterId ] ]
+	
+	WriteArrayHeader(OutBytes, 2);
+	WriteInt(OutBytes, 6); // Packet ID for SelectCharacterRequest
+	WriteArrayHeader(OutBytes, 1); // 1 field
+	
+	WriteInt64(OutBytes, Packet.CharacterId);
+	
+	UE_LOG(LogTemp, Log, TEXT("PacketSerializer: Serialized SelectCharacterRequest (Size: %d bytes)"), OutBytes.Num());
 }

@@ -521,6 +521,74 @@ bool FPacketDeserializer::SkipValue(const TArray<uint8>& InBytes)
 			return SkipMap(InBytes, Count);
 		}
 		
+		// Extension types (timestamps, custom types)
+		case MessagePackFormat::FixExt1:
+		{
+			// Skip type byte + 1 data byte
+			ReadPosition += 2;
+			return ReadPosition <= InBytes.Num();
+		}
+		
+		case MessagePackFormat::FixExt2:
+		{
+			// Skip type byte + 2 data bytes
+			ReadPosition += 3;
+			return ReadPosition <= InBytes.Num();
+		}
+		
+		case MessagePackFormat::FixExt4:
+		{
+			// Skip type byte + 4 data bytes
+			ReadPosition += 5;
+			return ReadPosition <= InBytes.Num();
+		}
+		
+		case MessagePackFormat::FixExt8:  // DateTime/timestamp
+		{
+			// Skip type byte + 8 data bytes
+			ReadPosition += 9;
+			return ReadPosition <= InBytes.Num();
+		}
+		
+		case MessagePackFormat::FixExt16:
+		{
+			// Skip type byte + 16 data bytes
+			ReadPosition += 17;
+			return ReadPosition <= InBytes.Num();
+		}
+		
+		case MessagePackFormat::Ext8:
+		{
+			// Read length (1 byte), then skip type byte + data
+			uint8 Length;
+			if (!ReadByte(InBytes, Length))
+				return false;
+			ReadPosition += 1 + Length; // type byte + data
+			return ReadPosition <= InBytes.Num();
+		}
+		
+		case MessagePackFormat::Ext16:
+		{
+			// Read length (2 bytes), then skip type byte + data
+			uint8 H, L;
+			if (!ReadByte(InBytes, H) || !ReadByte(InBytes, L))
+				return false;
+			int32 Length = (H << 8) | L;
+			ReadPosition += 1 + Length; // type byte + data
+			return ReadPosition <= InBytes.Num();
+		}
+		
+		case MessagePackFormat::Ext32:
+		{
+			// Read length (4 bytes), then skip type byte + data
+			uint8 B1, B2, B3, B4;
+			if (!ReadByte(InBytes, B1) || !ReadByte(InBytes, B2) || !ReadByte(InBytes, B3) || !ReadByte(InBytes, B4))
+				return false;
+			int32 Length = (B1 << 24) | (B2 << 16) | (B3 << 8) | B4;
+			ReadPosition += 1 + Length; // type byte + data
+			return ReadPosition <= InBytes.Num();
+		}
+		
 		default:
 			UE_LOG(LogTemp, Error, TEXT("PacketDeserializer: Cannot skip unknown MessagePack type: 0x%02X"), Byte);
 			return false;

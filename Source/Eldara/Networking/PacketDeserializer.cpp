@@ -554,13 +554,14 @@ bool FPacketDeserializer::SkipMap(const TArray<uint8>& InBytes, int32 MapSize)
 
 bool FPacketDeserializer::ReadCharacterData(const TArray<uint8>& InBytes, FCharacterInfo& OutCharacter)
 {
-	// CharacterData is array of 16 fields
-	// NOTE: This field count must match the C# server's CharacterData structure.
-	// If the server schema changes, this deserializer must be updated accordingly.
+	// CharacterData is array of at least 16 fields
+	// NOTE: This must match the C# server's CharacterData structure.
+	// We require at least 16 fields but allow more for forward compatibility.
+	constexpr int32 MinimumFieldCount = 16;
 	int32 FieldCount;
-	if (!ReadArrayHeader(InBytes, FieldCount) || FieldCount != 16)
+	if (!ReadArrayHeader(InBytes, FieldCount) || FieldCount < MinimumFieldCount)
 	{
-		UE_LOG(LogTemp, Error, TEXT("PacketDeserializer: Invalid CharacterData field count: %d (expected 16)"), FieldCount);
+		UE_LOG(LogTemp, Error, TEXT("PacketDeserializer: Invalid CharacterData field count: %d (expected at least %d)"), FieldCount, MinimumFieldCount);
 		return false;
 	}
 	
@@ -631,6 +632,13 @@ bool FPacketDeserializer::ReadCharacterData(const TArray<uint8>& InBytes, FChara
 	// Field 15: LastPlayedAt (DateTime/timestamp) - skip
 	if (!SkipValue(InBytes))
 		return false;
+	
+	// Skip any additional fields beyond the minimum 16 (for forward compatibility)
+	for (int32 i = 16; i < FieldCount; i++)
+	{
+		if (!SkipValue(InBytes))
+			return false;
+	}
 	
 	UE_LOG(LogTemp, Log, TEXT("PacketDeserializer: Successfully read CharacterData - ID: %lld, Name: %s, Race: %d, Class: %d, Level: %d"),
 		OutCharacter.CharacterId, *OutCharacter.Name, (int32)OutCharacter.Race, (int32)OutCharacter.Class, OutCharacter.Level);

@@ -557,11 +557,11 @@ bool FPacketDeserializer::ReadCharacterData(const TArray<uint8>& InBytes, FChara
 	// CharacterData is array of at least 16 fields
 	// NOTE: This must match the C# server's CharacterData structure.
 	// We require at least 16 fields but allow more for forward compatibility.
-	constexpr int32 MinimumFieldCount = 16;
+	constexpr int32 MinimumCharacterDataFields = 16;
 	int32 FieldCount;
-	if (!ReadArrayHeader(InBytes, FieldCount) || FieldCount < MinimumFieldCount)
+	if (!ReadArrayHeader(InBytes, FieldCount) || FieldCount < MinimumCharacterDataFields)
 	{
-		UE_LOG(LogTemp, Error, TEXT("PacketDeserializer: Invalid CharacterData field count: %d (expected at least %d)"), FieldCount, MinimumFieldCount);
+		UE_LOG(LogTemp, Error, TEXT("PacketDeserializer: Invalid CharacterData field count: %d (expected at least %d)"), FieldCount, MinimumCharacterDataFields);
 		return false;
 	}
 	
@@ -633,8 +633,8 @@ bool FPacketDeserializer::ReadCharacterData(const TArray<uint8>& InBytes, FChara
 	if (!SkipValue(InBytes))
 		return false;
 	
-	// Skip any additional fields beyond the minimum 16 (for forward compatibility)
-	for (int32 i = 16; i < FieldCount; i++)
+	// Skip any additional fields beyond the minimum (for forward compatibility)
+	for (int32 i = MinimumCharacterDataFields; i < FieldCount; i++)
 	{
 		if (!SkipValue(InBytes))
 			return false;

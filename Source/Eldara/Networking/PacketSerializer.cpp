@@ -367,6 +367,9 @@ void FPacketSerializer::SerializeCharacterListRequest(const FCharacterListReques
 void FPacketSerializer::SerializeCreateCharacterRequest(const FCreateCharacterRequest& Packet, TArray<uint8>& OutBytes)
 {
 	// Wire format: [ UnionKey, [ AccountId, Name, Race, Class, Faction, TotemSpirit, Appearance ] ]
+	// Field order must match C# CreateCharacterRequest [Key] attributes:
+	// [Key(0)] AccountId, [Key(1)] Name, [Key(2)] Race, [Key(3)] Class,
+	// [Key(4)] Faction, [Key(5)] TotemSpirit, [Key(6)] Appearance
 	
 	WriteArrayHeader(OutBytes, 2);
 	WriteInt(OutBytes, 4); // Packet ID for CreateCharacterRequest

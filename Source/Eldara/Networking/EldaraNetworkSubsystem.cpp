@@ -225,7 +225,7 @@ void UEldaraNetworkSubsystem::SendCharacterListRequest()
 void UEldaraNetworkSubsystem::SendCreateCharacter(FString Name, ERace Race, EClass Class, EFaction Faction, ETotemSpirit TotemSpirit, FCharacterAppearance Appearance)
 {
 	FCreateCharacterRequest Request;
-	Request.AccountId = 0; // Server will use session account
+	Request.AccountId = 0; // AccountId set to 0 as server derives account from session token
 	Request.Name = Name;
 	Request.Race = Race;
 	Request.Class = Class;

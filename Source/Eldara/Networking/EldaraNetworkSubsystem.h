@@ -189,6 +189,22 @@ public:
 	}
 
 	/**
+	 * Check if a response code indicates success
+	 * @param ResponseCode The response code to check
+	 * @return True if the response code is Success, false otherwise
+	 */
+	UFUNCTION(BlueprintPure, Category = "Eldara|Networking|Helpers")
+	static bool IsResponseSuccess(EResponseCode ResponseCode);
+
+	/**
+	 * Get human-readable response code string
+	 * @param ResponseCode The response code to convert
+	 * @return Human-readable string representation of the response code
+	 */
+	UFUNCTION(BlueprintPure, Category = "Eldara|Networking|Helpers")
+	static FString ResponseCodeToString(EResponseCode ResponseCode);
+
+	/**
 	 * Check if the subsystem is currently connected to a server
 	 */
 	UFUNCTION(BlueprintPure, Category = "Eldara|Networking")

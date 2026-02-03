@@ -428,3 +428,59 @@ void UEldaraNetworkSubsystem::SendSelectCharacter(int64 CharacterId)
 	SendPacket(Request);
 	UE_LOG(LogTemp, Log, TEXT("EldaraNetworkSubsystem: Select character request sent (ID: %lld)"), CharacterId);
 }
+
+bool UEldaraNetworkSubsystem::IsResponseSuccess(EResponseCode ResponseCode)
+{
+	return ResponseCode == EResponseCode::Success;
+}
+
+FString UEldaraNetworkSubsystem::ResponseCodeToString(EResponseCode ResponseCode)
+{
+	switch (ResponseCode)
+	{
+		case EResponseCode::Success:
+			return TEXT("Success");
+		case EResponseCode::Error:
+			return TEXT("Error");
+		case EResponseCode::InvalidRequest:
+			return TEXT("Invalid Request");
+		case EResponseCode::NotAuthenticated:
+			return TEXT("Not Authenticated");
+		case EResponseCode::AlreadyExists:
+			return TEXT("Already Exists");
+		case EResponseCode::NotFound:
+			return TEXT("Not Found");
+		case EResponseCode::InsufficientPermissions:
+			return TEXT("Insufficient Permissions");
+		case EResponseCode::InvalidData:
+			return TEXT("Invalid Data");
+		case EResponseCode::ServerError:
+			return TEXT("Server Error");
+		case EResponseCode::Timeout:
+			return TEXT("Timeout");
+		case EResponseCode::NameTaken:
+			return TEXT("Name Taken");
+		case EResponseCode::InvalidName:
+			return TEXT("Invalid Name");
+		case EResponseCode::InvalidRaceClassCombination:
+			return TEXT("Invalid Race-Class Combination");
+		case EResponseCode::MaxCharactersReached:
+			return TEXT("Max Characters Reached");
+		case EResponseCode::NotInRange:
+			return TEXT("Not In Range");
+		case EResponseCode::NotEnoughMana:
+			return TEXT("Not Enough Mana");
+		case EResponseCode::OnCooldown:
+			return TEXT("On Cooldown");
+		case EResponseCode::Interrupted:
+			return TEXT("Interrupted");
+		case EResponseCode::InvalidTarget:
+			return TEXT("Invalid Target");
+		case EResponseCode::InsufficientResources:
+			return TEXT("Insufficient Resources");
+		case EResponseCode::LoreInconsistency:
+			return TEXT("Lore Inconsistency");
+		default:
+			return TEXT("Unknown");
+	}
+}

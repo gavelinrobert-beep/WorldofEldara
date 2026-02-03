@@ -68,6 +68,32 @@ public:
 	void SendLogin(FString Username, FString PasswordHash);
 
 	/**
+	 * Send character list request to the server
+	 * Requests the list of characters for the current account
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Eldara|Networking")
+	void SendCharacterListRequest();
+
+	/**
+	 * Send create character request to the server
+	 * @param Name Character name
+	 * @param Race Character race
+	 * @param Class Character class
+	 * @param Faction Character faction
+	 * @param TotemSpirit Totem spirit (if applicable)
+	 * @param Appearance Character appearance customization
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Eldara|Networking")
+	void SendCreateCharacter(FString Name, ERace Race, EClass Class, EFaction Faction, ETotemSpirit TotemSpirit, FCharacterAppearance Appearance);
+
+	/**
+	 * Send select character request to the server
+	 * @param CharacterId The ID of the character to select
+	 */
+	UFUNCTION(BlueprintCallable, Category = "Eldara|Networking")
+	void SendSelectCharacter(int64 CharacterId);
+
+	/**
 	 * Send a packet to the server
 	 * Template function for sending typed packets
 	 */

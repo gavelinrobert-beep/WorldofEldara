@@ -11,6 +11,7 @@
 namespace MessagePackFormat
 {
 	// Positive FixInt: 0x00 - 0x7f
+	constexpr uint8 FixIntMin = 0x00;
 	constexpr uint8 FixIntMax = 0x7f;
 	
 	// Negative FixInt: 0xe0 - 0xff

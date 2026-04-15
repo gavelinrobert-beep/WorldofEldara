@@ -8,6 +8,11 @@
 			"Name": "Eldara",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "LudusCore",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
 		}
 	],
 	"TargetPlatforms": [

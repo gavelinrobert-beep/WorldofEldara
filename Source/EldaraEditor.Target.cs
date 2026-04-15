@@ -9,6 +9,6 @@ public class EldaraEditorTarget : TargetRules
         DefaultBuildSettings = BuildSettingsVersion.V6;
         IncludeOrderVersion = EngineIncludeOrderVersion.Latest;
 
-        ExtraModuleNames.AddRange(new List<string> { "Eldara" });
+        ExtraModuleNames.AddRange(new List<string> { "Eldara", "LudusCore" });
     }
 }

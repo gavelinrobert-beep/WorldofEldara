@@ -162,7 +162,7 @@ public sealed class World3DScene
         {
             AddCombatText("Defeated", position + new Vector3(0, actor.Height + 0.9f, 0),
                 Color.FromArgb(245, 146, 236, 154), 1.2f);
-            RegisterDefeat(actor);
+            RegisterDefeat(actor, position);
             _state.TargetName = null;
         }
     }
@@ -281,7 +281,7 @@ public sealed class World3DScene
         _state.CombatTexts.Add(new CombatFloatText(text, position, color, 0f, lifetime));
     }
 
-    private void RegisterDefeat(WorldActor actor)
+    private void RegisterDefeat(WorldActor actor, Vector3 position)
     {
         if (!actor.Hostile || _state.FirstPruningTurnedIn ||
             _state.FirstPruningKills >= FirstPruningRequiredKills)
@@ -294,6 +294,15 @@ public sealed class World3DScene
         _state.StatusText = _state.FirstPruningKills >= FirstPruningRequiredKills
             ? "First Pruning complete. Return to Root Guardian."
             : $"First Pruning progress: {_state.FirstPruningKills}/{FirstPruningRequiredKills}.";
+        AddCombatText($"{_state.FirstPruningKills}/{FirstPruningRequiredKills}", position + new Vector3(0, actor.Height + 1.15f, 0),
+            _state.FirstPruningKills >= FirstPruningRequiredKills
+                ? Color.FromArgb(245, 158, 242, 154)
+                : Color.FromArgb(245, 236, 214, 116), 1.15f);
+        if (_state.FirstPruningKills >= FirstPruningRequiredKills)
+        {
+            AddCombatText("Return to Root Guardian", _state.PlayerPosition + new Vector3(0, 1.9f, 0),
+                Color.FromArgb(245, 178, 238, 164), 1.5f);
+        }
     }
 
     private void UpdateEnemies(float deltaSeconds)

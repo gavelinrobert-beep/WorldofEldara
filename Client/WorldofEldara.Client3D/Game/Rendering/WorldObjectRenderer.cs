@@ -5,6 +5,7 @@ namespace WorldofEldara.Client3D.Game.Rendering;
 
 public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state, WorldCamera camera)
 {
+    private const int FirstPruningRequiredKills = 3;
     private readonly WorldMeshRenderer _meshRenderer = new(camera);
 
     public void AddSceneObjects(List<DrawCommand> commands, Size viewport, SceneData scene, float pulse)
@@ -112,6 +113,11 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
                 AddSelectionRing(commands, viewport, position, actor.Width * 0.74f,
                     actor.Hostile ? Color.FromArgb(228, 236, 88, 70) : Color.FromArgb(228, 238, 214, 92));
             }
+            else if (actor.Hostile && state.AggroActors.Contains(actor.Name))
+            {
+                AddSelectionRing(commands, viewport, position, actor.Width * 0.68f,
+                    Color.FromArgb(150, 246, 72, 54));
+            }
 
             var fill = health <= 0f ? Fade(Shade(actor.Fill, 0.46f), 142) : actor.Fill;
             var outline = health <= 0f ? Fade(actor.Outline, 132) : actor.Outline;
@@ -126,6 +132,7 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
             var facing = FlatDirection(state.PlayerPosition - position, WorldCamera.ForwardFromYaw(state.PlayerYaw));
             AddCharacter(commands, viewport, basePosition, actor.Width, height, fill, outline, actor.Name, facing,
                 actor.Hostile);
+            AddInteractionMarker(commands, viewport, actor, position, pulse);
             AddActorHud(commands, viewport, actor, position, health);
         }
     }
@@ -560,6 +567,61 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
                 g.DrawPolygon(markerPen, diamond);
             }
         }));
+    }
+
+    private void AddInteractionMarker(List<DrawCommand> commands, Size viewport, WorldActor actor, Vector3 position,
+        float pulse)
+    {
+        if (actor.Hostile || state.ActorHealth.GetValueOrDefault(actor.Name, 100f) <= 0f)
+        {
+            return;
+        }
+
+        var marker = QuestMarkerFor(actor.Name);
+        if (marker is null && Vector3.Distance(position, state.PlayerPosition) > 4.2f)
+        {
+            return;
+        }
+
+        var anchor = position + new Vector3(0, actor.Height + 0.72f + MathF.Sin(pulse * 2.4f) * 0.05f, 0);
+        if (!TryProject(viewport, anchor, out var screen, out var depth))
+        {
+            return;
+        }
+
+        commands.Add(new DrawCommand(depth - 0.36f, g =>
+        {
+            if (marker is { } symbol)
+            {
+                var color = symbol == "?" ? Color.FromArgb(244, 132, 238, 142) : Color.FromArgb(244, 244, 208, 72);
+                using var glowBrush = new SolidBrush(Color.FromArgb(90, color.R, color.G, color.B));
+                using var coreBrush = new SolidBrush(color);
+                using var borderPen = new Pen(Color.FromArgb(228, 72, 48, 18), 1.4f);
+                using var font = new Font("Segoe UI", 16f, FontStyle.Bold);
+                g.FillEllipse(glowBrush, screen.X - 15f, screen.Y - 15f, 30f, 30f);
+                g.FillEllipse(coreBrush, screen.X - 9f, screen.Y - 9f, 18f, 18f);
+                g.DrawEllipse(borderPen, screen.X - 9f, screen.Y - 9f, 18f, 18f);
+                var size = g.MeasureString(symbol, font);
+                using var textBrush = new SolidBrush(Color.FromArgb(245, 42, 28, 12));
+                g.DrawString(symbol, font, textBrush, screen.X - size.Width * 0.5f, screen.Y - size.Height * 0.62f);
+                return;
+            }
+
+            using var talkBrush = new SolidBrush(Color.FromArgb(180, 116, 238, 174));
+            using var talkPen = new Pen(Color.FromArgb(190, 216, 250, 190), 1.2f);
+            g.FillEllipse(talkBrush, screen.X - 5f, screen.Y - 5f, 10f, 10f);
+            g.DrawEllipse(talkPen, screen.X - 5f, screen.Y - 5f, 10f, 10f);
+        }));
+    }
+
+    private string? QuestMarkerFor(string actorName)
+    {
+        if (actorName != "Root Guardian" || state.FirstPruningTurnedIn)
+        {
+            return null;
+        }
+
+        return state.FirstPruningKills >= FirstPruningRequiredKills ? "?" : "!";
     }
 
     private void AddCombatTexts(List<DrawCommand> commands, Size viewport)

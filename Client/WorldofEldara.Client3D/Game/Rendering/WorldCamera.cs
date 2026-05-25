@@ -6,8 +6,8 @@ namespace WorldofEldara.Client3D.Game.Rendering;
 public sealed class WorldCamera
 {
     public float Yaw { get; private set; }
-    public float Distance { get; private set; } = 5.7f;
-    public float Height { get; private set; } = 2.05f;
+    public float Distance { get; private set; } = 5.25f;
+    public float Height { get; private set; } = 1.9f;
     public Vector3 Focus { get; private set; }
     public Vector3 Position { get; private set; }
     public Vector3 Forward { get; private set; }
@@ -17,14 +17,14 @@ public sealed class WorldCamera
     public void Reset(float playerYaw, Vector3 focus)
     {
         Yaw = playerYaw;
-        Distance = 5.7f;
-        Height = 2.05f;
+        Distance = 5.25f;
+        Height = 1.9f;
         Focus = focus;
     }
 
     public void AdjustDistance(int wheelDelta)
     {
-        Distance = Math.Clamp(Distance + (wheelDelta > 0 ? -0.42f : 0.42f), 4.4f, 8.4f);
+        Distance = Math.Clamp(Distance + (wheelDelta > 0 ? -0.38f : 0.38f), 4.2f, 7.8f);
     }
 
     public void Orbit(float yawDelta, float heightDelta)
@@ -41,7 +41,7 @@ public sealed class WorldCamera
     public void SmoothFocus(Vector3 target, float deltaSeconds)
     {
         var focusT = 1f - MathF.Exp(-deltaSeconds * 11f);
-        var targetFocus = target + ForwardFromYaw(Yaw) * 0.92f + new Vector3(0, 0.18f, 0);
+        var targetFocus = target + ForwardFromYaw(Yaw) * 1.08f + new Vector3(0, 0.12f, 0);
         Focus = Vector3.Lerp(Focus, targetFocus, focusT);
     }
 
@@ -79,7 +79,7 @@ public sealed class WorldCamera
         var focal = viewport.Height / (2f * MathF.Tan(64f * MathF.PI / 360f));
         screen = new PointF(
             viewport.Width * 0.5f + x / z * focal,
-            viewport.Height * 0.6f - y / z * focal);
+            viewport.Height * 0.63f - y / z * focal);
         return screen.X > -320 && screen.X < viewport.Width + 320 &&
                screen.Y > -320 && screen.Y < viewport.Height + 320;
     }

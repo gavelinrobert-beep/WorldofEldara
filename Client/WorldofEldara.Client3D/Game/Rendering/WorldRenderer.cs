@@ -57,18 +57,20 @@ public sealed class WorldRenderer
 
                 var tileHeight = (terrain.HeightAt(x, z) + terrain.HeightAt(x + tileSize, z + tileSize)) * 0.5f;
                 var smooth = MathF.Sin(x * 0.09f + z * 0.05f) * 2f;
+                var clearing = MathF.Max(0f, 1f - distance / 18f);
                 var farFade = Math.Clamp(distance / 42f, 0f, 1f);
-                var green = 34 + (int)(smooth * 1.8f) + (int)(tileHeight * 14f) - (int)(farFade * 9f);
-                var blue = 24 + (int)(tileHeight * 6f) - (int)(farFade * 5f);
-                var color = Color.FromArgb(255, 5, Math.Clamp(green, 24, 50), Math.Clamp(blue, 18, 34));
-                var edgeAlpha = distance < 24f ? 48 : distance < 34f ? 28 : 0;
+                var red = 8 + (int)(clearing * 10f);
+                var green = 36 + (int)(smooth * 1.8f) + (int)(tileHeight * 14f) - (int)(farFade * 7f) + (int)(clearing * 8f);
+                var blue = 24 + (int)(tileHeight * 6f) - (int)(farFade * 4f) + (int)(clearing * 4f);
+                var color = Color.FromArgb(255, Math.Clamp(red, 6, 24), Math.Clamp(green, 27, 58), Math.Clamp(blue, 18, 38));
+                var edgeAlpha = distance < 18f ? 32 : distance < 30f ? 18 : 0;
                 commands.Add(new DrawCommand(depth, g =>
                 {
                     using var brush = new SolidBrush(color);
                     g.FillPolygon(brush, points);
                     if (edgeAlpha > 0)
                     {
-                        using var pen = new Pen(Color.FromArgb(edgeAlpha, 80, 145, 118), 1f);
+                        using var pen = new Pen(Color.FromArgb(edgeAlpha, 74, 136, 104), 1f);
                         g.DrawPolygon(pen, points);
                     }
                 }));
@@ -90,6 +92,7 @@ public sealed class WorldRenderer
             for (var i = 0; i + 1 < path.Points.Count; i++)
             {
                 AddPathSegment(commands, viewport, terrain, camera, path, path.Points[i], path.Points[i + 1], i);
+                AddPathRunes(commands, viewport, terrain, camera, path.Points[i], path.Points[i + 1], i);
             }
         }
     }
@@ -141,9 +144,50 @@ public sealed class WorldRenderer
                 g.FillPolygon(brush, points);
                 if (step % 3 == 0)
                 {
-                    using var edgePen = new Pen(Color.FromArgb(48, 158, 116, 72), 1f);
+                    using var edgePen = new Pen(Color.FromArgb(58, 178, 128, 78), 1f);
                     g.DrawPolygon(edgePen, points);
                 }
+            }));
+        }
+    }
+
+    private static void AddPathRunes(List<DrawCommand> commands, Size viewport, TerrainSystem terrain,
+        WorldCamera camera, Vector3 start, Vector3 end, int segmentIndex)
+    {
+        var flatDelta = new Vector3(end.X - start.X, 0, end.Z - start.Z);
+        var length = flatDelta.Length();
+        if (length <= 2.5f)
+        {
+            return;
+        }
+
+        var direction = Vector3.Normalize(flatDelta);
+        var normal = new Vector3(-direction.Z, 0, direction.X);
+        var runeCount = Math.Max(1, (int)(length / 4.6f));
+        for (var rune = 0; rune < runeCount; rune++)
+        {
+            var t = (rune + 0.55f) / (runeCount + 0.2f);
+            var side = rune % 2 == 0 ? 1f : -1f;
+            var center = Vector3.Lerp(start, end, t) + normal * side * (0.42f + Hash01(segmentIndex * 211 + rune * 31) * 0.32f);
+            var size = 0.28f + Hash01(segmentIndex * 173 + rune * 19) * 0.08f;
+            var points = ProjectPolygon(camera, viewport, new[]
+            {
+                terrain.GroundPoint(center.X, center.Z - size, 0.075f),
+                terrain.GroundPoint(center.X + size * 0.7f, center.Z, 0.075f),
+                terrain.GroundPoint(center.X, center.Z + size, 0.075f),
+                terrain.GroundPoint(center.X - size * 0.7f, center.Z, 0.075f)
+            }, out var depth);
+            if (points is null)
+            {
+                continue;
+            }
+
+            commands.Add(new DrawCommand(depth - 0.06f, g =>
+            {
+                using var brush = new SolidBrush(Color.FromArgb(84, 94, 232, 194));
+                using var pen = new Pen(Color.FromArgb(112, 172, 255, 220), 1f);
+                g.FillPolygon(brush, points);
+                g.DrawPolygon(pen, points);
             }));
         }
     }
@@ -179,8 +223,8 @@ public sealed class WorldRenderer
     {
         using var background = new LinearGradientBrush(
             new Rectangle(Point.Empty, viewport),
-            Color.FromArgb(9, 22, 23),
-            Color.FromArgb(5, 13, 12),
+            Color.FromArgb(12, 29, 30),
+            Color.FromArgb(4, 12, 11),
             LinearGradientMode.Vertical);
         graphics.FillRectangle(background, 0, 0, viewport.Width, viewport.Height);
         DrawHorizonFog(graphics, viewport);
@@ -192,7 +236,7 @@ public sealed class WorldRenderer
         using var fog = new LinearGradientBrush(
             fogRect,
             Color.FromArgb(0, 4, 9, 10),
-            Color.FromArgb(70, 8, 24, 20),
+            Color.FromArgb(58, 18, 42, 34),
             LinearGradientMode.Vertical);
         graphics.FillRectangle(fog, fogRect);
     }
@@ -202,7 +246,7 @@ public sealed class WorldRenderer
         var hazeRect = new Rectangle(0, 0, viewport.Width, (int)(viewport.Height * 0.55f));
         using var haze = new LinearGradientBrush(
             hazeRect,
-            Color.FromArgb(38, 3, 9, 10),
+            Color.FromArgb(26, 3, 9, 10),
             Color.FromArgb(0, 3, 9, 10),
             LinearGradientMode.Vertical);
         graphics.FillRectangle(haze, hazeRect);

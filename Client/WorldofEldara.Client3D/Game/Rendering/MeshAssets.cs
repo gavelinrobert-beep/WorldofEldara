@@ -33,6 +33,8 @@ public static class ThornveilMeshes
     public static readonly MeshMaterial Herb = new("herb", Color.FromArgb(64, 172, 86), Color.FromArgb(158, 236, 138));
     public static readonly MeshMaterial SpiritBlue = new("spirit-blue", Color.FromArgb(58, 136, 164), Color.FromArgb(142, 226, 238));
     public static readonly MeshMaterial Corruption = new("corruption", Color.FromArgb(106, 46, 136), Color.FromArgb(230, 92, 242));
+    public static readonly MeshMaterial SigilGold = new("sigil-gold", Color.FromArgb(174, 132, 58), Color.FromArgb(248, 218, 132));
+    public static readonly MeshMaterial BannerGreen = new("banner-green", Color.FromArgb(34, 104, 70), Color.FromArgb(132, 214, 132));
 
     public static readonly MeshAsset HeartwoodTree = BuildHeartwoodTree();
     public static readonly MeshAsset Lantern = BuildLantern();
@@ -44,6 +46,8 @@ public static class ThornveilMeshes
     public static readonly MeshAsset MossyRock = BuildMossyRock();
     public static readonly MeshAsset HerbCluster = BuildHerbCluster();
     public static readonly MeshAsset CorruptedSprout = BuildCorruptedSprout();
+    public static readonly MeshAsset WorldrootShrine = BuildWorldrootShrine();
+    public static readonly MeshAsset ThornveilBanner = BuildThornveilBanner();
 
     private static MeshAsset BuildHeartwoodTree()
     {
@@ -144,5 +148,27 @@ public static class ThornveilMeshes
         parts.AddDiamond(new Vector3(0, 0.88f, 0), new Vector3(0.36f, 0.42f, 0.36f), Corruption);
         parts.AddDiamond(new Vector3(0.22f, 0.5f, 0.08f), new Vector3(0.28f, 0.28f, 0.24f), SpiritBlue);
         return new MeshAsset("corrupted-sprout", parts.ToArray());
+    }
+
+    private static MeshAsset BuildWorldrootShrine()
+    {
+        var parts = new MeshBuilder();
+        parts.AddCylinder(new Vector3(0, 0.15f, 0), 0.72f, 0.3f, 10, MossStone);
+        parts.AddCylinder(new Vector3(0, 0.78f, 0), 0.18f, 1.28f, 7, BarkDark);
+        parts.AddBox(new Vector3(-0.42f, 0.72f, 0.08f), new Vector3(0.12f, 1.18f, 0.14f), Bark, -22f);
+        parts.AddBox(new Vector3(0.42f, 0.72f, -0.08f), new Vector3(0.12f, 1.18f, 0.14f), Bark, 22f);
+        parts.AddDiamond(new Vector3(0, 1.65f, 0), new Vector3(0.78f, 0.9f, 0.78f), LanternGlow);
+        parts.AddDiamond(new Vector3(0, 1.66f, 0), new Vector3(0.42f, 0.5f, 0.42f), SpiritBlue);
+        return new MeshAsset("worldroot-shrine", parts.ToArray());
+    }
+
+    private static MeshAsset BuildThornveilBanner()
+    {
+        var parts = new MeshBuilder();
+        parts.AddCylinder(new Vector3(0, 0.82f, 0), 0.04f, 1.64f, 6, LanternWood);
+        parts.AddBox(new Vector3(0.32f, 1.26f, 0), new Vector3(0.58f, 0.76f, 0.06f), BannerGreen);
+        parts.AddBox(new Vector3(0.32f, 1.36f, -0.04f), new Vector3(0.28f, 0.08f, 0.08f), SigilGold);
+        parts.AddDiamond(new Vector3(0.32f, 1.18f, -0.05f), new Vector3(0.22f, 0.22f, 0.08f), SigilGold);
+        return new MeshAsset("thornveil-banner", parts.ToArray());
     }
 }

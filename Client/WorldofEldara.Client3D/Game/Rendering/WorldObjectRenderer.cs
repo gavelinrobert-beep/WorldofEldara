@@ -66,6 +66,12 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
                 case "corruption":
                     AddCorruptionMesh(commands, viewport, prop, basePosition);
                     break;
+                case "worldroot":
+                    AddWorldrootShrineMesh(commands, viewport, prop, basePosition);
+                    break;
+                case "banner":
+                    AddBannerMesh(commands, viewport, prop, basePosition);
+                    break;
                 case "lantern":
                     AddLanternMesh(commands, viewport, prop, basePosition);
                     break;
@@ -252,6 +258,18 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
     {
         _meshRenderer.AddMesh(commands, viewport,
             new MeshInstance(ThornveilMeshes.CorruptedSprout, basePosition, new Vector3(prop.Width, prop.Height, prop.Width), prop.Position.X * 10.3f));
+    }
+
+    private void AddWorldrootShrineMesh(List<DrawCommand> commands, Size viewport, WorldProp prop, Vector3 basePosition)
+    {
+        _meshRenderer.AddMesh(commands, viewport,
+            new MeshInstance(ThornveilMeshes.WorldrootShrine, basePosition, new Vector3(prop.Width, prop.Height, prop.Width), prop.Position.Z * 5.5f));
+    }
+
+    private void AddBannerMesh(List<DrawCommand> commands, Size viewport, WorldProp prop, Vector3 basePosition)
+    {
+        _meshRenderer.AddMesh(commands, viewport,
+            new MeshInstance(ThornveilMeshes.ThornveilBanner, basePosition, new Vector3(prop.Width, prop.Height, prop.Width), prop.Position.X * 7.2f));
     }
 
     private void AddSelectionRing(List<DrawCommand> commands, Size viewport, Vector3 center, float radius, Color color)

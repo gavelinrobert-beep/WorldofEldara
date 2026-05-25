@@ -1,4 +1,5 @@
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Numerics;
 using System.Windows.Forms;
 using WorldofEldara.Client3D.Game.Rendering;
@@ -467,24 +468,28 @@ public sealed class World3DScene
 
     private void DrawMainPanel(Graphics graphics, double fps)
     {
-        using var panelBrush = new SolidBrush(Color.FromArgb(176, 4, 12, 14));
-        using var borderPen = new Pen(Color.FromArgb(110, 87, 129, 105));
-        graphics.FillRectangle(panelBrush, 18, 18, 560, 136);
-        graphics.DrawRectangle(borderPen, 18, 18, 560, 136);
+        const int x = 18;
+        const int y = 18;
+        DrawFantasyPanel(graphics, new Rectangle(x, y, 360, 118), Color.FromArgb(178, 5, 13, 14));
 
-        using var titleFont = new Font("Segoe UI", 16f, FontStyle.Bold);
-        using var font = new Font("Consolas", 10f);
-        using var titleBrush = new SolidBrush(Color.FromArgb(244, 228, 176));
-        using var textBrush = new SolidBrush(Color.FromArgb(205, 226, 218));
-        using var greenBrush = new SolidBrush(Color.FromArgb(134, 238, 151));
-        graphics.DrawString("World of Eldara - 3D Prototype", titleFont, titleBrush, 34, 30);
-        graphics.DrawString("WASD move | click/Tab target | E interact | 1 strike | right-drag camera | R reset", font, textBrush, 34, 62);
-        graphics.DrawString($"FPS {fps,5:0.0}  Lvl {_state.Level}  XP {_state.Experience}  Gold {_state.Gold}  Target {_state.TargetName ?? "-"}", font,
-            greenBrush, 34, 92);
-        graphics.DrawString($"{_state.StatusText}  Cooldown {_state.PrimaryCooldown:0.0}s", font, textBrush, 34, 112);
-        DrawBar(graphics, 34, 134, 220, 8, _state.PlayerHealth / _state.PlayerMaxHealth,
-            _state.PlayerHitFlash > 0f ? Color.FromArgb(230, 255, 96, 86) : Color.FromArgb(210, 184, 58, 58),
-            Color.FromArgb(180, 18, 24, 26));
+        using var nameFont = new Font("Segoe UI", 14f, FontStyle.Bold);
+        using var smallFont = new Font("Consolas", 9f);
+        using var titleBrush = new SolidBrush(Color.FromArgb(248, 230, 174));
+        using var textBrush = new SolidBrush(Color.FromArgb(212, 228, 218));
+        using var debugBrush = new SolidBrush(Color.FromArgb(126, 238, 151));
+        using var portraitBrush = new SolidBrush(Color.FromArgb(228, 92, 146, 112));
+        using var portraitPen = new Pen(Color.FromArgb(226, 202, 160, 92), 2.2f);
+        graphics.FillEllipse(portraitBrush, x + 16, y + 18, 62, 62);
+        graphics.DrawEllipse(portraitPen, x + 16, y + 18, 62, 62);
+        graphics.DrawString(_state.Level.ToString(), smallFont, titleBrush, x + 38, y + 81);
+        graphics.DrawString("MemoryWarden", nameFont, titleBrush, x + 92, y + 16);
+        DrawBar(graphics, x + 92, y + 45, 230, 14, _state.PlayerHealth / _state.PlayerMaxHealth,
+            _state.PlayerHitFlash > 0f ? Color.FromArgb(238, 255, 96, 86) : Color.FromArgb(220, 74, 202, 74),
+            Color.FromArgb(210, 18, 28, 20));
+        DrawBar(graphics, x + 92, y + 65, 230, 12, 1f,
+            Color.FromArgb(218, 54, 124, 216), Color.FromArgb(210, 16, 22, 30));
+        graphics.DrawString($"XP {_state.Experience}  Gold {_state.Gold}  FPS {fps:0}", smallFont, debugBrush, x + 92, y + 85);
+        graphics.DrawString($"{_state.StatusText}", smallFont, textBrush, x + 18, y + 100);
     }
 
     private static void DrawBar(Graphics graphics, int x, int y, int width, int height, float ratio, Color fill,
@@ -507,7 +512,6 @@ public sealed class World3DScene
         }
 
         var health = Math.Clamp(_state.ActorHealth.GetValueOrDefault(targetName, 100f), 0f, 100f);
-        using var panelBrush = new SolidBrush(Color.FromArgb(178, 4, 12, 14));
         using var borderPen = new Pen(actor.Hostile ? Color.FromArgb(178, 218, 82, 68) : Color.FromArgb(178, 222, 208, 112), 1.4f);
         using var titleFont = new Font("Segoe UI", 10f, FontStyle.Bold);
         using var font = new Font("Consolas", 9f);
@@ -517,8 +521,8 @@ public sealed class World3DScene
         using var backBrush = new SolidBrush(Color.FromArgb(190, 20, 26, 28));
 
         var x = 26;
-        var y = 168;
-        graphics.FillRectangle(panelBrush, x, y, 260, 74);
+        var y = 150;
+        DrawFantasyPanel(graphics, new Rectangle(x, y, 260, 74), Color.FromArgb(168, 4, 12, 14));
         graphics.DrawRectangle(borderPen, x, y, 260, 74);
         graphics.DrawString(targetName, titleFont, titleBrush, x + 14, y + 9);
         graphics.DrawString(actor.Hostile ? "Hostile" : "Friendly", font, textBrush, x + 14, y + 31);
@@ -530,34 +534,35 @@ public sealed class World3DScene
     private void DrawAbilityBar(Graphics graphics, Size viewport)
     {
         const int slots = 8;
-        const int slotSize = 42;
-        const int gap = 6;
+        const int slotSize = 48;
+        const int gap = 5;
         var totalWidth = slots * slotSize + (slots - 1) * gap;
         var startX = (viewport.Width - totalWidth) / 2;
-        var y = viewport.Height - 70;
+        var y = viewport.Height - 76;
 
-        using var panelBrush = new SolidBrush(Color.FromArgb(160, 4, 10, 12));
-        using var borderPen = new Pen(Color.FromArgb(124, 104, 138, 108), 1.2f);
-        graphics.FillRectangle(panelBrush, startX - 12, y - 12, totalWidth + 24, slotSize + 24);
-        graphics.DrawRectangle(borderPen, startX - 12, y - 12, totalWidth + 24, slotSize + 24);
+        using var borderPen = new Pen(Color.FromArgb(162, 168, 126, 76), 1.4f);
+        DrawFantasyPanel(graphics, new Rectangle(startX - 22, y - 18, totalWidth + 44, slotSize + 32), Color.FromArgb(178, 5, 8, 9));
 
         for (var i = 0; i < slots; i++)
         {
             var x = startX + i * (slotSize + gap);
             var active = i == 0;
-            using var slotBrush = new SolidBrush(active ? Color.FromArgb(210, 54, 72, 52) : Color.FromArgb(180, 12, 18, 20));
+            using var slotBrush = new LinearGradientBrush(new Rectangle(x, y, slotSize, slotSize),
+                active ? Color.FromArgb(232, 44, 112, 58) : Color.FromArgb(205, 18, 24, 24),
+                active ? Color.FromArgb(232, 24, 52, 30) : Color.FromArgb(205, 6, 10, 12),
+                LinearGradientMode.Vertical);
             graphics.FillRectangle(slotBrush, x, y, slotSize, slotSize);
             graphics.DrawRectangle(borderPen, x, y, slotSize, slotSize);
             using var font = new Font("Consolas", 9f, FontStyle.Bold);
             using var textBrush = new SolidBrush(Color.FromArgb(232, 230, 218, 170));
-            graphics.DrawString((i + 1).ToString(), font, textBrush, x + 5, y + 4);
+            graphics.DrawString((i + 1).ToString(), font, textBrush, x + 5, y + slotSize - 17);
 
             if (active)
             {
-                using var abilityBrush = new SolidBrush(Color.FromArgb(232, 226, 196, 92));
-                using var abilityPen = new Pen(Color.FromArgb(230, 255, 238, 160), 1.4f);
-                graphics.FillEllipse(abilityBrush, x + 13, y + 14, 17, 17);
-                graphics.DrawEllipse(abilityPen, x + 13, y + 14, 17, 17);
+                using var abilityBrush = new SolidBrush(Color.FromArgb(238, 226, 196, 92));
+                using var abilityPen = new Pen(Color.FromArgb(235, 255, 238, 160), 1.6f);
+                graphics.FillEllipse(abilityBrush, x + 13, y + 10, 22, 22);
+                graphics.DrawEllipse(abilityPen, x + 13, y + 10, 22, 22);
 
                 if (_state.PrimaryCooldown > 0f)
                 {
@@ -577,12 +582,10 @@ public sealed class World3DScene
         var center = new PointF(x + size * 0.5f, y + size * 0.5f);
         var radius = size * 0.43f;
 
-        using var panelBrush = new SolidBrush(Color.FromArgb(176, 4, 12, 14));
         using var mapBrush = new SolidBrush(Color.FromArgb(202, 8, 26, 24));
-        using var borderPen = new Pen(Color.FromArgb(142, 116, 154, 118), 1.3f);
+        using var borderPen = new Pen(Color.FromArgb(172, 168, 126, 76), 1.6f);
         using var gridPen = new Pen(Color.FromArgb(44, 128, 172, 132), 1f);
-        graphics.FillRectangle(panelBrush, x - 10, y - 10, size + 20, size + 20);
-        graphics.DrawRectangle(borderPen, x - 10, y - 10, size + 20, size + 20);
+        DrawFantasyPanel(graphics, new Rectangle(x - 12, y - 12, size + 24, size + 24), Color.FromArgb(166, 5, 12, 13));
         graphics.FillEllipse(mapBrush, center.X - radius, center.Y - radius, radius * 2f, radius * 2f);
         graphics.DrawEllipse(borderPen, center.X - radius, center.Y - radius, radius * 2f, radius * 2f);
         graphics.DrawLine(gridPen, center.X - radius, center.Y, center.X + radius, center.Y);
@@ -627,14 +630,13 @@ public sealed class World3DScene
         const int width = 320;
         var x = viewport.Width - width - 26;
         var y = 210;
-        using var panelBrush = new SolidBrush(Color.FromArgb(166, 4, 12, 14));
-        using var borderPen = new Pen(Color.FromArgb(110, 87, 129, 105));
+        using var borderPen = new Pen(Color.FromArgb(142, 168, 126, 76));
         using var titleFont = new Font("Segoe UI", 11f, FontStyle.Bold);
         using var font = new Font("Segoe UI", 9f);
         using var titleBrush = new SolidBrush(Color.FromArgb(244, 228, 176));
         using var textBrush = new SolidBrush(Color.FromArgb(210, 226, 218));
         using var doneBrush = new SolidBrush(Color.FromArgb(158, 232, 164));
-        graphics.FillRectangle(panelBrush, x, y, width, 108);
+        DrawFantasyPanel(graphics, new Rectangle(x, y, width, 108), Color.FromArgb(158, 4, 12, 14));
         graphics.DrawRectangle(borderPen, x, y, width, 108);
         graphics.DrawString("Quest Tracker", titleFont, titleBrush, x + 14, y + 12);
 
@@ -676,10 +678,21 @@ public sealed class World3DScene
 
     private static Vector3 FlatPosition(Vector3 position) => new(position.X, 0, position.Z);
 
+    private static void DrawFantasyPanel(Graphics graphics, Rectangle bounds, Color fill)
+    {
+        using var brush = new LinearGradientBrush(bounds, Color.FromArgb(fill.A, Math.Min(fill.R + 8, 255),
+            Math.Min(fill.G + 12, 255), Math.Min(fill.B + 10, 255)), fill, LinearGradientMode.Vertical);
+        using var borderPen = new Pen(Color.FromArgb(126, 168, 126, 76), 1.2f);
+        using var glowPen = new Pen(Color.FromArgb(48, 88, 224, 178), 1f);
+        graphics.FillRectangle(brush, bounds);
+        graphics.DrawRectangle(borderPen, bounds);
+        graphics.DrawLine(glowPen, bounds.Left + 8, bounds.Top + 3, bounds.Right - 8, bounds.Top + 3);
+    }
+
     private static void DrawCrosshair(Graphics graphics, Size viewport)
     {
         var crosshairX = viewport.Width / 2;
-        var crosshairY = (int)(viewport.Height * 0.54f);
+        var crosshairY = (int)(viewport.Height * 0.6f);
         using var crosshairPen = new Pen(Color.FromArgb(130, 218, 238, 194), 1.5f);
         graphics.DrawLine(crosshairPen, crosshairX - 8, crosshairY, crosshairX - 2, crosshairY);
         graphics.DrawLine(crosshairPen, crosshairX + 2, crosshairY, crosshairX + 8, crosshairY);

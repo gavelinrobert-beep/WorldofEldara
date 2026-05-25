@@ -6,8 +6,8 @@ namespace WorldofEldara.Client3D.Game.Rendering;
 public sealed class WorldCamera
 {
     public float Yaw { get; private set; }
-    public float Distance { get; private set; } = 6.4f;
-    public float Height { get; private set; } = 2.65f;
+    public float Distance { get; private set; } = 5.7f;
+    public float Height { get; private set; } = 2.05f;
     public Vector3 Focus { get; private set; }
     public Vector3 Position { get; private set; }
     public Vector3 Forward { get; private set; }
@@ -17,20 +17,20 @@ public sealed class WorldCamera
     public void Reset(float playerYaw, Vector3 focus)
     {
         Yaw = playerYaw;
-        Distance = 6.4f;
-        Height = 2.65f;
+        Distance = 5.7f;
+        Height = 2.05f;
         Focus = focus;
     }
 
     public void AdjustDistance(int wheelDelta)
     {
-        Distance = Math.Clamp(Distance + (wheelDelta > 0 ? -0.45f : 0.45f), 4.8f, 10.0f);
+        Distance = Math.Clamp(Distance + (wheelDelta > 0 ? -0.42f : 0.42f), 4.4f, 8.4f);
     }
 
     public void Orbit(float yawDelta, float heightDelta)
     {
         Yaw += yawDelta;
-        Height = Math.Clamp(Height + heightDelta, 1.9f, 4.6f);
+        Height = Math.Clamp(Height + heightDelta, 1.45f, 3.45f);
     }
 
     public void RotateWithKeyboard(float yawDelta)
@@ -41,7 +41,7 @@ public sealed class WorldCamera
     public void SmoothFocus(Vector3 target, float deltaSeconds)
     {
         var focusT = 1f - MathF.Exp(-deltaSeconds * 11f);
-        var targetFocus = target + ForwardFromYaw(Yaw) * 0.55f;
+        var targetFocus = target + ForwardFromYaw(Yaw) * 0.92f + new Vector3(0, 0.18f, 0);
         Focus = Vector3.Lerp(Focus, targetFocus, focusT);
     }
 
@@ -55,9 +55,9 @@ public sealed class WorldCamera
     public void Build()
     {
         var cameraForwardFlat = ForwardFromYaw(Yaw);
-        var lookAt = Focus + new Vector3(0, 1.15f, 0);
+        var lookAt = Focus + new Vector3(0, 0.92f, 0);
         Position = Focus - cameraForwardFlat * Distance + new Vector3(0, Height, 0);
-        Position = new Vector3(Position.X, Math.Max(1.35f, Position.Y), Position.Z);
+        Position = new Vector3(Position.X, Math.Max(1.18f, Position.Y), Position.Z);
         Forward = Vector3.Normalize(lookAt - Position);
         Right = Vector3.Normalize(Vector3.Cross(Vector3.UnitY, Forward));
         Up = Vector3.Normalize(Vector3.Cross(Forward, Right));
@@ -76,10 +76,10 @@ public sealed class WorldCamera
             return false;
         }
 
-        var focal = viewport.Height / (2f * MathF.Tan(70f * MathF.PI / 360f));
+        var focal = viewport.Height / (2f * MathF.Tan(64f * MathF.PI / 360f));
         screen = new PointF(
             viewport.Width * 0.5f + x / z * focal,
-            viewport.Height * 0.54f - y / z * focal);
+            viewport.Height * 0.6f - y / z * focal);
         return screen.X > -320 && screen.X < viewport.Width + 320 &&
                screen.Y > -320 && screen.Y < viewport.Height + 320;
     }

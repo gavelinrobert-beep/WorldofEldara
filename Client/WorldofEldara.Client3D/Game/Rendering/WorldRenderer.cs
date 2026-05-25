@@ -65,11 +65,11 @@ public sealed class WorldRenderer
                 var smooth = MathF.Sin(x * 0.07f + z * 0.04f) * 1.4f;
                 var clearing = MathF.Max(0f, 1f - distance / 20f);
                 var farFade = Math.Clamp(distance / 48f, 0f, 1f);
-                var red = 10 + (int)(clearing * 8f) + (int)(pathBlend * 30f) + (int)(scarBlend * 34f) - (int)(waterBlend * 4f);
+                var red = 10 + (int)(clearing * 8f) + (int)(pathBlend * 18f) + (int)(scarBlend * 30f) - (int)(waterBlend * 4f);
                 var green = 39 + (int)(smooth * 1.4f) + (int)(tileHeight * 10f) - (int)(farFade * 6f) +
-                            (int)(clearing * 7f) + (int)(pathBlend * 9f) - (int)(scarBlend * 20f) + (int)(waterBlend * 8f);
+                            (int)(clearing * 7f) + (int)(pathBlend * 5f) - (int)(scarBlend * 18f) + (int)(waterBlend * 8f);
                 var blue = 27 + (int)(tileHeight * 5f) - (int)(farFade * 4f) + (int)(clearing * 3f) -
-                           (int)(pathBlend * 4f) + (int)(scarBlend * 34f) + (int)(waterBlend * 32f);
+                           (int)(pathBlend * 2f) + (int)(scarBlend * 30f) + (int)(waterBlend * 32f);
                 var color = Color.FromArgb(255, Math.Clamp(red, 7, 76), Math.Clamp(green, 28, 66), Math.Clamp(blue, 18, 76));
                 var edgeAlpha = distance < 10f ? 7 : 0;
                 commands.Add(new DrawCommand(depth, g =>
@@ -95,19 +95,19 @@ public sealed class WorldRenderer
             {
                 case "tree":
                     AddGroundOval(commands, viewport, terrain, camera, prop.Position, prop.Width * 1.35f,
-                        prop.Width * 0.68f, Color.FromArgb(96, 22, 80, 42), Color.FromArgb(34, 82, 142, 78));
+                        prop.Width * 0.68f, Color.FromArgb(66, 22, 80, 42), Color.FromArgb(18, 82, 142, 78));
                     break;
                 case "shrub":
                     AddGroundOval(commands, viewport, terrain, camera, prop.Position, prop.Width * 0.94f,
-                        prop.Width * 0.42f, Color.FromArgb(88, 30, 96, 50), Color.FromArgb(26, 92, 162, 88));
+                        prop.Width * 0.42f, Color.FromArgb(62, 30, 96, 50), Color.FromArgb(16, 92, 162, 88));
                     break;
                 case "worldroot":
                     AddGroundOval(commands, viewport, terrain, camera, prop.Position, 3.2f, 2.1f,
-                        Color.FromArgb(94, 42, 126, 72), Color.FromArgb(74, 114, 238, 178));
+                        Color.FromArgb(72, 42, 126, 72), Color.FromArgb(56, 114, 238, 178));
                     break;
                 case "cottage":
                     AddGroundOval(commands, viewport, terrain, camera, prop.Position + new Vector3(0.3f, 0, -0.4f),
-                        3.3f, 2.2f, Color.FromArgb(98, 74, 54, 34), Color.FromArgb(32, 154, 108, 68));
+                        3.3f, 2.2f, Color.FromArgb(72, 74, 54, 34), Color.FromArgb(18, 154, 108, 68));
                     break;
             }
         }
@@ -172,14 +172,15 @@ public sealed class WorldRenderer
             }
 
             var shade = 0.86f + Hash01(segmentIndex * 53 + step * 29) * 0.1f;
-            var fill = Fade(Shade(path.Color, shade * 1.18f), 214);
+            var nearFade = Math.Clamp((depth - 1.4f) / 5.2f, 0.28f, 1f);
+            var fill = Fade(Shade(path.Color, shade * 1.12f), (int)(108 + nearFade * 62f));
             commands.Add(new DrawCommand(depth - 0.02f, g =>
             {
                 using var brush = new SolidBrush(fill);
                 g.FillPolygon(brush, points);
-                if (step % 3 == 0)
+                if (step % 3 == 0 && depth > 4.2f)
                 {
-                    using var edgePen = new Pen(Color.FromArgb(58, 178, 128, 78), 1f);
+                    using var edgePen = new Pen(Color.FromArgb(24, 178, 128, 78), 1f);
                     g.DrawPolygon(edgePen, points);
                 }
             }));
@@ -262,7 +263,38 @@ public sealed class WorldRenderer
             Color.FromArgb(4, 12, 11),
             LinearGradientMode.Vertical);
         graphics.FillRectangle(background, 0, 0, viewport.Width, viewport.Height);
+        DrawGroundWash(graphics, viewport);
         DrawHorizonFog(graphics, viewport);
+    }
+
+    private static void DrawGroundWash(Graphics graphics, Size viewport)
+    {
+        var horizon = (int)(viewport.Height * 0.46f);
+        var groundRect = new Rectangle(0, horizon, viewport.Width, viewport.Height - horizon);
+        using var ground = new LinearGradientBrush(
+            groundRect,
+            Color.FromArgb(56, 12, 42, 32),
+            Color.FromArgb(255, 6, 18, 16),
+            LinearGradientMode.Vertical);
+        graphics.FillRectangle(ground, groundRect);
+
+        using var pathBrush = new LinearGradientBrush(
+            groundRect,
+            Color.FromArgb(44, 78, 54, 34),
+            Color.FromArgb(92, 56, 40, 26),
+            LinearGradientMode.Vertical);
+        var path = new[]
+        {
+            new PointF(viewport.Width * 0.38f, viewport.Height),
+            new PointF(viewport.Width * 0.47f, horizon + 28f),
+            new PointF(viewport.Width * 0.56f, horizon + 18f),
+            new PointF(viewport.Width * 0.71f, viewport.Height)
+        };
+        graphics.FillPolygon(pathBrush, path);
+
+        using var mossBrush = new SolidBrush(Color.FromArgb(40, 24, 70, 38));
+        graphics.FillEllipse(mossBrush, viewport.Width * 0.06f, horizon + 45f, viewport.Width * 0.32f, viewport.Height * 0.32f);
+        graphics.FillEllipse(mossBrush, viewport.Width * 0.62f, horizon + 20f, viewport.Width * 0.38f, viewport.Height * 0.38f);
     }
 
     private static void DrawHorizonFog(Graphics graphics, Size viewport)

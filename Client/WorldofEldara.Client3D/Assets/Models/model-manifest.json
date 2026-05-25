@@ -1,0 +1,34 @@
+{
+  "models": [
+    {
+      "id": "tree.azure_crystal.low",
+      "category": "Trees",
+      "relativePath": "Trees/azure-crystal-tree.low.glb",
+      "scale": 1.0,
+      "collisionRadius": 0.9,
+      "collisionHeight": 3.8,
+      "triangleBudget": 10000,
+      "notes": "Hero tree variant. Use sparingly until LOD exists."
+    },
+    {
+      "id": "prop.enchanted_signpost.low",
+      "category": "Props",
+      "relativePath": "Props/enchanted-signpost.low.glb",
+      "scale": 1.0,
+      "collisionRadius": 0.35,
+      "collisionHeight": 1.7,
+      "triangleBudget": 2500,
+      "notes": "Quest hub readable prop."
+    },
+    {
+      "id": "prop.glowcap_cluster.low",
+      "category": "Props",
+      "relativePath": "Props/glowcap-cluster.low.glb",
+      "scale": 1.0,
+      "collisionRadius": 0.45,
+      "collisionHeight": 0.8,
+      "triangleBudget": 3000,
+      "notes": "Small vegetation cluster, safe to repeat."
+    }
+  ]
+}

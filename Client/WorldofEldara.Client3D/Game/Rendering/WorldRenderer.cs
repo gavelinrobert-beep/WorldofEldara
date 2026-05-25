@@ -48,6 +48,14 @@ public sealed class WorldRenderer
                     continue;
                 }
 
+                var sampleX = x + GroundTileSize * 0.5f;
+                var sampleZ = z + GroundTileSize * 0.5f;
+                var terrainSample = terrain.Sample(scene, sampleX, sampleZ);
+                if (terrainSample.Coverage <= 0.03f)
+                {
+                    continue;
+                }
+
                 var points = ProjectClippedPolygon(camera, viewport, new[]
                 {
                     terrain.GroundPoint(x, z),
@@ -60,9 +68,7 @@ public sealed class WorldRenderer
                     continue;
                 }
 
-                var sampleX = x + GroundTileSize * 0.5f;
-                var sampleZ = z + GroundTileSize * 0.5f;
-                var color = TerrainColor(scene, terrain, sampleX, sampleZ, distance);
+                var color = TerrainColor(scene, terrain, terrainSample, sampleX, sampleZ, distance);
                 commands.Add(new DrawCommand(depth, g =>
                 {
                     using var brush = new SolidBrush(color);
@@ -457,28 +463,30 @@ public sealed class WorldRenderer
     private static Color Fade(Color color, int alpha) =>
         Color.FromArgb(Math.Clamp(alpha, 0, 255), color.R, color.G, color.B);
 
-    private static Color TerrainColor(SceneData scene, TerrainSystem terrain, float x, float z, float distance)
+    private static Color TerrainColor(SceneData scene, TerrainSystem terrain, TerrainSample sample, float x, float z,
+        float distance)
     {
-        var pathBlend = PathInfluence(scene, x, z);
-        var waterBlend = PropInfluence(scene, x, z, "water", 5.6f);
-        var scarBlend = PropInfluence(scene, x, z, "scar", 5.2f);
-        var shrineBlend = PropInfluence(scene, x, z, "worldroot", 6.8f);
+        var pathBlend = MathF.Max(sample.Path, PathInfluence(scene, x, z) * 0.72f);
+        var waterBlend = MathF.Max(sample.Water, PropInfluence(scene, x, z, "water", 5.6f));
+        var scarBlend = MathF.Max(sample.Corruption, PropInfluence(scene, x, z, "scar", 5.2f));
+        var shrineBlend = MathF.Max(sample.Shrine, PropInfluence(scene, x, z, "worldroot", 6.8f));
         var canopyBlend = PropInfluence(scene, x, z, "tree", 4.4f);
         var height = terrain.HeightAt(x, z);
-        var clearing = MathF.Max(0f, 1f - distance / 22f);
+        var clearing = MathF.Max(sample.Clearing, MathF.Max(0f, 1f - distance / 22f) * 0.42f);
         var farFade = Math.Clamp(distance / 50f, 0f, 1f);
         var broadMoss = MathF.Sin(x * 0.11f + z * 0.07f) * 0.5f + MathF.Cos(z * 0.13f - x * 0.05f) * 0.5f;
         var fineMoss = MathF.Sin((x + z) * 0.38f) * 0.5f + MathF.Cos((x - z) * 0.31f) * 0.5f;
 
-        var red = 12f + clearing * 5.5f + pathBlend * 13f + scarBlend * 22f + shrineBlend * 3f -
+        var red = 12f + clearing * 5.5f + pathBlend * 15f + scarBlend * 24f + shrineBlend * 3f -
                   waterBlend * 2f - canopyBlend * 1.5f;
         var green = 39f + height * 8f + broadMoss * 2.8f + fineMoss * 1.2f + clearing * 5f +
-                    pathBlend * 3f - scarBlend * 11f + waterBlend * 7f + shrineBlend * 8f - farFade * 4f;
+                    pathBlend * 4f - scarBlend * 12f + waterBlend * 7f + shrineBlend * 8f - farFade * 4f;
         var blue = 29f + height * 4f + broadMoss * 1.8f + clearing * 2f - pathBlend * 1f +
                    scarBlend * 21f + waterBlend * 27f + shrineBlend * 7f - farFade * 3f;
+        var alpha = Math.Clamp((int)(172f + sample.Coverage * 83f), 150, 255);
 
         return Color.FromArgb(
-            255,
+            alpha,
             Math.Clamp((int)red, 8, 64),
             Math.Clamp((int)green, 30, 68),
             Math.Clamp((int)blue, 20, 74));

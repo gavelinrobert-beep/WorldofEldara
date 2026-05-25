@@ -5,6 +5,7 @@ namespace WorldofEldara.Client3D.Game;
 
 public sealed class SceneData
 {
+    public required IReadOnlyList<TerrainChunk> TerrainChunks { get; init; }
     public required IReadOnlyList<PathRibbon> Paths { get; init; }
     public required IReadOnlyList<WorldProp> Props { get; init; }
     public required IReadOnlyList<WorldActor> Actors { get; init; }
@@ -14,6 +15,20 @@ public static class ThornveilSceneData
 {
     public static SceneData Create() => new()
     {
+        TerrainChunks =
+        [
+            new("hearthbough-glade", new Vector3(0, 0, 0.8f), 11.4f, 8.2f, TerrainMaterial.Clearing, 0.45f),
+            new("west-mossglass-pools", new Vector3(-8.8f, 0, -5.7f), 8.1f, 5.2f, TerrainMaterial.Forest, 0.34f),
+            new("north-memory-copse", new Vector3(-4.3f, 0, 6.2f), 7.4f, 4.7f, TerrainMaterial.Forest, 0.34f),
+            new("east-rootwalk", new Vector3(8.2f, 0, 5.3f), 9.4f, 4.8f, TerrainMaterial.Forest, 0.32f),
+            new("south-corruption-pocket", new Vector3(8.4f, 0, -4.8f), 6.4f, 4.8f, TerrainMaterial.Corruption, 0.36f),
+            new("southwest-hare-run", new Vector3(-10.0f, 0, -8.3f), 7.0f, 4.2f, TerrainMaterial.Corruption, 0.36f),
+            new("main-root-path", new Vector3(0.7f, 0, 0.3f), 17.8f, 2.7f, TerrainMaterial.Path, 0.42f),
+            new("memory-path", new Vector3(-3.4f, 0, 2.2f), 3.8f, 10.2f, TerrainMaterial.Path, 0.4f),
+            new("mossglass-water", new Vector3(-9.0f, 0, -6.0f), 4.6f, 2.4f, TerrainMaterial.Water, 0.34f),
+            new("east-water", new Vector3(7.4f, 0, 6.4f), 3.5f, 1.9f, TerrainMaterial.Water, 0.34f),
+            new("worldroot-shrine-ground", new Vector3(0.2f, 0, 3.2f), 5.2f, 3.7f, TerrainMaterial.Shrine, 0.44f)
+        ],
         Paths =
         [
             new([

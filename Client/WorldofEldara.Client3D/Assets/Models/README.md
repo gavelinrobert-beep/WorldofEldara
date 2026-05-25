@@ -1,0 +1,28 @@
+# Eldara 3D Model Intake
+
+Drop low-poly game assets into these folders and register them in `model-manifest.json`.
+
+Recommended budgets for the current prototype:
+
+- Small props: 500-3,000 triangles
+- Repeatable trees: 2,000-10,000 triangles
+- Hero trees or landmarks: 15,000-30,000 triangles
+- Creatures: 4,000-12,000 triangles
+- Player/NPC placeholders: 5,000-15,000 triangles
+
+Preferred GLB export:
+
+- One asset per file
+- Y-up if possible
+- Mesh centered at world origin with feet/base on ground
+- Normals included
+- UVs included
+- One or two materials
+- 1024px textures for repeated props, 2048px for hero props
+
+Avoid for now:
+
+- Multi-million triangle Meshy source meshes
+- Huge single-scene GLBs
+- Missing normals/UVs
+- Embedded 4K+ textures on repeatable objects

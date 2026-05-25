@@ -11,4 +11,10 @@
     <RootNamespace>WorldofEldara.Client3D</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Include="Assets\Models\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

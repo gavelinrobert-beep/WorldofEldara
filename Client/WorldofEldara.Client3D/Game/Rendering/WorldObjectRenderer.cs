@@ -362,11 +362,48 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
         Color fill, Color outline, string label, Vector3 forward, bool hostile)
     {
         forward = FlatDirection(forward, camera.Forward);
+        if (label == "Warden")
+        {
+            AddWarden(commands, viewport, basePosition, width, height, fill, outline, forward, label);
+            return;
+        }
+
+        if (hostile)
+        {
+            if (label.Contains("Hare", StringComparison.OrdinalIgnoreCase))
+            {
+                AddHareEnemy(commands, viewport, basePosition, width, height, fill, outline, forward, label);
+            }
+            else if (label.Contains("Fern", StringComparison.OrdinalIgnoreCase) ||
+                     label.Contains("Sapling", StringComparison.OrdinalIgnoreCase))
+            {
+                AddPlantEnemy(commands, viewport, basePosition, width, height, fill, outline, forward, label);
+            }
+            else
+            {
+                AddHostileHumanoid(commands, viewport, basePosition, width, height, fill, outline, forward, label);
+            }
+
+            return;
+        }
+
+        AddFriendlyHumanoid(commands, viewport, basePosition, width, height, fill, outline, forward, label);
+    }
+
+    private void AddWarden(List<DrawCommand> commands, Size viewport, Vector3 basePosition, float width, float height,
+        Color fill, Color outline, Vector3 forward, string label)
+    {
         var bodyRight = new Vector3(forward.Z, 0, -forward.X);
         var bodyCenter = basePosition + new Vector3(0, height * 0.53f, 0);
-        var torsoColor = hostile ? Shade(fill, 0.9f) : fill;
-        AddBox(commands, viewport, bodyCenter + forward * width * 0.02f,
-            new Vector3(width * 0.5f, height * 0.54f, width * 0.34f), torsoColor, outline, null);
+        var cloak = Shade(fill, 0.62f);
+        AddBox(commands, viewport, basePosition + new Vector3(0, height * 0.3f, 0) - forward * width * 0.08f,
+            new Vector3(width * 0.76f, height * 0.58f, width * 0.28f), cloak, outline, null);
+        AddBox(commands, viewport, bodyCenter + forward * width * 0.04f,
+            new Vector3(width * 0.58f, height * 0.54f, width * 0.36f), fill, outline, null);
+        AddBox(commands, viewport, bodyCenter + bodyRight * width * 0.34f + new Vector3(0, height * 0.16f, 0),
+            new Vector3(width * 0.28f, height * 0.16f, width * 0.28f), Shade(fill, 1.16f), outline, null);
+        AddBox(commands, viewport, bodyCenter - bodyRight * width * 0.34f + new Vector3(0, height * 0.16f, 0),
+            new Vector3(width * 0.28f, height * 0.16f, width * 0.28f), Shade(fill, 1.16f), outline, null);
 
         AddCylinder(commands, viewport, basePosition + bodyRight * width * 0.18f + new Vector3(0, height * 0.17f, 0),
             width * 0.075f, height * 0.34f, 5, Shade(fill, 0.72f), outline, null);
@@ -379,9 +416,98 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
 
         var chestPoint = bodyCenter + forward * width * 0.23f + new Vector3(0, height * 0.08f, 0);
         AddBillboard(commands, viewport, chestPoint, width * 0.18f, height * 0.2f,
-            hostile ? Color.FromArgb(214, 80, 48, 48) : Color.FromArgb(198, 176, 218, 148), outline, null);
+            Color.FromArgb(198, 176, 218, 148), outline, null);
         AddEllipseBillboard(commands, viewport, basePosition + new Vector3(0, height * 0.97f, 0),
             width * 0.62f, width * 0.62f, Color.FromArgb(212, 224, 232, 190), outline, label);
+    }
+
+    private void AddFriendlyHumanoid(List<DrawCommand> commands, Size viewport, Vector3 basePosition, float width,
+        float height, Color fill, Color outline, Vector3 forward, string label)
+    {
+        var bodyRight = new Vector3(forward.Z, 0, -forward.X);
+        var bodyCenter = basePosition + new Vector3(0, height * 0.5f, 0);
+        AddBox(commands, viewport, basePosition + new Vector3(0, height * 0.32f, 0),
+            new Vector3(width * 0.62f, height * 0.62f, width * 0.34f), Shade(fill, 0.78f), outline, null);
+        AddBox(commands, viewport, bodyCenter + new Vector3(0, height * 0.14f, 0),
+            new Vector3(width * 0.46f, height * 0.46f, width * 0.3f), fill, outline, null);
+        AddCylinder(commands, viewport, bodyCenter + bodyRight * width * 0.36f,
+            width * 0.055f, height * 0.5f, 5, Shade(fill, 0.86f), outline, null);
+        AddCylinder(commands, viewport, bodyCenter - bodyRight * width * 0.36f,
+            width * 0.055f, height * 0.5f, 5, Shade(fill, 0.86f), outline, null);
+        AddCylinder(commands, viewport, basePosition + bodyRight * width * 0.18f + new Vector3(0, height * 0.15f, 0),
+            width * 0.06f, height * 0.3f, 5, Shade(fill, 0.68f), outline, null);
+        AddCylinder(commands, viewport, basePosition - bodyRight * width * 0.18f + new Vector3(0, height * 0.15f, 0),
+            width * 0.06f, height * 0.3f, 5, Shade(fill, 0.68f), outline, null);
+        AddBillboard(commands, viewport, bodyCenter + forward * width * 0.24f + new Vector3(0, height * 0.08f, 0),
+            width * 0.14f, height * 0.2f, Color.FromArgb(214, 116, 238, 168), outline, null);
+        AddCylinder(commands, viewport, basePosition + bodyRight * width * 0.62f + new Vector3(0, height * 0.45f, 0),
+            width * 0.035f, height * 0.88f, 5, Color.FromArgb(176, 116, 82, 44), outline, null);
+        AddEllipseBillboard(commands, viewport, basePosition + new Vector3(0, height * 0.98f, 0),
+            width * 0.56f, width * 0.56f, Color.FromArgb(222, 226, 232, 190), outline, label);
+    }
+
+    private void AddHostileHumanoid(List<DrawCommand> commands, Size viewport, Vector3 basePosition, float width,
+        float height, Color fill, Color outline, Vector3 forward, string label)
+    {
+        var bodyRight = new Vector3(forward.Z, 0, -forward.X);
+        var bodyCenter = basePosition + new Vector3(0, height * 0.5f, 0);
+        AddBox(commands, viewport, bodyCenter,
+            new Vector3(width * 0.58f, height * 0.56f, width * 0.36f), Shade(fill, 0.88f), outline, null);
+        AddBox(commands, viewport, bodyCenter + bodyRight * width * 0.4f + new Vector3(0, height * 0.1f, 0),
+            new Vector3(width * 0.22f, height * 0.16f, width * 0.28f), Shade(fill, 1.18f), outline, null);
+        AddBox(commands, viewport, bodyCenter - bodyRight * width * 0.4f + new Vector3(0, height * 0.1f, 0),
+            new Vector3(width * 0.22f, height * 0.16f, width * 0.28f), Shade(fill, 1.18f), outline, null);
+        AddCylinder(commands, viewport, basePosition + bodyRight * width * 0.19f + new Vector3(0, height * 0.17f, 0),
+            width * 0.075f, height * 0.34f, 5, Shade(fill, 0.58f), outline, null);
+        AddCylinder(commands, viewport, basePosition - bodyRight * width * 0.19f + new Vector3(0, height * 0.17f, 0),
+            width * 0.075f, height * 0.34f, 5, Shade(fill, 0.58f), outline, null);
+        AddCylinder(commands, viewport, bodyCenter + bodyRight * width * 0.45f + forward * width * 0.18f,
+            width * 0.06f, height * 0.46f, 5, Shade(fill, 0.75f), outline, null);
+        AddCylinder(commands, viewport, bodyCenter - bodyRight * width * 0.45f + forward * width * 0.18f,
+            width * 0.06f, height * 0.46f, 5, Shade(fill, 0.75f), outline, null);
+        AddBillboard(commands, viewport, bodyCenter + forward * width * 0.28f,
+            width * 0.18f, height * 0.2f, Color.FromArgb(222, 96, 32, 32), outline, null);
+        AddEllipseBillboard(commands, viewport, basePosition + new Vector3(0, height * 0.95f, 0),
+            width * 0.55f, width * 0.55f, Color.FromArgb(218, 226, 196, 162), outline, label);
+    }
+
+    private void AddPlantEnemy(List<DrawCommand> commands, Size viewport, Vector3 basePosition, float width,
+        float height, Color fill, Color outline, Vector3 forward, string label)
+    {
+        var bodyRight = new Vector3(forward.Z, 0, -forward.X);
+        AddCylinder(commands, viewport, basePosition + new Vector3(0, height * 0.38f, 0),
+            width * 0.16f, height * 0.76f, 6, Shade(fill, 0.74f), outline, null);
+        AddBox(commands, viewport, basePosition + new Vector3(0, height * 0.54f, 0) + forward * width * 0.06f,
+            new Vector3(width * 0.5f, height * 0.28f, width * 0.26f), fill, outline, null);
+        AddBillboard(commands, viewport, basePosition + bodyRight * width * 0.38f + new Vector3(0, height * 0.76f, 0),
+            width * 0.42f, height * 0.5f, Shade(fill, 1.18f), outline, null);
+        AddBillboard(commands, viewport, basePosition - bodyRight * width * 0.38f + new Vector3(0, height * 0.72f, 0),
+            width * 0.42f, height * 0.5f, Shade(fill, 0.82f), outline, null);
+        AddBillboard(commands, viewport, basePosition + forward * width * 0.28f + new Vector3(0, height * 0.66f, 0),
+            width * 0.16f, height * 0.22f, Color.FromArgb(226, 238, 86, 64), outline, null);
+        AddEllipseBillboard(commands, viewport, basePosition + new Vector3(0, height * 0.98f, 0),
+            width * 0.5f, width * 0.42f, Color.FromArgb(224, 238, 196, 150), outline, label);
+    }
+
+    private void AddHareEnemy(List<DrawCommand> commands, Size viewport, Vector3 basePosition, float width,
+        float height, Color fill, Color outline, Vector3 forward, string label)
+    {
+        var bodyRight = new Vector3(forward.Z, 0, -forward.X);
+        var body = basePosition + new Vector3(0, height * 0.32f, 0);
+        AddBox(commands, viewport, body,
+            new Vector3(width * 0.72f, height * 0.34f, width * 0.46f), Shade(fill, 0.85f), outline, null);
+        AddEllipseBillboard(commands, viewport, body + forward * width * 0.42f + new Vector3(0, height * 0.1f, 0),
+            width * 0.42f, width * 0.38f, fill, outline, null);
+        AddCylinder(commands, viewport, body + bodyRight * width * 0.16f + forward * width * 0.36f + new Vector3(0, height * 0.38f, 0),
+            width * 0.035f, height * 0.5f, 5, fill, outline, null);
+        AddCylinder(commands, viewport, body - bodyRight * width * 0.16f + forward * width * 0.36f + new Vector3(0, height * 0.38f, 0),
+            width * 0.035f, height * 0.5f, 5, fill, outline, null);
+        AddCylinder(commands, viewport, basePosition + bodyRight * width * 0.22f + new Vector3(0, height * 0.1f, 0),
+            width * 0.055f, height * 0.2f, 5, Shade(fill, 0.68f), outline, null);
+        AddCylinder(commands, viewport, basePosition - bodyRight * width * 0.22f + new Vector3(0, height * 0.1f, 0),
+            width * 0.055f, height * 0.2f, 5, Shade(fill, 0.68f), outline, null);
+        AddBillboard(commands, viewport, body + forward * width * 0.64f,
+            width * 0.12f, height * 0.13f, Color.FromArgb(232, 240, 72, 62), outline, label);
     }
 
     private void AddActorHud(List<DrawCommand> commands, Size viewport, WorldActor actor, Vector3 position, float health)

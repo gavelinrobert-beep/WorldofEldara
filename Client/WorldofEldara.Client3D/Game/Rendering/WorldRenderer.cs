@@ -6,6 +6,10 @@ namespace WorldofEldara.Client3D.Game.Rendering;
 
 public sealed class WorldRenderer
 {
+    private const float NearClip = 0.12f;
+    private const float FovDegrees = 64f;
+    private const float ProjectionCenterY = 0.63f;
+
     public void AddTerrainAndPaths(List<DrawCommand> commands, Size viewport, SceneData scene, WorldState state,
         TerrainSystem terrain, WorldCamera camera)
     {
@@ -44,7 +48,7 @@ public sealed class WorldRenderer
                     continue;
                 }
 
-                var points = ProjectPolygon(camera, viewport, new[]
+                var points = ProjectClippedPolygon(camera, viewport, new[]
                 {
                     terrain.GroundPoint(x, z),
                     terrain.GroundPoint(x + tileSize, z),
@@ -71,7 +75,7 @@ public sealed class WorldRenderer
                 var blue = 27 + (int)(tileHeight * 5f) - (int)(farFade * 4f) + (int)(clearing * 3f) -
                            (int)(pathBlend * 2f) + (int)(scarBlend * 30f) + (int)(waterBlend * 32f);
                 var color = Color.FromArgb(255, Math.Clamp(red, 7, 76), Math.Clamp(green, 28, 66), Math.Clamp(blue, 18, 76));
-                var edgeAlpha = distance < 10f ? 7 : 0;
+                var edgeAlpha = distance is > 9f and < 24f ? 5 : 0;
                 commands.Add(new DrawCommand(depth, g =>
                 {
                     using var brush = new SolidBrush(color);
@@ -159,7 +163,7 @@ public sealed class WorldRenderer
             var right0 = normal * (-width0 + wobble0 * 0.4f);
             var left1 = normal * (width1 + wobble1);
             var right1 = normal * (-width1 + wobble1 * 0.4f);
-            var points = ProjectPolygon(camera, viewport, new[]
+            var points = ProjectClippedPolygon(camera, viewport, new[]
             {
                 terrain.GroundPoint(a.X + left0.X, a.Z + left0.Z, a.Y),
                 terrain.GroundPoint(b.X + left1.X, b.Z + left1.Z, b.Y),
@@ -173,7 +177,7 @@ public sealed class WorldRenderer
 
             var shade = 0.86f + Hash01(segmentIndex * 53 + step * 29) * 0.1f;
             var nearFade = Math.Clamp((depth - 1.4f) / 5.2f, 0.28f, 1f);
-            var fill = Fade(Shade(path.Color, shade * 1.12f), (int)(108 + nearFade * 62f));
+            var fill = Fade(Shade(path.Color, shade * 1.1f), (int)(92 + nearFade * 58f));
             commands.Add(new DrawCommand(depth - 0.02f, g =>
             {
                 using var brush = new SolidBrush(fill);
@@ -206,7 +210,7 @@ public sealed class WorldRenderer
             var side = rune % 2 == 0 ? 1f : -1f;
             var center = Vector3.Lerp(start, end, t) + normal * side * (0.42f + Hash01(segmentIndex * 211 + rune * 31) * 0.32f);
             var size = 0.28f + Hash01(segmentIndex * 173 + rune * 19) * 0.08f;
-            var points = ProjectPolygon(camera, viewport, new[]
+            var points = ProjectClippedPolygon(camera, viewport, new[]
             {
                 terrain.GroundPoint(center.X, center.Z - size, 0.075f),
                 terrain.GroundPoint(center.X + size * 0.7f, center.Z, 0.075f),
@@ -240,7 +244,7 @@ public sealed class WorldRenderer
                 center.Z + MathF.Sin(angle) * radiusZ, center.Y + 0.045f);
         }
 
-        var points = ProjectPolygon(camera, viewport, vertices, out var depth);
+        var points = ProjectClippedPolygon(camera, viewport, vertices, out var depth);
         if (points is null)
         {
             return;
@@ -269,19 +273,19 @@ public sealed class WorldRenderer
 
     private static void DrawGroundWash(Graphics graphics, Size viewport)
     {
-        var horizon = (int)(viewport.Height * 0.46f);
+        var horizon = (int)(viewport.Height * 0.5f);
         var groundRect = new Rectangle(0, horizon, viewport.Width, viewport.Height - horizon);
         using var ground = new LinearGradientBrush(
             groundRect,
-            Color.FromArgb(56, 12, 42, 32),
-            Color.FromArgb(255, 6, 18, 16),
+            Color.FromArgb(32, 12, 42, 32),
+            Color.FromArgb(178, 6, 18, 16),
             LinearGradientMode.Vertical);
         graphics.FillRectangle(ground, groundRect);
 
         using var pathBrush = new LinearGradientBrush(
             groundRect,
-            Color.FromArgb(44, 78, 54, 34),
-            Color.FromArgb(92, 56, 40, 26),
+            Color.FromArgb(24, 78, 54, 34),
+            Color.FromArgb(54, 56, 40, 26),
             LinearGradientMode.Vertical);
         var path = new[]
         {
@@ -292,7 +296,7 @@ public sealed class WorldRenderer
         };
         graphics.FillPolygon(pathBrush, path);
 
-        using var mossBrush = new SolidBrush(Color.FromArgb(40, 24, 70, 38));
+        using var mossBrush = new SolidBrush(Color.FromArgb(24, 24, 70, 38));
         graphics.FillEllipse(mossBrush, viewport.Width * 0.06f, horizon + 45f, viewport.Width * 0.32f, viewport.Height * 0.32f);
         graphics.FillEllipse(mossBrush, viewport.Width * 0.62f, horizon + 20f, viewport.Width * 0.38f, viewport.Height * 0.38f);
     }
@@ -319,24 +323,80 @@ public sealed class WorldRenderer
         graphics.FillRectangle(haze, hazeRect);
     }
 
-    private static PointF[]? ProjectPolygon(WorldCamera camera, Size viewport, IReadOnlyList<Vector3> vertices,
+    private static PointF[]? ProjectClippedPolygon(WorldCamera camera, Size viewport, IReadOnlyList<Vector3> vertices,
         out float depth)
     {
-        var points = new PointF[vertices.Count];
-        depth = 0f;
-        for (var i = 0; i < vertices.Count; i++)
+        var cameraVertices = new List<CameraVertex>(vertices.Count + 2);
+        foreach (var vertex in vertices)
         {
-            if (!camera.TryProject(viewport, vertices[i], out points[i], out var pointDepth))
-            {
-                return null;
-            }
-
-            depth += pointDepth;
+            var relative = vertex - camera.Position;
+            cameraVertices.Add(new CameraVertex(
+                Vector3.Dot(relative, camera.Right),
+                Vector3.Dot(relative, camera.Up),
+                Vector3.Dot(relative, camera.Forward)));
         }
 
-        depth /= vertices.Count;
+        var clipped = ClipNear(cameraVertices);
+        if (clipped.Count < 3)
+        {
+            depth = 0f;
+            return null;
+        }
+
+        var points = new PointF[clipped.Count];
+        depth = 0f;
+        var focal = viewport.Height / (2f * MathF.Tan(FovDegrees * MathF.PI / 360f));
+        for (var i = 0; i < clipped.Count; i++)
+        {
+            var vertex = clipped[i];
+            points[i] = new PointF(
+                viewport.Width * 0.5f + vertex.X / vertex.Z * focal,
+                viewport.Height * ProjectionCenterY - vertex.Y / vertex.Z * focal);
+            depth += vertex.Z;
+        }
+
+        depth /= clipped.Count;
         return points;
     }
+
+    private static List<CameraVertex> ClipNear(IReadOnlyList<CameraVertex> vertices)
+    {
+        var output = new List<CameraVertex>(vertices.Count + 2);
+        for (var i = 0; i < vertices.Count; i++)
+        {
+            var current = vertices[i];
+            var previous = vertices[(i + vertices.Count - 1) % vertices.Count];
+            var currentInside = current.Z >= NearClip;
+            var previousInside = previous.Z >= NearClip;
+
+            if (currentInside && !previousInside)
+            {
+                output.Add(IntersectNear(previous, current));
+            }
+
+            if (currentInside)
+            {
+                output.Add(current);
+            }
+            else if (previousInside)
+            {
+                output.Add(IntersectNear(previous, current));
+            }
+        }
+
+        return output;
+    }
+
+    private static CameraVertex IntersectNear(CameraVertex from, CameraVertex to)
+    {
+        var t = (NearClip - from.Z) / (to.Z - from.Z);
+        return new CameraVertex(
+            from.X + (to.X - from.X) * t,
+            from.Y + (to.Y - from.Y) * t,
+            NearClip);
+    }
+
+    private readonly record struct CameraVertex(float X, float Y, float Z);
 
     private static float Hash01(int seed)
     {

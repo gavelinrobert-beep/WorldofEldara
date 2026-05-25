@@ -24,17 +24,90 @@ public class SpawnSystem
     private Networking.NetworkServer? _networkServer;
     private static readonly List<Vector3> Zone01SaplingPatrol = new()
     {
-        new Vector3(8, 2, 0),
-        new Vector3(10, 4, 0),
-        new Vector3(12, 2, 0),
-        new Vector3(10, 0, 0)
+        new Vector3(9, 1, 0),
+        new Vector3(11, 2, 0),
+        new Vector3(12, -1, 0),
+        new Vector3(9, -2, 0)
     };
 
     private static readonly List<Vector3> Zone01RazorFernPatrol = new()
     {
-        new Vector3(-4, -1, 0),
-        new Vector3(-6, -3, 0),
-        new Vector3(-2, -3, 0)
+        new Vector3(-6, -4, 0),
+        new Vector3(-8, -5, 0),
+        new Vector3(-5, -7, 0),
+        new Vector3(-3, -5, 0)
+    };
+
+    private static readonly List<Vector3> Zone01TwiceDeadHarePatrol = new()
+    {
+        new Vector3(-13, 5, 0),
+        new Vector3(-16, 7, 0),
+        new Vector3(-13, 9, 0),
+        new Vector3(-10, 6, 0)
+    };
+
+    private static readonly List<Vector3> Zone01NullrootSproutPatrol = new()
+    {
+        new Vector3(11, 11, 0),
+        new Vector3(13, 13, 0),
+        new Vector3(15, 11, 0),
+        new Vector3(12, 9, 0)
+    };
+
+    private static readonly List<Vector3> Zone01SeedvaultRootlingPatrol = new()
+    {
+        new Vector3(-7, 16, 0),
+        new Vector3(-10, 18, 0),
+        new Vector3(-6, 20, 0),
+        new Vector3(-3, 17, 0)
+    };
+
+    private static readonly List<Vector3> Zone01SealgnawerMatronPatrol = new()
+    {
+        new Vector3(-9, 22, 0),
+        new Vector3(-6, 23, 0),
+        new Vector3(-4, 20, 0),
+        new Vector3(-8, 19, 0)
+    };
+
+    private static readonly List<Vector3> Zone01WhisperrootPatrol = new()
+    {
+        new Vector3(5, -8, 0),
+        new Vector3(8, -10, 0),
+        new Vector3(11, -8, 0),
+        new Vector3(7, -6, 0)
+    };
+
+    private static readonly List<Vector3> Zone01MossglassPatrol = new()
+    {
+        new Vector3(-18, 7, 0),
+        new Vector3(-21, 9, 0),
+        new Vector3(-18, 12, 0),
+        new Vector3(-15, 8, 0)
+    };
+
+    private static readonly List<Vector3> Zone01OldThornwayPatrol = new()
+    {
+        new Vector3(17, -11, 0),
+        new Vector3(20, -13, 0),
+        new Vector3(24, -11, 0),
+        new Vector3(21, -8, 0)
+    };
+
+    private static readonly List<Vector3> Zone01GreenScarPatrol = new()
+    {
+        new Vector3(13, 12, 0),
+        new Vector3(16, 15, 0),
+        new Vector3(20, 13, 0),
+        new Vector3(15, 10, 0)
+    };
+
+    private static readonly List<Vector3> Zone01SeedvaultDeepPatrol = new()
+    {
+        new Vector3(-9, 24, 0),
+        new Vector3(-5, 25, 0),
+        new Vector3(-2, 22, 0),
+        new Vector3(-7, 21, 0)
     };
 
     public SpawnSystem(EntityManager entityManager, ZoneManager zoneManager, TimeManager timeManager,
@@ -70,9 +143,9 @@ public class SpawnSystem
         _spawnPoints.Add(new SpawnPoint
         {
             ZoneId = ZoneConstants.Zone01,
-            Position = new Vector3(2, 2, 0),
-            NPCTemplateId = 5001,
-            OverrideName = "Warden Elaris",
+            Position = new Vector3(1, 1, 0),
+            NPCTemplateId = 1001,
+            OverrideName = "Elder Thaelir",
             RespawnTime = 10.0f,
             TimeSinceLastSpawn = 10.0f,
             IsHostileOverride = false,
@@ -82,7 +155,115 @@ public class SpawnSystem
         _spawnPoints.Add(new SpawnPoint
         {
             ZoneId = ZoneConstants.Zone01,
-            Position = new Vector3(8, 2, 0),
+            Position = new Vector3(-4, -3, 0),
+            NPCTemplateId = 1002,
+            OverrideName = "Memory Keeper Savaen",
+            RespawnTime = 10.0f,
+            TimeSinceLastSpawn = 10.0f,
+            IsHostileOverride = false,
+            FactionOverride = Faction.VerdantCircles
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(-1, 4, 0),
+            NPCTemplateId = 1003,
+            OverrideName = "Druid Ylvhara",
+            RespawnTime = 10.0f,
+            TimeSinceLastSpawn = 10.0f,
+            IsHostileOverride = false,
+            FactionOverride = Faction.VerdantCircles
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(3, 2, 0),
+            NPCTemplateId = 5001,
+            OverrideName = "Root Guardian Orenhusk",
+            RespawnTime = 10.0f,
+            TimeSinceLastSpawn = 10.0f,
+            IsHostileOverride = false,
+            FactionOverride = Faction.VerdantCircles
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(5, -5, 0),
+            NPCTemplateId = 1004,
+            OverrideName = "Initiate Vessa Newleaf",
+            RespawnTime = 10.0f,
+            TimeSinceLastSpawn = 10.0f,
+            IsHostileOverride = false,
+            FactionOverride = Faction.VerdantCircles
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(17, -11, 0),
+            NPCTemplateId = 1005,
+            OverrideName = "Lysarien Vaelth",
+            RespawnTime = 10.0f,
+            TimeSinceLastSpawn = 10.0f,
+            IsHostileOverride = false,
+            FactionOverride = Faction.Neutral
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(16, 13, 0),
+            NPCTemplateId = 1006,
+            OverrideName = "Nim Without-Echo",
+            RespawnTime = 10.0f,
+            TimeSinceLastSpawn = 10.0f,
+            IsHostileOverride = false,
+            FactionOverride = Faction.Neutral
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(-12, -5, 0),
+            NPCTemplateId = 1007,
+            OverrideName = "Memory Trader Moss-Under-Ferns",
+            RespawnTime = 10.0f,
+            TimeSinceLastSpawn = 10.0f,
+            IsHostileOverride = false,
+            FactionOverride = Faction.VerdantCircles
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(8, 9, 0),
+            NPCTemplateId = 1008,
+            OverrideName = "God-Seeker Irielle",
+            RespawnTime = 10.0f,
+            TimeSinceLastSpawn = 10.0f,
+            IsHostileOverride = false,
+            FactionOverride = Faction.VerdantCircles
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(21, -9, 0),
+            NPCTemplateId = 1009,
+            OverrideName = "Barksmith Harth Orenroot",
+            RespawnTime = 10.0f,
+            TimeSinceLastSpawn = 10.0f,
+            IsHostileOverride = false,
+            FactionOverride = Faction.VerdantCircles
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(9, 1, 0),
             NPCTemplateId = 6001,
             OverrideName = "Hollow Sapling",
             RespawnTime = 12.0f,
@@ -91,7 +272,7 @@ public class SpawnSystem
             MaxHealth = 110,
             Level = 1,
             MovementSpeed = 2.8f,
-            AggroRange = 9.0f,
+            AggroRange = 7.5f,
             AttackRange = 2.0f,
             AttackCooldown = 1.8f,
             IsHostileOverride = true,
@@ -103,7 +284,7 @@ public class SpawnSystem
         _spawnPoints.Add(new SpawnPoint
         {
             ZoneId = ZoneConstants.Zone01,
-            Position = new Vector3(-4, -1, 0),
+            Position = new Vector3(-6, -4, 0),
             NPCTemplateId = 6002,
             OverrideName = "Razor Fern",
             RespawnTime = 10.0f,
@@ -112,7 +293,7 @@ public class SpawnSystem
             MaxHealth = 90,
             Level = 2,
             MovementSpeed = 3.8f,
-            AggroRange = 13.0f,
+            AggroRange = 8.5f,
             AttackRange = 2.6f,
             AttackCooldown = 1.2f,
             IsHostileOverride = true,
@@ -120,6 +301,328 @@ public class SpawnSystem
             Tag = "zone01_hostile",
             PatrolPauseDuration = 0.6f,
             PatrolPath = new List<Vector3>(Zone01RazorFernPatrol)
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(-13, 5, 0),
+            NPCTemplateId = 6003,
+            OverrideName = "Twice-Dead Hare",
+            RespawnTime = 14.0f,
+            TimeSinceLastSpawn = 14.0f,
+            MaxAliveInZone = 2,
+            MaxHealth = 70,
+            Level = 2,
+            MovementSpeed = 4.4f,
+            AggroRange = 6.5f,
+            AttackRange = 1.8f,
+            AttackCooldown = 1.4f,
+            IsHostileOverride = true,
+            FactionOverride = Faction.Neutral,
+            Tag = "memory_anomaly",
+            PatrolPauseDuration = 0.45f,
+            LeashDistance = 18.0f,
+            PatrolPath = new List<Vector3>(Zone01TwiceDeadHarePatrol)
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(11, 11, 0),
+            NPCTemplateId = 6004,
+            OverrideName = "Nullroot Sprout",
+            RespawnTime = 16.0f,
+            TimeSinceLastSpawn = 16.0f,
+            MaxAliveInZone = 3,
+            MaxHealth = 125,
+            Level = 3,
+            MovementSpeed = 3.2f,
+            AggroRange = 7.5f,
+            AttackRange = 2.2f,
+            AttackCooldown = 1.55f,
+            IsHostileOverride = true,
+            FactionOverride = Faction.Neutral,
+            Tag = "seedvault_corruption",
+            PatrolPauseDuration = 0.7f,
+            LeashDistance = 16.0f,
+            PatrolPath = new List<Vector3>(Zone01NullrootSproutPatrol)
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(-7, 16, 0),
+            NPCTemplateId = 6005,
+            OverrideName = "Ward-Eaten Rootling",
+            RespawnTime = 18.0f,
+            TimeSinceLastSpawn = 18.0f,
+            MaxAliveInZone = 4,
+            MaxHealth = 145,
+            Level = 4,
+            MovementSpeed = 3.0f,
+            AggroRange = 8.0f,
+            AttackRange = 2.3f,
+            AttackCooldown = 1.45f,
+            IsHostileOverride = true,
+            FactionOverride = Faction.Neutral,
+            Tag = "seedvault_dungeon",
+            PatrolPauseDuration = 0.55f,
+            LeashDistance = 18.0f,
+            PatrolPath = new List<Vector3>(Zone01SeedvaultRootlingPatrol)
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(-9, 22, 0),
+            NPCTemplateId = 6006,
+            OverrideName = "Sealgnawer Matron",
+            RespawnTime = 28.0f,
+            TimeSinceLastSpawn = 28.0f,
+            MaxAliveInZone = 1,
+            MaxHealth = 260,
+            Level = 5,
+            MovementSpeed = 2.7f,
+            AggroRange = 8.0f,
+            AttackRange = 2.7f,
+            AttackCooldown = 1.7f,
+            IsHostileOverride = true,
+            FactionOverride = Faction.Neutral,
+            Tag = "seedvault_boss",
+            PatrolPauseDuration = 0.9f,
+            LeashDistance = 20.0f,
+            PatrolPath = new List<Vector3>(Zone01SealgnawerMatronPatrol)
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(5, -8, 0),
+            NPCTemplateId = 6007,
+            OverrideName = "Rotbound Moth",
+            RespawnTime = 12.0f,
+            TimeSinceLastSpawn = 12.0f,
+            MaxAliveInZone = 4,
+            MaxHealth = 115,
+            Level = 3,
+            MovementSpeed = 4.0f,
+            AggroRange = 7.5f,
+            AttackRange = 2.2f,
+            AttackCooldown = 1.25f,
+            IsHostileOverride = true,
+            FactionOverride = Faction.Neutral,
+            Tag = "thornveil_rot",
+            PatrolPauseDuration = 0.45f,
+            LeashDistance = 18.0f,
+            PatrolPath = new List<Vector3>(Zone01WhisperrootPatrol)
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(-18, 7, 0),
+            NPCTemplateId = 6008,
+            OverrideName = "Echo-Wolf",
+            RespawnTime = 14.0f,
+            TimeSinceLastSpawn = 14.0f,
+            MaxAliveInZone = 3,
+            MaxHealth = 150,
+            Level = 4,
+            MovementSpeed = 4.2f,
+            AggroRange = 8.0f,
+            AttackRange = 2.3f,
+            AttackCooldown = 1.35f,
+            IsHostileOverride = true,
+            FactionOverride = Faction.Neutral,
+            Tag = "memory_anomaly",
+            PatrolPauseDuration = 0.55f,
+            LeashDistance = 18.0f,
+            PatrolPath = new List<Vector3>(Zone01MossglassPatrol)
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(-20, 9, 0),
+            NPCTemplateId = 6009,
+            OverrideName = "Drowned Echo",
+            RespawnTime = 14.0f,
+            TimeSinceLastSpawn = 14.0f,
+            MaxAliveInZone = 3,
+            MaxHealth = 140,
+            Level = 4,
+            MovementSpeed = 3.4f,
+            AggroRange = 7.5f,
+            AttackRange = 2.2f,
+            AttackCooldown = 1.45f,
+            IsHostileOverride = true,
+            FactionOverride = Faction.Neutral,
+            Tag = "mossglass_echo",
+            PatrolPauseDuration = 0.65f,
+            LeashDistance = 18.0f,
+            PatrolPath = new List<Vector3>(Zone01MossglassPatrol)
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(-17, 11, 0),
+            NPCTemplateId = 6010,
+            OverrideName = "Mossglass Wraith",
+            RespawnTime = 16.0f,
+            TimeSinceLastSpawn = 16.0f,
+            MaxAliveInZone = 3,
+            MaxHealth = 165,
+            Level = 5,
+            MovementSpeed = 3.2f,
+            AggroRange = 8.0f,
+            AttackRange = 2.4f,
+            AttackCooldown = 1.55f,
+            IsHostileOverride = true,
+            FactionOverride = Faction.Neutral,
+            Tag = "mossglass_echo",
+            PatrolPauseDuration = 0.7f,
+            LeashDistance = 19.0f,
+            PatrolPath = new List<Vector3>(Zone01MossglassPatrol)
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(20, -12, 0),
+            NPCTemplateId = 6011,
+            OverrideName = "Aelthar Scout",
+            RespawnTime = 18.0f,
+            TimeSinceLastSpawn = 18.0f,
+            MaxAliveInZone = 4,
+            MaxHealth = 180,
+            Level = 5,
+            MovementSpeed = 3.6f,
+            AggroRange = 8.5f,
+            AttackRange = 2.4f,
+            AttackCooldown = 1.35f,
+            IsHostileOverride = true,
+            FactionOverride = Faction.Neutral,
+            Tag = "aelthar_pressure",
+            PatrolPauseDuration = 0.55f,
+            LeashDistance = 22.0f,
+            PatrolPath = new List<Vector3>(Zone01OldThornwayPatrol)
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(8, -10, 0),
+            NPCTemplateId = 6012,
+            OverrideName = "Temporal Residue",
+            RespawnTime = 16.0f,
+            TimeSinceLastSpawn = 16.0f,
+            MaxAliveInZone = 3,
+            MaxHealth = 155,
+            Level = 5,
+            MovementSpeed = 3.9f,
+            AggroRange = 7.5f,
+            AttackRange = 2.1f,
+            AttackCooldown = 1.25f,
+            IsHostileOverride = true,
+            FactionOverride = Faction.Neutral,
+            Tag = "time_anomaly",
+            PatrolPauseDuration = 0.45f,
+            LeashDistance = 18.0f,
+            PatrolPath = new List<Vector3>(Zone01WhisperrootPatrol)
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(16, 14, 0),
+            NPCTemplateId = 6013,
+            OverrideName = "Nameless Growth",
+            RespawnTime = 18.0f,
+            TimeSinceLastSpawn = 18.0f,
+            MaxAliveInZone = 4,
+            MaxHealth = 185,
+            Level = 6,
+            MovementSpeed = 3.0f,
+            AggroRange = 8.0f,
+            AttackRange = 2.4f,
+            AttackCooldown = 1.5f,
+            IsHostileOverride = true,
+            FactionOverride = Faction.Neutral,
+            Tag = "nameless_patch",
+            PatrolPauseDuration = 0.75f,
+            LeashDistance = 20.0f,
+            PatrolPath = new List<Vector3>(Zone01GreenScarPatrol)
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(-9, 24, 0),
+            NPCTemplateId = 6014,
+            OverrideName = "Amsa-Once",
+            RespawnTime = 26.0f,
+            TimeSinceLastSpawn = 26.0f,
+            MaxAliveInZone = 1,
+            MaxHealth = 360,
+            Level = 8,
+            MovementSpeed = 2.8f,
+            AggroRange = 8.5f,
+            AttackRange = 2.8f,
+            AttackCooldown = 1.7f,
+            IsHostileOverride = true,
+            FactionOverride = Faction.Neutral,
+            Tag = "seedvault_boss",
+            PatrolPauseDuration = 0.85f,
+            LeashDistance = 22.0f,
+            PatrolPath = new List<Vector3>(Zone01SeedvaultDeepPatrol)
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(-5, 25, 0),
+            NPCTemplateId = 6015,
+            OverrideName = "Oranyn Chorus Fragment",
+            RespawnTime = 18.0f,
+            TimeSinceLastSpawn = 18.0f,
+            MaxAliveInZone = 3,
+            MaxHealth = 210,
+            Level = 8,
+            MovementSpeed = 3.2f,
+            AggroRange = 8.0f,
+            AttackRange = 2.5f,
+            AttackCooldown = 1.5f,
+            IsHostileOverride = true,
+            FactionOverride = Faction.Neutral,
+            Tag = "seedvault_chorus",
+            PatrolPauseDuration = 0.65f,
+            LeashDistance = 20.0f,
+            PatrolPath = new List<Vector3>(Zone01SeedvaultDeepPatrol)
+        });
+
+        _spawnPoints.Add(new SpawnPoint
+        {
+            ZoneId = ZoneConstants.Zone01,
+            Position = new Vector3(-7, 21, 0),
+            NPCTemplateId = 6016,
+            OverrideName = "Unchosen Branch",
+            RespawnTime = 16.0f,
+            TimeSinceLastSpawn = 16.0f,
+            MaxAliveInZone = 4,
+            MaxHealth = 200,
+            Level = 7,
+            MovementSpeed = 3.0f,
+            AggroRange = 8.0f,
+            AttackRange = 2.5f,
+            AttackCooldown = 1.55f,
+            IsHostileOverride = true,
+            FactionOverride = Faction.Neutral,
+            Tag = "seedvault_dungeon",
+            PatrolPauseDuration = 0.7f,
+            LeashDistance = 20.0f,
+            PatrolPath = new List<Vector3>(Zone01SeedvaultDeepPatrol)
         });
 
         // Thornveil Enclave - Sylvaen starter

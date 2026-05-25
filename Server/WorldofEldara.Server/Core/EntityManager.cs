@@ -324,11 +324,9 @@ public class NPCEntity : Entity
             case NPCAIState.Idle:
                 Velocity = new Vector3(0, 0, 0);
                 MovementState = MovementState.Idle;
-                TryAcquireTarget(deltaTime);
                 if (PatrolPath.Count > 0) AIState = NPCAIState.Patrolling;
                 break;
             case NPCAIState.Patrolling:
-                TryAcquireTarget(deltaTime);
                 UpdatePatrol(deltaTime);
                 break;
             case NPCAIState.Combat:
@@ -359,6 +357,14 @@ public class NPCEntity : Entity
         };
 
         NetworkServer.BroadcastToZone(ZoneId, MessagePackSerializer.Serialize<PacketBase>(statePacket));
+    }
+
+    public void Engage(PlayerEntity target)
+    {
+        TargetEntityId = target.EntityId;
+        _attackTimer = 0f;
+        _combatResetTimer = 0f;
+        AIState = NPCAIState.Combat;
     }
 
     private void BroadcastNpcDamage(PlayerEntity target, int damageAmount)

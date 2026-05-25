@@ -60,6 +60,12 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
                 case "stump":
                     AddStumpMesh(commands, viewport, prop, basePosition);
                     break;
+                case "herb":
+                    AddHerbMesh(commands, viewport, prop, basePosition);
+                    break;
+                case "corruption":
+                    AddCorruptionMesh(commands, viewport, prop, basePosition);
+                    break;
                 case "lantern":
                     AddLanternMesh(commands, viewport, prop, basePosition);
                     break;
@@ -75,16 +81,10 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
                         prop.Width, prop.Height * 0.42f, prop.Fill, prop.Outline, null);
                     break;
                 case "rock":
-                    AddBox(commands, viewport, basePosition + new Vector3(0, prop.Height * 0.34f, 0),
-                        new Vector3(prop.Width, prop.Height * 0.68f, prop.Width * 0.72f), prop.Fill, prop.Outline, null);
+                    AddRockMesh(commands, viewport, prop, basePosition);
                     break;
                 case "rootgate":
-                    AddBox(commands, viewport, basePosition + new Vector3(-prop.Width * 0.42f, prop.Height * 0.55f, 0),
-                        new Vector3(0.18f, prop.Height, 0.18f), Color.FromArgb(105, 64, 36), prop.Outline, null);
-                    AddBox(commands, viewport, basePosition + new Vector3(prop.Width * 0.42f, prop.Height * 0.55f, 0),
-                        new Vector3(0.18f, prop.Height, 0.18f), Color.FromArgb(105, 64, 36), prop.Outline, null);
-                    AddEllipseBillboard(commands, viewport, basePosition + new Vector3(0, prop.Height * 0.88f, 0),
-                        prop.Width, prop.Height * 0.34f, prop.Fill, prop.Outline, null);
+                    AddRootArchMesh(commands, viewport, prop, basePosition);
                     break;
                 default:
                     AddBillboard(commands, viewport, basePosition, prop.Width, prop.Height, prop.Fill, prop.Outline, prop.Kind);
@@ -228,6 +228,30 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
     {
         _meshRenderer.AddMesh(commands, viewport,
             new MeshInstance(ThornveilMeshes.TreeStump, basePosition, new Vector3(prop.Width, prop.Height, prop.Width), prop.Position.X * 7.1f));
+    }
+
+    private void AddRootArchMesh(List<DrawCommand> commands, Size viewport, WorldProp prop, Vector3 basePosition)
+    {
+        _meshRenderer.AddMesh(commands, viewport,
+            new MeshInstance(ThornveilMeshes.RootArch, basePosition, new Vector3(prop.Width, prop.Height / 1.9f, prop.Width), prop.Position.Z * 6.5f));
+    }
+
+    private void AddRockMesh(List<DrawCommand> commands, Size viewport, WorldProp prop, Vector3 basePosition)
+    {
+        _meshRenderer.AddMesh(commands, viewport,
+            new MeshInstance(ThornveilMeshes.MossyRock, basePosition, new Vector3(prop.Width, prop.Height, prop.Width), prop.Position.X * 11.1f));
+    }
+
+    private void AddHerbMesh(List<DrawCommand> commands, Size viewport, WorldProp prop, Vector3 basePosition)
+    {
+        _meshRenderer.AddMesh(commands, viewport,
+            new MeshInstance(ThornveilMeshes.HerbCluster, basePosition, new Vector3(prop.Width, prop.Height, prop.Width), prop.Position.Z * 14.7f));
+    }
+
+    private void AddCorruptionMesh(List<DrawCommand> commands, Size viewport, WorldProp prop, Vector3 basePosition)
+    {
+        _meshRenderer.AddMesh(commands, viewport,
+            new MeshInstance(ThornveilMeshes.CorruptedSprout, basePosition, new Vector3(prop.Width, prop.Height, prop.Width), prop.Position.X * 10.3f));
     }
 
     private void AddSelectionRing(List<DrawCommand> commands, Size viewport, Vector3 center, float radius, Color color)

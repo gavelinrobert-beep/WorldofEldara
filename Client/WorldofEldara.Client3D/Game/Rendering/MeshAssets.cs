@@ -29,6 +29,10 @@ public static class ThornveilMeshes
     public static readonly MeshMaterial WarmTimber = new("warm-timber", Color.FromArgb(126, 72, 40), Color.FromArgb(194, 116, 62));
     public static readonly MeshMaterial OldFence = new("old-fence", Color.FromArgb(96, 62, 36), Color.FromArgb(166, 106, 58));
     public static readonly MeshMaterial CutWood = new("cut-wood", Color.FromArgb(130, 84, 48), Color.FromArgb(202, 146, 82));
+    public static readonly MeshMaterial MossStone = new("moss-stone", Color.FromArgb(76, 88, 78), Color.FromArgb(146, 166, 132));
+    public static readonly MeshMaterial Herb = new("herb", Color.FromArgb(64, 172, 86), Color.FromArgb(158, 236, 138));
+    public static readonly MeshMaterial SpiritBlue = new("spirit-blue", Color.FromArgb(58, 136, 164), Color.FromArgb(142, 226, 238));
+    public static readonly MeshMaterial Corruption = new("corruption", Color.FromArgb(106, 46, 136), Color.FromArgb(230, 92, 242));
 
     public static readonly MeshAsset HeartwoodTree = BuildHeartwoodTree();
     public static readonly MeshAsset Lantern = BuildLantern();
@@ -36,6 +40,10 @@ public static class ThornveilMeshes
     public static readonly MeshAsset ThornveilCottage = BuildThornveilCottage();
     public static readonly MeshAsset RootFence = BuildRootFence();
     public static readonly MeshAsset TreeStump = BuildTreeStump();
+    public static readonly MeshAsset RootArch = BuildRootArch();
+    public static readonly MeshAsset MossyRock = BuildMossyRock();
+    public static readonly MeshAsset HerbCluster = BuildHerbCluster();
+    public static readonly MeshAsset CorruptedSprout = BuildCorruptedSprout();
 
     private static MeshAsset BuildHeartwoodTree()
     {
@@ -97,5 +105,44 @@ public static class ThornveilMeshes
         parts.AddCylinder(new Vector3(0, 0.34f, 0), 0.28f, 0.68f, 8, CutWood);
         parts.AddWedge(new Vector3(0.2f, 0.44f, -0.02f), new Vector3(0.32f, 0.18f, 0.22f), BarkDark, 18f);
         return new MeshAsset("tree-stump", parts.ToArray());
+    }
+
+    private static MeshAsset BuildRootArch()
+    {
+        var parts = new MeshBuilder();
+        parts.AddBox(new Vector3(-0.58f, 0.72f, 0), new Vector3(0.18f, 1.44f, 0.18f), BarkDark, -10f);
+        parts.AddBox(new Vector3(0.58f, 0.72f, 0), new Vector3(0.18f, 1.44f, 0.18f), BarkDark, 10f);
+        parts.AddBox(new Vector3(0, 1.42f, 0), new Vector3(1.34f, 0.18f, 0.22f), Bark, 0f);
+        parts.AddDiamond(new Vector3(0, 1.72f, 0), new Vector3(0.36f, 0.36f, 0.36f), LanternGlow);
+        parts.AddWedge(new Vector3(-0.32f, 0.18f, 0.18f), new Vector3(0.5f, 0.12f, 0.24f), Bark, -18f);
+        parts.AddWedge(new Vector3(0.34f, 0.18f, -0.16f), new Vector3(0.46f, 0.12f, 0.22f), Bark, 20f);
+        return new MeshAsset("root-arch", parts.ToArray());
+    }
+
+    private static MeshAsset BuildMossyRock()
+    {
+        var parts = new MeshBuilder();
+        parts.AddWedge(new Vector3(-0.08f, 0.25f, 0), new Vector3(0.94f, 0.5f, 0.66f), MossStone, -8f);
+        parts.AddBox(new Vector3(0.18f, 0.48f, -0.08f), new Vector3(0.54f, 0.22f, 0.5f), MossStone, 14f);
+        parts.AddWedge(new Vector3(-0.12f, 0.58f, 0.08f), new Vector3(0.42f, 0.16f, 0.36f), LeafDark, 18f);
+        return new MeshAsset("mossy-rock", parts.ToArray());
+    }
+
+    private static MeshAsset BuildHerbCluster()
+    {
+        var parts = new MeshBuilder();
+        parts.AddDiamond(new Vector3(-0.12f, 0.22f, 0), new Vector3(0.26f, 0.34f, 0.2f), Herb);
+        parts.AddDiamond(new Vector3(0.12f, 0.28f, 0.02f), new Vector3(0.3f, 0.42f, 0.22f), Herb);
+        parts.AddDiamond(new Vector3(0, 0.34f, -0.12f), new Vector3(0.22f, 0.42f, 0.18f), LanternGlow);
+        return new MeshAsset("herb-cluster", parts.ToArray());
+    }
+
+    private static MeshAsset BuildCorruptedSprout()
+    {
+        var parts = new MeshBuilder();
+        parts.AddCylinder(new Vector3(0, 0.36f, 0), 0.06f, 0.72f, 5, Corruption);
+        parts.AddDiamond(new Vector3(0, 0.88f, 0), new Vector3(0.36f, 0.42f, 0.36f), Corruption);
+        parts.AddDiamond(new Vector3(0.22f, 0.5f, 0.08f), new Vector3(0.28f, 0.28f, 0.24f), SpiritBlue);
+        return new MeshAsset("corrupted-sprout", parts.ToArray());
     }
 }

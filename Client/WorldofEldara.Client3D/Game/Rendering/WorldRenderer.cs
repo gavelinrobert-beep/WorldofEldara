@@ -9,6 +9,7 @@ public sealed class WorldRenderer
     private const float NearClip = 0.12f;
     private const float FovDegrees = 64f;
     private const float ProjectionCenterY = 0.63f;
+    private const int GroundTileSize = 2;
 
     public void AddTerrainAndPaths(List<DrawCommand> commands, Size viewport, SceneData scene, WorldState state,
         TerrainSystem terrain, WorldCamera camera)
@@ -36,10 +37,9 @@ public sealed class WorldRenderer
     {
         const int min = -48;
         const int max = 51;
-        const int tileSize = 3;
-        for (var z = min; z < max; z += tileSize)
+        for (var z = min; z < max; z += GroundTileSize)
         {
-            for (var x = min; x < max; x += tileSize)
+            for (var x = min; x < max; x += GroundTileSize)
             {
                 var distance = MathF.Sqrt((x - state.PlayerPosition.X) * (x - state.PlayerPosition.X) +
                                           (z - state.PlayerPosition.Z) * (z - state.PlayerPosition.Z));
@@ -51,40 +51,22 @@ public sealed class WorldRenderer
                 var points = ProjectClippedPolygon(camera, viewport, new[]
                 {
                     terrain.GroundPoint(x, z),
-                    terrain.GroundPoint(x + tileSize, z),
-                    terrain.GroundPoint(x + tileSize, z + tileSize),
-                    terrain.GroundPoint(x, z + tileSize)
+                    terrain.GroundPoint(x + GroundTileSize, z),
+                    terrain.GroundPoint(x + GroundTileSize, z + GroundTileSize),
+                    terrain.GroundPoint(x, z + GroundTileSize)
                 }, out var depth);
                 if (points is null)
                 {
                     continue;
                 }
 
-                var sampleX = x + tileSize * 0.5f;
-                var sampleZ = z + tileSize * 0.5f;
-                var pathBlend = PathInfluence(scene, sampleX, sampleZ);
-                var waterBlend = PropInfluence(scene, sampleX, sampleZ, "water", 5.2f);
-                var scarBlend = PropInfluence(scene, sampleX, sampleZ, "scar", 4.8f);
-                var tileHeight = (terrain.HeightAt(x, z) + terrain.HeightAt(x + tileSize, z + tileSize)) * 0.5f;
-                var smooth = MathF.Sin(x * 0.07f + z * 0.04f) * 1.4f;
-                var clearing = MathF.Max(0f, 1f - distance / 20f);
-                var farFade = Math.Clamp(distance / 48f, 0f, 1f);
-                var red = 10 + (int)(clearing * 8f) + (int)(pathBlend * 18f) + (int)(scarBlend * 30f) - (int)(waterBlend * 4f);
-                var green = 39 + (int)(smooth * 1.4f) + (int)(tileHeight * 10f) - (int)(farFade * 6f) +
-                            (int)(clearing * 7f) + (int)(pathBlend * 5f) - (int)(scarBlend * 18f) + (int)(waterBlend * 8f);
-                var blue = 27 + (int)(tileHeight * 5f) - (int)(farFade * 4f) + (int)(clearing * 3f) -
-                           (int)(pathBlend * 2f) + (int)(scarBlend * 30f) + (int)(waterBlend * 32f);
-                var color = Color.FromArgb(255, Math.Clamp(red, 7, 76), Math.Clamp(green, 28, 66), Math.Clamp(blue, 18, 76));
-                var edgeAlpha = distance is > 9f and < 24f ? 5 : 0;
+                var sampleX = x + GroundTileSize * 0.5f;
+                var sampleZ = z + GroundTileSize * 0.5f;
+                var color = TerrainColor(scene, terrain, sampleX, sampleZ, distance);
                 commands.Add(new DrawCommand(depth, g =>
                 {
                     using var brush = new SolidBrush(color);
                     g.FillPolygon(brush, points);
-                    if (edgeAlpha > 0)
-                    {
-                        using var pen = new Pen(Color.FromArgb(edgeAlpha, 74, 136, 104), 1f);
-                        g.DrawPolygon(pen, points);
-                    }
                 }));
             }
         }
@@ -474,4 +456,31 @@ public sealed class WorldRenderer
 
     private static Color Fade(Color color, int alpha) =>
         Color.FromArgb(Math.Clamp(alpha, 0, 255), color.R, color.G, color.B);
+
+    private static Color TerrainColor(SceneData scene, TerrainSystem terrain, float x, float z, float distance)
+    {
+        var pathBlend = PathInfluence(scene, x, z);
+        var waterBlend = PropInfluence(scene, x, z, "water", 5.6f);
+        var scarBlend = PropInfluence(scene, x, z, "scar", 5.2f);
+        var shrineBlend = PropInfluence(scene, x, z, "worldroot", 6.8f);
+        var canopyBlend = PropInfluence(scene, x, z, "tree", 4.4f);
+        var height = terrain.HeightAt(x, z);
+        var clearing = MathF.Max(0f, 1f - distance / 22f);
+        var farFade = Math.Clamp(distance / 50f, 0f, 1f);
+        var broadMoss = MathF.Sin(x * 0.11f + z * 0.07f) * 0.5f + MathF.Cos(z * 0.13f - x * 0.05f) * 0.5f;
+        var fineMoss = MathF.Sin((x + z) * 0.38f) * 0.5f + MathF.Cos((x - z) * 0.31f) * 0.5f;
+
+        var red = 12f + clearing * 5.5f + pathBlend * 13f + scarBlend * 22f + shrineBlend * 3f -
+                  waterBlend * 2f - canopyBlend * 1.5f;
+        var green = 39f + height * 8f + broadMoss * 2.8f + fineMoss * 1.2f + clearing * 5f +
+                    pathBlend * 3f - scarBlend * 11f + waterBlend * 7f + shrineBlend * 8f - farFade * 4f;
+        var blue = 29f + height * 4f + broadMoss * 1.8f + clearing * 2f - pathBlend * 1f +
+                   scarBlend * 21f + waterBlend * 27f + shrineBlend * 7f - farFade * 3f;
+
+        return Color.FromArgb(
+            255,
+            Math.Clamp((int)red, 8, 64),
+            Math.Clamp((int)green, 30, 68),
+            Math.Clamp((int)blue, 20, 74));
+    }
 }

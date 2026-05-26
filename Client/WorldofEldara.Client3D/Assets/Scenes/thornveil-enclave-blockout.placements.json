@@ -1,0 +1,4265 @@
+{
+  "scene": "Thornveil Enclave Blockout",
+  "placements": [
+    {
+      "name": "central_rune_plaza_base",
+      "kind": "plaza",
+      "location": [
+        0.0,
+        0.0,
+        0.06
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "central_moss_clearing",
+      "kind": "clearing",
+      "location": [
+        0.0,
+        0.0,
+        0.12
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.2,
+        0.86,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "central_rune_glow_ring_outer",
+      "kind": "rune_ring",
+      "location": [
+        0.0,
+        0.0,
+        0.19
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "central_rune_glow_ring_inner",
+      "kind": "rune_ring",
+      "location": [
+        0.0,
+        0.0,
+        0.205
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "central_rune_spoke_00",
+      "kind": "rune_spoke",
+      "location": [
+        1.6,
+        0.0,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.05,
+        0.025,
+        0.018
+      ],
+      "note": ""
+    },
+    {
+      "name": "central_rune_spoke_01",
+      "kind": "rune_spoke",
+      "location": [
+        1.386,
+        0.8,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        30.0
+      ],
+      "scale": [
+        1.05,
+        0.025,
+        0.018
+      ],
+      "note": ""
+    },
+    {
+      "name": "central_rune_spoke_02",
+      "kind": "rune_spoke",
+      "location": [
+        0.8,
+        1.386,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        60.0
+      ],
+      "scale": [
+        1.05,
+        0.025,
+        0.018
+      ],
+      "note": ""
+    },
+    {
+      "name": "central_rune_spoke_03",
+      "kind": "rune_spoke",
+      "location": [
+        0.0,
+        1.6,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "scale": [
+        1.05,
+        0.025,
+        0.018
+      ],
+      "note": ""
+    },
+    {
+      "name": "central_rune_spoke_04",
+      "kind": "rune_spoke",
+      "location": [
+        -0.8,
+        1.386,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        120.0
+      ],
+      "scale": [
+        1.05,
+        0.025,
+        0.018
+      ],
+      "note": ""
+    },
+    {
+      "name": "central_rune_spoke_05",
+      "kind": "rune_spoke",
+      "location": [
+        -1.386,
+        0.8,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        150.0
+      ],
+      "scale": [
+        1.05,
+        0.025,
+        0.018
+      ],
+      "note": ""
+    },
+    {
+      "name": "central_rune_spoke_06",
+      "kind": "rune_spoke",
+      "location": [
+        -1.6,
+        0.0,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        180.0
+      ],
+      "scale": [
+        1.05,
+        0.025,
+        0.018
+      ],
+      "note": ""
+    },
+    {
+      "name": "central_rune_spoke_07",
+      "kind": "rune_spoke",
+      "location": [
+        -1.386,
+        -0.8,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        210.0
+      ],
+      "scale": [
+        1.05,
+        0.025,
+        0.018
+      ],
+      "note": ""
+    },
+    {
+      "name": "central_rune_spoke_08",
+      "kind": "rune_spoke",
+      "location": [
+        -0.8,
+        -1.386,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        240.0
+      ],
+      "scale": [
+        1.05,
+        0.025,
+        0.018
+      ],
+      "note": ""
+    },
+    {
+      "name": "central_rune_spoke_09",
+      "kind": "rune_spoke",
+      "location": [
+        -0.0,
+        -1.6,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        270.0
+      ],
+      "scale": [
+        1.05,
+        0.025,
+        0.018
+      ],
+      "note": ""
+    },
+    {
+      "name": "central_rune_spoke_10",
+      "kind": "rune_spoke",
+      "location": [
+        0.8,
+        -1.386,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        300.0
+      ],
+      "scale": [
+        1.05,
+        0.025,
+        0.018
+      ],
+      "note": ""
+    },
+    {
+      "name": "central_rune_spoke_11",
+      "kind": "rune_spoke",
+      "location": [
+        1.386,
+        -0.8,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        330.0
+      ],
+      "scale": [
+        1.05,
+        0.025,
+        0.018
+      ],
+      "note": ""
+    },
+    {
+      "name": "main_path_00",
+      "kind": "path",
+      "location": [
+        0.0,
+        0.2,
+        0.11
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "scale": [
+        2.6,
+        1.1,
+        0.035
+      ],
+      "note": ""
+    },
+    {
+      "name": "main_path_01",
+      "kind": "path",
+      "location": [
+        0.4,
+        4.2,
+        0.155
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        74.055
+      ],
+      "scale": [
+        1.456,
+        1.04,
+        0.035
+      ],
+      "note": ""
+    },
+    {
+      "name": "main_path_02",
+      "kind": "path",
+      "location": [
+        1.1,
+        6.9,
+        0.2
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        77.005
+      ],
+      "scale": [
+        1.334,
+        0.98,
+        0.035
+      ],
+      "note": ""
+    },
+    {
+      "name": "main_path_03",
+      "kind": "path",
+      "location": [
+        0.8,
+        9.7,
+        0.245
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        111.801
+      ],
+      "scale": [
+        1.616,
+        0.92,
+        0.035
+      ],
+      "note": ""
+    },
+    {
+      "name": "main_ascension_step_00",
+      "kind": "stairs",
+      "location": [
+        0.831,
+        5.475,
+        0.264
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        79.875
+      ],
+      "scale": [
+        0.196,
+        1.222,
+        0.07
+      ],
+      "note": ""
+    },
+    {
+      "name": "main_ascension_step_01",
+      "kind": "stairs",
+      "location": [
+        0.894,
+        5.825,
+        0.333
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        79.875
+      ],
+      "scale": [
+        0.196,
+        1.222,
+        0.07
+      ],
+      "note": ""
+    },
+    {
+      "name": "main_ascension_step_02",
+      "kind": "stairs",
+      "location": [
+        0.956,
+        6.175,
+        0.402
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        79.875
+      ],
+      "scale": [
+        0.196,
+        1.222,
+        0.07
+      ],
+      "note": ""
+    },
+    {
+      "name": "main_ascension_step_03",
+      "kind": "stairs",
+      "location": [
+        1.019,
+        6.525,
+        0.471
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        79.875
+      ],
+      "scale": [
+        0.196,
+        1.222,
+        0.07
+      ],
+      "note": ""
+    },
+    {
+      "name": "main_ascension_step_04",
+      "kind": "stairs",
+      "location": [
+        1.081,
+        6.875,
+        0.539
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        79.875
+      ],
+      "scale": [
+        0.196,
+        1.222,
+        0.07
+      ],
+      "note": ""
+    },
+    {
+      "name": "main_ascension_step_05",
+      "kind": "stairs",
+      "location": [
+        1.144,
+        7.225,
+        0.608
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        79.875
+      ],
+      "scale": [
+        0.196,
+        1.222,
+        0.07
+      ],
+      "note": ""
+    },
+    {
+      "name": "main_ascension_step_06",
+      "kind": "stairs",
+      "location": [
+        1.206,
+        7.575,
+        0.677
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        79.875
+      ],
+      "scale": [
+        0.196,
+        1.222,
+        0.07
+      ],
+      "note": ""
+    },
+    {
+      "name": "main_ascension_step_07",
+      "kind": "stairs",
+      "location": [
+        1.269,
+        7.925,
+        0.746
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        79.875
+      ],
+      "scale": [
+        0.196,
+        1.222,
+        0.07
+      ],
+      "note": ""
+    },
+    {
+      "name": "upper_shrine_stairs_step_00",
+      "kind": "stairs",
+      "location": [
+        1.221,
+        8.207,
+        0.759
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        110.772
+      ],
+      "scale": [
+        0.244,
+        1.092,
+        0.07
+      ],
+      "note": ""
+    },
+    {
+      "name": "upper_shrine_stairs_step_01",
+      "kind": "stairs",
+      "location": [
+        1.064,
+        8.621,
+        0.836
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        110.772
+      ],
+      "scale": [
+        0.244,
+        1.092,
+        0.07
+      ],
+      "note": ""
+    },
+    {
+      "name": "upper_shrine_stairs_step_02",
+      "kind": "stairs",
+      "location": [
+        0.907,
+        9.036,
+        0.913
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        110.772
+      ],
+      "scale": [
+        0.244,
+        1.092,
+        0.07
+      ],
+      "note": ""
+    },
+    {
+      "name": "upper_shrine_stairs_step_03",
+      "kind": "stairs",
+      "location": [
+        0.75,
+        9.45,
+        0.99
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        110.772
+      ],
+      "scale": [
+        0.244,
+        1.092,
+        0.07
+      ],
+      "note": ""
+    },
+    {
+      "name": "upper_shrine_stairs_step_04",
+      "kind": "stairs",
+      "location": [
+        0.593,
+        9.864,
+        1.067
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        110.772
+      ],
+      "scale": [
+        0.244,
+        1.092,
+        0.07
+      ],
+      "note": ""
+    },
+    {
+      "name": "upper_shrine_stairs_step_05",
+      "kind": "stairs",
+      "location": [
+        0.436,
+        10.279,
+        1.144
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        110.772
+      ],
+      "scale": [
+        0.244,
+        1.092,
+        0.07
+      ],
+      "note": ""
+    },
+    {
+      "name": "upper_shrine_stairs_step_06",
+      "kind": "stairs",
+      "location": [
+        0.279,
+        10.693,
+        1.221
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        110.772
+      ],
+      "scale": [
+        0.244,
+        1.092,
+        0.07
+      ],
+      "note": ""
+    },
+    {
+      "name": "left_vendor_terrace",
+      "kind": "terrace",
+      "location": [
+        -5.8,
+        1.2,
+        0.18
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.25,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "right_guardian_terrace",
+      "kind": "terrace",
+      "location": [
+        5.6,
+        1.6,
+        0.2
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.18,
+        0.86,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "right_deer_garden",
+      "kind": "garden",
+      "location": [
+        6.8,
+        -2.5,
+        0.16
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.22,
+        0.78,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "left_vendor_path",
+      "kind": "path",
+      "location": [
+        -3.8,
+        0.9,
+        0.16
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        171.469
+      ],
+      "scale": [
+        2.022,
+        0.625,
+        0.035
+      ],
+      "note": ""
+    },
+    {
+      "name": "right_guardian_path",
+      "kind": "path",
+      "location": [
+        3.75,
+        1.2,
+        0.17
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        12.2
+      ],
+      "scale": [
+        1.893,
+        0.625,
+        0.035
+      ],
+      "note": ""
+    },
+    {
+      "name": "right_garden_steps_step_00",
+      "kind": "stairs",
+      "location": [
+        3.84,
+        -0.74,
+        0.182
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -30.256
+      ],
+      "scale": [
+        0.306,
+        0.65,
+        0.07
+      ],
+      "note": ""
+    },
+    {
+      "name": "right_garden_steps_step_01",
+      "kind": "stairs",
+      "location": [
+        4.32,
+        -1.02,
+        0.226
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -30.256
+      ],
+      "scale": [
+        0.306,
+        0.65,
+        0.07
+      ],
+      "note": ""
+    },
+    {
+      "name": "right_garden_steps_step_02",
+      "kind": "stairs",
+      "location": [
+        4.8,
+        -1.3,
+        0.27
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -30.256
+      ],
+      "scale": [
+        0.306,
+        0.65,
+        0.07
+      ],
+      "note": ""
+    },
+    {
+      "name": "right_garden_steps_step_03",
+      "kind": "stairs",
+      "location": [
+        5.28,
+        -1.58,
+        0.314
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -30.256
+      ],
+      "scale": [
+        0.306,
+        0.65,
+        0.07
+      ],
+      "note": ""
+    },
+    {
+      "name": "right_garden_steps_step_04",
+      "kind": "stairs",
+      "location": [
+        5.76,
+        -1.86,
+        0.358
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -30.256
+      ],
+      "scale": [
+        0.306,
+        0.65,
+        0.07
+      ],
+      "note": ""
+    },
+    {
+      "name": "worldroot_tower_base",
+      "kind": "landmark",
+      "location": [
+        0.2,
+        13.3,
+        1.2
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        0.75,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "worldroot_living_spire",
+      "kind": "landmark",
+      "location": [
+        0.2,
+        13.3,
+        2.75
+      ],
+      "rotation": [
+        4.0,
+        -6.0,
+        11.459
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "worldroot_heart_crystal",
+      "kind": "landmark_crystal",
+      "location": [
+        0.2,
+        13.3,
+        4.28
+      ],
+      "rotation": [
+        5.73,
+        11.459,
+        17.189
+      ],
+      "scale": [
+        0.46,
+        0.42,
+        0.82
+      ],
+      "note": ""
+    },
+    {
+      "name": "worldroot_wrapping_root_0",
+      "kind": "landmark_root",
+      "location": [
+        0.783,
+        13.444,
+        2.4
+      ],
+      "rotation": [
+        12.0,
+        22.0,
+        20.0
+      ],
+      "scale": [
+        0.12,
+        0.08,
+        1.55
+      ],
+      "note": ""
+    },
+    {
+      "name": "worldroot_wrapping_root_1",
+      "kind": "landmark_root",
+      "location": [
+        0.04,
+        13.706,
+        2.62
+      ],
+      "rotation": [
+        12.0,
+        22.0,
+        105.0
+      ],
+      "scale": [
+        0.12,
+        0.08,
+        1.55
+      ],
+      "note": ""
+    },
+    {
+      "name": "worldroot_wrapping_root_2",
+      "kind": "landmark_root",
+      "location": [
+        -0.362,
+        13.123,
+        2.84
+      ],
+      "rotation": [
+        12.0,
+        22.0,
+        205.0
+      ],
+      "scale": [
+        0.12,
+        0.08,
+        1.55
+      ],
+      "note": ""
+    },
+    {
+      "name": "worldroot_wrapping_root_3",
+      "kind": "landmark_root",
+      "location": [
+        0.432,
+        12.911,
+        3.06
+      ],
+      "rotation": [
+        12.0,
+        22.0,
+        292.0
+      ],
+      "scale": [
+        0.12,
+        0.08,
+        1.55
+      ],
+      "note": ""
+    },
+    {
+      "name": "mid_left_root_arch_left_root",
+      "kind": "root_arch",
+      "location": [
+        -2.775,
+        6.712,
+        2.102
+      ],
+      "rotation": [
+        8.0,
+        -10.0,
+        8.0
+      ],
+      "scale": [
+        0.138,
+        0.138,
+        1.438
+      ],
+      "note": ""
+    },
+    {
+      "name": "mid_left_root_arch_right_root",
+      "kind": "root_arch",
+      "location": [
+        -3.025,
+        8.488,
+        2.102
+      ],
+      "rotation": [
+        -8.0,
+        10.0,
+        8.0
+      ],
+      "scale": [
+        0.138,
+        0.138,
+        1.438
+      ],
+      "note": ""
+    },
+    {
+      "name": "mid_left_root_arch_top_root",
+      "kind": "root_arch",
+      "location": [
+        -2.9,
+        7.6,
+        3.195
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        8.0
+      ],
+      "scale": [
+        1.092,
+        0.149,
+        0.138
+      ],
+      "note": ""
+    },
+    {
+      "name": "mid_left_root_arch_hanging_crystal",
+      "kind": "crystal_lantern",
+      "location": [
+        -2.9,
+        7.6,
+        2.781
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        8.0
+      ],
+      "scale": [
+        0.161,
+        0.161,
+        0.322
+      ],
+      "note": ""
+    },
+    {
+      "name": "mid_right_root_arch_left_root",
+      "kind": "root_arch",
+      "location": [
+        3.63,
+        6.499,
+        1.928
+      ],
+      "rotation": [
+        8.0,
+        -10.0,
+        -12.0
+      ],
+      "scale": [
+        0.126,
+        0.126,
+        1.312
+      ],
+      "note": ""
+    },
+    {
+      "name": "mid_right_root_arch_right_root",
+      "kind": "root_arch",
+      "location": [
+        3.97,
+        8.101,
+        1.928
+      ],
+      "rotation": [
+        -8.0,
+        10.0,
+        -12.0
+      ],
+      "scale": [
+        0.126,
+        0.126,
+        1.312
+      ],
+      "note": ""
+    },
+    {
+      "name": "mid_right_root_arch_top_root",
+      "kind": "root_arch",
+      "location": [
+        3.8,
+        7.3,
+        2.925
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -12.0
+      ],
+      "scale": [
+        0.998,
+        0.137,
+        0.126
+      ],
+      "note": ""
+    },
+    {
+      "name": "mid_right_root_arch_hanging_crystal",
+      "kind": "crystal_lantern",
+      "location": [
+        3.8,
+        7.3,
+        2.547
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -12.0
+      ],
+      "scale": [
+        0.147,
+        0.147,
+        0.294
+      ],
+      "note": ""
+    },
+    {
+      "name": "upper_left_bridge",
+      "kind": "root_bridge",
+      "location": [
+        -3.1,
+        7.8,
+        1.55
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        27.759
+      ],
+      "scale": [
+        2.147,
+        0.4,
+        0.035
+      ],
+      "note": ""
+    },
+    {
+      "name": "upper_right_bridge",
+      "kind": "root_bridge",
+      "location": [
+        3.7,
+        7.5,
+        1.48
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -29.745
+      ],
+      "scale": [
+        2.419,
+        0.4,
+        0.035
+      ],
+      "note": ""
+    },
+    {
+      "name": "left_bridge_post_0",
+      "kind": "bridge_post",
+      "location": [
+        -4.7,
+        6.9,
+        1.95
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.035,
+        0.035,
+        0.45
+      ],
+      "note": ""
+    },
+    {
+      "name": "right_bridge_post_0",
+      "kind": "bridge_post",
+      "location": [
+        1.8,
+        8.5,
+        1.88
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.035,
+        0.035,
+        0.42
+      ],
+      "note": ""
+    },
+    {
+      "name": "left_bridge_post_1",
+      "kind": "bridge_post",
+      "location": [
+        -3.85,
+        7.34,
+        1.95
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.035,
+        0.035,
+        0.45
+      ],
+      "note": ""
+    },
+    {
+      "name": "right_bridge_post_1",
+      "kind": "bridge_post",
+      "location": [
+        2.7,
+        7.98,
+        1.88
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.035,
+        0.035,
+        0.42
+      ],
+      "note": ""
+    },
+    {
+      "name": "left_bridge_post_2",
+      "kind": "bridge_post",
+      "location": [
+        -3.0,
+        7.78,
+        1.95
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.035,
+        0.035,
+        0.45
+      ],
+      "note": ""
+    },
+    {
+      "name": "right_bridge_post_2",
+      "kind": "bridge_post",
+      "location": [
+        3.6,
+        7.46,
+        1.88
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.035,
+        0.035,
+        0.42
+      ],
+      "note": ""
+    },
+    {
+      "name": "left_bridge_post_3",
+      "kind": "bridge_post",
+      "location": [
+        -2.15,
+        8.22,
+        1.95
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.035,
+        0.035,
+        0.45
+      ],
+      "note": ""
+    },
+    {
+      "name": "right_bridge_post_3",
+      "kind": "bridge_post",
+      "location": [
+        4.5,
+        6.94,
+        1.88
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.035,
+        0.035,
+        0.42
+      ],
+      "note": ""
+    },
+    {
+      "name": "left_bridge_post_4",
+      "kind": "bridge_post",
+      "location": [
+        -1.3,
+        8.66,
+        1.95
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.035,
+        0.035,
+        0.45
+      ],
+      "note": ""
+    },
+    {
+      "name": "right_bridge_post_4",
+      "kind": "bridge_post",
+      "location": [
+        5.4,
+        6.42,
+        1.88
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.035,
+        0.035,
+        0.42
+      ],
+      "note": ""
+    },
+    {
+      "name": "background_waterfall_0",
+      "kind": "waterfall",
+      "location": [
+        -3.8,
+        9.9,
+        1.35
+      ],
+      "rotation": [
+        2.865,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.16,
+        0.035,
+        0.96
+      ],
+      "note": ""
+    },
+    {
+      "name": "waterfall_pool_0",
+      "kind": "water_pool",
+      "location": [
+        -3.8,
+        8.8,
+        0.58
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.3,
+        0.55,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "background_waterfall_1",
+      "kind": "waterfall",
+      "location": [
+        -2.6,
+        10.4,
+        1.35
+      ],
+      "rotation": [
+        2.865,
+        0.0,
+        2.292
+      ],
+      "scale": [
+        0.16,
+        0.035,
+        0.96
+      ],
+      "note": ""
+    },
+    {
+      "name": "waterfall_pool_1",
+      "kind": "water_pool",
+      "location": [
+        -2.6,
+        9.2,
+        0.58
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.3,
+        0.55,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "background_waterfall_2",
+      "kind": "waterfall",
+      "location": [
+        3.0,
+        9.9,
+        1.35
+      ],
+      "rotation": [
+        2.865,
+        0.0,
+        4.584
+      ],
+      "scale": [
+        0.16,
+        0.035,
+        0.96
+      ],
+      "note": ""
+    },
+    {
+      "name": "waterfall_pool_2",
+      "kind": "water_pool",
+      "location": [
+        3.0,
+        8.8,
+        0.58
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.3,
+        0.55,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "background_waterfall_3",
+      "kind": "waterfall",
+      "location": [
+        4.3,
+        10.4,
+        1.35
+      ],
+      "rotation": [
+        2.865,
+        0.0,
+        6.875
+      ],
+      "scale": [
+        0.16,
+        0.035,
+        0.96
+      ],
+      "note": ""
+    },
+    {
+      "name": "waterfall_pool_3",
+      "kind": "water_pool",
+      "location": [
+        4.3,
+        9.2,
+        0.58
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.3,
+        0.55,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_0_trunk",
+      "kind": "tree",
+      "location": [
+        -8.0,
+        -1.0,
+        0.84
+      ],
+      "rotation": [
+        4.0,
+        -3.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_0_lower_canopy",
+      "kind": "tree_canopy",
+      "location": [
+        -8.0,
+        -1.0,
+        2.24
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        11.459
+      ],
+      "scale": [
+        1.0,
+        0.85,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_0_upper_canopy",
+      "kind": "tree_canopy",
+      "location": [
+        -7.95,
+        -1.03,
+        3.04
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -20.054
+      ],
+      "scale": [
+        0.9,
+        0.85,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_0_root_a",
+      "kind": "tree_root",
+      "location": [
+        -7.625,
+        -1.0,
+        0.05
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.45,
+        0.05,
+        0.05
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_0_root_b",
+      "kind": "tree_root",
+      "location": [
+        -8.206,
+        -0.717,
+        0.05
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        126.051
+      ],
+      "scale": [
+        0.4,
+        0.05,
+        0.05
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_1_trunk",
+      "kind": "tree",
+      "location": [
+        -7.0,
+        4.0,
+        0.945
+      ],
+      "rotation": [
+        4.0,
+        -3.0,
+        38.388
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_1_lower_canopy",
+      "kind": "tree_canopy",
+      "location": [
+        -7.0,
+        4.0,
+        2.52
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        49.847
+      ],
+      "scale": [
+        1.0,
+        0.85,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_1_upper_canopy",
+      "kind": "tree_canopy",
+      "location": [
+        -6.95,
+        3.97,
+        3.42
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        18.335
+      ],
+      "scale": [
+        0.9,
+        0.85,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_1_root_a",
+      "kind": "tree_root",
+      "location": [
+        -6.671,
+        4.261,
+        0.05
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        38.388
+      ],
+      "scale": [
+        0.504,
+        0.056,
+        0.056
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_1_root_b",
+      "kind": "tree_root",
+      "location": [
+        -7.378,
+        4.105,
+        0.05
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        164.439
+      ],
+      "scale": [
+        0.448,
+        0.056,
+        0.056
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_2_trunk",
+      "kind": "tree",
+      "location": [
+        -6.8,
+        9.2,
+        1.05
+      ],
+      "rotation": [
+        4.0,
+        -3.0,
+        76.776
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_2_lower_canopy",
+      "kind": "tree_canopy",
+      "location": [
+        -6.8,
+        9.2,
+        2.8
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        88.235
+      ],
+      "scale": [
+        1.0,
+        0.85,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_2_upper_canopy",
+      "kind": "tree_canopy",
+      "location": [
+        -6.75,
+        9.17,
+        3.8
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        56.723
+      ],
+      "scale": [
+        0.9,
+        0.85,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_2_root_a",
+      "kind": "tree_root",
+      "location": [
+        -6.694,
+        9.653,
+        0.05
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        76.776
+      ],
+      "scale": [
+        0.558,
+        0.062,
+        0.062
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_2_root_b",
+      "kind": "tree_root",
+      "location": [
+        -7.2,
+        9.032,
+        0.05
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        202.827
+      ],
+      "scale": [
+        0.496,
+        0.062,
+        0.062
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_3_trunk",
+      "kind": "tree",
+      "location": [
+        -3.8,
+        11.5,
+        0.987
+      ],
+      "rotation": [
+        4.0,
+        -3.0,
+        115.165
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_3_lower_canopy",
+      "kind": "tree_canopy",
+      "location": [
+        -3.8,
+        11.5,
+        2.632
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        126.624
+      ],
+      "scale": [
+        1.0,
+        0.85,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_3_upper_canopy",
+      "kind": "tree_canopy",
+      "location": [
+        -3.75,
+        11.47,
+        3.572
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        95.111
+      ],
+      "scale": [
+        0.9,
+        0.85,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_3_root_a",
+      "kind": "tree_root",
+      "location": [
+        -3.979,
+        11.88,
+        0.05
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        115.165
+      ],
+      "scale": [
+        0.504,
+        0.056,
+        0.056
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_3_root_b",
+      "kind": "tree_root",
+      "location": [
+        -3.989,
+        11.156,
+        0.05
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        241.215
+      ],
+      "scale": [
+        0.448,
+        0.056,
+        0.056
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_4_trunk",
+      "kind": "tree",
+      "location": [
+        7.6,
+        -0.8,
+        0.882
+      ],
+      "rotation": [
+        4.0,
+        -3.0,
+        153.553
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_4_lower_canopy",
+      "kind": "tree_canopy",
+      "location": [
+        7.6,
+        -0.8,
+        2.352
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        165.012
+      ],
+      "scale": [
+        1.0,
+        0.85,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_4_upper_canopy",
+      "kind": "tree_canopy",
+      "location": [
+        7.65,
+        -0.83,
+        3.192
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        133.499
+      ],
+      "scale": [
+        0.9,
+        0.85,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_4_root_a",
+      "kind": "tree_root",
+      "location": [
+        7.278,
+        -0.64,
+        0.05
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        153.553
+      ],
+      "scale": [
+        0.432,
+        0.048,
+        0.048
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_4_root_b",
+      "kind": "tree_root",
+      "location": [
+        7.656,
+        -1.131,
+        0.05
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        279.603
+      ],
+      "scale": [
+        0.384,
+        0.048,
+        0.048
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_5_trunk",
+      "kind": "tree",
+      "location": [
+        8.2,
+        4.2,
+        1.008
+      ],
+      "rotation": [
+        4.0,
+        -3.0,
+        191.941
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_5_lower_canopy",
+      "kind": "tree_canopy",
+      "location": [
+        8.2,
+        4.2,
+        2.688
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        203.4
+      ],
+      "scale": [
+        1.0,
+        0.85,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_5_upper_canopy",
+      "kind": "tree_canopy",
+      "location": [
+        8.25,
+        4.17,
+        3.648
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        171.887
+      ],
+      "scale": [
+        0.9,
+        0.85,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_5_root_a",
+      "kind": "tree_root",
+      "location": [
+        7.804,
+        4.116,
+        0.05
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        191.941
+      ],
+      "scale": [
+        0.486,
+        0.054,
+        0.054
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_5_root_b",
+      "kind": "tree_root",
+      "location": [
+        8.481,
+        3.947,
+        0.05
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        317.992
+      ],
+      "scale": [
+        0.432,
+        0.054,
+        0.054
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_6_trunk",
+      "kind": "tree",
+      "location": [
+        6.9,
+        9.6,
+        1.071
+      ],
+      "rotation": [
+        4.0,
+        -3.0,
+        230.329
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_6_lower_canopy",
+      "kind": "tree_canopy",
+      "location": [
+        6.9,
+        9.6,
+        2.856
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        241.788
+      ],
+      "scale": [
+        1.0,
+        0.85,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_6_upper_canopy",
+      "kind": "tree_canopy",
+      "location": [
+        6.95,
+        9.57,
+        3.876
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        210.276
+      ],
+      "scale": [
+        0.9,
+        0.85,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_6_root_a",
+      "kind": "tree_root",
+      "location": [
+        6.613,
+        9.254,
+        0.05
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        230.329
+      ],
+      "scale": [
+        0.54,
+        0.06,
+        0.06
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_6_root_b",
+      "kind": "tree_root",
+      "location": [
+        7.319,
+        9.573,
+        0.05
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        356.38
+      ],
+      "scale": [
+        0.48,
+        0.06,
+        0.06
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_7_trunk",
+      "kind": "tree",
+      "location": [
+        3.7,
+        12.0,
+        0.966
+      ],
+      "rotation": [
+        4.0,
+        -3.0,
+        268.717
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_7_lower_canopy",
+      "kind": "tree_canopy",
+      "location": [
+        3.7,
+        12.0,
+        2.576
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        280.176
+      ],
+      "scale": [
+        1.0,
+        0.85,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_7_upper_canopy",
+      "kind": "tree_canopy",
+      "location": [
+        3.75,
+        11.97,
+        3.496
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        248.664
+      ],
+      "scale": [
+        0.9,
+        0.85,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_7_root_a",
+      "kind": "tree_root",
+      "location": [
+        3.692,
+        11.625,
+        0.05
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        268.717
+      ],
+      "scale": [
+        0.45,
+        0.05,
+        0.05
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_7_root_b",
+      "kind": "tree_root",
+      "location": [
+        3.988,
+        12.2,
+        0.05
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        394.768
+      ],
+      "scale": [
+        0.4,
+        0.05,
+        0.05
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_8_trunk",
+      "kind": "tree",
+      "location": [
+        -1.8,
+        12.2,
+        0.882
+      ],
+      "rotation": [
+        4.0,
+        -3.0,
+        307.105
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_8_lower_canopy",
+      "kind": "tree_canopy",
+      "location": [
+        -1.8,
+        12.2,
+        2.352
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        318.565
+      ],
+      "scale": [
+        1.0,
+        0.85,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_8_upper_canopy",
+      "kind": "tree_canopy",
+      "location": [
+        -1.75,
+        12.17,
+        3.192
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        287.052
+      ],
+      "scale": [
+        0.9,
+        0.85,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_8_root_a",
+      "kind": "tree_root",
+      "location": [
+        -1.592,
+        11.925,
+        0.05
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        307.105
+      ],
+      "scale": [
+        0.414,
+        0.046,
+        0.046
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_frame_tree_8_root_b",
+      "kind": "tree_root",
+      "location": [
+        -1.707,
+        12.508,
+        0.05
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        433.156
+      ],
+      "scale": [
+        0.368,
+        0.046,
+        0.046
+      ],
+      "note": ""
+    },
+    {
+      "name": "left_elven_kiosk_body",
+      "kind": "kiosk",
+      "location": [
+        -7.4,
+        0.7,
+        0.72
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -12.0
+      ],
+      "scale": [
+        0.9,
+        0.7,
+        0.62
+      ],
+      "note": ""
+    },
+    {
+      "name": "left_elven_kiosk_roof",
+      "kind": "kiosk_roof",
+      "location": [
+        -7.4,
+        0.7,
+        1.42
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        22.0
+      ],
+      "scale": [
+        1.1,
+        0.82,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "right_keeper_shrine_body",
+      "kind": "small_shrine",
+      "location": [
+        7.0,
+        2.4,
+        0.72
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        12.0
+      ],
+      "scale": [
+        0.78,
+        0.72,
+        0.7
+      ],
+      "note": ""
+    },
+    {
+      "name": "right_keeper_shrine_roof",
+      "kind": "small_shrine_roof",
+      "location": [
+        7.0,
+        2.4,
+        1.48
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -20.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "verdant_banner_0_pole",
+      "kind": "banner",
+      "location": [
+        -6.6,
+        -1.0,
+        1.005
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "verdant_banner_0_cloth",
+      "kind": "banner",
+      "location": [
+        -6.421,
+        -0.982,
+        1.42
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        5.73
+      ],
+      "scale": [
+        0.04,
+        0.36,
+        0.5
+      ],
+      "note": ""
+    },
+    {
+      "name": "verdant_banner_0_sigil",
+      "kind": "banner_sigil",
+      "location": [
+        -6.396,
+        -0.98,
+        1.46
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        5.73
+      ],
+      "scale": [
+        0.055,
+        0.055,
+        0.08
+      ],
+      "note": ""
+    },
+    {
+      "name": "cyan_lantern_0",
+      "kind": "lantern",
+      "location": [
+        -6.25,
+        -0.9,
+        1.18
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "verdant_banner_1_pole",
+      "kind": "banner",
+      "location": [
+        -3.8,
+        2.1,
+        1.005
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "verdant_banner_1_cloth",
+      "kind": "banner",
+      "location": [
+        -3.626,
+        2.145,
+        1.42
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        14.324
+      ],
+      "scale": [
+        0.04,
+        0.36,
+        0.5
+      ],
+      "note": ""
+    },
+    {
+      "name": "verdant_banner_1_sigil",
+      "kind": "banner_sigil",
+      "location": [
+        -3.601,
+        2.151,
+        1.46
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        14.324
+      ],
+      "scale": [
+        0.055,
+        0.055,
+        0.08
+      ],
+      "note": ""
+    },
+    {
+      "name": "cyan_lantern_1",
+      "kind": "lantern",
+      "location": [
+        -3.45,
+        2.2,
+        1.18
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "verdant_banner_2_pole",
+      "kind": "banner",
+      "location": [
+        3.2,
+        2.2,
+        1.005
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "verdant_banner_2_cloth",
+      "kind": "banner",
+      "location": [
+        3.376,
+        2.164,
+        1.42
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -11.459
+      ],
+      "scale": [
+        0.04,
+        0.36,
+        0.5
+      ],
+      "note": ""
+    },
+    {
+      "name": "verdant_banner_2_sigil",
+      "kind": "banner_sigil",
+      "location": [
+        3.401,
+        2.159,
+        1.46
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -11.459
+      ],
+      "scale": [
+        0.055,
+        0.055,
+        0.08
+      ],
+      "note": ""
+    },
+    {
+      "name": "cyan_lantern_2",
+      "kind": "lantern",
+      "location": [
+        3.55,
+        2.3,
+        1.18
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "verdant_banner_3_pole",
+      "kind": "banner",
+      "location": [
+        6.2,
+        -0.4,
+        1.005
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "verdant_banner_3_cloth",
+      "kind": "banner",
+      "location": [
+        6.362,
+        -0.478,
+        1.42
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -25.783
+      ],
+      "scale": [
+        0.04,
+        0.36,
+        0.5
+      ],
+      "note": ""
+    },
+    {
+      "name": "verdant_banner_3_sigil",
+      "kind": "banner_sigil",
+      "location": [
+        6.385,
+        -0.489,
+        1.46
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -25.783
+      ],
+      "scale": [
+        0.055,
+        0.055,
+        0.08
+      ],
+      "note": ""
+    },
+    {
+      "name": "cyan_lantern_3",
+      "kind": "lantern",
+      "location": [
+        6.55,
+        -0.3,
+        1.18
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "verdant_banner_4_pole",
+      "kind": "banner",
+      "location": [
+        -0.8,
+        5.1,
+        1.005
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "verdant_banner_4_cloth",
+      "kind": "banner",
+      "location": [
+        -0.621,
+        5.122,
+        1.42
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        6.875
+      ],
+      "scale": [
+        0.04,
+        0.36,
+        0.5
+      ],
+      "note": ""
+    },
+    {
+      "name": "verdant_banner_4_sigil",
+      "kind": "banner_sigil",
+      "location": [
+        -0.596,
+        5.125,
+        1.46
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        6.875
+      ],
+      "scale": [
+        0.055,
+        0.055,
+        0.08
+      ],
+      "note": ""
+    },
+    {
+      "name": "cyan_lantern_4",
+      "kind": "lantern",
+      "location": [
+        -0.45,
+        5.2,
+        1.18
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "verdant_banner_5_pole",
+      "kind": "banner",
+      "location": [
+        2.6,
+        5.0,
+        1.005
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "verdant_banner_5_cloth",
+      "kind": "banner",
+      "location": [
+        2.776,
+        4.964,
+        1.42
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -11.459
+      ],
+      "scale": [
+        0.04,
+        0.36,
+        0.5
+      ],
+      "note": ""
+    },
+    {
+      "name": "verdant_banner_5_sigil",
+      "kind": "banner_sigil",
+      "location": [
+        2.801,
+        4.959,
+        1.46
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -11.459
+      ],
+      "scale": [
+        0.055,
+        0.055,
+        0.08
+      ],
+      "note": ""
+    },
+    {
+      "name": "cyan_lantern_5",
+      "kind": "lantern",
+      "location": [
+        2.95,
+        5.1,
+        1.18
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "azure_ground_crystal_0",
+      "kind": "ground_crystal",
+      "location": [
+        -4.9,
+        -1.2,
+        0.5
+      ],
+      "rotation": [
+        11.459,
+        5.73,
+        0.0
+      ],
+      "scale": [
+        0.22,
+        0.172,
+        0.374
+      ],
+      "note": ""
+    },
+    {
+      "name": "azure_ground_crystal_1",
+      "kind": "ground_crystal",
+      "location": [
+        -5.3,
+        2.9,
+        0.5
+      ],
+      "rotation": [
+        11.459,
+        5.73,
+        22.918
+      ],
+      "scale": [
+        0.18,
+        0.14,
+        0.306
+      ],
+      "note": ""
+    },
+    {
+      "name": "azure_ground_crystal_2",
+      "kind": "ground_crystal",
+      "location": [
+        4.9,
+        -1.1,
+        0.5
+      ],
+      "rotation": [
+        11.459,
+        5.73,
+        45.837
+      ],
+      "scale": [
+        0.2,
+        0.156,
+        0.34
+      ],
+      "note": ""
+    },
+    {
+      "name": "azure_ground_crystal_3",
+      "kind": "ground_crystal",
+      "location": [
+        5.6,
+        3.2,
+        0.56
+      ],
+      "rotation": [
+        11.459,
+        5.73,
+        68.755
+      ],
+      "scale": [
+        0.24,
+        0.187,
+        0.408
+      ],
+      "note": ""
+    },
+    {
+      "name": "azure_ground_crystal_4",
+      "kind": "ground_crystal",
+      "location": [
+        -1.4,
+        7.0,
+        0.94
+      ],
+      "rotation": [
+        11.459,
+        5.73,
+        91.673
+      ],
+      "scale": [
+        0.16,
+        0.125,
+        0.272
+      ],
+      "note": ""
+    },
+    {
+      "name": "azure_ground_crystal_5",
+      "kind": "ground_crystal",
+      "location": [
+        2.7,
+        7.1,
+        0.94
+      ],
+      "rotation": [
+        11.459,
+        5.73,
+        114.592
+      ],
+      "scale": [
+        0.18,
+        0.14,
+        0.306
+      ],
+      "note": ""
+    },
+    {
+      "name": "azure_ground_crystal_6",
+      "kind": "ground_crystal",
+      "location": [
+        -6.8,
+        6.0,
+        0.6
+      ],
+      "rotation": [
+        11.459,
+        5.73,
+        137.51
+      ],
+      "scale": [
+        0.18,
+        0.14,
+        0.306
+      ],
+      "note": ""
+    },
+    {
+      "name": "azure_ground_crystal_7",
+      "kind": "ground_crystal",
+      "location": [
+        6.8,
+        6.2,
+        0.62
+      ],
+      "rotation": [
+        11.459,
+        5.73,
+        160.428
+      ],
+      "scale": [
+        0.2,
+        0.156,
+        0.34
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_0",
+      "kind": "flower",
+      "location": [
+        5.4,
+        1.2,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_1",
+      "kind": "flower",
+      "location": [
+        1.029,
+        4.638,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_2",
+      "kind": "flower",
+      "location": [
+        -5.265,
+        2.72,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_3",
+      "kind": "flower",
+      "location": [
+        -2.758,
+        -2.319,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_4",
+      "kind": "flower",
+      "location": [
+        4.15,
+        -2.147,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_5",
+      "kind": "flower",
+      "location": [
+        3.881,
+        2.88,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_6",
+      "kind": "flower",
+      "location": [
+        -1.047,
+        4.476,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_7",
+      "kind": "flower",
+      "location": [
+        -5.642,
+        0.56,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_8",
+      "kind": "flower",
+      "location": [
+        -0.823,
+        -3.068,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_9",
+      "kind": "flower",
+      "location": [
+        7.45,
+        0.111,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_10",
+      "kind": "flower",
+      "location": [
+        1.948,
+        4.034,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_11",
+      "kind": "flower",
+      "location": [
+        -4.145,
+        3.29,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_12",
+      "kind": "flower",
+      "location": [
+        -3.455,
+        -1.4,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_13",
+      "kind": "flower",
+      "location": [
+        3.181,
+        -2.482,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_14",
+      "kind": "flower",
+      "location": [
+        6.47,
+        2.709,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_15",
+      "kind": "flower",
+      "location": [
+        0.205,
+        4.302,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_16",
+      "kind": "flower",
+      "location": [
+        -5.747,
+        1.449,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_17",
+      "kind": "flower",
+      "location": [
+        -1.536,
+        -2.547,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_18",
+      "kind": "flower",
+      "location": [
+        6.391,
+        -0.744,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_19",
+      "kind": "flower",
+      "location": [
+        4.266,
+        4.835,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_20",
+      "kind": "flower",
+      "location": [
+        -3.551,
+        3.6,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_21",
+      "kind": "flower",
+      "location": [
+        -3.739,
+        -0.469,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_22",
+      "kind": "flower",
+      "location": [
+        1.662,
+        -2.522,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_23",
+      "kind": "flower",
+      "location": [
+        6.252,
+        1.601,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_24",
+      "kind": "flower",
+      "location": [
+        1.529,
+        5.825,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "violet_flower_25",
+      "kind": "flower",
+      "location": [
+        -4.384,
+        2.147,
+        0.23
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.4,
+        0.8,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "quest_signpost_center_left",
+      "kind": "imported_signpost",
+      "location": [
+        -2.25,
+        -1.45,
+        0.22
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        12.0
+      ],
+      "scale": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "note": "imported low-poly model"
+    },
+    {
+      "name": "quest_signpost_right_garden",
+      "kind": "imported_signpost",
+      "location": [
+        5.85,
+        -1.85,
+        0.24
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -35.0
+      ],
+      "scale": [
+        0.82,
+        0.82,
+        0.82
+      ],
+      "note": "imported low-poly model"
+    },
+    {
+      "name": "glowcap_cluster_scene_0",
+      "kind": "imported_glowcap",
+      "location": [
+        -4.8,
+        -2.0,
+        0.22
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        11.459
+      ],
+      "scale": [
+        0.72,
+        0.72,
+        0.72
+      ],
+      "note": "imported low-poly model"
+    },
+    {
+      "name": "glowcap_cluster_scene_1",
+      "kind": "imported_glowcap",
+      "location": [
+        -5.7,
+        3.6,
+        0.22
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -28.648
+      ],
+      "scale": [
+        0.62,
+        0.62,
+        0.62
+      ],
+      "note": "imported low-poly model"
+    },
+    {
+      "name": "glowcap_cluster_scene_2",
+      "kind": "imported_glowcap",
+      "location": [
+        4.5,
+        -2.7,
+        0.22
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        45.837
+      ],
+      "scale": [
+        0.72,
+        0.72,
+        0.72
+      ],
+      "note": "imported low-poly model"
+    },
+    {
+      "name": "glowcap_cluster_scene_3",
+      "kind": "imported_glowcap",
+      "location": [
+        6.5,
+        1.2,
+        0.22
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -5.73
+      ],
+      "scale": [
+        0.6,
+        0.6,
+        0.6
+      ],
+      "note": "imported low-poly model"
+    },
+    {
+      "name": "glowcap_cluster_scene_4",
+      "kind": "imported_glowcap",
+      "location": [
+        -1.2,
+        4.2,
+        0.22
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        17.189
+      ],
+      "scale": [
+        0.56,
+        0.56,
+        0.56
+      ],
+      "note": "imported low-poly model"
+    },
+    {
+      "name": "glowcap_cluster_scene_5",
+      "kind": "imported_glowcap",
+      "location": [
+        2.2,
+        4.4,
+        0.22
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -22.918
+      ],
+      "scale": [
+        0.56,
+        0.56,
+        0.56
+      ],
+      "note": "imported low-poly model"
+    },
+    {
+      "name": "hero_azure_crystal_tree_left",
+      "kind": "imported_azure_tree",
+      "location": [
+        -5.4,
+        6.3,
+        0.46
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        18.0
+      ],
+      "scale": [
+        1.1,
+        1.1,
+        1.1
+      ],
+      "note": "imported low-poly model"
+    },
+    {
+      "name": "hero_azure_crystal_tree_right",
+      "kind": "imported_azure_tree",
+      "location": [
+        5.8,
+        6.8,
+        0.44
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -22.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": "imported low-poly model"
+    },
+    {
+      "name": "player_scale_warden_body",
+      "kind": "player_marker",
+      "location": [
+        0.0,
+        -1.0,
+        0.79
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "player_scale_warden_head",
+      "kind": "player_marker",
+      "location": [
+        0.0,
+        -1.0,
+        1.29
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "player_scale_warden_staff",
+      "kind": "player_marker",
+      "location": [
+        0.28,
+        -1.0,
+        0.92
+      ],
+      "rotation": [
+        14.324,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.025,
+        0.025,
+        0.72
+      ],
+      "note": ""
+    },
+    {
+      "name": "npc_herbalist_left_body",
+      "kind": "npc_marker",
+      "location": [
+        -4.6,
+        -0.55,
+        0.79
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "npc_herbalist_left_head",
+      "kind": "npc_marker",
+      "location": [
+        -4.6,
+        -0.55,
+        1.29
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "npc_herbalist_left_staff",
+      "kind": "npc_marker",
+      "location": [
+        -4.334,
+        -0.463,
+        0.92
+      ],
+      "rotation": [
+        14.324,
+        0.0,
+        18.0
+      ],
+      "scale": [
+        0.025,
+        0.025,
+        0.72
+      ],
+      "note": ""
+    },
+    {
+      "name": "npc_innkeeper_mid_body",
+      "kind": "npc_marker",
+      "location": [
+        3.1,
+        0.95,
+        0.79
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "npc_innkeeper_mid_head",
+      "kind": "npc_marker",
+      "location": [
+        3.1,
+        0.95,
+        1.29
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "npc_innkeeper_mid_staff",
+      "kind": "npc_marker",
+      "location": [
+        3.342,
+        0.81,
+        0.92
+      ],
+      "rotation": [
+        14.324,
+        0.0,
+        -30.0
+      ],
+      "scale": [
+        0.025,
+        0.025,
+        0.72
+      ],
+      "note": ""
+    },
+    {
+      "name": "npc_guardian_right_body",
+      "kind": "npc_marker",
+      "location": [
+        5.55,
+        2.25,
+        0.85
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "npc_guardian_right_head",
+      "kind": "npc_marker",
+      "location": [
+        5.55,
+        2.25,
+        1.35
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "npc_guardian_right_staff",
+      "kind": "npc_marker",
+      "location": [
+        5.646,
+        1.987,
+        0.98
+      ],
+      "rotation": [
+        14.324,
+        0.0,
+        -70.0
+      ],
+      "scale": [
+        0.025,
+        0.025,
+        0.72
+      ],
+      "note": ""
+    },
+    {
+      "name": "doe_placeholder_0_body",
+      "kind": "deer_placeholder",
+      "location": [
+        -3.6,
+        -1.4,
+        0.46
+      ],
+      "rotation": [
+        0.0,
+        80.0,
+        11.459
+      ],
+      "scale": [
+        1.5,
+        0.65,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "doe_placeholder_0_head",
+      "kind": "deer_placeholder",
+      "location": [
+        -3.188,
+        -1.317,
+        0.7
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "doe_placeholder_1_body",
+      "kind": "deer_placeholder",
+      "location": [
+        6.3,
+        -2.5,
+        0.46
+      ],
+      "rotation": [
+        0.0,
+        80.0,
+        -22.918
+      ],
+      "scale": [
+        1.5,
+        0.65,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "doe_placeholder_1_head",
+      "kind": "deer_placeholder",
+      "location": [
+        6.687,
+        -2.664,
+        0.7
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    }
+  ]
+}

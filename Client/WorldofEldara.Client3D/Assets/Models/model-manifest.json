@@ -29,6 +29,66 @@
       "collisionHeight": 0.8,
       "triangleBudget": 3000,
       "notes": "Small vegetation cluster, safe to repeat."
+    },
+    {
+      "id": "terrain.grass_tile.low",
+      "category": "Terrain",
+      "relativePath": "Terrain/terrain-grass-tile.low.glb",
+      "scale": 1.0,
+      "collisionRadius": 2.0,
+      "collisionHeight": 0.1,
+      "triangleBudget": 1500,
+      "notes": "Repeatable 4x4m moss grass tile for readable ground coverage."
+    },
+    {
+      "id": "terrain.dirt_path_straight.low",
+      "category": "Terrain",
+      "relativePath": "Terrain/terrain-dirt-path-straight.low.glb",
+      "scale": 1.0,
+      "collisionRadius": 2.0,
+      "collisionHeight": 0.12,
+      "triangleBudget": 1800,
+      "notes": "Straight root-dirt path tile with pebble edge detail."
+    },
+    {
+      "id": "terrain.dirt_path_curve.low",
+      "category": "Terrain",
+      "relativePath": "Terrain/terrain-dirt-path-curve.low.glb",
+      "scale": 1.0,
+      "collisionRadius": 2.0,
+      "collisionHeight": 0.12,
+      "triangleBudget": 1800,
+      "notes": "Curved path tile for branching walkways around Thornveil."
+    },
+    {
+      "id": "terrain.stone_plaza.low",
+      "category": "Terrain",
+      "relativePath": "Terrain/terrain-stone-plaza.low.glb",
+      "scale": 1.0,
+      "collisionRadius": 2.2,
+      "collisionHeight": 0.14,
+      "triangleBudget": 3500,
+      "notes": "Rune plaza centerpiece tile for quest hubs and shrines."
+    },
+    {
+      "id": "terrain.moss_edge.low",
+      "category": "Terrain",
+      "relativePath": "Terrain/terrain-moss-edge.low.glb",
+      "scale": 1.0,
+      "collisionRadius": 2.0,
+      "collisionHeight": 0.55,
+      "triangleBudget": 1600,
+      "notes": "Small sloped moss edge for shaping readable terrain borders."
+    },
+    {
+      "id": "terrain.water_pool.low",
+      "category": "Terrain",
+      "relativePath": "Terrain/terrain-water-pool.low.glb",
+      "scale": 1.0,
+      "collisionRadius": 2.0,
+      "collisionHeight": 0.12,
+      "triangleBudget": 2600,
+      "notes": "Small shallow pool tile with stones for Mossglass pockets."
     }
   ]
 }

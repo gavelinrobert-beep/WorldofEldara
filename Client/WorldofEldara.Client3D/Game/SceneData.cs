@@ -5,6 +5,7 @@ namespace WorldofEldara.Client3D.Game;
 
 public sealed class SceneData
 {
+    public required BlockoutScene Blockout { get; init; }
     public required IReadOnlyList<TerrainChunk> TerrainChunks { get; init; }
     public required IReadOnlyList<PathRibbon> Paths { get; init; }
     public required IReadOnlyList<WorldProp> Props { get; init; }
@@ -15,6 +16,7 @@ public static class ThornveilSceneData
 {
     public static SceneData Create() => new()
     {
+        Blockout = BlockoutScene.LoadDefault(),
         TerrainChunks =
         [
             new("hearthbough-glade", new Vector3(0, 0, 0.8f), 11.4f, 8.2f, TerrainMaterial.Clearing, 0.45f),

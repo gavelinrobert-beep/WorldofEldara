@@ -10,6 +10,7 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
 
     public void AddSceneObjects(List<DrawCommand> commands, Size viewport, SceneData scene, float pulse)
     {
+        AddBlockoutScene(commands, viewport, scene);
         AddProps(commands, viewport, scene);
         AddActors(commands, viewport, scene, pulse);
         AddPlayer(commands, viewport);
@@ -99,6 +100,193 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
             }
         }
     }
+
+    private void AddBlockoutScene(List<DrawCommand> commands, Size viewport, SceneData scene)
+    {
+        foreach (var placement in scene.Blockout.Placements)
+        {
+            if (!ShouldRenderBlockout(placement))
+            {
+                continue;
+            }
+
+            var flat = placement.WorldFlat;
+            if (Vector3.Distance(flat, new Vector3(state.PlayerPosition.X, 0, state.PlayerPosition.Z)) > 44f)
+            {
+                continue;
+            }
+
+            var basePosition = terrain.AtGround(flat) + new Vector3(0, placement.HeightOffset, 0);
+            AddBlockoutPlacement(commands, viewport, placement, basePosition);
+        }
+    }
+
+    private void AddBlockoutPlacement(List<DrawCommand> commands, Size viewport, BlockoutPlacement placement,
+        Vector3 basePosition)
+    {
+        var yaw = placement.YawDegrees;
+        switch (placement.Kind)
+        {
+            case "plaza":
+            case "clearing":
+            case "terrace":
+            case "garden":
+                AddBlockoutDisc(commands, viewport, basePosition, 1.9f * placement.ScaleAt(0),
+                    placement.Kind == "plaza"
+                        ? Color.FromArgb(86, 120, 128, 104)
+                        : Color.FromArgb(70, 36, 104, 54));
+                break;
+            case "path":
+            case "stairs":
+            case "root_bridge":
+                AddBlockoutSlab(commands, viewport, basePosition, placement.Kind == "stairs"
+                    ? new Vector3(0.9f, 0.08f, 0.28f)
+                    : new Vector3(1.6f, 0.05f, 0.42f), yaw,
+                    placement.Kind == "root_bridge"
+                        ? Color.FromArgb(96, 106, 68, 36)
+                        : Color.FromArgb(78, 126, 86, 52));
+                break;
+            case "rune_ring":
+            case "rune_spoke":
+                AddBlockoutSlab(commands, viewport, basePosition, new Vector3(0.76f, 0.035f, 0.08f), yaw,
+                    Color.FromArgb(118, 106, 248, 214));
+                break;
+            case "landmark":
+            case "landmark_root":
+                AddCylinder(commands, viewport, basePosition + new Vector3(0, 0.76f, 0), 0.2f, 1.52f, 7,
+                    Color.FromArgb(112, 84, 54, 32), Color.FromArgb(116, 170, 112, 62), null);
+                break;
+            case "landmark_crystal":
+            case "ground_crystal":
+            case "crystal_lantern":
+                AddBlockoutCrystal(commands, viewport, basePosition, placement.Kind == "landmark_crystal" ? 0.64f : 0.28f);
+                break;
+            case "root_arch":
+            case "bridge_post":
+                AddCylinder(commands, viewport, basePosition + new Vector3(0, 0.58f, 0), 0.055f, 1.16f, 6,
+                    Color.FromArgb(104, 78, 48, 28), Color.FromArgb(118, 152, 96, 54), null);
+                break;
+            case "waterfall":
+            case "water_pool":
+                AddBlockoutSlab(commands, viewport, basePosition, new Vector3(0.72f, 0.035f, 0.3f), yaw,
+                    Color.FromArgb(92, 64, 158, 196));
+                break;
+            case "tree":
+            case "tree_canopy":
+                _meshRenderer.AddMesh(commands, viewport,
+                    new MeshInstance(ThornveilMeshes.HeartwoodTree, terrain.AtGround(placement.WorldFlat),
+                        new Vector3(0.82f, 1.05f, 0.82f), yaw));
+                break;
+            case "banner":
+            case "banner_sigil":
+                _meshRenderer.AddMesh(commands, viewport,
+                    new MeshInstance(ThornveilMeshes.ThornveilBanner, terrain.AtGround(placement.WorldFlat),
+                        new Vector3(0.72f, 0.9f, 0.72f), yaw));
+                break;
+            case "lantern":
+                _meshRenderer.AddMesh(commands, viewport,
+                    new MeshInstance(ThornveilMeshes.Lantern, terrain.AtGround(placement.WorldFlat),
+                        new Vector3(0.52f, 0.88f, 0.52f), yaw));
+                break;
+            case "kiosk":
+            case "small_shrine":
+                _meshRenderer.AddMesh(commands, viewport,
+                    new MeshInstance(ThornveilMeshes.ThornveilCottage, terrain.AtGround(placement.WorldFlat),
+                        new Vector3(0.72f, 0.68f, 0.72f), yaw));
+                break;
+            case "imported_azure_tree":
+                _meshRenderer.AddMesh(commands, viewport,
+                    new MeshInstance(ThornveilMeshes.WorldrootShrine, terrain.AtGround(placement.WorldFlat),
+                        new Vector3(1.2f, 1.35f, 1.2f), yaw));
+                break;
+            case "imported_signpost":
+                _meshRenderer.AddMesh(commands, viewport,
+                    new MeshInstance(ThornveilMeshes.RunestoneShard, terrain.AtGround(placement.WorldFlat),
+                        new Vector3(0.54f, 0.92f, 0.54f), yaw));
+                break;
+            case "imported_glowcap":
+                _meshRenderer.AddMesh(commands, viewport,
+                    new MeshInstance(ThornveilMeshes.HerbCluster, terrain.AtGround(placement.WorldFlat),
+                        new Vector3(0.82f, 0.62f, 0.82f), yaw));
+                break;
+        }
+    }
+
+    private static bool ShouldRenderBlockout(BlockoutPlacement placement) =>
+        placement.Kind is "plaza" or "clearing" or "terrace" or "garden" or
+            "path" or "stairs" or "root_bridge" or "rune_ring" or "rune_spoke" or
+            "landmark" or "landmark_root" or "landmark_crystal" or "root_arch" or "bridge_post" or
+            "crystal_lantern" or "ground_crystal" or "waterfall" or "water_pool" or
+            "tree" or "banner" or "banner_sigil" or "lantern" or "kiosk" or "small_shrine" or
+            "imported_azure_tree" or "imported_signpost" or "imported_glowcap";
+
+    private void AddBlockoutDisc(List<DrawCommand> commands, Size viewport, Vector3 center, float radius, Color color)
+    {
+        const int segments = 16;
+        var vertices = new Vector3[segments];
+        var yOffset = GroundOffset(center) + 0.025f;
+        for (var i = 0; i < segments; i++)
+        {
+            var angle = i / (float)segments * MathF.PI * 2f;
+            vertices[i] = terrain.GroundPoint(center.X + MathF.Cos(angle) * radius,
+                center.Z + MathF.Sin(angle) * radius, yOffset);
+        }
+
+        var points = ProjectPolygon(viewport, vertices, out var depth);
+        if (points is null)
+        {
+            return;
+        }
+
+        commands.Add(new DrawCommand(depth - 0.07f, g =>
+        {
+            using var brush = new SolidBrush(color);
+            using var pen = new Pen(Color.FromArgb(54, 180, 236, 188), 1f);
+            g.FillPolygon(brush, points);
+            g.DrawPolygon(pen, points);
+        }));
+    }
+
+    private void AddBlockoutSlab(List<DrawCommand> commands, Size viewport, Vector3 center, Vector3 size,
+        float yawDegrees, Color color)
+    {
+        var yaw = yawDegrees * MathF.PI / 180f;
+        var forward = new Vector3(MathF.Cos(yaw), 0, MathF.Sin(yaw));
+        var right = new Vector3(-forward.Z, 0, forward.X);
+        var halfForward = forward * size.X;
+        var halfRight = right * size.Z;
+        var yOffset = GroundOffset(center) + MathF.Max(0.025f, size.Y);
+        var vertices = new[]
+        {
+            terrain.GroundPoint(center.X + halfForward.X + halfRight.X, center.Z + halfForward.Z + halfRight.Z, yOffset),
+            terrain.GroundPoint(center.X - halfForward.X + halfRight.X, center.Z - halfForward.Z + halfRight.Z, yOffset),
+            terrain.GroundPoint(center.X - halfForward.X - halfRight.X, center.Z - halfForward.Z - halfRight.Z, yOffset),
+            terrain.GroundPoint(center.X + halfForward.X - halfRight.X, center.Z + halfForward.Z - halfRight.Z, yOffset)
+        };
+
+        var points = ProjectPolygon(viewport, vertices, out var depth);
+        if (points is null)
+        {
+            return;
+        }
+
+        commands.Add(new DrawCommand(depth - 0.08f, g =>
+        {
+            using var brush = new SolidBrush(color);
+            using var pen = new Pen(Color.FromArgb(48, 226, 246, 198), 1f);
+            g.FillPolygon(brush, points);
+            g.DrawPolygon(pen, points);
+        }));
+    }
+
+    private void AddBlockoutCrystal(List<DrawCommand> commands, Size viewport, Vector3 basePosition, float scale)
+    {
+        AddBox(commands, viewport, basePosition + new Vector3(0, scale * 0.72f, 0),
+            new Vector3(scale * 0.44f, scale * 1.18f, scale * 0.44f),
+            Color.FromArgb(122, 74, 226, 218), Color.FromArgb(170, 180, 255, 232), null);
+    }
+
+    private float GroundOffset(Vector3 worldPosition) => worldPosition.Y - terrain.HeightAt(worldPosition.X, worldPosition.Z);
 
     private void AddActors(List<DrawCommand> commands, Size viewport, SceneData scene, float pulse)
     {

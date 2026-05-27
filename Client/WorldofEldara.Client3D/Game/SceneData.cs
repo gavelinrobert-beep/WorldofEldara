@@ -19,6 +19,9 @@ public static class ThornveilSceneData
         Blockout = BlockoutScene.LoadDefault(),
         TerrainChunks =
         [
+            new("thornveil-forest-floor", new Vector3(0, 0, 0.8f), 18.5f, 17.5f, TerrainMaterial.Forest, 0.72f),
+            new("north-canopy-floor", new Vector3(0, 0, 8.4f), 16.0f, 9.8f, TerrainMaterial.Forest, 0.62f),
+            new("arrival-forest-floor", new Vector3(0, 0, -7.1f), 14.5f, 8.4f, TerrainMaterial.Forest, 0.62f),
             new("arrival-clearing", new Vector3(0, 0, -7.2f), 6.2f, 4.2f, TerrainMaterial.Clearing, 0.5f),
             new("hearthbough-hub", new Vector3(0, 0, 0.8f), 7.4f, 5.4f, TerrainMaterial.Shrine, 0.48f),
             new("upper-enclave-terrace", new Vector3(0, 0, 8.6f), 7.2f, 4.7f, TerrainMaterial.Clearing, 0.42f),

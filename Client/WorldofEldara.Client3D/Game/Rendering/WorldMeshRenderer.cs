@@ -25,6 +25,15 @@ public sealed class WorldMeshRenderer(WorldCamera camera)
             var outline = part.Material.Outline;
             commands.Add(new DrawCommand(depth, g =>
             {
+                if (IsGlowMaterial(part.Material))
+                {
+                    using var glowPen = new Pen(Color.FromArgb(78, outline.R, outline.G, outline.B), 5f)
+                    {
+                        LineJoin = System.Drawing.Drawing2D.LineJoin.Round
+                    };
+                    g.DrawPolygon(glowPen, points);
+                }
+
                 using var brush = new SolidBrush(fill);
                 using var pen = new Pen(outline, 1.15f);
                 g.FillPolygon(brush, points);
@@ -32,6 +41,11 @@ public sealed class WorldMeshRenderer(WorldCamera camera)
             }));
         }
     }
+
+    private static bool IsGlowMaterial(MeshMaterial material) =>
+        material.Name.Contains("glow", StringComparison.OrdinalIgnoreCase) ||
+        material.Name.Contains("spirit", StringComparison.OrdinalIgnoreCase) ||
+        material.Name.Contains("echo", StringComparison.OrdinalIgnoreCase);
 
     private static Vector3 Transform(Vector3 vertex, MeshInstance instance)
     {

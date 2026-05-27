@@ -22,7 +22,9 @@ public static class ThornveilMeshes
     public static readonly MeshMaterial Leaf = new("leaf", Color.FromArgb(62, 158, 82), Color.FromArgb(132, 220, 126));
     public static readonly MeshMaterial LeafDark = new("leaf-dark", Color.FromArgb(38, 124, 68), Color.FromArgb(104, 190, 112));
     public static readonly MeshMaterial LanternWood = new("lantern-wood", Color.FromArgb(92, 68, 42), Color.FromArgb(212, 232, 166));
-    public static readonly MeshMaterial LanternGlow = new("lantern-glow", Color.FromArgb(112, 240, 152), Color.FromArgb(224, 255, 184));
+    public static readonly MeshMaterial LanternGlow = new("lantern-glow", Color.FromArgb(238, 184, 82), Color.FromArgb(255, 234, 148));
+    public static readonly MeshMaterial CyanGlow = new("cyan-glow", Color.FromArgb(64, 212, 210), Color.FromArgb(176, 255, 244));
+    public static readonly MeshMaterial WindowGlow = new("window-glow", Color.FromArgb(78, 180, 202), Color.FromArgb(184, 244, 248));
     public static readonly MeshMaterial Runestone = new("runestone", Color.FromArgb(104, 134, 130), Color.FromArgb(178, 232, 212));
     public static readonly MeshMaterial Plaster = new("plaster", Color.FromArgb(162, 148, 128), Color.FromArgb(218, 206, 176));
     public static readonly MeshMaterial RoofMoss = new("roof-moss", Color.FromArgb(44, 88, 62), Color.FromArgb(104, 152, 104));
@@ -96,6 +98,8 @@ public static class ThornveilMeshes
         parts.AddBox(new Vector3(1.2f, 0.72f, -0.02f), new Vector3(0.16f, 1.36f, 1.92f), WarmTimber);
         parts.AddBox(new Vector3(0, 0.74f, -0.91f), new Vector3(2.55f, 1.34f, 0.12f), WarmTimber);
         parts.AddBox(new Vector3(0, 1.22f, -0.98f), new Vector3(0.74f, 0.44f, 0.14f), WarmTimber);
+        parts.AddBox(new Vector3(-0.62f, 0.92f, -1.01f), new Vector3(0.32f, 0.38f, 0.12f), WindowGlow);
+        parts.AddBox(new Vector3(0.62f, 0.92f, -1.01f), new Vector3(0.32f, 0.38f, 0.12f), WindowGlow);
         parts.AddBox(new Vector3(0, 0.34f, -1.0f), new Vector3(0.48f, 0.68f, 0.14f), BarkDark);
         parts.AddGableRoof(new Vector3(0, 1.56f, 0), new Vector3(2.88f, 0.78f, 2.08f), RoofMoss);
         parts.AddBox(new Vector3(0.72f, 1.42f, 0.38f), new Vector3(0.34f, 0.5f, 0.34f), Bark);
@@ -126,7 +130,7 @@ public static class ThornveilMeshes
         parts.AddBox(new Vector3(-0.58f, 0.72f, 0), new Vector3(0.18f, 1.44f, 0.18f), BarkDark, -10f);
         parts.AddBox(new Vector3(0.58f, 0.72f, 0), new Vector3(0.18f, 1.44f, 0.18f), BarkDark, 10f);
         parts.AddBox(new Vector3(0, 1.42f, 0), new Vector3(1.34f, 0.18f, 0.22f), Bark, 0f);
-        parts.AddDiamond(new Vector3(0, 1.72f, 0), new Vector3(0.36f, 0.36f, 0.36f), LanternGlow);
+        parts.AddDiamond(new Vector3(0, 1.72f, 0), new Vector3(0.36f, 0.36f, 0.36f), CyanGlow);
         parts.AddWedge(new Vector3(-0.32f, 0.18f, 0.18f), new Vector3(0.5f, 0.12f, 0.24f), Bark, -18f);
         parts.AddWedge(new Vector3(0.34f, 0.18f, -0.16f), new Vector3(0.46f, 0.12f, 0.22f), Bark, 20f);
         return new MeshAsset("root-arch", parts.ToArray());
@@ -155,7 +159,7 @@ public static class ThornveilMeshes
         var parts = new MeshBuilder();
         parts.AddCylinder(new Vector3(0, 0.36f, 0), 0.06f, 0.72f, 5, Corruption);
         parts.AddDiamond(new Vector3(0, 0.88f, 0), new Vector3(0.36f, 0.42f, 0.36f), Corruption);
-        parts.AddDiamond(new Vector3(0.22f, 0.5f, 0.08f), new Vector3(0.28f, 0.28f, 0.24f), SpiritBlue);
+        parts.AddDiamond(new Vector3(0.22f, 0.5f, 0.08f), new Vector3(0.28f, 0.28f, 0.24f), CyanGlow);
         return new MeshAsset("corrupted-sprout", parts.ToArray());
     }
 
@@ -166,7 +170,7 @@ public static class ThornveilMeshes
         parts.AddCylinder(new Vector3(0, 0.78f, 0), 0.18f, 1.28f, 7, BarkDark);
         parts.AddBox(new Vector3(-0.42f, 0.72f, 0.08f), new Vector3(0.12f, 1.18f, 0.14f), Bark, -22f);
         parts.AddBox(new Vector3(0.42f, 0.72f, -0.08f), new Vector3(0.12f, 1.18f, 0.14f), Bark, 22f);
-        parts.AddDiamond(new Vector3(0, 1.65f, 0), new Vector3(0.78f, 0.9f, 0.78f), LanternGlow);
+        parts.AddDiamond(new Vector3(0, 1.65f, 0), new Vector3(0.78f, 0.9f, 0.78f), CyanGlow);
         parts.AddDiamond(new Vector3(0, 1.66f, 0), new Vector3(0.42f, 0.5f, 0.42f), SpiritBlue);
         return new MeshAsset("worldroot-shrine", parts.ToArray());
     }
@@ -189,11 +193,14 @@ public static class ThornveilMeshes
         parts.AddBox(new Vector3(0.74f, 0.48f, -0.24f), new Vector3(1.34f, 0.12f, 0.16f), BarkDark, 28f);
         parts.AddBox(new Vector3(0, 1.84f, 0), new Vector3(2.05f, 0.16f, 1.58f), WarmTimber, 5f);
         parts.AddBox(new Vector3(0, 2.34f, 0), new Vector3(1.36f, 0.88f, 0.98f), Plaster, 5f);
-        parts.AddBox(new Vector3(0, 2.45f, -0.54f), new Vector3(0.34f, 0.42f, 0.08f), SpiritBlue, 5f);
-        parts.AddBox(new Vector3(0.7f, 2.42f, 0), new Vector3(0.08f, 0.36f, 0.34f), SpiritBlue, 5f);
+        parts.AddBox(new Vector3(0, 2.45f, -0.54f), new Vector3(0.34f, 0.42f, 0.08f), WindowGlow, 5f);
+        parts.AddBox(new Vector3(0.7f, 2.42f, 0), new Vector3(0.08f, 0.36f, 0.34f), WindowGlow, 5f);
         parts.AddGableRoof(new Vector3(0, 2.92f, 0), new Vector3(1.82f, 0.62f, 1.34f), RoofMoss);
-        parts.AddDiamond(new Vector3(0, 3.42f, -0.46f), new Vector3(0.24f, 0.38f, 0.16f), LanternGlow);
+        parts.AddDiamond(new Vector3(0, 3.42f, -0.46f), new Vector3(0.24f, 0.38f, 0.16f), CyanGlow);
         parts.AddBox(new Vector3(0, 2.08f, -0.86f), new Vector3(1.74f, 0.08f, 0.07f), BarkDark);
+        parts.AddBox(new Vector3(-0.52f, 2.42f, -0.55f), new Vector3(0.08f, 0.34f, 0.08f), WarmTimber, 5f);
+        parts.AddBox(new Vector3(0.52f, 2.42f, -0.55f), new Vector3(0.08f, 0.34f, 0.08f), WarmTimber, 5f);
+        parts.AddBox(new Vector3(0, 2.2f, -0.58f), new Vector3(1.18f, 0.08f, 0.08f), WarmTimber, 5f);
         parts.AddCylinder(new Vector3(-0.78f, 2.12f, -0.86f), 0.035f, 0.52f, 6, BarkDark);
         parts.AddCylinder(new Vector3(0.78f, 2.12f, -0.86f), 0.035f, 0.52f, 6, BarkDark);
         parts.AddDiamond(new Vector3(-0.62f, 3.22f, 0.22f), new Vector3(1.0f, 0.58f, 0.86f), LeafDark);
@@ -236,9 +243,9 @@ public static class ThornveilMeshes
     {
         var parts = new MeshBuilder();
         parts.AddCylinder(new Vector3(0, 0.12f, 0), 0.58f, 0.24f, 8, MossStone);
-        parts.AddDiamond(new Vector3(0.08f, 0.88f, 0.02f), new Vector3(0.62f, 1.55f, 0.5f), LanternGlow);
+        parts.AddDiamond(new Vector3(0.08f, 0.88f, 0.02f), new Vector3(0.62f, 1.55f, 0.5f), CyanGlow);
         parts.AddDiamond(new Vector3(-0.34f, 0.58f, 0.08f), new Vector3(0.34f, 0.9f, 0.3f), SpiritBlue);
-        parts.AddDiamond(new Vector3(0.38f, 0.52f, -0.12f), new Vector3(0.3f, 0.78f, 0.28f), LanternGlow);
+        parts.AddDiamond(new Vector3(0.38f, 0.52f, -0.12f), new Vector3(0.3f, 0.78f, 0.28f), CyanGlow);
         parts.AddDiamond(new Vector3(0, 0.4f, -0.38f), new Vector3(0.22f, 0.56f, 0.2f), SpiritBlue);
         parts.AddBox(new Vector3(-0.44f, 0.18f, -0.28f), new Vector3(0.28f, 0.06f, 0.08f), LeafDark, -18f);
         parts.AddBox(new Vector3(0.42f, 0.18f, 0.28f), new Vector3(0.28f, 0.06f, 0.08f), LeafDark, 24f);
@@ -253,7 +260,7 @@ public static class ThornveilMeshes
         parts.AddBox(new Vector3(-0.58f, 0.74f, 0.12f), new Vector3(0.16f, 1.32f, 0.16f), Bark, -24f);
         parts.AddBox(new Vector3(0.58f, 0.74f, -0.12f), new Vector3(0.16f, 1.32f, 0.16f), Bark, 24f);
         parts.AddBox(new Vector3(0, 1.34f, 0), new Vector3(1.28f, 0.18f, 0.2f), BarkDark);
-        parts.AddDiamond(new Vector3(0, 1.86f, 0), new Vector3(0.92f, 1.1f, 0.72f), LanternGlow);
+        parts.AddDiamond(new Vector3(0, 1.86f, 0), new Vector3(0.92f, 1.1f, 0.72f), CyanGlow);
         parts.AddDiamond(new Vector3(0, 1.88f, 0), new Vector3(0.52f, 0.68f, 0.42f), SpiritBlue);
         parts.AddDiamond(new Vector3(0, 2.1f, 0), new Vector3(0.32f, 0.36f, 0.28f), MemoryEcho);
         return new MeshAsset("worldroot-heart", parts.ToArray());

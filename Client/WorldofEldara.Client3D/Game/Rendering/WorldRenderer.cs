@@ -327,8 +327,8 @@ public sealed class WorldRenderer
     {
         using var background = new LinearGradientBrush(
             new Rectangle(Point.Empty, viewport),
-            Color.FromArgb(12, 29, 30),
-            Color.FromArgb(4, 12, 11),
+            Color.FromArgb(22, 54, 58),
+            Color.FromArgb(7, 22, 20),
             LinearGradientMode.Vertical);
         graphics.FillRectangle(background, 0, 0, viewport.Width, viewport.Height);
         DrawGroundWash(graphics, viewport);
@@ -341,15 +341,15 @@ public sealed class WorldRenderer
         var groundRect = new Rectangle(0, horizon, viewport.Width, viewport.Height - horizon);
         using var ground = new LinearGradientBrush(
             groundRect,
-            Color.FromArgb(32, 12, 42, 32),
-            Color.FromArgb(178, 6, 18, 16),
+            Color.FromArgb(42, 20, 62, 42),
+            Color.FromArgb(150, 7, 22, 18),
             LinearGradientMode.Vertical);
         graphics.FillRectangle(ground, groundRect);
 
         using var pathBrush = new LinearGradientBrush(
             groundRect,
-            Color.FromArgb(24, 78, 54, 34),
-            Color.FromArgb(54, 56, 40, 26),
+            Color.FromArgb(30, 104, 76, 46),
+            Color.FromArgb(48, 74, 52, 30),
             LinearGradientMode.Vertical);
         var path = new[]
         {
@@ -360,7 +360,7 @@ public sealed class WorldRenderer
         };
         graphics.FillPolygon(pathBrush, path);
 
-        using var mossBrush = new SolidBrush(Color.FromArgb(24, 24, 70, 38));
+        using var mossBrush = new SolidBrush(Color.FromArgb(30, 34, 94, 48));
         graphics.FillEllipse(mossBrush, viewport.Width * 0.06f, horizon + 45f, viewport.Width * 0.32f, viewport.Height * 0.32f);
         graphics.FillEllipse(mossBrush, viewport.Width * 0.62f, horizon + 20f, viewport.Width * 0.38f, viewport.Height * 0.38f);
     }
@@ -371,7 +371,7 @@ public sealed class WorldRenderer
         using var fog = new LinearGradientBrush(
             fogRect,
             Color.FromArgb(0, 4, 9, 10),
-            Color.FromArgb(58, 18, 42, 34),
+            Color.FromArgb(68, 30, 76, 62),
             LinearGradientMode.Vertical);
         graphics.FillRectangle(fog, fogRect);
     }
@@ -381,7 +381,7 @@ public sealed class WorldRenderer
         var hazeRect = new Rectangle(0, 0, viewport.Width, (int)(viewport.Height * 0.55f));
         using var haze = new LinearGradientBrush(
             hazeRect,
-            Color.FromArgb(26, 3, 9, 10),
+            Color.FromArgb(18, 8, 26, 24),
             Color.FromArgb(0, 3, 9, 10),
             LinearGradientMode.Vertical);
         graphics.FillRectangle(haze, hazeRect);

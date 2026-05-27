@@ -169,11 +169,12 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
             case "landmark_crystal":
             case "ground_crystal":
             case "crystal_lantern":
+                var crystalBaseScale = placement.Kind == "landmark_crystal" ? 0.56f : 0.25f;
                 _meshRenderer.AddMesh(commands, viewport,
                     new MeshInstance(ThornveilMeshes.CyanCrystalCluster, terrain.AtGround(placement.WorldFlat),
-                        placement.Kind == "landmark_crystal"
-                            ? new Vector3(0.74f, 0.82f, 0.74f)
-                            : new Vector3(0.34f, 0.42f, 0.34f), yaw));
+                        new Vector3(crystalBaseScale * placement.ScaleAt(0),
+                            crystalBaseScale * 1.18f * placement.ScaleAt(2, placement.ScaleAt(0)),
+                            crystalBaseScale * placement.ScaleAt(1, placement.ScaleAt(0))), yaw));
                 break;
             case "worldroot_heart":
                 _meshRenderer.AddMesh(commands, viewport,
@@ -196,8 +197,8 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
             case "root_arch":
                 _meshRenderer.AddMesh(commands, viewport,
                     new MeshInstance(ThornveilMeshes.RootArch, terrain.AtGround(placement.WorldFlat),
-                        new Vector3(1.02f * placement.ScaleAt(0), 1.08f * placement.ScaleAt(2),
-                            1.02f * placement.ScaleAt(1)), yaw));
+                        new Vector3(1.28f * placement.ScaleAt(0), 1.72f * placement.ScaleAt(2),
+                            1.28f * placement.ScaleAt(1)), yaw));
                 break;
             case "bridge_post":
                 AddCylinder(commands, viewport, basePosition + new Vector3(0, 0.58f, 0), 0.055f, 1.16f, 6,
@@ -218,23 +219,26 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
             case "banner":
                 _meshRenderer.AddMesh(commands, viewport,
                     new MeshInstance(ThornveilMeshes.ThornveilBanner, terrain.AtGround(placement.WorldFlat),
-                        new Vector3(0.72f, 0.9f, 0.72f), yaw));
+                        new Vector3(0.5f * placement.ScaleAt(0), 0.68f * placement.ScaleAt(2, 1f),
+                            0.5f * placement.ScaleAt(1, 1f)), yaw));
                 break;
             case "lantern":
                 _meshRenderer.AddMesh(commands, viewport,
                     new MeshInstance(ThornveilMeshes.Lantern, terrain.AtGround(placement.WorldFlat),
-                        new Vector3(0.52f, 0.88f, 0.52f), yaw));
+                        new Vector3(0.36f * placement.ScaleAt(0), 0.62f * placement.ScaleAt(2, 1f),
+                            0.36f * placement.ScaleAt(1, 1f)), yaw));
                 break;
             case "kiosk":
                 _meshRenderer.AddMesh(commands, viewport,
                     new MeshInstance(ThornveilMeshes.ThornveilTreehouse, terrain.AtGround(placement.WorldFlat),
-                        new Vector3(0.66f * placement.ScaleAt(0), 0.76f * placement.ScaleAt(2),
-                            0.66f * placement.ScaleAt(1)), yaw));
+                        new Vector3(1.1f * placement.ScaleAt(0), 1.16f * placement.ScaleAt(2),
+                            1.1f * placement.ScaleAt(1)), yaw));
                 break;
             case "small_shrine":
                 _meshRenderer.AddMesh(commands, viewport,
                     new MeshInstance(ThornveilMeshes.ThornveilCottage, terrain.AtGround(placement.WorldFlat),
-                        new Vector3(0.58f, 0.58f, 0.58f), yaw));
+                        new Vector3(0.82f * placement.ScaleAt(0), 0.82f * placement.ScaleAt(2, 1f),
+                            0.82f * placement.ScaleAt(1, 1f)), yaw));
                 break;
             case "imported_azure_tree":
                 _meshRenderer.AddMesh(commands, viewport,
@@ -244,12 +248,14 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
             case "imported_signpost":
                 _meshRenderer.AddMesh(commands, viewport,
                     new MeshInstance(ThornveilMeshes.RunestoneShard, terrain.AtGround(placement.WorldFlat),
-                        new Vector3(0.54f, 0.92f, 0.54f), yaw));
+                        new Vector3(0.34f * placement.ScaleAt(0), 0.58f * placement.ScaleAt(2, 1f),
+                            0.34f * placement.ScaleAt(1, 1f)), yaw));
                 break;
             case "imported_glowcap":
                 _meshRenderer.AddMesh(commands, viewport,
                     new MeshInstance(ThornveilMeshes.HerbCluster, terrain.AtGround(placement.WorldFlat),
-                        new Vector3(0.82f, 0.62f, 0.82f), yaw));
+                        new Vector3(0.5f * placement.ScaleAt(0), 0.38f * placement.ScaleAt(2, 1f),
+                            0.5f * placement.ScaleAt(1, 1f)), yaw));
                 break;
         }
     }

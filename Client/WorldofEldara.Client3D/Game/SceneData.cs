@@ -101,15 +101,15 @@ public static class ThornveilSceneData
         ],
         Actors =
         [
-            new("Root Guardian", new Vector3(1.6f, 0, 0.3f), 0.62f, 1.55f, 0.05f, 1.4f,
+            new("Root Guardian", new Vector3(2.35f, 0, 2.35f), 0.58f, 1.44f, 0.05f, 1.4f,
                 Color.FromArgb(122, 177, 127), Color.FromArgb(214, 236, 182), false),
             new("Razor Fern", new Vector3(5.7f, 0, -2.4f), 0.7f, 1.15f, 0.4f, 2.1f,
                 Color.FromArgb(170, 78, 66), Color.FromArgb(240, 126, 102), true),
             new("Hollow Sapling", new Vector3(7.2f, 0, -3.9f), 0.7f, 1.25f, 0.32f, 1.8f,
                 Color.FromArgb(160, 74, 62), Color.FromArgb(238, 112, 92), true),
-            new("Memory Keeper", new Vector3(-1.7f, 0, 1.2f), 0.58f, 1.45f, 0.03f, 1.0f,
+            new("Memory Keeper", new Vector3(-2.45f, 0, 2.8f), 0.54f, 1.38f, 0.03f, 1.0f,
                 Color.FromArgb(132, 184, 142), Color.FromArgb(230, 236, 184), false),
-            new("Elder Thaelir", new Vector3(-3.5f, 0, 1.4f), 0.58f, 1.5f, 0.02f, 1.1f,
+            new("Elder Thaelir", new Vector3(-4.05f, 0, 2.45f), 0.54f, 1.42f, 0.02f, 1.1f,
                 Color.FromArgb(154, 186, 128), Color.FromArgb(238, 226, 166), false),
             new("Twice-Dead Hare", new Vector3(-5.6f, 0, -3.2f), 0.58f, 1.0f, 0.7f, 2.8f,
                 Color.FromArgb(210, 226, 216), Color.FromArgb(246, 252, 238), true),

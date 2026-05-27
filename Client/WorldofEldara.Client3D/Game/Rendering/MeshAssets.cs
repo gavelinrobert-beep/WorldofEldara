@@ -48,6 +48,9 @@ public static class ThornveilMeshes
     public static readonly MeshAsset CorruptedSprout = BuildCorruptedSprout();
     public static readonly MeshAsset WorldrootShrine = BuildWorldrootShrine();
     public static readonly MeshAsset ThornveilBanner = BuildThornveilBanner();
+    public static readonly MeshAsset ThornveilTreehouse = BuildThornveilTreehouse();
+    public static readonly MeshAsset RootBridgeStairs = BuildRootBridgeStairs();
+    public static readonly MeshAsset CyanCrystalCluster = BuildCyanCrystalCluster();
 
     private static MeshAsset BuildHeartwoodTree()
     {
@@ -170,5 +173,69 @@ public static class ThornveilMeshes
         parts.AddBox(new Vector3(0.32f, 1.36f, -0.04f), new Vector3(0.28f, 0.08f, 0.08f), SigilGold);
         parts.AddDiamond(new Vector3(0.32f, 1.18f, -0.05f), new Vector3(0.22f, 0.22f, 0.08f), SigilGold);
         return new MeshAsset("thornveil-banner", parts.ToArray());
+    }
+
+    private static MeshAsset BuildThornveilTreehouse()
+    {
+        var parts = new MeshBuilder();
+        parts.AddCylinder(new Vector3(0, 1.35f, 0), 0.36f, 2.7f, 9, Bark);
+        parts.AddBox(new Vector3(-0.72f, 0.54f, 0.22f), new Vector3(1.42f, 0.12f, 0.16f), BarkDark, -24f);
+        parts.AddBox(new Vector3(0.74f, 0.48f, -0.24f), new Vector3(1.34f, 0.12f, 0.16f), BarkDark, 28f);
+        parts.AddBox(new Vector3(0, 1.84f, 0), new Vector3(2.05f, 0.16f, 1.58f), WarmTimber, 5f);
+        parts.AddBox(new Vector3(0, 2.34f, 0), new Vector3(1.36f, 0.88f, 0.98f), Plaster, 5f);
+        parts.AddBox(new Vector3(0, 2.45f, -0.54f), new Vector3(0.34f, 0.42f, 0.08f), SpiritBlue, 5f);
+        parts.AddBox(new Vector3(0.7f, 2.42f, 0), new Vector3(0.08f, 0.36f, 0.34f), SpiritBlue, 5f);
+        parts.AddGableRoof(new Vector3(0, 2.92f, 0), new Vector3(1.82f, 0.62f, 1.34f), RoofMoss);
+        parts.AddDiamond(new Vector3(0, 3.42f, -0.46f), new Vector3(0.24f, 0.38f, 0.16f), LanternGlow);
+        parts.AddBox(new Vector3(0, 2.08f, -0.86f), new Vector3(1.74f, 0.08f, 0.07f), BarkDark);
+        parts.AddCylinder(new Vector3(-0.78f, 2.12f, -0.86f), 0.035f, 0.52f, 6, BarkDark);
+        parts.AddCylinder(new Vector3(0.78f, 2.12f, -0.86f), 0.035f, 0.52f, 6, BarkDark);
+        parts.AddDiamond(new Vector3(-0.62f, 3.22f, 0.22f), new Vector3(1.0f, 0.58f, 0.86f), LeafDark);
+        parts.AddDiamond(new Vector3(0.52f, 3.42f, -0.04f), new Vector3(1.04f, 0.64f, 0.92f), Leaf);
+        parts.AddDiamond(new Vector3(0.02f, 3.18f, 0.68f), new Vector3(1.12f, 0.52f, 0.78f), LeafDark);
+        return new MeshAsset("thornveil-treehouse", parts.ToArray());
+    }
+
+    private static MeshAsset BuildRootBridgeStairs()
+    {
+        var parts = new MeshBuilder();
+        for (var i = 0; i < 7; i++)
+        {
+            var z = -1.8f + i * 0.62f;
+            parts.AddBox(new Vector3(0, 0.28f + i * 0.025f, z), new Vector3(1.56f, 0.1f, 0.26f),
+                i % 2 == 0 ? WarmTimber : Bark, (i - 3) * 1.6f);
+        }
+
+        parts.AddBox(new Vector3(-0.88f, 0.46f, 0), new Vector3(0.12f, 0.16f, 4.24f), BarkDark);
+        parts.AddBox(new Vector3(0.88f, 0.46f, 0), new Vector3(0.12f, 0.16f, 4.24f), BarkDark);
+        parts.AddBox(new Vector3(-1.04f, 1.1f, 0), new Vector3(0.08f, 0.08f, 3.1f), Bark);
+        parts.AddBox(new Vector3(1.04f, 1.1f, 0), new Vector3(0.08f, 0.08f, 3.1f), Bark);
+        for (var i = 0; i < 5; i++)
+        {
+            var z = -1.35f + i * 0.68f;
+            parts.AddCylinder(new Vector3(-1.04f, 0.78f, z), 0.04f, 0.72f, 6, Bark);
+            parts.AddCylinder(new Vector3(1.04f, 0.78f, z), 0.04f, 0.72f, 6, Bark);
+        }
+
+        for (var i = 0; i < 4; i++)
+        {
+            parts.AddBox(new Vector3(0, 0.16f + i * 0.1f, 2.08f + i * 0.32f),
+                new Vector3(1.44f, 0.1f, 0.26f), WarmTimber);
+        }
+
+        return new MeshAsset("root-bridge-stairs", parts.ToArray());
+    }
+
+    private static MeshAsset BuildCyanCrystalCluster()
+    {
+        var parts = new MeshBuilder();
+        parts.AddCylinder(new Vector3(0, 0.12f, 0), 0.58f, 0.24f, 8, MossStone);
+        parts.AddDiamond(new Vector3(0.08f, 0.88f, 0.02f), new Vector3(0.62f, 1.55f, 0.5f), LanternGlow);
+        parts.AddDiamond(new Vector3(-0.34f, 0.58f, 0.08f), new Vector3(0.34f, 0.9f, 0.3f), SpiritBlue);
+        parts.AddDiamond(new Vector3(0.38f, 0.52f, -0.12f), new Vector3(0.3f, 0.78f, 0.28f), LanternGlow);
+        parts.AddDiamond(new Vector3(0, 0.4f, -0.38f), new Vector3(0.22f, 0.56f, 0.2f), SpiritBlue);
+        parts.AddBox(new Vector3(-0.44f, 0.18f, -0.28f), new Vector3(0.28f, 0.06f, 0.08f), LeafDark, -18f);
+        parts.AddBox(new Vector3(0.42f, 0.18f, 0.28f), new Vector3(0.28f, 0.06f, 0.08f), LeafDark, 24f);
+        return new MeshAsset("cyan-crystal-cluster", parts.ToArray());
     }
 }

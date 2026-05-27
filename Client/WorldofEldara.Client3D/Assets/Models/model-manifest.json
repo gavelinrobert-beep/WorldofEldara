@@ -89,6 +89,46 @@
       "collisionHeight": 0.12,
       "triangleBudget": 2600,
       "notes": "Small shallow pool tile with stones for Mossglass pockets."
+    },
+    {
+      "id": "landmark.thornveil_treehouse.low",
+      "category": "Landmarks",
+      "relativePath": "Landmarks/thornveil-treehouse.low.glb",
+      "scale": 1.0,
+      "collisionRadius": 1.25,
+      "collisionHeight": 3.7,
+      "triangleBudget": 6000,
+      "notes": "Low-poly treehouse/hub building for Thornveil verticality."
+    },
+    {
+      "id": "landmark.root_bridge_stairs.low",
+      "category": "Landmarks",
+      "relativePath": "Landmarks/root-bridge-stairs.low.glb",
+      "scale": 1.0,
+      "collisionRadius": 2.2,
+      "collisionHeight": 1.2,
+      "triangleBudget": 5000,
+      "notes": "Readable bridge and stair segment for main path elevation."
+    },
+    {
+      "id": "landmark.cyan_crystal_cluster.low",
+      "category": "Landmarks",
+      "relativePath": "Landmarks/cyan-crystal-cluster.low.glb",
+      "scale": 1.0,
+      "collisionRadius": 0.65,
+      "collisionHeight": 1.8,
+      "triangleBudget": 3500,
+      "notes": "Cyan magic crystal cluster for landmarks and quest readability."
+    },
+    {
+      "id": "landmark.great_root_arch.low",
+      "category": "Landmarks",
+      "relativePath": "Landmarks/great-root-arch.low.glb",
+      "scale": 1.0,
+      "collisionRadius": 1.55,
+      "collisionHeight": 2.9,
+      "triangleBudget": 4500,
+      "notes": "Large foreground/root gate frame for path silhouettes."
     }
   ]
 }

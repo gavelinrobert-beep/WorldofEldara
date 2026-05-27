@@ -145,13 +145,15 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
                 break;
             case "path":
             case "stairs":
-            case "root_bridge":
                 AddBlockoutSlab(commands, viewport, basePosition, placement.Kind == "stairs"
                     ? new Vector3(0.9f, 0.08f, 0.28f)
                     : new Vector3(1.6f, 0.05f, 0.42f), yaw,
-                    placement.Kind == "root_bridge"
-                        ? Color.FromArgb(158, 98, 62, 34)
-                        : Color.FromArgb(148, 118, 78, 48));
+                    Color.FromArgb(148, 118, 78, 48));
+                break;
+            case "root_bridge":
+                _meshRenderer.AddMesh(commands, viewport,
+                    new MeshInstance(ThornveilMeshes.RootBridgeStairs, terrain.AtGround(placement.WorldFlat),
+                        new Vector3(0.84f, 0.62f, 0.84f), yaw + 90f));
                 break;
             case "rune_ring":
             case "rune_spoke":
@@ -166,7 +168,11 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
             case "landmark_crystal":
             case "ground_crystal":
             case "crystal_lantern":
-                AddBlockoutCrystal(commands, viewport, basePosition, placement.Kind == "landmark_crystal" ? 0.64f : 0.28f);
+                _meshRenderer.AddMesh(commands, viewport,
+                    new MeshInstance(ThornveilMeshes.CyanCrystalCluster, terrain.AtGround(placement.WorldFlat),
+                        placement.Kind == "landmark_crystal"
+                            ? new Vector3(0.74f, 0.82f, 0.74f)
+                            : new Vector3(0.34f, 0.42f, 0.34f), yaw));
                 break;
             case "root_arch":
             case "bridge_post":
@@ -195,8 +201,8 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
                 break;
             case "kiosk":
                 _meshRenderer.AddMesh(commands, viewport,
-                    new MeshInstance(ThornveilMeshes.ThornveilCottage, terrain.AtGround(placement.WorldFlat),
-                        new Vector3(0.88f, 0.78f, 0.88f), yaw));
+                    new MeshInstance(ThornveilMeshes.ThornveilTreehouse, terrain.AtGround(placement.WorldFlat),
+                        new Vector3(0.66f, 0.76f, 0.66f), yaw));
                 break;
             case "small_shrine":
                 _meshRenderer.AddMesh(commands, viewport,

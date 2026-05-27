@@ -42,3 +42,14 @@ The first Blender-authored terrain kit lives in `Terrain/`:
 Editable source: `../Source/ThornveilTerrainKit.blend`.
 
 These are intentionally small, flat-shaded low-poly pieces. The runtime still uses the custom C# renderer today, so these files are the asset source of truth for the next importer/proxy pass rather than the final in-game mesh path.
+
+The first landmark kit lives in `Landmarks/`:
+
+- `thornveil-treehouse.low.glb`
+- `root-bridge-stairs.low.glb`
+- `cyan-crystal-cluster.low.glb`
+- `great-root-arch.low.glb`
+
+Editable source: `../Source/ThornveilLandmarkKit.blend`.
+
+The 3D client also has matching temporary C# proxy meshes for treehouses, root bridges, and crystal clusters so the visual direction is testable before the runtime has full GLB rendering.

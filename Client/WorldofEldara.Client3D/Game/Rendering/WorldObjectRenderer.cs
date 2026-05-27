@@ -146,9 +146,11 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
             case "path":
             case "stairs":
                 AddBlockoutSlab(commands, viewport, basePosition, placement.Kind == "stairs"
-                    ? new Vector3(0.9f * placement.ScaleAt(0), 0.08f, 0.28f * placement.ScaleAt(1))
-                    : new Vector3(1.6f * placement.ScaleAt(0), 0.05f, 0.42f * placement.ScaleAt(1)), yaw,
-                    Color.FromArgb(148, 118, 78, 48));
+                    ? new Vector3(0.78f * placement.ScaleAt(0), 0.045f, 0.18f * placement.ScaleAt(1))
+                    : new Vector3(1.18f * placement.ScaleAt(0), 0.028f, 0.31f * placement.ScaleAt(1)), yaw,
+                    placement.Kind == "stairs"
+                        ? Color.FromArgb(82, 148, 126, 86)
+                        : Color.FromArgb(54, 122, 92, 58));
                 break;
             case "root_bridge":
                 _meshRenderer.AddMesh(commands, viewport,
@@ -211,7 +213,7 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
                 break;
             case "path_stone":
                 AddBlockoutSlab(commands, viewport, basePosition, new Vector3(0.34f * placement.ScaleAt(0), 0.028f,
-                    0.18f * placement.ScaleAt(1)), yaw, Color.FromArgb(138, 138, 124, 92));
+                    0.18f * placement.ScaleAt(1)), yaw, Color.FromArgb(168, 148, 138, 108));
                 break;
             case "moss_rock":
                 _meshRenderer.AddMesh(commands, viewport,

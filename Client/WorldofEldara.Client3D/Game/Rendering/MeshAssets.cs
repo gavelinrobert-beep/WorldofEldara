@@ -32,6 +32,9 @@ public static class ThornveilMeshes
     public static readonly MeshMaterial MossStone = new("moss-stone", Color.FromArgb(76, 88, 78), Color.FromArgb(146, 166, 132));
     public static readonly MeshMaterial Herb = new("herb", Color.FromArgb(64, 172, 86), Color.FromArgb(158, 236, 138));
     public static readonly MeshMaterial SpiritBlue = new("spirit-blue", Color.FromArgb(58, 136, 164), Color.FromArgb(142, 226, 238));
+    public static readonly MeshMaterial MemoryEcho = new("memory-echo", Color.FromArgb(132, 92, 214, 244), Color.FromArgb(186, 184, 244, 255));
+    public static readonly MeshMaterial FawnHide = new("fawn-hide", Color.FromArgb(156, 112, 66), Color.FromArgb(226, 184, 116));
+    public static readonly MeshMaterial FawnLight = new("fawn-light", Color.FromArgb(214, 190, 132), Color.FromArgb(248, 228, 168));
     public static readonly MeshMaterial Corruption = new("corruption", Color.FromArgb(106, 46, 136), Color.FromArgb(230, 92, 242));
     public static readonly MeshMaterial SigilGold = new("sigil-gold", Color.FromArgb(174, 132, 58), Color.FromArgb(248, 218, 132));
     public static readonly MeshMaterial BannerGreen = new("banner-green", Color.FromArgb(34, 104, 70), Color.FromArgb(132, 214, 132));
@@ -51,6 +54,9 @@ public static class ThornveilMeshes
     public static readonly MeshAsset ThornveilTreehouse = BuildThornveilTreehouse();
     public static readonly MeshAsset RootBridgeStairs = BuildRootBridgeStairs();
     public static readonly MeshAsset CyanCrystalCluster = BuildCyanCrystalCluster();
+    public static readonly MeshAsset WorldrootHeart = BuildWorldrootHeart();
+    public static readonly MeshAsset WildrootFawn = BuildWildrootFawn();
+    public static readonly MeshAsset MemoryEchoFigure = BuildMemoryEchoFigure();
 
     private static MeshAsset BuildHeartwoodTree()
     {
@@ -237,5 +243,46 @@ public static class ThornveilMeshes
         parts.AddBox(new Vector3(-0.44f, 0.18f, -0.28f), new Vector3(0.28f, 0.06f, 0.08f), LeafDark, -18f);
         parts.AddBox(new Vector3(0.42f, 0.18f, 0.28f), new Vector3(0.28f, 0.06f, 0.08f), LeafDark, 24f);
         return new MeshAsset("cyan-crystal-cluster", parts.ToArray());
+    }
+
+    private static MeshAsset BuildWorldrootHeart()
+    {
+        var parts = new MeshBuilder();
+        parts.AddCylinder(new Vector3(0, 0.18f, 0), 0.86f, 0.36f, 12, MossStone);
+        parts.AddCylinder(new Vector3(0, 0.92f, 0), 0.24f, 1.48f, 8, BarkDark);
+        parts.AddBox(new Vector3(-0.58f, 0.74f, 0.12f), new Vector3(0.16f, 1.32f, 0.16f), Bark, -24f);
+        parts.AddBox(new Vector3(0.58f, 0.74f, -0.12f), new Vector3(0.16f, 1.32f, 0.16f), Bark, 24f);
+        parts.AddBox(new Vector3(0, 1.34f, 0), new Vector3(1.28f, 0.18f, 0.2f), BarkDark);
+        parts.AddDiamond(new Vector3(0, 1.86f, 0), new Vector3(0.92f, 1.1f, 0.72f), LanternGlow);
+        parts.AddDiamond(new Vector3(0, 1.88f, 0), new Vector3(0.52f, 0.68f, 0.42f), SpiritBlue);
+        parts.AddDiamond(new Vector3(0, 2.1f, 0), new Vector3(0.32f, 0.36f, 0.28f), MemoryEcho);
+        return new MeshAsset("worldroot-heart", parts.ToArray());
+    }
+
+    private static MeshAsset BuildWildrootFawn()
+    {
+        var parts = new MeshBuilder();
+        parts.AddBox(new Vector3(0, 0.58f, 0), new Vector3(0.72f, 0.34f, 0.34f), FawnHide, 4f);
+        parts.AddBox(new Vector3(0.38f, 0.76f, 0.02f), new Vector3(0.28f, 0.24f, 0.24f), FawnLight, 8f);
+        parts.AddBox(new Vector3(-0.34f, 0.75f, 0), new Vector3(0.18f, 0.18f, 0.18f), FawnLight, -8f);
+        parts.AddBox(new Vector3(0.48f, 0.92f, 0.13f), new Vector3(0.08f, 0.18f, 0.05f), FawnLight, 18f);
+        parts.AddBox(new Vector3(0.48f, 0.92f, -0.13f), new Vector3(0.08f, 0.18f, 0.05f), FawnLight, -18f);
+        parts.AddBox(new Vector3(-0.16f, 0.28f, 0.14f), new Vector3(0.08f, 0.48f, 0.08f), FawnHide);
+        parts.AddBox(new Vector3(0.22f, 0.28f, 0.14f), new Vector3(0.08f, 0.48f, 0.08f), FawnHide);
+        parts.AddBox(new Vector3(-0.16f, 0.28f, -0.14f), new Vector3(0.08f, 0.48f, 0.08f), FawnHide);
+        parts.AddBox(new Vector3(0.22f, 0.28f, -0.14f), new Vector3(0.08f, 0.48f, 0.08f), FawnHide);
+        parts.AddDiamond(new Vector3(-0.52f, 0.72f, 0), new Vector3(0.18f, 0.22f, 0.16f), FawnLight);
+        return new MeshAsset("wildroot-fawn", parts.ToArray());
+    }
+
+    private static MeshAsset BuildMemoryEchoFigure()
+    {
+        var parts = new MeshBuilder();
+        parts.AddCylinder(new Vector3(0, 0.64f, 0), 0.16f, 1.18f, 7, MemoryEcho);
+        parts.AddDiamond(new Vector3(0, 1.38f, 0), new Vector3(0.36f, 0.42f, 0.32f), MemoryEcho);
+        parts.AddBox(new Vector3(-0.32f, 0.88f, 0), new Vector3(0.08f, 0.52f, 0.08f), SpiritBlue, -16f);
+        parts.AddBox(new Vector3(0.32f, 0.88f, 0), new Vector3(0.08f, 0.52f, 0.08f), SpiritBlue, 16f);
+        parts.AddDiamond(new Vector3(0, 0.04f, 0), new Vector3(0.48f, 0.08f, 0.48f), SpiritBlue);
+        return new MeshAsset("memory-echo-figure", parts.ToArray());
     }
 }

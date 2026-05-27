@@ -175,6 +175,24 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
                             ? new Vector3(0.74f, 0.82f, 0.74f)
                             : new Vector3(0.34f, 0.42f, 0.34f), yaw));
                 break;
+            case "worldroot_heart":
+                _meshRenderer.AddMesh(commands, viewport,
+                    new MeshInstance(ThornveilMeshes.WorldrootHeart, terrain.AtGround(placement.WorldFlat),
+                        new Vector3(placement.ScaleAt(0), placement.ScaleAt(2), placement.ScaleAt(1)), yaw));
+                break;
+            case "memory_echo":
+                _meshRenderer.AddMesh(commands, viewport,
+                    new MeshInstance(ThornveilMeshes.MemoryEchoFigure, terrain.AtGround(placement.WorldFlat),
+                        new Vector3(placement.ScaleAt(0), placement.ScaleAt(2), placement.ScaleAt(1)), yaw));
+                break;
+            case "wildroot_fawn":
+            case "grove_stag":
+                var creatureScale = placement.Kind == "grove_stag" ? 1.48f : 1f;
+                _meshRenderer.AddMesh(commands, viewport,
+                    new MeshInstance(ThornveilMeshes.WildrootFawn, terrain.AtGround(placement.WorldFlat),
+                        new Vector3(creatureScale * placement.ScaleAt(0), creatureScale * placement.ScaleAt(2),
+                            creatureScale * placement.ScaleAt(1)), yaw));
+                break;
             case "root_arch":
                 _meshRenderer.AddMesh(commands, viewport,
                     new MeshInstance(ThornveilMeshes.RootArch, terrain.AtGround(placement.WorldFlat),
@@ -270,7 +288,8 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
             "path" or "stairs" or "root_bridge" or "rune_ring" or "rune_spoke" or
             "landmark" or "landmark_root" or "landmark_crystal" or "bridge_post" or
             "crystal_lantern" or "ground_crystal" or "waterfall" or "water_pool" or
-            "lantern" or "imported_azure_tree" or "imported_signpost" or "imported_glowcap";
+            "lantern" or "worldroot_heart" or "memory_echo" or "wildroot_fawn" or "grove_stag" or
+            "imported_azure_tree" or "imported_signpost" or "imported_glowcap";
     }
 
     private void AddBlockoutDisc(List<DrawCommand> commands, Size viewport, Vector3 center, float radius, Color color)

@@ -1060,6 +1060,166 @@
         1.0
       ],
       "note": ""
+    },
+    {
+      "name": "heartbough_worldroot_heart",
+      "kind": "worldroot_heart",
+      "location": [
+        0.0,
+        1.35,
+        0.28
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.25,
+        1.25,
+        1.18
+      ],
+      "note": "The central cyan heart that makes Heartbough feel sacred."
+    },
+    {
+      "name": "arrival_fawn_crossing",
+      "kind": "wildroot_fawn",
+      "location": [
+        -0.85,
+        -5.15,
+        0.08
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        72.0
+      ],
+      "scale": [
+        0.75,
+        0.75,
+        0.75
+      ],
+      "note": "First minute warmth: a small fawn crosses the path."
+    },
+    {
+      "name": "heartbough_fawn_left",
+      "kind": "wildroot_fawn",
+      "location": [
+        -2.75,
+        -0.8,
+        0.12
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        28.0
+      ],
+      "scale": [
+        0.82,
+        0.82,
+        0.82
+      ],
+      "note": "Safe hub life."
+    },
+    {
+      "name": "heartbough_fawn_right",
+      "kind": "wildroot_fawn",
+      "location": [
+        2.9,
+        2.55,
+        0.14
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -42.0
+      ],
+      "scale": [
+        0.78,
+        0.78,
+        0.78
+      ],
+      "note": "Safe hub life."
+    },
+    {
+      "name": "upper_grove_stag",
+      "kind": "grove_stag",
+      "location": [
+        -2.2,
+        7.9,
+        0.8
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        118.0
+      ],
+      "scale": [
+        0.88,
+        0.88,
+        0.88
+      ],
+      "note": "Sacred non-hostile silhouette near upper enclave."
+    },
+    {
+      "name": "listener_echo_low",
+      "kind": "memory_echo",
+      "location": [
+        -1.25,
+        -1.9,
+        0.15
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        12.0
+      ],
+      "scale": [
+        0.88,
+        0.88,
+        0.92
+      ],
+      "note": "A calm tutorial echo near Listener's Ring."
+    },
+    {
+      "name": "mossglass_echo_pool",
+      "kind": "memory_echo",
+      "location": [
+        -5.55,
+        -3.25,
+        0.18
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -24.0
+      ],
+      "scale": [
+        0.96,
+        0.96,
+        0.98
+      ],
+      "note": "Blue echo foreshadowing Mossglass Pools."
+    },
+    {
+      "name": "upper_echo_arch",
+      "kind": "memory_echo",
+      "location": [
+        1.2,
+        7.65,
+        0.76
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        18.0
+      ],
+      "scale": [
+        0.92,
+        0.92,
+        0.95
+      ],
+      "note": "Memory echo near the upper root bridge."
     }
   ]
 }

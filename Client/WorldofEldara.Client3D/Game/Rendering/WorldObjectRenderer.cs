@@ -209,6 +209,25 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
                 AddBlockoutSlab(commands, viewport, basePosition, new Vector3(0.72f, 0.035f, 0.3f), yaw,
                     Color.FromArgb(154, 58, 150, 198));
                 break;
+            case "path_stone":
+                AddBlockoutSlab(commands, viewport, basePosition, new Vector3(0.34f * placement.ScaleAt(0), 0.028f,
+                    0.18f * placement.ScaleAt(1)), yaw, Color.FromArgb(138, 138, 124, 92));
+                break;
+            case "moss_rock":
+                _meshRenderer.AddMesh(commands, viewport,
+                    new MeshInstance(ThornveilMeshes.MossyRock, terrain.AtGround(placement.WorldFlat),
+                        new Vector3(0.46f * placement.ScaleAt(0), 0.38f * placement.ScaleAt(2, 1f),
+                            0.46f * placement.ScaleAt(1, 1f)), yaw));
+                break;
+            case "leaf_shrub":
+                _meshRenderer.AddMesh(commands, viewport,
+                    new MeshInstance(ThornveilMeshes.HerbCluster, terrain.AtGround(placement.WorldFlat),
+                        new Vector3(0.74f * placement.ScaleAt(0), 0.46f * placement.ScaleAt(2, 1f),
+                            0.74f * placement.ScaleAt(1, 1f)), yaw));
+                AddEllipseBillboard(commands, viewport, basePosition + new Vector3(0, 0.18f, 0),
+                    0.72f * placement.ScaleAt(0), 0.34f * placement.ScaleAt(2, 1f),
+                    Color.FromArgb(112, 44, 126, 64), Color.FromArgb(80, 118, 204, 112), null);
+                break;
             case "tree":
                 var treeScale = placement.ScaleAt(0);
                 _meshRenderer.AddMesh(commands, viewport,
@@ -294,7 +313,8 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
             "path" or "stairs" or "root_bridge" or "rune_ring" or "rune_spoke" or
             "landmark" or "landmark_root" or "landmark_crystal" or "bridge_post" or
             "crystal_lantern" or "ground_crystal" or "waterfall" or "water_pool" or
-            "lantern" or "worldroot_heart" or "memory_echo" or "wildroot_fawn" or "grove_stag" or
+            "path_stone" or "moss_rock" or "leaf_shrub" or "lantern" or "worldroot_heart" or
+            "memory_echo" or "wildroot_fawn" or "grove_stag" or
             "imported_azure_tree" or "imported_signpost" or "imported_glowcap";
     }
 

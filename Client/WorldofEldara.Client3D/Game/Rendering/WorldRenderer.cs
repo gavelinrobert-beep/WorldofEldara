@@ -163,6 +163,16 @@ public sealed class WorldRenderer
                         1.5f * placement.ScaleAt(1), Color.FromArgb(70, 72, 48, 30),
                         Color.FromArgb(22, 160, 112, 72));
                     break;
+                case "leaf_shrub":
+                    AddGroundOval(commands, viewport, terrain, camera, center, 0.72f * placement.ScaleAt(0),
+                        0.42f * placement.ScaleAt(1), Color.FromArgb(48, 28, 86, 42),
+                        Color.FromArgb(14, 112, 176, 92), placement.YawDegrees);
+                    break;
+                case "moss_rock":
+                    AddGroundOval(commands, viewport, terrain, camera, center, 0.62f * placement.ScaleAt(0),
+                        0.34f * placement.ScaleAt(1), Color.FromArgb(40, 54, 68, 46),
+                        Color.FromArgb(16, 126, 152, 96), placement.YawDegrees);
+                    break;
             }
         }
     }

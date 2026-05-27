@@ -196,8 +196,8 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
             case "root_arch":
                 _meshRenderer.AddMesh(commands, viewport,
                     new MeshInstance(ThornveilMeshes.RootArch, terrain.AtGround(placement.WorldFlat),
-                        new Vector3(1.36f * placement.ScaleAt(0), 1.34f * placement.ScaleAt(2),
-                            1.36f * placement.ScaleAt(1)), yaw));
+                        new Vector3(1.02f * placement.ScaleAt(0), 1.08f * placement.ScaleAt(2),
+                            1.02f * placement.ScaleAt(1)), yaw));
                 break;
             case "bridge_post":
                 AddCylinder(commands, viewport, basePosition + new Vector3(0, 0.58f, 0), 0.055f, 1.16f, 6,
@@ -212,7 +212,7 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
                 var treeScale = placement.ScaleAt(0);
                 _meshRenderer.AddMesh(commands, viewport,
                     new MeshInstance(ThornveilMeshes.HeartwoodTree, terrain.AtGround(placement.WorldFlat),
-                        new Vector3(0.82f * treeScale, 1.05f * placement.ScaleAt(2, treeScale), 0.82f * treeScale),
+                        new Vector3(0.68f * treeScale, 0.9f * placement.ScaleAt(2, treeScale), 0.68f * treeScale),
                         yaw));
                 break;
             case "banner":

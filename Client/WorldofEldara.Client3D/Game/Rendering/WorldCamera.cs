@@ -6,8 +6,8 @@ namespace WorldofEldara.Client3D.Game.Rendering;
 public sealed class WorldCamera
 {
     public float Yaw { get; private set; }
-    public float Distance { get; private set; } = 5.25f;
-    public float Height { get; private set; } = 1.9f;
+    public float Distance { get; private set; } = 6.65f;
+    public float Height { get; private set; } = 2.45f;
     public Vector3 Focus { get; private set; }
     public Vector3 Position { get; private set; }
     public Vector3 Forward { get; private set; }
@@ -17,20 +17,20 @@ public sealed class WorldCamera
     public void Reset(float playerYaw, Vector3 focus)
     {
         Yaw = playerYaw;
-        Distance = 5.25f;
-        Height = 1.9f;
+        Distance = 6.65f;
+        Height = 2.45f;
         Focus = focus;
     }
 
     public void AdjustDistance(int wheelDelta)
     {
-        Distance = Math.Clamp(Distance + (wheelDelta > 0 ? -0.38f : 0.38f), 4.2f, 7.8f);
+        Distance = Math.Clamp(Distance + (wheelDelta > 0 ? -0.45f : 0.45f), 5.4f, 10.2f);
     }
 
     public void Orbit(float yawDelta, float heightDelta)
     {
         Yaw += yawDelta;
-        Height = Math.Clamp(Height + heightDelta, 1.45f, 3.45f);
+        Height = Math.Clamp(Height + heightDelta, 2.05f, 4.3f);
     }
 
     public void RotateWithKeyboard(float yawDelta)
@@ -40,8 +40,8 @@ public sealed class WorldCamera
 
     public void SmoothFocus(Vector3 target, float deltaSeconds)
     {
-        var focusT = 1f - MathF.Exp(-deltaSeconds * 11f);
-        var targetFocus = target + ForwardFromYaw(Yaw) * 1.08f + new Vector3(0, 0.12f, 0);
+        var focusT = 1f - MathF.Exp(-deltaSeconds * 8.5f);
+        var targetFocus = target + ForwardFromYaw(Yaw) * 0.72f + new Vector3(0, 0.22f, 0);
         Focus = Vector3.Lerp(Focus, targetFocus, focusT);
     }
 
@@ -55,9 +55,9 @@ public sealed class WorldCamera
     public void Build()
     {
         var cameraForwardFlat = ForwardFromYaw(Yaw);
-        var lookAt = Focus + new Vector3(0, 0.92f, 0);
+        var lookAt = Focus + new Vector3(0, 1.15f, 0);
         Position = Focus - cameraForwardFlat * Distance + new Vector3(0, Height, 0);
-        Position = new Vector3(Position.X, Math.Max(1.18f, Position.Y), Position.Z);
+        Position = new Vector3(Position.X, Math.Max(1.55f, Position.Y), Position.Z);
         Forward = Vector3.Normalize(lookAt - Position);
         Right = Vector3.Normalize(Vector3.Cross(Vector3.UnitY, Forward));
         Up = Vector3.Normalize(Vector3.Cross(Forward, Right));

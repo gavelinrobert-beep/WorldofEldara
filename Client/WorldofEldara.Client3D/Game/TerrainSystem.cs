@@ -11,9 +11,9 @@ public sealed class TerrainSystem
 
     public float HeightAt(float x, float z)
     {
-        var broad = MathF.Sin(x * 0.16f + z * 0.09f) * 0.22f;
-        var roll = MathF.Cos(z * 0.18f - x * 0.07f) * 0.15f;
-        var detail = MathF.Sin((x + z) * 0.42f) * 0.045f;
+        var broad = MathF.Sin(x * 0.12f + z * 0.07f) * 0.1f;
+        var roll = MathF.Cos(z * 0.14f - x * 0.05f) * 0.06f;
+        var detail = MathF.Sin((x + z) * 0.32f) * 0.02f;
         return broad + roll + detail;
     }
 

@@ -19,34 +19,36 @@ public static class ThornveilSceneData
         Blockout = BlockoutScene.LoadDefault(),
         TerrainChunks =
         [
-            new("hearthbough-glade", new Vector3(0, 0, 0.8f), 11.4f, 8.2f, TerrainMaterial.Clearing, 0.45f),
-            new("west-mossglass-pools", new Vector3(-8.8f, 0, -5.7f), 8.1f, 5.2f, TerrainMaterial.Forest, 0.34f),
-            new("north-memory-copse", new Vector3(-4.3f, 0, 6.2f), 7.4f, 4.7f, TerrainMaterial.Forest, 0.34f),
-            new("east-rootwalk", new Vector3(8.2f, 0, 5.3f), 9.4f, 4.8f, TerrainMaterial.Forest, 0.32f),
-            new("south-corruption-pocket", new Vector3(8.4f, 0, -4.8f), 6.4f, 4.8f, TerrainMaterial.Corruption, 0.36f),
-            new("southwest-hare-run", new Vector3(-10.0f, 0, -8.3f), 7.0f, 4.2f, TerrainMaterial.Corruption, 0.36f),
-            new("main-root-path", new Vector3(0.7f, 0, 0.3f), 17.8f, 2.7f, TerrainMaterial.Path, 0.42f),
-            new("memory-path", new Vector3(-3.4f, 0, 2.2f), 3.8f, 10.2f, TerrainMaterial.Path, 0.4f),
-            new("mossglass-water", new Vector3(-9.0f, 0, -6.0f), 4.6f, 2.4f, TerrainMaterial.Water, 0.34f),
-            new("east-water", new Vector3(7.4f, 0, 6.4f), 3.5f, 1.9f, TerrainMaterial.Water, 0.34f),
-            new("worldroot-shrine-ground", new Vector3(0.2f, 0, 3.2f), 5.2f, 3.7f, TerrainMaterial.Shrine, 0.44f)
+            new("arrival-clearing", new Vector3(0, 0, -7.2f), 6.2f, 4.2f, TerrainMaterial.Clearing, 0.5f),
+            new("hearthbough-hub", new Vector3(0, 0, 0.8f), 7.4f, 5.4f, TerrainMaterial.Shrine, 0.48f),
+            new("upper-enclave-terrace", new Vector3(0, 0, 8.6f), 7.2f, 4.7f, TerrainMaterial.Clearing, 0.42f),
+            new("west-treehouse-copse", new Vector3(-5.2f, 0, 1.3f), 5.6f, 4.2f, TerrainMaterial.Forest, 0.35f),
+            new("east-overlook-copse", new Vector3(5.2f, 0, 3.0f), 5.4f, 4.0f, TerrainMaterial.Forest, 0.35f),
+            new("mossglass-pool-pocket", new Vector3(-5.6f, 0, -3.2f), 4.6f, 3.1f, TerrainMaterial.Water, 0.36f),
+            new("corruption-pocket", new Vector3(6.4f, 0, -3.6f), 4.8f, 3.4f, TerrainMaterial.Corruption, 0.34f),
+            new("main-root-path", new Vector3(0, 0, 1.2f), 3.2f, 12.8f, TerrainMaterial.Path, 0.48f),
+            new("west-branch-path", new Vector3(-2.9f, 0, 0.5f), 4.1f, 1.7f, TerrainMaterial.Path, 0.42f),
+            new("east-branch-path", new Vector3(3.0f, 0, 1.7f), 4.3f, 1.8f, TerrainMaterial.Path, 0.42f)
         ],
         Paths =
         [
             new([
-                new Vector3(-13, 0.03f, -9),
-                new Vector3(-7, 0.03f, -5),
-                new Vector3(0, 0.03f, 0),
-                new Vector3(7, 0.03f, 4),
-                new Vector3(15, 0.03f, 8)
-            ], 2.2f, Color.FromArgb(142, 78, 58, 36)),
+                new Vector3(0, 0.04f, -8.2f),
+                new Vector3(0, 0.04f, -4.0f),
+                new Vector3(0, 0.04f, 0.8f),
+                new Vector3(0, 0.04f, 5.2f),
+                new Vector3(0, 0.04f, 9.7f)
+            ], 2.35f, Color.FromArgb(154, 96, 66, 40)),
             new([
-                new Vector3(-10, 0.04f, 7),
-                new Vector3(-4, 0.04f, 4),
-                new Vector3(0, 0.04f, 0),
-                new Vector3(4, 0.04f, -6),
-                new Vector3(10, 0.04f, -11)
-            ], 1.7f, Color.FromArgb(122, 76, 48, 30))
+                new Vector3(0, 0.045f, 0.4f),
+                new Vector3(-2.8f, 0.045f, 0.8f),
+                new Vector3(-5.2f, 0.045f, 1.6f)
+            ], 1.45f, Color.FromArgb(132, 84, 52, 32)),
+            new([
+                new Vector3(0.3f, 0.045f, 1.0f),
+                new Vector3(2.9f, 0.045f, 1.8f),
+                new Vector3(5.8f, 0.045f, -2.7f)
+            ], 1.38f, Color.FromArgb(126, 74, 48, 31))
         ],
         Props =
         [
@@ -96,19 +98,19 @@ public static class ThornveilSceneData
         ],
         Actors =
         [
-            new("Root Guardian", new Vector3(0.7f, 0, 1.8f), 0.62f, 1.55f, 0.05f, 1.4f,
+            new("Root Guardian", new Vector3(1.6f, 0, 0.3f), 0.62f, 1.55f, 0.05f, 1.4f,
                 Color.FromArgb(122, 177, 127), Color.FromArgb(214, 236, 182), false),
-            new("Razor Fern", new Vector3(-5.5f, 0, 2.2f), 0.7f, 1.15f, 0.4f, 2.1f,
+            new("Razor Fern", new Vector3(5.7f, 0, -2.4f), 0.7f, 1.15f, 0.4f, 2.1f,
                 Color.FromArgb(170, 78, 66), Color.FromArgb(240, 126, 102), true),
-            new("Hollow Sapling", new Vector3(6.2f, 0, -2.8f), 0.7f, 1.25f, 0.32f, 1.8f,
+            new("Hollow Sapling", new Vector3(7.2f, 0, -3.9f), 0.7f, 1.25f, 0.32f, 1.8f,
                 Color.FromArgb(160, 74, 62), Color.FromArgb(238, 112, 92), true),
-            new("Memory Keeper", new Vector3(1.0f, 0, -2.5f), 0.58f, 1.45f, 0.03f, 1.0f,
+            new("Memory Keeper", new Vector3(-1.7f, 0, 1.2f), 0.58f, 1.45f, 0.03f, 1.0f,
                 Color.FromArgb(132, 184, 142), Color.FromArgb(230, 236, 184), false),
-            new("Elder Thaelir", new Vector3(-1.6f, 0, 0.8f), 0.58f, 1.5f, 0.02f, 1.1f,
+            new("Elder Thaelir", new Vector3(-3.5f, 0, 1.4f), 0.58f, 1.5f, 0.02f, 1.1f,
                 Color.FromArgb(154, 186, 128), Color.FromArgb(238, 226, 166), false),
-            new("Twice-Dead Hare", new Vector3(-8.0f, 0, -5.2f), 0.58f, 1.0f, 0.7f, 2.8f,
+            new("Twice-Dead Hare", new Vector3(-5.6f, 0, -3.2f), 0.58f, 1.0f, 0.7f, 2.8f,
                 Color.FromArgb(210, 226, 216), Color.FromArgb(246, 252, 238), true),
-            new("Thornveil Scout", new Vector3(10.5f, 0, 3.2f), 0.62f, 1.3f, 0.42f, 2.2f,
+            new("Thornveil Scout", new Vector3(6.6f, 0, -1.6f), 0.62f, 1.3f, 0.42f, 2.2f,
                 Color.FromArgb(174, 86, 68), Color.FromArgb(242, 128, 106), true)
         ]
     };

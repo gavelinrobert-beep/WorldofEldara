@@ -29,7 +29,8 @@ public sealed class World3DScene
     {
         _playerController = new PlayerController(_terrain, _state);
         _objectRenderer = new WorldObjectRenderer(_terrain, _state, _camera);
-        _state.PlayerPosition = _terrain.AtGround(Vector3.Zero);
+        _state.PlayerPosition = _terrain.AtGround(new Vector3(0, 0, -7.2f));
+        _state.PlayerYaw = 0f;
 
         foreach (var actor in _scene.Actors)
         {
@@ -412,7 +413,8 @@ public sealed class World3DScene
         _state.PlayerDefeated = false;
         _state.PlayerHealth = _state.PlayerMaxHealth;
         _state.AggroGraceTimer = 3.5f;
-        _state.PlayerPosition = _terrain.AtGround(Vector3.Zero);
+        _state.PlayerPosition = _terrain.AtGround(new Vector3(0, 0, -7.2f));
+        _state.PlayerYaw = 0f;
         ResetHostilesToSpawn();
         _state.StatusText = "You return to the Heartbough.";
     }

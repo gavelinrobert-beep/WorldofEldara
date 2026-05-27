@@ -15,7 +15,15 @@ public sealed class WorldRenderer
         TerrainSystem terrain, WorldCamera camera)
     {
         AddGround(commands, viewport, scene, state, terrain, camera);
-        AddGroundMaterialPatches(commands, viewport, scene, terrain, camera);
+        if (scene.Blockout.Placements.Count > 0)
+        {
+            AddBlockoutGroundMaterialPatches(commands, viewport, scene, terrain, camera);
+        }
+        else
+        {
+            AddGroundMaterialPatches(commands, viewport, scene, terrain, camera);
+        }
+
         AddPaths(commands, viewport, scene, terrain, camera);
     }
 
@@ -100,6 +108,49 @@ public sealed class WorldRenderer
                 case "cottage":
                     AddGroundOval(commands, viewport, terrain, camera, prop.Position + new Vector3(0.3f, 0, -0.4f),
                         3.3f, 2.2f, Color.FromArgb(72, 74, 54, 34), Color.FromArgb(18, 154, 108, 68));
+                    break;
+            }
+        }
+    }
+
+    private static void AddBlockoutGroundMaterialPatches(List<DrawCommand> commands, Size viewport, SceneData scene,
+        TerrainSystem terrain, WorldCamera camera)
+    {
+        foreach (var placement in scene.Blockout.Placements)
+        {
+            var center = placement.WorldFlat;
+            switch (placement.Kind)
+            {
+                case "plaza":
+                    AddGroundOval(commands, viewport, terrain, camera, center, 3.8f * placement.ScaleAt(0),
+                        2.7f * placement.ScaleAt(1), Color.FromArgb(118, 50, 112, 70),
+                        Color.FromArgb(54, 124, 226, 170));
+                    break;
+                case "clearing":
+                case "terrace":
+                    AddGroundOval(commands, viewport, terrain, camera, center, 3.7f * placement.ScaleAt(0),
+                        2.3f * placement.ScaleAt(1), Color.FromArgb(96, 26, 90, 48),
+                        Color.FromArgb(24, 104, 184, 96));
+                    break;
+                case "garden":
+                    AddGroundOval(commands, viewport, terrain, camera, center, 3.2f * placement.ScaleAt(0),
+                        2.2f * placement.ScaleAt(1), Color.FromArgb(98, 74, 32, 94),
+                        Color.FromArgb(44, 220, 84, 232));
+                    break;
+                case "water_pool":
+                    AddGroundOval(commands, viewport, terrain, camera, center, 2.35f * placement.ScaleAt(0),
+                        1.35f * placement.ScaleAt(1), Color.FromArgb(118, 42, 118, 146),
+                        Color.FromArgb(74, 112, 214, 232));
+                    break;
+                case "tree" when placement.Name.EndsWith("_trunk", StringComparison.Ordinal):
+                    AddGroundOval(commands, viewport, terrain, camera, center, 1.25f * placement.ScaleAt(0),
+                        0.78f * placement.ScaleAt(0), Color.FromArgb(62, 24, 74, 38),
+                        Color.FromArgb(16, 96, 150, 80));
+                    break;
+                case "kiosk" when placement.Name.EndsWith("_body", StringComparison.Ordinal):
+                    AddGroundOval(commands, viewport, terrain, camera, center, 2.2f * placement.ScaleAt(0),
+                        1.5f * placement.ScaleAt(1), Color.FromArgb(70, 72, 48, 30),
+                        Color.FromArgb(22, 160, 112, 72));
                     break;
             }
         }
@@ -477,13 +528,13 @@ public sealed class WorldRenderer
         var broadMoss = MathF.Sin(x * 0.11f + z * 0.07f) * 0.5f + MathF.Cos(z * 0.13f - x * 0.05f) * 0.5f;
         var fineMoss = MathF.Sin((x + z) * 0.38f) * 0.5f + MathF.Cos((x - z) * 0.31f) * 0.5f;
 
-        var red = 12f + clearing * 5.5f + pathBlend * 15f + scarBlend * 24f + shrineBlend * 3f -
+        var red = 18f + clearing * 8f + pathBlend * 20f + scarBlend * 24f + shrineBlend * 5f -
                   waterBlend * 2f - canopyBlend * 1.5f;
-        var green = 39f + height * 8f + broadMoss * 2.8f + fineMoss * 1.2f + clearing * 5f +
-                    pathBlend * 4f - scarBlend * 12f + waterBlend * 7f + shrineBlend * 8f - farFade * 4f;
-        var blue = 29f + height * 4f + broadMoss * 1.8f + clearing * 2f - pathBlend * 1f +
-                   scarBlend * 21f + waterBlend * 27f + shrineBlend * 7f - farFade * 3f;
-        var alpha = Math.Clamp((int)(172f + sample.Coverage * 83f), 150, 255);
+        var green = 47f + height * 7f + broadMoss * 3.2f + fineMoss * 1.4f + clearing * 8f +
+                    pathBlend * 7f - scarBlend * 12f + waterBlend * 8f + shrineBlend * 10f - farFade * 3f;
+        var blue = 34f + height * 4f + broadMoss * 2f + clearing * 3f - pathBlend * 1f +
+                   scarBlend * 20f + waterBlend * 30f + shrineBlend * 8f - farFade * 2f;
+        var alpha = Math.Clamp((int)(220f + sample.Coverage * 35f), 210, 255);
 
         return Color.FromArgb(
             alpha,

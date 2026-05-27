@@ -146,14 +146,15 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
             case "path":
             case "stairs":
                 AddBlockoutSlab(commands, viewport, basePosition, placement.Kind == "stairs"
-                    ? new Vector3(0.9f, 0.08f, 0.28f)
-                    : new Vector3(1.6f, 0.05f, 0.42f), yaw,
+                    ? new Vector3(0.9f * placement.ScaleAt(0), 0.08f, 0.28f * placement.ScaleAt(1))
+                    : new Vector3(1.6f * placement.ScaleAt(0), 0.05f, 0.42f * placement.ScaleAt(1)), yaw,
                     Color.FromArgb(148, 118, 78, 48));
                 break;
             case "root_bridge":
                 _meshRenderer.AddMesh(commands, viewport,
                     new MeshInstance(ThornveilMeshes.RootBridgeStairs, terrain.AtGround(placement.WorldFlat),
-                        new Vector3(0.84f, 0.62f, 0.84f), yaw + 90f));
+                        new Vector3(0.84f * placement.ScaleAt(0), 0.62f * placement.ScaleAt(2),
+                            0.84f * placement.ScaleAt(1)), yaw + 90f));
                 break;
             case "rune_ring":
             case "rune_spoke":
@@ -175,6 +176,11 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
                             : new Vector3(0.34f, 0.42f, 0.34f), yaw));
                 break;
             case "root_arch":
+                _meshRenderer.AddMesh(commands, viewport,
+                    new MeshInstance(ThornveilMeshes.RootArch, terrain.AtGround(placement.WorldFlat),
+                        new Vector3(1.36f * placement.ScaleAt(0), 1.34f * placement.ScaleAt(2),
+                            1.36f * placement.ScaleAt(1)), yaw));
+                break;
             case "bridge_post":
                 AddCylinder(commands, viewport, basePosition + new Vector3(0, 0.58f, 0), 0.055f, 1.16f, 6,
                     Color.FromArgb(104, 78, 48, 28), Color.FromArgb(118, 152, 96, 54), null);
@@ -185,9 +191,11 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
                     Color.FromArgb(154, 58, 150, 198));
                 break;
             case "tree":
+                var treeScale = placement.ScaleAt(0);
                 _meshRenderer.AddMesh(commands, viewport,
                     new MeshInstance(ThornveilMeshes.HeartwoodTree, terrain.AtGround(placement.WorldFlat),
-                        new Vector3(0.82f, 1.05f, 0.82f), yaw));
+                        new Vector3(0.82f * treeScale, 1.05f * placement.ScaleAt(2, treeScale), 0.82f * treeScale),
+                        yaw));
                 break;
             case "banner":
                 _meshRenderer.AddMesh(commands, viewport,
@@ -202,7 +210,8 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
             case "kiosk":
                 _meshRenderer.AddMesh(commands, viewport,
                     new MeshInstance(ThornveilMeshes.ThornveilTreehouse, terrain.AtGround(placement.WorldFlat),
-                        new Vector3(0.66f, 0.76f, 0.66f), yaw));
+                        new Vector3(0.66f * placement.ScaleAt(0), 0.76f * placement.ScaleAt(2),
+                            0.66f * placement.ScaleAt(1)), yaw));
                 break;
             case "small_shrine":
                 _meshRenderer.AddMesh(commands, viewport,
@@ -246,8 +255,7 @@ public sealed class WorldObjectRenderer(TerrainSystem terrain, WorldState state,
 
         if (placement.Kind == "root_arch")
         {
-            return placement.Name.EndsWith("_left_root", StringComparison.Ordinal) ||
-                   placement.Name.EndsWith("_right_root", StringComparison.Ordinal) ||
+            return placement.Name.EndsWith("_arch", StringComparison.Ordinal) ||
                    placement.Name.EndsWith("_top_root", StringComparison.Ordinal);
         }
 

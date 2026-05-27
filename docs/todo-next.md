@@ -63,7 +63,11 @@ This roadmap replaces the old Unreal/Henky3D plan.
 
 ## Immediate Next Step
 
-- Replace the automatic prototype character flow with visible login and character panels.
-- Expand sprite coverage with authored PNG textures.
-- Replace prototype UI drawing with reusable UI widgets.
-- Add authored PNG textures for starter grove props and actors.
+- Use `Docs/gameplay/thornveil-enclave.md` as the source of truth for starter-zone tone, layout, architecture, and threats.
+- Finish the Thornveil 3D zone pass in this order:
+  - Heartbough Glade as a warm home hub with treehouses, banners, root paths, and cyan crystal landmarks.
+  - Mossglass Pools as the first reflective Memory Echo objective space.
+  - The Green Scar as the first contained corruption pocket.
+  - First creature silhouettes: Echo Wolf, Mossglass Wraith, Blightroot Ravager, and Grove Stag.
+  - First non-hostile life pass: fawns, deer, and small forest creatures near the hub.
+- Improve the asset path so Blender/GLB assets become runtime meshes instead of temporary C# proxy meshes.

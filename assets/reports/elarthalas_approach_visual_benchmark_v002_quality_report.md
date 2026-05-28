@@ -2,8 +2,9 @@
 
 ## Checklist
 - [x] Silent Gate is the dominant background landmark and clearly reads as a sealed living archive-city threshold.
+- [x] Silent Gate silhouette now uses a pointed archive crown, interlocking root lattice, archive spires, and mask-like seal details instead of a flat portal rectangle.
 - [x] Raised organic rootroad, embedded slabs, cyan guide runes, and foreground ward stones lead the player forward.
-- [x] Wardline scanner monoliths create a controlled ceremonial corridor with automated defense language.
+- [x] Wardline scanner monoliths create a controlled ceremonial corridor with automated defense language and stronger mask-like silhouettes.
 - [x] Greenspire encampment has root shelters, Verdant banner, archive stand, NPC silhouettes, and warm lanterns.
 - [x] High Elf intrusion props use silver-blue angular geometry and a broken ward monolith to contrast Sylvaen forms.
 - [x] Sylvaen identity remains organic through living bark, rootroad, cyan Worldroot crystals, banners, and lanterns.
@@ -11,8 +12,8 @@
 
 ## Technical QA
 - Collections: 8
-- Objects: 448
-- Approximate triangles: 8204
+- Objects: 481
+- Approximate triangles: 8592
 - Non-prefixed materials: 0
 - Primitive default object names: 0
 

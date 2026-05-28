@@ -726,17 +726,47 @@ def build_elarthalas_gate(collections, mats):
     cube_obj(
         "ELAR_ArchiveCity_SilentGate_HeroSealedMemoryGlassDoor",
         arch,
-        (0, 16.28, 5.5),
-        (7.8, 0.16, 8.6),
+        (0, 16.28, 5.35),
+        (6.05, 0.16, 7.7),
+        mats["MAT_MemoryGlass_CyanGreen"],
+    )
+    tri_prism_obj(
+        "ELAR_ArchiveCity_SilentGate_HeroSealedMemoryGlassDoor_PointedArchiveCrown",
+        arch,
+        (0, 16.23, 9.2),
+        0.22,
+        6.35,
+        2.05,
         mats["MAT_MemoryGlass_CyanGreen"],
     )
     cube_obj(
         "ELAR_ArchiveCity_SilentGate_HeroDarkRootSealBehindDoor",
         arch,
         (0, 16.58, 5.5),
-        (8.4, 0.22, 8.9),
+        (7.15, 0.22, 8.15),
         mats["MAT_Path_DarkRootShadow"],
     )
+    for side, x in [("Left", -3.55), ("Right", 3.55)]:
+        frustum_obj(
+            f"ELAR_ArchiveCity_SilentGate_Hero{side}_ArchiveSealFang",
+            arch,
+            (x, 16.05, 8.55),
+            0.38,
+            0.12,
+            3.2,
+            5,
+            mats["MAT_Bark_DarkRoot"],
+            rot=(math.radians(14 if side == "Left" else -14), 0, math.radians(10 if side == "Left" else -10)),
+        )
+        bicone_mesh(
+            f"ELAR_ArchiveCity_SilentGate_Hero{side}_FloatingMemoryGlassKey",
+            arch,
+            (x * 0.85, 15.96, 6.0),
+            0.34,
+            0.95,
+            mats["MAT_MemoryGlass_CyanGreen"],
+            sides=5,
+        )
     for i, x in enumerate([-3.0, -1.5, 0.0, 1.5, 3.0]):
         cube_obj(
             f"ELAR_ArchiveCity_SilentGate_HeroVerticalRuneSeam_{i:02d}",
@@ -744,6 +774,15 @@ def build_elarthalas_gate(collections, mats):
             (x, 16.12, 5.75),
             (0.13, 0.10, 7.3),
             mats["MAT_Rune_Cyan_Emission"],
+        )
+    for i, (x, z, rot) in enumerate([(-1.8, 6.2, -22), (1.8, 6.2, 22), (-1.2, 4.1, 18), (1.2, 4.1, -18)]):
+        cube_obj(
+            f"ELAR_ArchiveCity_SilentGate_HeroDoorInterlockingRootLattice_{i:02d}",
+            arch,
+            (x, 15.94, z),
+            (3.9, 0.10, 0.17),
+            mats["MAT_Bark_DarkRoot"],
+            rot=(math.radians(3), 0, math.radians(rot)),
         )
     bicone_mesh(
         "ELAR_ArchiveCity_SilentGate_HeroCentralArchiveLockCrystal",
@@ -762,6 +801,27 @@ def build_elarthalas_gate(collections, mats):
             (4.2, 0.18, 0.24),
             mats["MAT_Bark_DarkRoot"],
             rot=(math.radians(8), 0, math.radians(rot)),
+        )
+    for i, (x, z, height, rot) in enumerate([(-5.8, 12.2, 2.7, -8), (-3.1, 12.7, 1.8, -2), (3.1, 12.7, 1.8, 2), (5.8, 12.2, 2.7, 8)]):
+        frustum_obj(
+            f"ELAR_ArchiveCity_SilentGate_HeroUpperArchiveCrownSpire_{i:02d}",
+            arch,
+            (x, 16.42, z),
+            0.24,
+            0.08,
+            height,
+            5,
+            mats["MAT_Stone_PaleArchive"],
+            rot=(math.radians(3), 0, math.radians(rot)),
+        )
+        bicone_mesh(
+            f"ELAR_ArchiveCity_SilentGate_HeroUpperArchiveCrownSpire_{i:02d}_CyanCap",
+            arch,
+            (x, 16.28, z + height * 0.52),
+            0.16,
+            0.38,
+            mats["MAT_Rune_Cyan_Emission"],
+            sides=5,
         )
     for i, x in enumerate([-10.2, -8.1, 8.1, 10.2]):
         frustum_obj(f"ELAR_ArchiveCity_BackgroundMemorySpire_{i:02d}", arch, (x, 18.8 + i % 2, 3.0), 0.35, 0.18, 6.0 - (i % 2), 5, mats["MAT_Stone_MossyGray"])
@@ -842,6 +902,24 @@ def build_elarthalas_architecture(templates, collections, mats):
                     (abs(x) * 0.85, 0.045, 0.045),
                     mats["MAT_Echo_Transparent"],
                     rot=(0, 0, math.radians(0 if side == "Left" else 180)),
+                )
+            if i in [0, 2, 5, 7]:
+                bicone_mesh(
+                    f"ELAR_WardsAndProps_WardlineScannerMonolith_{side}_{i:02d}_MaskLikeCyanEye",
+                    props,
+                    (x * 0.985, y - 0.18, 3.55),
+                    0.18,
+                    0.42,
+                    mats["MAT_Rune_Cyan_Emission"],
+                    sides=5,
+                )
+                cube_obj(
+                    f"ELAR_WardsAndProps_WardlineScannerMonolith_{side}_{i:02d}_StoneBrowSilhouette",
+                    props,
+                    (x * 0.985, y - 0.12, 3.82),
+                    (0.76, 0.08, 0.12),
+                    mats["MAT_Stone_PaleArchive"],
+                    rot=(math.radians(2), 0, math.radians(inward_rot + (6 if side == "Left" else -6))),
                 )
     for i, (x, y, z, rot) in enumerate([(-3.4, -8, 0.1, 0), (3.4, -8, 0.1, 0), (-4.1, 1.5, 0.1, 8), (4.1, 1.6, 0.1, -8), (-4.6, 9, 0.1, -4), (4.6, 9.1, 0.1, 4)]):
         inst(templates, "PROPS_Village_LanternPost", f"ELAR_WardsAndProps_SacredLanternPost_{i:02d}", props, (x, y, z), rot=(0, 0, math.radians(rot)), scale=(1.05, 1.05, 1.12))
@@ -1171,8 +1249,9 @@ def build_elarthalas_scene():
         OUT_ZONE2_REPORT,
         [
             "Silent Gate is the dominant background landmark and clearly reads as a sealed living archive-city threshold.",
+            "Silent Gate silhouette now uses a pointed archive crown, interlocking root lattice, archive spires, and mask-like seal details instead of a flat portal rectangle.",
             "Raised organic rootroad, embedded slabs, cyan guide runes, and foreground ward stones lead the player forward.",
-            "Wardline scanner monoliths create a controlled ceremonial corridor with automated defense language.",
+            "Wardline scanner monoliths create a controlled ceremonial corridor with automated defense language and stronger mask-like silhouettes.",
             "Greenspire encampment has root shelters, Verdant banner, archive stand, NPC silhouettes, and warm lanterns.",
             "High Elf intrusion props use silver-blue angular geometry and a broken ward monolith to contrast Sylvaen forms.",
             "Sylvaen identity remains organic through living bark, rootroad, cyan Worldroot crystals, banners, and lanterns.",
@@ -1227,6 +1306,18 @@ def build_memory_wastes_terrain(collections, mats):
                 mats["MAT_DeadGod_Shadow"],
                 rot=(0, 0, math.radians(rot + j * 12)),
             )
+        for j, (px, py, lean) in enumerate([(-0.58, 0.18, -18), (0.64, -0.08, 22), (0.05, 0.58, 4)]):
+            shard = tri_prism_obj(
+                f"WASTE_Terrain_{name}_SilhouetteMemoryCliffShard_{j:02d}",
+                terrain,
+                (x + px * rx, y + py * ry, 0.02),
+                1.2 + j * 0.25,
+                1.55 + j * 0.18,
+                0.34 + j * 0.08,
+                mats["MAT_DeadGod_Shadow"] if j != 2 else mats["MAT_Stone_MossyGray"],
+                rot=(0, 0, math.radians(rot + lean)),
+            )
+            disable_shadow(shard)
     for i, (x, y, length, rot) in enumerate([(0, -10.4, 7.2, 0), (-8.1, -2.2, 8.8, -28), (7.8, -0.6, 9.6, 25), (-9.4, 8.1, 9.5, 25), (8.5, 9.2, 10.4, -21)]):
         cube_obj(
             f"WASTE_Terrain_LivingRootBridgeAcrossGap_{i:02d}",
@@ -1445,23 +1536,31 @@ def build_memory_wastes_camp_and_ruins(templates, collections, mats):
     cube_obj("WASTE_DeadGodShrine_FallenCrownArc_Left", ruins, (13.3, 5.35, 2.25), (0.32, 0.22, 2.25), mats["MAT_DeadGod_Shadow"], rot=(math.radians(-14), 0, math.radians(-18)))
     cube_obj("WASTE_DeadGodShrine_FallenCrownArc_Right", ruins, (15.3, 5.35, 2.25), (0.32, 0.22, 2.25), mats["MAT_DeadGod_Shadow"], rot=(math.radians(14), 0, math.radians(18)))
     cube_obj("WASTE_DeadGodShrine_BrokenNamePlate", ruins, (14.25, 4.7, 0.35), (2.2, 0.24, 0.28), mats["MAT_Stone_DarkCrevice"], rot=(0, 0, math.radians(-8)))
-    disc_mesh(
-        "WASTE_DeadGodShrine_FallenCircularHalo_PaleGoldSigil",
+    for i, (x, z, sx, sz, rot) in enumerate(
+        [
+            (14.4, 3.92, 2.55, 0.14, -4),
+            (12.95, 3.18, 1.45, 0.14, 38),
+            (15.85, 3.18, 1.45, 0.14, -38),
+            (13.28, 2.10, 1.25, 0.12, -28),
+            (15.52, 2.10, 1.25, 0.12, 28),
+        ]
+    ):
+        cube_obj(
+            f"WASTE_DeadGodShrine_BrokenHaloSigilSegment_{i:02d}",
+            ruins,
+            (x, 4.76, z),
+            (sx, 0.08, sz),
+            mats["MAT_LostDivinity_PaleGold_Emission"],
+            rot=(math.radians(90), 0, math.radians(rot)),
+        )
+    bicone_mesh(
+        "WASTE_DeadGodShrine_BrokenHaloSigil_MissingGodEye",
         ruins,
-        (14.4, 5.0, 3.0),
-        2.25,
-        1.25,
+        (14.4, 4.64, 3.05),
+        0.24,
+        0.62,
         mats["MAT_LostDivinity_PaleGold_Emission"],
-        sides=40,
-        rot=(math.radians(90), 0, math.radians(-8)),
-    )
-    cube_obj(
-        "WASTE_DeadGodShrine_FallenCircularHalo_BrokenGapShadow",
-        ruins,
-        (14.4, 4.86, 3.02),
-        (1.15, 0.08, 2.15),
-        mats["MAT_Stone_DarkCrevice"],
-        rot=(math.radians(90), 0, math.radians(28)),
+        sides=5,
     )
     cube_obj(
         "WASTE_DeadGodShrine_CrackedStoneAltar",
@@ -1544,6 +1643,26 @@ def build_memory_wastes_camp_and_ruins(templates, collections, mats):
         mats["MAT_LostDivinity_PaleGold_Emission"],
         sides=6,
     )
+    for i, (x, y, z, height, rot) in enumerate([(-2.8, 9.6, 1.35, 2.8, -28), (-1.35, 9.9, 1.8, 3.5, -12), (1.35, 9.9, 1.8, 3.5, 12), (2.8, 9.6, 1.35, 2.8, 28)]):
+        frustum_obj(
+            f"WASTE_RootRiftsAndStorms_WorldrootSheddingRift_JaggedRootMaw_{i:02d}",
+            rifts,
+            (x, y, z),
+            0.28,
+            0.10,
+            height,
+            5,
+            mats["MAT_Bark_DarkRoot"],
+            rot=(math.radians(18), 0, math.radians(rot)),
+        )
+        cube_obj(
+            f"WASTE_RootRiftsAndStorms_WorldrootSheddingRift_JaggedRootMaw_{i:02d}_InnerGlow",
+            rifts,
+            (x * 0.95, y - 0.12, z + height * 0.14),
+            (0.08, 0.05, height * 0.48),
+            mats["MAT_MemoryStorm_Cyan" if i in [1, 2] else "MAT_MemoryStorm_Violet"],
+            rot=(math.radians(18), 0, math.radians(rot)),
+        )
     for i, angle in enumerate([0, 24, 50, 82, 122, 164, 204, 248, 292, 326]):
         radians = math.radians(angle)
         distance = 2.4 + (i % 3) * 0.75
@@ -1782,10 +1901,11 @@ def build_memory_wastes_scene():
         OUT_ZONE3_REPORT,
         [
             "Fragmented terrain islands are named and staged as player spawn, Sylvaen camp, Oranyn ruins, Dead God Shrine, Echo Battlefield, and Worldroot Shedding Rift.",
+            "Island silhouettes use jagged memory-cliff shards so the geography reads as broken reality rather than flat plates.",
             "A central Sylvaen safe camp includes root shelter, Verdant banner, memory brazier, archive table, and Sylvaen NPC silhouettes.",
-            "The Worldroot Shedding Rift is the strongest landmark with cracked root fissure, cyan/gold/violet light, floating shards, and pulled root fibers.",
+            "The Worldroot Shedding Rift is the strongest landmark with cracked root fissure, jagged root maw, cyan/gold/violet light, floating shards, and pulled root fibers.",
             "Oranyn ruins use ghostly white-green stone fragments, broken arches, floating walls, and half-visible stairs.",
-            "Echo Battlefield and Dead God Shrine now show past-overlap details rather than generic void shapes.",
+            "Echo Battlefield and Dead God Shrine now show past-overlap details and a broken divine sigil rather than generic void shapes.",
             "Worldroot cyan, pale lost-divinity gold, ghost blue-white, muted moss, and violet rift accents separate the zone concepts.",
             "The scene remains stylized low-poly with chunky readable silhouettes.",
         ],
@@ -1848,13 +1968,13 @@ def write_visual_benchmark_report(zone2_manifest, zone3_manifest):
     report = f"""# Zone Progression Visual Benchmark Report
 
 ## Scope
-This pass continues from the existing generated Elar'Thalas Approach and The Memory Wastes scenes. It does not attempt final playable terrain or collision; it is an art-direction benchmark focused on landmarks, silhouettes, zone identity, and third-person camera readability.
+This pass continues from the existing generated Elar'Thalas Approach and The Memory Wastes scenes. It does not attempt final playable terrain or collision; it is an art-direction benchmark focused on shape language, landmarks, silhouettes, zone identity, and third-person camera readability.
 
 ## Before / After
 - Elar'Thalas before: useful sacred road blockout, but the Silent Gate, archive-city skyline, Greenspire camp, and High Elf intrusion read as simple primitive clusters.
-- Elar'Thalas after: the approach road now has a raised organic rootroad, foreground ward stones, inward-facing wardline scanner monoliths, a much larger Silent Gate hero landmark, Greenspire forward camp silhouettes, automated root-stone constructs, and a silver-blue High Elf intrusion pocket with a broken ward.
+- Elar'Thalas after: the approach road now has a raised organic rootroad, foreground ward stones, inward-facing wardline scanner monoliths, a much larger Silent Gate hero landmark with pointed archive crown/root lattice/spires, Greenspire forward camp silhouettes, automated root-stone constructs, and a silver-blue High Elf intrusion pocket with a broken ward.
 - Memory Wastes before: useful fragmented-island blockout, but the instability, dead god shrine, lost civilization echoes, and safe camp were too abstract.
-- Memory Wastes after: islands now have clearer identities for Sylvaen camp, Oranyn ruins, Dead God Shrine, Echo Battlefield, and Worldroot Shedding Rift; the safe camp has root shelter, Verdant banner, memory brazier and archive table; the ruins use ghostly white-green half-manifested forms; the shrine has a fallen pale-gold halo; the battlefield has banners, weapons and blue silhouettes; the rift has pulled root fibers and cyan/gold/violet memory light.
+- Memory Wastes after: islands now have clearer identities and jagged memory-cliff silhouettes for Sylvaen camp, Oranyn ruins, Dead God Shrine, Echo Battlefield, and Worldroot Shedding Rift; the safe camp has root shelter, Verdant banner, memory brazier and archive table; the ruins use ghostly white-green half-manifested forms; the shrine has a broken pale-gold divine sigil; the battlefield has banners, weapons and blue silhouettes; the rift has a jagged root maw, pulled root fibers and cyan/gold/violet memory light.
 
 ## Elar'Thalas Approach V002
 - Output blend: {OUT_ZONE2_BLEND}
@@ -1868,6 +1988,7 @@ This pass continues from the existing generated Elar'Thalas Approach and The Mem
 ### Readability Notes
 - [x] Reads as a sacred, controlled archive-city approach within 3 seconds.
 - [x] Silent Gate dominates the horizon and communicates a sealed city beyond.
+- [x] Silent Gate silhouette is more iconic and less like a primitive rectangle.
 - [x] Raised rootroad clearly guides the player forward.
 - [x] Ward monoliths read as automated scanner defenses.
 - [x] Greenspire camp reads as Sylvaen / Verdant.
@@ -1895,6 +2016,7 @@ This pass continues from the existing generated Elar'Thalas Approach and The Mem
 ### Readability Notes
 - [x] Reads as a fragmented, unstable memory zone within 3 seconds.
 - [x] Central Sylvaen stabilization camp is readable as the safe hub.
+- [x] Fragmented island shapes read as distinct broken landmasses rather than one flat test layout.
 - [x] Root strands, memory bridges, and broken path stones show the intended route without final terrain work.
 - [x] Floating Oranyn ruins, ghost architecture, dead god shrine, echo battlefield, and the Worldroot Shedding Rift create distinct landmarks.
 - [x] Cyan Worldroot magic, pale lost-divinity gold, ghost blue-white, and violet rift accents are separated by color and placement.

@@ -18,8 +18,8 @@
       "role": "sacred and controlled approach to a sealed living archive-city",
       "render": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\elarthalas_approach_visual_benchmark_v002_1920x1080.png",
       "manifest": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\reports\\elarthalas_approach_visual_benchmark_v002_manifest.json",
-      "object_count": 448,
-      "approximate_total_triangles": 8204
+      "object_count": 481,
+      "approximate_total_triangles": 8592
     },
     {
       "zone": "The Memory Wastes",
@@ -27,8 +27,8 @@
       "role": "fragmented unstable open zone where memory sheds into reality",
       "render": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\memory_wastes_visual_benchmark_v002_1920x1080.png",
       "manifest": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\reports\\memory_wastes_visual_benchmark_v002_manifest.json",
-      "object_count": 280,
-      "approximate_total_triangles": 4925
+      "object_count": 313,
+      "approximate_total_triangles": 5223
     }
   ],
   "avoid": [

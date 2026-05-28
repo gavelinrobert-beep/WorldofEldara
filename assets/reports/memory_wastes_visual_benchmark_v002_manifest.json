@@ -12,10 +12,10 @@
     "WASTE_LightingRender"
   ],
   "object_counts": {
-    "WASTE_TerrainIslands": 70,
+    "WASTE_TerrainIslands": 91,
     "WASTE_SylvaenCamp": 27,
-    "WASTE_FloatingRuins": 80,
-    "WASTE_RootRiftsAndStorms": 47,
+    "WASTE_FloatingRuins": 84,
+    "WASTE_RootRiftsAndStorms": 55,
     "WASTE_FoliageAndDebris": 17,
     "WASTE_Characters": 26,
     "WASTE_LightingRender": 13
@@ -102,6 +102,36 @@
       "approximate_triangles": 12
     },
     {
+      "name": "WASTE_Terrain_PlayerSpawnIsland_SilhouetteMemoryCliffShard_00",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "WASTE_Terrain_PlayerSpawnIsland_SilhouetteMemoryCliffShard_01",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "WASTE_Terrain_PlayerSpawnIsland_SilhouetteMemoryCliffShard_02",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_MossyGray"
+      ],
+      "approximate_triangles": 8
+    },
+    {
       "name": "WASTE_Terrain_CentralSylvaenCampIsland_FragmentedPlate",
       "collection": "WASTE_TerrainIslands",
       "type": "MESH",
@@ -160,6 +190,36 @@
         "MAT_DeadGod_Shadow"
       ],
       "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_CentralSylvaenCampIsland_SilhouetteMemoryCliffShard_00",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "WASTE_Terrain_CentralSylvaenCampIsland_SilhouetteMemoryCliffShard_01",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "WASTE_Terrain_CentralSylvaenCampIsland_SilhouetteMemoryCliffShard_02",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_MossyGray"
+      ],
+      "approximate_triangles": 8
     },
     {
       "name": "WASTE_Terrain_EchoBattlefieldIsland_FragmentedPlate",
@@ -222,6 +282,36 @@
       "approximate_triangles": 12
     },
     {
+      "name": "WASTE_Terrain_EchoBattlefieldIsland_SilhouetteMemoryCliffShard_00",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "WASTE_Terrain_EchoBattlefieldIsland_SilhouetteMemoryCliffShard_01",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "WASTE_Terrain_EchoBattlefieldIsland_SilhouetteMemoryCliffShard_02",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_MossyGray"
+      ],
+      "approximate_triangles": 8
+    },
+    {
       "name": "WASTE_Terrain_DeadGodShrineIsland_FragmentedPlate",
       "collection": "WASTE_TerrainIslands",
       "type": "MESH",
@@ -280,6 +370,36 @@
         "MAT_DeadGod_Shadow"
       ],
       "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_DeadGodShrineIsland_SilhouetteMemoryCliffShard_00",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "WASTE_Terrain_DeadGodShrineIsland_SilhouetteMemoryCliffShard_01",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "WASTE_Terrain_DeadGodShrineIsland_SilhouetteMemoryCliffShard_02",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_MossyGray"
+      ],
+      "approximate_triangles": 8
     },
     {
       "name": "WASTE_Terrain_OranynRuinIsland_FragmentedPlate",
@@ -342,6 +462,36 @@
       "approximate_triangles": 12
     },
     {
+      "name": "WASTE_Terrain_OranynRuinIsland_SilhouetteMemoryCliffShard_00",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "WASTE_Terrain_OranynRuinIsland_SilhouetteMemoryCliffShard_01",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "WASTE_Terrain_OranynRuinIsland_SilhouetteMemoryCliffShard_02",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_MossyGray"
+      ],
+      "approximate_triangles": 8
+    },
+    {
       "name": "WASTE_Terrain_WorldrootSheddingRiftIsland_FragmentedPlate",
       "collection": "WASTE_TerrainIslands",
       "type": "MESH",
@@ -402,6 +552,36 @@
       "approximate_triangles": 12
     },
     {
+      "name": "WASTE_Terrain_WorldrootSheddingRiftIsland_SilhouetteMemoryCliffShard_00",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "WASTE_Terrain_WorldrootSheddingRiftIsland_SilhouetteMemoryCliffShard_01",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "WASTE_Terrain_WorldrootSheddingRiftIsland_SilhouetteMemoryCliffShard_02",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_MossyGray"
+      ],
+      "approximate_triangles": 8
+    },
+    {
       "name": "WASTE_Terrain_SideRootRiftIsland_FragmentedPlate",
       "collection": "WASTE_TerrainIslands",
       "type": "MESH",
@@ -460,6 +640,36 @@
         "MAT_DeadGod_Shadow"
       ],
       "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_SideRootRiftIsland_SilhouetteMemoryCliffShard_00",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "WASTE_Terrain_SideRootRiftIsland_SilhouetteMemoryCliffShard_01",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "WASTE_Terrain_SideRootRiftIsland_SilhouetteMemoryCliffShard_02",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_MossyGray"
+      ],
+      "approximate_triangles": 8
     },
     {
       "name": "WASTE_Terrain_LivingRootBridgeAcrossGap_00",
@@ -1446,24 +1656,64 @@
       "approximate_triangles": 12
     },
     {
-      "name": "WASTE_DeadGodShrine_FallenCircularHalo_PaleGoldSigil",
+      "name": "WASTE_DeadGodShrine_BrokenHaloSigilSegment_00",
       "collection": "WASTE_FloatingRuins",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
         "MAT_LostDivinity_PaleGold_Emission"
       ],
-      "approximate_triangles": 40
+      "approximate_triangles": 12
     },
     {
-      "name": "WASTE_DeadGodShrine_FallenCircularHalo_BrokenGapShadow",
+      "name": "WASTE_DeadGodShrine_BrokenHaloSigilSegment_01",
       "collection": "WASTE_FloatingRuins",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Stone_DarkCrevice"
+        "MAT_LostDivinity_PaleGold_Emission"
       ],
       "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_DeadGodShrine_BrokenHaloSigilSegment_02",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_LostDivinity_PaleGold_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_DeadGodShrine_BrokenHaloSigilSegment_03",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_LostDivinity_PaleGold_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_DeadGodShrine_BrokenHaloSigilSegment_04",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_LostDivinity_PaleGold_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_DeadGodShrine_BrokenHaloSigil_MissingGodEye",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_LostDivinity_PaleGold_Emission"
+      ],
+      "approximate_triangles": 10
     },
     {
       "name": "WASTE_DeadGodShrine_CrackedStoneAltar",
@@ -1952,6 +2202,86 @@
       "source_asset": "custom_scene_geometry",
       "materials": [
         "MAT_LostDivinity_PaleGold_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_JaggedRootMaw_00",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_JaggedRootMaw_00_InnerGlow",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Violet"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_JaggedRootMaw_01",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_JaggedRootMaw_01_InnerGlow",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Cyan"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_JaggedRootMaw_02",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_JaggedRootMaw_02_InnerGlow",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Cyan"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_JaggedRootMaw_03",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_JaggedRootMaw_03_InnerGlow",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Violet"
       ],
       "approximate_triangles": 12
     },
@@ -2904,7 +3234,7 @@
     "MAT_Wood_GoldenTrim",
     "MAT_Worldroot_Cyan_Emission"
   ],
-  "approximate_total_triangles": 4925,
+  "approximate_total_triangles": 5223,
   "render_paths": [
     "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\memory_wastes_visual_benchmark_v002_2560x1440.png",
     "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\memory_wastes_visual_benchmark_v002_1920x1080.png"

@@ -12,8 +12,8 @@
     "SCENE_LightingRender"
   ],
   "object_counts": {
-    "SCENE_Terrain": 29,
-    "SCENE_Architecture": 14,
+    "SCENE_Terrain": 34,
+    "SCENE_Architecture": 23,
     "SCENE_Worldroot": 57,
     "SCENE_VillageProps": 18,
     "SCENE_Foliage": 50,
@@ -292,6 +292,56 @@
       "approximate_triangles": 10
     },
     {
+      "name": "SCENE_Terrain_PlayerSpawn_RuneCircle",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_PlayerSpawn_CyanRune"
+      ],
+      "approximate_triangles": 32
+    },
+    {
+      "name": "SCENE_Terrain_PlayerSpawn_RuneTick_00",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_PlayerSpawn_CyanRune"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Terrain_PlayerSpawn_RuneTick_01",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_PlayerSpawn_CyanRune"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Terrain_PlayerSpawn_RuneTick_02",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_PlayerSpawn_CyanRune"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Terrain_PlayerSpawn_RuneTick_03",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_PlayerSpawn_CyanRune"
+      ],
+      "approximate_triangles": 12
+    },
+    {
       "name": "SCENE_Terrain_SoftBlueSkyBackdrop",
       "collection": "SCENE_Terrain",
       "type": "MESH",
@@ -483,6 +533,96 @@
         "MAT_Bark_WarmBrown"
       ],
       "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_Architecture_LivingRootWrap_00",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Architecture_LivingRootWrap_01",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Architecture_LivingRootWrap_02",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Architecture_LivingRootWrap_03",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Architecture_LivingRootWrap_04",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Architecture_LivingRootWrap_05",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Architecture_TreehouseVerdantMemorySigil_00",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Architecture_TreehouseVerdantMemorySigil_01",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Architecture_TreehouseVerdantMemorySigil_02",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
     },
     {
       "name": "SCENE_Worldroot_GiantLivingTree_00_Trunk",
@@ -2177,6 +2317,7 @@
     "MAT_Path_MossyStone",
     "MAT_Path_WarmRoot",
     "MAT_PlayerPlaceholder",
+    "MAT_PlayerSpawn_CyanRune",
     "MAT_QuestGold",
     "MAT_RootShadow",
     "MAT_Rune_Cyan_Emission",
@@ -2184,7 +2325,7 @@
     "MAT_Wood_GoldenTrim",
     "MAT_Worldroot_Cyan_Emission"
   ],
-  "approximate_total_triangles": 8508,
+  "approximate_total_triangles": 8696,
   "render_paths": [
     "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\heartbough_glade_entrance_v001_2560x1440.png",
     "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\heartbough_glade_entrance_v001_1920x1080.png"

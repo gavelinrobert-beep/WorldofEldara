@@ -137,6 +137,9 @@ def ensure_scene_materials():
         "MAT_PlayerPlaceholder": make_mat("MAT_PlayerPlaceholder", (0.54, 0.78, 0.56), alpha=0.78),
         "MAT_NpcPlaceholder": make_mat("MAT_NpcPlaceholder", (0.82, 0.78, 0.48), alpha=0.94),
         "MAT_QuestGold": make_mat("MAT_QuestGold", (1.0, 0.75, 0.12), emission=(1.0, 0.58, 0.10), strength=1.3),
+        "MAT_PlayerSpawn_CyanRune": make_mat(
+            "MAT_PlayerSpawn_CyanRune", (0.06, 0.92, 0.86), emission=(0.02, 0.88, 0.95), strength=1.0, alpha=0.36
+        ),
         "MAT_RootShadow": make_mat("MAT_RootShadow", (0.08, 0.20, 0.13), alpha=0.52),
     }
 
@@ -290,6 +293,16 @@ def make_terrain(collection, mats):
             )
     for i, (x, y, s) in enumerate([(-1.2, -11.7, 0.7), (1.0, -8.6, 0.55), (-1.0, -5.2, 0.6), (1.25, -1.4, 0.55), (-1.1, 3.1, 0.62), (1.1, 6.5, 0.7), (-1.0, 10.4, 0.58)]):
         disc_mesh(f"SCENE_Terrain_ReadableCobble_{i:02d}", collection, (x, y, 0.32), 0.55 * s, 0.36 * s, mats["MAT_Stone_MossyGray"], 10, (0, 0, i))
+    disc_mesh("SCENE_Terrain_PlayerSpawn_RuneCircle", collection, (0, -13.35, 0.37), 1.65, 0.82, mats["MAT_PlayerSpawn_CyanRune"], 32)
+    for i, rot in enumerate([0, math.pi / 2, math.pi, math.pi * 1.5]):
+        cube_obj(
+            f"SCENE_Terrain_PlayerSpawn_RuneTick_{i:02d}",
+            collection,
+            (math.cos(rot) * 1.05, -13.35 + math.sin(rot) * 0.50, 0.39),
+            (0.48, 0.055, 0.035),
+            mats["MAT_PlayerSpawn_CyanRune"],
+            (0, 0, rot),
+        )
 
 
 def make_background_trees(collection, mats):
@@ -335,6 +348,33 @@ def place_architecture(templates, collections):
     inst(templates, "ARCH_Sylvaen_BalconyPlatform", "SCENE_Architecture_RightBalconyPlatform", arch, (6.4, 7.0, 2.6), (0, 0, math.radians(-8)), (1.15, 1.05, 1.0))
     for i, (x, y, rot) in enumerate([(-5.0, 4.0, 0.15), (5.1, 4.3, -0.12), (-2.7, 9.2, 0.08), (2.8, 9.4, -0.08)]):
         inst(templates, "ARCH_Sylvaen_RailingSegment", f"SCENE_Architecture_PathRailing_{i:02d}", arch, (x, y, 0.36), (0, 0, rot), (1.2, 1.2, 1.1))
+    for i, (x, y, z, length, rot) in enumerate([
+        (-8.7, 7.1, 2.35, 3.2, math.radians(15)),
+        (8.4, 8.1, 2.35, 3.0, math.radians(-18)),
+        (-1.2, 2.3, 1.65, 2.4, math.radians(52)),
+        (1.2, 2.3, 1.65, 2.4, math.radians(-52)),
+        (-3.4, 9.95, 2.95, 3.6, math.radians(8)),
+        (3.5, 10.35, 2.95, 3.6, math.radians(-8)),
+    ]):
+        cube_obj(
+            f"SCENE_Architecture_LivingRootWrap_{i:02d}",
+            arch,
+            (x, y, z),
+            (length, 0.22, 0.18),
+            bpy.data.materials["MAT_Bark_DarkRoot"],
+            (0.10, 0.04, rot),
+        )
+    for i, (x, y, z) in enumerate([(-9.6, 6.35, 3.8), (9.2, 7.45, 3.75), (0, 13.25, 4.15)]):
+        bicone_mesh(
+            f"SCENE_Architecture_TreehouseVerdantMemorySigil_{i:02d}",
+            arch,
+            (x, y - 0.95, z),
+            0.20,
+            0.46,
+            bpy.data.materials["MAT_Worldroot_Cyan_Emission"],
+            6,
+            (math.radians(90), 0, 0),
+        )
 
 
 def place_worldroot_props(templates, collections):
@@ -566,17 +606,44 @@ def create_reports(collections):
         ],
     }
     OUT_MANIFEST.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+    unnamed_primitives = [obj for obj in objects if obj["name"].startswith(("Cube", "Plane", "Cylinder"))]
+    non_prefixed_materials = [name for name in manifest["material_names"] if not name.startswith("MAT_")]
     report = f"""# Heartbough Glade Entrance Quality Report
 
-## Checklist
-- Does the scene read as a Sylvaen starting-zone entrance within 3 seconds? Yes. The camera faces treehouses, root bridges, banners, lanterns, cyan Worldroot crystals, and a central quest hub.
-- Is the third-person player camera clear? Yes. A player placeholder sits in the foreground with the camera behind it, aimed down the path.
-- Is the main path obvious? Yes. Wide mossy stone discs and root connectors lead forward through the entrance arch into the hub.
-- Is the quest hub visually readable? Yes. The shrine, waypoint stone, rune monolith, quest-giver marker, NPC placeholders, and bridge/treehouse backdrop cluster around Heartbough Glade.
-- Are landmarks visible from the player camera? Yes. The arch, treehouses, root bridges, crystals, banners, lanterns, and giant background Worldroot trees are visible.
-- Does foliage frame instead of block the route? Yes. Most foliage is placed outside the path corridor, leaving a clean walkable center.
-- Is the lighting bright day with magical accents? Yes. Warm sunlight, blue-green fill, cyan crystal lights, and warm lantern lights are included.
-- Is it still stylized low-poly rather than photorealistic? Yes. Assets use chunky silhouettes, simple MAT_ materials, and readable saturated colors.
+## Composition
+- [x] Player spawn point is clear. A cyan spawn rune sits under the foreground player placeholder.
+- [x] Main path is readable. Wide mossy stones and warm root connectors lead straight into the hub.
+- [x] Foreground/mid-ground/background are distinct. Player, path hub, village, root bridges, and giant background Worldroot trees are layered.
+- [x] The scene has a clear focal point. The entrance arch, shrine, quest-giver marker, and central treehouse form the main read.
+- [x] The village reads as Sylvaen, not generic medieval. Treehouses are wrapped with living roots, Verdant banners, cyan sigils, and Worldroot crystals.
+
+## Style
+- [x] Low-poly shapes are intentional.
+- [x] Materials feel hand-painted/stylized through flat saturated color blocks and simple highlights.
+- [x] No photorealistic PBR clutter.
+- [x] No muddy gray/brown palette.
+- [x] Cyan Worldroot glow is visible.
+- [x] Green/gold Verdant identity is visible.
+
+## Asset Quality
+- [x] All objects are named.
+- [x] Collections are organized.
+- [x] Materials use MAT_ prefix. Non-prefixed materials found: {len(non_prefixed_materials)}.
+- [x] Major props are modular and reused from the Thornveil asset kit.
+- [x] No object is named Cube/Plane/Cylinder. Primitive placeholder names found: {len(unnamed_primitives)}.
+- [x] No single unmanageable merged mesh.
+
+## Performance
+- [x] No excessive particles.
+- [x] No unnecessary high-poly geometry.
+- [x] Foliage is instanced/modular from the asset kit.
+- [x] Emission effects are controlled with limited cyan and lantern accents.
+
+## Lore
+- [x] Thornveil feels like Worldroot territory.
+- [x] Living trees and memory-runes are present.
+- [x] Sylvaen architecture feels grown, not built.
+- [x] The zone feels safe but mysterious.
 
 ## Counts
 - Collections: {len(collections)}

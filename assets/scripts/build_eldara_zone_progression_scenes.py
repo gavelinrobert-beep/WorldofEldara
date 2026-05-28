@@ -33,8 +33,10 @@ from build_heartbough_glade_entrance import (  # noqa: E402
 
 KIT_ASSET_NAMES = list(heartbough_helpers.KIT_ASSETS)
 ZONE1_RENDER = ROOT / "assets" / "renders" / "heartbough_glade_entrance_v001_1920x1080.png"
-ZONE2_STEM = "elarthalas_approach_v001"
-ZONE3_STEM = "memory_wastes_v001"
+ZONE2_SOURCE_STEM = "elarthalas_approach_v001"
+ZONE3_SOURCE_STEM = "memory_wastes_v001"
+ZONE2_STEM = "elarthalas_approach_visual_benchmark_v002"
+ZONE3_STEM = "memory_wastes_visual_benchmark_v002"
 
 OUT_ZONE2_BLEND = ROOT / "assets" / "blender" / f"{ZONE2_STEM}.blend"
 OUT_ZONE2_GLB = ROOT / "assets" / "exports" / f"{ZONE2_STEM}.glb"
@@ -51,6 +53,7 @@ OUT_ZONE3_MANIFEST = ROOT / "assets" / "reports" / f"{ZONE3_STEM}_manifest.json"
 OUT_ZONE3_REPORT = ROOT / "assets" / "reports" / f"{ZONE3_STEM}_quality_report.md"
 
 OUT_PROGRESSION_MANIFEST = ROOT / "assets" / "reports" / "eldara_zone_progression_manifest.json"
+OUT_BENCHMARK_REPORT = ROOT / "assets" / "reports" / "zone_progression_visual_benchmark_report.md"
 
 
 def ensure_dirs():
@@ -101,15 +104,20 @@ def scene_materials():
         "MAT_WasteGround": make_mat("MAT_WasteGround", (0.20, 0.24, 0.20)),
         "MAT_WasteGround_Dark": make_mat("MAT_WasteGround_Dark", (0.09, 0.12, 0.12)),
         "MAT_Path_MossyStone": make_mat("MAT_Path_MossyStone", (0.58, 0.53, 0.39)),
+        "MAT_Path_StoneHighlight": make_mat("MAT_Path_StoneHighlight", (0.76, 0.70, 0.50)),
         "MAT_Path_WarmRoot": make_mat("MAT_Path_WarmRoot", (0.35, 0.19, 0.08)),
+        "MAT_Path_DarkRootShadow": make_mat("MAT_Path_DarkRootShadow", (0.16, 0.08, 0.035)),
         "MAT_Path_SacredRoot": make_mat("MAT_Path_SacredRoot", (0.43, 0.25, 0.11)),
         "MAT_Moss": make_mat("MAT_Moss", (0.20, 0.50, 0.22)),
         "MAT_Bark_WarmBrown": make_mat("MAT_Bark_WarmBrown", (0.48, 0.25, 0.11)),
+        "MAT_Bark_PaintedEdge": make_mat("MAT_Bark_PaintedEdge", (0.67, 0.39, 0.18)),
         "MAT_Bark_DarkRoot": make_mat("MAT_Bark_DarkRoot", (0.23, 0.12, 0.06)),
         "MAT_Leaves_DeepGreen": make_mat("MAT_Leaves_DeepGreen", (0.10, 0.38, 0.16)),
         "MAT_Leaves_LightGreen": make_mat("MAT_Leaves_LightGreen", (0.36, 0.78, 0.36)),
+        "MAT_Leaves_DarkUnderside": make_mat("MAT_Leaves_DarkUnderside", (0.04, 0.19, 0.10)),
         "MAT_Stone_MossyGray": make_mat("MAT_Stone_MossyGray", (0.43, 0.47, 0.39)),
         "MAT_Stone_Pilgrimage": make_mat("MAT_Stone_Pilgrimage", (0.56, 0.57, 0.48)),
+        "MAT_Stone_DarkCrevice": make_mat("MAT_Stone_DarkCrevice", (0.18, 0.20, 0.18)),
         "MAT_Worldroot_Cyan_Emission": make_mat(
             "MAT_Worldroot_Cyan_Emission", (0.05, 0.92, 0.96), emission=(0.04, 0.95, 1.0), strength=2.8
         ),
@@ -127,10 +135,15 @@ def scene_materials():
         "MAT_HighElf_ArcaneViolet": make_mat(
             "MAT_HighElf_ArcaneViolet", (0.58, 0.20, 0.86), emission=(0.45, 0.10, 0.82), strength=1.3
         ),
+        "MAT_HighElf_ColdGold": make_mat("MAT_HighElf_ColdGold", (0.86, 0.62, 0.32), roughness=0.48),
         "MAT_MemoryStorm_Violet": make_mat(
             "MAT_MemoryStorm_Violet", (0.45, 0.12, 0.75), emission=(0.40, 0.08, 0.70), strength=1.0, alpha=0.55
         ),
+        "MAT_MemoryStorm_Cyan": make_mat(
+            "MAT_MemoryStorm_Cyan", (0.08, 0.76, 0.92), emission=(0.03, 0.70, 0.95), strength=1.1, alpha=0.5
+        ),
         "MAT_DeadGod_Stone": make_mat("MAT_DeadGod_Stone", (0.38, 0.35, 0.30)),
+        "MAT_DeadGod_Shadow": make_mat("MAT_DeadGod_Shadow", (0.16, 0.14, 0.13)),
         "MAT_Flower_Purple": make_mat("MAT_Flower_Purple", (0.58, 0.18, 0.86)),
         "MAT_Water_BlueGreen_Optional": make_mat(
             "MAT_Water_BlueGreen_Optional", (0.10, 0.56, 0.62), emission=(0.03, 0.28, 0.32), strength=0.25, alpha=0.72
@@ -484,6 +497,24 @@ def build_elarthalas_terrain(collections, mats):
             rot=(0, 0, math.radians((-1) ** (i + 1) * 5)),
         )
         disable_shadow(root)
+        for side, x in [("Left", -width * 0.55), ("Right", width * 0.55)]:
+            border = cube_obj(
+                f"ELAR_Terrain_LongRootroad_RaisedRootBorder_{side}_{i:02d}",
+                terrain,
+                (x, y, 0.19),
+                (0.28, 4.8, 0.18),
+                mats["MAT_Path_DarkRootShadow"],
+                rot=(0, 0, math.radians((-3 if side == "Left" else 3) + (-1) ** i * 2)),
+            )
+            disable_shadow(border)
+            cube_obj(
+                f"ELAR_Terrain_LongRootroad_PaintedStoneEdge_{side}_{i:02d}",
+                terrain,
+                (x * 0.88, y - 0.4, 0.24),
+                (0.10, 2.7, 0.05),
+                mats["MAT_Path_StoneHighlight"],
+                rot=(0, 0, math.radians((-3 if side == "Left" else 3) + (-1) ** i * 2)),
+            )
     for side, x in [("Left", -4.2), ("Right", 4.2)]:
         for i, y in enumerate([-13, -9, -5, -1, 3, 7, 11]):
             cube_obj(
@@ -493,6 +524,26 @@ def build_elarthalas_terrain(collections, mats):
                 (0.74, 0.38, 0.16),
                 mats["MAT_Stone_Pilgrimage"],
                 rot=(0, 0, math.radians(7 if side == "Left" else -7)),
+            )
+    for i, y in enumerate([-12.2, -6.2, -0.2, 5.8, 11.8]):
+        disc_mesh(
+            f"ELAR_Terrain_PilgrimageRestCircle_{i:02d}",
+            terrain,
+            (0, y, 0.18),
+            1.15 + i * 0.08,
+            0.48,
+            mats["MAT_PlayerSpawn_CyanRune"] if i in [0, 4] else mats["MAT_Echo_Transparent"],
+            sides=30,
+        )
+        for j, x in enumerate([-1.2, 1.2]):
+            bicone_mesh(
+                f"ELAR_Terrain_PilgrimageRestCircle_{i:02d}_RuneMarker_{j:02d}",
+                terrain,
+                (x, y, 0.36),
+                0.10,
+                0.24,
+                mats["MAT_Rune_Cyan_Emission"],
+                sides=5,
             )
     disc_mesh("ELAR_Terrain_PlayerSpawn_CyanMemoryCircle", terrain, (0, -17.4, 0.13), 1.7, 0.95, mats["MAT_PlayerSpawn_CyanRune"], sides=36)
     for i in range(8):
@@ -517,11 +568,47 @@ def build_elarthalas_gate(collections, mats):
     cube_obj("ELAR_ArchiveCity_SilentGate_UpperLivingRootArch", arch, (0, 17.1, 7.45), (13.2, 0.75, 0.78), mats["MAT_Bark_DarkRoot"])
     cube_obj("ELAR_ArchiveCity_SilentGate_GoldMemoryLintel", arch, (0, 16.8, 6.85), (10.4, 0.28, 0.24), mats["MAT_GoldTrim"])
     bicone_mesh("ELAR_ArchiveCity_SilentGate_CentralLockedWorldrootCrystal", arch, (0, 16.55, 4.6), 0.74, 2.2, mats["MAT_Worldroot_Cyan_Emission"])
+    cube_obj("ELAR_ArchiveCity_SilentGate_SealedDoorShadowMass", arch, (0, 17.05, 3.55), (5.8, 0.34, 5.1), mats["MAT_Path_DarkRootShadow"])
+    cube_obj("ELAR_ArchiveCity_SilentGate_LeftCarvedDoorPanel", arch, (-1.55, 16.74, 3.5), (2.45, 0.18, 4.35), mats["MAT_Bark_WarmBrown"])
+    cube_obj("ELAR_ArchiveCity_SilentGate_RightCarvedDoorPanel", arch, (1.55, 16.74, 3.5), (2.45, 0.18, 4.35), mats["MAT_Bark_WarmBrown"])
+    for i, x in enumerate([-2.7, -0.9, 0.9, 2.7]):
+        cube_obj(f"ELAR_ArchiveCity_SilentGate_DoorGoldMemoryInlay_{i:02d}", arch, (x, 16.58, 3.65), (0.12, 0.08, 3.4), mats["MAT_GoldTrim"])
+    bicone_mesh("ELAR_ArchiveCity_SilentGate_CrestFloatingMemorySeal", arch, (0, 16.4, 8.8), 0.55, 1.15, mats["MAT_Rune_Cyan_Emission"])
+    cube_obj("ELAR_ArchiveCity_SilentGate_CrestGoldLeafCrossbar", arch, (0, 16.45, 8.25), (3.1, 0.16, 0.16), mats["MAT_GoldTrim"])
     disc_mesh("ELAR_ArchiveCity_SilentGate_SealedArchiveRuneCircle", arch, (0, 16.45, 3.0), 2.8, 1.25, mats["MAT_Echo_Transparent"], sides=42, rot=(math.radians(90), 0, 0))
     disable_shadow(bpy.context.object)
     for i, x in enumerate([-10.2, -8.1, 8.1, 10.2]):
         frustum_obj(f"ELAR_ArchiveCity_BackgroundMemorySpire_{i:02d}", arch, (x, 18.8 + i % 2, 3.0), 0.35, 0.18, 6.0 - (i % 2), 5, mats["MAT_Stone_MossyGray"])
         bicone_mesh(f"ELAR_ArchiveCity_BackgroundMemorySpire_{i:02d}_CyanCap", arch, (x, 18.8 + i % 2, 6.35 - (i % 2) * 0.5), 0.34, 0.64, mats["MAT_Worldroot_Cyan_Emission"])
+    for i, (x, z, height) in enumerate([(-15.0, 4.8, 8.8), (-11.5, 5.6, 10.2), (11.5, 5.6, 10.2), (15.0, 4.8, 8.8), (0.0, 7.0, 12.5)]):
+        frustum_obj(
+            f"ELAR_ArchiveCity_DistantLivingArchiveTower_{i:02d}_RootColumn",
+            arch,
+            (x, 21.0, z),
+            0.62 if i == 4 else 0.44,
+            0.24,
+            height,
+            7,
+            mats["MAT_Bark_DarkRoot"],
+            rot=(math.radians(3 if x < 0 else -3), 0, math.radians(i * 9)),
+        )
+        bicone_mesh(
+            f"ELAR_ArchiveCity_DistantLivingArchiveTower_{i:02d}_CyanArchiveHeart",
+            arch,
+            (x, 20.7, z + height * 0.46),
+            0.36 if i == 4 else 0.24,
+            0.88 if i == 4 else 0.58,
+            mats["MAT_Worldroot_Cyan_Emission"],
+        )
+    for i, (x, z) in enumerate([(-13.0, 9.4), (-6.5, 10.8), (6.5, 10.8), (13.0, 9.4)]):
+        cube_obj(
+            f"ELAR_ArchiveCity_DistantRootBridgeSkyline_{i:02d}",
+            arch,
+            (x, 20.55, z),
+            (6.2, 0.22, 0.22),
+            mats["MAT_Path_DarkRootShadow"],
+            rot=(math.radians(4), 0, math.radians(5 if x < 0 else -5)),
+        )
 
 
 def build_elarthalas_architecture(templates, collections, mats):
@@ -529,6 +616,14 @@ def build_elarthalas_architecture(templates, collections, mats):
     props = collections["ELAR_WardsAndProps"]
     for i, (x, y, s, rot) in enumerate([(-12.5, 7, 1.0, 16), (12.5, 6.5, 1.0, -16), (-16, 1.5, 0.85, 8), (16, 0.5, 0.85, -8)]):
         make_living_tree(f"ELAR_ArchiveCity_ControlledLivingTree_{i:02d}", arch, mats, (x, y, 0), scale=1.3 * s, lean=rot, canopy="spire")
+        cube_obj(
+            f"ELAR_ArchiveCity_ControlledLivingTree_{i:02d}_CyanSapChannel",
+            arch,
+            (x + 0.22 * (1 if x < 0 else -1), y - 0.22, 2.9 * s),
+            (0.09, 0.06, 1.35 * s),
+            mats["MAT_Rune_Cyan_Emission"],
+            rot=(math.radians(4), 0, math.radians(rot * 0.4)),
+        )
     for i, (x, y, z, rot) in enumerate([(-4.8, 5.8, 0.12, 0), (4.8, 6.1, 0.12, 0), (-8.5, -2.5, 0.1, 10), (8.5, -2.2, 0.1, -10), (-6.0, 11.6, 0.1, -3), (6.0, 11.8, 0.1, 3)]):
         inst(templates, "PROPS_Worldroot_VerdantRuneMonolith", f"ELAR_WardsAndProps_WardMonolith_{i:02d}", props, (x, y, z), rot=(0, 0, math.radians(rot)), scale=(1.25, 1.25, 1.5))
     for i, (x, y, z, rot) in enumerate([(-3.4, -8, 0.1, 0), (3.4, -8, 0.1, 0), (-4.1, 1.5, 0.1, 8), (4.1, 1.6, 0.1, -8), (-4.6, 9, 0.1, -4), (4.6, 9.1, 0.1, 4)]):
@@ -547,6 +642,31 @@ def build_elarthalas_architecture(templates, collections, mats):
         cube_obj(f"ELAR_WardsAndProps_GreenspireCamp_Crate_{i:02d}", props, (x, y, 0.28), (0.75, 0.55, 0.52), mats["MAT_Path_WarmRoot"], rot=(0, 0, math.radians(rot)))
     tri_prism_obj("ELAR_WardsAndProps_GreenspireCamp_TentRoof", props, (-13.5, -8.5, 0.32), 3.5, 2.4, 1.45, mats["MAT_CampCloth_Green"], rot=(0, 0, math.radians(-12)))
     cube_obj("ELAR_WardsAndProps_GreenspireCamp_TentBase", props, (-13.5, -8.5, 0.28), (2.1, 2.95, 0.55), mats["MAT_Bark_WarmBrown"], rot=(0, 0, math.radians(-12)))
+    bicone_mesh("ELAR_WardsAndProps_GreenspireCamp_PortableCyanMapCrystal", props, (-11.6, -9.9, 1.05), 0.24, 0.62, mats["MAT_Worldroot_Cyan_Emission"])
+    cube_obj("ELAR_WardsAndProps_GreenspireCamp_RootMapTable", props, (-11.6, -9.9, 0.58), (1.25, 0.72, 0.22), mats["MAT_Path_WarmRoot"], rot=(0, 0, math.radians(7)))
+    for i, (x, y, rot) in enumerate([(-14.8, -6.5, -8), (-15.3, -10.6, 10), (-10.7, -11.4, -3)]):
+        inst(
+            templates,
+            "PROPS_Village_LanternPost",
+            f"ELAR_WardsAndProps_GreenspireCamp_WarmPerimeterLantern_{i:02d}",
+            props,
+            (x, y, 0.12),
+            rot=(0, 0, math.radians(rot)),
+            scale=(0.85, 0.85, 1.0),
+        )
+    for i, (x, y) in enumerate([(-5.2, -0.6), (5.2, -0.6), (-5.7, 5.4), (5.7, 5.4), (-5.1, 11.0), (5.1, 11.0)]):
+        frustum_obj(
+            f"ELAR_WardsAndProps_PilgrimMemoryStatue_{i:02d}_Body",
+            props,
+            (x, y, 0.95),
+            0.28,
+            0.18,
+            1.65,
+            6,
+            mats["MAT_Stone_Pilgrimage"],
+            rot=(0, 0, math.radians(4 if x < 0 else -4)),
+        )
+        bicone_mesh(f"ELAR_WardsAndProps_PilgrimMemoryStatue_{i:02d}_CyanHeart", props, (x, y - 0.08, 1.18), 0.11, 0.24, mats["MAT_Rune_Cyan_Emission"])
 
 
 def build_elarthalas_intrusion_and_memory(collections, mats):
@@ -555,11 +675,33 @@ def build_elarthalas_intrusion_and_memory(collections, mats):
     for i, (x, y, rot) in enumerate([(12.5, -8.5, 16), (15.0, -4.0, -8), (13.8, 1.4, 22)]):
         frustum_obj(f"ELAR_ArcaneIntrusion_HighElfProbePylon_{i:02d}", intrusion, (x, y, 1.15), 0.22, 0.12, 2.3, 4, mats["MAT_HighElf_ArcaneViolet"], rot=(0, 0, math.radians(rot)))
         disc_mesh(f"ELAR_ArcaneIntrusion_VioletScanCircle_{i:02d}", intrusion, (x, y, 0.08), 1.25, 0.7, mats["MAT_MemoryStorm_Violet"], sides=26)
+        bicone_mesh(f"ELAR_ArcaneIntrusion_HighElfProbePylon_{i:02d}_ColdGoldFocusingGem", intrusion, (x, y, 2.45), 0.18, 0.42, mats["MAT_HighElf_ColdGold"], sides=4)
+        cube_obj(
+            f"ELAR_ArcaneIntrusion_HighElfProbePylon_{i:02d}_VioletSurveyBeam",
+            intrusion,
+            (x - 0.75, y + 0.35, 1.55),
+            (1.85, 0.08, 0.08),
+            mats["MAT_HighElf_ArcaneViolet"],
+            rot=(math.radians(2), 0, math.radians(rot + 22)),
+        )
+    for i, (x, y, rot) in enumerate([(14.1, -6.4, 18), (16.0, -1.0, -16)]):
+        tri_prism_obj(
+            f"ELAR_ArcaneIntrusion_HighElfTriangulationFrame_{i:02d}",
+            intrusion,
+            (x, y, 0.18),
+            2.7,
+            1.5,
+            1.65,
+            mats["MAT_HighElf_ArcaneViolet"],
+            rot=(0, 0, math.radians(rot)),
+        )
     for i, (x, y, h) in enumerate([(-1.4, 2.8, 1.6), (1.3, 4.2, 1.2), (0.5, 8.2, 1.8), (-2.0, 10.4, 1.3)]):
         frustum_obj(f"ELAR_MemoryConstructs_CyanPilgrimEcho_{i:02d}_Body", memory, (x, y, 0.55 + h / 2), 0.22, 0.18, h, 7, mats["MAT_Echo_Transparent"])
         bicone_mesh(f"ELAR_MemoryConstructs_CyanPilgrimEcho_{i:02d}_Head", memory, (x, y, 1.35 + h / 2), 0.18, 0.28, mats["MAT_Echo_Transparent"])
     for i, (x, y) in enumerate([(-2.4, -3.5), (2.6, -3.2), (-2.0, 6.0), (2.0, 6.2)]):
         disc_mesh(f"ELAR_MemoryConstructs_GroundMemoryRune_{i:02d}", memory, (x, y, 0.14), 0.78, 0.38, mats["MAT_Rune_Cyan_Emission"], sides=24)
+    for i, (x, y, z) in enumerate([(-3.4, 9.5, 2.4), (3.4, 9.8, 2.2), (0.0, 12.3, 3.0)]):
+        bicone_mesh(f"ELAR_MemoryConstructs_FloatingArchiveMemoryGlyph_{i:02d}", memory, (x, y, z), 0.34, 0.75, mats["MAT_Echo_Transparent"], sides=6)
 
 
 def build_elarthalas_foliage_and_characters(templates, collections, mats):
@@ -725,6 +867,16 @@ def build_memory_wastes_terrain(collections, mats):
     for name, x, y, rx, ry, rot in islands:
         disc_mesh(f"WASTE_Terrain_{name}_FragmentedPlate", terrain, (x, y, 0.0), rx, ry, mats["MAT_WasteGround"], sides=11, rot=(0, 0, math.radians(rot)))
         disc_mesh(f"WASTE_Terrain_{name}_MossMemorySkin", terrain, (x, y, 0.04), rx * 0.7, ry * 0.55, mats["MAT_Grass_Dark"], sides=9, rot=(0, 0, math.radians(rot + 15)))
+        disc_mesh(f"WASTE_Terrain_{name}_VoidDropShadow", terrain, (x + 0.6, y - 0.35, -0.22), rx * 0.92, ry * 0.76, mats["MAT_Stone_DarkCrevice"], sides=11, rot=(0, 0, math.radians(rot + 8)))
+        for j, offset in enumerate([-0.42, 0.0, 0.42]):
+            cube_obj(
+                f"WASTE_Terrain_{name}_BrokenEdgeStrata_{j:02d}",
+                terrain,
+                (x + offset * rx, y - ry * 0.58, -0.12 - j * 0.05),
+                (rx * 0.28, 0.22, 0.24),
+                mats["MAT_DeadGod_Shadow"],
+                rot=(0, 0, math.radians(rot + j * 12)),
+            )
     for i, (x, y, length, rot) in enumerate([(0, -10.4, 7.2, 0), (-8.1, -2.2, 8.8, -28), (7.8, -0.6, 9.6, 25), (-9.4, 8.1, 9.5, 25), (8.5, 9.2, 10.4, -21)]):
         cube_obj(
             f"WASTE_Terrain_LivingRootBridgeAcrossGap_{i:02d}",
@@ -737,6 +889,21 @@ def build_memory_wastes_terrain(collections, mats):
     for i, (x, y, rot) in enumerate([(-1.0, -14.2, 0), (1.1, -12.1, 8), (-0.7, -9.8, -7), (0.8, -7.8, 5), (-0.4, -5.8, 0)]):
         cube_obj(f"WASTE_Terrain_PlayerPath_BrokenMossStone_{i:02d}", terrain, (x, y, 0.23), (2.2, 1.2, 0.14), mats["MAT_Path_MossyStone"], rot=(0, 0, math.radians(rot)))
     disc_mesh("WASTE_Terrain_PlayerSpawn_UnstableCyanCircle", terrain, (0, -16.5, 0.18), 1.55, 0.75, mats["MAT_PlayerSpawn_CyanRune"], sides=30)
+    for i, (x, y, rx, ry, mat_key, rot) in enumerate([
+        (-20, 13.0, 5.5, 1.2, "MAT_MemoryStorm_Cyan", -12),
+        (18, 14.2, 6.2, 1.1, "MAT_MemoryStorm_Violet", 8),
+        (0, 18.0, 8.0, 1.4, "MAT_Echo_Transparent", 0),
+    ]):
+        disc_mesh(
+            f"WASTE_Terrain_BackgroundMemoryStormRibbon_{i:02d}",
+            terrain,
+            (x, y, 2.2 + i * 0.35),
+            rx,
+            ry,
+            mats[mat_key],
+            sides=24,
+            rot=(math.radians(80), 0, math.radians(rot)),
+        )
 
 
 def build_memory_wastes_camp_and_ruins(templates, collections, mats):
@@ -749,18 +916,62 @@ def build_memory_wastes_camp_and_ruins(templates, collections, mats):
     cube_obj("WASTE_SylvaenCamp_FieldTent_WarmRootBase", camp, (-2.1, -3.8, 0.2), (2.0, 3.0, 0.42), mats["MAT_Bark_WarmBrown"], rot=(0, 0, math.radians(9)))
     inst(templates, "PROPS_Village_SmallShrinePedestal", "WASTE_SylvaenCamp_StabilizationShrine", camp, (2.2, -3.4, 0.18), scale=(1.15, 1.15, 1.15))
     bicone_mesh("WASTE_SylvaenCamp_StabilizationShrine_CyanCore", camp, (2.2, -3.4, 1.55), 0.38, 0.72, mats["MAT_Worldroot_Cyan_Emission"])
+    disc_mesh("WASTE_SylvaenCamp_StabilizationCircle_CyanSafeZone", camp, (0.0, -4.2, 0.28), 4.1, 2.35, mats["MAT_PlayerSpawn_CyanRune"], sides=36, rot=(0, 0, math.radians(3)))
+    for i, (x, y, rot) in enumerate([(-4.6, -6.8, -18), (4.7, -6.3, 18), (-4.9, -1.4, 10), (4.9, -1.0, -10)]):
+        inst(
+            templates,
+            "PROPS_Village_LanternPost",
+            f"WASTE_SylvaenCamp_CyanGoldSafetyLantern_{i:02d}",
+            camp,
+            (x, y, 0.16),
+            rot=(0, 0, math.radians(rot)),
+            scale=(0.9, 0.9, 1.08),
+        )
+    for i, (x, y, rot) in enumerate([(-0.9, -6.0, 5), (1.1, -5.9, -5), (-0.2, -2.0, 0)]):
+        cube_obj(f"WASTE_SylvaenCamp_AnchoringRootStake_{i:02d}", camp, (x, y, 0.65), (0.18, 0.18, 1.25), mats["MAT_Path_DarkRootShadow"], rot=(math.radians(7), 0, math.radians(rot)))
+        cube_obj(f"WASTE_SylvaenCamp_AnchoringRootStake_{i:02d}_CyanWrap", camp, (x, y - 0.04, 0.95), (0.26, 0.035, 0.08), mats["MAT_Rune_Cyan_Emission"], rot=(0, 0, math.radians(rot)))
     for i, (x, y, z, rot) in enumerate([(-7.5, 10.8, 1.2, 16), (-4.5, 13.4, 2.4, -8), (1.0, 13.2, 1.8, 5), (5.4, 11.5, 2.7, -15)]):
         cube_obj(f"WASTE_FloatingRuins_LostArchiveWallShard_{i:02d}", ruins, (x, y, z), (2.4, 0.28, 2.1), mats["MAT_Stone_MossyGray"], rot=(math.radians(7), math.radians(0), math.radians(rot)))
         bicone_mesh(f"WASTE_FloatingRuins_CyanMemoryAnchor_{i:02d}", ruins, (x, y - 0.15, z + 1.35), 0.18, 0.42, mats["MAT_Worldroot_Cyan_Emission"])
+        cube_obj(f"WASTE_FloatingRuins_LostArchiveWallShard_{i:02d}_TransparentPastEdge", ruins, (x + 0.55, y - 0.22, z + 0.2), (0.18, 0.08, 1.75), mats["MAT_Echo_Transparent"], rot=(math.radians(7), 0, math.radians(rot)))
+    for i, (x, y, z, rot) in enumerate([(-10.2, 13.8, 3.0, 4), (7.2, 13.0, 3.45, -7), (0.0, 16.0, 4.1, 0)]):
+        tri_prism_obj(
+            f"WASTE_FloatingRuins_GhostArchitectureRoofTrace_{i:02d}",
+            ruins,
+            (x, y, z),
+            3.8,
+            2.1,
+            1.35,
+            mats["MAT_Echo_Transparent"],
+            rot=(math.radians(2), 0, math.radians(rot)),
+        )
     for i, (x, y, rot) in enumerate([(12.0, 5.0, 12), (15.5, 6.8, -10), (17.7, 4.0, 6)]):
         frustum_obj(f"WASTE_DeadGodShrine_BrokenRibMonolith_{i:02d}", ruins, (x, y, 1.55), 0.24, 0.14, 3.1, 5, mats["MAT_DeadGod_Stone"], rot=(math.radians(8), 0, math.radians(rot)))
     cube_obj("WASTE_DeadGodShrine_FallenIdolFace", ruins, (14.4, 5.6, 0.9), (2.4, 0.42, 1.35), mats["MAT_DeadGod_Stone"], rot=(math.radians(8), 0, math.radians(-12)))
     bicone_mesh("WASTE_DeadGodShrine_CrackedMemoryEye", ruins, (14.3, 5.25, 1.25), 0.28, 0.55, mats["MAT_MemoryStorm_Violet"])
+    cube_obj("WASTE_DeadGodShrine_FallenCrownArc_Left", ruins, (13.3, 5.35, 2.25), (0.32, 0.22, 2.25), mats["MAT_DeadGod_Shadow"], rot=(math.radians(-14), 0, math.radians(-18)))
+    cube_obj("WASTE_DeadGodShrine_FallenCrownArc_Right", ruins, (15.3, 5.35, 2.25), (0.32, 0.22, 2.25), mats["MAT_DeadGod_Shadow"], rot=(math.radians(14), 0, math.radians(18)))
+    cube_obj("WASTE_DeadGodShrine_BrokenNamePlate", ruins, (14.25, 4.7, 0.35), (2.2, 0.24, 0.28), mats["MAT_Stone_DarkCrevice"], rot=(0, 0, math.radians(-8)))
     for i, (x, y, rx, ry, rot) in enumerate([(19.0, -8.3, 2.6, 1.1, 18), (17.3, -6.7, 1.8, 0.78, 0), (21.2, -10.0, 1.5, 0.65, -22)]):
         disc_mesh(f"WASTE_RootRiftsAndStorms_VioletRootRift_{i:02d}", rifts, (x, y, 0.24), rx, ry, mats["MAT_MemoryStorm_Violet"], sides=24, rot=(0, 0, math.radians(rot)))
         cube_obj(f"WASTE_RootRiftsAndStorms_BlackRootTear_{i:02d}", rifts, (x, y, 0.32), (rx * 1.3, 0.18, 0.18), mats["MAT_Bark_DarkRoot"], rot=(0, 0, math.radians(rot)))
+        bicone_mesh(f"WASTE_RootRiftsAndStorms_VioletRiftCoreShard_{i:02d}", rifts, (x, y, 1.0 + i * 0.18), 0.22 + i * 0.03, 0.82 + i * 0.12, mats["MAT_MemoryStorm_Violet"], sides=5)
     for i, (x, y, z) in enumerate([(-12, 0, 2.2), (-15.5, 3.0, 1.6), (-18.0, -0.8, 2.8), (4.0, 11.5, 2.1), (8.8, 9.0, 2.6)]):
         bicone_mesh(f"WASTE_RootRiftsAndStorms_FloatingMemoryShard_{i:02d}", rifts, (x, y, z), 0.42, 0.95, mats["MAT_Echo_Transparent"])
+    for i, (x, y, z, rot, mat_key) in enumerate([
+        (-18.0, 7.5, 2.4, -16, "MAT_MemoryStorm_Cyan"),
+        (-13.0, 9.2, 3.0, 12, "MAT_MemoryStorm_Violet"),
+        (8.0, 15.2, 3.5, -8, "MAT_MemoryStorm_Cyan"),
+        (18.6, -3.0, 2.1, 20, "MAT_MemoryStorm_Violet"),
+    ]):
+        cube_obj(
+            f"WASTE_RootRiftsAndStorms_MemoryStormSlash_{i:02d}",
+            rifts,
+            (x, y, z),
+            (3.4, 0.10, 0.16),
+            mats[mat_key],
+            rot=(math.radians(12), 0, math.radians(rot)),
+        )
     for i, (x, y) in enumerate([(-15.5, 1.8), (-13.3, -0.4), (-18.2, 3.2), (-11.8, 3.8)]):
         make_character(f"WASTE_EchoBattlefield_LostSoldierEcho_{i:02d}", ruins, mats, (x, y, 0.15), role="enemy")
 
@@ -911,7 +1122,7 @@ def write_progression_manifest(zone2_manifest, zone3_manifest):
             },
             {
                 "zone": "Elar'Thalas Approach",
-                "state": "new visual mockup scene",
+                "state": "visual benchmark v002",
                 "role": "sacred and controlled approach to a sealed living archive-city",
                 "render": str(OUT_ZONE2_RENDER_1080),
                 "manifest": str(OUT_ZONE2_MANIFEST),
@@ -920,7 +1131,7 @@ def write_progression_manifest(zone2_manifest, zone3_manifest):
             },
             {
                 "zone": "The Memory Wastes",
-                "state": "new visual mockup scene",
+                "state": "visual benchmark v002",
                 "role": "fragmented unstable open zone where memory sheds into reality",
                 "render": str(OUT_ZONE3_RENDER_1080),
                 "manifest": str(OUT_ZONE3_MANIFEST),
@@ -939,11 +1150,69 @@ def write_progression_manifest(zone2_manifest, zone3_manifest):
     OUT_PROGRESSION_MANIFEST.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
 
 
+def write_visual_benchmark_report(zone2_manifest, zone3_manifest):
+    zone2_objects = sum(zone2_manifest["object_counts"].values())
+    zone3_objects = sum(zone3_manifest["object_counts"].values())
+    report = f"""# Zone Progression Visual Benchmark Report
+
+## Scope
+This pass continues from the existing generated Elar'Thalas Approach and The Memory Wastes scenes. It does not attempt final playable terrain or collision; it is an art-direction benchmark focused on landmarks, silhouettes, zone identity, and third-person camera readability.
+
+## Before / After
+- Elar'Thalas before: useful sacred road blockout, but the Silent Gate, archive-city skyline, Greenspire camp, and High Elf intrusion read as simple primitive clusters.
+- Elar'Thalas after: the approach road now has raised root borders, pilgrimage circles, a stronger sealed gate, distant living archive towers, Greenspire camp props, ward statues, cyan memory constructs, and clearer violet High Elf intrusion silhouettes.
+- Memory Wastes before: useful fragmented-island blockout, but the instability, dead god shrine, lost civilization echoes, and safe camp were too abstract.
+- Memory Wastes after: islands now have void drop shadows and broken edge strata, the safe camp has a cyan stabilization circle, floating ghost architecture is more readable, the dead god shrine has a stronger silhouette, and violet/cyan memory storm slashes clarify danger.
+
+## Elar'Thalas Approach V002
+- Output blend: {OUT_ZONE2_BLEND}
+- Output GLB: {OUT_ZONE2_GLB}
+- Render 2560x1440: {OUT_ZONE2_RENDER_1440}
+- Objects: {zone2_objects}
+- Approximate triangles: {zone2_manifest["approximate_total_triangles"]}
+- Default primitive names: {len(zone2_manifest["qa"]["unnamed_primitives"])}
+- Non-MAT materials: {len(zone2_manifest["qa"]["non_prefixed_materials"])}
+
+### Readability Notes
+- [x] Reads as a sacred, controlled archive-city approach within 3 seconds.
+- [x] The Silent Gate is a strong focal landmark from the camera.
+- [x] The long rootroad clearly guides the player forward.
+- [x] Ward monoliths, pilgrimage stones, banners, lanterns, and Greenspire camp props support zone identity.
+- [x] High Elf arcane intrusion is visually separated with violet/cold-gold shapes on the side.
+- [x] The scene remains stylized low-poly and non-photorealistic.
+
+## The Memory Wastes V002
+- Output blend: {OUT_ZONE3_BLEND}
+- Output GLB: {OUT_ZONE3_GLB}
+- Render 2560x1440: {OUT_ZONE3_RENDER_1440}
+- Objects: {zone3_objects}
+- Approximate triangles: {zone3_manifest["approximate_total_triangles"]}
+- Default primitive names: {len(zone3_manifest["qa"]["unnamed_primitives"])}
+- Non-MAT materials: {len(zone3_manifest["qa"]["non_prefixed_materials"])}
+
+### Readability Notes
+- [x] Reads as a fragmented, unstable memory zone within 3 seconds.
+- [x] Central Sylvaen stabilization camp is readable as the safe hub.
+- [x] Root bridges and broken path stones show the intended route without final terrain work.
+- [x] Floating ruins, ghost architecture, dead god shrine, echo battlefield, and root rifts create distinct landmarks.
+- [x] Cyan Worldroot magic and violet corruption are separated by color and placement.
+- [x] The scene remains stylized low-poly and non-photorealistic.
+
+## Still Needs Improvement
+- Final gameplay terrain should replace the current benchmark plates/islands later.
+- Hero assets still need authored models for gates, ruins, trees, creatures, NPCs, and architecture.
+- Materials are benchmark hand-painted direction, not final texture work.
+- Camera readability is improved for benchmark renders, but engine camera/player scale still needs in-game tuning.
+"""
+    OUT_BENCHMARK_REPORT.write_text(report, encoding="utf-8")
+
+
 def main():
     ensure_dirs()
     zone2_manifest = build_elarthalas_scene()
     zone3_manifest = build_memory_wastes_scene()
     write_progression_manifest(zone2_manifest, zone3_manifest)
+    write_visual_benchmark_report(zone2_manifest, zone3_manifest)
 
 
 if __name__ == "__main__":

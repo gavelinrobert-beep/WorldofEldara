@@ -1,0 +1,1835 @@
+{
+  "scene": "The Memory Wastes",
+  "file_stem": "memory_wastes_visual_benchmark_v002",
+  "source_asset_kit": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\blender\\thornveil_modular_asset_kit_v001.blend",
+  "collections": [
+    "WASTE_TerrainIslands",
+    "WASTE_SylvaenCamp",
+    "WASTE_FloatingRuins",
+    "WASTE_RootRiftsAndStorms",
+    "WASTE_FoliageAndDebris",
+    "WASTE_Characters",
+    "WASTE_LightingRender"
+  ],
+  "object_counts": {
+    "WASTE_TerrainIslands": 52,
+    "WASTE_SylvaenCamp": 19,
+    "WASTE_FloatingRuins": 39,
+    "WASTE_RootRiftsAndStorms": 18,
+    "WASTE_FoliageAndDebris": 17,
+    "WASTE_Characters": 18,
+    "WASTE_LightingRender": 8
+  },
+  "objects": [
+    {
+      "name": "WASTE_Terrain_Backdrop_MemoryStormSky",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Backdrop_MemoryStormSky"
+      ],
+      "approximate_triangles": 2
+    },
+    {
+      "name": "WASTE_Terrain_DarkVoidBase_NoWalk",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_WasteGround_Dark"
+      ],
+      "approximate_triangles": 2
+    },
+    {
+      "name": "WASTE_Terrain_PlayerIsland_FragmentedPlate",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_WasteGround"
+      ],
+      "approximate_triangles": 11
+    },
+    {
+      "name": "WASTE_Terrain_PlayerIsland_MossMemorySkin",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Grass_Dark"
+      ],
+      "approximate_triangles": 9
+    },
+    {
+      "name": "WASTE_Terrain_PlayerIsland_VoidDropShadow",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_DarkCrevice"
+      ],
+      "approximate_triangles": 11
+    },
+    {
+      "name": "WASTE_Terrain_PlayerIsland_BrokenEdgeStrata_00",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_PlayerIsland_BrokenEdgeStrata_01",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_PlayerIsland_BrokenEdgeStrata_02",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_CentralCampIsland_FragmentedPlate",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_WasteGround"
+      ],
+      "approximate_triangles": 11
+    },
+    {
+      "name": "WASTE_Terrain_CentralCampIsland_MossMemorySkin",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Grass_Dark"
+      ],
+      "approximate_triangles": 9
+    },
+    {
+      "name": "WASTE_Terrain_CentralCampIsland_VoidDropShadow",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_DarkCrevice"
+      ],
+      "approximate_triangles": 11
+    },
+    {
+      "name": "WASTE_Terrain_CentralCampIsland_BrokenEdgeStrata_00",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_CentralCampIsland_BrokenEdgeStrata_01",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_CentralCampIsland_BrokenEdgeStrata_02",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_EchoBattlefieldIsland_FragmentedPlate",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_WasteGround"
+      ],
+      "approximate_triangles": 11
+    },
+    {
+      "name": "WASTE_Terrain_EchoBattlefieldIsland_MossMemorySkin",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Grass_Dark"
+      ],
+      "approximate_triangles": 9
+    },
+    {
+      "name": "WASTE_Terrain_EchoBattlefieldIsland_VoidDropShadow",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_DarkCrevice"
+      ],
+      "approximate_triangles": 11
+    },
+    {
+      "name": "WASTE_Terrain_EchoBattlefieldIsland_BrokenEdgeStrata_00",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_EchoBattlefieldIsland_BrokenEdgeStrata_01",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_EchoBattlefieldIsland_BrokenEdgeStrata_02",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_DeadGodShrineIsland_FragmentedPlate",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_WasteGround"
+      ],
+      "approximate_triangles": 11
+    },
+    {
+      "name": "WASTE_Terrain_DeadGodShrineIsland_MossMemorySkin",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Grass_Dark"
+      ],
+      "approximate_triangles": 9
+    },
+    {
+      "name": "WASTE_Terrain_DeadGodShrineIsland_VoidDropShadow",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_DarkCrevice"
+      ],
+      "approximate_triangles": 11
+    },
+    {
+      "name": "WASTE_Terrain_DeadGodShrineIsland_BrokenEdgeStrata_00",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_DeadGodShrineIsland_BrokenEdgeStrata_01",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_DeadGodShrineIsland_BrokenEdgeStrata_02",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_FloatingArchiveRuinIsland_FragmentedPlate",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_WasteGround"
+      ],
+      "approximate_triangles": 11
+    },
+    {
+      "name": "WASTE_Terrain_FloatingArchiveRuinIsland_MossMemorySkin",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Grass_Dark"
+      ],
+      "approximate_triangles": 9
+    },
+    {
+      "name": "WASTE_Terrain_FloatingArchiveRuinIsland_VoidDropShadow",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_DarkCrevice"
+      ],
+      "approximate_triangles": 11
+    },
+    {
+      "name": "WASTE_Terrain_FloatingArchiveRuinIsland_BrokenEdgeStrata_00",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_FloatingArchiveRuinIsland_BrokenEdgeStrata_01",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_FloatingArchiveRuinIsland_BrokenEdgeStrata_02",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_RootRiftIsland_FragmentedPlate",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_WasteGround"
+      ],
+      "approximate_triangles": 11
+    },
+    {
+      "name": "WASTE_Terrain_RootRiftIsland_MossMemorySkin",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Grass_Dark"
+      ],
+      "approximate_triangles": 9
+    },
+    {
+      "name": "WASTE_Terrain_RootRiftIsland_VoidDropShadow",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_DarkCrevice"
+      ],
+      "approximate_triangles": 11
+    },
+    {
+      "name": "WASTE_Terrain_RootRiftIsland_BrokenEdgeStrata_00",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_RootRiftIsland_BrokenEdgeStrata_01",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_RootRiftIsland_BrokenEdgeStrata_02",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_LivingRootBridgeAcrossGap_00",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_WarmRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_LivingRootBridgeAcrossGap_01",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_WarmRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_LivingRootBridgeAcrossGap_02",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_WarmRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_LivingRootBridgeAcrossGap_03",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_WarmRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_LivingRootBridgeAcrossGap_04",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_WarmRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_PlayerPath_BrokenMossStone_00",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_MossyStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_PlayerPath_BrokenMossStone_01",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_MossyStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_PlayerPath_BrokenMossStone_02",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_MossyStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_PlayerPath_BrokenMossStone_03",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_MossyStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_PlayerPath_BrokenMossStone_04",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_MossyStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Terrain_PlayerSpawn_UnstableCyanCircle",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_PlayerSpawn_CyanRune"
+      ],
+      "approximate_triangles": 30
+    },
+    {
+      "name": "WASTE_Terrain_BackgroundMemoryStormRibbon_00",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Cyan"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "WASTE_Terrain_BackgroundMemoryStormRibbon_01",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Violet"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "WASTE_Terrain_BackgroundMemoryStormRibbon_02",
+      "collection": "WASTE_TerrainIslands",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Echo_Transparent"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "WASTE_SylvaenCamp_AnchorBanner_00",
+      "collection": "WASTE_SylvaenCamp",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_BannerPost",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Banner_VerdantGreen",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "WASTE_SylvaenCamp_AnchorBanner_01",
+      "collection": "WASTE_SylvaenCamp",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_BannerPost",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Banner_VerdantGreen",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "WASTE_SylvaenCamp_AnchorBanner_02",
+      "collection": "WASTE_SylvaenCamp",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_BannerPost",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Banner_VerdantGreen",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "WASTE_SylvaenCamp_AnchorBanner_03",
+      "collection": "WASTE_SylvaenCamp",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_BannerPost",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Banner_VerdantGreen",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "WASTE_SylvaenCamp_FieldTent_RootclothRoof",
+      "collection": "WASTE_SylvaenCamp",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_CampCloth_Blue"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "WASTE_SylvaenCamp_FieldTent_WarmRootBase",
+      "collection": "WASTE_SylvaenCamp",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_WarmBrown"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_SylvaenCamp_StabilizationShrine",
+      "collection": "WASTE_SylvaenCamp",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_SmallShrinePedestal",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Bark_WarmBrown",
+        "MAT_Worldroot_Cyan_Emission"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "WASTE_SylvaenCamp_StabilizationShrine_CyanCore",
+      "collection": "WASTE_SylvaenCamp",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_SylvaenCamp_StabilizationCircle_CyanSafeZone",
+      "collection": "WASTE_SylvaenCamp",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_PlayerSpawn_CyanRune"
+      ],
+      "approximate_triangles": 36
+    },
+    {
+      "name": "WASTE_SylvaenCamp_CyanGoldSafetyLantern_00",
+      "collection": "WASTE_SylvaenCamp",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_LanternPost",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Wood_GoldenTrim",
+        "MAT_Lantern_Warm_Emission",
+        "MAT_Bark_WarmBrown"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "WASTE_SylvaenCamp_CyanGoldSafetyLantern_01",
+      "collection": "WASTE_SylvaenCamp",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_LanternPost",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Wood_GoldenTrim",
+        "MAT_Lantern_Warm_Emission",
+        "MAT_Bark_WarmBrown"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "WASTE_SylvaenCamp_CyanGoldSafetyLantern_02",
+      "collection": "WASTE_SylvaenCamp",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_LanternPost",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Wood_GoldenTrim",
+        "MAT_Lantern_Warm_Emission",
+        "MAT_Bark_WarmBrown"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "WASTE_SylvaenCamp_CyanGoldSafetyLantern_03",
+      "collection": "WASTE_SylvaenCamp",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_LanternPost",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Wood_GoldenTrim",
+        "MAT_Lantern_Warm_Emission",
+        "MAT_Bark_WarmBrown"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "WASTE_SylvaenCamp_AnchoringRootStake_00",
+      "collection": "WASTE_SylvaenCamp",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_SylvaenCamp_AnchoringRootStake_00_CyanWrap",
+      "collection": "WASTE_SylvaenCamp",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_SylvaenCamp_AnchoringRootStake_01",
+      "collection": "WASTE_SylvaenCamp",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_SylvaenCamp_AnchoringRootStake_01_CyanWrap",
+      "collection": "WASTE_SylvaenCamp",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_SylvaenCamp_AnchoringRootStake_02",
+      "collection": "WASTE_SylvaenCamp",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_SylvaenCamp_AnchoringRootStake_02_CyanWrap",
+      "collection": "WASTE_SylvaenCamp",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_FloatingRuins_LostArchiveWallShard_00",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_MossyGray"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_FloatingRuins_CyanMemoryAnchor_00",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_FloatingRuins_LostArchiveWallShard_00_TransparentPastEdge",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Echo_Transparent"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_FloatingRuins_LostArchiveWallShard_01",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_MossyGray"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_FloatingRuins_CyanMemoryAnchor_01",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_FloatingRuins_LostArchiveWallShard_01_TransparentPastEdge",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Echo_Transparent"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_FloatingRuins_LostArchiveWallShard_02",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_MossyGray"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_FloatingRuins_CyanMemoryAnchor_02",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_FloatingRuins_LostArchiveWallShard_02_TransparentPastEdge",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Echo_Transparent"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_FloatingRuins_LostArchiveWallShard_03",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_MossyGray"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_FloatingRuins_CyanMemoryAnchor_03",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_FloatingRuins_LostArchiveWallShard_03_TransparentPastEdge",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Echo_Transparent"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_FloatingRuins_GhostArchitectureRoofTrace_00",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Echo_Transparent"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "WASTE_FloatingRuins_GhostArchitectureRoofTrace_01",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Echo_Transparent"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "WASTE_FloatingRuins_GhostArchitectureRoofTrace_02",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Echo_Transparent"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "WASTE_DeadGodShrine_BrokenRibMonolith_00",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Stone"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "WASTE_DeadGodShrine_BrokenRibMonolith_01",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Stone"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "WASTE_DeadGodShrine_BrokenRibMonolith_02",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Stone"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "WASTE_DeadGodShrine_FallenIdolFace",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Stone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_DeadGodShrine_CrackedMemoryEye",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Violet"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_DeadGodShrine_FallenCrownArc_Left",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_DeadGodShrine_FallenCrownArc_Right",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_DeadGod_Shadow"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_DeadGodShrine_BrokenNamePlate",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_DarkCrevice"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_EchoBattlefield_LostSoldierEcho_00_Body",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_EnemyPlaceholder"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "WASTE_EchoBattlefield_LostSoldierEcho_00_Head",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_EnemyPlaceholder"
+      ],
+      "approximate_triangles": 36
+    },
+    {
+      "name": "WASTE_EchoBattlefield_LostSoldierEcho_00_Shoulders",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_EnemyPlaceholder"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_EchoBattlefield_LostSoldierEcho_00_StaffOrWeapon",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_WarmRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_EchoBattlefield_LostSoldierEcho_01_Body",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_EnemyPlaceholder"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "WASTE_EchoBattlefield_LostSoldierEcho_01_Head",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_EnemyPlaceholder"
+      ],
+      "approximate_triangles": 36
+    },
+    {
+      "name": "WASTE_EchoBattlefield_LostSoldierEcho_01_Shoulders",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_EnemyPlaceholder"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_EchoBattlefield_LostSoldierEcho_01_StaffOrWeapon",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_WarmRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_EchoBattlefield_LostSoldierEcho_02_Body",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_EnemyPlaceholder"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "WASTE_EchoBattlefield_LostSoldierEcho_02_Head",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_EnemyPlaceholder"
+      ],
+      "approximate_triangles": 36
+    },
+    {
+      "name": "WASTE_EchoBattlefield_LostSoldierEcho_02_Shoulders",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_EnemyPlaceholder"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_EchoBattlefield_LostSoldierEcho_02_StaffOrWeapon",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_WarmRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_EchoBattlefield_LostSoldierEcho_03_Body",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_EnemyPlaceholder"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "WASTE_EchoBattlefield_LostSoldierEcho_03_Head",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_EnemyPlaceholder"
+      ],
+      "approximate_triangles": 36
+    },
+    {
+      "name": "WASTE_EchoBattlefield_LostSoldierEcho_03_Shoulders",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_EnemyPlaceholder"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_EchoBattlefield_LostSoldierEcho_03_StaffOrWeapon",
+      "collection": "WASTE_FloatingRuins",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_WarmRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_VioletRootRift_00",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Violet"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_BlackRootTear_00",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_VioletRiftCoreShard_00",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Violet"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_VioletRootRift_01",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Violet"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_BlackRootTear_01",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_VioletRiftCoreShard_01",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Violet"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_VioletRootRift_02",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Violet"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_BlackRootTear_02",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_VioletRiftCoreShard_02",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Violet"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_FloatingMemoryShard_00",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Echo_Transparent"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_FloatingMemoryShard_01",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Echo_Transparent"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_FloatingMemoryShard_02",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Echo_Transparent"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_FloatingMemoryShard_03",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Echo_Transparent"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_FloatingMemoryShard_04",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Echo_Transparent"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_MemoryStormSlash_00",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Cyan"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_MemoryStormSlash_01",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Violet"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_MemoryStormSlash_02",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Cyan"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_MemoryStormSlash_03",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Violet"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Foliage_SicklyGlowcap_00",
+      "collection": "WASTE_FoliageAndDebris",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_GlowingMushroom",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Mushroom_Pink",
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 88
+    },
+    {
+      "name": "WASTE_Foliage_SicklyGlowcap_01",
+      "collection": "WASTE_FoliageAndDebris",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_GlowingMushroom",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Mushroom_Pink",
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 88
+    },
+    {
+      "name": "WASTE_Foliage_SicklyGlowcap_02",
+      "collection": "WASTE_FoliageAndDebris",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_GlowingMushroom",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Mushroom_Pink",
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 88
+    },
+    {
+      "name": "WASTE_Foliage_SicklyGlowcap_03",
+      "collection": "WASTE_FoliageAndDebris",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_GlowingMushroom",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Mushroom_Pink",
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 88
+    },
+    {
+      "name": "WASTE_Foliage_SicklyGlowcap_04",
+      "collection": "WASTE_FoliageAndDebris",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_GlowingMushroom",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Mushroom_Pink",
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 88
+    },
+    {
+      "name": "WASTE_Foliage_SicklyGlowcap_05",
+      "collection": "WASTE_FoliageAndDebris",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_GlowingMushroom",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Mushroom_Pink",
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 88
+    },
+    {
+      "name": "WASTE_Foliage_FracturedMossRock_00",
+      "collection": "WASTE_FoliageAndDebris",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_SmallMossyRock",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 38
+    },
+    {
+      "name": "WASTE_Foliage_FracturedMossRock_01",
+      "collection": "WASTE_FoliageAndDebris",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_SmallMossyRock",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 38
+    },
+    {
+      "name": "WASTE_Foliage_FracturedMossRock_02",
+      "collection": "WASTE_FoliageAndDebris",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_SmallMossyRock",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 38
+    },
+    {
+      "name": "WASTE_Foliage_FracturedMossRock_03",
+      "collection": "WASTE_FoliageAndDebris",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_SmallMossyRock",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 38
+    },
+    {
+      "name": "WASTE_Foliage_FracturedMossRock_04",
+      "collection": "WASTE_FoliageAndDebris",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_SmallMossyRock",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 38
+    },
+    {
+      "name": "WASTE_Foliage_FracturedMossRock_05",
+      "collection": "WASTE_FoliageAndDebris",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_SmallMossyRock",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 38
+    },
+    {
+      "name": "WASTE_Foliage_UnstableCyanCrystalSprout_00",
+      "collection": "WASTE_FoliageAndDebris",
+      "type": "MESH",
+      "source_asset": "PROPS_Worldroot_CyanCrystalClusterSmall",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission",
+        "MAT_Rune_Cyan_Emission",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "WASTE_Foliage_UnstableCyanCrystalSprout_01",
+      "collection": "WASTE_FoliageAndDebris",
+      "type": "MESH",
+      "source_asset": "PROPS_Worldroot_CyanCrystalClusterSmall",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission",
+        "MAT_Rune_Cyan_Emission",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "WASTE_Foliage_UnstableCyanCrystalSprout_02",
+      "collection": "WASTE_FoliageAndDebris",
+      "type": "MESH",
+      "source_asset": "PROPS_Worldroot_CyanCrystalClusterSmall",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission",
+        "MAT_Rune_Cyan_Emission",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "WASTE_Foliage_UnstableCyanCrystalSprout_03",
+      "collection": "WASTE_FoliageAndDebris",
+      "type": "MESH",
+      "source_asset": "PROPS_Worldroot_CyanCrystalClusterSmall",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission",
+        "MAT_Rune_Cyan_Emission",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "WASTE_Foliage_UnstableCyanCrystalSprout_04",
+      "collection": "WASTE_FoliageAndDebris",
+      "type": "MESH",
+      "source_asset": "PROPS_Worldroot_CyanCrystalClusterSmall",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission",
+        "MAT_Rune_Cyan_Emission",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "WASTE_Characters_PlayerPlaceholder_Foreground_Body",
+      "collection": "WASTE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_PlayerPlaceholder"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "WASTE_Characters_PlayerPlaceholder_Foreground_Head",
+      "collection": "WASTE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_PlayerPlaceholder"
+      ],
+      "approximate_triangles": 36
+    },
+    {
+      "name": "WASTE_Characters_PlayerPlaceholder_Foreground_Shoulders",
+      "collection": "WASTE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_PlayerPlaceholder"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Characters_PlayerPlaceholder_Foreground_StaffOrWeapon",
+      "collection": "WASTE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_WarmRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Characters_MemoryKeeperStabilizer_QuestNpc_Body",
+      "collection": "WASTE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_NpcPlaceholder"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "WASTE_Characters_MemoryKeeperStabilizer_QuestNpc_Head",
+      "collection": "WASTE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_NpcPlaceholder"
+      ],
+      "approximate_triangles": 36
+    },
+    {
+      "name": "WASTE_Characters_MemoryKeeperStabilizer_QuestNpc_Shoulders",
+      "collection": "WASTE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_NpcPlaceholder"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Characters_MemoryKeeperStabilizer_QuestNpc_StaffOrWeapon",
+      "collection": "WASTE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_WarmRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Characters_MemoryKeeperStabilizer_QuestNpc_QuestMarker_Diamond",
+      "collection": "WASTE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Characters_MemoryKeeperStabilizer_QuestNpc_QuestMarker_Stem",
+      "collection": "WASTE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "WASTE_Characters_RootGuardianCampWarden_Body",
+      "collection": "WASTE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_NpcPlaceholder"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "WASTE_Characters_RootGuardianCampWarden_Head",
+      "collection": "WASTE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_NpcPlaceholder"
+      ],
+      "approximate_triangles": 36
+    },
+    {
+      "name": "WASTE_Characters_RootGuardianCampWarden_Shoulders",
+      "collection": "WASTE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_NpcPlaceholder"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Characters_RootGuardianCampWarden_StaffOrWeapon",
+      "collection": "WASTE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_WarmRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Characters_BlightrootRavager_RiftThreat_Body",
+      "collection": "WASTE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_EnemyPlaceholder"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "WASTE_Characters_BlightrootRavager_RiftThreat_Head",
+      "collection": "WASTE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_EnemyPlaceholder"
+      ],
+      "approximate_triangles": 36
+    },
+    {
+      "name": "WASTE_Characters_BlightrootRavager_RiftThreat_Shoulders",
+      "collection": "WASTE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_EnemyPlaceholder"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_Characters_BlightrootRavager_RiftThreat_StaffOrWeapon",
+      "collection": "WASTE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_WarmRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_LightingRender_SunKey_BrokenMemoryLight",
+      "collection": "WASTE_LightingRender",
+      "type": "LIGHT",
+      "source_asset": "custom_scene_geometry",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "WASTE_LightingRender_CyanVioletAmbientFill",
+      "collection": "WASTE_LightingRender",
+      "type": "LIGHT",
+      "source_asset": "custom_scene_geometry",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "WASTE_LightingRender_MemoryGlowAccent_00",
+      "collection": "WASTE_LightingRender",
+      "type": "LIGHT",
+      "source_asset": "custom_scene_geometry",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "WASTE_LightingRender_MemoryGlowAccent_01",
+      "collection": "WASTE_LightingRender",
+      "type": "LIGHT",
+      "source_asset": "custom_scene_geometry",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "WASTE_LightingRender_MemoryGlowAccent_02",
+      "collection": "WASTE_LightingRender",
+      "type": "LIGHT",
+      "source_asset": "custom_scene_geometry",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "WASTE_LightingRender_MemoryGlowAccent_03",
+      "collection": "WASTE_LightingRender",
+      "type": "LIGHT",
+      "source_asset": "custom_scene_geometry",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "WASTE_LightingRender_MemoryGlowAccent_04",
+      "collection": "WASTE_LightingRender",
+      "type": "LIGHT",
+      "source_asset": "custom_scene_geometry",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "WASTE_LightingRender_Camera_ThirdPersonFragmentedZone",
+      "collection": "WASTE_LightingRender",
+      "type": "CAMERA",
+      "source_asset": "custom_scene_geometry",
+      "materials": [],
+      "approximate_triangles": 0
+    }
+  ],
+  "material_names": [
+    "MAT_Backdrop_BlueMist",
+    "MAT_Backdrop_MemoryStormSky",
+    "MAT_Backdrop_SacredSky",
+    "MAT_Banner_VerdantGreen",
+    "MAT_Bark_DarkRoot",
+    "MAT_Bark_PaintedEdge",
+    "MAT_Bark_WarmBrown",
+    "MAT_CampCloth_Blue",
+    "MAT_CampCloth_Green",
+    "MAT_DeadGod_Shadow",
+    "MAT_DeadGod_Stone",
+    "MAT_Echo_Transparent",
+    "MAT_EnemyPlaceholder",
+    "MAT_Flower_Blue",
+    "MAT_Flower_Purple",
+    "MAT_GoldTrim",
+    "MAT_Grass_Controlled",
+    "MAT_Grass_Dark",
+    "MAT_Grass_Lush",
+    "MAT_HighElf_ArcaneViolet",
+    "MAT_HighElf_ColdGold",
+    "MAT_Lantern_Warm_Emission",
+    "MAT_Leaves_DarkUnderside",
+    "MAT_Leaves_DeepGreen",
+    "MAT_Leaves_LightGreen",
+    "MAT_MemoryStorm_Cyan",
+    "MAT_MemoryStorm_Violet",
+    "MAT_Moss",
+    "MAT_Mushroom_Pink",
+    "MAT_NpcPlaceholder",
+    "MAT_Path_DarkRootShadow",
+    "MAT_Path_MossyStone",
+    "MAT_Path_SacredRoot",
+    "MAT_Path_StoneHighlight",
+    "MAT_Path_WarmRoot",
+    "MAT_PlayerPlaceholder",
+    "MAT_PlayerSpawn_CyanRune",
+    "MAT_Rune_Cyan_Emission",
+    "MAT_Stone_DarkCrevice",
+    "MAT_Stone_MossyGray",
+    "MAT_Stone_Pilgrimage",
+    "MAT_WasteGround",
+    "MAT_WasteGround_Dark",
+    "MAT_Water_BlueGreen_Optional",
+    "MAT_Wood_GoldenTrim",
+    "MAT_Worldroot_Cyan_Emission"
+  ],
+  "approximate_total_triangles": 3498,
+  "render_paths": [
+    "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\memory_wastes_visual_benchmark_v002_2560x1440.png",
+    "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\memory_wastes_visual_benchmark_v002_1920x1080.png"
+  ],
+  "export_paths": {
+    "blend": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\blender\\memory_wastes_visual_benchmark_v002.blend",
+    "glb": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\exports\\memory_wastes_visual_benchmark_v002.glb"
+  },
+  "qa": {
+    "non_prefixed_materials": [],
+    "unnamed_primitives": []
+  },
+  "notes": [
+    "Zone 3 is intentionally less safe and more broken than Thornveil and Elar'Thalas Approach.",
+    "The main route is still readable from the player camera through root bridges and pale stone markers.",
+    "This is a visual target scene, not yet live gameplay terrain/collision."
+  ]
+}

@@ -119,6 +119,15 @@ def scene_materials():
         "MAT_Stone_Pilgrimage": make_mat("MAT_Stone_Pilgrimage", (0.56, 0.57, 0.48)),
         "MAT_Stone_PaleArchive": make_mat("MAT_Stone_PaleArchive", (0.72, 0.74, 0.64)),
         "MAT_Stone_DarkCrevice": make_mat("MAT_Stone_DarkCrevice", (0.18, 0.20, 0.18)),
+        "MAT_LostCivilization_GhostStone": make_mat(
+            "MAT_LostCivilization_GhostStone", (0.70, 0.88, 0.76), emission=(0.24, 0.46, 0.34), strength=0.45, alpha=0.48
+        ),
+        "MAT_Echo_GhostBlueWhite": make_mat(
+            "MAT_Echo_GhostBlueWhite", (0.62, 0.88, 1.0), emission=(0.24, 0.68, 1.0), strength=0.95, alpha=0.46
+        ),
+        "MAT_LostDivinity_PaleGold_Emission": make_mat(
+            "MAT_LostDivinity_PaleGold_Emission", (1.0, 0.78, 0.35), emission=(1.0, 0.66, 0.18), strength=1.65, alpha=0.62
+        ),
         "MAT_MemoryGlass_CyanGreen": make_mat(
             "MAT_MemoryGlass_CyanGreen", (0.07, 0.86, 0.72), emission=(0.03, 0.90, 0.76), strength=2.2, alpha=0.58
         ),
@@ -1197,12 +1206,13 @@ def build_memory_wastes_terrain(collections, mats):
         z=-0.35,
     )
     islands = [
-        ("PlayerIsland", 0, -16.5, 8.0, 4.4, 0),
-        ("CentralCampIsland", 0, -4.5, 12.5, 8.0, 3),
+        ("PlayerSpawnIsland", 0, -16.5, 8.0, 4.4, 0),
+        ("CentralSylvaenCampIsland", 0, -4.5, 12.5, 8.0, 3),
         ("EchoBattlefieldIsland", -16, 1.5, 11.5, 7.0, -12),
         ("DeadGodShrineIsland", 14.5, 5.8, 10.0, 7.0, 10),
-        ("FloatingArchiveRuinIsland", -3, 12.5, 13.5, 6.5, -4),
-        ("RootRiftIsland", 20, -8.2, 9.0, 5.8, 15),
+        ("OranynRuinIsland", -6.5, 12.8, 10.5, 6.2, -6),
+        ("WorldrootSheddingRiftIsland", 2.8, 11.0, 11.5, 6.8, 5),
+        ("SideRootRiftIsland", 20, -8.2, 9.0, 5.8, 15),
     ]
     for name, x, y, rx, ry, rot in islands:
         disc_mesh(f"WASTE_Terrain_{name}_FragmentedPlate", terrain, (x, y, 0.0), rx, ry, mats["MAT_WasteGround"], sides=11, rot=(0, 0, math.radians(rot)))
@@ -1226,6 +1236,33 @@ def build_memory_wastes_terrain(collections, mats):
             mats["MAT_Path_WarmRoot"],
             rot=(0, 0, math.radians(rot)),
         )
+    for i, (x, y, length, rot, mat_key) in enumerate(
+        [
+            (-2.8, -9.4, 5.4, -8, "MAT_Echo_GhostBlueWhite"),
+            (-8.6, 5.0, 7.8, 25, "MAT_Echo_Transparent"),
+            (2.2, 6.6, 8.6, -6, "MAT_MemoryStorm_Cyan"),
+            (9.5, 3.0, 7.4, -28, "MAT_LostDivinity_PaleGold_Emission"),
+        ]
+    ):
+        bridge = cube_obj(
+            f"WASTE_Terrain_UnstableMemoryBridge_{i:02d}_HalfManifestedSpan",
+            terrain,
+            (x, y, 0.34),
+            (0.72, length, 0.08),
+            mats[mat_key],
+            rot=(0, 0, math.radians(rot)),
+        )
+        disable_shadow(bridge)
+        for side, offset in [("Left", -0.52), ("Right", 0.52)]:
+            fiber = cube_obj(
+                f"WASTE_Terrain_UnstableMemoryBridge_{i:02d}_BrokenRootStrand_{side}",
+                terrain,
+                (x + offset, y, 0.42),
+                (0.12, length * 0.82, 0.10),
+                mats["MAT_Path_DarkRootShadow"],
+                rot=(0, 0, math.radians(rot + (4 if side == "Left" else -4))),
+            )
+            disable_shadow(fiber)
     for i, (x, y, rot) in enumerate([(-1.0, -14.2, 0), (1.1, -12.1, 8), (-0.7, -9.8, -7), (0.8, -7.8, 5), (-0.4, -5.8, 0)]):
         cube_obj(f"WASTE_Terrain_PlayerPath_BrokenMossStone_{i:02d}", terrain, (x, y, 0.23), (2.2, 1.2, 0.14), mats["MAT_Path_MossyStone"], rot=(0, 0, math.radians(rot)))
     disc_mesh("WASTE_Terrain_PlayerSpawn_UnstableCyanCircle", terrain, (0, -16.5, 0.18), 1.55, 0.75, mats["MAT_PlayerSpawn_CyanRune"], sides=30)
@@ -1254,8 +1291,79 @@ def build_memory_wastes_camp_and_ruins(templates, collections, mats):
         inst(templates, "PROPS_Village_BannerPost", f"WASTE_SylvaenCamp_AnchorBanner_{i:02d}", camp, (x, y, 0.18), rot=(0, 0, math.radians(rot)), scale=(0.95, 0.95, 1.15))
     tri_prism_obj("WASTE_SylvaenCamp_FieldTent_RootclothRoof", camp, (-2.1, -3.8, 0.25), 3.8, 2.2, 1.25, mats["MAT_CampCloth_Blue"], rot=(0, 0, math.radians(9)))
     cube_obj("WASTE_SylvaenCamp_FieldTent_WarmRootBase", camp, (-2.1, -3.8, 0.2), (2.0, 3.0, 0.42), mats["MAT_Bark_WarmBrown"], rot=(0, 0, math.radians(9)))
+    tri_prism_obj(
+        "WASTE_SylvaenCamp_SafePointRootShelter_LeafRoof",
+        camp,
+        (3.2, -6.0, 0.35),
+        3.2,
+        2.0,
+        1.15,
+        mats["MAT_CampCloth_Green"],
+        rot=(0, 0, math.radians(-13)),
+    )
+    cube_obj(
+        "WASTE_SylvaenCamp_SafePointRootShelter_LivingRootBase",
+        camp,
+        (3.2, -6.0, 0.24),
+        (1.75, 2.55, 0.48),
+        mats["MAT_Bark_DarkRoot"],
+        rot=(0, 0, math.radians(-13)),
+    )
+    inst(
+        templates,
+        "PROPS_Village_BannerPost",
+        "WASTE_SylvaenCamp_SafePointVerdantBanner",
+        camp,
+        (-4.1, -7.2, 0.18),
+        rot=(0, 0, math.radians(-8)),
+        scale=(1.05, 1.05, 1.25),
+    )
     inst(templates, "PROPS_Village_SmallShrinePedestal", "WASTE_SylvaenCamp_StabilizationShrine", camp, (2.2, -3.4, 0.18), scale=(1.15, 1.15, 1.15))
     bicone_mesh("WASTE_SylvaenCamp_StabilizationShrine_CyanCore", camp, (2.2, -3.4, 1.55), 0.38, 0.72, mats["MAT_Worldroot_Cyan_Emission"])
+    frustum_obj(
+        "WASTE_SylvaenCamp_MemoryBrazier_StoneBowl",
+        camp,
+        (-0.2, -5.4, 0.68),
+        0.62,
+        0.44,
+        0.72,
+        8,
+        mats["MAT_Stone_MossyGray"],
+    )
+    bicone_mesh(
+        "WASTE_SylvaenCamp_MemoryBrazier_CyanGoldFlame",
+        camp,
+        (-0.2, -5.4, 1.25),
+        0.28,
+        0.78,
+        mats["MAT_LostDivinity_PaleGold_Emission"],
+        sides=6,
+    )
+    bicone_mesh(
+        "WASTE_SylvaenCamp_MemoryBrazier_CyanInnerFlame",
+        camp,
+        (-0.2, -5.48, 1.34),
+        0.18,
+        0.62,
+        mats["MAT_Worldroot_Cyan_Emission"],
+        sides=6,
+    )
+    cube_obj(
+        "WASTE_SylvaenCamp_SmallArchiveTable_RootLedger",
+        camp,
+        (-3.3, -3.2, 0.72),
+        (1.35, 0.72, 0.22),
+        mats["MAT_Path_WarmRoot"],
+        rot=(0, 0, math.radians(7)),
+    )
+    cube_obj(
+        "WASTE_SylvaenCamp_SmallArchiveTable_GhostMapPane",
+        camp,
+        (-3.3, -3.25, 0.88),
+        (1.05, 0.48, 0.04),
+        mats["MAT_Echo_GhostBlueWhite"],
+        rot=(0, 0, math.radians(7)),
+    )
     disc_mesh("WASTE_SylvaenCamp_StabilizationCircle_CyanSafeZone", camp, (0.0, -4.2, 0.28), 4.1, 2.35, mats["MAT_PlayerSpawn_CyanRune"], sides=36, rot=(0, 0, math.radians(3)))
     for i, (x, y, rot) in enumerate([(-4.6, -6.8, -18), (4.7, -6.3, 18), (-4.9, -1.4, 10), (4.9, -1.0, -10)]):
         inst(
@@ -1285,6 +1393,51 @@ def build_memory_wastes_camp_and_ruins(templates, collections, mats):
             mats["MAT_Echo_Transparent"],
             rot=(math.radians(2), 0, math.radians(rot)),
         )
+    for i, (x, y, rot) in enumerate([(-9.2, 10.8, -10), (-5.8, 14.0, 8), (-1.8, 12.2, 2)]):
+        for side, offset in [("Left", -0.88), ("Right", 0.88)]:
+            cube_obj(
+                f"WASTE_OranynRuins_BrokenGhostArch_{i:02d}_Pillar_{side}",
+                ruins,
+                (x + offset, y, 1.45),
+                (0.32, 0.22, 2.45),
+                mats["MAT_LostCivilization_GhostStone"],
+                rot=(math.radians(5), 0, math.radians(rot)),
+            )
+        cube_obj(
+            f"WASTE_OranynRuins_BrokenGhostArch_{i:02d}_TopSpanHalfVisible",
+            ruins,
+            (x, y, 2.82),
+            (2.25, 0.22, 0.34),
+            mats["MAT_LostCivilization_GhostStone"],
+            rot=(math.radians(5), 0, math.radians(rot)),
+        )
+        bicone_mesh(
+            f"WASTE_OranynRuins_BrokenGhostArch_{i:02d}_CyanMemoryKeystone",
+            ruins,
+            (x, y - 0.12, 3.08),
+            0.18,
+            0.38,
+            mats["MAT_Worldroot_Cyan_Emission"],
+            sides=5,
+        )
+    for i, (x, y, z, rot) in enumerate([(-7.0, 9.6, 0.72, 12), (-5.2, 10.8, 1.05, 12), (-3.4, 12.0, 1.38, 12), (-1.6, 13.2, 1.72, 12)]):
+        cube_obj(
+            f"WASTE_OranynRuins_HalfVisibleStaircase_GhostStep_{i:02d}",
+            ruins,
+            (x, y, z),
+            (1.55, 0.48, 0.16),
+            mats["MAT_LostCivilization_GhostStone"],
+            rot=(0, 0, math.radians(rot)),
+        )
+    for i, (x, y, z, rot) in enumerate([(-11.4, 12.5, 2.5, -16), (-8.1, 15.1, 3.3, 5), (2.5, 14.2, 2.7, 18), (5.8, 12.6, 3.6, -8)]):
+        cube_obj(
+            f"WASTE_OranynRuins_FloatingGhostWallFragment_{i:02d}",
+            ruins,
+            (x, y, z),
+            (1.6, 0.18, 1.35),
+            mats["MAT_LostCivilization_GhostStone"],
+            rot=(math.radians(9), 0, math.radians(rot)),
+        )
     for i, (x, y, rot) in enumerate([(12.0, 5.0, 12), (15.5, 6.8, -10), (17.7, 4.0, 6)]):
         frustum_obj(f"WASTE_DeadGodShrine_BrokenRibMonolith_{i:02d}", ruins, (x, y, 1.55), 0.24, 0.14, 3.1, 5, mats["MAT_DeadGod_Stone"], rot=(math.radians(8), 0, math.radians(rot)))
     cube_obj("WASTE_DeadGodShrine_FallenIdolFace", ruins, (14.4, 5.6, 0.9), (2.4, 0.42, 1.35), mats["MAT_DeadGod_Stone"], rot=(math.radians(8), 0, math.radians(-12)))
@@ -1292,6 +1445,56 @@ def build_memory_wastes_camp_and_ruins(templates, collections, mats):
     cube_obj("WASTE_DeadGodShrine_FallenCrownArc_Left", ruins, (13.3, 5.35, 2.25), (0.32, 0.22, 2.25), mats["MAT_DeadGod_Shadow"], rot=(math.radians(-14), 0, math.radians(-18)))
     cube_obj("WASTE_DeadGodShrine_FallenCrownArc_Right", ruins, (15.3, 5.35, 2.25), (0.32, 0.22, 2.25), mats["MAT_DeadGod_Shadow"], rot=(math.radians(14), 0, math.radians(18)))
     cube_obj("WASTE_DeadGodShrine_BrokenNamePlate", ruins, (14.25, 4.7, 0.35), (2.2, 0.24, 0.28), mats["MAT_Stone_DarkCrevice"], rot=(0, 0, math.radians(-8)))
+    disc_mesh(
+        "WASTE_DeadGodShrine_FallenCircularHalo_PaleGoldSigil",
+        ruins,
+        (14.4, 5.0, 3.0),
+        2.25,
+        1.25,
+        mats["MAT_LostDivinity_PaleGold_Emission"],
+        sides=40,
+        rot=(math.radians(90), 0, math.radians(-8)),
+    )
+    cube_obj(
+        "WASTE_DeadGodShrine_FallenCircularHalo_BrokenGapShadow",
+        ruins,
+        (14.4, 4.86, 3.02),
+        (1.15, 0.08, 2.15),
+        mats["MAT_Stone_DarkCrevice"],
+        rot=(math.radians(90), 0, math.radians(28)),
+    )
+    cube_obj(
+        "WASTE_DeadGodShrine_CrackedStoneAltar",
+        ruins,
+        (14.4, 4.65, 0.74),
+        (2.45, 1.12, 0.54),
+        mats["MAT_DeadGod_Stone"],
+        rot=(0, 0, math.radians(-5)),
+    )
+    cube_obj(
+        "WASTE_DeadGodShrine_AltarCrack_PaleGoldLeak",
+        ruins,
+        (14.4, 4.10, 1.04),
+        (1.65, 0.07, 0.08),
+        mats["MAT_LostDivinity_PaleGold_Emission"],
+        rot=(0, 0, math.radians(-5)),
+    )
+    cube_obj(
+        "WASTE_DeadGodShrine_MissingNameRuneSlab",
+        ruins,
+        (12.65, 4.85, 0.52),
+        (1.15, 0.22, 0.64),
+        mats["MAT_Stone_DarkCrevice"],
+        rot=(math.radians(10), 0, math.radians(12)),
+    )
+    cube_obj(
+        "WASTE_DeadGodShrine_PaleGoldLightColumn_ErasedName",
+        ruins,
+        (14.4, 4.22, 2.1),
+        (0.38, 0.18, 2.35),
+        mats["MAT_LostDivinity_PaleGold_Emission"],
+        rot=(math.radians(4), 0, math.radians(-5)),
+    )
     for i, (x, y, rx, ry, rot) in enumerate([(19.0, -8.3, 2.6, 1.1, 18), (17.3, -6.7, 1.8, 0.78, 0), (21.2, -10.0, 1.5, 0.65, -22)]):
         disc_mesh(f"WASTE_RootRiftsAndStorms_VioletRootRift_{i:02d}", rifts, (x, y, 0.24), rx, ry, mats["MAT_MemoryStorm_Violet"], sides=24, rot=(0, 0, math.radians(rot)))
         cube_obj(f"WASTE_RootRiftsAndStorms_BlackRootTear_{i:02d}", rifts, (x, y, 0.32), (rx * 1.3, 0.18, 0.18), mats["MAT_Bark_DarkRoot"], rot=(0, 0, math.radians(rot)))
@@ -1332,6 +1535,39 @@ def build_memory_wastes_camp_and_ruins(templates, collections, mats):
         mats["MAT_MemoryStorm_Violet"],
         sides=5,
     )
+    bicone_mesh(
+        "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_PaleGoldMemoryCore",
+        rifts,
+        (0.0, 9.92, 2.75),
+        0.44,
+        3.85,
+        mats["MAT_LostDivinity_PaleGold_Emission"],
+        sides=6,
+    )
+    for i, angle in enumerate([0, 24, 50, 82, 122, 164, 204, 248, 292, 326]):
+        radians = math.radians(angle)
+        distance = 2.4 + (i % 3) * 0.75
+        x = math.cos(radians) * distance
+        y = 10.4 + math.sin(radians) * distance * 0.42
+        fiber = cube_obj(
+            f"WASTE_RootRiftsAndStorms_WorldrootSheddingRift_PulledRootFiber_{i:02d}",
+            rifts,
+            (x * 0.5, (y + 10.4) * 0.5, 0.82 + (i % 2) * 0.08),
+            (0.16, distance * 0.92, 0.12),
+            mats["MAT_Bark_DarkRoot"],
+            rot=(0, math.radians(4 if i % 2 == 0 else -4), radians - math.pi / 2),
+        )
+        disable_shadow(fiber)
+        if i % 2 == 0:
+            glow = cube_obj(
+                f"WASTE_RootRiftsAndStorms_WorldrootSheddingRift_NerveGlow_{i:02d}",
+                rifts,
+                (x * 0.42, (y + 10.4) * 0.5 - 0.04, 0.96),
+                (0.06, distance * 0.58, 0.06),
+                mats["MAT_MemoryStorm_Cyan" if i % 4 == 0 else "MAT_LostDivinity_PaleGold_Emission"],
+                rot=(0, math.radians(4), radians - math.pi / 2),
+            )
+            disable_shadow(glow)
     for i, (x, z, rot, mat_key) in enumerate(
         [
             (-2.4, 2.2, -18, "MAT_MemoryStorm_Cyan"),
@@ -1375,6 +1611,50 @@ def build_memory_wastes_camp_and_ruins(templates, collections, mats):
             mats[mat_key],
             rot=(math.radians(12), 0, math.radians(rot)),
         )
+    disc_mesh(
+        "WASTE_EchoBattlefield_CircularMemoryStain_BluePastOverlap",
+        ruins,
+        (-15.5, 1.2, 0.24),
+        5.0,
+        2.7,
+        mats["MAT_Echo_GhostBlueWhite"],
+        sides=36,
+        rot=(0, 0, math.radians(-10)),
+    )
+    for i, (x, y, rot) in enumerate([(-18.8, 3.2, -12), (-14.9, 4.5, 6), (-12.6, 0.2, 18)]):
+        cube_obj(
+            f"WASTE_EchoBattlefield_GhostBanner_{i:02d}_Pole",
+            ruins,
+            (x, y, 1.1),
+            (0.12, 0.12, 2.1),
+            mats["MAT_Path_DarkRootShadow"],
+            rot=(math.radians(6), 0, math.radians(rot)),
+        )
+        cube_obj(
+            f"WASTE_EchoBattlefield_GhostBanner_{i:02d}_TornEchoCloth",
+            ruins,
+            (x + 0.28, y - 0.08, 1.82),
+            (0.78, 0.06, 0.86),
+            mats["MAT_Echo_GhostBlueWhite"],
+            rot=(math.radians(6), 0, math.radians(rot)),
+        )
+    for i, (x, y, rot) in enumerate([(-17.0, 1.1, -28), (-15.2, -0.8, 18), (-13.1, 2.4, 7), (-19.0, 0.1, -8)]):
+        cube_obj(
+            f"WASTE_EchoBattlefield_EmbeddedWeapon_{i:02d}_BrokenSpear",
+            ruins,
+            (x, y, 0.72),
+            (0.10, 0.10, 1.35),
+            mats["MAT_Stone_Pilgrimage"],
+            rot=(math.radians(28), 0, math.radians(rot)),
+        )
+        cube_obj(
+            f"WASTE_EchoBattlefield_ShieldFragment_{i:02d}",
+            ruins,
+            (x + 0.4, y - 0.25, 0.32),
+            (0.72, 0.12, 0.48),
+            mats["MAT_Stone_MossyGray"],
+            rot=(math.radians(70), 0, math.radians(rot + 18)),
+        )
     for i, (x, y) in enumerate([(-15.5, 1.8), (-13.3, -0.4), (-18.2, 3.2), (-11.8, 3.8)]):
         make_character(f"WASTE_EchoBattlefield_LostSoldierEcho_{i:02d}", ruins, mats, (x, y, 0.15), role="enemy")
 
@@ -1409,6 +1689,8 @@ def build_memory_wastes_foliage_and_characters(templates, collections, mats):
     make_character("WASTE_Characters_PlayerPlaceholder_Foreground", chars, mats, (0, -16.1, 0.15), role="player")
     make_character("WASTE_Characters_MemoryKeeperStabilizer_QuestNpc", chars, mats, (1.9, -5.2, 0.15), role="npc", quest=True)
     make_character("WASTE_Characters_RootGuardianCampWarden", chars, mats, (-2.4, -5.5, 0.15), role="npc")
+    make_character("WASTE_Characters_SylvaenCampArchivist_SafeNpc", chars, mats, (-3.4, -3.8, 0.15), role="npc")
+    make_character("WASTE_Characters_SylvaenCampRootSinger_SafeNpc", chars, mats, (3.2, -5.2, 0.15), role="npc")
     make_character("WASTE_Characters_BlightrootRavager_RiftThreat", chars, mats, (18.8, -8.2, 0.15), role="enemy")
 
 
@@ -1435,9 +1717,12 @@ def setup_memory_wastes_lighting_camera(collections):
             (18.8, -8.2, 1.2, (0.55, 0.10, 0.90), 120),
             (0.0, 10.2, 3.4, (0.05, 0.82, 1.0), 165),
             (0.0, 10.4, 1.2, (0.55, 0.10, 0.90), 115),
+            (0.0, 10.2, 2.2, (1.0, 0.68, 0.20), 120),
             (14.3, 5.4, 1.5, (0.45, 0.10, 0.8), 90),
+            (14.4, 4.6, 2.4, (1.0, 0.72, 0.22), 95),
             (-4.0, 12.0, 2.6, (0.04, 0.95, 1.0), 70),
             (-15.2, 1.8, 1.8, (0.08, 0.8, 1.0), 85),
+            (-15.5, 1.2, 1.2, (0.48, 0.78, 1.0), 70),
         ]
     ):
         bpy.ops.object.light_add(type="POINT", location=(x, y, z))
@@ -1452,7 +1737,7 @@ def setup_memory_wastes_lighting_camera(collections):
     bpy.ops.object.camera_add(location=(0, -27.5, 4.4))
     camera = bpy.context.object
     camera.name = "WASTE_LightingRender_Camera_ThirdPersonFragmentedZone"
-    look_at(camera, Vector((0, -1.0, 2.35)))
+    look_at(camera, Vector((0, 2.4, 2.55)))
     camera.data.lens = 23
     camera.data.dof.use_dof = False
     bpy.context.scene.camera = camera
@@ -1496,16 +1781,17 @@ def build_memory_wastes_scene():
         OUT_ZONE3_MANIFEST,
         OUT_ZONE3_REPORT,
         [
-            "Fragmented terrain islands, root bridges, and dark void gaps communicate instability.",
-            "A central Sylvaen stabilization camp remains readable as the safe gameplay hub.",
-            "The Worldroot Shedding Rift is the strongest landmark and sits behind the safe camp as the zone's central threat.",
-            "Floating ruins, echo battlefield silhouettes, dead god shrine, and violet root rifts show memory shedding into reality.",
-            "Worldroot cyan and corruption violet separate helpful memory magic from unstable threats.",
+            "Fragmented terrain islands are named and staged as player spawn, Sylvaen camp, Oranyn ruins, Dead God Shrine, Echo Battlefield, and Worldroot Shedding Rift.",
+            "A central Sylvaen safe camp includes root shelter, Verdant banner, memory brazier, archive table, and Sylvaen NPC silhouettes.",
+            "The Worldroot Shedding Rift is the strongest landmark with cracked root fissure, cyan/gold/violet light, floating shards, and pulled root fibers.",
+            "Oranyn ruins use ghostly white-green stone fragments, broken arches, floating walls, and half-visible stairs.",
+            "Echo Battlefield and Dead God Shrine now show past-overlap details rather than generic void shapes.",
+            "Worldroot cyan, pale lost-divinity gold, ghost blue-white, muted moss, and violet rift accents separate the zone concepts.",
             "The scene remains stylized low-poly with chunky readable silhouettes.",
         ],
         [
             "Zone 3 is intentionally less safe and more broken than Thornveil and Elar'Thalas Approach.",
-            "The main route is still readable from the player camera through root bridges and pale stone markers.",
+            "The main route is still readable from the player camera through memory bridges, root strands, and pale stone markers.",
             "This is a visual target scene, not yet live gameplay terrain/collision.",
         ],
     )
@@ -1568,7 +1854,7 @@ This pass continues from the existing generated Elar'Thalas Approach and The Mem
 - Elar'Thalas before: useful sacred road blockout, but the Silent Gate, archive-city skyline, Greenspire camp, and High Elf intrusion read as simple primitive clusters.
 - Elar'Thalas after: the approach road now has a raised organic rootroad, foreground ward stones, inward-facing wardline scanner monoliths, a much larger Silent Gate hero landmark, Greenspire forward camp silhouettes, automated root-stone constructs, and a silver-blue High Elf intrusion pocket with a broken ward.
 - Memory Wastes before: useful fragmented-island blockout, but the instability, dead god shrine, lost civilization echoes, and safe camp were too abstract.
-- Memory Wastes after: islands now have void drop shadows and broken edge strata, the safe camp has a cyan stabilization circle, floating ghost architecture is more readable, the dead god shrine has a stronger silhouette, and the Worldroot Shedding Rift is now the dominant memory-collapse landmark.
+- Memory Wastes after: islands now have clearer identities for Sylvaen camp, Oranyn ruins, Dead God Shrine, Echo Battlefield, and Worldroot Shedding Rift; the safe camp has root shelter, Verdant banner, memory brazier and archive table; the ruins use ghostly white-green half-manifested forms; the shrine has a fallen pale-gold halo; the battlefield has banners, weapons and blue silhouettes; the rift has pulled root fibers and cyan/gold/violet memory light.
 
 ## Elar'Thalas Approach V002
 - Output blend: {OUT_ZONE2_BLEND}
@@ -1609,9 +1895,9 @@ This pass continues from the existing generated Elar'Thalas Approach and The Mem
 ### Readability Notes
 - [x] Reads as a fragmented, unstable memory zone within 3 seconds.
 - [x] Central Sylvaen stabilization camp is readable as the safe hub.
-- [x] Root bridges and broken path stones show the intended route without final terrain work.
-- [x] Floating ruins, ghost architecture, dead god shrine, echo battlefield, and the Worldroot Shedding Rift create distinct landmarks.
-- [x] Cyan Worldroot magic and violet corruption are separated by color and placement.
+- [x] Root strands, memory bridges, and broken path stones show the intended route without final terrain work.
+- [x] Floating Oranyn ruins, ghost architecture, dead god shrine, echo battlefield, and the Worldroot Shedding Rift create distinct landmarks.
+- [x] Cyan Worldroot magic, pale lost-divinity gold, ghost blue-white, and violet rift accents are separated by color and placement.
 - [x] The scene remains stylized low-poly and non-photorealistic.
 
 ### Acceptance Criteria

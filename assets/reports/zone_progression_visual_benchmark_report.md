@@ -7,7 +7,7 @@ This pass continues from the existing generated Elar'Thalas Approach and The Mem
 - Elar'Thalas before: useful sacred road blockout, but the Silent Gate, archive-city skyline, Greenspire camp, and High Elf intrusion read as simple primitive clusters.
 - Elar'Thalas after: the approach road now has a raised organic rootroad, foreground ward stones, inward-facing wardline scanner monoliths, a much larger Silent Gate hero landmark, Greenspire forward camp silhouettes, automated root-stone constructs, and a silver-blue High Elf intrusion pocket with a broken ward.
 - Memory Wastes before: useful fragmented-island blockout, but the instability, dead god shrine, lost civilization echoes, and safe camp were too abstract.
-- Memory Wastes after: islands now have void drop shadows and broken edge strata, the safe camp has a cyan stabilization circle, floating ghost architecture is more readable, the dead god shrine has a stronger silhouette, and the Worldroot Shedding Rift is now the dominant memory-collapse landmark.
+- Memory Wastes after: islands now have clearer identities for Sylvaen camp, Oranyn ruins, Dead God Shrine, Echo Battlefield, and Worldroot Shedding Rift; the safe camp has root shelter, Verdant banner, memory brazier and archive table; the ruins use ghostly white-green half-manifested forms; the shrine has a fallen pale-gold halo; the battlefield has banners, weapons and blue silhouettes; the rift has pulled root fibers and cyan/gold/violet memory light.
 
 ## Elar'Thalas Approach V002
 - Output blend: C:\Users\Admin\Documents\New project\WorldofEldara-analysis\assets\blender\elarthalas_approach_visual_benchmark_v002.blend
@@ -40,17 +40,17 @@ This pass continues from the existing generated Elar'Thalas Approach and The Mem
 - Output blend: C:\Users\Admin\Documents\New project\WorldofEldara-analysis\assets\blender\memory_wastes_visual_benchmark_v002.blend
 - Output GLB: C:\Users\Admin\Documents\New project\WorldofEldara-analysis\assets\exports\memory_wastes_visual_benchmark_v002.glb
 - Render 2560x1440: C:\Users\Admin\Documents\New project\WorldofEldara-analysis\assets\renders\memory_wastes_visual_benchmark_v002_2560x1440.png
-- Objects: 186
-- Approximate triangles: 3668
+- Objects: 280
+- Approximate triangles: 4925
 - Default primitive names: 0
 - Non-MAT materials: 0
 
 ### Readability Notes
 - [x] Reads as a fragmented, unstable memory zone within 3 seconds.
 - [x] Central Sylvaen stabilization camp is readable as the safe hub.
-- [x] Root bridges and broken path stones show the intended route without final terrain work.
-- [x] Floating ruins, ghost architecture, dead god shrine, echo battlefield, and the Worldroot Shedding Rift create distinct landmarks.
-- [x] Cyan Worldroot magic and violet corruption are separated by color and placement.
+- [x] Root strands, memory bridges, and broken path stones show the intended route without final terrain work.
+- [x] Floating Oranyn ruins, ghost architecture, dead god shrine, echo battlefield, and the Worldroot Shedding Rift create distinct landmarks.
+- [x] Cyan Worldroot magic, pale lost-divinity gold, ghost blue-white, and violet rift accents are separated by color and placement.
 - [x] The scene remains stylized low-poly and non-photorealistic.
 
 ### Acceptance Criteria

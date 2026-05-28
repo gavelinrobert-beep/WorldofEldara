@@ -27,8 +27,8 @@
       "role": "fragmented unstable open zone where memory sheds into reality",
       "render": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\memory_wastes_visual_benchmark_v002_1920x1080.png",
       "manifest": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\reports\\memory_wastes_visual_benchmark_v002_manifest.json",
-      "object_count": 186,
-      "approximate_total_triangles": 3668
+      "object_count": 280,
+      "approximate_total_triangles": 4925
     }
   ],
   "avoid": [

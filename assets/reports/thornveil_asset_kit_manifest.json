@@ -1,0 +1,488 @@
+{
+  "kit": "thornveil_modular_asset_kit_v001",
+  "style": "stylized low-poly MMORPG, hand-painted color blocks, non-photorealistic",
+  "collections": [
+    "KIT_ARCHITECTURE",
+    "KIT_WORLDROOT_PROPS",
+    "KIT_VILLAGE_PROPS",
+    "KIT_FOLIAGE",
+    "KIT_LINEUP_STAGE",
+    "KIT_LIGHTING_RENDER"
+  ],
+  "object_count": 28,
+  "objects": [
+    {
+      "name": "ARCH_Sylvaen_TreehouseModule",
+      "category": "architecture",
+      "collection": "KIT_ARCHITECTURE",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Bark_WarmBrown",
+        "MAT_Leaves_DeepGreen",
+        "MAT_Worldroot_Cyan_Emission",
+        "MAT_Wood_GoldenTrim"
+      ],
+      "approximate_triangles": 140,
+      "origin": [
+        -9.6,
+        -9.0,
+        0.0
+      ]
+    },
+    {
+      "name": "ARCH_Sylvaen_ArchedDoorway",
+      "category": "architecture",
+      "collection": "KIT_ARCHITECTURE",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Bark_WarmBrown",
+        "MAT_Worldroot_Cyan_Emission",
+        "MAT_Stone_MossyGray"
+      ],
+      "approximate_triangles": 92,
+      "origin": [
+        -6.4,
+        -9.0,
+        0.0
+      ]
+    },
+    {
+      "name": "ARCH_Sylvaen_BalconyPlatform",
+      "category": "architecture",
+      "collection": "KIT_ARCHITECTURE",
+      "materials": [
+        "MAT_Bark_WarmBrown",
+        "MAT_Bark_DarkRoot",
+        "MAT_Wood_GoldenTrim"
+      ],
+      "approximate_triangles": 132,
+      "origin": [
+        -3.3,
+        -9.0,
+        0.0
+      ]
+    },
+    {
+      "name": "ARCH_Sylvaen_RootBridgeStraight",
+      "category": "architecture",
+      "collection": "KIT_ARCHITECTURE",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Bark_WarmBrown",
+        "MAT_Wood_GoldenTrim"
+      ],
+      "approximate_triangles": 164,
+      "origin": [
+        -0.1,
+        -9.0,
+        0.0
+      ]
+    },
+    {
+      "name": "ARCH_Sylvaen_RootBridgeCurved",
+      "category": "architecture",
+      "collection": "KIT_ARCHITECTURE",
+      "materials": [
+        "MAT_Bark_WarmBrown",
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 272,
+      "origin": [
+        3.2,
+        -9.0,
+        0.0
+      ]
+    },
+    {
+      "name": "ARCH_Sylvaen_StairSegment",
+      "category": "architecture",
+      "collection": "KIT_ARCHITECTURE",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 120,
+      "origin": [
+        6.2,
+        -9.0,
+        0.0
+      ]
+    },
+    {
+      "name": "ARCH_Sylvaen_RailingSegment",
+      "category": "architecture",
+      "collection": "KIT_ARCHITECTURE",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Wood_GoldenTrim",
+        "MAT_Bark_WarmBrown"
+      ],
+      "approximate_triangles": 60,
+      "origin": [
+        9.1,
+        -9.0,
+        0.0
+      ]
+    },
+    {
+      "name": "PROPS_Worldroot_CyanCrystalClusterSmall",
+      "category": "worldroot",
+      "collection": "KIT_WORLDROOT_PROPS",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission",
+        "MAT_Rune_Cyan_Emission",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 48,
+      "origin": [
+        -9.6,
+        -2.8,
+        0.0
+      ]
+    },
+    {
+      "name": "PROPS_Worldroot_CyanCrystalClusterMedium",
+      "category": "worldroot",
+      "collection": "KIT_WORLDROOT_PROPS",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission",
+        "MAT_Rune_Cyan_Emission",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 48,
+      "origin": [
+        -6.6,
+        -2.8,
+        0.0
+      ]
+    },
+    {
+      "name": "PROPS_Worldroot_CyanCrystalClusterLarge",
+      "category": "worldroot",
+      "collection": "KIT_WORLDROOT_PROPS",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission",
+        "MAT_Rune_Cyan_Emission",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 48,
+      "origin": [
+        -3.5,
+        -2.8,
+        0.0
+      ]
+    },
+    {
+      "name": "PROPS_Worldroot_VerdantRuneMonolith",
+      "category": "worldroot",
+      "collection": "KIT_WORLDROOT_PROPS",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Rune_Cyan_Emission",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 36,
+      "origin": [
+        -0.4,
+        -2.8,
+        0.0
+      ]
+    },
+    {
+      "name": "PROPS_Worldroot_WaypointStone",
+      "category": "worldroot",
+      "collection": "KIT_WORLDROOT_PROPS",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Worldroot_Cyan_Emission",
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 62,
+      "origin": [
+        2.4,
+        -2.8,
+        0.0
+      ]
+    },
+    {
+      "name": "PROPS_Worldroot_MemoryEchoMarker",
+      "category": "worldroot",
+      "collection": "KIT_WORLDROOT_PROPS",
+      "materials": [
+        "MAT_Echo_Transparent",
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 60,
+      "origin": [
+        5.3,
+        -2.8,
+        0.0
+      ]
+    },
+    {
+      "name": "PROPS_Worldroot_GlowingRootVein",
+      "category": "worldroot",
+      "collection": "KIT_WORLDROOT_PROPS",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 36,
+      "origin": [
+        8.5,
+        -2.8,
+        0.0
+      ]
+    },
+    {
+      "name": "PROPS_Village_LanternPost",
+      "category": "village",
+      "collection": "KIT_VILLAGE_PROPS",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Wood_GoldenTrim",
+        "MAT_Lantern_Warm_Emission",
+        "MAT_Bark_WarmBrown"
+      ],
+      "approximate_triangles": 60,
+      "origin": [
+        -9.6,
+        3.2,
+        0.0
+      ]
+    },
+    {
+      "name": "PROPS_Village_BannerPost",
+      "category": "village",
+      "collection": "KIT_VILLAGE_PROPS",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Banner_VerdantGreen",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 60,
+      "origin": [
+        -6.4,
+        3.2,
+        0.0
+      ]
+    },
+    {
+      "name": "PROPS_Village_WoodenBench",
+      "category": "village",
+      "collection": "KIT_VILLAGE_PROPS",
+      "materials": [
+        "MAT_Bark_WarmBrown",
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 48,
+      "origin": [
+        -3.2,
+        3.2,
+        0.0
+      ]
+    },
+    {
+      "name": "PROPS_Village_Signpost",
+      "category": "village",
+      "collection": "KIT_VILLAGE_PROPS",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Bark_WarmBrown",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 48,
+      "origin": [
+        -0.1,
+        3.2,
+        0.0
+      ]
+    },
+    {
+      "name": "PROPS_Village_SmallShrinePedestal",
+      "category": "village",
+      "collection": "KIT_VILLAGE_PROPS",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Bark_WarmBrown",
+        "MAT_Worldroot_Cyan_Emission"
+      ],
+      "approximate_triangles": 60,
+      "origin": [
+        3.0,
+        3.2,
+        0.0
+      ]
+    },
+    {
+      "name": "PROPS_Village_HangingLantern",
+      "category": "village",
+      "collection": "KIT_VILLAGE_PROPS",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Bark_WarmBrown",
+        "MAT_Lantern_Warm_Emission",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 48,
+      "origin": [
+        6.0,
+        3.2,
+        0.0
+      ]
+    },
+    {
+      "name": "FOLIAGE_FernCluster",
+      "category": "foliage",
+      "collection": "KIT_FOLIAGE",
+      "materials": [
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 60,
+      "origin": [
+        -9.6,
+        8.0,
+        0.0
+      ]
+    },
+    {
+      "name": "FOLIAGE_BroadLeafPlant",
+      "category": "foliage",
+      "collection": "KIT_FOLIAGE",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 128,
+      "origin": [
+        -7.0,
+        8.0,
+        0.0
+      ]
+    },
+    {
+      "name": "FOLIAGE_PurpleFlower",
+      "category": "foliage",
+      "collection": "KIT_FOLIAGE",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Flower_Purple",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 80,
+      "origin": [
+        -4.4,
+        8.0,
+        0.0
+      ]
+    },
+    {
+      "name": "FOLIAGE_BlueFlower",
+      "category": "foliage",
+      "collection": "KIT_FOLIAGE",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Flower_Blue",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 80,
+      "origin": [
+        -2.1,
+        8.0,
+        0.0
+      ]
+    },
+    {
+      "name": "FOLIAGE_GlowingMushroom",
+      "category": "foliage",
+      "collection": "KIT_FOLIAGE",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Mushroom_Pink",
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 88,
+      "origin": [
+        0.2,
+        8.0,
+        0.0
+      ]
+    },
+    {
+      "name": "FOLIAGE_MossPatch",
+      "category": "foliage",
+      "collection": "KIT_FOLIAGE",
+      "materials": [
+        "MAT_Moss",
+        "MAT_Leaves_DeepGreen"
+      ],
+      "approximate_triangles": 26,
+      "origin": [
+        2.8,
+        8.0,
+        0.0
+      ]
+    },
+    {
+      "name": "FOLIAGE_HangingVine",
+      "category": "foliage",
+      "collection": "KIT_FOLIAGE",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 48,
+      "origin": [
+        5.4,
+        8.0,
+        0.0
+      ]
+    },
+    {
+      "name": "FOLIAGE_SmallMossyRock",
+      "category": "foliage",
+      "collection": "KIT_FOLIAGE",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 38,
+      "origin": [
+        8.2,
+        8.0,
+        0.0
+      ]
+    }
+  ],
+  "material_names": [
+    "MAT_Banner_VerdantGreen",
+    "MAT_Bark_DarkRoot",
+    "MAT_Bark_WarmBrown",
+    "MAT_Echo_Transparent",
+    "MAT_Flower_Blue",
+    "MAT_Flower_Purple",
+    "MAT_GoldTrim",
+    "MAT_Label_Dark",
+    "MAT_Lantern_Warm_Emission",
+    "MAT_Leaves_DeepGreen",
+    "MAT_Leaves_LightGreen",
+    "MAT_Lineup_Base",
+    "MAT_Moss",
+    "MAT_Mushroom_Pink",
+    "MAT_Rune_Cyan_Emission",
+    "MAT_Stone_MossyGray",
+    "MAT_Wood_GoldenTrim",
+    "MAT_Worldroot_Cyan_Emission"
+  ],
+  "approximate_total_triangles": 2190,
+  "outputs": {
+    "blend": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\blender\\thornveil_modular_asset_kit_v001.blend",
+    "glb": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\exports\\thornveil_modular_asset_kit_v001.glb",
+    "lineup_render": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\thornveil_modular_asset_kit_v001_lineup_1920x1080.png"
+  },
+  "notes": [
+    "Each requested asset is a separate mesh object with a base/snap-point origin.",
+    "Architecture pieces are modular but still intentionally chunky and readable.",
+    "Materials use MAT_ names and simple saturated colors with emission for magical props."
+  ]
+}

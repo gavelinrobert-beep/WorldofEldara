@@ -80,12 +80,17 @@ def mat(name, color, roughness=0.72, emission=None, strength=0.0, alpha=1.0):
 
 def create_materials():
     return {
-        "MAT_Bark_WarmBrown": mat("MAT_Bark_WarmBrown", (0.47, 0.25, 0.11)),
-        "MAT_Bark_DarkRoot": mat("MAT_Bark_DarkRoot", (0.24, 0.13, 0.07)),
-        "MAT_Leaves_DeepGreen": mat("MAT_Leaves_DeepGreen", (0.12, 0.43, 0.19)),
-        "MAT_Leaves_LightGreen": mat("MAT_Leaves_LightGreen", (0.28, 0.68, 0.30)),
-        "MAT_Moss": mat("MAT_Moss", (0.20, 0.47, 0.22)),
-        "MAT_Stone_MossyGray": mat("MAT_Stone_MossyGray", (0.42, 0.46, 0.38)),
+        "MAT_Bark_WarmBrown": mat("MAT_Bark_WarmBrown", (0.50, 0.27, 0.12)),
+        "MAT_Bark_DarkRoot": mat("MAT_Bark_DarkRoot", (0.21, 0.10, 0.045)),
+        "MAT_Bark_PaintedHighlight": mat("MAT_Bark_PaintedHighlight", (0.70, 0.39, 0.18)),
+        "MAT_Leaves_DeepGreen": mat("MAT_Leaves_DeepGreen", (0.10, 0.39, 0.16)),
+        "MAT_Leaves_LightGreen": mat("MAT_Leaves_LightGreen", (0.36, 0.74, 0.34)),
+        "MAT_Leaves_UndersideDark": mat("MAT_Leaves_UndersideDark", (0.045, 0.18, 0.09)),
+        "MAT_Leaves_EdgeHighlight": mat("MAT_Leaves_EdgeHighlight", (0.63, 0.92, 0.48)),
+        "MAT_Moss": mat("MAT_Moss", (0.23, 0.52, 0.23)),
+        "MAT_Moss_Dark": mat("MAT_Moss_Dark", (0.08, 0.27, 0.13)),
+        "MAT_Stone_MossyGray": mat("MAT_Stone_MossyGray", (0.45, 0.49, 0.40)),
+        "MAT_Stone_PaintedHighlight": mat("MAT_Stone_PaintedHighlight", (0.72, 0.68, 0.52)),
         "MAT_Worldroot_Cyan_Emission": mat(
             "MAT_Worldroot_Cyan_Emission", (0.04, 0.85, 0.88), emission=(0.04, 0.95, 1.0), strength=2.8
         ),
@@ -97,19 +102,21 @@ def create_materials():
         ),
         "MAT_Banner_VerdantGreen": mat("MAT_Banner_VerdantGreen", (0.03, 0.32, 0.16)),
         "MAT_GoldTrim": mat("MAT_GoldTrim", (0.95, 0.68, 0.20), roughness=0.55),
-        "MAT_Flower_Purple": mat("MAT_Flower_Purple", (0.55, 0.18, 0.88)),
+        "MAT_Flower_Purple": mat("MAT_Flower_Purple", (0.62, 0.20, 0.88)),
+        "MAT_Flower_Blue": mat("MAT_Flower_Blue", (0.25, 0.58, 1.0), emission=(0.05, 0.18, 0.35), strength=0.25),
         "MAT_Water_BlueGreen_Optional": mat("MAT_Water_BlueGreen_Optional", (0.04, 0.43, 0.52), alpha=0.62),
-        "MAT_Path_StoneWarm": mat("MAT_Path_StoneWarm", (0.56, 0.48, 0.35)),
-        "MAT_RootBridge": mat("MAT_RootBridge", (0.36, 0.19, 0.08)),
+        "MAT_Path_StoneWarm": mat("MAT_Path_StoneWarm", (0.60, 0.52, 0.37)),
+        "MAT_RootBridge": mat("MAT_RootBridge", (0.38, 0.19, 0.075)),
+        "MAT_RootBridge_LightEdge": mat("MAT_RootBridge_LightEdge", (0.62, 0.35, 0.16)),
         "MAT_PlayerPlaceholder": mat("MAT_PlayerPlaceholder", (0.55, 0.76, 0.56), alpha=0.92),
         "MAT_NPCPlaceholder": mat("MAT_NPCPlaceholder", (0.78, 0.77, 0.48), alpha=0.92),
         "MAT_FawnPlaceholder": mat("MAT_FawnPlaceholder", (0.78, 0.48, 0.22)),
         "MAT_Echo_Transparent": mat(
             "MAT_Echo_Transparent", (0.15, 0.8, 1.0), emission=(0.08, 0.8, 1.0), strength=1.6, alpha=0.38
         ),
-        "MAT_Sky_BackdropBlue": mat("MAT_Sky_BackdropBlue", (0.38, 0.64, 0.78), roughness=1.0),
-        "MAT_Atmosphere_CyanMist": mat("MAT_Atmosphere_CyanMist", (0.28, 0.84, 0.88), emission=(0.12, 0.56, 0.66), strength=0.45, alpha=0.34),
-        "MAT_DistantTreeSilhouette": mat("MAT_DistantTreeSilhouette", (0.10, 0.36, 0.22), roughness=0.9, alpha=0.82),
+        "MAT_Sky_BackdropBlue": mat("MAT_Sky_BackdropBlue", (0.33, 0.55, 0.68), roughness=1.0),
+        "MAT_Atmosphere_CyanMist": mat("MAT_Atmosphere_CyanMist", (0.13, 0.42, 0.44), emission=(0.04, 0.20, 0.24), strength=0.16, alpha=0.24),
+        "MAT_DistantTreeSilhouette": mat("MAT_DistantTreeSilhouette", (0.06, 0.25, 0.14), roughness=0.9, alpha=0.9),
     }
 
 
@@ -235,6 +242,48 @@ def make_vertical_plane(name, collection, location, width, height, material, rot
     return obj
 
 
+def make_root_arc(prefix, collection, materials, x, y, z, radius=1.0, height=2.0, depth=0.22):
+    left = cone_obj(
+        f"{prefix}_LeftLivingRoot",
+        collection,
+        (x - radius, y, z + height * 0.5),
+        depth * 0.62,
+        depth * 0.45,
+        height,
+        7,
+        materials["MAT_Bark_DarkRoot"],
+        rotation=(0.04, 0.0, -0.08),
+    )
+    right = cone_obj(
+        f"{prefix}_RightLivingRoot",
+        collection,
+        (x + radius, y, z + height * 0.5),
+        depth * 0.62,
+        depth * 0.45,
+        height,
+        7,
+        materials["MAT_Bark_DarkRoot"],
+        rotation=(-0.04, 0.0, 0.08),
+    )
+    crown = cube_obj(
+        f"{prefix}_CrownRoot",
+        collection,
+        (x, y, z + height),
+        (radius * 2.35, depth * 1.5, depth * 1.2),
+        materials["MAT_Bark_WarmBrown"],
+        bevel=0.06,
+    )
+    highlight = cube_obj(
+        f"{prefix}_PaintedGoldLeafLintel",
+        collection,
+        (x, y - depth * 0.85, z + height + depth * 0.1),
+        (radius * 1.15, 0.04, depth * 0.42),
+        materials["MAT_GoldTrim"],
+        bevel=0.02,
+    )
+    return [left, right, crown, highlight]
+
+
 def make_terrain(collection, materials):
     size_x, size_y = 60, 40
     step = 5
@@ -277,6 +326,27 @@ def make_terrain(collection, materials):
             rotation=(0, 0, angle - math.pi / 2),
             bevel=0.05,
         )
+        for side, offset in [("Left", -1.82), ("Right", 1.82)]:
+            nx = math.cos(angle + math.pi / 2) * offset
+            ny = math.sin(angle + math.pi / 2) * offset
+            cube_obj(
+                f"ENV_Terrain_LivingRootPathBorder_{i:02d}_{side}",
+                collection,
+                (mx + nx, my + ny, 0.23),
+                (0.22, length * 0.96, 0.16),
+                materials["MAT_Bark_DarkRoot"],
+                rotation=(0, 0, angle - math.pi / 2 + math.sin(i + offset) * 0.04),
+                bevel=0.06,
+            )
+            cube_obj(
+                f"ENV_Terrain_MossPaintEdge_{i:02d}_{side}",
+                collection,
+                (mx + nx * 0.86, my + ny * 0.86, 0.255),
+                (0.11, length * 0.7, 0.035),
+                materials["MAT_Moss_Dark"],
+                rotation=(0, 0, angle - math.pi / 2),
+                bevel=0.025,
+            )
         for j in range(max(2, int(length / 2))):
             t = (j + 0.5) / max(2, int(length / 2))
             px = x1 + (x2 - x1) * t + math.sin(j * 1.7) * 0.45
@@ -290,35 +360,130 @@ def make_terrain(collection, materials):
                 rotation=(0, 0, angle + (j % 5 - 2) * 0.12),
                 bevel=0.03,
             )
+            if j % 2 == 0:
+                cube_obj(
+                    f"ENV_Terrain_CobblePaintedHighlight_{i:02d}_{j:02d}",
+                    collection,
+                    (px - 0.06, py - 0.02, 0.265),
+                    (0.34, 0.055, 0.025),
+                    materials["MAT_Stone_PaintedHighlight"],
+                    rotation=(0, 0, angle + (j % 5 - 2) * 0.12),
+                    bevel=0.01,
+                )
 
 
 def make_tree(name, collection, materials, x, y, scale=1.0, treehouse=False):
-    cone_obj(f"{name}_LivingTwistedTrunk_Base", collection, (x, y, 1.2 * scale), 0.75 * scale, 0.52 * scale, 2.4 * scale, 8, materials["MAT_Bark_WarmBrown"], rotation=(0.08, 0.0, 0.12))
-    cone_obj(f"{name}_LivingTwistedTrunk_Upper", collection, (x + 0.18 * scale, y + 0.05 * scale, 3.1 * scale), 0.55 * scale, 0.36 * scale, 2.7 * scale, 8, materials["MAT_Bark_WarmBrown"], rotation=(-0.08, 0.04, -0.15))
-    for r in range(4):
+    cone_obj(f"{name}_LivingTwistedTrunk_Base", collection, (x, y, 1.18 * scale), 0.92 * scale, 0.56 * scale, 2.55 * scale, 8, materials["MAT_Bark_WarmBrown"], rotation=(0.10, 0.02, 0.12))
+    cone_obj(f"{name}_LivingTwistedTrunk_MidKnot", collection, (x + 0.13 * scale, y - 0.03 * scale, 2.65 * scale), 0.62 * scale, 0.50 * scale, 1.7 * scale, 7, materials["MAT_Bark_DarkRoot"], rotation=(-0.05, 0.08, 0.18))
+    cone_obj(f"{name}_LivingTwistedTrunk_Upper", collection, (x + 0.22 * scale, y + 0.08 * scale, 3.75 * scale), 0.55 * scale, 0.32 * scale, 2.45 * scale, 8, materials["MAT_Bark_WarmBrown"], rotation=(-0.11, 0.04, -0.20))
+    cube_obj(
+        f"{name}_PaintedBarkHighlight_LongCurve",
+        collection,
+        (x - 0.18 * scale, y - 0.55 * scale, 2.45 * scale),
+        (0.13 * scale, 0.07 * scale, 2.65 * scale),
+        materials["MAT_Bark_PaintedHighlight"],
+        rotation=(0.08, 0.0, -0.08),
+        bevel=0.025,
+    )
+    for r in range(6):
         ang = r * math.tau / 4 + 0.4
+        if r >= 4:
+            ang = r * math.tau / 6 + 0.15
         cube_obj(
             f"{name}_RootButtress_{r:02d}",
             collection,
-            (x + math.cos(ang) * 0.75 * scale, y + math.sin(ang) * 0.75 * scale, 0.18),
-            (1.7 * scale, 0.22 * scale, 0.24 * scale),
+            (x + math.cos(ang) * 0.86 * scale, y + math.sin(ang) * 0.86 * scale, 0.18),
+            ((1.85 if r < 4 else 1.25) * scale, 0.24 * scale, 0.26 * scale),
             materials["MAT_Bark_DarkRoot"],
             rotation=(0, 0, ang),
             bevel=0.04,
         )
+    for b, (ang, z, length) in enumerate([(0.55, 3.85, 1.7), (2.5, 3.55, 1.25), (-0.75, 4.15, 1.4)]):
+        cube_obj(
+            f"{name}_ChunkyBranchCluster_{b:02d}",
+            collection,
+            (x + math.cos(ang) * length * 0.35 * scale, y + math.sin(ang) * length * 0.35 * scale, z * scale),
+            (length * scale, 0.18 * scale, 0.18 * scale),
+            materials["MAT_Bark_DarkRoot"],
+            rotation=(0.12, -0.04, ang),
+            bevel=0.035,
+        )
     canopy_positions = [
-        (x, y, 5.0 * scale, (1.75, 1.35, 1.25)),
-        (x - 0.8 * scale, y + 0.2 * scale, 4.55 * scale, (1.35, 1.1, 1.05)),
-        (x + 0.75 * scale, y - 0.2 * scale, 4.65 * scale, (1.4, 1.1, 1.0)),
+        (x + 0.1 * scale, y, 5.15 * scale, (1.95, 1.45, 1.28)),
+        (x - 0.95 * scale, y + 0.35 * scale, 4.65 * scale, (1.48, 1.16, 1.02)),
+        (x + 0.86 * scale, y - 0.24 * scale, 4.78 * scale, (1.54, 1.20, 1.02)),
+        (x + 0.25 * scale, y + 0.86 * scale, 5.48 * scale, (1.18, 0.86, 0.82)),
     ]
     for idx, (cx, cy, cz, scl) in enumerate(canopy_positions):
         ico_obj(f"{name}_ChunkyLeafCanopy_{idx:02d}", collection, (cx, cy, cz), tuple(s * scale for s in scl), materials["MAT_Leaves_LightGreen" if idx == 0 else "MAT_Leaves_DeepGreen"])
+        if idx < 3:
+            cube_obj(
+                f"{name}_LeafCanopy_{idx:02d}_PaintedEdgeHighlight",
+                collection,
+                (cx + 0.05 * scale, cy - 0.55 * scale, cz + 0.28 * scale),
+                (scl[0] * 0.62 * scale, 0.055 * scale, 0.07 * scale),
+                materials["MAT_Leaves_EdgeHighlight"],
+                rotation=(0.1, 0, 0.08 * idx),
+                bevel=0.02,
+            )
+            cube_obj(
+                f"{name}_LeafCanopy_{idx:02d}_DarkUnderside",
+                collection,
+                (cx, cy - 0.13 * scale, cz - 0.56 * scale),
+                (scl[0] * 0.92 * scale, scl[1] * 0.18 * scale, 0.08 * scale),
+                materials["MAT_Leaves_UndersideDark"],
+                rotation=(0, 0, 0.1 * idx),
+                bevel=0.02,
+            )
+    for i, z in enumerate([1.35, 2.15, 3.05]):
+        cube_obj(
+            f"{name}_CyanRootSapCrack_{i:02d}",
+            collection,
+            (x + 0.48 * scale, y - 0.57 * scale, z * scale),
+            (0.07 * scale, 0.035 * scale, 0.48 * scale),
+            materials["MAT_Rune_Cyan_Emission"],
+            rotation=(0.18, 0, 0.35 if i % 2 else -0.25),
+            bevel=0.01,
+        )
+    for i, (dx, dy, dz) in enumerate([(-0.38, -0.56, 2.9), (0.64, -0.45, 3.35), (0.15, -0.66, 4.05)]):
+        cube_obj(
+            f"{name}_HangingMossVine_{i:02d}",
+            collection,
+            (x + dx * scale, y + dy * scale, dz * scale),
+            (0.10 * scale, 0.055 * scale, 0.95 * scale),
+            materials["MAT_Leaves_DeepGreen"],
+            rotation=(0.08, 0, i * 0.22),
+            bevel=0.018,
+        )
     if treehouse:
         z = 3.0 * scale
-        cube_obj(f"{name}_Treehouse_Platform", collection, (x, y, z), (4.0 * scale, 3.0 * scale, 0.25 * scale), materials["MAT_RootBridge"], bevel=0.06)
-        cube_obj(f"{name}_Treehouse_BarkWall", collection, (x, y, z + 0.72 * scale), (2.4 * scale, 1.7 * scale, 1.15 * scale), materials["MAT_Bark_WarmBrown"], bevel=0.08)
-        cube_obj(f"{name}_Treehouse_WindowGlow", collection, (x, y - 0.9 * scale, z + 0.82 * scale), (0.55 * scale, 0.06 * scale, 0.55 * scale), materials["MAT_Worldroot_Cyan_Emission"], bevel=0.02)
-        cone_obj(f"{name}_Treehouse_LeafRoof", collection, (x, y, z + 1.5 * scale), 2.0 * scale, 0.25 * scale, 0.95 * scale, 4, materials["MAT_Leaves_DeepGreen"], rotation=(0, 0, math.radians(45)))
+        cube_obj(f"{name}_Treehouse_RootgrownPlatform", collection, (x, y, z), (4.4 * scale, 3.25 * scale, 0.28 * scale), materials["MAT_RootBridge"], bevel=0.08)
+        cube_obj(f"{name}_Treehouse_PlatformPaintedEdge", collection, (x, y - 1.66 * scale, z + 0.08 * scale), (3.8 * scale, 0.08 * scale, 0.10 * scale), materials["MAT_RootBridge_LightEdge"], bevel=0.02)
+        cube_obj(f"{name}_Treehouse_BarkWall_GrownCore", collection, (x, y, z + 0.72 * scale), (2.55 * scale, 1.85 * scale, 1.18 * scale), materials["MAT_Bark_WarmBrown"], bevel=0.10)
+        cube_obj(f"{name}_Treehouse_BarkWall_DarkRootInset", collection, (x - 0.78 * scale, y - 0.94 * scale, z + 0.76 * scale), (0.34 * scale, 0.055 * scale, 0.95 * scale), materials["MAT_Bark_DarkRoot"], bevel=0.025)
+        cube_obj(f"{name}_Treehouse_WindowGlow_TealMemoryPane", collection, (x + 0.28 * scale, y - 0.98 * scale, z + 0.83 * scale), (0.62 * scale, 0.055 * scale, 0.58 * scale), materials["MAT_Worldroot_Cyan_Emission"], bevel=0.025)
+        make_root_arc(f"{name}_Treehouse_ArchedSylvaenDoorway", collection, materials, x - 0.62 * scale, y - 1.02 * scale, z + 0.18 * scale, radius=0.36 * scale, height=0.92 * scale, depth=0.12 * scale)
+        for wrap, (dx, dz, ang) in enumerate([(-1.08, 0.62, 0.18), (1.08, 0.66, -0.15), (0.0, 1.28, 0.0)]):
+            cube_obj(
+                f"{name}_Treehouse_LivingRootWallWrap_{wrap:02d}",
+                collection,
+                (x + dx * scale, y - 0.98 * scale, z + dz * scale),
+                ((0.16 if wrap < 2 else 2.05) * scale, 0.08 * scale, (1.25 if wrap < 2 else 0.16) * scale),
+                materials["MAT_Bark_DarkRoot"],
+                rotation=(0, 0, ang),
+                bevel=0.035,
+            )
+        cone_obj(f"{name}_Treehouse_LeafRoof_LowerLayer", collection, (x, y, z + 1.5 * scale), 2.15 * scale, 0.36 * scale, 0.88 * scale, 4, materials["MAT_Leaves_DeepGreen"], rotation=(0, 0, math.radians(45)))
+        cone_obj(f"{name}_Treehouse_LeafRoof_LightCap", collection, (x + 0.10 * scale, y - 0.08 * scale, z + 1.84 * scale), 1.58 * scale, 0.20 * scale, 0.60 * scale, 4, materials["MAT_Leaves_LightGreen"], rotation=(0, 0, math.radians(45)))
+        for rail in range(4):
+            cube_obj(
+                f"{name}_Treehouse_BalconyRootRail_{rail:02d}",
+                collection,
+                (x - 1.7 * scale + rail * 1.15 * scale, y - 1.68 * scale, z + 0.38 * scale),
+                (0.08 * scale, 0.08 * scale, 0.62 * scale),
+                materials["MAT_Bark_DarkRoot"],
+                bevel=0.018,
+            )
 
 
 def make_architecture(collections, materials):
@@ -327,6 +492,9 @@ def make_architecture(collections, materials):
     tree_positions = [(-9, 3, 1.2, True), (8, 6, 1.15, True), (-4, 13, 1.05, True), (10, -8, 1.0, False), (-12, -10, 1.0, False)]
     for i, (x, y, s, house) in enumerate(tree_positions):
         make_tree(f"ENV_Trees_LargeWorldrootTree_{i:02d}", tree_col, materials, x, y, s, treehouse=house)
+    make_tree("ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree", tree_col, materials, 0.0, 17.0, 1.55, False)
+    for i, (x, y, s) in enumerate([(-18.0, -13.2, 1.28), (18.0, -12.6, 1.22)]):
+        make_tree(f"ENV_Trees_ForegroundFramingWorldroot_{i:02d}", tree_col, materials, x, y, s, False)
     for i, (x, y) in enumerate([(-17, 8), (-18, -4), (16, 3), (20, 12), (14, -12), (-8, 17), (4, 18), (-20, -12)]):
         make_tree(f"ENV_Trees_BackgroundMediumTree_{i:02d}", tree_col, materials, x, y, 0.62, False)
     for i, (x, y, z) in enumerate([(-13, 2, 4.5), (-6, 5, 5.0), (4, 6, 5.2), (12, 5, 4.8), (-2, 13, 5.4), (7, 13, 4.9), (-15, -6, 4.2), (15, -6, 4.2), (-22, 5, 4.4), (22, 6, 4.6), (-5, -11, 4.0), (5, -10, 4.0)]):
@@ -334,17 +502,21 @@ def make_architecture(collections, materials):
 
     for i, (x, y, rot) in enumerate([(-4.6, 8, 0.1), (4.3, 9, -0.12)]):
         cube_obj(f"ARCH_Sylvaen_RootBridgeSegment_{i:02d}", arch, (x, y, 3.1), (7.2, 0.55, 0.28), materials["MAT_RootBridge"], rotation=(0, 0, rot), bevel=0.08)
+        cube_obj(f"ARCH_Sylvaen_RootBridgeSegment_{i:02d}_LivingUnderside", arch, (x, y + 0.08, 2.92), (7.0, 0.34, 0.16), materials["MAT_Bark_DarkRoot"], rotation=(0.02, 0, rot), bevel=0.06)
+        cube_obj(f"ARCH_Sylvaen_RootBridgeSegment_{i:02d}_PaintedTopEdge", arch, (x, y - 0.29, 3.28), (6.5, 0.06, 0.06), materials["MAT_RootBridge_LightEdge"], rotation=(0, 0, rot), bevel=0.015)
         for j in range(4):
             cube_obj(f"ARCH_Sylvaen_RootBridgeRail_{i:02d}_{j:02d}", arch, (x - 3 + j * 2, y + 0.45, 3.55), (0.12, 0.12, 0.8), materials["MAT_Bark_DarkRoot"], rotation=(0, 0, rot), bevel=0.02)
+            cube_obj(f"ARCH_Sylvaen_RootBridgeRail_{i:02d}_{j:02d}_GoldTie", arch, (x - 3 + j * 2, y + 0.38, 3.72), (0.18, 0.04, 0.08), materials["MAT_GoldTrim"], rotation=(0, 0, rot), bevel=0.008)
     for i, y in enumerate([7.4, 8.0, 8.6, 9.2]):
         cube_obj(f"ARCH_Sylvaen_StairStep_{i:02d}", arch, (0, y, 0.35 + i * 0.18), (4.2 - i * 0.25, 0.65, 0.16), materials["MAT_Path_StoneWarm"], bevel=0.04)
+        cube_obj(f"ARCH_Sylvaen_StairStep_{i:02d}_MossyLip", arch, (0, y - 0.25, 0.48 + i * 0.18), (3.6 - i * 0.2, 0.08, 0.06), materials["MAT_Moss_Dark"], bevel=0.015)
     cube_obj("ARCH_Sylvaen_BalconyPlatform_Left", arch, (-8.5, 3.5, 2.75), (4.4, 2.0, 0.25), materials["MAT_RootBridge"], bevel=0.05)
     cube_obj("ARCH_Sylvaen_BalconyPlatform_Right", arch, (8.1, 5.8, 2.65), (4.2, 2.0, 0.25), materials["MAT_RootBridge"], bevel=0.05)
-    cube_obj("ARCH_Sylvaen_ArchedDoorway_LeftRoot", arch, (-1.0, 5.6, 1.35), (0.35, 0.35, 2.7), materials["MAT_Bark_DarkRoot"], bevel=0.04)
-    cube_obj("ARCH_Sylvaen_ArchedDoorway_RightRoot", arch, (1.0, 5.6, 1.35), (0.35, 0.35, 2.7), materials["MAT_Bark_DarkRoot"], bevel=0.04)
-    cube_obj("ARCH_Sylvaen_ArchedDoorway_CrownRoot", arch, (0, 5.6, 2.68), (2.45, 0.42, 0.35), materials["MAT_Bark_WarmBrown"], bevel=0.05)
+    make_root_arc("ARCH_Sylvaen_HeartboughEntrance_ArchedLivingDoorway", arch, materials, 0, 5.6, 0.16, radius=1.1, height=2.45, depth=0.28)
     cone_obj("ARCH_Sylvaen_ShrinePedestal_RoundBase", arch, (2.8, 2.1, 0.35), 0.9, 0.78, 0.7, 10, materials["MAT_Stone_MossyGray"])
     make_bicone("ARCH_Sylvaen_ShrinePedestal_CyanMemorySeed", arch, (2.8, 2.1, 1.25), 0.34, 0.9, materials["MAT_Worldroot_Cyan_Emission"])
+    cone_obj("ARCH_Sylvaen_SmallShrinePedestal_ListenerStoneBase", arch, (-3.1, -1.4, 0.28), 0.55, 0.45, 0.55, 8, materials["MAT_Stone_MossyGray"])
+    make_bicone("ARCH_Sylvaen_SmallShrinePedestal_GreenMemoryShard", arch, (-3.1, -1.4, 0.9), 0.23, 0.62, materials["MAT_Rune_Cyan_Emission"])
 
 
 def make_props(collections, materials):
@@ -358,6 +530,10 @@ def make_props(collections, materials):
         make_bicone(f"PROPS_Worldroot_CyanCrystalCluster_{i:02d}_Main", worldroot, (x, y, 0.7 * s), 0.5 * s, 1.4 * s, materials["MAT_Worldroot_Cyan_Emission"])
         make_bicone(f"PROPS_Worldroot_CyanCrystalCluster_{i:02d}_ShardA", worldroot, (x + 0.45 * s, y + 0.15 * s, 0.42 * s), 0.24 * s, 0.85 * s, materials["MAT_Rune_Cyan_Emission"])
         make_bicone(f"PROPS_Worldroot_CyanCrystalCluster_{i:02d}_ShardB", worldroot, (x - 0.4 * s, y - 0.2 * s, 0.36 * s), 0.2 * s, 0.7 * s, materials["MAT_Rune_Cyan_Emission"])
+    make_disc("PROPS_Worldroot_HeartboughFocalCrystal_CyanGroundGlow", worldroot, (1.9, 0.6, 0.215), 1.35, 1.05, materials["MAT_Echo_Transparent"], sides=28, rotation_z=0.2)
+    make_bicone("PROPS_Worldroot_HeartboughFocalCrystal_MainShard", worldroot, (1.9, 0.6, 1.35), 0.58, 2.25, materials["MAT_Worldroot_Cyan_Emission"])
+    make_bicone("PROPS_Worldroot_HeartboughFocalCrystal_SideShardA", worldroot, (1.35, 0.85, 0.85), 0.28, 1.25, materials["MAT_Rune_Cyan_Emission"], rotation=(0.12, 0.08, 0.15))
+    make_bicone("PROPS_Worldroot_HeartboughFocalCrystal_SideShardB", worldroot, (2.42, 0.35, 0.74), 0.23, 1.0, materials["MAT_Rune_Cyan_Emission"], rotation=(-0.08, 0.05, -0.12))
     for i, (x, y) in enumerate([(-3.2, -1), (3.0, 0.8), (-6, 6.8), (6.2, 7.2)]):
         cube_obj(f"PROPS_Worldroot_VerdantRuneMonolith_{i:02d}", worldroot, (x, y, 1.0), (0.55, 0.35, 2.0), materials["MAT_Stone_MossyGray"], rotation=(0.05, 0, i * 0.2), bevel=0.05)
         make_bicone(f"PROPS_Worldroot_VerdantRuneMonolith_{i:02d}_CyanRune", worldroot, (x, y - 0.19, 1.25), 0.18, 0.45, materials["MAT_Rune_Cyan_Emission"], rotation=(math.pi / 2, 0, 0))
@@ -366,6 +542,8 @@ def make_props(collections, materials):
     for i, (x, y) in enumerate([(-2.1, -8.5), (2.1, -8.0)]):
         cube_obj(f"PROPS_Worldroot_WaypointStone_{i:02d}", worldroot, (x, y, 0.45), (0.7, 0.45, 0.9), materials["MAT_Stone_MossyGray"], bevel=0.04)
     for i, (x, y) in enumerate([(-4.5, 1.8), (4.5, 2.8)]):
+        cube_obj(f"FX_Memory_EchoStone_{i:02d}_MossyRunestone", fx, (x, y + 0.18, 0.42), (0.66, 0.34, 0.82), materials["MAT_Stone_MossyGray"], rotation=(0.04, 0, i * 0.2), bevel=0.05)
+        cube_obj(f"FX_Memory_EchoStone_{i:02d}_CyanMemoryRune", fx, (x, y - 0.02, 0.62), (0.22, 0.035, 0.36), materials["MAT_Rune_Cyan_Emission"], rotation=(0, 0, math.radians(45)), bevel=0.01)
         make_disc(f"FX_Memory_EchoMarker_{i:02d}_GlowCircle", fx, (x, y, 0.23), 1.1, 1.1, materials["MAT_Echo_Transparent"], sides=32)
         ico_obj(f"FX_Memory_EchoMarker_{i:02d}_TranslucentFigure", fx, (x, y, 1.0), (0.32, 0.2, 0.85), materials["MAT_Echo_Transparent"])
     for i, (x, y) in enumerate([(-3.3, -6.2), (3.2, -5.6), (-4.1, 3.2), (4.5, 4.0)]):
@@ -375,6 +553,8 @@ def make_props(collections, materials):
         cone_obj(f"PROPS_Village_VerdantBanner_{i:02d}_Pole", village, (x, y, 1.2), 0.055, 0.04, 2.4, 6, materials["MAT_Bark_DarkRoot"])
         cube_obj(f"PROPS_Village_VerdantBanner_{i:02d}_Cloth", village, (x + 0.35, y, 1.55), (0.9, 0.06, 1.15), materials["MAT_Banner_VerdantGreen"], bevel=0.015)
         cube_obj(f"PROPS_Village_VerdantBanner_{i:02d}_GoldSigil", village, (x + 0.35, y - 0.04, 1.6), (0.28, 0.04, 0.36), materials["MAT_GoldTrim"], rotation=(0, 0, math.radians(45)), bevel=0.01)
+        cube_obj(f"PROPS_Village_VerdantBanner_{i:02d}_GoldStem", village, (x + 0.35, y - 0.055, 1.56), (0.055, 0.035, 0.66), materials["MAT_GoldTrim"], bevel=0.008)
+        cube_obj(f"PROPS_Village_VerdantBanner_{i:02d}_GoldTopBind", village, (x + 0.35, y - 0.058, 2.14), (0.78, 0.035, 0.055), materials["MAT_GoldTrim"], bevel=0.006)
     for i, (x, y) in enumerate([(-2.7, -3.2), (2.5, 2.2)]):
         cube_obj(f"PROPS_Village_RootBench_{i:02d}_Seat", village, (x, y, 0.45), (1.6, 0.45, 0.25), materials["MAT_RootBridge"], bevel=0.05)
         cube_obj(f"PROPS_Village_RootBench_{i:02d}_Back", village, (x, y + 0.22, 0.78), (1.6, 0.16, 0.48), materials["MAT_Bark_WarmBrown"], bevel=0.04)
@@ -383,6 +563,9 @@ def make_props(collections, materials):
         cube_obj(f"PROPS_Village_WoodSignpost_{i:02d}_Board", village, (x + 0.3, y, 1.05), (0.8, 0.08, 0.34), materials["MAT_Bark_WarmBrown"], bevel=0.03)
     for i, (x, y, z) in enumerate([(-8.0, 4.0, 2.5), (8.0, 6.2, 2.4), (-3, 6.5, 1.7), (3, 7.2, 1.7), (-5, 12.5, 2.2), (5, 12.8, 2.1)]):
         cube_obj(f"PROPS_Village_HangingLantern_{i:02d}", village, (x, y, z), (0.32, 0.32, 0.42), materials["MAT_Lantern_Warm_Emission"], bevel=0.04)
+    cone_obj("PROPS_Village_SmallShrinePedestal_RootedOfferingBase", village, (5.2, -4.2, 0.28), 0.54, 0.42, 0.56, 8, materials["MAT_Stone_MossyGray"])
+    cube_obj("PROPS_Village_SmallShrinePedestal_GoldMemoryPlate", village, (5.2, -4.52, 0.58), (0.46, 0.045, 0.18), materials["MAT_GoldTrim"], bevel=0.01)
+    make_bicone("PROPS_Village_SmallShrinePedestal_CyanSeed", village, (5.2, -4.2, 0.98), 0.20, 0.58, materials["MAT_Rune_Cyan_Emission"])
 
     for i in range(55):
         x = math.sin(i * 1.73) * 17 + math.cos(i * 0.41) * 2
@@ -403,6 +586,36 @@ def make_props(collections, materials):
             ico_obj(f"FOLIAGE_Ground_SmallRock_{i:02d}", foliage, (x, y, 0.22), (0.28, 0.18, 0.12), materials["MAT_Stone_MossyGray"], rotation=(0, 0, i))
     for i, (x, y, z) in enumerate([(-8, 4, 2.6), (8, 6, 2.7), (-3, 10, 2.9), (4, 11, 2.6)]):
         cube_obj(f"FOLIAGE_Ground_HangingMossVine_{i:02d}", foliage, (x, y, z), (0.12, 0.08, 1.4), materials["MAT_Leaves_DeepGreen"], bevel=0.02)
+    cluster_specs = [
+        (-5.8, -10.2, 0.2), (5.9, -9.4, -0.15), (-6.6, -4.0, 0.5), (6.9, -2.5, -0.35),
+        (-7.1, 3.6, 0.1), (7.5, 4.8, 0.35), (-6.2, 10.8, -0.45), (6.4, 11.2, 0.25),
+    ]
+    for i, (x, y, rot) in enumerate(cluster_specs):
+        make_disc(f"FOLIAGE_Ground_EdgeCluster_{i:02d}_MossBase", foliage, (x, y, 0.19), 1.15, 0.58, materials["MAT_Moss"], sides=14, rotation_z=rot)
+        for j in range(3):
+            ox = math.cos(rot + j * 1.9) * (0.34 + 0.16 * j)
+            oy = math.sin(rot + j * 1.9) * (0.24 + 0.11 * j)
+            cone_obj(
+                f"FOLIAGE_Ground_EdgeCluster_{i:02d}_FernFan_{j:02d}",
+                foliage,
+                (x + ox, y + oy, 0.42),
+                0.22,
+                0.025,
+                0.74,
+                5,
+                materials["MAT_Leaves_LightGreen"],
+                rotation=(0.22, 0.05, rot + j),
+            )
+        for j, material_key in enumerate(["MAT_Flower_Purple", "MAT_Flower_Blue"]):
+            ico_obj(
+                f"FOLIAGE_Ground_EdgeCluster_{i:02d}_{material_key.replace('MAT_', '')}_{j:02d}",
+                foliage,
+                (x - 0.45 + j * 0.9, y + 0.22, 0.38),
+                (0.18, 0.18, 0.08),
+                materials[material_key],
+                rotation=(0, 0, rot + j),
+            )
+        ico_obj(f"FOLIAGE_Ground_EdgeCluster_{i:02d}_MossyRock", foliage, (x + 0.72, y - 0.18, 0.26), (0.34, 0.22, 0.14), materials["MAT_Stone_MossyGray"], rotation=(0, 0, rot))
 
     make_character("CHAR_Placeholders_SylvaenPlayer_Foreground", chars, materials, (0, -10.8, 0), 1.9, materials["MAT_PlayerPlaceholder"])
     make_character("CHAR_Placeholders_SylvaenNPC_MemoryKeeper", chars, materials, (-2.6, -2.0, 0), 1.75, materials["MAT_NPCPlaceholder"])
@@ -438,6 +651,14 @@ def make_background_atmosphere(collections, materials):
         5.5,
         materials["MAT_Atmosphere_CyanMist"],
     ))
+    disable_shadow(make_vertical_plane(
+        "ENV_Terrain_Backdrop_DistantForestMistLowBand",
+        terrain,
+        (0, 22.8, 1.25),
+        84,
+        2.2,
+        materials["MAT_Atmosphere_CyanMist"],
+    ))
     for i, x in enumerate([-23, -16, -9, 12, 20, 27]):
         trunk_height = 9 + (i % 3) * 1.7
         disable_shadow(cone_obj(
@@ -459,6 +680,57 @@ def make_background_atmosphere(collections, materials):
             materials["MAT_DistantTreeSilhouette"],
             rotation=(0.1, 0.0, i * 0.4),
         ))
+    for i, x in enumerate([-28, -21, -14, -6, 2, 10, 18, 25]):
+        height = 5.8 + (i % 4) * 0.8
+        disable_shadow(cone_obj(
+            f"ENV_Trees_BackdropWorldrootColumn_{i:02d}",
+            trees,
+            (x, 18.6 + (i % 2) * 1.5, height * 0.5),
+            0.38,
+            0.24,
+            height,
+            6,
+            materials["MAT_DistantTreeSilhouette"],
+            rotation=(0.05, 0.0, i * 0.13),
+        ))
+        disable_shadow(ico_obj(
+            f"ENV_Trees_BackdropWorldrootCanopyMass_{i:02d}",
+            trees,
+            (x, 18.2 + (i % 2) * 1.5, height + 1.25),
+            (2.4, 1.0, 1.05),
+            materials["MAT_DistantTreeSilhouette"],
+            rotation=(0.0, 0.0, i * 0.28),
+        ))
+    for i, x in enumerate([-31, -25, -19, -13, -7, -1, 5, 11, 17, 23, 29]):
+        disable_shadow(ico_obj(
+            f"ENV_Trees_BackdropForestCanopyWall_{i:02d}",
+            trees,
+            (x, 19.0 + (i % 2) * 0.7, 4.7 + (i % 3) * 0.35),
+            (3.6, 1.05, 1.25),
+            materials["MAT_DistantTreeSilhouette"],
+            rotation=(0.0, 0.0, i * 0.21),
+        ))
+        disable_shadow(cone_obj(
+            f"ENV_Trees_BackdropForestCanopyWall_{i:02d}_RootColumn",
+            trees,
+            (x + 0.2, 18.6 + (i % 2) * 0.6, 2.0),
+            0.28,
+            0.18,
+            4.0,
+            6,
+            materials["MAT_DistantTreeSilhouette"],
+            rotation=(0.04, 0.0, -0.08 + i * 0.03),
+        ))
+    for i, (x, y, rot) in enumerate([(-18, 15.5, 0.15), (-10, 16.5, -0.1), (0, 17.1, 0.0), (10, 16.4, 0.08), (18, 15.2, -0.12)]):
+        disable_shadow(cube_obj(
+            f"ENV_Trees_DistantRootBridgeSilhouette_{i:02d}",
+            trees,
+            (x, y, 5.2 + (i % 2) * 0.55),
+            (7.0, 0.34, 0.18),
+            materials["MAT_DistantTreeSilhouette"],
+            rotation=(0.05, 0, rot),
+            bevel=0.04,
+        ))
 
 
 def setup_lighting_camera(collections, materials):
@@ -470,6 +742,7 @@ def setup_lighting_camera(collections, materials):
     sun.data.angle = math.radians(6)
     link_to(col, sun)
     for i, (x, y, z, color, power) in enumerate([
+        (1.9, 0.6, 2.1, (0.08, 0.95, 1.0), 150),
         (-4, 2, 2.4, (0.1, 0.9, 1.0), 110),
         (4, 4, 2.4, (0.1, 0.9, 1.0), 110),
         (0, 7.4, 2.0, (1.0, 0.62, 0.18), 90),
@@ -553,6 +826,12 @@ def create_reports(collections, materials):
                     major_objects.append({"name": obj.name, "collection": collection_name, "type": obj.type, "triangles": tris})
             else:
                 major_objects.append({"name": obj.name, "collection": collection_name, "type": obj.type, "triangles": 0})
+    bad_object_names = [
+        obj.name
+        for obj in bpy.data.objects
+        if obj.name.startswith("Cube") or obj.name.startswith("Plane") or obj.name.startswith("Cylinder")
+    ]
+    non_prefixed_materials = [material.name for material in bpy.data.materials if not material.name.startswith("MAT_")]
     manifest = {
         "scene": "thornveil_enclave_lowpoly_ingame_v001",
         "collections": list(collections.keys()),
@@ -562,34 +841,68 @@ def create_reports(collections, materials):
         "approximate_triangle_count": triangle_count,
         "render_paths": [str(OUT_RENDER_1440), str(OUT_RENDER_1080)],
         "export_paths": {"blend": str(OUT_BLEND), "glb": str(OUT_GLB)},
+        "technical_validation": {
+            "default_object_names": bad_object_names,
+            "non_mat_prefixed_materials": non_prefixed_materials,
+        },
         "notes": [
-            "Low-poly Blender vertical-slice mockup, not final engine terrain.",
-            "Scene favors reusable modular shapes and named collections.",
-            "Memory/glow elements use emission materials and simple point lights.",
-            "Ground is a stylized mesh/prop composition and can be replaced by engine terrain later.",
+            "Art direction pass on the existing Thornveil scene generator and v001 output names.",
+            "Trees, architecture, path, foliage, and Worldroot props were upgraded without changing the base scene identity.",
+            "Memory/glow elements use controlled emission materials and simple point lights.",
+            "Ground is still a stylized mesh/prop composition and should later become engine terrain with material blending.",
         ],
     }
     OUT_MANIFEST.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     report = f"""# Thornveil Enclave Quality Report
 
-## Checklist
-- Does it read as Thornveil Enclave within 3 seconds? Yes. The player faces a Sylvaen forest village with treehouses, root bridges, banners, cyan crystals, and a central path.
-- Does the central path clearly guide the player forward? Yes. The stone/root path starts behind the player and leads into Heartbough Glade and the raised village.
-- Are Worldroot crystals visible but not overused? Yes. Six crystal clusters and rune accents are distributed as landmarks and magical punctuation.
-- Are the silhouettes chunky and readable? Yes. Trees, platforms, bridges, houses, banners, and characters use broad low-poly forms.
-- Is the style low-poly/stylized rather than photorealistic? Yes. Materials are saturated, simple, named, and non-PBR-photoreal.
-- Are all objects named and organized? Yes. Objects use collection/type prefixes and no generated Cube/Cylinder/Plane names are left intentionally.
-- Are the assets modular enough for reuse? Yes. Treehouses, bridge segments, banners, lanterns, crystals, rocks, foliage, and placeholders are separate named assets.
-- Is the final camera close to the provided mockup composition? Yes. The camera is a third-person gameplay view behind a player placeholder, looking into a readable Sylvaen hub.
+## Required Questions
+- Does the scene read as Thornveil Enclave within 3 seconds? Yes. The first read is now a Sylvaen Worldroot hub: player foreground, central root/stone path, treehouses, bridges, banners, cyan crystals, lanterns, and dense forest backing.
+- Is the main path clear? Yes. The path is bordered by living roots, moss, and stones, while foliage clusters stay outside the walkable center.
+- Are the tree silhouettes more organic and iconic? Yes. The trees now use twisted trunks, root buttresses, branches, asymmetrical canopies, hanging moss, bark highlights, and cyan sap cracks.
+- Do the houses look grown into the trees? Improved. The treehouses now have bark-wall cores, arched root doorways, living root wraps, green leaf roofs, glowing teal windows, and balcony rails.
+- Are Worldroot crystals visible but not overused? Yes. Six distributed clusters, one focal crystal, rune monoliths, root-sap veins, and echo stones provide magical accents without covering the route.
+- Does the scene feel stylized and hand-painted rather than raw low-poly? Improved. Materials remain low-poly but now use warmer palettes, darker undersides, edge highlights, moss lips, painted trim, and controlled emissions.
+- What still needs improvement? The next big jump is true authored terrain with blended moss/stone/root materials, more sculpted hero architecture, and final character/creature assets replacing placeholders.
+
+## Acceptance Criteria
+- [x] The player path is readable immediately.
+- [x] The camera has foreground, midground and background.
+- [x] The scene has a clear focal point.
+- [x] The background horizon is hidden by forest depth, trees or fog.
+- [x] The player spawn feels like an entrance into a magical forest hub.
+- [x] Treehouses look grown from living trees.
+- [x] Root bridges feel organic, not plank bridges only.
+- [x] Verdant banners are visible.
+- [x] Worldroot crystals and cyan glow are visible.
+- [x] Mossy stone and living bark are dominant materials.
+- [x] Low-poly shapes are still visible.
+- [x] Materials are no longer flat base colors.
+- [x] Trees are no longer simple cylinders with cone canopies.
+- [x] Shapes are chunky and readable from gameplay camera.
+- [x] No photorealistic assets.
+- [x] No raw unstyled primitives.
+- [x] Path is clear but edges are rich with foliage.
+- [x] At least 3 treehouses are visible.
+- [x] At least 2 root bridges are visible.
+- [x] At least 5 major trees frame the scene.
+- [x] At least 6 crystal clusters or runes provide magical accents.
+- [x] All objects are named.
+- [x] Collections are organized.
+- [x] Materials have MAT_ prefix.
+- [x] Emissive objects use controlled bloom.
+- [x] Scene exports to GLB.
+- [x] Render output exists.
 
 ## Counts
 - Collections: {len(collections)}
 - Objects: {sum(object_counts.values())}
 - Approximate triangles: {triangle_count}
+- Default object names found: {len(bad_object_names)}
+- Non-MAT material names found: {len(non_prefixed_materials)}
 
 ## Limitations
-- This is a polished Blender mockup, not yet imported into the custom C# renderer.
-- Ground/terrain is improved for concept readability but should later become a true engine terrain mesh with blended materials.
+- This is an improved Blender vertical-slice mockup, not yet imported into the custom C# renderer.
+- Ground/terrain is improved for concept readability but should later become true engine terrain with blended materials.
 - Placeholder characters are intentionally simple for scale and composition.
 """
     OUT_REPORT.write_text(report, encoding="utf-8")

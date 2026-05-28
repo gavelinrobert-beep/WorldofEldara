@@ -12,15 +12,15 @@
     "LIGHTING_Render"
   ],
   "object_counts": {
-    "ENV_Terrain": 26,
-    "ENV_Trees": 153,
-    "ARCH_Sylvaen": 21,
-    "PROPS_Worldroot": 32,
-    "PROPS_Village": 34,
-    "FOLIAGE_Ground": 70,
+    "ENV_Terrain": 57,
+    "ENV_Trees": 585,
+    "ARCH_Sylvaen": 40,
+    "PROPS_Worldroot": 36,
+    "PROPS_Village": 45,
+    "FOLIAGE_Ground": 126,
     "CHAR_Placeholders": 14,
-    "FX_Memory": 4,
-    "LIGHTING_Render": 9
+    "FX_Memory": 8,
+    "LIGHTING_Render": 10
   },
   "major_objects": [
     {
@@ -54,7 +54,37 @@
       "triangles": 44
     },
     {
+      "name": "ENV_Terrain_LivingRootPathBorder_00_Left",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Terrain_MossPaintEdge_00_Left",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Terrain_LivingRootPathBorder_00_Right",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Terrain_MossPaintEdge_00_Right",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Terrain_Cobble_00_00",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Terrain_CobblePaintedHighlight_00_00",
       "collection": "ENV_Terrain",
       "type": "MESH",
       "triangles": 44
@@ -72,13 +102,49 @@
       "triangles": 44
     },
     {
+      "name": "ENV_Terrain_CobblePaintedHighlight_00_02",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Terrain_RootStonePath_Segment_01",
       "collection": "ENV_Terrain",
       "type": "MESH",
       "triangles": 44
     },
     {
+      "name": "ENV_Terrain_LivingRootPathBorder_01_Left",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Terrain_MossPaintEdge_01_Left",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Terrain_LivingRootPathBorder_01_Right",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Terrain_MossPaintEdge_01_Right",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Terrain_Cobble_01_00",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Terrain_CobblePaintedHighlight_01_00",
       "collection": "ENV_Terrain",
       "type": "MESH",
       "triangles": 44
@@ -96,13 +162,49 @@
       "triangles": 44
     },
     {
+      "name": "ENV_Terrain_CobblePaintedHighlight_01_02",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Terrain_RootStonePath_Segment_02",
       "collection": "ENV_Terrain",
       "type": "MESH",
       "triangles": 44
     },
     {
+      "name": "ENV_Terrain_LivingRootPathBorder_02_Left",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Terrain_MossPaintEdge_02_Left",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Terrain_LivingRootPathBorder_02_Right",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Terrain_MossPaintEdge_02_Right",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Terrain_Cobble_02_00",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Terrain_CobblePaintedHighlight_02_00",
       "collection": "ENV_Terrain",
       "type": "MESH",
       "triangles": 44
@@ -120,13 +222,49 @@
       "triangles": 44
     },
     {
+      "name": "ENV_Terrain_CobblePaintedHighlight_02_02",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Terrain_RootStonePath_Segment_03",
       "collection": "ENV_Terrain",
       "type": "MESH",
       "triangles": 44
     },
     {
+      "name": "ENV_Terrain_LivingRootPathBorder_03_Left",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Terrain_MossPaintEdge_03_Left",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Terrain_LivingRootPathBorder_03_Right",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Terrain_MossPaintEdge_03_Right",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Terrain_Cobble_03_00",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Terrain_CobblePaintedHighlight_03_00",
       "collection": "ENV_Terrain",
       "type": "MESH",
       "triangles": 44
@@ -144,13 +282,49 @@
       "triangles": 44
     },
     {
+      "name": "ENV_Terrain_CobblePaintedHighlight_03_02",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Terrain_RootStonePath_Segment_04",
       "collection": "ENV_Terrain",
       "type": "MESH",
       "triangles": 44
     },
     {
+      "name": "ENV_Terrain_LivingRootPathBorder_04_Left",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Terrain_MossPaintEdge_04_Left",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Terrain_LivingRootPathBorder_04_Right",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Terrain_MossPaintEdge_04_Right",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Terrain_Cobble_04_00",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Terrain_CobblePaintedHighlight_04_00",
       "collection": "ENV_Terrain",
       "type": "MESH",
       "triangles": 44
@@ -168,6 +342,12 @@
       "triangles": 44
     },
     {
+      "name": "ENV_Terrain_CobblePaintedHighlight_04_02",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Terrain_Backdrop_SoftMorningSky",
       "collection": "ENV_Terrain",
       "type": "MESH",
@@ -180,16 +360,34 @@
       "triangles": 2
     },
     {
+      "name": "ENV_Terrain_Backdrop_DistantForestMistLowBand",
+      "collection": "ENV_Terrain",
+      "type": "MESH",
+      "triangles": 2
+    },
+    {
       "name": "ENV_Trees_LargeWorldrootTree_00_LivingTwistedTrunk_Base",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 28
     },
     {
+      "name": "ENV_Trees_LargeWorldrootTree_00_LivingTwistedTrunk_MidKnot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
       "name": "ENV_Trees_LargeWorldrootTree_00_LivingTwistedTrunk_Upper",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 28
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_PaintedBarkHighlight_LongCurve",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_LargeWorldrootTree_00_RootButtress_00",
@@ -216,10 +414,52 @@
       "triangles": 44
     },
     {
+      "name": "ENV_Trees_LargeWorldrootTree_00_RootButtress_04",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_RootButtress_05",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_ChunkyBranchCluster_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_ChunkyBranchCluster_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_ChunkyBranchCluster_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_LargeWorldrootTree_00_ChunkyLeafCanopy_00",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_LeafCanopy_00_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_LeafCanopy_00_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_LargeWorldrootTree_00_ChunkyLeafCanopy_01",
@@ -228,34 +468,184 @@
       "triangles": 20
     },
     {
+      "name": "ENV_Trees_LargeWorldrootTree_00_LeafCanopy_01_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_LeafCanopy_01_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_LargeWorldrootTree_00_ChunkyLeafCanopy_02",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
     },
     {
-      "name": "ENV_Trees_LargeWorldrootTree_00_Treehouse_Platform",
+      "name": "ENV_Trees_LargeWorldrootTree_00_LeafCanopy_02_PaintedEdgeHighlight",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 44
     },
     {
-      "name": "ENV_Trees_LargeWorldrootTree_00_Treehouse_BarkWall",
+      "name": "ENV_Trees_LargeWorldrootTree_00_LeafCanopy_02_DarkUnderside",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 44
     },
     {
-      "name": "ENV_Trees_LargeWorldrootTree_00_Treehouse_WindowGlow",
+      "name": "ENV_Trees_LargeWorldrootTree_00_ChunkyLeafCanopy_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_CyanRootSapCrack_00",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 44
     },
     {
-      "name": "ENV_Trees_LargeWorldrootTree_00_Treehouse_LeafRoof",
+      "name": "ENV_Trees_LargeWorldrootTree_00_CyanRootSapCrack_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_CyanRootSapCrack_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_HangingMossVine_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_HangingMossVine_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_HangingMossVine_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_Treehouse_RootgrownPlatform",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_Treehouse_PlatformPaintedEdge",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_Treehouse_BarkWall_GrownCore",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_Treehouse_BarkWall_DarkRootInset",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_Treehouse_WindowGlow_TealMemoryPane",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_Treehouse_ArchedSylvaenDoorway_LeftLivingRoot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_Treehouse_ArchedSylvaenDoorway_RightLivingRoot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_Treehouse_ArchedSylvaenDoorway_CrownRoot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_Treehouse_ArchedSylvaenDoorway_PaintedGoldLeafLintel",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_Treehouse_LivingRootWallWrap_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_Treehouse_LivingRootWallWrap_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_Treehouse_LivingRootWallWrap_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_Treehouse_LeafRoof_LowerLayer",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 12
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_Treehouse_LeafRoof_LightCap",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 12
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_Treehouse_BalconyRootRail_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_Treehouse_BalconyRootRail_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_Treehouse_BalconyRootRail_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_00_Treehouse_BalconyRootRail_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_LargeWorldrootTree_01_LivingTwistedTrunk_Base",
@@ -264,10 +654,22 @@
       "triangles": 28
     },
     {
+      "name": "ENV_Trees_LargeWorldrootTree_01_LivingTwistedTrunk_MidKnot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
       "name": "ENV_Trees_LargeWorldrootTree_01_LivingTwistedTrunk_Upper",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 28
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_PaintedBarkHighlight_LongCurve",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_LargeWorldrootTree_01_RootButtress_00",
@@ -294,10 +696,52 @@
       "triangles": 44
     },
     {
+      "name": "ENV_Trees_LargeWorldrootTree_01_RootButtress_04",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_RootButtress_05",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_ChunkyBranchCluster_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_ChunkyBranchCluster_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_ChunkyBranchCluster_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_LargeWorldrootTree_01_ChunkyLeafCanopy_00",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_LeafCanopy_00_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_LeafCanopy_00_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_LargeWorldrootTree_01_ChunkyLeafCanopy_01",
@@ -306,34 +750,184 @@
       "triangles": 20
     },
     {
+      "name": "ENV_Trees_LargeWorldrootTree_01_LeafCanopy_01_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_LeafCanopy_01_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_LargeWorldrootTree_01_ChunkyLeafCanopy_02",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
     },
     {
-      "name": "ENV_Trees_LargeWorldrootTree_01_Treehouse_Platform",
+      "name": "ENV_Trees_LargeWorldrootTree_01_LeafCanopy_02_PaintedEdgeHighlight",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 44
     },
     {
-      "name": "ENV_Trees_LargeWorldrootTree_01_Treehouse_BarkWall",
+      "name": "ENV_Trees_LargeWorldrootTree_01_LeafCanopy_02_DarkUnderside",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 44
     },
     {
-      "name": "ENV_Trees_LargeWorldrootTree_01_Treehouse_WindowGlow",
+      "name": "ENV_Trees_LargeWorldrootTree_01_ChunkyLeafCanopy_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_CyanRootSapCrack_00",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 44
     },
     {
-      "name": "ENV_Trees_LargeWorldrootTree_01_Treehouse_LeafRoof",
+      "name": "ENV_Trees_LargeWorldrootTree_01_CyanRootSapCrack_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_CyanRootSapCrack_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_HangingMossVine_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_HangingMossVine_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_HangingMossVine_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_Treehouse_RootgrownPlatform",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_Treehouse_PlatformPaintedEdge",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_Treehouse_BarkWall_GrownCore",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_Treehouse_BarkWall_DarkRootInset",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_Treehouse_WindowGlow_TealMemoryPane",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_Treehouse_ArchedSylvaenDoorway_LeftLivingRoot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_Treehouse_ArchedSylvaenDoorway_RightLivingRoot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_Treehouse_ArchedSylvaenDoorway_CrownRoot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_Treehouse_ArchedSylvaenDoorway_PaintedGoldLeafLintel",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_Treehouse_LivingRootWallWrap_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_Treehouse_LivingRootWallWrap_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_Treehouse_LivingRootWallWrap_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_Treehouse_LeafRoof_LowerLayer",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 12
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_Treehouse_LeafRoof_LightCap",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 12
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_Treehouse_BalconyRootRail_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_Treehouse_BalconyRootRail_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_Treehouse_BalconyRootRail_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_01_Treehouse_BalconyRootRail_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_LargeWorldrootTree_02_LivingTwistedTrunk_Base",
@@ -342,10 +936,22 @@
       "triangles": 28
     },
     {
+      "name": "ENV_Trees_LargeWorldrootTree_02_LivingTwistedTrunk_MidKnot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
       "name": "ENV_Trees_LargeWorldrootTree_02_LivingTwistedTrunk_Upper",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 28
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_PaintedBarkHighlight_LongCurve",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_LargeWorldrootTree_02_RootButtress_00",
@@ -372,10 +978,52 @@
       "triangles": 44
     },
     {
+      "name": "ENV_Trees_LargeWorldrootTree_02_RootButtress_04",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_RootButtress_05",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_ChunkyBranchCluster_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_ChunkyBranchCluster_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_ChunkyBranchCluster_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_LargeWorldrootTree_02_ChunkyLeafCanopy_00",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_LeafCanopy_00_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_LeafCanopy_00_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_LargeWorldrootTree_02_ChunkyLeafCanopy_01",
@@ -384,34 +1032,184 @@
       "triangles": 20
     },
     {
+      "name": "ENV_Trees_LargeWorldrootTree_02_LeafCanopy_01_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_LeafCanopy_01_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_LargeWorldrootTree_02_ChunkyLeafCanopy_02",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
     },
     {
-      "name": "ENV_Trees_LargeWorldrootTree_02_Treehouse_Platform",
+      "name": "ENV_Trees_LargeWorldrootTree_02_LeafCanopy_02_PaintedEdgeHighlight",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 44
     },
     {
-      "name": "ENV_Trees_LargeWorldrootTree_02_Treehouse_BarkWall",
+      "name": "ENV_Trees_LargeWorldrootTree_02_LeafCanopy_02_DarkUnderside",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 44
     },
     {
-      "name": "ENV_Trees_LargeWorldrootTree_02_Treehouse_WindowGlow",
+      "name": "ENV_Trees_LargeWorldrootTree_02_ChunkyLeafCanopy_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_CyanRootSapCrack_00",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 44
     },
     {
-      "name": "ENV_Trees_LargeWorldrootTree_02_Treehouse_LeafRoof",
+      "name": "ENV_Trees_LargeWorldrootTree_02_CyanRootSapCrack_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_CyanRootSapCrack_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_HangingMossVine_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_HangingMossVine_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_HangingMossVine_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_Treehouse_RootgrownPlatform",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_Treehouse_PlatformPaintedEdge",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_Treehouse_BarkWall_GrownCore",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_Treehouse_BarkWall_DarkRootInset",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_Treehouse_WindowGlow_TealMemoryPane",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_Treehouse_ArchedSylvaenDoorway_LeftLivingRoot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_Treehouse_ArchedSylvaenDoorway_RightLivingRoot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_Treehouse_ArchedSylvaenDoorway_CrownRoot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_Treehouse_ArchedSylvaenDoorway_PaintedGoldLeafLintel",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_Treehouse_LivingRootWallWrap_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_Treehouse_LivingRootWallWrap_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_Treehouse_LivingRootWallWrap_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_Treehouse_LeafRoof_LowerLayer",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 12
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_Treehouse_LeafRoof_LightCap",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 12
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_Treehouse_BalconyRootRail_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_Treehouse_BalconyRootRail_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_Treehouse_BalconyRootRail_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_02_Treehouse_BalconyRootRail_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_LargeWorldrootTree_03_LivingTwistedTrunk_Base",
@@ -420,10 +1218,22 @@
       "triangles": 28
     },
     {
+      "name": "ENV_Trees_LargeWorldrootTree_03_LivingTwistedTrunk_MidKnot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
       "name": "ENV_Trees_LargeWorldrootTree_03_LivingTwistedTrunk_Upper",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 28
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_03_PaintedBarkHighlight_LongCurve",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_LargeWorldrootTree_03_RootButtress_00",
@@ -450,10 +1260,52 @@
       "triangles": 44
     },
     {
+      "name": "ENV_Trees_LargeWorldrootTree_03_RootButtress_04",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_03_RootButtress_05",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_03_ChunkyBranchCluster_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_03_ChunkyBranchCluster_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_03_ChunkyBranchCluster_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_LargeWorldrootTree_03_ChunkyLeafCanopy_00",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_03_LeafCanopy_00_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_03_LeafCanopy_00_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_LargeWorldrootTree_03_ChunkyLeafCanopy_01",
@@ -462,10 +1314,76 @@
       "triangles": 20
     },
     {
+      "name": "ENV_Trees_LargeWorldrootTree_03_LeafCanopy_01_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_03_LeafCanopy_01_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_LargeWorldrootTree_03_ChunkyLeafCanopy_02",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_03_LeafCanopy_02_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_03_LeafCanopy_02_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_03_ChunkyLeafCanopy_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_03_CyanRootSapCrack_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_03_CyanRootSapCrack_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_03_CyanRootSapCrack_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_03_HangingMossVine_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_03_HangingMossVine_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_03_HangingMossVine_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_LargeWorldrootTree_04_LivingTwistedTrunk_Base",
@@ -474,10 +1392,22 @@
       "triangles": 28
     },
     {
+      "name": "ENV_Trees_LargeWorldrootTree_04_LivingTwistedTrunk_MidKnot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
       "name": "ENV_Trees_LargeWorldrootTree_04_LivingTwistedTrunk_Upper",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 28
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_04_PaintedBarkHighlight_LongCurve",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_LargeWorldrootTree_04_RootButtress_00",
@@ -504,10 +1434,52 @@
       "triangles": 44
     },
     {
+      "name": "ENV_Trees_LargeWorldrootTree_04_RootButtress_04",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_04_RootButtress_05",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_04_ChunkyBranchCluster_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_04_ChunkyBranchCluster_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_04_ChunkyBranchCluster_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_LargeWorldrootTree_04_ChunkyLeafCanopy_00",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_04_LeafCanopy_00_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_04_LeafCanopy_00_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_LargeWorldrootTree_04_ChunkyLeafCanopy_01",
@@ -516,10 +1488,598 @@
       "triangles": 20
     },
     {
+      "name": "ENV_Trees_LargeWorldrootTree_04_LeafCanopy_01_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_04_LeafCanopy_01_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_LargeWorldrootTree_04_ChunkyLeafCanopy_02",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_04_LeafCanopy_02_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_04_LeafCanopy_02_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_04_ChunkyLeafCanopy_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_04_CyanRootSapCrack_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_04_CyanRootSapCrack_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_04_CyanRootSapCrack_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_04_HangingMossVine_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_04_HangingMossVine_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_LargeWorldrootTree_04_HangingMossVine_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_LivingTwistedTrunk_Base",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 28
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_LivingTwistedTrunk_MidKnot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_LivingTwistedTrunk_Upper",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 28
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_PaintedBarkHighlight_LongCurve",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_RootButtress_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_RootButtress_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_RootButtress_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_RootButtress_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_RootButtress_04",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_RootButtress_05",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_ChunkyBranchCluster_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_ChunkyBranchCluster_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_ChunkyBranchCluster_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_ChunkyLeafCanopy_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_LeafCanopy_00_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_LeafCanopy_00_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_ChunkyLeafCanopy_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_LeafCanopy_01_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_LeafCanopy_01_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_ChunkyLeafCanopy_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_LeafCanopy_02_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_LeafCanopy_02_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_ChunkyLeafCanopy_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_CyanRootSapCrack_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_CyanRootSapCrack_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_CyanRootSapCrack_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_HangingMossVine_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_HangingMossVine_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundHeartboughWorldroot_GiantFocalTree_HangingMossVine_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_LivingTwistedTrunk_Base",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 28
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_LivingTwistedTrunk_MidKnot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_LivingTwistedTrunk_Upper",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 28
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_PaintedBarkHighlight_LongCurve",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_RootButtress_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_RootButtress_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_RootButtress_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_RootButtress_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_RootButtress_04",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_RootButtress_05",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_ChunkyBranchCluster_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_ChunkyBranchCluster_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_ChunkyBranchCluster_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_ChunkyLeafCanopy_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_LeafCanopy_00_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_LeafCanopy_00_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_ChunkyLeafCanopy_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_LeafCanopy_01_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_LeafCanopy_01_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_ChunkyLeafCanopy_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_LeafCanopy_02_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_LeafCanopy_02_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_ChunkyLeafCanopy_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_CyanRootSapCrack_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_CyanRootSapCrack_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_CyanRootSapCrack_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_HangingMossVine_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_HangingMossVine_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_00_HangingMossVine_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_LivingTwistedTrunk_Base",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 28
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_LivingTwistedTrunk_MidKnot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_LivingTwistedTrunk_Upper",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 28
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_PaintedBarkHighlight_LongCurve",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_RootButtress_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_RootButtress_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_RootButtress_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_RootButtress_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_RootButtress_04",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_RootButtress_05",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_ChunkyBranchCluster_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_ChunkyBranchCluster_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_ChunkyBranchCluster_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_ChunkyLeafCanopy_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_LeafCanopy_00_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_LeafCanopy_00_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_ChunkyLeafCanopy_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_LeafCanopy_01_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_LeafCanopy_01_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_ChunkyLeafCanopy_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_LeafCanopy_02_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_LeafCanopy_02_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_ChunkyLeafCanopy_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_CyanRootSapCrack_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_CyanRootSapCrack_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_CyanRootSapCrack_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_HangingMossVine_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_HangingMossVine_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_ForegroundFramingWorldroot_01_HangingMossVine_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_00_LivingTwistedTrunk_Base",
@@ -528,10 +2088,22 @@
       "triangles": 28
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_00_LivingTwistedTrunk_MidKnot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_00_LivingTwistedTrunk_Upper",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 28
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_00_PaintedBarkHighlight_LongCurve",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_00_RootButtress_00",
@@ -558,10 +2130,52 @@
       "triangles": 44
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_00_RootButtress_04",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_00_RootButtress_05",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_00_ChunkyBranchCluster_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_00_ChunkyBranchCluster_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_00_ChunkyBranchCluster_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_00_ChunkyLeafCanopy_00",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_00_LeafCanopy_00_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_00_LeafCanopy_00_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_00_ChunkyLeafCanopy_01",
@@ -570,10 +2184,76 @@
       "triangles": 20
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_00_LeafCanopy_01_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_00_LeafCanopy_01_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_00_ChunkyLeafCanopy_02",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_00_LeafCanopy_02_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_00_LeafCanopy_02_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_00_ChunkyLeafCanopy_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_00_CyanRootSapCrack_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_00_CyanRootSapCrack_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_00_CyanRootSapCrack_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_00_HangingMossVine_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_00_HangingMossVine_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_00_HangingMossVine_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_01_LivingTwistedTrunk_Base",
@@ -582,10 +2262,22 @@
       "triangles": 28
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_01_LivingTwistedTrunk_MidKnot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_01_LivingTwistedTrunk_Upper",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 28
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_01_PaintedBarkHighlight_LongCurve",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_01_RootButtress_00",
@@ -612,10 +2304,52 @@
       "triangles": 44
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_01_RootButtress_04",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_01_RootButtress_05",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_01_ChunkyBranchCluster_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_01_ChunkyBranchCluster_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_01_ChunkyBranchCluster_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_01_ChunkyLeafCanopy_00",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_01_LeafCanopy_00_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_01_LeafCanopy_00_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_01_ChunkyLeafCanopy_01",
@@ -624,10 +2358,76 @@
       "triangles": 20
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_01_LeafCanopy_01_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_01_LeafCanopy_01_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_01_ChunkyLeafCanopy_02",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_01_LeafCanopy_02_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_01_LeafCanopy_02_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_01_ChunkyLeafCanopy_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_01_CyanRootSapCrack_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_01_CyanRootSapCrack_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_01_CyanRootSapCrack_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_01_HangingMossVine_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_01_HangingMossVine_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_01_HangingMossVine_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_02_LivingTwistedTrunk_Base",
@@ -636,10 +2436,22 @@
       "triangles": 28
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_02_LivingTwistedTrunk_MidKnot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_02_LivingTwistedTrunk_Upper",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 28
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_02_PaintedBarkHighlight_LongCurve",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_02_RootButtress_00",
@@ -666,10 +2478,52 @@
       "triangles": 44
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_02_RootButtress_04",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_02_RootButtress_05",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_02_ChunkyBranchCluster_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_02_ChunkyBranchCluster_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_02_ChunkyBranchCluster_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_02_ChunkyLeafCanopy_00",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_02_LeafCanopy_00_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_02_LeafCanopy_00_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_02_ChunkyLeafCanopy_01",
@@ -678,10 +2532,76 @@
       "triangles": 20
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_02_LeafCanopy_01_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_02_LeafCanopy_01_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_02_ChunkyLeafCanopy_02",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_02_LeafCanopy_02_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_02_LeafCanopy_02_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_02_ChunkyLeafCanopy_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_02_CyanRootSapCrack_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_02_CyanRootSapCrack_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_02_CyanRootSapCrack_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_02_HangingMossVine_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_02_HangingMossVine_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_02_HangingMossVine_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_03_LivingTwistedTrunk_Base",
@@ -690,10 +2610,22 @@
       "triangles": 28
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_03_LivingTwistedTrunk_MidKnot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_03_LivingTwistedTrunk_Upper",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 28
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_03_PaintedBarkHighlight_LongCurve",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_03_RootButtress_00",
@@ -720,10 +2652,52 @@
       "triangles": 44
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_03_RootButtress_04",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_03_RootButtress_05",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_03_ChunkyBranchCluster_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_03_ChunkyBranchCluster_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_03_ChunkyBranchCluster_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_03_ChunkyLeafCanopy_00",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_03_LeafCanopy_00_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_03_LeafCanopy_00_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_03_ChunkyLeafCanopy_01",
@@ -732,10 +2706,76 @@
       "triangles": 20
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_03_LeafCanopy_01_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_03_LeafCanopy_01_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_03_ChunkyLeafCanopy_02",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_03_LeafCanopy_02_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_03_LeafCanopy_02_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_03_ChunkyLeafCanopy_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_03_CyanRootSapCrack_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_03_CyanRootSapCrack_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_03_CyanRootSapCrack_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_03_HangingMossVine_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_03_HangingMossVine_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_03_HangingMossVine_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_04_LivingTwistedTrunk_Base",
@@ -744,10 +2784,22 @@
       "triangles": 28
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_04_LivingTwistedTrunk_MidKnot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_04_LivingTwistedTrunk_Upper",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 28
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_04_PaintedBarkHighlight_LongCurve",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_04_RootButtress_00",
@@ -774,10 +2826,52 @@
       "triangles": 44
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_04_RootButtress_04",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_04_RootButtress_05",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_04_ChunkyBranchCluster_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_04_ChunkyBranchCluster_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_04_ChunkyBranchCluster_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_04_ChunkyLeafCanopy_00",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_04_LeafCanopy_00_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_04_LeafCanopy_00_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_04_ChunkyLeafCanopy_01",
@@ -786,10 +2880,76 @@
       "triangles": 20
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_04_LeafCanopy_01_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_04_LeafCanopy_01_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_04_ChunkyLeafCanopy_02",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_04_LeafCanopy_02_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_04_LeafCanopy_02_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_04_ChunkyLeafCanopy_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_04_CyanRootSapCrack_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_04_CyanRootSapCrack_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_04_CyanRootSapCrack_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_04_HangingMossVine_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_04_HangingMossVine_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_04_HangingMossVine_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_05_LivingTwistedTrunk_Base",
@@ -798,10 +2958,22 @@
       "triangles": 28
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_05_LivingTwistedTrunk_MidKnot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_05_LivingTwistedTrunk_Upper",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 28
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_05_PaintedBarkHighlight_LongCurve",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_05_RootButtress_00",
@@ -828,10 +3000,52 @@
       "triangles": 44
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_05_RootButtress_04",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_05_RootButtress_05",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_05_ChunkyBranchCluster_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_05_ChunkyBranchCluster_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_05_ChunkyBranchCluster_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_05_ChunkyLeafCanopy_00",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_05_LeafCanopy_00_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_05_LeafCanopy_00_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_05_ChunkyLeafCanopy_01",
@@ -840,10 +3054,76 @@
       "triangles": 20
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_05_LeafCanopy_01_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_05_LeafCanopy_01_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_05_ChunkyLeafCanopy_02",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_05_LeafCanopy_02_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_05_LeafCanopy_02_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_05_ChunkyLeafCanopy_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_05_CyanRootSapCrack_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_05_CyanRootSapCrack_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_05_CyanRootSapCrack_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_05_HangingMossVine_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_05_HangingMossVine_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_05_HangingMossVine_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_06_LivingTwistedTrunk_Base",
@@ -852,10 +3132,22 @@
       "triangles": 28
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_06_LivingTwistedTrunk_MidKnot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_06_LivingTwistedTrunk_Upper",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 28
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_06_PaintedBarkHighlight_LongCurve",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_06_RootButtress_00",
@@ -882,10 +3174,52 @@
       "triangles": 44
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_06_RootButtress_04",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_06_RootButtress_05",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_06_ChunkyBranchCluster_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_06_ChunkyBranchCluster_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_06_ChunkyBranchCluster_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_06_ChunkyLeafCanopy_00",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_06_LeafCanopy_00_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_06_LeafCanopy_00_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_06_ChunkyLeafCanopy_01",
@@ -894,10 +3228,76 @@
       "triangles": 20
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_06_LeafCanopy_01_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_06_LeafCanopy_01_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_06_ChunkyLeafCanopy_02",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_06_LeafCanopy_02_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_06_LeafCanopy_02_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_06_ChunkyLeafCanopy_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_06_CyanRootSapCrack_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_06_CyanRootSapCrack_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_06_CyanRootSapCrack_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_06_HangingMossVine_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_06_HangingMossVine_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_06_HangingMossVine_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_07_LivingTwistedTrunk_Base",
@@ -906,10 +3306,22 @@
       "triangles": 28
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_07_LivingTwistedTrunk_MidKnot",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_07_LivingTwistedTrunk_Upper",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 28
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_07_PaintedBarkHighlight_LongCurve",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_07_RootButtress_00",
@@ -936,10 +3348,52 @@
       "triangles": 44
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_07_RootButtress_04",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_07_RootButtress_05",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_07_ChunkyBranchCluster_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_07_ChunkyBranchCluster_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_07_ChunkyBranchCluster_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_07_ChunkyLeafCanopy_00",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_07_LeafCanopy_00_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_07_LeafCanopy_00_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_BackgroundMediumTree_07_ChunkyLeafCanopy_01",
@@ -948,10 +3402,76 @@
       "triangles": 20
     },
     {
+      "name": "ENV_Trees_BackgroundMediumTree_07_LeafCanopy_01_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_07_LeafCanopy_01_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ENV_Trees_BackgroundMediumTree_07_ChunkyLeafCanopy_02",
       "collection": "ENV_Trees",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_07_LeafCanopy_02_PaintedEdgeHighlight",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_07_LeafCanopy_02_DarkUnderside",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_07_ChunkyLeafCanopy_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_07_CyanRootSapCrack_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_07_CyanRootSapCrack_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_07_CyanRootSapCrack_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_07_HangingMossVine_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_07_HangingMossVine_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_BackgroundMediumTree_07_HangingMossVine_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "ENV_Trees_ExtraCanopyCluster_00",
@@ -1098,7 +3618,277 @@
       "triangles": 20
     },
     {
+      "name": "ENV_Trees_BackdropWorldrootColumn_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropWorldrootCanopyMass_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropWorldrootColumn_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropWorldrootCanopyMass_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropWorldrootColumn_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropWorldrootCanopyMass_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropWorldrootColumn_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropWorldrootCanopyMass_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropWorldrootColumn_04",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropWorldrootCanopyMass_04",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropWorldrootColumn_05",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropWorldrootCanopyMass_05",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropWorldrootColumn_06",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropWorldrootCanopyMass_06",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropWorldrootColumn_07",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropWorldrootCanopyMass_07",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropForestCanopyWall_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropForestCanopyWall_00_RootColumn",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropForestCanopyWall_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropForestCanopyWall_01_RootColumn",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropForestCanopyWall_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropForestCanopyWall_02_RootColumn",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropForestCanopyWall_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropForestCanopyWall_03_RootColumn",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropForestCanopyWall_04",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropForestCanopyWall_04_RootColumn",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropForestCanopyWall_05",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropForestCanopyWall_05_RootColumn",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropForestCanopyWall_06",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropForestCanopyWall_06_RootColumn",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropForestCanopyWall_07",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropForestCanopyWall_07_RootColumn",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropForestCanopyWall_08",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropForestCanopyWall_08_RootColumn",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropForestCanopyWall_09",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropForestCanopyWall_09_RootColumn",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropForestCanopyWall_10",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_BackdropForestCanopyWall_10_RootColumn",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 20
+    },
+    {
+      "name": "ENV_Trees_DistantRootBridgeSilhouette_00",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_DistantRootBridgeSilhouette_01",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_DistantRootBridgeSilhouette_02",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_DistantRootBridgeSilhouette_03",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ENV_Trees_DistantRootBridgeSilhouette_04",
+      "collection": "ENV_Trees",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ARCH_Sylvaen_RootBridgeSegment_00",
+      "collection": "ARCH_Sylvaen",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ARCH_Sylvaen_RootBridgeSegment_00_LivingUnderside",
+      "collection": "ARCH_Sylvaen",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ARCH_Sylvaen_RootBridgeSegment_00_PaintedTopEdge",
       "collection": "ARCH_Sylvaen",
       "type": "MESH",
       "triangles": 44
@@ -1110,7 +3900,19 @@
       "triangles": 44
     },
     {
+      "name": "ARCH_Sylvaen_RootBridgeRail_00_00_GoldTie",
+      "collection": "ARCH_Sylvaen",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ARCH_Sylvaen_RootBridgeRail_00_01",
+      "collection": "ARCH_Sylvaen",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ARCH_Sylvaen_RootBridgeRail_00_01_GoldTie",
       "collection": "ARCH_Sylvaen",
       "type": "MESH",
       "triangles": 44
@@ -1122,7 +3924,19 @@
       "triangles": 44
     },
     {
+      "name": "ARCH_Sylvaen_RootBridgeRail_00_02_GoldTie",
+      "collection": "ARCH_Sylvaen",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ARCH_Sylvaen_RootBridgeRail_00_03",
+      "collection": "ARCH_Sylvaen",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ARCH_Sylvaen_RootBridgeRail_00_03_GoldTie",
       "collection": "ARCH_Sylvaen",
       "type": "MESH",
       "triangles": 44
@@ -1134,7 +3948,25 @@
       "triangles": 44
     },
     {
+      "name": "ARCH_Sylvaen_RootBridgeSegment_01_LivingUnderside",
+      "collection": "ARCH_Sylvaen",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ARCH_Sylvaen_RootBridgeSegment_01_PaintedTopEdge",
+      "collection": "ARCH_Sylvaen",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ARCH_Sylvaen_RootBridgeRail_01_00",
+      "collection": "ARCH_Sylvaen",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ARCH_Sylvaen_RootBridgeRail_01_00_GoldTie",
       "collection": "ARCH_Sylvaen",
       "type": "MESH",
       "triangles": 44
@@ -1146,7 +3978,19 @@
       "triangles": 44
     },
     {
+      "name": "ARCH_Sylvaen_RootBridgeRail_01_01_GoldTie",
+      "collection": "ARCH_Sylvaen",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ARCH_Sylvaen_RootBridgeRail_01_02",
+      "collection": "ARCH_Sylvaen",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ARCH_Sylvaen_RootBridgeRail_01_02_GoldTie",
       "collection": "ARCH_Sylvaen",
       "type": "MESH",
       "triangles": 44
@@ -1158,7 +4002,19 @@
       "triangles": 44
     },
     {
+      "name": "ARCH_Sylvaen_RootBridgeRail_01_03_GoldTie",
+      "collection": "ARCH_Sylvaen",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ARCH_Sylvaen_StairStep_00",
+      "collection": "ARCH_Sylvaen",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ARCH_Sylvaen_StairStep_00_MossyLip",
       "collection": "ARCH_Sylvaen",
       "type": "MESH",
       "triangles": 44
@@ -1170,13 +4026,31 @@
       "triangles": 44
     },
     {
+      "name": "ARCH_Sylvaen_StairStep_01_MossyLip",
+      "collection": "ARCH_Sylvaen",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ARCH_Sylvaen_StairStep_02",
       "collection": "ARCH_Sylvaen",
       "type": "MESH",
       "triangles": 44
     },
     {
+      "name": "ARCH_Sylvaen_StairStep_02_MossyLip",
+      "collection": "ARCH_Sylvaen",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "ARCH_Sylvaen_StairStep_03",
+      "collection": "ARCH_Sylvaen",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "ARCH_Sylvaen_StairStep_03_MossyLip",
       "collection": "ARCH_Sylvaen",
       "type": "MESH",
       "triangles": 44
@@ -1194,19 +4068,25 @@
       "triangles": 44
     },
     {
-      "name": "ARCH_Sylvaen_ArchedDoorway_LeftRoot",
+      "name": "ARCH_Sylvaen_HeartboughEntrance_ArchedLivingDoorway_LeftLivingRoot",
+      "collection": "ARCH_Sylvaen",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
+      "name": "ARCH_Sylvaen_HeartboughEntrance_ArchedLivingDoorway_RightLivingRoot",
+      "collection": "ARCH_Sylvaen",
+      "type": "MESH",
+      "triangles": 24
+    },
+    {
+      "name": "ARCH_Sylvaen_HeartboughEntrance_ArchedLivingDoorway_CrownRoot",
       "collection": "ARCH_Sylvaen",
       "type": "MESH",
       "triangles": 44
     },
     {
-      "name": "ARCH_Sylvaen_ArchedDoorway_RightRoot",
-      "collection": "ARCH_Sylvaen",
-      "type": "MESH",
-      "triangles": 44
-    },
-    {
-      "name": "ARCH_Sylvaen_ArchedDoorway_CrownRoot",
+      "name": "ARCH_Sylvaen_HeartboughEntrance_ArchedLivingDoorway_PaintedGoldLeafLintel",
       "collection": "ARCH_Sylvaen",
       "type": "MESH",
       "triangles": 44
@@ -1219,6 +4099,18 @@
     },
     {
       "name": "ARCH_Sylvaen_ShrinePedestal_CyanMemorySeed",
+      "collection": "ARCH_Sylvaen",
+      "type": "MESH",
+      "triangles": 12
+    },
+    {
+      "name": "ARCH_Sylvaen_SmallShrinePedestal_ListenerStoneBase",
+      "collection": "ARCH_Sylvaen",
+      "type": "MESH",
+      "triangles": 28
+    },
+    {
+      "name": "ARCH_Sylvaen_SmallShrinePedestal_GreenMemoryShard",
       "collection": "ARCH_Sylvaen",
       "type": "MESH",
       "triangles": 12
@@ -1327,6 +4219,30 @@
     },
     {
       "name": "PROPS_Worldroot_CyanCrystalCluster_05_ShardB",
+      "collection": "PROPS_Worldroot",
+      "type": "MESH",
+      "triangles": 12
+    },
+    {
+      "name": "PROPS_Worldroot_HeartboughFocalCrystal_CyanGroundGlow",
+      "collection": "PROPS_Worldroot",
+      "type": "MESH",
+      "triangles": 28
+    },
+    {
+      "name": "PROPS_Worldroot_HeartboughFocalCrystal_MainShard",
+      "collection": "PROPS_Worldroot",
+      "type": "MESH",
+      "triangles": 12
+    },
+    {
+      "name": "PROPS_Worldroot_HeartboughFocalCrystal_SideShardA",
+      "collection": "PROPS_Worldroot",
+      "type": "MESH",
+      "triangles": 12
+    },
+    {
+      "name": "PROPS_Worldroot_HeartboughFocalCrystal_SideShardB",
       "collection": "PROPS_Worldroot",
       "type": "MESH",
       "triangles": 12
@@ -1482,6 +4398,18 @@
       "triangles": 44
     },
     {
+      "name": "PROPS_Village_VerdantBanner_00_GoldStem",
+      "collection": "PROPS_Village",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "PROPS_Village_VerdantBanner_00_GoldTopBind",
+      "collection": "PROPS_Village",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "PROPS_Village_VerdantBanner_01_Pole",
       "collection": "PROPS_Village",
       "type": "MESH",
@@ -1495,6 +4423,18 @@
     },
     {
       "name": "PROPS_Village_VerdantBanner_01_GoldSigil",
+      "collection": "PROPS_Village",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "PROPS_Village_VerdantBanner_01_GoldStem",
+      "collection": "PROPS_Village",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "PROPS_Village_VerdantBanner_01_GoldTopBind",
       "collection": "PROPS_Village",
       "type": "MESH",
       "triangles": 44
@@ -1518,6 +4458,18 @@
       "triangles": 44
     },
     {
+      "name": "PROPS_Village_VerdantBanner_02_GoldStem",
+      "collection": "PROPS_Village",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "PROPS_Village_VerdantBanner_02_GoldTopBind",
+      "collection": "PROPS_Village",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "PROPS_Village_VerdantBanner_03_Pole",
       "collection": "PROPS_Village",
       "type": "MESH",
@@ -1531,6 +4483,18 @@
     },
     {
       "name": "PROPS_Village_VerdantBanner_03_GoldSigil",
+      "collection": "PROPS_Village",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "PROPS_Village_VerdantBanner_03_GoldStem",
+      "collection": "PROPS_Village",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "PROPS_Village_VerdantBanner_03_GoldTopBind",
       "collection": "PROPS_Village",
       "type": "MESH",
       "triangles": 44
@@ -1620,6 +4584,24 @@
       "triangles": 44
     },
     {
+      "name": "PROPS_Village_SmallShrinePedestal_RootedOfferingBase",
+      "collection": "PROPS_Village",
+      "type": "MESH",
+      "triangles": 28
+    },
+    {
+      "name": "PROPS_Village_SmallShrinePedestal_GoldMemoryPlate",
+      "collection": "PROPS_Village",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "PROPS_Village_SmallShrinePedestal_CyanSeed",
+      "collection": "PROPS_Village",
+      "type": "MESH",
+      "triangles": 12
+    },
+    {
       "name": "CHAR_Placeholders_SylvaenPlayer_Foreground_Body",
       "collection": "CHAR_Placeholders",
       "type": "MESH",
@@ -1704,6 +4686,18 @@
       "triangles": 44
     },
     {
+      "name": "FX_Memory_EchoStone_00_MossyRunestone",
+      "collection": "FX_Memory",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "FX_Memory_EchoStone_00_CyanMemoryRune",
+      "collection": "FX_Memory",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
       "name": "FX_Memory_EchoMarker_00_GlowCircle",
       "collection": "FX_Memory",
       "type": "MESH",
@@ -1714,6 +4708,18 @@
       "collection": "FX_Memory",
       "type": "MESH",
       "triangles": 20
+    },
+    {
+      "name": "FX_Memory_EchoStone_01_MossyRunestone",
+      "collection": "FX_Memory",
+      "type": "MESH",
+      "triangles": 44
+    },
+    {
+      "name": "FX_Memory_EchoStone_01_CyanMemoryRune",
+      "collection": "FX_Memory",
+      "type": "MESH",
+      "triangles": 44
     },
     {
       "name": "FX_Memory_EchoMarker_01_GlowCircle",
@@ -1770,6 +4776,12 @@
       "triangles": 0
     },
     {
+      "name": "LIGHTING_Render_GlowLight_06",
+      "collection": "LIGHTING_Render",
+      "type": "LIGHT",
+      "triangles": 0
+    },
+    {
       "name": "LIGHTING_Render_AreaFill_SoftGameplayReadability",
       "collection": "LIGHTING_Render",
       "type": "LIGHT",
@@ -1786,27 +4798,34 @@
     "MAT_Atmosphere_CyanMist",
     "MAT_Banner_VerdantGreen",
     "MAT_Bark_DarkRoot",
+    "MAT_Bark_PaintedHighlight",
     "MAT_Bark_WarmBrown",
     "MAT_DistantTreeSilhouette",
     "MAT_Echo_Transparent",
     "MAT_FawnPlaceholder",
+    "MAT_Flower_Blue",
     "MAT_Flower_Purple",
     "MAT_GoldTrim",
     "MAT_Lantern_Warm_Emission",
     "MAT_Leaves_DeepGreen",
+    "MAT_Leaves_EdgeHighlight",
     "MAT_Leaves_LightGreen",
+    "MAT_Leaves_UndersideDark",
     "MAT_Moss",
+    "MAT_Moss_Dark",
     "MAT_NPCPlaceholder",
     "MAT_Path_StoneWarm",
     "MAT_PlayerPlaceholder",
     "MAT_RootBridge",
+    "MAT_RootBridge_LightEdge",
     "MAT_Rune_Cyan_Emission",
     "MAT_Sky_BackdropBlue",
     "MAT_Stone_MossyGray",
+    "MAT_Stone_PaintedHighlight",
     "MAT_Water_BlueGreen_Optional",
     "MAT_Worldroot_Cyan_Emission"
   ],
-  "approximate_triangle_count": 10736,
+  "approximate_triangle_count": 31322,
   "render_paths": [
     "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\thornveil_enclave_lowpoly_ingame_v001_2560x1440.png",
     "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\thornveil_enclave_lowpoly_ingame_v001_1920x1080.png"
@@ -1815,10 +4834,14 @@
     "blend": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\blender\\thornveil_enclave_lowpoly_ingame_v001.blend",
     "glb": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\exports\\thornveil_enclave_lowpoly_ingame_v001.glb"
   },
+  "technical_validation": {
+    "default_object_names": [],
+    "non_mat_prefixed_materials": []
+  },
   "notes": [
-    "Low-poly Blender vertical-slice mockup, not final engine terrain.",
-    "Scene favors reusable modular shapes and named collections.",
-    "Memory/glow elements use emission materials and simple point lights.",
-    "Ground is a stylized mesh/prop composition and can be replaced by engine terrain later."
+    "Art direction pass on the existing Thornveil scene generator and v001 output names.",
+    "Trees, architecture, path, foliage, and Worldroot props were upgraded without changing the base scene identity.",
+    "Memory/glow elements use controlled emission materials and simple point lights.",
+    "Ground is still a stylized mesh/prop composition and should later become engine terrain with material blending."
   ]
 }

@@ -1,0 +1,41 @@
+{
+  "project": "World of Eldara",
+  "visual_target": "stylized low-poly fantasy MMORPG, hand-painted materials, strong silhouettes, readable third-person spaces",
+  "progression": [
+    {
+      "zone": "Thornveil Enclave",
+      "state": "existing visual hub scene",
+      "role": "lush and safe Sylvaen starting hub",
+      "render": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\heartbough_glade_entrance_v001_1920x1080.png",
+      "notes": [
+        "Heartbough Glade Entrance is the active Zone 1 visual target.",
+        "Recent QA pass clarified spawn, route, Sylvaen identity, and Worldroot cues."
+      ]
+    },
+    {
+      "zone": "Elar'Thalas Approach",
+      "state": "new visual mockup scene",
+      "role": "sacred and controlled approach to a sealed living archive-city",
+      "render": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\elarthalas_approach_v001_1920x1080.png",
+      "manifest": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\reports\\elarthalas_approach_v001_manifest.json",
+      "object_count": 186,
+      "approximate_total_triangles": 4534
+    },
+    {
+      "zone": "The Memory Wastes",
+      "state": "new visual mockup scene",
+      "role": "fragmented unstable open zone where memory sheds into reality",
+      "render": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\memory_wastes_v001_1920x1080.png",
+      "manifest": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\reports\\memory_wastes_v001_manifest.json",
+      "object_count": 116,
+      "approximate_total_triangles": 2610
+    }
+  ],
+  "avoid": [
+    "photorealism",
+    "generic medieval buildings",
+    "thin unreadable props",
+    "noisy procedural bark",
+    "gray muddy palettes"
+  ]
+}

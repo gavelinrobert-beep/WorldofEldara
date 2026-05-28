@@ -15,10 +15,10 @@
     "WASTE_TerrainIslands": 52,
     "WASTE_SylvaenCamp": 19,
     "WASTE_FloatingRuins": 39,
-    "WASTE_RootRiftsAndStorms": 18,
+    "WASTE_RootRiftsAndStorms": 31,
     "WASTE_FoliageAndDebris": 17,
     "WASTE_Characters": 18,
-    "WASTE_LightingRender": 8
+    "WASTE_LightingRender": 10
   },
   "objects": [
     {
@@ -1234,6 +1234,136 @@
       "approximate_triangles": 10
     },
     {
+      "name": "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_GroundMemoryTear",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Violet"
+      ],
+      "approximate_triangles": 36
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_BlackRootSplit",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_CyanVerticalCore",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Cyan"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_VioletOuterShard",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Violet"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_FragmentedVerticalMemorySlash_00",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Cyan"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_FragmentedVerticalMemorySlash_01",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Violet"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_FragmentedVerticalMemorySlash_02",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Violet"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_FragmentedVerticalMemorySlash_03",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryStorm_Cyan"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_FragmentedVerticalMemorySlash_04",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Echo_Transparent"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_ShedArchiveShard_00",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Echo_Transparent"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_ShedArchiveShard_01",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Echo_Transparent"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_ShedArchiveShard_02",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Echo_Transparent"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_ShedArchiveShard_03",
+      "collection": "WASTE_RootRiftsAndStorms",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Echo_Transparent"
+      ],
+      "approximate_triangles": 10
+    },
+    {
       "name": "WASTE_RootRiftsAndStorms_FloatingMemoryShard_00",
       "collection": "WASTE_RootRiftsAndStorms",
       "type": "MESH",
@@ -1758,6 +1888,22 @@
       "approximate_triangles": 0
     },
     {
+      "name": "WASTE_LightingRender_MemoryGlowAccent_05",
+      "collection": "WASTE_LightingRender",
+      "type": "LIGHT",
+      "source_asset": "custom_scene_geometry",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "WASTE_LightingRender_MemoryGlowAccent_06",
+      "collection": "WASTE_LightingRender",
+      "type": "LIGHT",
+      "source_asset": "custom_scene_geometry",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
       "name": "WASTE_LightingRender_Camera_ThirdPersonFragmentedZone",
       "collection": "WASTE_LightingRender",
       "type": "CAMERA",
@@ -1782,16 +1928,20 @@
     "MAT_EnemyPlaceholder",
     "MAT_Flower_Blue",
     "MAT_Flower_Purple",
+    "MAT_Gate_BlueFog",
     "MAT_GoldTrim",
     "MAT_Grass_Controlled",
     "MAT_Grass_Dark",
     "MAT_Grass_Lush",
     "MAT_HighElf_ArcaneViolet",
     "MAT_HighElf_ColdGold",
+    "MAT_HighElf_SilverBlue",
+    "MAT_HighElf_SilverBlue_Emission",
     "MAT_Lantern_Warm_Emission",
     "MAT_Leaves_DarkUnderside",
     "MAT_Leaves_DeepGreen",
     "MAT_Leaves_LightGreen",
+    "MAT_MemoryGlass_CyanGreen",
     "MAT_MemoryStorm_Cyan",
     "MAT_MemoryStorm_Violet",
     "MAT_Moss",
@@ -1807,6 +1957,7 @@
     "MAT_Rune_Cyan_Emission",
     "MAT_Stone_DarkCrevice",
     "MAT_Stone_MossyGray",
+    "MAT_Stone_PaleArchive",
     "MAT_Stone_Pilgrimage",
     "MAT_WasteGround",
     "MAT_WasteGround_Dark",
@@ -1814,7 +1965,7 @@
     "MAT_Wood_GoldenTrim",
     "MAT_Worldroot_Cyan_Emission"
   ],
-  "approximate_total_triangles": 3498,
+  "approximate_total_triangles": 3668,
   "render_paths": [
     "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\memory_wastes_visual_benchmark_v002_2560x1440.png",
     "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\memory_wastes_visual_benchmark_v002_1920x1080.png"

@@ -5,33 +5,43 @@ This pass continues from the existing generated Elar'Thalas Approach and The Mem
 
 ## Before / After
 - Elar'Thalas before: useful sacred road blockout, but the Silent Gate, archive-city skyline, Greenspire camp, and High Elf intrusion read as simple primitive clusters.
-- Elar'Thalas after: the approach road now has raised root borders, pilgrimage circles, a stronger sealed gate, distant living archive towers, Greenspire camp props, ward statues, cyan memory constructs, and clearer violet High Elf intrusion silhouettes.
+- Elar'Thalas after: the approach road now has a raised organic rootroad, foreground ward stones, inward-facing wardline scanner monoliths, a much larger Silent Gate hero landmark, Greenspire forward camp silhouettes, automated root-stone constructs, and a silver-blue High Elf intrusion pocket with a broken ward.
 - Memory Wastes before: useful fragmented-island blockout, but the instability, dead god shrine, lost civilization echoes, and safe camp were too abstract.
-- Memory Wastes after: islands now have void drop shadows and broken edge strata, the safe camp has a cyan stabilization circle, floating ghost architecture is more readable, the dead god shrine has a stronger silhouette, and violet/cyan memory storm slashes clarify danger.
+- Memory Wastes after: islands now have void drop shadows and broken edge strata, the safe camp has a cyan stabilization circle, floating ghost architecture is more readable, the dead god shrine has a stronger silhouette, and the Worldroot Shedding Rift is now the dominant memory-collapse landmark.
 
 ## Elar'Thalas Approach V002
 - Output blend: C:\Users\Admin\Documents\New project\WorldofEldara-analysis\assets\blender\elarthalas_approach_visual_benchmark_v002.blend
 - Output GLB: C:\Users\Admin\Documents\New project\WorldofEldara-analysis\assets\exports\elarthalas_approach_visual_benchmark_v002.glb
 - Render 2560x1440: C:\Users\Admin\Documents\New project\WorldofEldara-analysis\assets\renders\elarthalas_approach_visual_benchmark_v002_2560x1440.png
-- Objects: 284
-- Approximate triangles: 6012
+- Objects: 448
+- Approximate triangles: 8204
 - Default primitive names: 0
 - Non-MAT materials: 0
 
 ### Readability Notes
 - [x] Reads as a sacred, controlled archive-city approach within 3 seconds.
-- [x] The Silent Gate is a strong focal landmark from the camera.
-- [x] The long rootroad clearly guides the player forward.
-- [x] Ward monoliths, pilgrimage stones, banners, lanterns, and Greenspire camp props support zone identity.
-- [x] High Elf arcane intrusion is visually separated with violet/cold-gold shapes on the side.
+- [x] Silent Gate dominates the horizon and communicates a sealed city beyond.
+- [x] Raised rootroad clearly guides the player forward.
+- [x] Ward monoliths read as automated scanner defenses.
+- [x] Greenspire camp reads as Sylvaen / Verdant.
+- [x] High Elf arcane intrusion is visually separated with silver-blue angular shapes on the side.
 - [x] The scene remains stylized low-poly and non-photorealistic.
+
+### Acceptance Criteria
+- [x] Silent Gate is the dominant landmark.
+- [x] Rootroad clearly leads toward the sealed city.
+- [x] Ward monoliths read as automated defenses.
+- [x] Greenspire camp reads as Sylvaen / Verdant.
+- [x] High Elf intrusion reads as visually different from Sylvaen props.
+- [x] The scene is more vertical and controlled than Thornveil.
+- [x] It does not look like a generic ritual camp.
 
 ## The Memory Wastes V002
 - Output blend: C:\Users\Admin\Documents\New project\WorldofEldara-analysis\assets\blender\memory_wastes_visual_benchmark_v002.blend
 - Output GLB: C:\Users\Admin\Documents\New project\WorldofEldara-analysis\assets\exports\memory_wastes_visual_benchmark_v002.glb
 - Render 2560x1440: C:\Users\Admin\Documents\New project\WorldofEldara-analysis\assets\renders\memory_wastes_visual_benchmark_v002_2560x1440.png
-- Objects: 171
-- Approximate triangles: 3498
+- Objects: 186
+- Approximate triangles: 3668
 - Default primitive names: 0
 - Non-MAT materials: 0
 
@@ -39,9 +49,28 @@ This pass continues from the existing generated Elar'Thalas Approach and The Mem
 - [x] Reads as a fragmented, unstable memory zone within 3 seconds.
 - [x] Central Sylvaen stabilization camp is readable as the safe hub.
 - [x] Root bridges and broken path stones show the intended route without final terrain work.
-- [x] Floating ruins, ghost architecture, dead god shrine, echo battlefield, and root rifts create distinct landmarks.
+- [x] Floating ruins, ghost architecture, dead god shrine, echo battlefield, and the Worldroot Shedding Rift create distinct landmarks.
 - [x] Cyan Worldroot magic and violet corruption are separated by color and placement.
 - [x] The scene remains stylized low-poly and non-photorealistic.
+
+### Acceptance Criteria
+- [x] Fragmented islands are clearly readable.
+- [x] Sylvaen camp is identifiable as the safe point.
+- [x] Floating ruins are visible.
+- [x] Dead God Shrine is visible.
+- [x] Echo Battlefield is visible.
+- [x] Worldroot Shedding Rift is the strongest landmark.
+- [x] The scene reads as memory collapse, not generic void.
+
+## General Acceptance Criteria
+- [x] Main path or traversal route is readable.
+- [x] Third-person camera has foreground, midground and background.
+- [x] Materials are no longer only flat placeholder colors.
+- [x] All objects have meaningful names.
+- [x] Materials use MAT_ prefix.
+- [x] Scene exports to GLB.
+- [x] 2560x1440 renders exist.
+- [x] QA report includes what still needs improvement.
 
 ## Still Needs Improvement
 - Final gameplay terrain should replace the current benchmark plates/islands later.

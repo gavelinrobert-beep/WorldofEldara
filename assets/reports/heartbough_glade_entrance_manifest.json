@@ -1,0 +1,2201 @@
+{
+  "scene": "Heartbough Glade Entrance",
+  "file_stem": "heartbough_glade_entrance_v001",
+  "source_asset_kit": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\blender\\thornveil_modular_asset_kit_v001.blend",
+  "collections": [
+    "SCENE_Terrain",
+    "SCENE_Architecture",
+    "SCENE_Worldroot",
+    "SCENE_VillageProps",
+    "SCENE_Foliage",
+    "SCENE_Characters",
+    "SCENE_LightingRender"
+  ],
+  "object_counts": {
+    "SCENE_Terrain": 29,
+    "SCENE_Architecture": 14,
+    "SCENE_Worldroot": 57,
+    "SCENE_VillageProps": 18,
+    "SCENE_Foliage": 50,
+    "SCENE_Characters": 22,
+    "SCENE_LightingRender": 11
+  },
+  "objects": [
+    {
+      "name": "SCENE_Terrain_MainGladeGround_62x42m",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_GladeGrass"
+      ],
+      "approximate_triangles": 300
+    },
+    {
+      "name": "SCENE_Terrain_HeartboughMossBank_Left",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_GladeGrassDark"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "SCENE_Terrain_HeartboughMossBank_Right",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_GladeGrassDark"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "SCENE_Terrain_HeartboughHub_ClearQuestCircle",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 28
+    },
+    {
+      "name": "SCENE_Terrain_MossglassReflectingPool_Left",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "SCENE_Terrain_CentralMossyStonePath_00",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_MossyStone"
+      ],
+      "approximate_triangles": 18
+    },
+    {
+      "name": "SCENE_Terrain_RootPathConnector_00",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_WarmRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Terrain_CentralMossyStonePath_01",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_MossyStone"
+      ],
+      "approximate_triangles": 18
+    },
+    {
+      "name": "SCENE_Terrain_RootPathConnector_01",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_WarmRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Terrain_CentralMossyStonePath_02",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_MossyStone"
+      ],
+      "approximate_triangles": 18
+    },
+    {
+      "name": "SCENE_Terrain_RootPathConnector_02",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_WarmRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Terrain_CentralMossyStonePath_03",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_MossyStone"
+      ],
+      "approximate_triangles": 18
+    },
+    {
+      "name": "SCENE_Terrain_RootPathConnector_03",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_WarmRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Terrain_CentralMossyStonePath_04",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_MossyStone"
+      ],
+      "approximate_triangles": 18
+    },
+    {
+      "name": "SCENE_Terrain_RootPathConnector_04",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_WarmRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Terrain_CentralMossyStonePath_05",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_MossyStone"
+      ],
+      "approximate_triangles": 18
+    },
+    {
+      "name": "SCENE_Terrain_RootPathConnector_05",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_WarmRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Terrain_CentralMossyStonePath_06",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_MossyStone"
+      ],
+      "approximate_triangles": 18
+    },
+    {
+      "name": "SCENE_Terrain_RootPathConnector_06",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_WarmRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Terrain_CentralMossyStonePath_07",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_MossyStone"
+      ],
+      "approximate_triangles": 18
+    },
+    {
+      "name": "SCENE_Terrain_ReadableCobble_00",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_MossyGray"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "SCENE_Terrain_ReadableCobble_01",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_MossyGray"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "SCENE_Terrain_ReadableCobble_02",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_MossyGray"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "SCENE_Terrain_ReadableCobble_03",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_MossyGray"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "SCENE_Terrain_ReadableCobble_04",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_MossyGray"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "SCENE_Terrain_ReadableCobble_05",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_MossyGray"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "SCENE_Terrain_ReadableCobble_06",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_MossyGray"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "SCENE_Terrain_SoftBlueSkyBackdrop",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Backdrop_SkyBlue"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Terrain_BlueGreenForestMistBand",
+      "collection": "SCENE_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Backdrop_ForestMist"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Architecture_LeftTreehouseQuestHall",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "ARCH_Sylvaen_TreehouseModule",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Bark_WarmBrown",
+        "MAT_Leaves_DeepGreen",
+        "MAT_Worldroot_Cyan_Emission",
+        "MAT_Wood_GoldenTrim"
+      ],
+      "approximate_triangles": 140
+    },
+    {
+      "name": "SCENE_Architecture_RightTreehouseTrainer",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "ARCH_Sylvaen_TreehouseModule",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Bark_WarmBrown",
+        "MAT_Leaves_DeepGreen",
+        "MAT_Worldroot_Cyan_Emission",
+        "MAT_Wood_GoldenTrim"
+      ],
+      "approximate_triangles": 140
+    },
+    {
+      "name": "SCENE_Architecture_BackTreehouseMemoryArchive",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "ARCH_Sylvaen_TreehouseModule",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Bark_WarmBrown",
+        "MAT_Leaves_DeepGreen",
+        "MAT_Worldroot_Cyan_Emission",
+        "MAT_Wood_GoldenTrim"
+      ],
+      "approximate_triangles": 140
+    },
+    {
+      "name": "SCENE_Architecture_HeartboughEntranceArch",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "ARCH_Sylvaen_ArchedDoorway",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Bark_WarmBrown",
+        "MAT_Worldroot_Cyan_Emission",
+        "MAT_Stone_MossyGray"
+      ],
+      "approximate_triangles": 92
+    },
+    {
+      "name": "SCENE_Architecture_MidRootBridge_LeftToCenter",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "ARCH_Sylvaen_RootBridgeStraight",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Bark_WarmBrown",
+        "MAT_Wood_GoldenTrim"
+      ],
+      "approximate_triangles": 164
+    },
+    {
+      "name": "SCENE_Architecture_MidRootBridge_CenterToRight",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "ARCH_Sylvaen_RootBridgeStraight",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Bark_WarmBrown",
+        "MAT_Wood_GoldenTrim"
+      ],
+      "approximate_triangles": 164
+    },
+    {
+      "name": "SCENE_Architecture_BackCurvedRootBridge",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "ARCH_Sylvaen_RootBridgeCurved",
+      "materials": [
+        "MAT_Bark_WarmBrown",
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 272
+    },
+    {
+      "name": "SCENE_Architecture_CentralStoneRootStair",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "ARCH_Sylvaen_StairSegment",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 120
+    },
+    {
+      "name": "SCENE_Architecture_LeftBalconyPlatform",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "ARCH_Sylvaen_BalconyPlatform",
+      "materials": [
+        "MAT_Bark_WarmBrown",
+        "MAT_Bark_DarkRoot",
+        "MAT_Wood_GoldenTrim"
+      ],
+      "approximate_triangles": 132
+    },
+    {
+      "name": "SCENE_Architecture_RightBalconyPlatform",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "ARCH_Sylvaen_BalconyPlatform",
+      "materials": [
+        "MAT_Bark_WarmBrown",
+        "MAT_Bark_DarkRoot",
+        "MAT_Wood_GoldenTrim"
+      ],
+      "approximate_triangles": 132
+    },
+    {
+      "name": "SCENE_Architecture_PathRailing_00",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "ARCH_Sylvaen_RailingSegment",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Wood_GoldenTrim",
+        "MAT_Bark_WarmBrown"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_Architecture_PathRailing_01",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "ARCH_Sylvaen_RailingSegment",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Wood_GoldenTrim",
+        "MAT_Bark_WarmBrown"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_Architecture_PathRailing_02",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "ARCH_Sylvaen_RailingSegment",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Wood_GoldenTrim",
+        "MAT_Bark_WarmBrown"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_Architecture_PathRailing_03",
+      "collection": "SCENE_Architecture",
+      "type": "MESH",
+      "source_asset": "ARCH_Sylvaen_RailingSegment",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Wood_GoldenTrim",
+        "MAT_Bark_WarmBrown"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_00_Trunk",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_WarmBrown"
+      ],
+      "approximate_triangles": 28
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_00_RootButtress_00",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_00_RootButtress_01",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_00_RootButtress_02",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_00_RootButtress_03",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_00_RootButtress_04",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_00_ChunkyCanopy_00",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_00_ChunkyCanopy_01",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Leaves_DeepGreen"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_00_ChunkyCanopy_02",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_00_ChunkyCanopy_03",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Leaves_DeepGreen"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_00_HeartCrystal",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_01_Trunk",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_WarmBrown"
+      ],
+      "approximate_triangles": 28
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_01_RootButtress_00",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_01_RootButtress_01",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_01_RootButtress_02",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_01_RootButtress_03",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_01_RootButtress_04",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_01_ChunkyCanopy_00",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_01_ChunkyCanopy_01",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Leaves_DeepGreen"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_01_ChunkyCanopy_02",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_01_ChunkyCanopy_03",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Leaves_DeepGreen"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_01_HeartCrystal",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_02_Trunk",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_WarmBrown"
+      ],
+      "approximate_triangles": 28
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_02_RootButtress_00",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_02_RootButtress_01",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_02_RootButtress_02",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_02_RootButtress_03",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_02_RootButtress_04",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_02_ChunkyCanopy_00",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_02_ChunkyCanopy_01",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Leaves_DeepGreen"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_02_ChunkyCanopy_02",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_02_ChunkyCanopy_03",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Leaves_DeepGreen"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_02_HeartCrystal",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_03_Trunk",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_WarmBrown"
+      ],
+      "approximate_triangles": 28
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_03_RootButtress_00",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_03_RootButtress_01",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_03_RootButtress_02",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_03_RootButtress_03",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_03_RootButtress_04",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_03_ChunkyCanopy_00",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_03_ChunkyCanopy_01",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Leaves_DeepGreen"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_03_ChunkyCanopy_02",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_03_ChunkyCanopy_03",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Leaves_DeepGreen"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "SCENE_Worldroot_GiantLivingTree_03_HeartCrystal",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Worldroot_PathCrystalGuide_00",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "PROPS_Worldroot_CyanCrystalClusterMedium",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission",
+        "MAT_Rune_Cyan_Emission",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "SCENE_Worldroot_PathCrystalGuide_01",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "PROPS_Worldroot_CyanCrystalClusterSmall",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission",
+        "MAT_Rune_Cyan_Emission",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "SCENE_Worldroot_PathCrystalGuide_02",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "PROPS_Worldroot_CyanCrystalClusterLarge",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission",
+        "MAT_Rune_Cyan_Emission",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "SCENE_Worldroot_PathCrystalGuide_03",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "PROPS_Worldroot_CyanCrystalClusterMedium",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission",
+        "MAT_Rune_Cyan_Emission",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "SCENE_Worldroot_PathCrystalGuide_04",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "PROPS_Worldroot_CyanCrystalClusterLarge",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission",
+        "MAT_Rune_Cyan_Emission",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "SCENE_Worldroot_PathCrystalGuide_05",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "PROPS_Worldroot_CyanCrystalClusterLarge",
+      "materials": [
+        "MAT_Worldroot_Cyan_Emission",
+        "MAT_Rune_Cyan_Emission",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "SCENE_Worldroot_HeartboughWaypointStone",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "PROPS_Worldroot_WaypointStone",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Worldroot_Cyan_Emission",
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 62
+    },
+    {
+      "name": "SCENE_Worldroot_QuestHubRuneMonolith",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "PROPS_Worldroot_VerdantRuneMonolith",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Rune_Cyan_Emission",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 36
+    },
+    {
+      "name": "SCENE_Worldroot_MemoryEchoMarker_LeftPool",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "PROPS_Worldroot_MemoryEchoMarker",
+      "materials": [
+        "MAT_Echo_Transparent",
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_Worldroot_GlowingRootVein_Path_00",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "PROPS_Worldroot_GlowingRootVein",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 36
+    },
+    {
+      "name": "SCENE_Worldroot_GlowingRootVein_Path_01",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "PROPS_Worldroot_GlowingRootVein",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 36
+    },
+    {
+      "name": "SCENE_Worldroot_GlowingRootVein_Path_02",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "PROPS_Worldroot_GlowingRootVein",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 36
+    },
+    {
+      "name": "SCENE_Worldroot_GlowingRootVein_Path_03",
+      "collection": "SCENE_Worldroot",
+      "type": "MESH",
+      "source_asset": "PROPS_Worldroot_GlowingRootVein",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 36
+    },
+    {
+      "name": "SCENE_VillageProps_LanternPathGuide_00",
+      "collection": "SCENE_VillageProps",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_LanternPost",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Wood_GoldenTrim",
+        "MAT_Lantern_Warm_Emission",
+        "MAT_Bark_WarmBrown"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_VillageProps_LanternPathGuide_01",
+      "collection": "SCENE_VillageProps",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_LanternPost",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Wood_GoldenTrim",
+        "MAT_Lantern_Warm_Emission",
+        "MAT_Bark_WarmBrown"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_VillageProps_LanternPathGuide_02",
+      "collection": "SCENE_VillageProps",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_LanternPost",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Wood_GoldenTrim",
+        "MAT_Lantern_Warm_Emission",
+        "MAT_Bark_WarmBrown"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_VillageProps_LanternPathGuide_03",
+      "collection": "SCENE_VillageProps",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_LanternPost",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Wood_GoldenTrim",
+        "MAT_Lantern_Warm_Emission",
+        "MAT_Bark_WarmBrown"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_VillageProps_LanternPathGuide_04",
+      "collection": "SCENE_VillageProps",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_LanternPost",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Wood_GoldenTrim",
+        "MAT_Lantern_Warm_Emission",
+        "MAT_Bark_WarmBrown"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_VillageProps_LanternPathGuide_05",
+      "collection": "SCENE_VillageProps",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_LanternPost",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Wood_GoldenTrim",
+        "MAT_Lantern_Warm_Emission",
+        "MAT_Bark_WarmBrown"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_VillageProps_VerdantBanner_00",
+      "collection": "SCENE_VillageProps",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_BannerPost",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Banner_VerdantGreen",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_VillageProps_VerdantBanner_01",
+      "collection": "SCENE_VillageProps",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_BannerPost",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Banner_VerdantGreen",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_VillageProps_VerdantBanner_02",
+      "collection": "SCENE_VillageProps",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_BannerPost",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Banner_VerdantGreen",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_VillageProps_VerdantBanner_03",
+      "collection": "SCENE_VillageProps",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_BannerPost",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Banner_VerdantGreen",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_VillageProps_QuestHubShrinePedestal",
+      "collection": "SCENE_VillageProps",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_SmallShrinePedestal",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Bark_WarmBrown",
+        "MAT_Worldroot_Cyan_Emission"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_VillageProps_LeftRestBench",
+      "collection": "SCENE_VillageProps",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_WoodenBench",
+      "materials": [
+        "MAT_Bark_WarmBrown",
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "SCENE_VillageProps_RightRestBench",
+      "collection": "SCENE_VillageProps",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_WoodenBench",
+      "materials": [
+        "MAT_Bark_WarmBrown",
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "SCENE_VillageProps_WayfindingSignpost",
+      "collection": "SCENE_VillageProps",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_Signpost",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Bark_WarmBrown",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "SCENE_VillageProps_HangingLantern_Bridge_00",
+      "collection": "SCENE_VillageProps",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_HangingLantern",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Bark_WarmBrown",
+        "MAT_Lantern_Warm_Emission",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "SCENE_VillageProps_HangingLantern_Bridge_01",
+      "collection": "SCENE_VillageProps",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_HangingLantern",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Bark_WarmBrown",
+        "MAT_Lantern_Warm_Emission",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "SCENE_VillageProps_HangingLantern_Bridge_02",
+      "collection": "SCENE_VillageProps",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_HangingLantern",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Bark_WarmBrown",
+        "MAT_Lantern_Warm_Emission",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "SCENE_VillageProps_HangingLantern_Bridge_03",
+      "collection": "SCENE_VillageProps",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_HangingLantern",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Bark_WarmBrown",
+        "MAT_Lantern_Warm_Emission",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_00",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_FernCluster",
+      "materials": [
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_01",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_BroadLeafPlant",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 128
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_02",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_MossPatch",
+      "materials": [
+        "MAT_Moss",
+        "MAT_Leaves_DeepGreen"
+      ],
+      "approximate_triangles": 26
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_03",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_SmallMossyRock",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 38
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_04",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_FernCluster",
+      "materials": [
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_05",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_BroadLeafPlant",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 128
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_06",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_MossPatch",
+      "materials": [
+        "MAT_Moss",
+        "MAT_Leaves_DeepGreen"
+      ],
+      "approximate_triangles": 26
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_07",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_SmallMossyRock",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 38
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_08",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_FernCluster",
+      "materials": [
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_09",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_BroadLeafPlant",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 128
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_10",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_MossPatch",
+      "materials": [
+        "MAT_Moss",
+        "MAT_Leaves_DeepGreen"
+      ],
+      "approximate_triangles": 26
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_11",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_SmallMossyRock",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 38
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_12",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_FernCluster",
+      "materials": [
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_13",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_BroadLeafPlant",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 128
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_14",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_MossPatch",
+      "materials": [
+        "MAT_Moss",
+        "MAT_Leaves_DeepGreen"
+      ],
+      "approximate_triangles": 26
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_15",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_SmallMossyRock",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 38
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_16",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_FernCluster",
+      "materials": [
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_17",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_BroadLeafPlant",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 128
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_18",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_MossPatch",
+      "materials": [
+        "MAT_Moss",
+        "MAT_Leaves_DeepGreen"
+      ],
+      "approximate_triangles": 26
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_19",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_SmallMossyRock",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 38
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_20",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_FernCluster",
+      "materials": [
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_21",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_BroadLeafPlant",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 128
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_22",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_MossPatch",
+      "materials": [
+        "MAT_Moss",
+        "MAT_Leaves_DeepGreen"
+      ],
+      "approximate_triangles": 26
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_23",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_SmallMossyRock",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 38
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_24",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_FernCluster",
+      "materials": [
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_25",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_BroadLeafPlant",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 128
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_26",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_MossPatch",
+      "materials": [
+        "MAT_Moss",
+        "MAT_Leaves_DeepGreen"
+      ],
+      "approximate_triangles": 26
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_27",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_SmallMossyRock",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 38
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_28",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_FernCluster",
+      "materials": [
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_29",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_BroadLeafPlant",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 128
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_30",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_MossPatch",
+      "materials": [
+        "MAT_Moss",
+        "MAT_Leaves_DeepGreen"
+      ],
+      "approximate_triangles": 26
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_31",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_SmallMossyRock",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 38
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_32",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_FernCluster",
+      "materials": [
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_33",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_BroadLeafPlant",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 128
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_34",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_MossPatch",
+      "materials": [
+        "MAT_Moss",
+        "MAT_Leaves_DeepGreen"
+      ],
+      "approximate_triangles": 26
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_35",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_SmallMossyRock",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 38
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_36",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_FernCluster",
+      "materials": [
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "SCENE_Foliage_PathFrame_37",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_BroadLeafPlant",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Leaves_LightGreen"
+      ],
+      "approximate_triangles": 128
+    },
+    {
+      "name": "SCENE_Foliage_ColorAccent_00",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_PurpleFlower",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Flower_Purple",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 80
+    },
+    {
+      "name": "SCENE_Foliage_ColorAccent_01",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_BlueFlower",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Flower_Blue",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 80
+    },
+    {
+      "name": "SCENE_Foliage_ColorAccent_02",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_PurpleFlower",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Flower_Purple",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 80
+    },
+    {
+      "name": "SCENE_Foliage_ColorAccent_03",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_BlueFlower",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Flower_Blue",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 80
+    },
+    {
+      "name": "SCENE_Foliage_ColorAccent_04",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_GlowingMushroom",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Mushroom_Pink",
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 88
+    },
+    {
+      "name": "SCENE_Foliage_ColorAccent_05",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_GlowingMushroom",
+      "materials": [
+        "MAT_Stone_MossyGray",
+        "MAT_Mushroom_Pink",
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 88
+    },
+    {
+      "name": "SCENE_Foliage_ColorAccent_06",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_BlueFlower",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Flower_Blue",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 80
+    },
+    {
+      "name": "SCENE_Foliage_ColorAccent_07",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_PurpleFlower",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Flower_Purple",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 80
+    },
+    {
+      "name": "SCENE_Foliage_HangingVine_00",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_HangingVine",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "SCENE_Foliage_HangingVine_01",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_HangingVine",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "SCENE_Foliage_HangingVine_02",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_HangingVine",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "SCENE_Foliage_HangingVine_03",
+      "collection": "SCENE_Foliage",
+      "type": "MESH",
+      "source_asset": "FOLIAGE_HangingVine",
+      "materials": [
+        "MAT_Leaves_DeepGreen",
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "SCENE_Characters_PlayerPlaceholder_Foreground_Body",
+      "collection": "SCENE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_PlayerPlaceholder"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Characters_PlayerPlaceholder_Foreground_Head",
+      "collection": "SCENE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_PlayerPlaceholder"
+      ],
+      "approximate_triangles": 36
+    },
+    {
+      "name": "SCENE_Characters_PlayerPlaceholder_Foreground_Shoulders",
+      "collection": "SCENE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Leaves_DeepGreen"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Characters_PlayerPlaceholder_Foreground_Staff",
+      "collection": "SCENE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Characters_MemoryKeeperQuestGiver_Body",
+      "collection": "SCENE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_NpcPlaceholder"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Characters_MemoryKeeperQuestGiver_Head",
+      "collection": "SCENE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_NpcPlaceholder"
+      ],
+      "approximate_triangles": 36
+    },
+    {
+      "name": "SCENE_Characters_MemoryKeeperQuestGiver_Shoulders",
+      "collection": "SCENE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Leaves_DeepGreen"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Characters_MemoryKeeperQuestGiver_Staff",
+      "collection": "SCENE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Characters_MemoryKeeperQuestGiver_QuestMarker",
+      "collection": "SCENE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_QuestGold"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Characters_MemoryKeeperQuestGiver_QuestMarkerStem",
+      "collection": "SCENE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_QuestGold"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Characters_RootGuardianHubGuard_Body",
+      "collection": "SCENE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_NpcPlaceholder"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Characters_RootGuardianHubGuard_Head",
+      "collection": "SCENE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_NpcPlaceholder"
+      ],
+      "approximate_triangles": 36
+    },
+    {
+      "name": "SCENE_Characters_RootGuardianHubGuard_Shoulders",
+      "collection": "SCENE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Leaves_DeepGreen"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Characters_RootGuardianHubGuard_Staff",
+      "collection": "SCENE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Characters_WardenTrainerNearPath_Body",
+      "collection": "SCENE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_NpcPlaceholder"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Characters_WardenTrainerNearPath_Head",
+      "collection": "SCENE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_NpcPlaceholder"
+      ],
+      "approximate_triangles": 36
+    },
+    {
+      "name": "SCENE_Characters_WardenTrainerNearPath_Shoulders",
+      "collection": "SCENE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Leaves_DeepGreen"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Characters_WardenTrainerNearPath_Staff",
+      "collection": "SCENE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Characters_WardenTrainerNearPath_QuestMarker",
+      "collection": "SCENE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_QuestGold"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Characters_WardenTrainerNearPath_QuestMarkerStem",
+      "collection": "SCENE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_QuestGold"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Characters_WildrootFawn_Body",
+      "collection": "SCENE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Wood_GoldenTrim"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SCENE_Characters_WildrootFawn_Head",
+      "collection": "SCENE_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Wood_GoldenTrim"
+      ],
+      "approximate_triangles": 28
+    },
+    {
+      "name": "SCENE_LightingRender_SunKey_BrightWarmDay",
+      "collection": "SCENE_LightingRender",
+      "type": "LIGHT",
+      "source_asset": "custom_scene_geometry",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "SCENE_LightingRender_AmbientFill_BlueGreenShade",
+      "collection": "SCENE_LightingRender",
+      "type": "LIGHT",
+      "source_asset": "custom_scene_geometry",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "SCENE_LightingRender_GlowAccent_00",
+      "collection": "SCENE_LightingRender",
+      "type": "LIGHT",
+      "source_asset": "custom_scene_geometry",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "SCENE_LightingRender_GlowAccent_01",
+      "collection": "SCENE_LightingRender",
+      "type": "LIGHT",
+      "source_asset": "custom_scene_geometry",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "SCENE_LightingRender_GlowAccent_02",
+      "collection": "SCENE_LightingRender",
+      "type": "LIGHT",
+      "source_asset": "custom_scene_geometry",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "SCENE_LightingRender_GlowAccent_03",
+      "collection": "SCENE_LightingRender",
+      "type": "LIGHT",
+      "source_asset": "custom_scene_geometry",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "SCENE_LightingRender_GlowAccent_04",
+      "collection": "SCENE_LightingRender",
+      "type": "LIGHT",
+      "source_asset": "custom_scene_geometry",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "SCENE_LightingRender_GlowAccent_05",
+      "collection": "SCENE_LightingRender",
+      "type": "LIGHT",
+      "source_asset": "custom_scene_geometry",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "SCENE_LightingRender_GlowAccent_06",
+      "collection": "SCENE_LightingRender",
+      "type": "LIGHT",
+      "source_asset": "custom_scene_geometry",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "SCENE_LightingRender_GlowAccent_07",
+      "collection": "SCENE_LightingRender",
+      "type": "LIGHT",
+      "source_asset": "custom_scene_geometry",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "SCENE_LightingRender_Camera_ThirdPersonPlayerView",
+      "collection": "SCENE_LightingRender",
+      "type": "CAMERA",
+      "source_asset": "custom_scene_geometry",
+      "materials": [],
+      "approximate_triangles": 0
+    }
+  ],
+  "material_names": [
+    "MAT_Backdrop_ForestMist",
+    "MAT_Backdrop_SkyBlue",
+    "MAT_Banner_VerdantGreen",
+    "MAT_Bark_DarkRoot",
+    "MAT_Bark_WarmBrown",
+    "MAT_Echo_Transparent",
+    "MAT_Flower_Blue",
+    "MAT_Flower_Purple",
+    "MAT_GladeGrass",
+    "MAT_GladeGrassDark",
+    "MAT_GoldTrim",
+    "MAT_Lantern_Warm_Emission",
+    "MAT_Leaves_DeepGreen",
+    "MAT_Leaves_LightGreen",
+    "MAT_Moss",
+    "MAT_Mushroom_Pink",
+    "MAT_NpcPlaceholder",
+    "MAT_Path_MossyStone",
+    "MAT_Path_WarmRoot",
+    "MAT_PlayerPlaceholder",
+    "MAT_QuestGold",
+    "MAT_RootShadow",
+    "MAT_Rune_Cyan_Emission",
+    "MAT_Stone_MossyGray",
+    "MAT_Wood_GoldenTrim",
+    "MAT_Worldroot_Cyan_Emission"
+  ],
+  "approximate_total_triangles": 8508,
+  "render_paths": [
+    "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\heartbough_glade_entrance_v001_2560x1440.png",
+    "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\heartbough_glade_entrance_v001_1920x1080.png"
+  ],
+  "export_paths": {
+    "blend": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\blender\\heartbough_glade_entrance_v001.blend",
+    "glb": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\exports\\heartbough_glade_entrance_v001.glb"
+  },
+  "notes": [
+    "Scene assembled from the existing Thornveil modular asset kit plus custom terrain, characters, giant trees, and lighting.",
+    "Main path is intentionally kept open; foliage and props frame the route instead of blocking it.",
+    "Camera is a third-person gameplay view behind the player placeholder."
+  ]
+}

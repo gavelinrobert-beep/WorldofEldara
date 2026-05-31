@@ -21,7 +21,7 @@ public class ServerBootstrap
 
         // Load configuration
         _configuration = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
+            .SetBasePath(AppContext.BaseDirectory)
             .AddJsonFile("appsettings.json", false, true)
             .Build();
 

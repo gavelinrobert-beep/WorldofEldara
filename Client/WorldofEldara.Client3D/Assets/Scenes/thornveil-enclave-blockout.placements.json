@@ -1,0 +1,1625 @@
+{
+  "scene": "Thornveil Enclave Layout Pass 01",
+  "placements": [
+    {
+      "name": "arrival_moss_clearing",
+      "kind": "clearing",
+      "location": [
+        0.0,
+        -7.4,
+        0.1
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.25,
+        1.0,
+        1.0
+      ],
+      "note": "Spawn clearing, framed by trees."
+    },
+    {
+      "name": "arrival_path_intro",
+      "kind": "path",
+      "location": [
+        0.0,
+        -5.7,
+        0.13
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "scale": [
+        1.38,
+        3.7,
+        1.0
+      ],
+      "note": "Readable first path segment."
+    },
+    {
+      "name": "main_path_lower",
+      "kind": "path",
+      "location": [
+        0.0,
+        -2.4,
+        0.14
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "scale": [
+        1.42,
+        4.35,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "hearthbough_plaza_base",
+      "kind": "plaza",
+      "location": [
+        0.0,
+        0.9,
+        0.1
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.55,
+        1.2,
+        1.0
+      ],
+      "note": "Quest hub plaza."
+    },
+    {
+      "name": "hearthbough_rune_ring_outer",
+      "kind": "rune_ring",
+      "location": [
+        0.0,
+        0.9,
+        0.19
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.35,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "hearthbough_rune_ring_inner",
+      "kind": "rune_ring",
+      "location": [
+        0.0,
+        0.9,
+        0.205
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.82,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "main_path_upper",
+      "kind": "path",
+      "location": [
+        0.0,
+        3.7,
+        0.17
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "scale": [
+        1.34,
+        4.25,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "upper_approach_stairs_00",
+      "kind": "stairs",
+      "location": [
+        0.0,
+        5.6,
+        0.24
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "scale": [
+        1.52,
+        1.34,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "upper_approach_stairs_01",
+      "kind": "stairs",
+      "location": [
+        0.0,
+        6.1,
+        0.34
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "scale": [
+        1.46,
+        1.3,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "upper_approach_stairs_02",
+      "kind": "stairs",
+      "location": [
+        0.0,
+        6.6,
+        0.44
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "scale": [
+        1.4,
+        1.26,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "upper_root_bridge",
+      "kind": "root_bridge",
+      "location": [
+        0.0,
+        7.65,
+        0.72
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        90.0
+      ],
+      "scale": [
+        1.42,
+        1.22,
+        1.0
+      ],
+      "note": "Root bridge leads into upper enclave."
+    },
+    {
+      "name": "upper_enclave_terrace",
+      "kind": "terrace",
+      "location": [
+        0.0,
+        9.7,
+        0.92
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        2.1,
+        1.42,
+        1.0
+      ],
+      "note": "Raised destination vista."
+    },
+    {
+      "name": "worldroot_heart_crystal",
+      "kind": "landmark_crystal",
+      "location": [
+        0.0,
+        11.55,
+        1.14
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.78,
+        0.78,
+        0.86
+      ],
+      "note": ""
+    },
+    {
+      "name": "west_treehouse_body",
+      "kind": "kiosk",
+      "location": [
+        -5.95,
+        4.65,
+        0.82
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -18.0
+      ],
+      "scale": [
+        1.22,
+        1.0,
+        1.15
+      ],
+      "note": "Memory keeper treehouse."
+    },
+    {
+      "name": "east_treehouse_body",
+      "kind": "kiosk",
+      "location": [
+        5.95,
+        5.85,
+        0.88
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        16.0
+      ],
+      "scale": [
+        1.18,
+        1.0,
+        1.12
+      ],
+      "note": "Guardian overlook treehouse."
+    },
+    {
+      "name": "upper_treehouse_body",
+      "kind": "kiosk",
+      "location": [
+        -4.15,
+        10.45,
+        1.08
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -24.0
+      ],
+      "scale": [
+        1.35,
+        1.0,
+        1.22
+      ],
+      "note": "Upper enclave house."
+    },
+    {
+      "name": "root_guardian_shrine_body",
+      "kind": "small_shrine",
+      "location": [
+        2.75,
+        2.25,
+        0.32
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        12.0
+      ],
+      "scale": [
+        0.92,
+        0.92,
+        0.86
+      ],
+      "note": ""
+    },
+    {
+      "name": "west_branch_path",
+      "kind": "path",
+      "location": [
+        -2.6,
+        0.6,
+        0.16
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -8.0
+      ],
+      "scale": [
+        1.0,
+        2.35,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "east_branch_path",
+      "kind": "path",
+      "location": [
+        2.8,
+        1.7,
+        0.16
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        18.0
+      ],
+      "scale": [
+        1.0,
+        2.45,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "west_root_arch",
+      "kind": "root_arch",
+      "location": [
+        -4.1,
+        5.55,
+        0.46
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        8.0
+      ],
+      "scale": [
+        1.05,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "east_root_arch",
+      "kind": "root_arch",
+      "location": [
+        4.05,
+        6.55,
+        0.48
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -8.0
+      ],
+      "scale": [
+        1.02,
+        1.0,
+        0.98
+      ],
+      "note": ""
+    },
+    {
+      "name": "arrival_great_root_arch",
+      "kind": "root_arch",
+      "location": [
+        0.0,
+        6.25,
+        0.46
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.18,
+        1.0,
+        0.98
+      ],
+      "note": ""
+    },
+    {
+      "name": "mossglass_pool_west",
+      "kind": "water_pool",
+      "location": [
+        -5.7,
+        -3.2,
+        0.08
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        8.0
+      ],
+      "scale": [
+        1.35,
+        1.05,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "mossglass_pool_upper",
+      "kind": "water_pool",
+      "location": [
+        3.9,
+        6.0,
+        0.28
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -12.0
+      ],
+      "scale": [
+        1.1,
+        0.9,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "corruption_pocket",
+      "kind": "garden",
+      "location": [
+        6.3,
+        -3.7,
+        0.12
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.45,
+        1.1,
+        1.0
+      ],
+      "note": "Hostile side pocket."
+    },
+    {
+      "name": "corruption_path",
+      "kind": "path",
+      "location": [
+        4.1,
+        -2.4,
+        0.14
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -32.0
+      ],
+      "scale": [
+        0.82,
+        2.4,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_tree_left_foreground_trunk",
+      "kind": "tree",
+      "location": [
+        -7.4,
+        -7.8,
+        0.14
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -12.0
+      ],
+      "scale": [
+        0.95,
+        1.0,
+        1.02
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_tree_right_foreground_trunk",
+      "kind": "tree",
+      "location": [
+        7.2,
+        -7.0,
+        0.16
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        10.0
+      ],
+      "scale": [
+        0.95,
+        1.0,
+        1.02
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_tree_west_hub_trunk",
+      "kind": "tree",
+      "location": [
+        -7.4,
+        0.8,
+        0.34
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -8.0
+      ],
+      "scale": [
+        1.12,
+        1.0,
+        1.06
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_tree_east_hub_trunk",
+      "kind": "tree",
+      "location": [
+        7.1,
+        2.2,
+        0.38
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        10.0
+      ],
+      "scale": [
+        1.08,
+        1.0,
+        1.04
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_tree_upper_left_trunk",
+      "kind": "tree",
+      "location": [
+        -6.0,
+        7.8,
+        0.82
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -16.0
+      ],
+      "scale": [
+        1.12,
+        1.0,
+        1.06
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_tree_upper_right_trunk",
+      "kind": "tree",
+      "location": [
+        5.7,
+        8.5,
+        0.86
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        18.0
+      ],
+      "scale": [
+        1.1,
+        1.0,
+        1.06
+      ],
+      "note": ""
+    },
+    {
+      "name": "canopy_tree_far_center_trunk",
+      "kind": "tree",
+      "location": [
+        0.8,
+        12.1,
+        0.94
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.04,
+        1.0,
+        1.02
+      ],
+      "note": ""
+    },
+    {
+      "name": "hub_banner_left_pole",
+      "kind": "banner",
+      "location": [
+        -2.65,
+        2.15,
+        0.2
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        4.0
+      ],
+      "scale": [
+        0.82,
+        0.82,
+        0.82
+      ],
+      "note": ""
+    },
+    {
+      "name": "hub_banner_right_pole",
+      "kind": "banner",
+      "location": [
+        2.85,
+        2.8,
+        0.2
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -8.0
+      ],
+      "scale": [
+        0.82,
+        0.82,
+        0.82
+      ],
+      "note": ""
+    },
+    {
+      "name": "upper_banner_left_pole",
+      "kind": "banner",
+      "location": [
+        -1.6,
+        8.3,
+        0.92
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        12.0
+      ],
+      "scale": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "note": ""
+    },
+    {
+      "name": "upper_banner_right_pole",
+      "kind": "banner",
+      "location": [
+        1.7,
+        8.7,
+        0.92
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -12.0
+      ],
+      "scale": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "note": ""
+    },
+    {
+      "name": "arrival_lantern_left",
+      "kind": "lantern",
+      "location": [
+        -2.15,
+        -3.65,
+        0.16
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.82,
+        0.82,
+        0.82
+      ],
+      "note": ""
+    },
+    {
+      "name": "arrival_lantern_right",
+      "kind": "lantern",
+      "location": [
+        2.15,
+        -3.25,
+        0.16
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.82,
+        0.82,
+        0.82
+      ],
+      "note": ""
+    },
+    {
+      "name": "hub_lantern_west",
+      "kind": "lantern",
+      "location": [
+        -3.45,
+        2.65,
+        0.2
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.78,
+        0.78,
+        0.78
+      ],
+      "note": ""
+    },
+    {
+      "name": "hub_lantern_east",
+      "kind": "lantern",
+      "location": [
+        3.6,
+        3.25,
+        0.2
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.78,
+        0.78,
+        0.78
+      ],
+      "note": ""
+    },
+    {
+      "name": "quest_signpost_arrival",
+      "kind": "imported_signpost",
+      "location": [
+        -2.2,
+        -5.6,
+        0.18
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        12.0
+      ],
+      "scale": [
+        0.72,
+        0.72,
+        0.72
+      ],
+      "note": ""
+    },
+    {
+      "name": "quest_signpost_hub",
+      "kind": "imported_signpost",
+      "location": [
+        3.45,
+        0.55,
+        0.2
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -18.0
+      ],
+      "scale": [
+        0.72,
+        0.72,
+        0.72
+      ],
+      "note": ""
+    },
+    {
+      "name": "glowcap_cluster_west_pool",
+      "kind": "imported_glowcap",
+      "location": [
+        -5.0,
+        -2.4,
+        0.14
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "glowcap_cluster_hub",
+      "kind": "imported_glowcap",
+      "location": [
+        -2.1,
+        2.7,
+        0.18
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "glowcap_cluster_upper",
+      "kind": "imported_glowcap",
+      "location": [
+        2.2,
+        7.7,
+        0.74
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "note": ""
+    },
+    {
+      "name": "hero_azure_crystal_tree_upper_left",
+      "kind": "imported_azure_tree",
+      "location": [
+        -5.0,
+        7.55,
+        0.56
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -8.0
+      ],
+      "scale": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "note": ""
+    },
+    {
+      "name": "hero_azure_crystal_tree_upper_right",
+      "kind": "imported_azure_tree",
+      "location": [
+        5.25,
+        8.0,
+        0.58
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        10.0
+      ],
+      "scale": [
+        0.9,
+        0.9,
+        0.9
+      ],
+      "note": ""
+    },
+    {
+      "name": "crystal_cluster_arrival_left",
+      "kind": "ground_crystal",
+      "location": [
+        -3.2,
+        -5.6,
+        0.18
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.48,
+        0.48,
+        0.48
+      ],
+      "note": ""
+    },
+    {
+      "name": "crystal_cluster_hub_west",
+      "kind": "ground_crystal",
+      "location": [
+        -3.7,
+        2.3,
+        0.28
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.58,
+        0.58,
+        0.58
+      ],
+      "note": ""
+    },
+    {
+      "name": "crystal_cluster_hub_east",
+      "kind": "ground_crystal",
+      "location": [
+        3.8,
+        3.1,
+        0.3
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.58,
+        0.58,
+        0.58
+      ],
+      "note": ""
+    },
+    {
+      "name": "crystal_cluster_corruption_edge",
+      "kind": "ground_crystal",
+      "location": [
+        5.5,
+        -2.2,
+        0.24
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "note": ""
+    },
+    {
+      "name": "crystal_cluster_upper_gate",
+      "kind": "ground_crystal",
+      "location": [
+        0.8,
+        7.9,
+        0.78
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.68,
+        0.68,
+        0.68
+      ],
+      "note": ""
+    },
+    {
+      "name": "heartbough_worldroot_heart",
+      "kind": "worldroot_heart",
+      "location": [
+        0.0,
+        2.35,
+        0.22
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scale": [
+        0.62,
+        0.62,
+        0.72
+      ],
+      "note": "The central cyan heart that makes Heartbough feel sacred."
+    },
+    {
+      "name": "arrival_fawn_crossing",
+      "kind": "wildroot_fawn",
+      "location": [
+        -0.85,
+        -5.15,
+        0.08
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        72.0
+      ],
+      "scale": [
+        0.75,
+        0.75,
+        0.75
+      ],
+      "note": "First minute warmth: a small fawn crosses the path."
+    },
+    {
+      "name": "heartbough_fawn_left",
+      "kind": "wildroot_fawn",
+      "location": [
+        -2.75,
+        -0.8,
+        0.12
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        28.0
+      ],
+      "scale": [
+        0.82,
+        0.82,
+        0.82
+      ],
+      "note": "Safe hub life."
+    },
+    {
+      "name": "heartbough_fawn_right",
+      "kind": "wildroot_fawn",
+      "location": [
+        2.9,
+        2.55,
+        0.14
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -42.0
+      ],
+      "scale": [
+        0.78,
+        0.78,
+        0.78
+      ],
+      "note": "Safe hub life."
+    },
+    {
+      "name": "upper_grove_stag",
+      "kind": "grove_stag",
+      "location": [
+        -2.2,
+        7.9,
+        0.8
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        118.0
+      ],
+      "scale": [
+        0.88,
+        0.88,
+        0.88
+      ],
+      "note": "Sacred non-hostile silhouette near upper enclave."
+    },
+    {
+      "name": "listener_echo_low",
+      "kind": "memory_echo",
+      "location": [
+        -1.55,
+        -1.6,
+        0.14
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        12.0
+      ],
+      "scale": [
+        0.72,
+        0.72,
+        0.78
+      ],
+      "note": "A calm tutorial echo near Listener's Ring."
+    },
+    {
+      "name": "mossglass_echo_pool",
+      "kind": "memory_echo",
+      "location": [
+        -5.55,
+        -3.25,
+        0.18
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -24.0
+      ],
+      "scale": [
+        0.78,
+        0.78,
+        0.82
+      ],
+      "note": "Blue echo foreshadowing Mossglass Pools."
+    },
+    {
+      "name": "upper_echo_arch",
+      "kind": "memory_echo",
+      "location": [
+        1.2,
+        7.65,
+        0.76
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        18.0
+      ],
+      "scale": [
+        0.78,
+        0.78,
+        0.82
+      ],
+      "note": "Memory echo near the upper root bridge."
+    },
+    {
+      "name": "path_stone_arrival_00",
+      "kind": "path_stone",
+      "location": [
+        -0.72,
+        -6.25,
+        0.155
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -12.0
+      ],
+      "scale": [
+        1.05,
+        0.82,
+        1.0
+      ],
+      "note": "Loose stone on the arrival path edge."
+    },
+    {
+      "name": "path_stone_arrival_01",
+      "kind": "path_stone",
+      "location": [
+        0.78,
+        -4.85,
+        0.16
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        18.0
+      ],
+      "scale": [
+        0.92,
+        0.72,
+        1.0
+      ],
+      "note": "Loose stone on the arrival path edge."
+    },
+    {
+      "name": "path_stone_lower_00",
+      "kind": "path_stone",
+      "location": [
+        -0.9,
+        -2.15,
+        0.165
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        8.0
+      ],
+      "scale": [
+        1.12,
+        0.72,
+        1.0
+      ],
+      "note": "Broken stone rhythm toward Heartbough."
+    },
+    {
+      "name": "path_stone_lower_01",
+      "kind": "path_stone",
+      "location": [
+        0.96,
+        -0.65,
+        0.17
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -18.0
+      ],
+      "scale": [
+        0.94,
+        0.68,
+        1.0
+      ],
+      "note": "Broken stone rhythm toward Heartbough."
+    },
+    {
+      "name": "path_stone_hub_00",
+      "kind": "path_stone",
+      "location": [
+        -1.15,
+        1.55,
+        0.18
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        22.0
+      ],
+      "scale": [
+        1.08,
+        0.76,
+        1.0
+      ],
+      "note": "Readable path edge through the hub."
+    },
+    {
+      "name": "path_stone_hub_01",
+      "kind": "path_stone",
+      "location": [
+        1.1,
+        3.1,
+        0.19
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -16.0
+      ],
+      "scale": [
+        0.98,
+        0.72,
+        1.0
+      ],
+      "note": "Readable path edge through the hub."
+    },
+    {
+      "name": "path_stone_upper_00",
+      "kind": "path_stone",
+      "location": [
+        -0.86,
+        4.85,
+        0.22
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        10.0
+      ],
+      "scale": [
+        1.12,
+        0.78,
+        1.0
+      ],
+      "note": "Stone rhythm leading to the upper enclave."
+    },
+    {
+      "name": "path_stone_upper_01",
+      "kind": "path_stone",
+      "location": [
+        0.82,
+        6.85,
+        0.42
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -22.0
+      ],
+      "scale": [
+        0.95,
+        0.68,
+        1.0
+      ],
+      "note": "Stone rhythm leading to the upper enclave."
+    },
+    {
+      "name": "leaf_shrub_arrival_left",
+      "kind": "leaf_shrub",
+      "location": [
+        -2.8,
+        -6.8,
+        0.13
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -18.0
+      ],
+      "scale": [
+        1.05,
+        0.85,
+        0.95
+      ],
+      "note": "Soft foreground foliage without blocking the path."
+    },
+    {
+      "name": "leaf_shrub_arrival_right",
+      "kind": "leaf_shrub",
+      "location": [
+        2.85,
+        -5.95,
+        0.13
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        20.0
+      ],
+      "scale": [
+        0.9,
+        0.78,
+        0.9
+      ],
+      "note": "Soft foreground foliage without blocking the path."
+    },
+    {
+      "name": "leaf_shrub_hub_left",
+      "kind": "leaf_shrub",
+      "location": [
+        -3.65,
+        0.95,
+        0.19
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -8.0
+      ],
+      "scale": [
+        1.1,
+        0.84,
+        0.98
+      ],
+      "note": "Path-edge foliage near the left NPC pocket."
+    },
+    {
+      "name": "leaf_shrub_hub_right",
+      "kind": "leaf_shrub",
+      "location": [
+        3.75,
+        1.45,
+        0.2
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        12.0
+      ],
+      "scale": [
+        1.0,
+        0.82,
+        0.96
+      ],
+      "note": "Path-edge foliage near the right NPC pocket."
+    },
+    {
+      "name": "leaf_shrub_upper_left",
+      "kind": "leaf_shrub",
+      "location": [
+        -2.9,
+        5.45,
+        0.36
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        14.0
+      ],
+      "scale": [
+        1.0,
+        0.78,
+        0.92
+      ],
+      "note": "Green edge before the raised bridge."
+    },
+    {
+      "name": "leaf_shrub_upper_right",
+      "kind": "leaf_shrub",
+      "location": [
+        3.1,
+        5.95,
+        0.38
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -16.0
+      ],
+      "scale": [
+        0.92,
+        0.74,
+        0.9
+      ],
+      "note": "Green edge before the raised bridge."
+    },
+    {
+      "name": "moss_rock_water_edge_00",
+      "kind": "moss_rock",
+      "location": [
+        -4.15,
+        -3.75,
+        0.11
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        28.0
+      ],
+      "scale": [
+        1.0,
+        0.72,
+        0.82
+      ],
+      "note": "Mossglass edge rock."
+    },
+    {
+      "name": "moss_rock_water_edge_01",
+      "kind": "moss_rock",
+      "location": [
+        -6.85,
+        -2.6,
+        0.11
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -18.0
+      ],
+      "scale": [
+        0.84,
+        0.62,
+        0.75
+      ],
+      "note": "Mossglass edge rock."
+    },
+    {
+      "name": "moss_rock_corruption_edge_00",
+      "kind": "moss_rock",
+      "location": [
+        5.35,
+        -1.05,
+        0.18
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        18.0
+      ],
+      "scale": [
+        0.9,
+        0.64,
+        0.72
+      ],
+      "note": "Rock separating safe path from corruption."
+    },
+    {
+      "name": "moss_rock_corruption_edge_01",
+      "kind": "moss_rock",
+      "location": [
+        7.35,
+        -3.05,
+        0.16
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -22.0
+      ],
+      "scale": [
+        0.82,
+        0.62,
+        0.7
+      ],
+      "note": "Rock separating safe path from corruption."
+    },
+    {
+      "name": "moss_rock_hub_left",
+      "kind": "moss_rock",
+      "location": [
+        -4.65,
+        2.65,
+        0.24
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        8.0
+      ],
+      "scale": [
+        0.86,
+        0.62,
+        0.72
+      ],
+      "note": "Low silhouette under the left treehouse."
+    },
+    {
+      "name": "moss_rock_hub_right",
+      "kind": "moss_rock",
+      "location": [
+        4.85,
+        3.45,
+        0.24
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        -10.0
+      ],
+      "scale": [
+        0.86,
+        0.62,
+        0.72
+      ],
+      "note": "Low silhouette under the right treehouse."
+    }
+  ]
+}

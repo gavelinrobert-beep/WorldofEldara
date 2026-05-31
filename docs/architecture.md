@@ -1,156 +1,52 @@
-# Eldara Architecture
+# Architecture
 
-## Overview
+World of Eldara uses a custom client and an authoritative server.
 
-World of Eldara uses Unreal Engine 5 with a layered authority model that balances server authority, client responsiveness, and Blueprint flexibility. This document outlines the core architectural decisions and project structure.
-
-## Layered Authority Model
-
-### Server Authority
-- **Combat resolution**: All damage calculation, ability validation, cooldown enforcement
-- **Character creation**: Race/class/faction validation, stat assignment
-- **World state**: NPC behavior, quest progression, zone events
-- **Player data**: Inventory, equipment, progression persistence
-
-### Client Authority
-- **Visual presentation**: Effects, animations, UI state
-- **Local prediction**: Movement input prediction for responsiveness
-- **Camera control**: Player-controlled camera behavior
-
-### Shared Validation
-- **Input constraints**: Client and server validate input bounds
-- **Line-of-sight**: Client checks before sending, server confirms
-- **Cooldown display**: Client tracks for UI, server enforces
-
-## Project Layout
-
-```
-Source/Eldara/
-├── Core/                      # Core game framework
-│   ├── EldaraGameInstance.*
-│   ├── EldaraGameModeBase.*
-│   └── EldaraPlayerController.*
-├── Data/                      # Data asset definitions
-│   ├── EldaraRaceData.h
-│   ├── EldaraClassData.h
-│   ├── EldaraFactionData.h
-│   ├── EldaraQuestData.h
-│   ├── EldaraZoneData.h
-│   └── EldaraCharacterCreatePayload.h
-├── Characters/                # Character and combat
-│   ├── EldaraCharacterBase.*
-│   ├── EldaraCombatComponent.*
-│   ├── EldaraAbility.h
-│   └── EldaraEffect.h
-├── World/                     # World systems (future)
-├── UI/                        # UI systems (future)
-└── AI/                        # NPC AI
-    ├── EldaraAIController.*
-    └── EldaraAIKeys.h
+```text
+Client/WorldofEldara.Client
+        |
+        | TCP + length-prefixed MessagePack packets
+        v
+Server/WorldofEldara.Server
+        |
+        v
+Shared/WorldofEldara.Shared
 ```
 
-## C++ vs Blueprint
+## Client
 
-### Use C++ For:
-- **Core gameplay logic**: Combat, character creation, ability validation
-- **Network replication**: RPCs, replicated properties, validation
-- **Performance-critical systems**: AI behavior tree tasks, mass entity updates
-- **Data structures**: Character stats, ability definitions, payload structs
-- **Server authority**: All authoritative logic that must be secure
+The client owns presentation, input collection, local camera behavior, and rendering. It does not own game truth.
 
-### Use Blueprint For:
-- **Content iteration**: Ability visuals, particle effects, animation blueprints
-- **UI implementation**: Menus, HUD elements, quest journals
-- **Level design**: Zone layout, NPC placement, quest triggers
-- **Designer-friendly tuning**: Damage values, cooldown timers, resource costs
-- **Rapid prototyping**: Testing new mechanics before C++ implementation
+Current client layers:
 
-### Integration Points:
-- C++ exposes `BlueprintCallable` functions for designer access
-- C++ defines `BlueprintImplementableEvent` for visual/content hooks
-- Data Assets (C++ defined, BP instanced) bridge code and content
-- C++ provides base classes, Blueprints derive for specific content
+- `EldaraGameForm`: window, frame loop, keyboard input, overlay
+- `WorldScene`: prototype world state and draw calls
+- `SoftwareRenderer`: first-party frame buffer renderer
+- `EldaraServerClient`: TCP/MessagePack protocol adapter
 
-## Module Organization
+## Server
 
-### Core Module
-- Entry point classes (GameInstance, GameMode, PlayerController)
-- Singleton-pattern systems (quest manager, faction registry)
-- Network setup and validation hooks
+The server owns authentication prototype state, character data, entity state, movement validation, combat, quests, chat, NPC spawning, and NPC simulation.
 
-### Data Module
-- Data asset definitions for designers
-- Payload structs for network communication
-- Validation rules and lore constraints
+Important server rules:
 
-### Gameplay Module
-- Character logic and combat components
-- Ability and effect systems
-- Player interaction systems
+- client requests are treated as requests, not truth
+- movement is reconciled against server state
+- ability use is validated for resources, cooldowns, range, target validity, and known abilities
+- quest state progresses on server-side triggers
 
-### AI Module
-- AI controllers with behavior tree integration
-- Perception and aggro systems
-- Boss-specific logic and phase handlers
+## Shared Contract
 
-## Compilation Model
+`Shared/WorldofEldara.Shared` is the protocol and data contract. Packets must remain compatible across client and server. Any protocol change should update both sides in the same PR.
 
-- **Modular compilation**: Each module compiles independently
-- **Forward declarations**: Minimize header dependencies
-- **Interface classes**: Loose coupling between modules
-- **Data-driven**: Content changes don't require C++ recompilation
+## Rendering Direction
 
-## Network Architecture
+The first renderer is intentionally software-based. This keeps the frame loop understandable while we prove the game loop. Later we can add a hardware backend without changing the server contract.
 
-- **Replicated properties**: Character stats, health, resources
-- **RPCs**: Client → Server for input, Server → Client for feedback
-- **Validation**: Server validates all client requests
-- **Prediction**: Client predicts movement, server reconciles
+Near-term renderer responsibilities:
 
-## Build Targets
-
-- **Development**: Fast iteration, full debug symbols
-- **DebugGame**: Optimized game code, debug editor
-- **Shipping**: Full optimization, no debug tools
-
-## Version Control Strategy
-
-- C++ headers and implementation in version control
-- Blueprint assets (.uasset) in version control with proper diffing
-- Generated files (Intermediate/, Binaries/) in .gitignore
-- Large assets managed via Git LFS
-
-## Performance Considerations
-
-- Minimize Blueprint overhead in hot paths (use C++)
-- Use data assets for static data (loaded once, referenced many times)
-- Profile before optimizing (Unreal Insights, Blueprint profiler)
-- Batch operations where possible (mass entity updates)
-
-## Security Model
-
-- All authoritative logic in C++ (harder to modify)
-- Server validates all client RPCs
-- No client-side combat resolution
-- Movement bounds checking and speed validation
-- Ability cooldown and resource enforcement server-side
-
-## Testing Strategy
-
-- Unit tests for C++ utility functions
-- Functional tests for RPC validation
-- Integration tests for character creation flow
-- Performance tests for mass entity simulation
-- Manual QA for Blueprint-heavy content
-
-## Documentation Standards
-
-- C++ classes documented with Doxygen-style comments
-- Blueprint functions use UE's `UFUNCTION` metadata for tooltips
-- Architecture decisions captured in this document
-- Gameplay systems detailed in docs/gameplay/
-- AI behavior documented in docs/ai/
-
-## Next Steps
-
-See [docs/todo-next.md](todo-next.md) for prioritized backlog.
+- draw world-space primitives
+- draw sprites/textures
+- support camera zoom
+- cull off-screen objects
+- expose debug overlays for packet/entity state

@@ -91,16 +91,16 @@ public static class ZoneDefinitions
         ["zone_01"] = new Zone
         {
             ZoneId = "zone_01",
-            Name = "Verdant Outskirts",
-            Description = "A controlled grove carved out as the first proving ground for new adventurers.",
+            Name = "Thornveil Enclave",
+            Description = "Heartbough Glade and the first living paths of the Sylvaen starter zone.",
             MinLevel = 1,
-            MaxLevel = 5,
+            MaxLevel = 10,
             Type = ZoneType.StarterZone,
             ControllingFaction = Faction.VerdantCircles,
-            WorldrootDensity = 0.8f,
+            WorldrootDensity = 1.0f,
             IsPvPEnabled = false,
             LoreDescription =
-                "The Verdant Circles allow outsiders to train here under watchful boughs while learning to respect the Worldroot.",
+                "Thornveil is not a beginner forest. It is a living immune system learning that the Worldroot can bleed, forget, and be deceived.",
             SafeSpawnPoint = new WorldPosition(2, 2, 0)
         },
 

@@ -1,0 +1,6685 @@
+{
+  "scene": "Memory Wastes - Outer Fringe",
+  "build": "v002",
+  "scope": "grounded first playable edge of the Memory Wastes",
+  "collections": [
+    "MW_OUTER_TERRAIN",
+    "MW_WARDEN_CAMP",
+    "MW_ECHO_FLATS",
+    "MW_ORANYN_RUINS",
+    "MW_ROOTSHEAR_RIFT",
+    "MW_MEMORY_GHOSTS",
+    "MW_PROPS",
+    "MW_FOLIAGE",
+    "MW_ATMOSPHERE",
+    "MW_LIGHTING",
+    "MW_CAMERA"
+  ],
+  "object_counts": {
+    "MW_OUTER_TERRAIN": 68,
+    "MW_WARDEN_CAMP": 32,
+    "MW_ECHO_FLATS": 27,
+    "MW_ORANYN_RUINS": 22,
+    "MW_ROOTSHEAR_RIFT": 25,
+    "MW_MEMORY_GHOSTS": 12,
+    "MW_PROPS": 8,
+    "MW_FOLIAGE": 267,
+    "MW_ATMOSPHERE": 3,
+    "MW_LIGHTING": 7,
+    "MW_CAMERA": 2
+  },
+  "object_total": 473,
+  "material_names": [
+    "MAT_MWOF_Atmosphere",
+    "MAT_MWOF_Banner_Verdant",
+    "MAT_MWOF_Echo_Blue",
+    "MAT_MWOF_Echo_Pool",
+    "MAT_MWOF_Flower_Biolume",
+    "MAT_MWOF_Forest_Silhouette",
+    "MAT_MWOF_Ground_DarkMoss",
+    "MAT_MWOF_Ground_MemoryMud",
+    "MAT_MWOF_Ground_SickMoss",
+    "MAT_MWOF_Leaves_Muted",
+    "MAT_MWOF_LowMist_Cyan",
+    "MAT_MWOF_NPC",
+    "MAT_MWOF_Path_CrackedDark",
+    "MAT_MWOF_Path_MossyStone",
+    "MAT_MWOF_Player",
+    "MAT_MWOF_Root_Dark",
+    "MAT_MWOF_Root_Strained",
+    "MAT_MWOF_Ruin_GhostCrack",
+    "MAT_MWOF_Ruin_OranynPale",
+    "MAT_MWOF_Safe_Green",
+    "MAT_MWOF_Violet_Instability",
+    "MAT_MWOF_Warm_Gold",
+    "MAT_MWOF_Worldroot_Cyan",
+    "MAT_MWOF_Worldroot_Cyan_Dim"
+  ],
+  "approximate_total_triangles": 7212,
+  "major_landmarks": {
+    "warden_camp": "foreground containment camp around y=-25",
+    "main_path": "curved broken mossy root-stone path from player spawn toward Rootshear Rift",
+    "echo_flats": "low memory leak area at left midground",
+    "oranyn_ruins": "half-manifested ruin cluster at right midground",
+    "rootshear_rift": "main far-mid focal fissure around (5.5, 18, 0)",
+    "forest_edge": "dark strained Worldroot forest wall around the scene boundary"
+  },
+  "outputs": {
+    "blend": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\blender\\memory_wastes_outer_fringe_v002.blend",
+    "glb": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\exports\\memory_wastes_outer_fringe_v002.glb",
+    "gameplay_render": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\memory_wastes_outer_fringe_gameplay_2560x1440.png",
+    "topdown_render": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\memory_wastes_outer_fringe_topdown_2560x1440.png",
+    "report": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\reports\\memory_wastes_outer_fringe_report.md"
+  },
+  "qa": {
+    "unnamed_primitives": [],
+    "non_prefixed_materials": [],
+    "grounded_ratio_target": "about 80 percent physical terrain / 20 percent floating memory fragments"
+  },
+  "objects": [
+    {
+      "name": "MW_OUTER_TERRAIN_MainGroundedMemoryWastesForestFloor_80x60",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        0.0,
+        0.0,
+        -0.05
+      ],
+      "triangles": 68,
+      "materials": [
+        "MAT_MWOF_Ground_DarkMoss"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_SickMossBank_LeftEchoFlat",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -19.0,
+        -1.0,
+        0.08
+      ],
+      "triangles": 52,
+      "materials": [
+        "MAT_MWOF_Ground_SickMoss"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_StrainedRootBank_RightRuins",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        18.0,
+        4.0,
+        0.1
+      ],
+      "triangles": 52,
+      "materials": [
+        "MAT_MWOF_Ground_MemoryMud"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_BackRidge_DarkerForestEdge",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        0.0,
+        26.0,
+        0.18
+      ],
+      "triangles": 48,
+      "materials": [
+        "MAT_MWOF_Forest_Silhouette"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_BackgroundBrokenForestMound_00",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -26.0,
+        20.0,
+        0.38
+      ],
+      "triangles": 32,
+      "materials": [
+        "MAT_MWOF_Ground_SickMoss"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_BackgroundBrokenForestMound_01",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -9.0,
+        24.0,
+        0.38
+      ],
+      "triangles": 32,
+      "materials": [
+        "MAT_MWOF_Ground_SickMoss"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_BackgroundBrokenForestMound_02",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        14.0,
+        25.0,
+        0.38
+      ],
+      "triangles": 32,
+      "materials": [
+        "MAT_MWOF_Ground_SickMoss"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_BackgroundBrokenForestMound_03",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        30.0,
+        20.0,
+        0.38
+      ],
+      "triangles": 32,
+      "materials": [
+        "MAT_MWOF_Ground_SickMoss"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_WoundedGroundLowRise_NotFlatPlate_00",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -16.5,
+        -18.5,
+        0.18
+      ],
+      "triangles": 40,
+      "materials": [
+        "MAT_MWOF_Ground_MemoryMud"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_WoundedGroundLowRise_NotFlatPlate_01",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        10.5,
+        -14.0,
+        0.195
+      ],
+      "triangles": 40,
+      "materials": [
+        "MAT_MWOF_Ground_SickMoss"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_WoundedGroundLowRise_NotFlatPlate_02",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -8.5,
+        10.5,
+        0.21
+      ],
+      "triangles": 40,
+      "materials": [
+        "MAT_MWOF_Ground_MemoryMud"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_WoundedGroundLowRise_NotFlatPlate_03",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        17.0,
+        17.0,
+        0.225
+      ],
+      "triangles": 40,
+      "materials": [
+        "MAT_MWOF_Ground_SickMoss"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_DarkerWalkableSoilUnderlay_00",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        0.0,
+        -27.5,
+        0.19
+      ],
+      "triangles": 32,
+      "materials": [
+        "MAT_MWOF_Ground_MemoryMud"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_MossyCrackedStoneSlab_00",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        0.0,
+        -27.5,
+        0.26
+      ],
+      "triangles": 28,
+      "materials": [
+        "MAT_MWOF_Path_MossyStone"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_DarkCrackLine_00",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        0.15,
+        -27.5,
+        0.42
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Path_CrackedDark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_RootBorder_Left_00",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -3.18,
+        -27.5,
+        0.38
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_RootBorder_Right_00",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        3.18,
+        -27.5,
+        0.38
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_DarkerWalkableSoilUnderlay_01",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        0.8,
+        -22.5,
+        0.2
+      ],
+      "triangles": 32,
+      "materials": [
+        "MAT_MWOF_Ground_MemoryMud"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_MossyCrackedStoneSlab_01",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        0.8,
+        -22.5,
+        0.272
+      ],
+      "triangles": 28,
+      "materials": [
+        "MAT_MWOF_Path_MossyStone"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_RootBorder_Left_01",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -2.48,
+        -22.5,
+        0.38
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_RootBorder_Right_01",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        4.08,
+        -22.5,
+        0.38
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_DarkerWalkableSoilUnderlay_02",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        2.0,
+        -17.2,
+        0.21
+      ],
+      "triangles": 32,
+      "materials": [
+        "MAT_MWOF_Ground_MemoryMud"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_MossyCrackedStoneSlab_02",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        2.0,
+        -17.2,
+        0.284
+      ],
+      "triangles": 28,
+      "materials": [
+        "MAT_MWOF_Path_MossyStone"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_DarkCrackLine_02",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        2.15,
+        -17.2,
+        0.42
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Path_CrackedDark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_RootBorder_Left_02",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -1.03,
+        -17.2,
+        0.38
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_RootBorder_Right_02",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        5.03,
+        -17.2,
+        0.38
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_SubtleCyanRouteRune_02",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        2.0,
+        -16.72,
+        0.52
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_DarkerWalkableSoilUnderlay_03",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        1.0,
+        -11.8,
+        0.22
+      ],
+      "triangles": 32,
+      "materials": [
+        "MAT_MWOF_Ground_MemoryMud"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_MossyCrackedStoneSlab_03",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        1.0,
+        -11.8,
+        0.296
+      ],
+      "triangles": 28,
+      "materials": [
+        "MAT_MWOF_Path_MossyStone"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_RootBorder_Left_03",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -1.73,
+        -11.8,
+        0.38
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_RootBorder_Right_03",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        3.73,
+        -11.8,
+        0.38
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_DarkerWalkableSoilUnderlay_04",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -1.8,
+        -6.0,
+        0.23
+      ],
+      "triangles": 32,
+      "materials": [
+        "MAT_MWOF_Ground_MemoryMud"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_MossyCrackedStoneSlab_04",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -1.8,
+        -6.0,
+        0.308
+      ],
+      "triangles": 28,
+      "materials": [
+        "MAT_MWOF_Path_MossyStone"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_DarkCrackLine_04",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -1.65,
+        -6.0,
+        0.42
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Path_CrackedDark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_RootBorder_Left_04",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -4.48,
+        -6.0,
+        0.38
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_RootBorder_Right_04",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        0.88,
+        -6.0,
+        0.38
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_DarkerWalkableSoilUnderlay_05",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -3.5,
+        0.2,
+        0.24
+      ],
+      "triangles": 32,
+      "materials": [
+        "MAT_MWOF_Ground_MemoryMud"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_MossyCrackedStoneSlab_05",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -3.5,
+        0.2,
+        0.32
+      ],
+      "triangles": 28,
+      "materials": [
+        "MAT_MWOF_Path_MossyStone"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_RootBorder_Left_05",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -5.93,
+        0.2,
+        0.38
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_RootBorder_Right_05",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -1.07,
+        0.2,
+        0.38
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_SubtleCyanRouteRune_05",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -3.5,
+        0.68,
+        0.52
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_DarkerWalkableSoilUnderlay_06",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -1.0,
+        6.0,
+        0.25
+      ],
+      "triangles": 32,
+      "materials": [
+        "MAT_MWOF_Ground_MemoryMud"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_MossyCrackedStoneSlab_06",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -1.0,
+        6.0,
+        0.332
+      ],
+      "triangles": 28,
+      "materials": [
+        "MAT_MWOF_Path_MossyStone"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_DarkCrackLine_06",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -0.85,
+        6.0,
+        0.42
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Path_CrackedDark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_RootBorder_Left_06",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -3.53,
+        6.0,
+        0.38
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_RootBorder_Right_06",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        1.53,
+        6.0,
+        0.38
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_DarkerWalkableSoilUnderlay_07",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        3.0,
+        11.5,
+        0.26
+      ],
+      "triangles": 32,
+      "materials": [
+        "MAT_MWOF_Ground_MemoryMud"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_MossyCrackedStoneSlab_07",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        3.0,
+        11.5,
+        0.344
+      ],
+      "triangles": 28,
+      "materials": [
+        "MAT_MWOF_Path_MossyStone"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_RootBorder_Left_07",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        0.52,
+        11.5,
+        0.38
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_RootBorder_Right_07",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        5.48,
+        11.5,
+        0.38
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_DarkerWalkableSoilUnderlay_08",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        6.5,
+        16.5,
+        0.27
+      ],
+      "triangles": 32,
+      "materials": [
+        "MAT_MWOF_Ground_MemoryMud"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_MossyCrackedStoneSlab_08",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        6.5,
+        16.5,
+        0.356
+      ],
+      "triangles": 28,
+      "materials": [
+        "MAT_MWOF_Path_MossyStone"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_DarkCrackLine_08",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        6.65,
+        16.5,
+        0.42
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Path_CrackedDark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_RootBorder_Left_08",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        4.12,
+        16.5,
+        0.38
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_RootBorder_Right_08",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        8.88,
+        16.5,
+        0.38
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_SubtleCyanRouteRune_08",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        6.5,
+        16.98,
+        0.52
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_DarkerWalkableSoilUnderlay_09",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        7.4,
+        21.4,
+        0.28
+      ],
+      "triangles": 32,
+      "materials": [
+        "MAT_MWOF_Ground_MemoryMud"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_MossyCrackedStoneSlab_09",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        7.4,
+        21.4,
+        0.368
+      ],
+      "triangles": 28,
+      "materials": [
+        "MAT_MWOF_Path_MossyStone"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_RootBorder_Left_09",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        5.12,
+        21.4,
+        0.38
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_MainPath_RootBorder_Right_09",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        9.68,
+        21.4,
+        0.38
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_ExposedWorldrootRidge_CrossingPathEdge_00",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -5.2,
+        -16.8,
+        0.49
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_ExposedWorldrootRidge_CrossingPathEdge_01",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        4.6,
+        -7.6,
+        0.49
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_ExposedWorldrootRidge_CrossingPathEdge_02",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -5.3,
+        2.2,
+        0.49
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_ExposedWorldrootRidge_CrossingPathEdge_03",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        3.5,
+        14.4,
+        0.49
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_ShallowMemoryDepression_EdgeDetail_00",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -24.0,
+        5.0,
+        0.39
+      ],
+      "triangles": 14,
+      "materials": [
+        "MAT_MWOF_Path_CrackedDark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_ShallowMemoryDepression_EdgeDetail_01",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        24.0,
+        -4.0,
+        0.39
+      ],
+      "triangles": 14,
+      "materials": [
+        "MAT_MWOF_Path_CrackedDark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_ShallowMemoryDepression_EdgeDetail_02",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        -13.0,
+        17.0,
+        0.39
+      ],
+      "triangles": 14,
+      "materials": [
+        "MAT_MWOF_Path_CrackedDark"
+      ]
+    },
+    {
+      "name": "MW_OUTER_TERRAIN_ShallowMemoryDepression_EdgeDetail_03",
+      "collection": "MW_OUTER_TERRAIN",
+      "type": "MESH",
+      "location": [
+        18.0,
+        -19.0,
+        0.39
+      ],
+      "triangles": 14,
+      "materials": [
+        "MAT_MWOF_Path_CrackedDark"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_ProtectedContainmentGlow_WarmCyan",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        -1.6,
+        -24.0,
+        0.36
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_RootShelter_LeafCanvas",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        -3.8,
+        -25.2,
+        0.55
+      ],
+      "triangles": 8,
+      "materials": [
+        "MAT_MWOF_Safe_Green"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_RootShelter_BentLivingRib_00",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        -5.35,
+        -25.32,
+        1.05
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Strained"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_RootShelter_BentLivingRib_01",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        -4.15,
+        -25.32,
+        1.05
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Strained"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_RootShelter_BentLivingRib_02",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        -2.95,
+        -25.32,
+        1.05
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Strained"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_VerdantBanner_Pole",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        -6.8,
+        -23.3,
+        1.34
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Strained"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_VerdantBanner_Cloth_GreenGold",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        -6.55,
+        -23.3,
+        2.35
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Banner_Verdant"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_VerdantBanner_GoldContainmentMark",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        -6.49,
+        -23.3,
+        2.48
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Warm_Gold"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_ArchiveTable_RootWood",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        -1.6,
+        -24.8,
+        0.63
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Strained"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_ArchiveTable_CyanMemoryMap",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        -1.6,
+        -24.8,
+        0.76
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_MemoryBrazier_RootBowl",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        -0.25,
+        -23.55,
+        0.72
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_MemoryBrazier_ContainedCyanFlame",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        -0.25,
+        -23.55,
+        1.08
+      ],
+      "triangles": 14,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_NPC_WardenContainmentLead_BodyCloak",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        -2.6,
+        -22.9,
+        1.03
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_NPC"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_NPC_WardenContainmentLead_Head",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        -2.6,
+        -22.9,
+        2.0
+      ],
+      "triangles": 14,
+      "materials": [
+        "MAT_MWOF_NPC"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_NPC_WardenContainmentLead_ShoulderShape",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        -2.6,
+        -22.9,
+        1.64
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_NPC"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_NPC_WardenContainmentLead_StaffOrSpearSilhouette",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        -2.377,
+        -22.544,
+        1.3
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Strained"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_NPC_WardenRootScout_BodyCloak",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        0.65,
+        -26.15,
+        1.03
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_NPC"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_NPC_WardenRootScout_Head",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        0.65,
+        -26.15,
+        2.0
+      ],
+      "triangles": 14,
+      "materials": [
+        "MAT_MWOF_NPC"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_NPC_WardenRootScout_ShoulderShape",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        0.65,
+        -26.15,
+        1.64
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_NPC"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_NPC_WardenRootScout_StaffOrSpearSilhouette",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        1.006,
+        -25.927,
+        1.3
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Strained"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_PlayerPlaceholder_EntryScale_BodyCloak",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        0.0,
+        -30.0,
+        1.03
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Player"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_PlayerPlaceholder_EntryScale_Head",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        0.0,
+        -30.0,
+        2.0
+      ],
+      "triangles": 14,
+      "materials": [
+        "MAT_MWOF_Player"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_PlayerPlaceholder_EntryScale_ShoulderShape",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        0.0,
+        -30.0,
+        1.64
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Player"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_PlayerPlaceholder_EntryScale_StaffOrSpearSilhouette",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        0.27,
+        -29.678,
+        1.3
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Strained"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_RootFence_FieldContainment_00",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        -7.1,
+        -26.8,
+        0.72
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_RootFence_FieldContainment_01",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        -4.8,
+        -27.25,
+        0.72
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_RootFence_FieldContainment_02",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        -1.7,
+        -26.95,
+        0.72
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_RootFence_FieldContainment_03",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        1.0,
+        -24.35,
+        0.72
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_MarkerStone_ContainmentPerimeter_00",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        -7.4,
+        -26.3,
+        0.6
+      ],
+      "triangles": 16,
+      "materials": [
+        "MAT_MWOF_Path_MossyStone"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_MarkerStone_ContainmentPerimeter_01",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        -5.0,
+        -27.6,
+        0.6
+      ],
+      "triangles": 16,
+      "materials": [
+        "MAT_MWOF_Path_MossyStone"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_MarkerStone_ContainmentPerimeter_02",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        -1.4,
+        -27.2,
+        0.6
+      ],
+      "triangles": 16,
+      "materials": [
+        "MAT_MWOF_Path_MossyStone"
+      ]
+    },
+    {
+      "name": "MW_WARDEN_CAMP_MarkerStone_ContainmentPerimeter_03",
+      "collection": "MW_WARDEN_CAMP",
+      "type": "MESH",
+      "location": [
+        1.2,
+        -24.95,
+        0.6
+      ],
+      "triangles": 16,
+      "materials": [
+        "MAT_MWOF_Path_MossyStone"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_LowOpenMemoryLeakGround",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -17.0,
+        -3.0,
+        0.2
+      ],
+      "triangles": 48,
+      "materials": [
+        "MAT_MWOF_Ground_SickMoss"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_ShallowReflectiveMemoryPool_00",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -22.0,
+        -5.0,
+        0.42
+      ],
+      "triangles": 28,
+      "materials": [
+        "MAT_MWOF_Echo_Pool"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_ShallowReflectiveMemoryPool_01",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -15.0,
+        -1.7,
+        0.42
+      ],
+      "triangles": 28,
+      "materials": [
+        "MAT_MWOF_Echo_Pool"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_ShallowReflectiveMemoryPool_02",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -10.0,
+        -5.5,
+        0.42
+      ],
+      "triangles": 28,
+      "materials": [
+        "MAT_MWOF_Echo_Pool"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_CircularMemoryStain_OldFootprint_00",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -20.5,
+        -0.8,
+        0.45
+      ],
+      "triangles": 18,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_CircularMemoryStain_OldFootprint_01",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -15.2,
+        -6.2,
+        0.45
+      ],
+      "triangles": 18,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_CircularMemoryStain_OldFootprint_02",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -11.7,
+        -1.4,
+        0.45
+      ],
+      "triangles": 18,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_BrokenBanner_Pole_00",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -23.0,
+        -1.5,
+        0.95
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_TornMemoryBanner_Cloth_00",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -22.7,
+        -1.5,
+        1.45
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_BrokenBanner_Pole_01",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -13.0,
+        -7.3,
+        0.95
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_TornMemoryBanner_Cloth_01",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -12.7,
+        -7.3,
+        1.45
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_TranslucentMemorySilhouette_OverlapPastPresent_00_BodyCloak",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -19.4,
+        -2.3,
+        0.94
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_TranslucentMemorySilhouette_OverlapPastPresent_00_Head",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -19.4,
+        -2.3,
+        1.68
+      ],
+      "triangles": 14,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_TranslucentMemorySilhouette_OverlapPastPresent_00_ShoulderShape",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -19.4,
+        -2.3,
+        1.44
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_TranslucentMemorySilhouette_OverlapPastPresent_01_BodyCloak",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -15.8,
+        -4.7,
+        1.09
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_TranslucentMemorySilhouette_OverlapPastPresent_01_Head",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -15.8,
+        -4.7,
+        2.06
+      ],
+      "triangles": 14,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_TranslucentMemorySilhouette_OverlapPastPresent_01_ShoulderShape",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -15.8,
+        -4.7,
+        1.7
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_TranslucentMemorySilhouette_OverlapPastPresent_02_BodyCloak",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -11.7,
+        -1.2,
+        1.09
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_TranslucentMemorySilhouette_OverlapPastPresent_02_Head",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -11.7,
+        -1.2,
+        2.06
+      ],
+      "triangles": 14,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_TranslucentMemorySilhouette_OverlapPastPresent_02_ShoulderShape",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -11.7,
+        -1.2,
+        1.7
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_HalfVisibleRepeatedFootprint_00",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -20.6,
+        -4.0,
+        0.56
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_HalfVisibleRepeatedFootprint_01",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -18.2,
+        -3.5,
+        0.56
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_HalfVisibleRepeatedFootprint_02",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -15.9,
+        -3.2,
+        0.56
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_HalfVisibleRepeatedFootprint_03",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -13.6,
+        -2.9,
+        0.56
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_HalfVisibleRepeatedFootprint_04",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -11.6,
+        -2.2,
+        0.56
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_HalfVisibleRepeatedPathFragment_00",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -18.8,
+        -0.1,
+        0.5
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_GhostCrack"
+      ]
+    },
+    {
+      "name": "MW_ECHO_FLATS_HalfVisibleRepeatedPathFragment_01",
+      "collection": "MW_ECHO_FLATS",
+      "type": "MESH",
+      "location": [
+        -14.1,
+        -6.7,
+        0.5
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_GhostCrack"
+      ]
+    },
+    {
+      "name": "MW_ORANYN_RUINS_HalfManifestedGroundShelf",
+      "collection": "MW_ORANYN_RUINS",
+      "type": "MESH",
+      "location": [
+        18.0,
+        1.5,
+        0.24
+      ],
+      "triangles": 44,
+      "materials": [
+        "MAT_MWOF_Ground_MemoryMud"
+      ]
+    },
+    {
+      "name": "MW_ORANYN_RUINS_BrokenArch_LeftPaleColumn",
+      "collection": "MW_ORANYN_RUINS",
+      "type": "MESH",
+      "location": [
+        16.3,
+        3.0,
+        2.55
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_OranynPale"
+      ]
+    },
+    {
+      "name": "MW_ORANYN_RUINS_BrokenArch_RightPaleColumn",
+      "collection": "MW_ORANYN_RUINS",
+      "type": "MESH",
+      "location": [
+        20.7,
+        3.0,
+        2.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_OranynPale"
+      ]
+    },
+    {
+      "name": "MW_ORANYN_RUINS_BrokenArch_LeftCrownSegment",
+      "collection": "MW_ORANYN_RUINS",
+      "type": "MESH",
+      "location": [
+        17.25,
+        3.0,
+        5.325
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_OranynPale"
+      ]
+    },
+    {
+      "name": "MW_ORANYN_RUINS_BrokenArch_RightCrownSegment",
+      "collection": "MW_ORANYN_RUINS",
+      "type": "MESH",
+      "location": [
+        19.8,
+        3.0,
+        5.175
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_OranynPale"
+      ]
+    },
+    {
+      "name": "MW_ORANYN_RUINS_PartialColumn_CloseGroundManifest_00",
+      "collection": "MW_ORANYN_RUINS",
+      "type": "MESH",
+      "location": [
+        13.1,
+        1.8,
+        1.95
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_OranynPale"
+      ]
+    },
+    {
+      "name": "MW_ORANYN_RUINS_GhostCyanCrack_OnColumn_00",
+      "collection": "MW_ORANYN_RUINS",
+      "type": "MESH",
+      "location": [
+        13.34,
+        1.78,
+        2.64
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_GhostCrack"
+      ]
+    },
+    {
+      "name": "MW_ORANYN_RUINS_PartialColumn_CloseGroundManifest_01",
+      "collection": "MW_ORANYN_RUINS",
+      "type": "MESH",
+      "location": [
+        17.9,
+        -0.2,
+        1.55
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_OranynPale"
+      ]
+    },
+    {
+      "name": "MW_ORANYN_RUINS_GhostCyanCrack_OnColumn_01",
+      "collection": "MW_ORANYN_RUINS",
+      "type": "MESH",
+      "location": [
+        18.14,
+        -0.22,
+        2.2
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_GhostCrack"
+      ]
+    },
+    {
+      "name": "MW_ORANYN_RUINS_PartialColumn_CloseGroundManifest_02",
+      "collection": "MW_ORANYN_RUINS",
+      "type": "MESH",
+      "location": [
+        24.3,
+        4.6,
+        1.8
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_OranynPale"
+      ]
+    },
+    {
+      "name": "MW_ORANYN_RUINS_GhostCyanCrack_OnColumn_02",
+      "collection": "MW_ORANYN_RUINS",
+      "type": "MESH",
+      "location": [
+        24.54,
+        4.58,
+        2.475
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_GhostCrack"
+      ]
+    },
+    {
+      "name": "MW_ORANYN_RUINS_IncompleteStairPiece_CloseToGround_00",
+      "collection": "MW_ORANYN_RUINS",
+      "type": "MESH",
+      "location": [
+        12.3,
+        -2.0,
+        0.55
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_OranynPale"
+      ]
+    },
+    {
+      "name": "MW_ORANYN_RUINS_IncompleteStairPiece_CloseToGround_01",
+      "collection": "MW_ORANYN_RUINS",
+      "type": "MESH",
+      "location": [
+        13.45,
+        -1.58,
+        0.71
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_OranynPale"
+      ]
+    },
+    {
+      "name": "MW_ORANYN_RUINS_IncompleteStairPiece_CloseToGround_02",
+      "collection": "MW_ORANYN_RUINS",
+      "type": "MESH",
+      "location": [
+        14.6,
+        -1.16,
+        0.87
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_OranynPale"
+      ]
+    },
+    {
+      "name": "MW_ORANYN_RUINS_IncompleteStairPiece_CloseToGround_03",
+      "collection": "MW_ORANYN_RUINS",
+      "type": "MESH",
+      "location": [
+        15.75,
+        -0.74,
+        1.03
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_OranynPale"
+      ]
+    },
+    {
+      "name": "MW_ORANYN_RUINS_IncompleteStairPiece_CloseToGround_04",
+      "collection": "MW_ORANYN_RUINS",
+      "type": "MESH",
+      "location": [
+        16.9,
+        -0.32,
+        1.19
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_OranynPale"
+      ]
+    },
+    {
+      "name": "MW_ORANYN_RUINS_FloatingWallFragment_LowManifest_00",
+      "collection": "MW_ORANYN_RUINS",
+      "type": "MESH",
+      "location": [
+        13.9,
+        5.7,
+        2.0
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_OranynPale"
+      ]
+    },
+    {
+      "name": "MW_ORANYN_RUINS_FloatingWallFragment_LowManifest_01",
+      "collection": "MW_ORANYN_RUINS",
+      "type": "MESH",
+      "location": [
+        21.3,
+        0.1,
+        1.7
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_OranynPale"
+      ]
+    },
+    {
+      "name": "MW_ORANYN_RUINS_FloatingWallFragment_LowManifest_02",
+      "collection": "MW_ORANYN_RUINS",
+      "type": "MESH",
+      "location": [
+        24.8,
+        2.6,
+        2.35
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_OranynPale"
+      ]
+    },
+    {
+      "name": "MW_ORANYN_RUINS_GhostCyanSeam_MisalignedWallPiece_00",
+      "collection": "MW_ORANYN_RUINS",
+      "type": "MESH",
+      "location": [
+        15.3,
+        -1.0,
+        1.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_GhostCrack"
+      ]
+    },
+    {
+      "name": "MW_ORANYN_RUINS_GhostCyanSeam_MisalignedWallPiece_01",
+      "collection": "MW_ORANYN_RUINS",
+      "type": "MESH",
+      "location": [
+        22.6,
+        6.3,
+        1.4
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_GhostCrack"
+      ]
+    },
+    {
+      "name": "MW_ORANYN_RUINS_GhostCyanSeam_MisalignedWallPiece_02",
+      "collection": "MW_ORANYN_RUINS",
+      "type": "MESH",
+      "location": [
+        19.4,
+        7.4,
+        1.62
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ruin_GhostCrack"
+      ]
+    },
+    {
+      "name": "LANDMARK_ROOTSHEAR_RIFT_MainCrackedGroundMound",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        5.5,
+        18.0,
+        0.33
+      ],
+      "triangles": 48,
+      "materials": [
+        "MAT_MWOF_Ground_MemoryMud"
+      ]
+    },
+    {
+      "name": "LANDMARK_ROOTSHEAR_RIFT_CyanMemoryLeak_GroundFissureGlow",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        5.5,
+        18.0,
+        0.58
+      ],
+      "triangles": 34,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan"
+      ]
+    },
+    {
+      "name": "LANDMARK_ROOTSHEAR_RIFT_DarkSplitMouth_InPhysicalTerrain",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        5.5,
+        18.0,
+        0.72
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Path_CrackedDark"
+      ]
+    },
+    {
+      "name": "MW_ROOTSHEAR_RIFT_VioletInstability_LeakEdgeLeft",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        3.6,
+        18.2,
+        0.82
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Violet_Instability"
+      ]
+    },
+    {
+      "name": "MW_ROOTSHEAR_RIFT_ExposedRootFiber_UnderStrain_00",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        1.8,
+        17.4,
+        0.93
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_ROOTSHEAR_RIFT_ExposedRootFiber_UnderStrain_01",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        3.9,
+        18.75,
+        0.93
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_ROOTSHEAR_RIFT_ExposedRootFiber_UnderStrain_02",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        6.5,
+        17.25,
+        0.93
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_ROOTSHEAR_RIFT_ExposedRootFiber_UnderStrain_03",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        8.9,
+        18.5,
+        0.93
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_ROOTSHEAR_RIFT_StrainedRootClaw_RisingFromFissure_00",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        3.1,
+        18.85,
+        2.452
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_ROOTSHEAR_RIFT_StrainedRootClaw_RisingFromFissure_01",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        6.7,
+        17.35,
+        2.788
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_ROOTSHEAR_RIFT_StrainedRootClaw_RisingFromFissure_02",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        8.5,
+        18.9,
+        2.212
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_ROOTSHEAR_RIFT_BrokenTerrainPlate_AroundFissure_00",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        0.5,
+        19.6,
+        0.92
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ground_SickMoss"
+      ]
+    },
+    {
+      "name": "MW_ROOTSHEAR_RIFT_BrokenTerrainPlate_AroundFissure_01",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        3.9,
+        15.6,
+        0.92
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ground_SickMoss"
+      ]
+    },
+    {
+      "name": "MW_ROOTSHEAR_RIFT_BrokenTerrainPlate_AroundFissure_02",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        8.3,
+        20.2,
+        0.92
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ground_SickMoss"
+      ]
+    },
+    {
+      "name": "MW_ROOTSHEAR_RIFT_BrokenTerrainPlate_AroundFissure_03",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        11.0,
+        17.0,
+        0.92
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Ground_SickMoss"
+      ]
+    },
+    {
+      "name": "MW_ROOTSHEAR_RIFT_FloatingMemoryShard_Controlled_00",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        2.9,
+        17.8,
+        2.2
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan"
+      ]
+    },
+    {
+      "name": "MW_ROOTSHEAR_RIFT_FloatingMemoryShard_Controlled_01",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        4.5,
+        18.8,
+        2.9
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_ROOTSHEAR_RIFT_FloatingMemoryShard_Controlled_02",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        6.3,
+        18.4,
+        3.2
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Violet_Instability"
+      ]
+    },
+    {
+      "name": "MW_ROOTSHEAR_RIFT_FloatingMemoryShard_Controlled_03",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        8.0,
+        17.4,
+        2.25
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_ROOTSHEAR_RIFT_FloatingMemoryShard_Controlled_04",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        2.0,
+        19.1,
+        1.85
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_ROOTSHEAR_RIFT_FloatingMemoryShard_Controlled_05",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        9.1,
+        18.9,
+        2.7
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan"
+      ]
+    },
+    {
+      "name": "MW_ROOTSHEAR_RIFT_FloatingMemoryShard_Controlled_06",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        5.7,
+        16.65,
+        2.0
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Violet_Instability"
+      ]
+    },
+    {
+      "name": "LANDMARK_ROOTSHEAR_RIFT_SubtleLowMistAroundFissure_00",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        3.7,
+        17.6,
+        0.98
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_LowMist_Cyan"
+      ]
+    },
+    {
+      "name": "LANDMARK_ROOTSHEAR_RIFT_SubtleLowMistAroundFissure_01",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        7.3,
+        18.5,
+        1.03
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_LowMist_Cyan"
+      ]
+    },
+    {
+      "name": "LANDMARK_ROOTSHEAR_RIFT_SubtleLowMistAroundFissure_02",
+      "collection": "MW_ROOTSHEAR_RIFT",
+      "type": "MESH",
+      "location": [
+        5.5,
+        19.25,
+        1.08
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_LowMist_Cyan"
+      ]
+    },
+    {
+      "name": "MW_MEMORY_GHOSTS_KneelingEcho_ByPool_BodyCloak",
+      "collection": "MW_MEMORY_GHOSTS",
+      "type": "MESH",
+      "location": [
+        -18.8,
+        -2.8,
+        0.94
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_MEMORY_GHOSTS_KneelingEcho_ByPool_Head",
+      "collection": "MW_MEMORY_GHOSTS",
+      "type": "MESH",
+      "location": [
+        -18.8,
+        -2.8,
+        1.68
+      ],
+      "triangles": 14,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_MEMORY_GHOSTS_KneelingEcho_ByPool_ShoulderShape",
+      "collection": "MW_MEMORY_GHOSTS",
+      "type": "MESH",
+      "location": [
+        -18.8,
+        -2.8,
+        1.44
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_MEMORY_GHOSTS_WalkingEcho_OnBrokenPath_BodyCloak",
+      "collection": "MW_MEMORY_GHOSTS",
+      "type": "MESH",
+      "location": [
+        -2.2,
+        4.0,
+        1.13
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_MEMORY_GHOSTS_WalkingEcho_OnBrokenPath_Head",
+      "collection": "MW_MEMORY_GHOSTS",
+      "type": "MESH",
+      "location": [
+        -2.2,
+        4.0,
+        2.1
+      ],
+      "triangles": 14,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_MEMORY_GHOSTS_WalkingEcho_OnBrokenPath_ShoulderShape",
+      "collection": "MW_MEMORY_GHOSTS",
+      "type": "MESH",
+      "location": [
+        -2.2,
+        4.0,
+        1.74
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_MEMORY_GHOSTS_ReachingEcho_TowardOranynRuin_BodyCloak",
+      "collection": "MW_MEMORY_GHOSTS",
+      "type": "MESH",
+      "location": [
+        14.0,
+        1.1,
+        1.16
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_MEMORY_GHOSTS_ReachingEcho_TowardOranynRuin_Head",
+      "collection": "MW_MEMORY_GHOSTS",
+      "type": "MESH",
+      "location": [
+        14.0,
+        1.1,
+        2.13
+      ],
+      "triangles": 14,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_MEMORY_GHOSTS_ReachingEcho_TowardOranynRuin_ShoulderShape",
+      "collection": "MW_MEMORY_GHOSTS",
+      "type": "MESH",
+      "location": [
+        14.0,
+        1.1,
+        1.77
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_MEMORY_GHOSTS_FadingEcho_NearRootshear_BodyCloak",
+      "collection": "MW_MEMORY_GHOSTS",
+      "type": "MESH",
+      "location": [
+        1.8,
+        15.2,
+        1.21
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_MEMORY_GHOSTS_FadingEcho_NearRootshear_Head",
+      "collection": "MW_MEMORY_GHOSTS",
+      "type": "MESH",
+      "location": [
+        1.8,
+        15.2,
+        2.18
+      ],
+      "triangles": 14,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_MEMORY_GHOSTS_FadingEcho_NearRootshear_ShoulderShape",
+      "collection": "MW_MEMORY_GHOSTS",
+      "type": "MESH",
+      "location": [
+        1.8,
+        15.2,
+        1.82
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Echo_Blue"
+      ]
+    },
+    {
+      "name": "MW_PROPS_BrokenContainmentStake_Rootbound_00",
+      "collection": "MW_PROPS",
+      "type": "MESH",
+      "location": [
+        -7.0,
+        -16.0,
+        0.86
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_PROPS_SmallCyanMemoryRune_OnValidRoute_00",
+      "collection": "MW_PROPS",
+      "type": "MESH",
+      "location": [
+        -6.75,
+        -15.88,
+        1.55
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_PROPS_BrokenContainmentStake_Rootbound_01",
+      "collection": "MW_PROPS",
+      "type": "MESH",
+      "location": [
+        5.2,
+        -9.2,
+        0.86
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_PROPS_SmallCyanMemoryRune_OnValidRoute_01",
+      "collection": "MW_PROPS",
+      "type": "MESH",
+      "location": [
+        5.45,
+        -9.08,
+        1.55
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_PROPS_BrokenContainmentStake_Rootbound_02",
+      "collection": "MW_PROPS",
+      "type": "MESH",
+      "location": [
+        -8.6,
+        5.5,
+        0.86
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_PROPS_SmallCyanMemoryRune_OnValidRoute_02",
+      "collection": "MW_PROPS",
+      "type": "MESH",
+      "location": [
+        -8.35,
+        5.62,
+        1.55
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_PROPS_BrokenContainmentStake_Rootbound_03",
+      "collection": "MW_PROPS",
+      "type": "MESH",
+      "location": [
+        10.8,
+        10.2,
+        0.86
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_PROPS_SmallCyanMemoryRune_OnValidRoute_03",
+      "collection": "MW_PROPS",
+      "type": "MESH",
+      "location": [
+        11.05,
+        10.32,
+        1.55
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_00_TwistedStrainedTrunk",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -28.0,
+        12.0,
+        2.362
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Strained"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_00_ExposedRootStrain_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -27.392,
+        12.221,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_00_ExposedRootStrain_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -28.059,
+        12.558,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_00_ExposedRootStrain_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -28.58,
+        12.081,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_00_ExposedRootStrain_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -28.283,
+        11.363,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_00_ExposedRootStrain_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -27.512,
+        11.375,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_00_AsymmetricMutedCanopyCluster_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -28.337,
+        12.068,
+        4.927
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_00_AsymmetricMutedCanopyCluster_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -27.433,
+        11.932,
+        5.292
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_00_AsymmetricMutedCanopyCluster_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -27.933,
+        12.513,
+        5.589
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_00_SubtleCyanMemoryCrack_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -27.514,
+        11.919,
+        1.89
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_00_SubtleCyanMemoryCrack_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -27.514,
+        11.919,
+        3.105
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_01_TwistedStrainedTrunk",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -24.0,
+        22.0,
+        2.678
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_01_ExposedRootStrain_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -23.155,
+        22.308,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_01_ExposedRootStrain_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -24.093,
+        22.886,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_01_ExposedRootStrain_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -24.765,
+        22.107,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_01_ExposedRootStrain_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -24.266,
+        21.404,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_01_ExposedRootStrain_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -23.605,
+        21.494,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_01_BareBranchClaw_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -23.754,
+        22.757,
+        4.819
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_01_BareBranchClaw_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -24.374,
+        22.702,
+        4.819
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_01_BareBranchClaw_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -24.398,
+        21.311,
+        4.819
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_01_SubtleCyanMemoryCrack_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -23.449,
+        21.908,
+        2.142
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_01_SubtleCyanMemoryCrack_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -23.449,
+        21.908,
+        3.519
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_02_TwistedStrainedTrunk",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -9.0,
+        27.0,
+        2.993
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Strained"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_02_ExposedRootStrain_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -8.251,
+        27.272,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_02_ExposedRootStrain_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -9.074,
+        27.702,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_02_ExposedRootStrain_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -9.751,
+        27.105,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_02_ExposedRootStrain_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -9.368,
+        26.172,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_02_ExposedRootStrain_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -8.376,
+        26.201,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_02_AsymmetricMutedCanopyCluster_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -9.427,
+        27.086,
+        6.241
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_02_AsymmetricMutedCanopyCluster_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -8.282,
+        26.914,
+        6.703
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_02_AsymmetricMutedCanopyCluster_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -8.915,
+        27.65,
+        7.079
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_02_SubtleCyanMemoryCrack_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -8.384,
+        26.897,
+        2.394
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_02_SubtleCyanMemoryCrack_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -8.384,
+        26.897,
+        3.933
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_03_TwistedStrainedTrunk",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        12.0,
+        29.0,
+        2.362
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Strained"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_03_ExposedRootStrain_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        12.576,
+        29.21,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_03_ExposedRootStrain_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        11.923,
+        29.729,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_03_ExposedRootStrain_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        11.204,
+        29.112,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_03_ExposedRootStrain_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        11.69,
+        28.304,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_03_ExposedRootStrain_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        12.397,
+        28.492,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_03_AsymmetricMutedCanopyCluster_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        11.663,
+        29.067,
+        4.927
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_03_AsymmetricMutedCanopyCluster_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        12.567,
+        28.933,
+        5.292
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_03_AsymmetricMutedCanopyCluster_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        12.068,
+        29.513,
+        5.589
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_03_SubtleCyanMemoryCrack_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        12.486,
+        28.919,
+        1.89
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_03_SubtleCyanMemoryCrack_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        12.486,
+        28.919,
+        3.105
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_04_TwistedStrainedTrunk",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        27.0,
+        20.0,
+        2.678
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_04_ExposedRootStrain_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        27.852,
+        20.31,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_04_ExposedRootStrain_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        26.915,
+        20.805,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_04_ExposedRootStrain_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        26.329,
+        20.094,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_04_ExposedRootStrain_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        26.743,
+        19.423,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_04_ExposedRootStrain_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        27.44,
+        19.437,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_04_BareBranchClaw_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        27.246,
+        20.757,
+        4.819
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_04_BareBranchClaw_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        26.626,
+        20.702,
+        4.819
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_04_BareBranchClaw_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        26.602,
+        19.311,
+        4.819
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_04_SubtleCyanMemoryCrack_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        27.551,
+        19.908,
+        2.142
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_04_SubtleCyanMemoryCrack_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        27.551,
+        19.908,
+        3.519
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_05_TwistedStrainedTrunk",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        35.0,
+        7.0,
+        2.993
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Strained"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_05_ExposedRootStrain_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        35.746,
+        7.272,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_05_ExposedRootStrain_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        34.926,
+        7.701,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_05_ExposedRootStrain_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        34.247,
+        7.106,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_05_ExposedRootStrain_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        34.63,
+        6.17,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_05_ExposedRootStrain_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        35.624,
+        6.201,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_05_AsymmetricMutedCanopyCluster_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        34.572,
+        7.085,
+        6.241
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_05_AsymmetricMutedCanopyCluster_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        35.718,
+        6.915,
+        6.703
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_05_AsymmetricMutedCanopyCluster_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        35.085,
+        7.65,
+        7.079
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_05_SubtleCyanMemoryCrack_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        35.616,
+        6.897,
+        2.394
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_05_SubtleCyanMemoryCrack_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        35.616,
+        6.897,
+        3.933
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_06_TwistedStrainedTrunk",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -34.0,
+        -5.0,
+        2.362
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_06_ExposedRootStrain_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -33.423,
+        -4.79,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_06_ExposedRootStrain_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -34.058,
+        -4.447,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_06_ExposedRootStrain_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -34.606,
+        -4.915,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_06_ExposedRootStrain_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -34.297,
+        -5.668,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_06_ExposedRootStrain_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -33.505,
+        -5.633,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_06_BareBranchClaw_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -33.783,
+        -4.332,
+        4.253
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_06_BareBranchClaw_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -34.33,
+        -4.38,
+        4.253
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_06_BareBranchClaw_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -34.351,
+        -5.608,
+        4.253
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_06_SubtleCyanMemoryCrack_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -33.514,
+        -5.081,
+        1.89
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_06_SubtleCyanMemoryCrack_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -33.514,
+        -5.081,
+        3.105
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_07_TwistedStrainedTrunk",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        31.0,
+        -13.0,
+        2.678
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Strained"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_07_ExposedRootStrain_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        31.671,
+        -12.756,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_07_ExposedRootStrain_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        30.911,
+        -12.156,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_07_ExposedRootStrain_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        30.096,
+        -12.873,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_07_ExposedRootStrain_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        30.656,
+        -13.773,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_07_ExposedRootStrain_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        31.437,
+        -13.56,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_07_AsymmetricMutedCanopyCluster_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        30.618,
+        -12.924,
+        5.584
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_07_AsymmetricMutedCanopyCluster_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        31.643,
+        -13.076,
+        5.998
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_07_AsymmetricMutedCanopyCluster_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        31.076,
+        -12.419,
+        6.334
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_07_SubtleCyanMemoryCrack_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        31.551,
+        -13.092,
+        2.142
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_ForestEdge_StrainedWorldrootTree_07_SubtleCyanMemoryCrack_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        31.551,
+        -13.092,
+        3.519
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_Cluster_DarkMossAndBroadLeaves_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -30.0,
+        5.0,
+        0.47
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BiolumeMemoryPlant_00_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -31.47,
+        5.0,
+        0.72
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Flower_Biolume"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BiolumeMemoryPlant_00_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -30.504,
+        5.222,
+        0.72
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Flower_Biolume"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BiolumeMemoryPlant_00_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -29.538,
+        5.24,
+        0.72
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Flower_Biolume"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BiolumeMemoryPlant_00_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -28.572,
+        5.037,
+        0.72
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Flower_Biolume"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_Cluster_DarkMossAndBroadLeaves_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -23.0,
+        -14.0,
+        0.47
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BiolumeMemoryPlant_01_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -24.26,
+        -14.0,
+        0.72
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Flower_Biolume"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BiolumeMemoryPlant_01_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -23.432,
+        -13.815,
+        0.72
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Flower_Biolume"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BiolumeMemoryPlant_01_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -22.604,
+        -13.8,
+        0.72
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Flower_Biolume"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BiolumeMemoryPlant_01_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -21.776,
+        -13.969,
+        0.72
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Flower_Biolume"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_Cluster_DarkMossAndBroadLeaves_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        22.0,
+        -10.0,
+        0.47
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BiolumeMemoryPlant_02_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        20.6,
+        -10.0,
+        0.72
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Flower_Biolume"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BiolumeMemoryPlant_02_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        21.52,
+        -9.796,
+        0.72
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Flower_Biolume"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BiolumeMemoryPlant_02_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        22.44,
+        -9.78,
+        0.72
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Flower_Biolume"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BiolumeMemoryPlant_02_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        23.36,
+        -9.966,
+        0.72
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Flower_Biolume"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_Cluster_DarkMossAndBroadLeaves_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        25.0,
+        11.0,
+        0.47
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BiolumeMemoryPlant_03_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        23.775,
+        11.0,
+        0.72
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Flower_Biolume"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BiolumeMemoryPlant_03_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        24.58,
+        11.167,
+        0.72
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Flower_Biolume"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BiolumeMemoryPlant_03_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        25.385,
+        11.18,
+        0.72
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Flower_Biolume"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BiolumeMemoryPlant_03_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        26.19,
+        11.028,
+        0.72
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Flower_Biolume"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_Cluster_DarkMossAndBroadLeaves_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -5.0,
+        20.0,
+        0.47
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BiolumeMemoryPlant_04_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -6.68,
+        20.0,
+        0.72
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Flower_Biolume"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BiolumeMemoryPlant_04_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -5.576,
+        20.222,
+        0.72
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Flower_Biolume"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BiolumeMemoryPlant_04_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -4.472,
+        20.24,
+        0.72
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Flower_Biolume"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BiolumeMemoryPlant_04_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -3.368,
+        20.037,
+        0.72
+      ],
+      "triangles": 10,
+      "materials": [
+        "MAT_MWOF_Flower_Biolume"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_00_TwistedStrainedTrunk",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -38.0,
+        31.0,
+        2.713
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_00_ExposedRootStrain_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -37.306,
+        31.253,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_00_ExposedRootStrain_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -38.091,
+        31.869,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_00_ExposedRootStrain_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -38.914,
+        31.128,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_00_ExposedRootStrain_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -38.343,
+        30.23,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_00_ExposedRootStrain_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -37.566,
+        30.444,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_00_BareBranchClaw_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -37.751,
+        31.767,
+        4.883
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_00_BareBranchClaw_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -38.378,
+        31.712,
+        4.883
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_00_BareBranchClaw_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -38.403,
+        30.302,
+        4.883
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_00_SubtleCyanMemoryCrack_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -37.442,
+        30.907,
+        2.17
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_00_SubtleCyanMemoryCrack_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -37.442,
+        30.907,
+        3.565
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_01_TwistedStrainedTrunk",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -28.0,
+        33.0,
+        3.237
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Strained"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_01_ExposedRootStrain_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -27.167,
+        33.303,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_01_ExposedRootStrain_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -28.08,
+        33.765,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_01_ExposedRootStrain_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -28.794,
+        33.112,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_01_ExposedRootStrain_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -28.388,
+        32.128,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_01_ExposedRootStrain_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -27.331,
+        32.143,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_01_AsymmetricMutedCanopyCluster_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -28.462,
+        33.092,
+        6.753
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_01_AsymmetricMutedCanopyCluster_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -27.223,
+        32.908,
+        7.252
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_01_AsymmetricMutedCanopyCluster_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -27.907,
+        33.703,
+        7.659
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_01_SubtleCyanMemoryCrack_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -27.334,
+        32.889,
+        2.59
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_01_SubtleCyanMemoryCrack_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -27.334,
+        32.889,
+        4.255
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_02_TwistedStrainedTrunk",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -17.0,
+        34.0,
+        2.975
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_02_ExposedRootStrain_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -16.053,
+        34.345,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_02_ExposedRootStrain_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -17.094,
+        34.897,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_02_ExposedRootStrain_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -17.747,
+        34.105,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_02_ExposedRootStrain_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -17.285,
+        33.359,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_02_ExposedRootStrain_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -16.513,
+        33.377,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_02_BareBranchClaw_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -16.727,
+        34.841,
+        5.355
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_02_BareBranchClaw_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -17.415,
+        34.781,
+        5.355
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_02_BareBranchClaw_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -17.442,
+        33.234,
+        5.355
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_02_SubtleCyanMemoryCrack_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -16.388,
+        33.898,
+        2.38
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_02_SubtleCyanMemoryCrack_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -16.388,
+        33.898,
+        3.91
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_03_TwistedStrainedTrunk",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -5.0,
+        35.0,
+        3.588
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Strained"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_03_ExposedRootStrain_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -3.858,
+        35.416,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_03_ExposedRootStrain_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -5.123,
+        36.17,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_03_ExposedRootStrain_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -5.997,
+        35.14,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_03_ExposedRootStrain_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -5.35,
+        34.213,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_03_ExposedRootStrain_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -4.462,
+        34.311,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_03_AsymmetricMutedCanopyCluster_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -5.512,
+        35.103,
+        7.483
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_03_AsymmetricMutedCanopyCluster_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -4.139,
+        34.897,
+        8.036
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_03_AsymmetricMutedCanopyCluster_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -4.898,
+        35.779,
+        8.487
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_03_SubtleCyanMemoryCrack_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -4.262,
+        34.877,
+        2.87
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_03_SubtleCyanMemoryCrack_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -4.262,
+        34.877,
+        4.715
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_04_TwistedStrainedTrunk",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        9.0,
+        35.0,
+        3.185
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_04_ExposedRootStrain_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        9.927,
+        35.337,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_04_ExposedRootStrain_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        8.914,
+        35.821,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_04_ExposedRootStrain_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        8.258,
+        35.104,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_04_ExposedRootStrain_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        8.664,
+        34.244,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_04_ExposedRootStrain_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        9.608,
+        34.221,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_04_BareBranchClaw_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        9.292,
+        35.9,
+        5.733
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_04_BareBranchClaw_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        8.556,
+        35.836,
+        5.733
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_04_BareBranchClaw_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        8.527,
+        34.18,
+        5.733
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_04_SubtleCyanMemoryCrack_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        9.655,
+        34.891,
+        2.548
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_04_SubtleCyanMemoryCrack_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        9.655,
+        34.891,
+        4.186
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_05_TwistedStrainedTrunk",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        21.0,
+        33.0,
+        3.412
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Strained"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_05_ExposedRootStrain_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        22.065,
+        33.388,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_05_ExposedRootStrain_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        20.897,
+        33.976,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_05_ExposedRootStrain_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        20.178,
+        33.116,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_05_ExposedRootStrain_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        20.667,
+        32.251,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_05_ExposedRootStrain_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        21.59,
+        32.244,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_05_AsymmetricMutedCanopyCluster_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        20.513,
+        33.097,
+        7.117
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_05_AsymmetricMutedCanopyCluster_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        21.819,
+        32.903,
+        7.644
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_05_AsymmetricMutedCanopyCluster_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        21.097,
+        33.741,
+        8.073
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_05_SubtleCyanMemoryCrack_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        21.702,
+        32.883,
+        2.73
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_05_SubtleCyanMemoryCrack_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        21.702,
+        32.883,
+        4.485
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_06_TwistedStrainedTrunk",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        33.0,
+        31.0,
+        2.835
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_06_ExposedRootStrain_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        33.908,
+        31.33,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_06_ExposedRootStrain_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        32.906,
+        31.891,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_06_ExposedRootStrain_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        32.255,
+        31.105,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_06_ExposedRootStrain_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        32.728,
+        30.39,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_06_ExposedRootStrain_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        33.443,
+        30.433,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_06_BareBranchClaw_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        33.26,
+        31.801,
+        5.103
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_06_BareBranchClaw_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        32.605,
+        31.744,
+        5.103
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_06_BareBranchClaw_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        32.579,
+        30.27,
+        5.103
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_06_SubtleCyanMemoryCrack_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        33.583,
+        30.903,
+        2.268
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_BackgroundForestWall_LowPolyTrunkSilhouette_06_SubtleCyanMemoryCrack_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        33.583,
+        30.903,
+        3.726
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_00_TwistedStrainedTrunk",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -42.0,
+        34.0,
+        4.463
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_00_ExposedRootStrain_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -40.589,
+        34.513,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_00_ExposedRootStrain_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -42.138,
+        35.315,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_00_ExposedRootStrain_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -43.099,
+        34.154,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_00_ExposedRootStrain_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -42.43,
+        33.033,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_00_ExposedRootStrain_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -41.252,
+        33.042,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_00_BareBranchClaw_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -41.59,
+        35.261,
+        8.033
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_00_BareBranchClaw_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -42.623,
+        35.171,
+        8.033
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_00_BareBranchClaw_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -42.663,
+        32.852,
+        8.033
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_00_SubtleCyanMemoryCrack_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -41.082,
+        33.847,
+        3.57
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_00_SubtleCyanMemoryCrack_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -41.082,
+        33.847,
+        5.865
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_01_TwistedStrainedTrunk",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -31.0,
+        35.0,
+        4.988
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Strained"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_01_ExposedRootStrain_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -29.55,
+        35.528,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_01_ExposedRootStrain_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -31.177,
+        36.687,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_01_ExposedRootStrain_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -32.595,
+        35.224,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_01_ExposedRootStrain_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -31.555,
+        33.753,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_01_ExposedRootStrain_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -30.271,
+        34.067,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_01_AsymmetricMutedCanopyCluster_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -31.712,
+        35.143,
+        10.403
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_01_AsymmetricMutedCanopyCluster_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -29.803,
+        34.857,
+        11.172
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_01_AsymmetricMutedCanopyCluster_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -30.858,
+        36.083,
+        11.799
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_01_SubtleCyanMemoryCrack_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -29.974,
+        34.829,
+        3.99
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_01_SubtleCyanMemoryCrack_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -29.974,
+        34.829,
+        6.555
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_02_TwistedStrainedTrunk",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -19.0,
+        36.0,
+        4.725
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_02_ExposedRootStrain_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -17.756,
+        36.453,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_02_ExposedRootStrain_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -19.162,
+        37.54,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_02_ExposedRootStrain_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -20.585,
+        36.223,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_02_ExposedRootStrain_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -19.583,
+        34.691,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_02_ExposedRootStrain_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -18.262,
+        35.056,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_02_BareBranchClaw_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -18.566,
+        37.335,
+        8.505
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_02_BareBranchClaw_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -19.659,
+        37.24,
+        8.505
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_02_BareBranchClaw_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -19.702,
+        34.784,
+        8.505
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_02_SubtleCyanMemoryCrack_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -18.028,
+        35.838,
+        3.78
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_02_SubtleCyanMemoryCrack_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -18.028,
+        35.838,
+        6.21
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_03_TwistedStrainedTrunk",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -6.0,
+        36.0,
+        5.338
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Strained"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_03_ExposedRootStrain_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -4.482,
+        36.553,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_03_ExposedRootStrain_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -6.189,
+        37.798,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_03_ExposedRootStrain_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -7.733,
+        36.244,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_03_ExposedRootStrain_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -6.609,
+        34.632,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_03_ExposedRootStrain_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -5.211,
+        34.991,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_03_AsymmetricMutedCanopyCluster_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -6.762,
+        36.153,
+        11.132
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_03_AsymmetricMutedCanopyCluster_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -4.719,
+        35.847,
+        11.956
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_03_AsymmetricMutedCanopyCluster_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -5.847,
+        37.159,
+        12.627
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_03_SubtleCyanMemoryCrack_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -4.902,
+        35.817,
+        4.27
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_03_SubtleCyanMemoryCrack_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        -4.902,
+        35.817,
+        7.015
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_04_TwistedStrainedTrunk",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        8.0,
+        36.0,
+        5.11
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_04_ExposedRootStrain_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        9.634,
+        36.595,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_04_ExposedRootStrain_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        7.835,
+        37.574,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_04_ExposedRootStrain_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        6.688,
+        36.184,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_04_ExposedRootStrain_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        7.511,
+        34.902,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_04_ExposedRootStrain_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        8.817,
+        34.954,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_04_BareBranchClaw_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        8.469,
+        37.444,
+        9.198
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_04_BareBranchClaw_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        7.287,
+        37.341,
+        9.198
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_04_BareBranchClaw_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        7.241,
+        34.685,
+        9.198
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_04_SubtleCyanMemoryCrack_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        9.051,
+        35.825,
+        4.088
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_04_SubtleCyanMemoryCrack_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        9.051,
+        35.825,
+        6.716
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_05_TwistedStrainedTrunk",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        22.0,
+        35.0,
+        5.25
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Strained"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_05_ExposedRootStrain_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        23.419,
+        35.516,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_05_ExposedRootStrain_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        21.866,
+        36.27,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_05_ExposedRootStrain_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        20.751,
+        35.175,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_05_ExposedRootStrain_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        21.4,
+        33.652,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_05_ExposedRootStrain_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        23.061,
+        33.642,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_05_AsymmetricMutedCanopyCluster_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        21.25,
+        35.15,
+        10.95
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_05_AsymmetricMutedCanopyCluster_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        23.26,
+        34.85,
+        11.76
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_05_AsymmetricMutedCanopyCluster_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        22.15,
+        36.14,
+        12.42
+      ],
+      "triangles": 24,
+      "materials": [
+        "MAT_MWOF_Leaves_Muted"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_05_SubtleCyanMemoryCrack_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        23.08,
+        34.82,
+        4.2
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_05_SubtleCyanMemoryCrack_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        23.08,
+        34.82,
+        6.9
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_06_TwistedStrainedTrunk",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        36.0,
+        34.0,
+        4.585
+      ],
+      "triangles": 20,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_06_ExposedRootStrain_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        37.015,
+        34.37,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_06_ExposedRootStrain_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        35.878,
+        35.158,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_06_ExposedRootStrain_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        34.621,
+        34.194,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_06_ExposedRootStrain_03",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        35.368,
+        32.581,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_06_ExposedRootStrain_04",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        36.924,
+        32.817,
+        0.18
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_06_BareBranchClaw_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        36.421,
+        35.296,
+        8.253
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_06_BareBranchClaw_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        35.36,
+        35.203,
+        8.253
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_06_BareBranchClaw_02",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        35.319,
+        32.82,
+        8.253
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Root_Dark"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_06_SubtleCyanMemoryCrack_00",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        36.943,
+        33.843,
+        3.668
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_FOLIAGE_DistantForestWall_TallStrainedWorldrootMass_06_SubtleCyanMemoryCrack_01",
+      "collection": "MW_FOLIAGE",
+      "type": "MESH",
+      "location": [
+        36.943,
+        33.843,
+        6.026
+      ],
+      "triangles": 12,
+      "materials": [
+        "MAT_MWOF_Worldroot_Cyan_Dim"
+      ]
+    },
+    {
+      "name": "MW_ATMOSPHERE_RootshearLowGroundMemoryMist_NoBackdropPanel_00",
+      "collection": "MW_ATMOSPHERE",
+      "type": "MESH",
+      "location": [
+        -1.2,
+        16.4,
+        0.74
+      ],
+      "triangles": 22,
+      "materials": [
+        "MAT_MWOF_LowMist_Cyan"
+      ]
+    },
+    {
+      "name": "MW_ATMOSPHERE_RootshearLowGroundMemoryMist_NoBackdropPanel_01",
+      "collection": "MW_ATMOSPHERE",
+      "type": "MESH",
+      "location": [
+        6.4,
+        19.4,
+        0.78
+      ],
+      "triangles": 22,
+      "materials": [
+        "MAT_MWOF_LowMist_Cyan"
+      ]
+    },
+    {
+      "name": "MW_ATMOSPHERE_RootshearLowGroundMemoryMist_NoBackdropPanel_02",
+      "collection": "MW_ATMOSPHERE",
+      "type": "MESH",
+      "location": [
+        1.5,
+        22.0,
+        0.82
+      ],
+      "triangles": 22,
+      "materials": [
+        "MAT_MWOF_LowMist_Cyan"
+      ]
+    },
+    {
+      "name": "MW_LIGHTING_MutedOuterFringeSun",
+      "collection": "MW_LIGHTING",
+      "type": "LIGHT",
+      "location": [
+        -22.0,
+        -18.0,
+        34.0
+      ],
+      "triangles": 0,
+      "materials": []
+    },
+    {
+      "name": "MW_LIGHTING_RootshearCyanMemoryLeak",
+      "collection": "MW_LIGHTING",
+      "type": "LIGHT",
+      "location": [
+        5.5,
+        18.0,
+        3.2
+      ],
+      "triangles": 0,
+      "materials": []
+    },
+    {
+      "name": "MW_LIGHTING_RootshearVioletLeak",
+      "collection": "MW_LIGHTING",
+      "type": "LIGHT",
+      "location": [
+        3.2,
+        18.7,
+        2.0
+      ],
+      "triangles": 0,
+      "materials": []
+    },
+    {
+      "name": "MW_LIGHTING_WardenCampProtectedGlow",
+      "collection": "MW_LIGHTING",
+      "type": "LIGHT",
+      "location": [
+        -1.2,
+        -23.0,
+        2.4
+      ],
+      "triangles": 0,
+      "materials": []
+    },
+    {
+      "name": "MW_LIGHTING_BrazierWarmGold",
+      "collection": "MW_LIGHTING",
+      "type": "LIGHT",
+      "location": [
+        -0.25,
+        -23.5,
+        1.65
+      ],
+      "triangles": 0,
+      "materials": []
+    },
+    {
+      "name": "MW_LIGHTING_EchoFlatsColdMemoryGlow",
+      "collection": "MW_LIGHTING",
+      "type": "LIGHT",
+      "location": [
+        -17.0,
+        -3.5,
+        1.7
+      ],
+      "triangles": 0,
+      "materials": []
+    },
+    {
+      "name": "MW_LIGHTING_OranynGhostCrackGlow",
+      "collection": "MW_LIGHTING",
+      "type": "LIGHT",
+      "location": [
+        18.0,
+        3.0,
+        3.0
+      ],
+      "triangles": 0,
+      "materials": []
+    },
+    {
+      "name": "MW_CAMERA_Gameplay_OuterFringeThirdPerson",
+      "collection": "MW_CAMERA",
+      "type": "CAMERA",
+      "location": [
+        0.0,
+        -42.0,
+        5.7
+      ],
+      "triangles": 0,
+      "materials": []
+    },
+    {
+      "name": "MW_CAMERA_TopDown_OuterFringeReadability",
+      "collection": "MW_CAMERA",
+      "type": "CAMERA",
+      "location": [
+        0.0,
+        0.0,
+        82.0
+      ],
+      "triangles": 0,
+      "materials": []
+    }
+  ]
+}

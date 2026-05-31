@@ -41,6 +41,11 @@ namespace WorldofEldara.Shared.Protocol;
 [Union((int)PacketType.QuestDialogueRequest, typeof(QuestPackets.QuestDialogueRequest))]
 [Union((int)PacketType.QuestDialogueResponse, typeof(QuestPackets.QuestDialogueResponse))]
 [Union((int)PacketType.QuestLogSnapshot, typeof(QuestPackets.QuestLogSnapshot))]
+[Union((int)PacketType.QuestTurnInRequest, typeof(QuestPackets.QuestTurnInRequest))]
+[Union((int)PacketType.QuestTurnInResponse, typeof(QuestPackets.QuestTurnInResponse))]
+[Union((int)PacketType.InventoryUpdate, typeof(InventoryPackets.InventoryUpdatePacket))]
+[Union((int)PacketType.ItemPickup, typeof(InventoryPackets.ItemPickupPacket))]
+[Union((int)PacketType.EquipItem, typeof(InventoryPackets.EquipItemRequest))]
 public abstract class PacketBase
 {
     /// <summary>
@@ -115,6 +120,8 @@ public enum PacketType : ushort
     QuestDialogueRequest = 254,
     QuestDialogueResponse = 255,
     QuestLogSnapshot = 256,
+    QuestTurnInRequest = 257,
+    QuestTurnInResponse = 258,
 
     // Social (300-349)
     GroupInvite = 300,

@@ -3,45 +3,12 @@
 **/obj/
 **/Logs/
 
-# Unreal Engine
-Binaries/
-DerivedDataCache/
-Intermediate/
-Saved/
-*.VC.db
-*.VC.opendb
-*.sdf
-*.opensdf
-*.sln
+# IDE generated files
 *.sln.DotSettings
-
-# Unity
-Client/[Ll]ibrary/
-Client/[Tt]emp/
-Client/[Oo]bj/
-Client/[Bb]uild/
-Client/[Bb]uilds/
-Client/[Ll]ogs/
-Client/[Uu]ser[Ss]ettings/
-Client/Assets/AssetStoreTools*
-Client/*.csproj
-Client/*.sln
-Client/*.unityproj
-Client/*.suo
-Client/*.tmp
-Client/*.user
-Client/*.userprefs
-Client/*.pidb
-Client/*.booproj
-Client/*.svd
-Client/*.pdb
-Client/*.mdb
-Client/*.opendb
-Client/*.VC.db
-
-# Unity artifacts
-Client/[Aa]ssets/[Ss]treamingAssets/aa*
-Client/[Aa]ssets/[Ss]treamingAssets/aa.meta
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 
 # Rider
 .idea/
@@ -49,10 +16,6 @@ Client/[Aa]ssets/[Ss]treamingAssets/aa.meta
 
 # Visual Studio
 .vs/
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
 
 # VS Code
 .vscode/
@@ -69,6 +32,9 @@ ehthumbs.db
 *.bak
 *.swp
 *~
+*.blend1
+__pycache__/
+*.pyc
 
 # Node modules (if any tools use Node)
 node_modules/
@@ -90,14 +56,6 @@ appsettings.Development.json
 appsettings.Production.json
 *.secret
 *.key
-
-# CMake build artifacts
-build/
-cmake-build-*/
-CMakeCache.txt
-CMakeFiles/
-*.cmake
-!CMakeLists.txt
 
 # CodeQL build artifacts
 _codeql_build_dir/

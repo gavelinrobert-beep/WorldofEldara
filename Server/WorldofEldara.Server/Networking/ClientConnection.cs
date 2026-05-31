@@ -224,8 +224,16 @@ public class ClientConnection
                     HandleQuestAccept(questAccept);
                     break;
 
+                case QuestPackets.QuestTurnInRequest questTurnIn:
+                    HandleQuestTurnIn(questTurnIn);
+                    break;
+
                 case QuestPackets.QuestDialogueRequest dialogueRequest:
                     HandleQuestDialogue(dialogueRequest);
+                    break;
+
+                case InventoryPackets.EquipItemRequest equipRequest:
+                    HandleEquipItem(equipRequest);
                     break;
 
                 default:
@@ -476,13 +484,7 @@ public class ClientConnection
         }));
 
         // Sync quest log for this character (server authoritative)
-        var questStates = _worldSimulation.Quests.GetQuestStates(character.CharacterId);
-        var questDefinitions = _worldSimulation.Quests.GetDefinitionsForStates(questStates);
-        SendPacket(MessagePackSerializer.Serialize<PacketBase>(new QuestPackets.QuestLogSnapshot
-        {
-            Definitions = questDefinitions,
-            States = questStates
-        }));
+        SendQuestLogSnapshot(playerEntity);
 
         // Send existing entities in the same zone to the player for initial sync
         foreach (var entity in _worldSimulation.Entities.GetEntitiesInZone(playerEntity.ZoneId)
@@ -756,6 +758,36 @@ public class ClientConnection
             SendQuestUpdate(result.State, result.Definition);
     }
 
+    private void HandleQuestTurnIn(QuestPackets.QuestTurnInRequest request)
+    {
+        if (!PlayerEntityId.HasValue) return;
+
+        var player = _worldSimulation.Entities.GetEntity(PlayerEntityId.Value) as PlayerEntity;
+        if (player == null) return;
+
+        var npc = request.NpcEntityId.HasValue
+            ? _worldSimulation.Entities.GetEntity(request.NpcEntityId.Value) as NPCEntity
+            : null;
+        var npcTemplateId = npc?.NPCTemplateId ?? request.NpcTemplateId;
+        var result = _worldSimulation.Quests.TurnInQuest(player, request.QuestId, npcTemplateId);
+        var response = new QuestPackets.QuestTurnInResponse
+        {
+            Result = result.Code,
+            Message = result.Message,
+            State = result.State,
+            Definition = result.Definition
+        };
+
+        SendPacket(MessagePackSerializer.Serialize<PacketBase>(response));
+
+        if (result.Code == ResponseCode.Success && result.State != null)
+        {
+            if (result.Definition is not null)
+                SendQuestRewardUpdate(player, result.Definition);
+            SendQuestUpdate(result.State, result.Definition);
+        }
+    }
+
     private void HandleQuestDialogue(QuestPackets.QuestDialogueRequest request)
     {
         if (!PlayerEntityId.HasValue) return;
@@ -768,7 +800,42 @@ public class ClientConnection
 
         SendPacket(MessagePackSerializer.Serialize<PacketBase>(dialogue));
 
-        foreach (var updated in dialogue.UpdatedStates) SendQuestUpdate(updated);
+        foreach (var updated in dialogue.UpdatedStates)
+        {
+            SendQuestUpdate(updated, QuestCatalog.Get(updated.QuestId));
+        }
+    }
+
+    private void HandleEquipItem(InventoryPackets.EquipItemRequest request)
+    {
+        if (!PlayerEntityId.HasValue) return;
+
+        var player = _worldSimulation.Entities.GetEntity(PlayerEntityId.Value) as PlayerEntity;
+        if (player == null) return;
+
+        if (string.IsNullOrWhiteSpace(request.ItemId))
+        {
+            SendInventoryUpdate(player, ResponseCode.InvalidRequest, "No item selected.");
+            return;
+        }
+
+        var item = player.CharacterData.Inventory.FirstOrDefault(existing =>
+            existing.ItemId.Equals(request.ItemId, StringComparison.OrdinalIgnoreCase));
+        if (item is null)
+        {
+            SendInventoryUpdate(player, ResponseCode.NotFound, "Item not found.");
+            return;
+        }
+
+        if (item.EquipSlot is not EquipmentSlot slot)
+        {
+            SendInventoryUpdate(player, ResponseCode.InvalidRequest, $"{item.Name} cannot be equipped.");
+            return;
+        }
+
+        player.CharacterData.EquippedItems[slot] = item;
+        RebuildStatsFromEquipment(player);
+        SendInventoryUpdate(player, ResponseCode.Success, $"Equipped {item.Name}.");
     }
 
     private void SendQuestUpdate(QuestStateData state, QuestDefinition? definition = null)
@@ -780,6 +847,17 @@ public class ClientConnection
         };
 
         SendPacket(MessagePackSerializer.Serialize<PacketBase>(update));
+    }
+
+    private void SendQuestLogSnapshot(PlayerEntity player)
+    {
+        var questStates = _worldSimulation.Quests.GetQuestStates(player.CharacterData.CharacterId);
+        var questDefinitions = _worldSimulation.Quests.GetDefinitionsForStates(questStates);
+        SendPacket(MessagePackSerializer.Serialize<PacketBase>(new QuestPackets.QuestLogSnapshot
+        {
+            Definitions = questDefinitions,
+            States = questStates
+        }));
     }
 
     private static float Distance(Vector3 a, Vector3 b)
@@ -903,8 +981,7 @@ public class ClientConnection
     {
         if (target is NPCEntity npc)
         {
-            npc.TargetEntityId ??= source.EntityId;
-            npc.AIState = NPCAIState.Combat;
+            npc.Engage(source);
         }
 
         var finalAmount = ApplyMitigation(target, damageType, rawAmount);
@@ -1052,12 +1129,371 @@ public class ClientConnection
         if (killer is PlayerEntity playerKiller)
         {
             var updates = _worldSimulation.Quests.RegisterKill(playerKiller, npc);
-            foreach (var update in updates)
+            if (playerKiller.ClientConnection is ClientConnection questConnection)
             {
-                if (playerKiller.ClientConnection is ClientConnection killerConnection)
-                    killerConnection.SendQuestUpdate(update.State, update.Definition);
+                foreach (var update in updates)
+                {
+                    questConnection.SendQuestUpdate(update.State, update.Definition);
+                }
+
+                questConnection.SendQuestLogSnapshot(playerKiller);
+            }
+
+            if (playerKiller.ClientConnection is ClientConnection killerConnection)
+            {
+                killerConnection.SendNpcLootReward(playerKiller, npc);
             }
         }
+    }
+
+    private void SendNpcLootReward(PlayerEntity player, NPCEntity npc)
+    {
+        var gold = Math.Max(1, npc.Level + Random.Shared.Next(0, 3));
+        var experience = Math.Max(1, 4 + npc.Level * 3);
+        player.CharacterData.Gold += gold;
+        player.CharacterData.ExperiencePoints += experience;
+        var droppedItem = RollNpcDrop(npc);
+        AddInventoryItem(player.CharacterData, droppedItem);
+        var leveledUp = TryApplyLevelUps(player);
+        var abilities = GetAbilitySummaries(player);
+
+        var pickup = new InventoryPackets.ItemPickupPacket
+        {
+            SourceEntityId = npc.EntityId,
+            SourceName = npc.Name,
+            Gold = gold,
+            TotalGold = player.CharacterData.Gold,
+            Experience = experience,
+            TotalExperience = player.CharacterData.ExperiencePoints,
+            Items = new[] { $"{droppedItem.Quantity}x {droppedItem.Name}" },
+            Message = leveledUp
+                ? $"Level up! You are now level {player.CharacterData.Level}. +{gold} gold, +{experience} XP from {npc.Name}"
+                : $"+{gold} gold, +{experience} XP from {npc.Name}",
+            Inventory = player.CharacterData.Inventory.ToList(),
+            Level = player.CharacterData.Level,
+            LeveledUp = leveledUp,
+            ExperienceForNextLevel = Leveling.GetExperienceRequiredForNextLevel(player.CharacterData),
+            Resources = ResourceSnapshot.FromStats(player.CharacterData.Stats),
+            Abilities = abilities
+        };
+
+        SendPacket(MessagePackSerializer.Serialize<PacketBase>(pickup));
+    }
+
+    private void SendQuestRewardUpdate(PlayerEntity player, QuestDefinition definition)
+    {
+        var leveledUp = TryApplyLevelUps(player);
+        var abilities = GetAbilitySummaries(player);
+        var pickup = new InventoryPackets.ItemPickupPacket
+        {
+            SourceName = definition.Title,
+            Gold = definition.Rewards.Gold,
+            TotalGold = player.CharacterData.Gold,
+            Experience = definition.Rewards.Experience,
+            TotalExperience = player.CharacterData.ExperiencePoints,
+            Message = leveledUp
+                ? $"Level up! You are now level {player.CharacterData.Level}. Quest reward: {definition.Title}"
+                : $"Quest reward: {definition.Title}",
+            Inventory = player.CharacterData.Inventory.ToList(),
+            Level = player.CharacterData.Level,
+            LeveledUp = leveledUp,
+            ExperienceForNextLevel = Leveling.GetExperienceRequiredForNextLevel(player.CharacterData),
+            Resources = ResourceSnapshot.FromStats(player.CharacterData.Stats),
+            Abilities = abilities
+        };
+
+        SendPacket(MessagePackSerializer.Serialize<PacketBase>(pickup));
+    }
+
+    private void SendInventoryUpdate(PlayerEntity player, ResponseCode result, string message)
+    {
+        var update = new InventoryPackets.InventoryUpdatePacket
+        {
+            Result = result,
+            Message = message,
+            Inventory = player.CharacterData.Inventory.ToList(),
+            EquippedItems = new Dictionary<EquipmentSlot, InventoryItemStack>(player.CharacterData.EquippedItems),
+            Resources = ResourceSnapshot.FromStats(player.CharacterData.Stats),
+            TotalGold = player.CharacterData.Gold,
+            TotalExperience = player.CharacterData.ExperiencePoints,
+            Level = player.CharacterData.Level,
+            ExperienceForNextLevel = Leveling.GetExperienceRequiredForNextLevel(player.CharacterData),
+            Abilities = GetAbilitySummaries(player)
+        };
+
+        SendPacket(MessagePackSerializer.Serialize<PacketBase>(update));
+    }
+
+    private static InventoryItemStack RollNpcDrop(NPCEntity npc)
+    {
+        var roll = Random.Shared.NextDouble();
+        if (roll > 0.94)
+        {
+            return new InventoryItemStack
+            {
+                ItemId = "warden-rootknife",
+                Name = "Warden's Rootknife",
+                Quantity = 1,
+                Rarity = ItemRarity.Rare,
+                Description = "A light blade grown from hard root and ward-stone.",
+                EquipSlot = EquipmentSlot.MainHand,
+                StatBonus = new StatModifier(0, 0, 0, 4, 1, 0)
+            };
+        }
+
+        if (npc.NPCTemplateId == 6003 && roll > 0.70)
+        {
+            return new InventoryItemStack
+            {
+                ItemId = "twice-remembered-paw",
+                Name = "Twice-Remembered Paw",
+                Quantity = 1,
+                Rarity = ItemRarity.Rare,
+                Description = "A small charm that feels warm, then cold, then warm again.",
+                EquipSlot = EquipmentSlot.Trinket,
+                StatBonus = new StatModifier(10, 12, 0, 0, 3, 2)
+            };
+        }
+
+        if (npc.NPCTemplateId == 6002 && roll > 0.74)
+        {
+            return new InventoryItemStack
+            {
+                ItemId = "razor-fern-spine",
+                Name = "Razor Fern Spine",
+                Quantity = 1,
+                Rarity = ItemRarity.Uncommon,
+                Description = "A stiff thorn that can be bound into a quick cutting implement.",
+                EquipSlot = EquipmentSlot.MainHand,
+                StatBonus = new StatModifier(0, 0, 0, 3, 0, 0)
+            };
+        }
+
+        if (npc.NPCTemplateId == 6001 && roll > 0.74)
+        {
+            return new InventoryItemStack
+            {
+                ItemId = "hollow-bark-buckler",
+                Name = "Hollow Bark Buckler",
+                Quantity = 1,
+                Rarity = ItemRarity.Uncommon,
+                Description = "A curved piece of bark that still remembers how to turn aside teeth.",
+                EquipSlot = EquipmentSlot.OffHand,
+                StatBonus = new StatModifier(8, 0, 6, 0, 0, 3)
+            };
+        }
+
+        if (npc.NPCTemplateId == 6004 && roll > 0.68)
+        {
+            return new InventoryItemStack
+            {
+                ItemId = "nullroot-ward-splinter",
+                Name = "Nullroot Ward Splinter",
+                Quantity = 1,
+                Rarity = ItemRarity.Uncommon,
+                Description = "A dark-green splinter that vibrates when brought near old sealwork.",
+                EquipSlot = EquipmentSlot.Ring,
+                StatBonus = new StatModifier(14, 0, 5, 1, 2, 2)
+            };
+        }
+
+        if (npc.NPCTemplateId == 6006 && roll > 0.58)
+        {
+            return new InventoryItemStack
+            {
+                ItemId = "matron-sealbrand",
+                Name = "Matron Sealbrand",
+                Quantity = 1,
+                Rarity = ItemRarity.Rare,
+                Description = "A hard, warm brand grown around a broken ward glyph.",
+                EquipSlot = EquipmentSlot.Trinket,
+                StatBonus = new StatModifier(18, 10, 8, 2, 3, 3)
+            };
+        }
+
+        if (npc.NPCTemplateId == 6005 && roll > 0.66)
+        {
+            return new InventoryItemStack
+            {
+                ItemId = "ward-eaten-fiber",
+                Name = "Ward-Eaten Fiber",
+                Quantity = 1,
+                Rarity = ItemRarity.Uncommon,
+                Description = "A cord of root fiber that has gnawed through old sealwork.",
+                EquipSlot = EquipmentSlot.OffHand,
+                StatBonus = new StatModifier(12, 0, 7, 1, 0, 3)
+            };
+        }
+
+        if (npc.NPCTemplateId is >= 6007 and <= 6010 && roll > 0.68)
+        {
+            return new InventoryItemStack
+            {
+                ItemId = "mossglass-memory-shard",
+                Name = "Mossglass Memory Shard",
+                Quantity = 1,
+                Rarity = ItemRarity.Uncommon,
+                Description = "A wet shard of reflected memory, useful to wardens who listen before striking.",
+                EquipSlot = EquipmentSlot.Ring,
+                StatBonus = new StatModifier(10, 8, 3, 1, 2, 1)
+            };
+        }
+
+        if (npc.NPCTemplateId == 6011 && roll > 0.64)
+        {
+            return new InventoryItemStack
+            {
+                ItemId = "aelthar-silver-hook",
+                Name = "Aelthar Silver Hook",
+                Quantity = 1,
+                Rarity = ItemRarity.Uncommon,
+                Description = "A thin hook of silvered iron taken from an Old Thornway scout.",
+                EquipSlot = EquipmentSlot.MainHand,
+                StatBonus = new StatModifier(0, 6, 0, 4, 1, 0)
+            };
+        }
+
+        if (npc.NPCTemplateId is 6012 or 6013 && roll > 0.66)
+        {
+            return new InventoryItemStack
+            {
+                ItemId = "nameless-ward-thread",
+                Name = "Nameless Ward Thread",
+                Quantity = 1,
+                Rarity = ItemRarity.Uncommon,
+                Description = "Thread that refuses to keep the same color when viewed directly.",
+                EquipSlot = EquipmentSlot.Trinket,
+                StatBonus = new StatModifier(14, 8, 5, 0, 2, 2)
+            };
+        }
+
+        if (npc.NPCTemplateId is >= 6014 and <= 6016 && roll > 0.56)
+        {
+            return new InventoryItemStack
+            {
+                ItemId = "oranyn-seed-shard",
+                Name = "Oranyn Seed-Shard",
+                Quantity = 1,
+                Rarity = ItemRarity.Rare,
+                Description = "A luminous seed-shard from Seedvault Veyr's unchosen memories.",
+                EquipSlot = EquipmentSlot.Trinket,
+                StatBonus = new StatModifier(22, 14, 8, 3, 4, 4)
+            };
+        }
+
+        return roll switch
+        {
+            > 0.72 => new InventoryItemStack
+            {
+                ItemId = "glimmering-sap-charm",
+                Name = "Glimmering Sap Charm",
+                Quantity = 1,
+                Rarity = ItemRarity.Uncommon,
+                Description = "Resin set in woven bark, still carrying a soft green light.",
+                EquipSlot = EquipmentSlot.Trinket,
+                StatBonus = new StatModifier(8, 8, 0, 0, 2, 1)
+            },
+            > 0.55 => new InventoryItemStack
+            {
+                ItemId = "rootbound-sigil-shard",
+                Name = "Rootbound Sigil Shard",
+                Quantity = 1,
+                Rarity = ItemRarity.Uncommon,
+                Description = "A bright shard from a warded root-sigil.",
+                EquipSlot = EquipmentSlot.Ring,
+                StatBonus = new StatModifier(12, 0, 4, 1, 0, 1)
+            },
+            _ => new InventoryItemStack
+            {
+                ItemId = "worldroot-splinter",
+                Name = npc.IsHostile ? "Worldroot Splinter" : "Field Salvage",
+                Quantity = 1,
+                Rarity = ItemRarity.Common,
+                Description = "A useful crafting scrap from the starter grove."
+            }
+        };
+    }
+
+    private static void AddInventoryItem(CharacterData character, InventoryItemStack item)
+    {
+        var index = character.Inventory.FindIndex(existing =>
+            existing.ItemId.Equals(item.ItemId, StringComparison.OrdinalIgnoreCase));
+        if (index >= 0)
+        {
+            var existing = character.Inventory[index];
+            character.Inventory[index] = existing with { Quantity = existing.Quantity + item.Quantity };
+            return;
+        }
+
+        character.Inventory.Add(item);
+    }
+
+    private static bool TryApplyLevelUps(PlayerEntity player)
+    {
+        var character = player.CharacterData;
+        var originalLevel = character.Level;
+        while (character.Level < Leveling.MaxPrototypeLevel &&
+               character.ExperiencePoints >= Leveling.GetExperienceRequiredForLevel(character.Level + 1))
+        {
+            character.Level++;
+        }
+
+        if (character.Level == originalLevel)
+        {
+            return false;
+        }
+
+        RebuildStatsFromEquipment(character);
+        player.KnownAbilities.UnionWith(ClassArchetypes.GetAbilitiesForLevel(character.Class, character.Level));
+        return true;
+    }
+
+    private static void RebuildStatsFromEquipment(PlayerEntity player)
+    {
+        RebuildStatsFromEquipment(player.CharacterData);
+    }
+
+    private static void RebuildStatsFromEquipment(CharacterData character)
+    {
+        var oldStats = character.Stats;
+        var stats = ClassArchetypes.BuildStatsForLevel(character.Class, character.Level);
+        foreach (var item in character.EquippedItems.Values)
+        {
+            var bonus = item.StatBonus;
+            if (!bonus.HasAnyBonus)
+            {
+                continue;
+            }
+
+            stats.MaxHealth += bonus.MaxHealth;
+            stats.MaxMana += bonus.MaxMana;
+            stats.MaxStamina += bonus.MaxStamina;
+            stats.AttackPower += bonus.AttackPower;
+            stats.SpellPower += bonus.SpellPower;
+            stats.Armor += bonus.Armor;
+        }
+
+        stats.CurrentHealth = ScaleCurrentResource(oldStats.CurrentHealth, oldStats.MaxHealth, stats.MaxHealth);
+        stats.CurrentMana = ScaleCurrentResource(oldStats.CurrentMana, oldStats.MaxMana, stats.MaxMana);
+        stats.CurrentStamina = ScaleCurrentResource(oldStats.CurrentStamina, oldStats.MaxStamina, stats.MaxStamina);
+        character.Stats = stats;
+    }
+
+    private static int ScaleCurrentResource(int oldCurrent, int oldMax, int newMax)
+    {
+        if (newMax <= 0) return 0;
+        if (oldCurrent <= 0) return 0;
+        if (oldMax <= 0) return newMax;
+
+        var ratio = Math.Clamp(oldCurrent / (float)oldMax, 0f, 1f);
+        return Math.Clamp((int)MathF.Ceiling(newMax * ratio), 1, newMax);
+    }
+
+    private static IReadOnlyList<AbilitySummary> GetAbilitySummaries(PlayerEntity player)
+    {
+        return player.KnownAbilities
+            .Select(id => AbilitySummary.From(AbilityBook.GetAbility(id)))
+            .ToList();
     }
 
     private void BroadcastDamage(ulong sourceId, ulong targetId, int amount, DamageType damageType, bool isCrit,
@@ -1134,7 +1570,7 @@ public class ClientConnection
     private static ClassArchetype ApplyClassArchetype(CharacterData character)
     {
         var archetype = ClassArchetypes.Get(character.Class);
-        character.Stats = ClassArchetypes.BuildStatsForLevel(character.Class, character.Level);
+        RebuildStatsFromEquipment(character);
         return archetype;
     }
 

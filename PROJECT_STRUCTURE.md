@@ -1,220 +1,110 @@
 # World of Eldara - Project Structure
 
-> Client plan: Unreal Engine. The layout below reflects the Unreal project structure alongside the authoritative .NET server.
-
-This document outlines the complete folder structure and architecture for the World of Eldara MMORPG.
+World of Eldara is now organized around a custom C# client, an authoritative .NET server, and shared protocol/data models. Unreal Engine and Henky3D have been removed from the active project.
 
 ## Root Structure
 
-```
+```text
 WorldofEldara/
-├── Config/                 # Unreal Engine project config
-├── Content/                # Unreal Engine content
-├── Source/                 # Unreal Engine C++ modules
-├── Eldara.uproject         # Unreal Engine project file
-├── game/                   # Henky3D client (on hold)
-├── external/               # Henky3D engine submodule (on hold)
-├── Server/                 # C# dedicated server
-├── Shared/                 # Shared code between client and server
-├── Docs/                   # Documentation
-├── Tools/                  # Development tools and utilities
-├── WORLD_LORE.md          # Canonical lore document
-├── PROJECT_STRUCTURE.md   # This file
-└── README.md              # Project overview
+├── Client/
+│   └── WorldofEldara.Client/
+├── Server/
+│   └── WorldofEldara.Server/
+├── Shared/
+│   └── WorldofEldara.Shared/
+├── Docs/
+├── assets/
+├── ui/
+├── WORLD_LORE.md
+├── PROJECT_STRUCTURE.md
+└── README.md
 ```
 
-## Unreal Engine Project Layout (Root-Level)
+## Client
 
-```
-Config/                             # DefaultEngine, DefaultInput, etc.
-Content/
-└── WorldofEldara/                  # Art, UI, quests, maps
-    ├── Blueprints/                 # Core, UI, Characters, NPC, Quests
-    ├── Data/                       # DataAssets/DataTables/Curves
-    ├── Maps/                       # MainMenu, CharacterCreation, Zone prototypes
-    └── UI/                         # UMG/CommonUI widgets (chat, quest tracker, HUD)
-Source/
-└── Eldara/
-    ├── Core/                       # GameInstance, Subsystems, PlayerController
-    ├── Networking/                 # Socket client, packet dispatch
-    ├── Movement/                   # Prediction/reconciliation hooks
-    ├── Combat/                     # GAS abilities, cooldown UX
-    ├── Quest/                      # Quest DataAssets, objective logic stubs
-    ├── World/                      # Zone presentation, corruption visuals
-    ├── UI/                         # Widget controllers
-    └── Plugins/                    # Optional Unreal plugins (e.g., ALS/GAS helpers)
-Eldara.uproject
+`Client/WorldofEldara.Client` is the first custom client. It is intentionally small:
+
+```text
+Client/WorldofEldara.Client/
+├── Game/
+│   └── WorldScene.cs              # Server-backed scene, camera, local input, draw calls
+├── Networking/
+│   └── EldaraServerClient.cs      # TCP MessagePack client plus prototype session flow
+├── Rendering/
+│   └── SoftwareRenderer.cs        # Software frame buffer and primitive drawing
+├── EldaraGameForm.cs              # Window, frame loop, overlay, keyboard input
+├── Program.cs
+└── WorldofEldara.Client.csproj
 ```
 
-- **Config/** drives engine, input, and rendering defaults (DX12/Vulkan, Enhanced Input mappings).
-- **Source/Eldara** is modular: Core handles bootstrap/state, Networking mirrors MessagePack schema, Movement wires prediction/reconciliation, Combat uses GAS, Quest holds DataAssets/objectives/conditions, World owns corruption/world-state presentation, UI coordinates UMG/CommonUI widgets.
-- **Content/WorldofEldara** stores authored assets (Blueprints, Data tables/curves, Maps, UI). Saved/DerivedDataCache are generated and ignored by version control.
+The first renderer is a software renderer on purpose. It gives us total control over the frame loop, camera, draw order, and gameplay feedback before we decide whether to add a hardware backend. The current client can connect to the local server, run an automatic prototype login/create/select flow, enter the world, send movement input, apply server corrections, and render spawned entities.
 
-## Server/ - Dedicated Game Server
+## Server
 
-```
-Server/
-├── WorldofEldara.Server/
-│   ├── Core/                          # Core server systems
-│   │   ├── ServerBootstrap.cs         # Server startup
-│   │   ├── WorldSimulation.cs         # Main game loop
-│   │   ├── EntityManager.cs           # Entity management
-│   │   └── ServerConfig.cs            # Configuration
-│   ├── Networking/                    # Server networking
-│   │   ├── NetworkServer.cs
-│   │   ├── ClientConnection.cs
-│   │   ├── PacketProcessor.cs
-│   │   └── NetworkProtocol.cs
-│   ├── Character/                     # Character systems
-│   │   ├── CharacterData.cs
-│   │   ├── CharacterManager.cs
-│   │   ├── StatsCalculator.cs
-│   │   └── EquipmentSystem.cs
-│   ├── Combat/                        # Combat systems
-│   │   ├── CombatSystem.cs
-│   │   ├── AbilityManager.cs
-│   │   ├── DamageCalculator.cs
-│   │   ├── ThreatManager.cs
-│   │   └── CooldownSystem.cs
-│   ├── AI/                            # NPC AI
-│   │   ├── BehaviorTree/
-│   │   ├── NPCBrain.cs
-│   │   ├── CombatAI.cs
-│   │   └── PatrolSystem.cs
-│   ├── Quest/                         # Quest systems
-│   │   ├── QuestSystem.cs
-│   │   ├── QuestData.cs
-│   │   └── ReputationManager.cs
-│   ├── World/                         # World management
-│   │   ├── ZoneManager.cs
-│   │   ├── SpawnSystem.cs
-│   │   ├── WorldState.cs
-│   │   └── TimeManager.cs
-│   ├── Database/                      # Persistence layer
-│   │   ├── DatabaseManager.cs
-│   │   ├── PlayerRepository.cs
-│   │   └── WorldRepository.cs
-│   └── Program.cs                     # Entry point
-├── WorldofEldara.Server.csproj
-└── appsettings.json                   # Server configuration
+`Server/WorldofEldara.Server` remains the authoritative runtime:
+
+```text
+Server/WorldofEldara.Server/
+├── Core/
+│   ├── EntityManager.cs
+│   └── ServerBootstrap.cs
+├── Networking/
+│   ├── ClientConnection.cs
+│   └── NetworkServer.cs
+├── Quest/
+│   └── QuestSystem.cs
+├── World/
+│   ├── SpawnSystem.cs
+│   ├── TimeManager.cs
+│   ├── WorldSimulation.cs
+│   └── ZoneManager.cs
+├── Program.cs
+├── appsettings.json
+└── WorldofEldara.Server.csproj
 ```
 
-## Shared/ - Shared Code
+Responsibilities:
 
-```
-Shared/
-├── WorldofEldara.Shared/
-│   ├── Protocol/                      # Network protocol
-│   │   ├── Packets/
-│   │   │   ├── AuthPackets.cs
-│   │   │   ├── CharacterPackets.cs
-│   │   │   ├── MovementPackets.cs
-│   │   │   ├── CombatPackets.cs
-│   │   │   └── ChatPackets.cs
-│   │   ├── PacketBase.cs
-│   │   └── PacketSerializer.cs
-│   ├── Data/                          # Shared data structures
-│   │   ├── Character/
-│   │   │   ├── CharacterData.cs
-│   │   │   ├── Race.cs
-│   │   │   ├── Class.cs
-│   │   │   └── Stats.cs
-│   │   ├── Combat/
-│   │   │   ├── Ability.cs
-│   │   │   ├── DamageType.cs
-│   │   │   └── StatusEffect.cs
-│   │   ├── Items/
-│   │   │   ├── Item.cs
-│   │   │   ├── Equipment.cs
-│   │   │   └── Inventory.cs
-│   │   ├── Quest/
-│   │   │   ├── Quest.cs
-│   │   │   └── QuestObjective.cs
-│   │   └── World/
-│   │       ├── Zone.cs
-│   │       ├── Faction.cs
-│   │       └── WorldPosition.cs
-│   ├── Constants/                     # Game constants
-│   │   ├── GameConstants.cs
-│   │   ├── NetworkConstants.cs
-│   │   └── CombatConstants.cs
-│   └── Utils/                         # Shared utilities
-│       ├── MathUtils.cs
-│       └── Validation.cs
-└── WorldofEldara.Shared.csproj
+- account/session prototype flow
+- character creation and selection
+- server-authoritative movement
+- combat validation and combat events
+- chat routing
+- quest state and progression
+- NPC spawn, patrol, aggro, attack, death, and respawn behavior
+
+## Shared
+
+`Shared/WorldofEldara.Shared` contains types that must stay consistent between client and server:
+
+```text
+Shared/WorldofEldara.Shared/
+├── Constants/
+├── Data/
+│   ├── Character/
+│   ├── Combat/
+│   ├── Quest/
+│   └── World/
+└── Protocol/
+    ├── PacketBase.cs
+    └── Packets/
 ```
 
-## Docs/ - Documentation
+This is the contract. When a packet changes here, both server and custom client should be updated in the same change.
 
-```
-Docs/
-├── Architecture/
-│   ├── NetworkProtocol.md             # Network protocol specification
-│   ├── CombatSystem.md                # Combat system design
-│   ├── CharacterSystem.md             # Character system design
-│   └── ServerArchitecture.md          # Server architecture
-├── Design/
-│   ├── ClassDesign.md                 # Class specifications
-│   ├── RaceDesign.md                  # Race specifications
-│   ├── ZoneDesign.md                  # Zone layouts and design
-│   └── QuestDesign.md                 # Quest design guidelines
-└── API/
-    ├── NetworkAPI.md                  # Network API documentation
-    └── ServerAPI.md                   # Server API documentation
-```
+## Documentation
 
-## Tools/ - Development Tools
+`Docs/` is for architecture and gameplay notes. Unreal-specific implementation notes have been removed; future docs should describe the custom client and server protocol directly.
 
-```
-Tools/
-├── DataEditor/                        # Game data editor
-├── MapEditor/                         # World map editor
-└── PacketSniffer/                     # Network debugging tool
-```
+`WORLD_LORE.md` remains canonical lore.
 
-## Technology Stack
+## Removed Tracks
 
-### Client
-- **Engine**: Unreal Engine 5.x
-- **Language**: C++20 + Blueprints
-- **Rendering**: Lumen/Nanite (project dependent)
-- **Input**: Enhanced Input
-- **UI**: UMG/CommonUI
+The following active tracks were removed:
 
-### Server
-- **Framework**: .NET 8
-- **Language**: C# 12
-- **Networking**: Raw TCP/UDP sockets
-- **Database**: PostgreSQL (future)
-- **Logging**: Serilog
+- Unreal Engine project files and content
+- Henky3D submodule and CMake client
+- shader files tied to the Henky3D prototype
+- obsolete Unreal/Henky3D implementation summaries
 
-### Shared
-- **Serialization**: MessagePack or Protocol Buffers
-- **Compression**: LZ4
-
-## Architecture Principles
-
-1. **Authoritative Server**: All game logic runs on server, client is display only
-2. **Client Prediction**: Movement and actions predicted locally, confirmed by server
-3. **Data-Driven Design**: Game content defined in data files, not code
-4. **Modular Systems**: Each system is independent and communicates via events
-5. **Lore-First**: All design decisions must align with Eldara lore
-
-## Build Targets
-
-- **Client**: Windows 64-bit (primary), Linux (future), macOS (future)
-- **Server**: Linux 64-bit (production), Windows (development)
-
-## Version Control
-
-- **Ignore**: Unreal DerivedDataCache, Intermediate, Saved, Binaries
-- **LFS**: Large assets (models, textures, audio)
-- **Branches**: feature/, bugfix/, release/
-
-## Next Steps
-
-1. Initialize Unreal project in Client/
-2. Create .NET solution in Server/
-3. Create shared library project
-4. Set up version control properly
-5. Implement core networking layer
+The new rule is simple: one game client, one authoritative server, one shared protocol.

@@ -27,6 +27,28 @@ public static class QuestPackets
     }
 
     [MessagePackObject]
+    public class QuestTurnInRequest : PacketBase
+    {
+        [Key(0)] public int QuestId { get; set; }
+
+        [Key(1)] public ulong? NpcEntityId { get; set; }
+
+        [Key(2)] public int? NpcTemplateId { get; set; }
+    }
+
+    [MessagePackObject]
+    public class QuestTurnInResponse : PacketBase
+    {
+        [Key(0)] public ResponseCode Result { get; set; }
+
+        [Key(1)] public string Message { get; set; } = string.Empty;
+
+        [Key(2)] public QuestStateData? State { get; set; }
+
+        [Key(3)] public QuestDefinition? Definition { get; set; }
+    }
+
+    [MessagePackObject]
     public class QuestLogSnapshot : PacketBase
     {
         [Key(0)] public IReadOnlyList<QuestDefinition> Definitions { get; set; } = Array.Empty<QuestDefinition>();

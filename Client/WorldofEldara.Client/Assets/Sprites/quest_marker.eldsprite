@@ -1,0 +1,18 @@
+size 8 12
+palette . transparent
+palette Y #E5C85E
+palette D #5C4615
+palette W #FFF0A6
+pixels
+..YYYY..
+.YWWWWY.
+.YWWWWY.
+..YWWY..
+..YWWY..
+..YWWY..
+..YDDY..
+...YY...
+........
+..YYYY..
+..YDDY..
+..YYYY..

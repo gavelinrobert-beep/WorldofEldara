@@ -45,6 +45,12 @@ public class CharacterData
     // Last played timestamp
     [Key(15)] public DateTime LastPlayedAt { get; set; }
 
+    [Key(16)] public long Gold { get; set; }
+
+    [Key(17)] public List<InventoryItemStack> Inventory { get; set; } = new();
+
+    [Key(18)] public Dictionary<EquipmentSlot, InventoryItemStack> EquippedItems { get; set; } = new();
+
     public ResourceSnapshot GetResourceSnapshot()
     {
         return ResourceSnapshot.FromStats(Stats);
@@ -209,6 +215,61 @@ public class EquipmentSlots
 }
 
 [MessagePackObject]
+public sealed record InventoryItemStack
+{
+    [Key(0)] public string ItemId { get; init; } = string.Empty;
+
+    [Key(1)] public string Name { get; init; } = string.Empty;
+
+    [Key(2)] public int Quantity { get; init; }
+
+    [Key(3)] public ItemRarity Rarity { get; init; }
+
+    [Key(4)] public string Description { get; init; } = string.Empty;
+
+    [Key(5)] public EquipmentSlot? EquipSlot { get; init; }
+
+    [Key(6)] public StatModifier StatBonus { get; init; } = StatModifier.Empty;
+}
+
+public enum ItemRarity : byte
+{
+    Common,
+    Uncommon,
+    Rare,
+    Epic
+}
+
+public enum EquipmentSlot : byte
+{
+    Head,
+    Chest,
+    Hands,
+    Legs,
+    Feet,
+    MainHand,
+    OffHand,
+    Ring,
+    Trinket,
+    Necklace
+}
+
+[MessagePackObject]
+public sealed record StatModifier(
+    [property: Key(0)] int MaxHealth,
+    [property: Key(1)] int MaxMana,
+    [property: Key(2)] int MaxStamina,
+    [property: Key(3)] int AttackPower,
+    [property: Key(4)] int SpellPower,
+    [property: Key(5)] int Armor)
+{
+    public static StatModifier Empty { get; } = new(0, 0, 0, 0, 0, 0);
+
+    public bool HasAnyBonus => MaxHealth != 0 || MaxMana != 0 || MaxStamina != 0 ||
+                               AttackPower != 0 || SpellPower != 0 || Armor != 0;
+}
+
+[MessagePackObject]
 public sealed record ResourceSnapshot(
     [property: Key(0)] int MaxHealth,
     [property: Key(1)] int CurrentHealth,
@@ -279,6 +340,15 @@ public sealed record CharacterSnapshot
 
     [Key(12)] public string Version { get; init; } = ProtocolVersions.Current;
 
+    [Key(13)] public long Gold { get; init; }
+
+    [Key(14)] public long ExperiencePoints { get; init; }
+
+    [Key(15)] public IReadOnlyList<InventoryItemStack> Inventory { get; init; } = Array.Empty<InventoryItemStack>();
+
+    [Key(16)] public IReadOnlyDictionary<EquipmentSlot, InventoryItemStack> EquippedItems { get; init; } =
+        new Dictionary<EquipmentSlot, InventoryItemStack>();
+
     public static CharacterSnapshot FromCharacter(CharacterData character, IReadOnlyList<int>? abilities = null)
     {
         return new CharacterSnapshot
@@ -294,7 +364,11 @@ public sealed record CharacterSnapshot
             Position = character.Position,
             KnownAbilities = abilities ?? Array.Empty<int>(),
             ZoneId = character.Position.ZoneId,
-            LastPlayedAt = character.LastPlayedAt
+            LastPlayedAt = character.LastPlayedAt,
+            Gold = character.Gold,
+            ExperiencePoints = character.ExperiencePoints,
+            Inventory = character.Inventory.ToList(),
+            EquippedItems = new Dictionary<EquipmentSlot, InventoryItemStack>(character.EquippedItems)
         };
     }
 }

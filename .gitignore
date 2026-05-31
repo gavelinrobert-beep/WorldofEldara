@@ -32,6 +32,9 @@ ehthumbs.db
 *.bak
 *.swp
 *~
+*.blend1
+__pycache__/
+*.pyc
 
 # Node modules (if any tools use Node)
 node_modules/

@@ -13,13 +13,13 @@
     "ELAR_LightingRender"
   ],
   "object_counts": {
-    "ELAR_Terrain": 143,
-    "ELAR_ArchiveCity": 125,
-    "ELAR_WardsAndProps": 105,
-    "ELAR_MemoryConstructs": 30,
-    "ELAR_ArcaneIntrusion": 23,
+    "ELAR_Terrain": 185,
+    "ELAR_ArchiveCity": 211,
+    "ELAR_WardsAndProps": 147,
+    "ELAR_MemoryConstructs": 28,
+    "ELAR_ArcaneIntrusion": 21,
     "ELAR_Foliage": 18,
-    "ELAR_Characters": 26,
+    "ELAR_Characters": 27,
     "ELAR_LightingRender": 11
   },
   "objects": [
@@ -54,6 +54,66 @@
       "approximate_triangles": 2
     },
     {
+      "name": "ELAR_Terrain_Backdrop_DistantArchiveRootButtress_00_BreaksOpenHorizon",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Backdrop_DarkArchiveSilhouette"
+      ],
+      "approximate_triangles": 3
+    },
+    {
+      "name": "ELAR_Terrain_Backdrop_DistantArchiveRootButtress_01_BreaksOpenHorizon",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Backdrop_DarkArchiveSilhouette"
+      ],
+      "approximate_triangles": 3
+    },
+    {
+      "name": "ELAR_Terrain_Backdrop_DistantArchiveRootButtress_02_BreaksOpenHorizon",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Backdrop_DarkArchiveSilhouette"
+      ],
+      "approximate_triangles": 3
+    },
+    {
+      "name": "ELAR_Terrain_Backdrop_DistantArchiveRootButtress_03_BreaksOpenHorizon",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Backdrop_DarkArchiveSilhouette"
+      ],
+      "approximate_triangles": 3
+    },
+    {
+      "name": "ELAR_Terrain_Backdrop_DistantArchiveRootButtress_04_BreaksOpenHorizon",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Backdrop_DarkArchiveSilhouette"
+      ],
+      "approximate_triangles": 3
+    },
+    {
+      "name": "ELAR_Terrain_Backdrop_DistantArchiveRootButtress_05_BreaksOpenHorizon",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Backdrop_DarkArchiveSilhouette"
+      ],
+      "approximate_triangles": 3
+    },
+    {
       "name": "ELAR_Terrain_LongRootroad_MossyStone_00",
       "collection": "ELAR_Terrain",
       "type": "MESH",
@@ -71,7 +131,7 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_LongRootroad_RaisedRootBorder_Left_00",
@@ -81,7 +141,7 @@
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_LongRootroad_PaintedStoneEdge_Left_00",
@@ -101,7 +161,7 @@
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_LongRootroad_PaintedStoneEdge_Right_00",
@@ -131,7 +191,7 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_LongRootroad_RaisedRootBorder_Left_01",
@@ -141,7 +201,7 @@
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_LongRootroad_PaintedStoneEdge_Left_01",
@@ -161,7 +221,7 @@
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_LongRootroad_PaintedStoneEdge_Right_01",
@@ -191,7 +251,7 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_LongRootroad_RaisedRootBorder_Left_02",
@@ -201,7 +261,7 @@
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_LongRootroad_PaintedStoneEdge_Left_02",
@@ -221,7 +281,7 @@
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_LongRootroad_PaintedStoneEdge_Right_02",
@@ -251,7 +311,7 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_LongRootroad_RaisedRootBorder_Left_03",
@@ -261,7 +321,7 @@
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_LongRootroad_PaintedStoneEdge_Left_03",
@@ -281,7 +341,7 @@
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_LongRootroad_PaintedStoneEdge_Right_03",
@@ -311,7 +371,7 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_LongRootroad_RaisedRootBorder_Left_04",
@@ -321,7 +381,7 @@
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_LongRootroad_PaintedStoneEdge_Left_04",
@@ -341,7 +401,7 @@
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_LongRootroad_PaintedStoneEdge_Right_04",
@@ -371,7 +431,7 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_LongRootroad_RaisedRootBorder_Left_05",
@@ -381,7 +441,7 @@
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_LongRootroad_PaintedStoneEdge_Left_05",
@@ -401,7 +461,7 @@
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_LongRootroad_PaintedStoneEdge_Right_05",
@@ -431,7 +491,7 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_LongRootroad_RaisedRootBorder_Left_06",
@@ -441,7 +501,7 @@
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_LongRootroad_PaintedStoneEdge_Left_06",
@@ -461,7 +521,7 @@
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_LongRootroad_PaintedStoneEdge_Right_06",
@@ -481,7 +541,7 @@
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 4
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_EmbeddedMossStoneCrown_00",
@@ -491,7 +551,7 @@
       "materials": [
         "MAT_Path_MossyStone"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 3
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_LivingRootGuardrail_Left_00",
@@ -501,7 +561,7 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_LivingRootGuardrail_Right_00",
@@ -511,30 +571,10 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_00_00",
-      "collection": "ELAR_Terrain",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_00_01",
-      "collection": "ELAR_Terrain",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_00_02",
       "collection": "ELAR_Terrain",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -551,7 +591,7 @@
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 4
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_EmbeddedMossStoneCrown_01",
@@ -561,7 +601,7 @@
       "materials": [
         "MAT_Path_MossyStone"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 3
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_LivingRootGuardrail_Left_01",
@@ -571,7 +611,7 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_LivingRootGuardrail_Right_01",
@@ -581,30 +621,10 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_01_00",
-      "collection": "ELAR_Terrain",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_01_01",
-      "collection": "ELAR_Terrain",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_01_02",
       "collection": "ELAR_Terrain",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -621,7 +641,7 @@
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 4
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_EmbeddedMossStoneCrown_02",
@@ -631,7 +651,7 @@
       "materials": [
         "MAT_Path_MossyStone"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 3
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_LivingRootGuardrail_Left_02",
@@ -641,7 +661,7 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_LivingRootGuardrail_Right_02",
@@ -651,30 +671,10 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_02_00",
-      "collection": "ELAR_Terrain",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_02_01",
-      "collection": "ELAR_Terrain",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_02_02",
       "collection": "ELAR_Terrain",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -691,7 +691,7 @@
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 4
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_EmbeddedMossStoneCrown_03",
@@ -701,7 +701,7 @@
       "materials": [
         "MAT_Path_MossyStone"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 3
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_LivingRootGuardrail_Left_03",
@@ -711,7 +711,7 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_LivingRootGuardrail_Right_03",
@@ -721,30 +721,10 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_03_00",
-      "collection": "ELAR_Terrain",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_03_01",
-      "collection": "ELAR_Terrain",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_03_02",
       "collection": "ELAR_Terrain",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -761,7 +741,7 @@
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 4
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_EmbeddedMossStoneCrown_04",
@@ -771,7 +751,7 @@
       "materials": [
         "MAT_Path_MossyStone"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 3
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_LivingRootGuardrail_Left_04",
@@ -781,7 +761,7 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_LivingRootGuardrail_Right_04",
@@ -791,30 +771,10 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_04_00",
-      "collection": "ELAR_Terrain",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_04_01",
-      "collection": "ELAR_Terrain",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_04_02",
       "collection": "ELAR_Terrain",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -831,7 +791,7 @@
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 4
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_EmbeddedMossStoneCrown_05",
@@ -841,7 +801,7 @@
       "materials": [
         "MAT_Path_MossyStone"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 3
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_LivingRootGuardrail_Left_05",
@@ -851,7 +811,7 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_LivingRootGuardrail_Right_05",
@@ -861,30 +821,10 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_05_00",
-      "collection": "ELAR_Terrain",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_05_01",
-      "collection": "ELAR_Terrain",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_05_02",
       "collection": "ELAR_Terrain",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -901,7 +841,7 @@
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 4
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_EmbeddedMossStoneCrown_06",
@@ -911,7 +851,7 @@
       "materials": [
         "MAT_Path_MossyStone"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 3
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_LivingRootGuardrail_Left_06",
@@ -921,7 +861,7 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_LivingRootGuardrail_Right_06",
@@ -931,30 +871,10 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_06_00",
-      "collection": "ELAR_Terrain",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_06_01",
-      "collection": "ELAR_Terrain",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_06_02",
       "collection": "ELAR_Terrain",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -971,7 +891,7 @@
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 4
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_EmbeddedMossStoneCrown_07",
@@ -981,7 +901,7 @@
       "materials": [
         "MAT_Path_MossyStone"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 3
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_LivingRootGuardrail_Left_07",
@@ -991,7 +911,7 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_LivingRootGuardrail_Right_07",
@@ -1001,7 +921,7 @@
       "materials": [
         "MAT_Path_SacredRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
       "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_07_00",
@@ -1014,7 +934,347 @@
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_07_01",
+      "name": "ELAR_Terrain_SacredRootroad_TaperedLivingRootBed_OrganicSilhouette",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_MossyStoneWalkableCore_ClearRoute",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_MossyStone"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_UnevenEmbeddedStoneSlab_00",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_StoneHighlight"
+      ],
+      "approximate_triangles": 2
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_UnevenEmbeddedStoneSlab_01",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_MossyStone"
+      ],
+      "approximate_triangles": 2
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_UnevenEmbeddedStoneSlab_02",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_MossyStone"
+      ],
+      "approximate_triangles": 2
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_UnevenEmbeddedStoneSlab_03",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_StoneHighlight"
+      ],
+      "approximate_triangles": 2
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_UnevenEmbeddedStoneSlab_04",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_MossyStone"
+      ],
+      "approximate_triangles": 2
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_UnevenEmbeddedStoneSlab_05",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_MossyStone"
+      ],
+      "approximate_triangles": 2
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_UnevenEmbeddedStoneSlab_06",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_StoneHighlight"
+      ],
+      "approximate_triangles": 2
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_UnevenEmbeddedStoneSlab_07",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_MossyStone"
+      ],
+      "approximate_triangles": 2
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_BrokenUnevenRootSplit_00",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_BrokenUnevenRootSplit_01",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_BrokenUnevenRootSplit_02",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_BrokenUnevenRootSplit_03",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_BraidedRootBorder_Left_00",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_SacredRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_BraidedRootBorder_Left_01",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_SacredRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_BraidedRootBorder_Left_02",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_SacredRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_BraidedRootBorder_Left_03",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_SacredRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_BraidedRootBorder_Left_04",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_SacredRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_BraidedRootBorder_Left_05",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_SacredRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_BraidedRootBorder_Left_06",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_SacredRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_BraidedRootBorder_Left_07",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_SacredRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_BraidedRootBorder_Right_00",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_SacredRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_BraidedRootBorder_Right_01",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_SacredRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_BraidedRootBorder_Right_02",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_SacredRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_BraidedRootBorder_Right_03",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_SacredRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_BraidedRootBorder_Right_04",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_SacredRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_BraidedRootBorder_Right_05",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_SacredRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_BraidedRootBorder_Right_06",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_SacredRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_BraidedRootBorder_Right_07",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_SacredRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_RootEdgeKnot_Left_00",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_RootEdgeKnot_Right_00",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_RootEdgeKnot_Left_01",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_RootEdgeKnot_Right_01",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_RecessedCyanGuideCut_01",
       "collection": "ELAR_Terrain",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -1024,7 +1284,47 @@
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_Terrain_RaisedRootroad_CyanGuideRune_07_02",
+      "name": "ELAR_Terrain_SacredRootroad_RootEdgeKnot_Left_02",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_RootEdgeKnot_Right_02",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_RootEdgeKnot_Left_03",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_RootEdgeKnot_Right_03",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_RecessedCyanGuideCut_03",
       "collection": "ELAR_Terrain",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -1032,6 +1332,116 @@
         "MAT_Rune_Cyan_Emission"
       ],
       "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_RootEdgeKnot_Left_04",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_RootEdgeKnot_Right_04",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_RootEdgeKnot_Left_05",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_RootEdgeKnot_Right_05",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_RecessedCyanGuideCut_05",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_RootEdgeKnot_Left_06",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_RootEdgeKnot_Right_06",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_CenterGuideRuneMemoryShard_00",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_CenterGuideRuneMemoryShard_02",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_CenterGuideRuneMemoryShard_04",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "ELAR_Terrain_SacredRootroad_CenterGuideRuneMemoryShard_06",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 10
     },
     {
       "name": "ELAR_Terrain_ForegroundWardStone_Left_RoadEntrance",
@@ -1054,6 +1464,26 @@
       "approximate_triangles": 12
     },
     {
+      "name": "ELAR_Terrain_ForegroundWardStone_Left_RootWrappedMossBase",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_ForegroundWardStone_Left_CyanJudgementEye",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 10
+    },
+    {
       "name": "ELAR_Terrain_ForegroundWardStone_Right_RoadEntrance",
       "collection": "ELAR_Terrain",
       "type": "MESH",
@@ -1072,6 +1502,26 @@
         "MAT_MemoryGlass_CyanGreen"
       ],
       "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_Terrain_ForegroundWardStone_Right_RootWrappedMossBase",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_Terrain_ForegroundWardStone_Right_CyanJudgementEye",
+      "collection": "ELAR_Terrain",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 10
     },
     {
       "name": "ELAR_Terrain_PilgrimageStep_Left_00",
@@ -1219,7 +1669,7 @@
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_PlayerSpawn_CyanRune"
+        "MAT_Echo_Transparent"
       ],
       "approximate_triangles": 30
     },
@@ -1249,7 +1699,7 @@
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Echo_Transparent"
+        "MAT_Stone_Pilgrimage"
       ],
       "approximate_triangles": 30
     },
@@ -1264,22 +1714,12 @@
       "approximate_triangles": 10
     },
     {
-      "name": "ELAR_Terrain_PilgrimageRestCircle_01_RuneMarker_01",
-      "collection": "ELAR_Terrain",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 10
-    },
-    {
       "name": "ELAR_Terrain_PilgrimageRestCircle_02",
       "collection": "ELAR_Terrain",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Echo_Transparent"
+        "MAT_Stone_Pilgrimage"
       ],
       "approximate_triangles": 30
     },
@@ -1294,22 +1734,12 @@
       "approximate_triangles": 10
     },
     {
-      "name": "ELAR_Terrain_PilgrimageRestCircle_02_RuneMarker_01",
-      "collection": "ELAR_Terrain",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 10
-    },
-    {
       "name": "ELAR_Terrain_PilgrimageRestCircle_03",
       "collection": "ELAR_Terrain",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Echo_Transparent"
+        "MAT_Stone_Pilgrimage"
       ],
       "approximate_triangles": 30
     },
@@ -1324,22 +1754,12 @@
       "approximate_triangles": 10
     },
     {
-      "name": "ELAR_Terrain_PilgrimageRestCircle_03_RuneMarker_01",
-      "collection": "ELAR_Terrain",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 10
-    },
-    {
       "name": "ELAR_Terrain_PilgrimageRestCircle_04",
       "collection": "ELAR_Terrain",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_PlayerSpawn_CyanRune"
+        "MAT_Echo_Transparent"
       ],
       "approximate_triangles": 30
     },
@@ -1364,12 +1784,12 @@
       "approximate_triangles": 10
     },
     {
-      "name": "ELAR_Terrain_PlayerSpawn_CyanMemoryCircle",
+      "name": "ELAR_Terrain_PlayerSpawn_SubtleArchiveRegistrationRune",
       "collection": "ELAR_Terrain",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_PlayerSpawn_CyanRune"
+        "MAT_Echo_Transparent"
       ],
       "approximate_triangles": 36
     },
@@ -1454,467 +1874,267 @@
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_Left_LivingPillar",
+      "name": "ELAR_ArchiveCity_SilentGate_BackgroundLayeredBlueGreenFog_CentralBrokenSilhouette",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Bark_DarkRoot"
+        "MAT_Backdrop_DarkArchiveSilhouette"
       ],
-      "approximate_triangles": 24
+      "approximate_triangles": 7
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_Left_GoldRootBand_Lower",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_GoldTrim"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_Left_GoldRootBand_Upper",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_GoldTrim"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_Left_CyanSealEye",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Worldroot_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_Right_LivingPillar",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Bark_DarkRoot"
-      ],
-      "approximate_triangles": 24
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_Right_GoldRootBand_Lower",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_GoldTrim"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_Right_GoldRootBand_Upper",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_GoldTrim"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_Right_CyanSealEye",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Worldroot_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_UpperLivingRootArch",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Bark_DarkRoot"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_GoldMemoryLintel",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_GoldTrim"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_CentralLockedWorldrootCrystal",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Worldroot_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_SealedDoorShadowMass",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Path_DarkRootShadow"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_LeftCarvedDoorPanel",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Bark_WarmBrown"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_RightCarvedDoorPanel",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Bark_WarmBrown"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_DoorGoldMemoryInlay_00",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_GoldTrim"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_DoorGoldMemoryInlay_01",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_GoldTrim"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_DoorGoldMemoryInlay_02",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_GoldTrim"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_DoorGoldMemoryInlay_03",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_GoldTrim"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_CrestFloatingMemorySeal",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_CrestGoldLeafCrossbar",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_GoldTrim"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_SealedArchiveRuneCircle",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Echo_Transparent"
-      ],
-      "approximate_triangles": 42
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_BackgroundBlueSealFog",
+      "name": "ELAR_ArchiveCity_BackgroundFogShard_00_NoFlatWall",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
         "MAT_Gate_BlueFog"
       ],
-      "approximate_triangles": 2
+      "approximate_triangles": 3
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroLeft_PaleArchiveStoneButtress",
+      "name": "ELAR_ArchiveCity_BackgroundFogShard_01_NoFlatWall",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Stone_PaleArchive"
+        "MAT_Gate_BlueFog"
+      ],
+      "approximate_triangles": 3
+    },
+    {
+      "name": "ELAR_ArchiveCity_BackgroundFogShard_02_NoFlatWall",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Gate_BlueFog"
+      ],
+      "approximate_triangles": 3
+    },
+    {
+      "name": "ELAR_ArchiveCity_BackgroundFogShard_03_NoFlatWall",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Gate_BlueFog"
+      ],
+      "approximate_triangles": 3
+    },
+    {
+      "name": "ELAR_ArchiveCity_DistantSealedArchiveTower_00_LivingRootSpine",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
       ],
       "approximate_triangles": 24
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroLeft_IntertwinedRootRib_00",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Bark_DarkRoot"
-      ],
-      "approximate_triangles": 20
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroLeft_IntertwinedRootRib_01",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Bark_DarkRoot"
-      ],
-      "approximate_triangles": 20
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroLeft_VerticalMemoryGlassSeam",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_MemoryGlass_CyanGreen"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroLeft_TallCyanSealLens",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_MemoryGlass_CyanGreen"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroRight_PaleArchiveStoneButtress",
+      "name": "ELAR_ArchiveCity_DistantSealedArchiveTower_00_PaleStoneRib",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
         "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_ArchiveCity_DistantSealedArchiveTower_00_GoldArchiveSealKnot",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "ELAR_ArchiveCity_DistantSealedArchiveTower_01_LivingRootSpine",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
       ],
       "approximate_triangles": 24
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroRight_IntertwinedRootRib_00",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Bark_DarkRoot"
-      ],
-      "approximate_triangles": 20
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroRight_IntertwinedRootRib_01",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Bark_DarkRoot"
-      ],
-      "approximate_triangles": 20
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroRight_VerticalMemoryGlassSeam",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_MemoryGlass_CyanGreen"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroRight_TallCyanSealLens",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_MemoryGlass_CyanGreen"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroUpperPaleStoneLintel",
+      "name": "ELAR_ArchiveCity_DistantSealedArchiveTower_01_PaleStoneRib",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
         "MAT_Stone_PaleArchive"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 16
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroUpperIntertwinedRootCrown",
+      "name": "ELAR_ArchiveCity_DistantSealedArchiveTower_01_CyanWardHeart",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_MemoryGlass_CyanGreen"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "ELAR_ArchiveCity_DistantSealedArchiveTower_02_LivingRootSpine",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
         "MAT_Bark_DarkRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 24
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroSealedMemoryGlassDoor",
+      "name": "ELAR_ArchiveCity_DistantSealedArchiveTower_02_PaleStoneRib",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_ArchiveCity_DistantSealedArchiveTower_02_GoldArchiveSealKnot",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "ELAR_ArchiveCity_DistantSealedArchiveTower_03_LivingRootSpine",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "ELAR_ArchiveCity_DistantSealedArchiveTower_03_PaleStoneRib",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_ArchiveCity_DistantSealedArchiveTower_03_GoldArchiveSealKnot",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "ELAR_ArchiveCity_DistantSealedArchiveTower_04_LivingRootSpine",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "ELAR_ArchiveCity_DistantSealedArchiveTower_04_PaleStoneRib",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_ArchiveCity_DistantSealedArchiveTower_04_CyanWardHeart",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
         "MAT_MemoryGlass_CyanGreen"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 10
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroSealedMemoryGlassDoor_PointedArchiveCrown",
+      "name": "ELAR_ArchiveCity_DistantSealedArchiveTower_05_LivingRootSpine",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_MemoryGlass_CyanGreen"
+        "MAT_Bark_DarkRoot"
       ],
-      "approximate_triangles": 8
+      "approximate_triangles": 24
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroDarkRootSealBehindDoor",
+      "name": "ELAR_ArchiveCity_DistantSealedArchiveTower_05_PaleStoneRib",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_ArchiveCity_DistantSealedArchiveTower_05_GoldArchiveSealKnot",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_DarkRootSealedBackplate_OrganicArchShape",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
         "MAT_Path_DarkRootShadow"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 5
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroLeft_ArchiveSealFang",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Bark_DarkRoot"
-      ],
-      "approximate_triangles": 16
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroLeft_FloatingMemoryGlassKey",
+      "name": "ELAR_ArchiveCity_SilentGate_LeftClosedMemoryGlassPanel_GrownArch",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
         "MAT_MemoryGlass_CyanGreen"
       ],
-      "approximate_triangles": 10
+      "approximate_triangles": 3
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroRight_ArchiveSealFang",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Bark_DarkRoot"
-      ],
-      "approximate_triangles": 16
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroRight_FloatingMemoryGlassKey",
+      "name": "ELAR_ArchiveCity_SilentGate_RightClosedMemoryGlassPanel_GrownArch",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
         "MAT_MemoryGlass_CyanGreen"
       ],
-      "approximate_triangles": 10
+      "approximate_triangles": 3
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroVerticalRuneSeam_00",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroVerticalRuneSeam_01",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroVerticalRuneSeam_02",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroVerticalRuneSeam_03",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroVerticalRuneSeam_04",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroDoorInterlockingRootLattice_00",
+      "name": "ELAR_ArchiveCity_SilentGate_Left_MemoryGlassRootMullion_00",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -1924,7 +2144,7 @@
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroDoorInterlockingRootLattice_01",
+      "name": "ELAR_ArchiveCity_SilentGate_Left_MemoryGlassRootMullion_01",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -1934,7 +2154,7 @@
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroDoorInterlockingRootLattice_02",
+      "name": "ELAR_ArchiveCity_SilentGate_Left_SealedMemoryGlassCrossRib_00",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -1944,7 +2164,17 @@
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroDoorInterlockingRootLattice_03",
+      "name": "ELAR_ArchiveCity_SilentGate_Left_SealedMemoryGlassCrossRib_01",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Left_SealedMemoryGlassCrossRib_02",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -1954,7 +2184,307 @@
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroCentralArchiveLockCrystal",
+      "name": "ELAR_ArchiveCity_SilentGate_Right_MemoryGlassRootMullion_00",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Right_MemoryGlassRootMullion_01",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Right_SealedMemoryGlassCrossRib_00",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Right_SealedMemoryGlassCrossRib_01",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Right_SealedMemoryGlassCrossRib_02",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_ClosedCentralSeam_DarkRootLockline",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_ClosedCentralSeam_InterlockingSealTooth_00",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_ClosedCentralSeam_InterlockingSealTooth_01",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_ClosedCentralSeam_InterlockingSealTooth_02",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_ClosedCentralSeam_InterlockingSealTooth_03",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_ClosedCentralSeam_InterlockingSealTooth_04",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_ClosedCentralSeam_InterlockingSealTooth_05",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_ClosedCentralSeam_InterlockingSealTooth_06",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_ClosedCentralSeam_InterlockingSealTooth_07",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_ClosedCentralSeam_RecessedCyanRuneCut_00",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_ClosedCentralSeam_RecessedCyanRuneCut_01",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_ClosedCentralSeam_RecessedCyanRuneCut_02",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_CentralSeam_GoldArchiveSealClamp_00",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_CentralSeam_GoldArchiveSealClamp_01",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_CentralSeam_GoldArchiveSealClamp_02",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_LockedRootShutter_Left",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_PaleStoneInnerSealRib_Left",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_LockedRootShutter_Right",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_PaleStoneInnerSealRib_Right",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_NarrowVerticalRuneSeam_00",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_NarrowVerticalRuneSeam_01",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_NarrowVerticalRuneSeam_02",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_NarrowVerticalRuneSeam_03",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_NarrowVerticalRuneSeam_04",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_NarrowVerticalRuneSeam_05",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_CentralLockedMemoryEngineCrystal",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -1964,7 +2494,7 @@
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroCrossRootBrace_00",
+      "name": "ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_00",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -1974,7 +2504,7 @@
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroCrossRootBrace_01",
+      "name": "ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_01",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -1984,7 +2514,7 @@
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroCrossRootBrace_02",
+      "name": "ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_02",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -1994,7 +2524,7 @@
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroCrossRootBrace_03",
+      "name": "ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_03",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -2004,7 +2534,337 @@
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroUpperArchiveCrownSpire_00",
+      "name": "ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_04",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_05",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_06",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_07",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_08",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_09",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_10",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_11",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_00",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_01",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_02",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_03",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_04",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_05",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_06",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_07",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_08",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_09",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_10",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_11",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_InnerThinRuneSeamArch_Segment_00",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_InnerThinRuneSeamArch_Segment_01",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_InnerThinRuneSeamArch_Segment_02",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_InnerThinRuneSeamArch_Segment_03",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_InnerThinRuneSeamArch_Segment_04",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_InnerThinRuneSeamArch_Segment_05",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_InnerThinRuneSeamArch_Segment_06",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_InnerThinRuneSeamArch_Segment_07",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_InnerThinRuneSeamArch_Segment_08",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_InnerThinRuneSeamArch_Segment_09",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Left_IntertwinedVerticalRoot_00",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Left_IntertwinedVerticalRoot_01",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Left_IntertwinedVerticalRoot_02",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Left_PaleStoneArchiveRib_00",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -2014,17 +2874,7 @@
       "approximate_triangles": 16
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroUpperArchiveCrownSpire_00_CyanCap",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 10
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroUpperArchiveCrownSpire_01",
+      "name": "ELAR_ArchiveCity_SilentGate_Left_PaleStoneArchiveRib_01",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -2034,17 +2884,117 @@
       "approximate_triangles": 16
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroUpperArchiveCrownSpire_01_CyanCap",
+      "name": "ELAR_ArchiveCity_SilentGate_Left_TallCyanMemoryGlassSeal",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Rune_Cyan_Emission"
+        "MAT_MemoryGlass_CyanGreen"
       ],
-      "approximate_triangles": 10
+      "approximate_triangles": 12
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroUpperArchiveCrownSpire_02",
+      "name": "ELAR_ArchiveCity_SilentGate_Left_MossRootBase_00",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Left_RootBaseTendril_00",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Left_MossRootBase_01",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Left_RootBaseTendril_01",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Left_GoldRootBindingLower",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Left_OuterArchiveButtressLayer_00",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Left_OuterArchiveButtressLayer_01",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Backdrop_DarkArchiveSilhouette"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Right_IntertwinedVerticalRoot_00",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Right_IntertwinedVerticalRoot_01",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Right_IntertwinedVerticalRoot_02",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Right_PaleStoneArchiveRib_00",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -2054,17 +3004,7 @@
       "approximate_triangles": 16
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroUpperArchiveCrownSpire_02_CyanCap",
-      "collection": "ELAR_ArchiveCity",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Rune_Cyan_Emission"
-      ],
-      "approximate_triangles": 10
-    },
-    {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroUpperArchiveCrownSpire_03",
+      "name": "ELAR_ArchiveCity_SilentGate_Right_PaleStoneArchiveRib_01",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -2074,14 +3014,354 @@
       "approximate_triangles": 16
     },
     {
-      "name": "ELAR_ArchiveCity_SilentGate_HeroUpperArchiveCrownSpire_03_CyanCap",
+      "name": "ELAR_ArchiveCity_SilentGate_Right_TallCyanMemoryGlassSeal",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Rune_Cyan_Emission"
+        "MAT_MemoryGlass_CyanGreen"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Right_MossRootBase_00",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Right_RootBaseTendril_00",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Right_MossRootBase_01",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Right_RootBaseTendril_01",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Right_GoldRootBindingLower",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Right_OuterArchiveButtressLayer_00",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_Right_OuterArchiveButtressLayer_01",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Backdrop_DarkArchiveSilhouette"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_DoorInterlockingLivingRootBrace_00",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_DoorInterlockingLivingRootBrace_01",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_DoorInterlockingLivingRootBrace_02",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_DoorInterlockingLivingRootBrace_03",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_DoorInterlockingLivingRootBrace_04",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_PaleStoneMemoryEngineRib_00",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_PaleStoneMemoryEngineRib_01",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_PaleStoneMemoryEngineRib_02",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_PaleStoneMemoryEngineRib_03",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_OuterLivingRootRibOverlay_00",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_OuterLivingRootRibOverlay_01",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_OuterLivingRootRibOverlay_02",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_OuterLivingRootRibOverlay_03",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_CrownArchiveSpire_00",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_CrownArchiveSpire_00_GoldWardCap",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_GoldTrim"
       ],
       "approximate_triangles": 10
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_CrownArchiveSpire_01",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_CrownArchiveSpire_01_GoldWardCap",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_CrownArchiveSpire_02",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_CrownArchiveSpire_02_GoldWardCap",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_CrownArchiveSpire_03",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_CrownArchiveSpire_03_GoldWardCap",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_CrownArchiveSpire_04",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_CrownArchiveSpire_04_GoldWardCap",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_ClosedMemoryEngineSealPlate_00",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_ClosedMemoryEngineSealPlate_01",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_ClosedMemoryEngineSealPlate_02",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArchiveCity_SilentGate_ClosedMemoryEngineSealPlate_03",
+      "collection": "ELAR_ArchiveCity",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 12
     },
     {
       "name": "ELAR_ArchiveCity_BackgroundMemorySpire_00",
@@ -2094,14 +3374,14 @@
       "approximate_triangles": 16
     },
     {
-      "name": "ELAR_ArchiveCity_BackgroundMemorySpire_00_CyanCap",
+      "name": "ELAR_ArchiveCity_BackgroundMemorySpire_00_PaleArchiveCap",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Worldroot_Cyan_Emission"
+        "MAT_Stone_PaleArchive"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 10
     },
     {
       "name": "ELAR_ArchiveCity_BackgroundMemorySpire_01",
@@ -2114,14 +3394,14 @@
       "approximate_triangles": 16
     },
     {
-      "name": "ELAR_ArchiveCity_BackgroundMemorySpire_01_CyanCap",
+      "name": "ELAR_ArchiveCity_BackgroundMemorySpire_01_PaleArchiveCap",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Worldroot_Cyan_Emission"
+        "MAT_Stone_PaleArchive"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 10
     },
     {
       "name": "ELAR_ArchiveCity_BackgroundMemorySpire_02",
@@ -2134,14 +3414,14 @@
       "approximate_triangles": 16
     },
     {
-      "name": "ELAR_ArchiveCity_BackgroundMemorySpire_02_CyanCap",
+      "name": "ELAR_ArchiveCity_BackgroundMemorySpire_02_PaleArchiveCap",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Worldroot_Cyan_Emission"
+        "MAT_Stone_PaleArchive"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 10
     },
     {
       "name": "ELAR_ArchiveCity_BackgroundMemorySpire_03",
@@ -2154,14 +3434,14 @@
       "approximate_triangles": 16
     },
     {
-      "name": "ELAR_ArchiveCity_BackgroundMemorySpire_03_CyanCap",
+      "name": "ELAR_ArchiveCity_BackgroundMemorySpire_03_PaleArchiveCap",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Worldroot_Cyan_Emission"
+        "MAT_Stone_PaleArchive"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 10
     },
     {
       "name": "ELAR_ArchiveCity_DistantLivingArchiveTower_00_RootColumn",
@@ -2174,14 +3454,14 @@
       "approximate_triangles": 24
     },
     {
-      "name": "ELAR_ArchiveCity_DistantLivingArchiveTower_00_CyanArchiveHeart",
+      "name": "ELAR_ArchiveCity_DistantLivingArchiveTower_00_GoldArchiveSeal",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Worldroot_Cyan_Emission"
+        "MAT_GoldTrim"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 10
     },
     {
       "name": "ELAR_ArchiveCity_DistantLivingArchiveTower_01_RootColumn",
@@ -2194,14 +3474,14 @@
       "approximate_triangles": 24
     },
     {
-      "name": "ELAR_ArchiveCity_DistantLivingArchiveTower_01_CyanArchiveHeart",
+      "name": "ELAR_ArchiveCity_DistantLivingArchiveTower_01_GoldArchiveSeal",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Worldroot_Cyan_Emission"
+        "MAT_GoldTrim"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 10
     },
     {
       "name": "ELAR_ArchiveCity_DistantLivingArchiveTower_02_RootColumn",
@@ -2214,14 +3494,14 @@
       "approximate_triangles": 24
     },
     {
-      "name": "ELAR_ArchiveCity_DistantLivingArchiveTower_02_CyanArchiveHeart",
+      "name": "ELAR_ArchiveCity_DistantLivingArchiveTower_02_GoldArchiveSeal",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Worldroot_Cyan_Emission"
+        "MAT_GoldTrim"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 10
     },
     {
       "name": "ELAR_ArchiveCity_DistantLivingArchiveTower_03_RootColumn",
@@ -2234,14 +3514,14 @@
       "approximate_triangles": 24
     },
     {
-      "name": "ELAR_ArchiveCity_DistantLivingArchiveTower_03_CyanArchiveHeart",
+      "name": "ELAR_ArchiveCity_DistantLivingArchiveTower_03_GoldArchiveSeal",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Worldroot_Cyan_Emission"
+        "MAT_GoldTrim"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 10
     },
     {
       "name": "ELAR_ArchiveCity_DistantLivingArchiveTower_04_RootColumn",
@@ -2254,14 +3534,14 @@
       "approximate_triangles": 24
     },
     {
-      "name": "ELAR_ArchiveCity_DistantLivingArchiveTower_04_CyanArchiveHeart",
+      "name": "ELAR_ArchiveCity_DistantLivingArchiveTower_04_CentralCyanArchiveHeart",
       "collection": "ELAR_ArchiveCity",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Worldroot_Cyan_Emission"
+        "MAT_MemoryGlass_CyanGreen"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 10
     },
     {
       "name": "ELAR_ArchiveCity_DistantRootBridgeSkyline_00",
@@ -2704,79 +3984,17 @@
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_WardsAndProps_WardMonolith_00",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Left_00_MossBrokenStoneBase",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
-      "source_asset": "PROPS_Worldroot_VerdantRuneMonolith",
+      "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Stone_MossyGray",
-        "MAT_Rune_Cyan_Emission",
-        "MAT_GoldTrim"
+        "MAT_Moss"
       ],
-      "approximate_triangles": 36
+      "approximate_triangles": 20
     },
     {
-      "name": "ELAR_WardsAndProps_WardMonolith_01",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "PROPS_Worldroot_VerdantRuneMonolith",
-      "materials": [
-        "MAT_Stone_MossyGray",
-        "MAT_Rune_Cyan_Emission",
-        "MAT_GoldTrim"
-      ],
-      "approximate_triangles": 36
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardMonolith_02",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "PROPS_Worldroot_VerdantRuneMonolith",
-      "materials": [
-        "MAT_Stone_MossyGray",
-        "MAT_Rune_Cyan_Emission",
-        "MAT_GoldTrim"
-      ],
-      "approximate_triangles": 36
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardMonolith_03",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "PROPS_Worldroot_VerdantRuneMonolith",
-      "materials": [
-        "MAT_Stone_MossyGray",
-        "MAT_Rune_Cyan_Emission",
-        "MAT_GoldTrim"
-      ],
-      "approximate_triangles": 36
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardMonolith_04",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "PROPS_Worldroot_VerdantRuneMonolith",
-      "materials": [
-        "MAT_Stone_MossyGray",
-        "MAT_Rune_Cyan_Emission",
-        "MAT_GoldTrim"
-      ],
-      "approximate_triangles": 36
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardMonolith_05",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "PROPS_Worldroot_VerdantRuneMonolith",
-      "materials": [
-        "MAT_Stone_MossyGray",
-        "MAT_Rune_Cyan_Emission",
-        "MAT_GoldTrim"
-      ],
-      "approximate_triangles": 36
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_00_PaleStoneBlade",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Left_00_AsymmetricCarvedStoneBlade",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -2786,17 +4004,147 @@
       "approximate_triangles": 16
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_00_CyanVerticalRune",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Left_00_CyanScannerRuneSlit",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_MemoryGlass_CyanGreen"
+        "MAT_Rune_Cyan_Emission"
       ],
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_00_MaskLikeCyanEye",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Left_00_RootBindingCollar",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Left_00_RootClamp_00",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Left_00_RootClamp_01",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Left_00_TaperedScannerCrown",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Left_00_OffsetCarvedShoulder",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_Pilgrimage"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Right_00_MossBrokenStoneBase",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Right_00_AsymmetricCarvedStoneBlade",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Right_00_CyanScannerRuneSlit",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Right_00_RootBindingCollar",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Right_00_RootClamp_00",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Right_00_RootClamp_01",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Right_00_TaperedScannerCrown",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Right_00_OffsetCarvedShoulder",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_Pilgrimage"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Right_00_MaskLikeCyanEye",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -2806,17 +4154,17 @@
       "approximate_triangles": 10
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_00_StoneBrowSilhouette",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Left_01_MossBrokenStoneBase",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Stone_PaleArchive"
+        "MAT_Stone_DarkCrevice"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_00_PaleStoneBlade",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Left_01_AsymmetricCarvedStoneBlade",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -2826,17 +4174,67 @@
       "approximate_triangles": 16
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_00_CyanVerticalRune",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Left_01_CyanScannerRuneSlit",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_MemoryGlass_CyanGreen"
+        "MAT_Rune_Cyan_Emission"
       ],
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_00_MaskLikeCyanEye",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Left_01_RootBindingCollar",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Left_01_RootClamp_00",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Left_01_RootClamp_01",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Left_01_TaperedScannerCrown",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Left_01_OffsetCarvedShoulder",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_Pilgrimage"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Left_01_MaskLikeCyanEye",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -2846,37 +4244,7 @@
       "approximate_triangles": 10
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_00_StoneBrowSilhouette",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Stone_PaleArchive"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_01_PaleStoneBlade",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Stone_PaleArchive"
-      ],
-      "approximate_triangles": 16
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_01_CyanVerticalRune",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_MemoryGlass_CyanGreen"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_01_InwardScanBeam",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Left_01_SubtleInwardScanLine",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -2886,7 +4254,17 @@
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_01_PaleStoneBlade",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Right_01_MossBrokenStoneBase",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_DarkCrevice"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Right_01_AsymmetricCarvedStoneBlade",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -2896,27 +4274,47 @@
       "approximate_triangles": 16
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_01_CyanVerticalRune",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Right_01_CyanScannerRuneSlit",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_MemoryGlass_CyanGreen"
+        "MAT_Rune_Cyan_Emission"
       ],
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_01_InwardScanBeam",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Right_01_RootBindingCollar",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Echo_Transparent"
+        "MAT_Bark_DarkRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_02_PaleStoneBlade",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Right_01_RootClamp_00",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Right_01_RootClamp_01",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Right_01_TaperedScannerCrown",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -2926,17 +4324,17 @@
       "approximate_triangles": 16
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_02_CyanVerticalRune",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Right_01_OffsetCarvedShoulder",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_MemoryGlass_CyanGreen"
+        "MAT_Stone_Pilgrimage"
       ],
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_02_MaskLikeCyanEye",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Right_01_MaskLikeCyanEye",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -2946,17 +4344,27 @@
       "approximate_triangles": 10
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_02_StoneBrowSilhouette",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Right_01_SubtleInwardScanLine",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Stone_PaleArchive"
+        "MAT_Echo_Transparent"
       ],
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_02_PaleStoneBlade",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Left_02_MossBrokenStoneBase",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Left_02_AsymmetricCarvedStoneBlade",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -2966,17 +4374,67 @@
       "approximate_triangles": 16
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_02_CyanVerticalRune",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Left_02_CyanScannerRuneSlit",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_MemoryGlass_CyanGreen"
+        "MAT_Rune_Cyan_Emission"
       ],
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_02_MaskLikeCyanEye",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Left_02_RootBindingCollar",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Left_02_RootClamp_00",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Left_02_RootClamp_01",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Left_02_TaperedScannerCrown",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Left_02_OffsetCarvedShoulder",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_Pilgrimage"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Left_02_MaskLikeCyanEye",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -2986,47 +4444,17 @@
       "approximate_triangles": 10
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_02_StoneBrowSilhouette",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Right_02_MossBrokenStoneBase",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Stone_PaleArchive"
+        "MAT_Moss"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_03_PaleStoneBlade",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Stone_PaleArchive"
-      ],
-      "approximate_triangles": 16
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_03_CyanVerticalRune",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_MemoryGlass_CyanGreen"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_03_InwardScanBeam",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Echo_Transparent"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_03_PaleStoneBlade",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Right_02_AsymmetricCarvedStoneBlade",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -3036,27 +4464,47 @@
       "approximate_triangles": 16
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_03_CyanVerticalRune",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Right_02_CyanScannerRuneSlit",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_MemoryGlass_CyanGreen"
+        "MAT_Rune_Cyan_Emission"
       ],
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_03_InwardScanBeam",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Right_02_RootBindingCollar",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Echo_Transparent"
+        "MAT_Bark_DarkRoot"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_04_PaleStoneBlade",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Right_02_RootClamp_00",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Right_02_RootClamp_01",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Right_02_TaperedScannerCrown",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -3066,67 +4514,17 @@
       "approximate_triangles": 16
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_04_CyanVerticalRune",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Right_02_OffsetCarvedShoulder",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_MemoryGlass_CyanGreen"
+        "MAT_Stone_Pilgrimage"
       ],
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_04_PaleStoneBlade",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Stone_PaleArchive"
-      ],
-      "approximate_triangles": 16
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_04_CyanVerticalRune",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_MemoryGlass_CyanGreen"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_05_PaleStoneBlade",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Stone_PaleArchive"
-      ],
-      "approximate_triangles": 16
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_05_CyanVerticalRune",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_MemoryGlass_CyanGreen"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_05_InwardScanBeam",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Echo_Transparent"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_05_MaskLikeCyanEye",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Right_02_MaskLikeCyanEye",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -3136,17 +4534,17 @@
       "approximate_triangles": 10
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_05_StoneBrowSilhouette",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Left_03_MossBrokenStoneBase",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Stone_PaleArchive"
+        "MAT_Stone_DarkCrevice"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 20
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_05_PaleStoneBlade",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Left_03_AsymmetricCarvedStoneBlade",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -3156,27 +4554,67 @@
       "approximate_triangles": 16
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_05_CyanVerticalRune",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Left_03_CyanScannerRuneSlit",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_MemoryGlass_CyanGreen"
+        "MAT_Rune_Cyan_Emission"
       ],
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_05_InwardScanBeam",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Left_03_RootBindingCollar",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Echo_Transparent"
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Left_03_RootClamp_00",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Left_03_RootClamp_01",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Left_03_TaperedScannerCrown",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Left_03_OffsetCarvedShoulder",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_Pilgrimage"
       ],
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_05_MaskLikeCyanEye",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Left_03_MaskLikeCyanEye",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -3186,77 +4624,7 @@
       "approximate_triangles": 10
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_05_StoneBrowSilhouette",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Stone_PaleArchive"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_06_PaleStoneBlade",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Stone_PaleArchive"
-      ],
-      "approximate_triangles": 16
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_06_CyanVerticalRune",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_MemoryGlass_CyanGreen"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_06_PaleStoneBlade",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Stone_PaleArchive"
-      ],
-      "approximate_triangles": 16
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_06_CyanVerticalRune",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_MemoryGlass_CyanGreen"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_07_PaleStoneBlade",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Stone_PaleArchive"
-      ],
-      "approximate_triangles": 16
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_07_CyanVerticalRune",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_MemoryGlass_CyanGreen"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_07_InwardScanBeam",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Medium_Left_03_SubtleInwardScanLine",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -3266,27 +4634,17 @@
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_07_MaskLikeCyanEye",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Right_03_MossBrokenStoneBase",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Rune_Cyan_Emission"
+        "MAT_Stone_DarkCrevice"
       ],
-      "approximate_triangles": 10
+      "approximate_triangles": 20
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Left_07_StoneBrowSilhouette",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Stone_PaleArchive"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_07_PaleStoneBlade",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Right_03_AsymmetricCarvedStoneBlade",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -3296,27 +4654,227 @@
       "approximate_triangles": 16
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_07_CyanVerticalRune",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Right_03_CyanScannerRuneSlit",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_MemoryGlass_CyanGreen"
+        "MAT_Rune_Cyan_Emission"
       ],
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_07_InwardScanBeam",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Right_03_RootBindingCollar",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Echo_Transparent"
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Right_03_RootClamp_00",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Right_03_RootClamp_01",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Right_03_TaperedScannerCrown",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Right_03_OffsetCarvedShoulder",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_Pilgrimage"
       ],
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_07_MaskLikeCyanEye",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Left_04_MossBrokenStoneBase",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Left_04_AsymmetricCarvedStoneBlade",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Left_04_CyanScannerRuneSlit",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Left_04_RootBindingCollar",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Left_04_RootClamp_00",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Left_04_RootClamp_01",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Left_04_TaperedScannerCrown",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Left_04_OffsetCarvedShoulder",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_Pilgrimage"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Right_04_MossBrokenStoneBase",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Moss"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Right_04_AsymmetricCarvedStoneBlade",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Right_04_CyanScannerRuneSlit",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Right_04_RootBindingCollar",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Right_04_RootClamp_00",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Right_04_RootClamp_01",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Right_04_TaperedScannerCrown",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Right_04_OffsetCarvedShoulder",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_Pilgrimage"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Right_04_MaskLikeCyanEye",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -3326,12 +4884,182 @@
       "approximate_triangles": 10
     },
     {
-      "name": "ELAR_WardsAndProps_WardlineScannerMonolith_Right_07_StoneBrowSilhouette",
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Left_05_MossBrokenStoneBase",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_DarkCrevice"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Left_05_AsymmetricCarvedStoneBlade",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
         "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Left_05_CyanScannerRuneSlit",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Left_05_RootBindingCollar",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Left_05_RootClamp_00",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Left_05_RootClamp_01",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Left_05_TaperedScannerCrown",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Left_05_OffsetCarvedShoulder",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_Pilgrimage"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Left_05_MaskLikeCyanEye",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Tall_Left_05_SubtleInwardScanLine",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Echo_Transparent"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Right_05_MossBrokenStoneBase",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_DarkCrevice"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Right_05_AsymmetricCarvedStoneBlade",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Right_05_CyanScannerRuneSlit",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Right_05_RootBindingCollar",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Right_05_RootClamp_00",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Right_05_RootClamp_01",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Path_DarkRootShadow"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Right_05_TaperedScannerCrown",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "ELAR_WardsAndProps_WardMonolithVariant_Small_Right_05_OffsetCarvedShoulder",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Stone_Pilgrimage"
       ],
       "approximate_triangles": 12
     },
@@ -3414,7 +5142,7 @@
       "approximate_triangles": 60
     },
     {
-      "name": "ELAR_WardsAndProps_CyanCrystalGuide_00",
+      "name": "ELAR_WardsAndProps_ControlledWorldrootWardCrystal_00",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "PROPS_Worldroot_CyanCrystalClusterMedium",
@@ -3426,55 +5154,7 @@
       "approximate_triangles": 48
     },
     {
-      "name": "ELAR_WardsAndProps_CyanCrystalGuide_01",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "PROPS_Worldroot_CyanCrystalClusterMedium",
-      "materials": [
-        "MAT_Worldroot_Cyan_Emission",
-        "MAT_Rune_Cyan_Emission",
-        "MAT_Moss"
-      ],
-      "approximate_triangles": 48
-    },
-    {
-      "name": "ELAR_WardsAndProps_CyanCrystalGuide_02",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "PROPS_Worldroot_CyanCrystalClusterMedium",
-      "materials": [
-        "MAT_Worldroot_Cyan_Emission",
-        "MAT_Rune_Cyan_Emission",
-        "MAT_Moss"
-      ],
-      "approximate_triangles": 48
-    },
-    {
-      "name": "ELAR_WardsAndProps_CyanCrystalGuide_03",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "PROPS_Worldroot_CyanCrystalClusterMedium",
-      "materials": [
-        "MAT_Worldroot_Cyan_Emission",
-        "MAT_Rune_Cyan_Emission",
-        "MAT_Moss"
-      ],
-      "approximate_triangles": 48
-    },
-    {
-      "name": "ELAR_WardsAndProps_CyanCrystalGuide_04",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "PROPS_Worldroot_CyanCrystalClusterMedium",
-      "materials": [
-        "MAT_Worldroot_Cyan_Emission",
-        "MAT_Rune_Cyan_Emission",
-        "MAT_Moss"
-      ],
-      "approximate_triangles": 48
-    },
-    {
-      "name": "ELAR_WardsAndProps_CyanCrystalGuide_05",
+      "name": "ELAR_WardsAndProps_ControlledWorldrootWardCrystal_01",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "PROPS_Worldroot_CyanCrystalClusterMedium",
@@ -3564,26 +5244,6 @@
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_WardsAndProps_GreenspireCamp_TentRoof",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_CampCloth_Green"
-      ],
-      "approximate_triangles": 8
-    },
-    {
-      "name": "ELAR_WardsAndProps_GreenspireCamp_TentBase",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Bark_WarmBrown"
-      ],
-      "approximate_triangles": 12
-    },
-    {
       "name": "ELAR_WardsAndProps_GreenspireCamp_RootShelterRoof",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
@@ -3604,7 +5264,39 @@
       "approximate_triangles": 12
     },
     {
+      "name": "ELAR_WardsAndProps_GreenspireCamp_RootShelterLivingRib_00",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_WardsAndProps_GreenspireCamp_RootShelterLivingRib_01",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_Bark_DarkRoot"
+      ],
+      "approximate_triangles": 12
+    },
+    {
       "name": "ELAR_WardsAndProps_GreenspireCamp_VerdantForwardBanner",
+      "collection": "ELAR_WardsAndProps",
+      "type": "MESH",
+      "source_asset": "PROPS_Village_BannerPost",
+      "materials": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Banner_VerdantGreen",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangles": 60
+    },
+    {
+      "name": "ELAR_WardsAndProps_GreenspireCamp_VerdantRoadsideBanner",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "PROPS_Village_BannerPost",
@@ -3636,12 +5328,12 @@
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_WardsAndProps_GreenspireCamp_PortableCyanMapCrystal",
+      "name": "ELAR_WardsAndProps_GreenspireCamp_PortableGoldArchiveCompass",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_Worldroot_Cyan_Emission"
+        "MAT_GoldTrim"
       ],
       "approximate_triangles": 12
     },
@@ -3670,19 +5362,6 @@
     },
     {
       "name": "ELAR_WardsAndProps_GreenspireCamp_WarmPerimeterLantern_01",
-      "collection": "ELAR_WardsAndProps",
-      "type": "MESH",
-      "source_asset": "PROPS_Village_LanternPost",
-      "materials": [
-        "MAT_Bark_DarkRoot",
-        "MAT_Wood_GoldenTrim",
-        "MAT_Lantern_Warm_Emission",
-        "MAT_Bark_WarmBrown"
-      ],
-      "approximate_triangles": 60
-    },
-    {
-      "name": "ELAR_WardsAndProps_GreenspireCamp_WarmPerimeterLantern_02",
       "collection": "ELAR_WardsAndProps",
       "type": "MESH",
       "source_asset": "PROPS_Village_LanternPost",
@@ -4085,34 +5764,14 @@
       "approximate_triangles": 24
     },
     {
-      "name": "ELAR_MemoryConstructs_FloatingArchiveMemoryGlyph_00",
+      "name": "ELAR_MemoryConstructs_FloatingArchiveMemoryGlyph_00_GateAlignmentMarker",
       "collection": "ELAR_MemoryConstructs",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
         "MAT_Echo_Transparent"
       ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_MemoryConstructs_FloatingArchiveMemoryGlyph_01",
-      "collection": "ELAR_MemoryConstructs",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Echo_Transparent"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_MemoryConstructs_FloatingArchiveMemoryGlyph_02",
-      "collection": "ELAR_MemoryConstructs",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_Echo_Transparent"
-      ],
-      "approximate_triangles": 12
+      "approximate_triangles": 10
     },
     {
       "name": "ELAR_ArcaneIntrusion_HighElfProbePylon_00",
@@ -4125,14 +5784,14 @@
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_ArcaneIntrusion_VioletScanCircle_00",
+      "name": "ELAR_ArcaneIntrusion_AeltharAngularSurveyGlyph_00",
       "collection": "ELAR_ArcaneIntrusion",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
       "materials": [
-        "MAT_MemoryStorm_Violet"
+        "MAT_HighElf_SilverBlue_Emission"
       ],
-      "approximate_triangles": 26
+      "approximate_triangles": 4
     },
     {
       "name": "ELAR_ArcaneIntrusion_HighElfProbePylon_00_ColdGoldFocusingGem",
@@ -4155,97 +5814,7 @@
       "approximate_triangles": 12
     },
     {
-      "name": "ELAR_ArcaneIntrusion_HighElfProbePylon_01",
-      "collection": "ELAR_ArcaneIntrusion",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_HighElf_ArcaneViolet"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArcaneIntrusion_VioletScanCircle_01",
-      "collection": "ELAR_ArcaneIntrusion",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_MemoryStorm_Violet"
-      ],
-      "approximate_triangles": 26
-    },
-    {
-      "name": "ELAR_ArcaneIntrusion_HighElfProbePylon_01_ColdGoldFocusingGem",
-      "collection": "ELAR_ArcaneIntrusion",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_HighElf_ColdGold"
-      ],
-      "approximate_triangles": 8
-    },
-    {
-      "name": "ELAR_ArcaneIntrusion_HighElfProbePylon_01_VioletSurveyBeam",
-      "collection": "ELAR_ArcaneIntrusion",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_HighElf_ArcaneViolet"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArcaneIntrusion_HighElfProbePylon_02",
-      "collection": "ELAR_ArcaneIntrusion",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_HighElf_ArcaneViolet"
-      ],
-      "approximate_triangles": 12
-    },
-    {
-      "name": "ELAR_ArcaneIntrusion_VioletScanCircle_02",
-      "collection": "ELAR_ArcaneIntrusion",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_MemoryStorm_Violet"
-      ],
-      "approximate_triangles": 26
-    },
-    {
-      "name": "ELAR_ArcaneIntrusion_HighElfProbePylon_02_ColdGoldFocusingGem",
-      "collection": "ELAR_ArcaneIntrusion",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_HighElf_ColdGold"
-      ],
-      "approximate_triangles": 8
-    },
-    {
-      "name": "ELAR_ArcaneIntrusion_HighElfProbePylon_02_VioletSurveyBeam",
-      "collection": "ELAR_ArcaneIntrusion",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_HighElf_ArcaneViolet"
-      ],
-      "approximate_triangles": 12
-    },
-    {
       "name": "ELAR_ArcaneIntrusion_HighElfTriangulationFrame_00",
-      "collection": "ELAR_ArcaneIntrusion",
-      "type": "MESH",
-      "source_asset": "custom_scene_geometry",
-      "materials": [
-        "MAT_HighElf_ArcaneViolet"
-      ],
-      "approximate_triangles": 8
-    },
-    {
-      "name": "ELAR_ArcaneIntrusion_HighElfTriangulationFrame_01",
       "collection": "ELAR_ArcaneIntrusion",
       "type": "MESH",
       "source_asset": "custom_scene_geometry",
@@ -4261,6 +5830,76 @@
       "source_asset": "custom_scene_geometry",
       "materials": [
         "MAT_HighElf_SilverBlue_Emission"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "ELAR_ArcaneIntrusion_AeltharGeometricSurveyGlyph_NotWorldroot",
+      "collection": "ELAR_ArcaneIntrusion",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_HighElf_SilverBlue_Emission"
+      ],
+      "approximate_triangles": 4
+    },
+    {
+      "name": "ELAR_ArcaneIntrusion_AeltharThinGeometricBlueLine_00",
+      "collection": "ELAR_ArcaneIntrusion",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_HighElf_SilverBlue_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArcaneIntrusion_AeltharThinGeometricBlueLine_01",
+      "collection": "ELAR_ArcaneIntrusion",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_HighElf_SilverBlue_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArcaneIntrusion_AeltharThinGeometricBlueLine_02",
+      "collection": "ELAR_ArcaneIntrusion",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_HighElf_SilverBlue_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArcaneIntrusion_AeltharThinGeometricBlueLine_03",
+      "collection": "ELAR_ArcaneIntrusion",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_HighElf_SilverBlue_Emission"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ELAR_ArcaneIntrusion_AeltharOrbitingSilverShard_00",
+      "collection": "ELAR_ArcaneIntrusion",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_HighElf_SilverBlue"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "ELAR_ArcaneIntrusion_AeltharOrbitingSilverShard_01",
+      "collection": "ELAR_ArcaneIntrusion",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_HighElf_SilverBlue"
       ],
       "approximate_triangles": 8
     },
@@ -4332,7 +5971,7 @@
       "materials": [
         "MAT_Stone_PaleArchive"
       ],
-      "approximate_triangles": 12
+      "approximate_triangles": 16
     },
     {
       "name": "ELAR_ArcaneIntrusion_BrokenWardMonolith_CrackedCyanRune",
@@ -4797,6 +6436,16 @@
       "approximate_triangles": 12
     },
     {
+      "name": "ELAR_Characters_HighElfScout_ArcaneIntruder_SilverBlueMask",
+      "collection": "ELAR_Characters",
+      "type": "MESH",
+      "source_asset": "custom_scene_geometry",
+      "materials": [
+        "MAT_HighElf_SilverBlue_Emission"
+      ],
+      "approximate_triangles": 8
+    },
+    {
       "name": "ELAR_LightingRender_SunKey_SacredWarmDay",
       "collection": "ELAR_LightingRender",
       "type": "LIGHT",
@@ -4887,6 +6536,10 @@
   ],
   "material_names": [
     "MAT_Backdrop_BlueMist",
+    "MAT_Backdrop_DarkArchiveSilhouette",
+    "MAT_Backdrop_DistantDivineIsland",
+    "MAT_Backdrop_DistantMemoryIsland",
+    "MAT_Backdrop_DistantRiftIsland",
     "MAT_Backdrop_MemoryStormSky",
     "MAT_Backdrop_SacredSky",
     "MAT_Banner_VerdantGreen",
@@ -4937,11 +6590,18 @@
     "MAT_Stone_Pilgrimage",
     "MAT_WasteGround",
     "MAT_WasteGround_Dark",
+    "MAT_Waste_DivinityStainSoft",
+    "MAT_Waste_EchoStainSoft",
+    "MAT_Waste_GhostRuinSoft",
+    "MAT_Waste_GuideShard_CyanDim",
+    "MAT_Waste_RiftCyanDeep",
+    "MAT_Waste_RiftVioletControlled",
+    "MAT_Waste_SafeCyanGlow",
     "MAT_Water_BlueGreen_Optional",
     "MAT_Wood_GoldenTrim",
     "MAT_Worldroot_Cyan_Emission"
   ],
-  "approximate_total_triangles": 8592,
+  "approximate_total_triangles": 11066,
   "render_paths": [
     "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\elarthalas_approach_visual_benchmark_v002_2560x1440.png",
     "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\elarthalas_approach_visual_benchmark_v002_1920x1080.png"
@@ -4957,6 +6617,7 @@
   "notes": [
     "Zone 2 shifts Thornveil's lush safety into a sacred, managed approach space.",
     "The Silent Gate is intentionally oversized for benchmark readability and future transition staging.",
+    "Before/after: before this targeted pass, the composition worked but several silhouettes still read as rectangular test beams, simple white pillars, flat blue gate panels, or portal-test props; after the pass, the road roots are cylindrical/faceted, ward monoliths are variant prefabs, the gate has darker archive depth and moss/root bases, and the High Elf side pocket is more angular/silver-blue.",
     "This is a visual target scene, not yet live gameplay terrain/collision."
   ]
 }

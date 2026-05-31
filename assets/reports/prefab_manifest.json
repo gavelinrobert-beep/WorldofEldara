@@ -1,0 +1,1023 @@
+{
+  "manifest": "World of Eldara modular prefab extraction",
+  "version": "v001",
+  "generated_from": {
+    "thornveil": "assets/blender/heartbough_glade_entrance_v001.blend",
+    "elarthalas": "assets/blender/elarthalas_approach_visual_benchmark_v002.blend",
+    "memory_wastes": "assets/blender/memory_wastes_visual_benchmark_v002.blend"
+  },
+  "output_root": "assets/prefabs",
+  "prefab_count": 15,
+  "total_objects": 311,
+  "total_approximate_triangles": 4689,
+  "prefabs": [
+    {
+      "id": "thornveil_heartbough_tree",
+      "zone": "Thornveil Enclave",
+      "category": "Hero Tree",
+      "source_blend": "assets/blender/heartbough_glade_entrance_v001.blend",
+      "blend_path": "assets/prefabs/blender/thornveil_heartbough_tree.blend",
+      "glb_path": "assets/prefabs/glb/thornveil_heartbough_tree.glb",
+      "preview_path": "assets/prefabs/previews/thornveil_heartbough_tree_preview.png",
+      "object_count": 19,
+      "object_names": [
+        "PREFAB_thornveil_heartbough_tree_00_SCENE_Worldroot_HeartboughFocalTree_AncientMemoryRoot_TwistedLivingTrunk",
+        "PREFAB_thornveil_heartbough_tree_01_SCENE_Worldroot_HeartboughFocalTree_AncientMemoryRoot_ExposedRootButtress_00",
+        "PREFAB_thornveil_heartbough_tree_02_SCENE_Worldroot_HeartboughFocalTree_AncientMemoryRoot_ExposedRootButtress_01",
+        "PREFAB_thornveil_heartbough_tree_03_SCENE_Worldroot_HeartboughFocalTree_AncientMemoryRoot_ExposedRootButtress_02",
+        "PREFAB_thornveil_heartbough_tree_04_SCENE_Worldroot_HeartboughFocalTree_AncientMemoryRoot_ExposedRootButtress_03",
+        "PREFAB_thornveil_heartbough_tree_05_SCENE_Worldroot_HeartboughFocalTree_AncientMemoryRoot_ExposedRootButtress_04",
+        "PREFAB_thornveil_heartbough_tree_06_SCENE_Worldroot_HeartboughFocalTree_AncientMemoryRoot_ExposedRootButtress_05",
+        "PREFAB_thornveil_heartbough_tree_07_SCENE_Worldroot_HeartboughFocalTree_AncientMemoryRoot_AsymmetricChunkyCanopy_00",
+        "PREFAB_thornveil_heartbough_tree_08_SCENE_Worldroot_HeartboughFocalTree_AncientMemoryRoot_AsymmetricChunkyCanopy_01",
+        "PREFAB_thornveil_heartbough_tree_09_SCENE_Worldroot_HeartboughFocalTree_AncientMemoryRoot_AsymmetricChunkyCanopy_02",
+        "PREFAB_thornveil_heartbough_tree_10_SCENE_Worldroot_HeartboughFocalTree_AncientMemoryRoot_AsymmetricChunkyCanopy_03",
+        "PREFAB_thornveil_heartbough_tree_11_SCENE_Worldroot_HeartboughFocalTree_AncientMemoryRoot_AsymmetricChunkyCanopy_04",
+        "PREFAB_thornveil_heartbough_tree_12_SCENE_Worldroot_HeartboughFocalTree_AncientMemoryRoot_LivingBranchCluster_00",
+        "PREFAB_thornveil_heartbough_tree_13_SCENE_Worldroot_HeartboughFocalTree_AncientMemoryRoot_LivingBranchCluster_01",
+        "PREFAB_thornveil_heartbough_tree_14_SCENE_Worldroot_HeartboughFocalTree_AncientMemoryRoot_LivingBranchCluster_02",
+        "PREFAB_thornveil_heartbough_tree_15_SCENE_Worldroot_HeartboughFocalTree_AncientMemoryRoot_CentralWorldrootHeartCrystal",
+        "PREFAB_thornveil_heartbough_tree_16_SCENE_Worldroot_HeartboughFocalTree_AncientMemoryRoot_SoftCyanBarkMemoryCrack_00",
+        "PREFAB_thornveil_heartbough_tree_17_SCENE_Worldroot_HeartboughFocalTree_AncientMemoryRoot_SoftCyanBarkMemoryCrack_01",
+        "PREFAB_thornveil_heartbough_tree_18_SCENE_Worldroot_HeartboughFocalTree_AncientMemoryRoot_SoftCyanBarkMemoryCrack_02"
+      ],
+      "material_names": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Bark_WarmBrown",
+        "MAT_CyanBarkCrack",
+        "MAT_Leaves_DeepGreen",
+        "MAT_Leaves_LightGreen",
+        "MAT_Worldroot_Cyan_Emission"
+      ],
+      "approximate_triangle_count": 304,
+      "origin_strategy": "Centered on prefab XY bounds; Z origin placed at lowest bounding point for placement.",
+      "bounds_min": [
+        -7.415,
+        -6.844,
+        0.032
+      ],
+      "bounds_max": [
+        7.186,
+        5.876,
+        18.72
+      ],
+      "dimensions_m": [
+        14.601,
+        12.72,
+        18.688
+      ],
+      "matching_prefixes": [
+        "SCENE_Worldroot_HeartboughFocalTree_AncientMemoryRoot_"
+      ],
+      "notes": "Central Heartbough / Worldroot focal tree extracted from the Thornveil hub scene."
+    },
+    {
+      "id": "thornveil_sylvaen_treehouse",
+      "zone": "Thornveil Enclave",
+      "category": "Architecture",
+      "source_blend": "assets/blender/heartbough_glade_entrance_v001.blend",
+      "blend_path": "assets/prefabs/blender/thornveil_sylvaen_treehouse.blend",
+      "glb_path": "assets/prefabs/glb/thornveil_sylvaen_treehouse.glb",
+      "preview_path": "assets/prefabs/previews/thornveil_sylvaen_treehouse_preview.png",
+      "object_count": 10,
+      "object_names": [
+        "PREFAB_thornveil_sylvaen_treehouse_00_SCENE_Architecture_BackTreehouseMemoryArchive",
+        "PREFAB_thornveil_sylvaen_treehouse_01_SCENE_Architecture_BackMemoryArchive_LivingTrunkIntegratedCore",
+        "PREFAB_thornveil_sylvaen_treehouse_02_SCENE_Architecture_BackMemoryArchive_RootSupportWrap_Left",
+        "PREFAB_thornveil_sylvaen_treehouse_03_SCENE_Architecture_BackMemoryArchive_LeafRoofWing_Left",
+        "PREFAB_thornveil_sylvaen_treehouse_04_SCENE_Architecture_BackMemoryArchive_RootSupportWrap_Right",
+        "PREFAB_thornveil_sylvaen_treehouse_05_SCENE_Architecture_BackMemoryArchive_LeafRoofWing_Right",
+        "PREFAB_thornveil_sylvaen_treehouse_06_SCENE_Architecture_BackMemoryArchive_CyanArchedWindowGlow",
+        "PREFAB_thornveil_sylvaen_treehouse_07_SCENE_Architecture_BackMemoryArchive_GoldWoodWindowTrim",
+        "PREFAB_thornveil_sylvaen_treehouse_08_SCENE_Architecture_BackMemoryArchive_GrownArchedDoorway",
+        "PREFAB_thornveil_sylvaen_treehouse_09_SCENE_Architecture_TreehouseVerdantMemorySigil_02"
+      ],
+      "material_names": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Bark_WarmBrown",
+        "MAT_LeafRoof_Verdant",
+        "MAT_Leaves_DeepGreen",
+        "MAT_QuestGold",
+        "MAT_Stone_MossyGray",
+        "MAT_Wood_GoldenTrim",
+        "MAT_Worldroot_Cyan_Emission"
+      ],
+      "approximate_triangle_count": 338,
+      "origin_strategy": "Centered on prefab XY bounds; Z origin placed at lowest bounding point for placement.",
+      "bounds_min": [
+        -2.551,
+        -2.357,
+        0.0
+      ],
+      "bounds_max": [
+        2.551,
+        2.356,
+        7.522
+      ],
+      "dimensions_m": [
+        5.101,
+        4.713,
+        7.522
+      ],
+      "matching_prefixes": [
+        "SCENE_Architecture_BackTreehouseMemoryArchive",
+        "SCENE_Architecture_BackMemoryArchive_",
+        "SCENE_Architecture_TreehouseVerdantMemorySigil_02"
+      ],
+      "notes": "Integrated Sylvaen treehouse module with grown bark supports and Verdant identity details."
+    },
+    {
+      "id": "thornveil_root_bridge",
+      "zone": "Thornveil Enclave",
+      "category": "Architecture",
+      "source_blend": "assets/blender/heartbough_glade_entrance_v001.blend",
+      "blend_path": "assets/prefabs/blender/thornveil_root_bridge.blend",
+      "glb_path": "assets/prefabs/glb/thornveil_root_bridge.glb",
+      "preview_path": "assets/prefabs/previews/thornveil_root_bridge_preview.png",
+      "object_count": 2,
+      "object_names": [
+        "PREFAB_thornveil_root_bridge_00_SCENE_Architecture_MidRootBridge_LeftToCenter",
+        "PREFAB_thornveil_root_bridge_01_SCENE_Architecture_BackCurvedRootBridge"
+      ],
+      "material_names": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Bark_WarmBrown",
+        "MAT_Wood_GoldenTrim"
+      ],
+      "approximate_triangle_count": 436,
+      "origin_strategy": "Centered on prefab XY bounds; Z origin placed at lowest bounding point for placement.",
+      "bounds_min": [
+        -5.789,
+        -3.494,
+        0.0
+      ],
+      "bounds_max": [
+        5.685,
+        3.453,
+        1.465
+      ],
+      "dimensions_m": [
+        11.474,
+        6.947,
+        1.465
+      ],
+      "matching_prefixes": [
+        "SCENE_Architecture_MidRootBridge_LeftToCenter",
+        "SCENE_Architecture_BackCurvedRootBridge"
+      ],
+      "notes": "Reusable organic root bridge pieces from the midground village path."
+    },
+    {
+      "id": "thornveil_verdant_banner",
+      "zone": "Thornveil Enclave",
+      "category": "Village Prop",
+      "source_blend": "assets/blender/heartbough_glade_entrance_v001.blend",
+      "blend_path": "assets/prefabs/blender/thornveil_verdant_banner.blend",
+      "glb_path": "assets/prefabs/glb/thornveil_verdant_banner.glb",
+      "preview_path": "assets/prefabs/previews/thornveil_verdant_banner_preview.png",
+      "object_count": 1,
+      "object_names": [
+        "PREFAB_thornveil_verdant_banner_00_SCENE_VillageProps_VerdantBanner_00"
+      ],
+      "material_names": [
+        "MAT_Banner_VerdantGreen",
+        "MAT_Bark_DarkRoot",
+        "MAT_GoldTrim"
+      ],
+      "approximate_triangle_count": 60,
+      "origin_strategy": "Centered on prefab XY bounds; Z origin placed at lowest bounding point for placement.",
+      "bounds_min": [
+        -0.479,
+        -0.12,
+        0.0
+      ],
+      "bounds_max": [
+        0.484,
+        0.054,
+        2.688
+      ],
+      "dimensions_m": [
+        0.963,
+        0.174,
+        2.688
+      ],
+      "matching_prefixes": [
+        "SCENE_VillageProps_VerdantBanner_00"
+      ],
+      "notes": "Readable Verdant faction banner for path and hub dressing."
+    },
+    {
+      "id": "thornveil_crystal_cluster",
+      "zone": "Thornveil Enclave",
+      "category": "Worldroot Prop",
+      "source_blend": "assets/blender/heartbough_glade_entrance_v001.blend",
+      "blend_path": "assets/prefabs/blender/thornveil_crystal_cluster.blend",
+      "glb_path": "assets/prefabs/glb/thornveil_crystal_cluster.glb",
+      "preview_path": "assets/prefabs/previews/thornveil_crystal_cluster_preview.png",
+      "object_count": 2,
+      "object_names": [
+        "PREFAB_thornveil_crystal_cluster_00_SCENE_Worldroot_MeaningfulWorldrootCrystal_02_MossStoneBase",
+        "PREFAB_thornveil_crystal_cluster_01_SCENE_Worldroot_MeaningfulWorldrootCrystal_02"
+      ],
+      "material_names": [
+        "MAT_Moss",
+        "MAT_Rune_Cyan_Emission",
+        "MAT_Stone_MossyGray",
+        "MAT_Worldroot_Cyan_Emission"
+      ],
+      "approximate_triangle_count": 62,
+      "origin_strategy": "Centered on prefab XY bounds; Z origin placed at lowest bounding point for placement.",
+      "bounds_min": [
+        -0.595,
+        -0.512,
+        0.0
+      ],
+      "bounds_max": [
+        0.595,
+        0.549,
+        1.406
+      ],
+      "dimensions_m": [
+        1.189,
+        1.06,
+        1.406
+      ],
+      "matching_prefixes": [
+        "SCENE_Worldroot_MeaningfulWorldrootCrystal_02"
+      ],
+      "notes": "Cyan Worldroot crystal cluster with moss stone placement base."
+    },
+    {
+      "id": "elarthalas_silent_gate",
+      "zone": "Elar'Thalas Approach",
+      "category": "Hero Landmark",
+      "source_blend": "assets/blender/elarthalas_approach_visual_benchmark_v002.blend",
+      "blend_path": "assets/prefabs/blender/elarthalas_silent_gate.blend",
+      "glb_path": "assets/prefabs/glb/elarthalas_silent_gate.glb",
+      "preview_path": "assets/prefabs/previews/elarthalas_silent_gate_preview.png",
+      "object_count": 89,
+      "object_names": [
+        "PREFAB_elarthalas_silent_gate_00_ELAR_ArchiveCity_SilentGate_DarkRootSealedBackplate_OrganicArchShape",
+        "PREFAB_elarthalas_silent_gate_01_ELAR_ArchiveCity_SilentGate_LeftClosedMemoryGlassPanel_GrownArch",
+        "PREFAB_elarthalas_silent_gate_02_ELAR_ArchiveCity_SilentGate_RightClosedMemoryGlassPanel_GrownArch",
+        "PREFAB_elarthalas_silent_gate_03_ELAR_ArchiveCity_SilentGate_ClosedCentralSeam_DarkRootLockline",
+        "PREFAB_elarthalas_silent_gate_04_ELAR_ArchiveCity_SilentGate_CentralSeam_GoldArchiveSealClamp_00",
+        "PREFAB_elarthalas_silent_gate_05_ELAR_ArchiveCity_SilentGate_CentralSeam_GoldArchiveSealClamp_01",
+        "PREFAB_elarthalas_silent_gate_06_ELAR_ArchiveCity_SilentGate_CentralSeam_GoldArchiveSealClamp_02",
+        "PREFAB_elarthalas_silent_gate_07_ELAR_ArchiveCity_SilentGate_LockedRootShutter_Left",
+        "PREFAB_elarthalas_silent_gate_08_ELAR_ArchiveCity_SilentGate_PaleStoneInnerSealRib_Left",
+        "PREFAB_elarthalas_silent_gate_09_ELAR_ArchiveCity_SilentGate_LockedRootShutter_Right",
+        "PREFAB_elarthalas_silent_gate_10_ELAR_ArchiveCity_SilentGate_PaleStoneInnerSealRib_Right",
+        "PREFAB_elarthalas_silent_gate_11_ELAR_ArchiveCity_SilentGate_NarrowVerticalRuneSeam_00",
+        "PREFAB_elarthalas_silent_gate_12_ELAR_ArchiveCity_SilentGate_NarrowVerticalRuneSeam_01",
+        "PREFAB_elarthalas_silent_gate_13_ELAR_ArchiveCity_SilentGate_NarrowVerticalRuneSeam_02",
+        "PREFAB_elarthalas_silent_gate_14_ELAR_ArchiveCity_SilentGate_NarrowVerticalRuneSeam_03",
+        "PREFAB_elarthalas_silent_gate_15_ELAR_ArchiveCity_SilentGate_NarrowVerticalRuneSeam_04",
+        "PREFAB_elarthalas_silent_gate_16_ELAR_ArchiveCity_SilentGate_NarrowVerticalRuneSeam_05",
+        "PREFAB_elarthalas_silent_gate_17_ELAR_ArchiveCity_SilentGate_CentralLockedMemoryEngineCrystal",
+        "PREFAB_elarthalas_silent_gate_18_ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_00",
+        "PREFAB_elarthalas_silent_gate_19_ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_01",
+        "PREFAB_elarthalas_silent_gate_20_ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_02",
+        "PREFAB_elarthalas_silent_gate_21_ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_03",
+        "PREFAB_elarthalas_silent_gate_22_ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_04",
+        "PREFAB_elarthalas_silent_gate_23_ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_05",
+        "PREFAB_elarthalas_silent_gate_24_ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_06",
+        "PREFAB_elarthalas_silent_gate_25_ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_07",
+        "PREFAB_elarthalas_silent_gate_26_ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_08",
+        "PREFAB_elarthalas_silent_gate_27_ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_09",
+        "PREFAB_elarthalas_silent_gate_28_ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_10",
+        "PREFAB_elarthalas_silent_gate_29_ELAR_ArchiveCity_SilentGate_OuterIntertwinedDarkRootArch_Segment_11",
+        "PREFAB_elarthalas_silent_gate_30_ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_00",
+        "PREFAB_elarthalas_silent_gate_31_ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_01",
+        "PREFAB_elarthalas_silent_gate_32_ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_02",
+        "PREFAB_elarthalas_silent_gate_33_ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_03",
+        "PREFAB_elarthalas_silent_gate_34_ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_04",
+        "PREFAB_elarthalas_silent_gate_35_ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_05",
+        "PREFAB_elarthalas_silent_gate_36_ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_06",
+        "PREFAB_elarthalas_silent_gate_37_ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_07",
+        "PREFAB_elarthalas_silent_gate_38_ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_08",
+        "PREFAB_elarthalas_silent_gate_39_ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_09",
+        "PREFAB_elarthalas_silent_gate_40_ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_10",
+        "PREFAB_elarthalas_silent_gate_41_ELAR_ArchiveCity_SilentGate_PaleArchiveStoneRibArch_Segment_11",
+        "PREFAB_elarthalas_silent_gate_42_ELAR_ArchiveCity_SilentGate_InnerThinRuneSeamArch_Segment_00",
+        "PREFAB_elarthalas_silent_gate_43_ELAR_ArchiveCity_SilentGate_InnerThinRuneSeamArch_Segment_01",
+        "PREFAB_elarthalas_silent_gate_44_ELAR_ArchiveCity_SilentGate_InnerThinRuneSeamArch_Segment_02",
+        "PREFAB_elarthalas_silent_gate_45_ELAR_ArchiveCity_SilentGate_InnerThinRuneSeamArch_Segment_03",
+        "PREFAB_elarthalas_silent_gate_46_ELAR_ArchiveCity_SilentGate_InnerThinRuneSeamArch_Segment_04",
+        "PREFAB_elarthalas_silent_gate_47_ELAR_ArchiveCity_SilentGate_InnerThinRuneSeamArch_Segment_05",
+        "PREFAB_elarthalas_silent_gate_48_ELAR_ArchiveCity_SilentGate_InnerThinRuneSeamArch_Segment_06",
+        "PREFAB_elarthalas_silent_gate_49_ELAR_ArchiveCity_SilentGate_InnerThinRuneSeamArch_Segment_07",
+        "PREFAB_elarthalas_silent_gate_50_ELAR_ArchiveCity_SilentGate_InnerThinRuneSeamArch_Segment_08",
+        "PREFAB_elarthalas_silent_gate_51_ELAR_ArchiveCity_SilentGate_InnerThinRuneSeamArch_Segment_09",
+        "PREFAB_elarthalas_silent_gate_52_ELAR_ArchiveCity_SilentGate_Left_IntertwinedVerticalRoot_00",
+        "PREFAB_elarthalas_silent_gate_53_ELAR_ArchiveCity_SilentGate_Left_IntertwinedVerticalRoot_01",
+        "PREFAB_elarthalas_silent_gate_54_ELAR_ArchiveCity_SilentGate_Left_IntertwinedVerticalRoot_02",
+        "PREFAB_elarthalas_silent_gate_55_ELAR_ArchiveCity_SilentGate_Left_PaleStoneArchiveRib_00",
+        "PREFAB_elarthalas_silent_gate_56_ELAR_ArchiveCity_SilentGate_Left_PaleStoneArchiveRib_01",
+        "PREFAB_elarthalas_silent_gate_57_ELAR_ArchiveCity_SilentGate_Left_TallCyanMemoryGlassSeal",
+        "PREFAB_elarthalas_silent_gate_58_ELAR_ArchiveCity_SilentGate_Left_GoldRootBindingLower",
+        "PREFAB_elarthalas_silent_gate_59_ELAR_ArchiveCity_SilentGate_Right_IntertwinedVerticalRoot_00",
+        "PREFAB_elarthalas_silent_gate_60_ELAR_ArchiveCity_SilentGate_Right_IntertwinedVerticalRoot_01",
+        "PREFAB_elarthalas_silent_gate_61_ELAR_ArchiveCity_SilentGate_Right_IntertwinedVerticalRoot_02",
+        "PREFAB_elarthalas_silent_gate_62_ELAR_ArchiveCity_SilentGate_Right_PaleStoneArchiveRib_00",
+        "PREFAB_elarthalas_silent_gate_63_ELAR_ArchiveCity_SilentGate_Right_PaleStoneArchiveRib_01",
+        "PREFAB_elarthalas_silent_gate_64_ELAR_ArchiveCity_SilentGate_Right_TallCyanMemoryGlassSeal",
+        "PREFAB_elarthalas_silent_gate_65_ELAR_ArchiveCity_SilentGate_Right_GoldRootBindingLower",
+        "PREFAB_elarthalas_silent_gate_66_ELAR_ArchiveCity_SilentGate_DoorInterlockingLivingRootBrace_00",
+        "PREFAB_elarthalas_silent_gate_67_ELAR_ArchiveCity_SilentGate_DoorInterlockingLivingRootBrace_01",
+        "PREFAB_elarthalas_silent_gate_68_ELAR_ArchiveCity_SilentGate_DoorInterlockingLivingRootBrace_02",
+        "PREFAB_elarthalas_silent_gate_69_ELAR_ArchiveCity_SilentGate_DoorInterlockingLivingRootBrace_03",
+        "PREFAB_elarthalas_silent_gate_70_ELAR_ArchiveCity_SilentGate_DoorInterlockingLivingRootBrace_04",
+        "PREFAB_elarthalas_silent_gate_71_ELAR_ArchiveCity_SilentGate_PaleStoneMemoryEngineRib_00",
+        "PREFAB_elarthalas_silent_gate_72_ELAR_ArchiveCity_SilentGate_PaleStoneMemoryEngineRib_01",
+        "PREFAB_elarthalas_silent_gate_73_ELAR_ArchiveCity_SilentGate_PaleStoneMemoryEngineRib_02",
+        "PREFAB_elarthalas_silent_gate_74_ELAR_ArchiveCity_SilentGate_PaleStoneMemoryEngineRib_03",
+        "PREFAB_elarthalas_silent_gate_75_ELAR_ArchiveCity_SilentGate_CrownArchiveSpire_00",
+        "PREFAB_elarthalas_silent_gate_76_ELAR_ArchiveCity_SilentGate_CrownArchiveSpire_00_GoldWardCap",
+        "PREFAB_elarthalas_silent_gate_77_ELAR_ArchiveCity_SilentGate_CrownArchiveSpire_01",
+        "PREFAB_elarthalas_silent_gate_78_ELAR_ArchiveCity_SilentGate_CrownArchiveSpire_01_GoldWardCap",
+        "PREFAB_elarthalas_silent_gate_79_ELAR_ArchiveCity_SilentGate_CrownArchiveSpire_02",
+        "PREFAB_elarthalas_silent_gate_80_ELAR_ArchiveCity_SilentGate_CrownArchiveSpire_02_GoldWardCap",
+        "PREFAB_elarthalas_silent_gate_81_ELAR_ArchiveCity_SilentGate_CrownArchiveSpire_03",
+        "PREFAB_elarthalas_silent_gate_82_ELAR_ArchiveCity_SilentGate_CrownArchiveSpire_03_GoldWardCap",
+        "PREFAB_elarthalas_silent_gate_83_ELAR_ArchiveCity_SilentGate_CrownArchiveSpire_04",
+        "PREFAB_elarthalas_silent_gate_84_ELAR_ArchiveCity_SilentGate_CrownArchiveSpire_04_GoldWardCap",
+        "PREFAB_elarthalas_silent_gate_85_ELAR_ArchiveCity_SilentGate_ClosedMemoryEngineSealPlate_00",
+        "PREFAB_elarthalas_silent_gate_86_ELAR_ArchiveCity_SilentGate_ClosedMemoryEngineSealPlate_01",
+        "PREFAB_elarthalas_silent_gate_87_ELAR_ArchiveCity_SilentGate_ClosedMemoryEngineSealPlate_02",
+        "PREFAB_elarthalas_silent_gate_88_ELAR_ArchiveCity_SilentGate_ClosedMemoryEngineSealPlate_03"
+      ],
+      "material_names": [
+        "MAT_Bark_DarkRoot",
+        "MAT_GoldTrim",
+        "MAT_MemoryGlass_CyanGreen",
+        "MAT_Path_DarkRootShadow",
+        "MAT_Rune_Cyan_Emission",
+        "MAT_Stone_PaleArchive",
+        "MAT_Worldroot_Cyan_Emission"
+      ],
+      "approximate_triangle_count": 1117,
+      "origin_strategy": "Centered on prefab XY bounds; Z origin placed at lowest bounding point for placement.",
+      "bounds_min": [
+        -7.719,
+        -0.959,
+        0.0
+      ],
+      "bounds_max": [
+        7.719,
+        0.999,
+        15.068
+      ],
+      "dimensions_m": [
+        15.438,
+        1.958,
+        15.068
+      ],
+      "matching_prefixes": [
+        "ELAR_ArchiveCity_SilentGate_DarkRootSealedBackplate",
+        "ELAR_ArchiveCity_SilentGate_Left",
+        "ELAR_ArchiveCity_SilentGate_Right",
+        "ELAR_ArchiveCity_SilentGate_Closed",
+        "ELAR_ArchiveCity_SilentGate_Central",
+        "ELAR_ArchiveCity_SilentGate_Locked",
+        "ELAR_ArchiveCity_SilentGate_Pale",
+        "ELAR_ArchiveCity_SilentGate_Narrow",
+        "ELAR_ArchiveCity_SilentGate_Outer",
+        "ELAR_ArchiveCity_SilentGate_Inner",
+        "ELAR_ArchiveCity_SilentGate_Door",
+        "ELAR_ArchiveCity_SilentGate_Crown"
+      ],
+      "notes": "Sealed living archive-city gate, kept as a full modular hero landmark group."
+    },
+    {
+      "id": "elarthalas_ward_monoliths",
+      "zone": "Elar'Thalas Approach",
+      "category": "Worldroot Ward",
+      "source_blend": "assets/blender/elarthalas_approach_visual_benchmark_v002.blend",
+      "blend_path": "assets/prefabs/blender/elarthalas_ward_monoliths.blend",
+      "glb_path": "assets/prefabs/glb/elarthalas_ward_monoliths.glb",
+      "preview_path": "assets/prefabs/previews/elarthalas_ward_monoliths_preview.png",
+      "object_count": 14,
+      "object_names": [
+        "PREFAB_elarthalas_ward_monoliths_00_ELAR_WardsAndProps_WardlineScannerMonolith_Left_03_PaleStoneBlade",
+        "PREFAB_elarthalas_ward_monoliths_01_ELAR_WardsAndProps_WardlineScannerMonolith_Left_03_CyanVerticalRune",
+        "PREFAB_elarthalas_ward_monoliths_02_ELAR_WardsAndProps_WardlineScannerMonolith_Left_03_RootBindingBase",
+        "PREFAB_elarthalas_ward_monoliths_03_ELAR_WardsAndProps_WardlineScannerMonolith_Left_03_AsymmetricStoneShoulder",
+        "PREFAB_elarthalas_ward_monoliths_04_ELAR_WardsAndProps_WardlineScannerMonolith_Left_03_InwardScanBeam",
+        "PREFAB_elarthalas_ward_monoliths_05_ELAR_WardsAndProps_WardlineScannerMonolith_Left_03_MaskLikeCyanEye",
+        "PREFAB_elarthalas_ward_monoliths_06_ELAR_WardsAndProps_WardlineScannerMonolith_Left_03_StoneBrowSilhouette",
+        "PREFAB_elarthalas_ward_monoliths_07_ELAR_WardsAndProps_WardlineScannerMonolith_Right_03_PaleStoneBlade",
+        "PREFAB_elarthalas_ward_monoliths_08_ELAR_WardsAndProps_WardlineScannerMonolith_Right_03_CyanVerticalRune",
+        "PREFAB_elarthalas_ward_monoliths_09_ELAR_WardsAndProps_WardlineScannerMonolith_Right_03_RootBindingBase",
+        "PREFAB_elarthalas_ward_monoliths_10_ELAR_WardsAndProps_WardlineScannerMonolith_Right_03_AsymmetricStoneShoulder",
+        "PREFAB_elarthalas_ward_monoliths_11_ELAR_WardsAndProps_WardlineScannerMonolith_Right_03_InwardScanBeam",
+        "PREFAB_elarthalas_ward_monoliths_12_ELAR_WardsAndProps_WardlineScannerMonolith_Right_03_MaskLikeCyanEye",
+        "PREFAB_elarthalas_ward_monoliths_13_ELAR_WardsAndProps_WardlineScannerMonolith_Right_03_StoneBrowSilhouette"
+      ],
+      "material_names": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Echo_Transparent",
+        "MAT_MemoryGlass_CyanGreen",
+        "MAT_Rune_Cyan_Emission",
+        "MAT_Stone_PaleArchive",
+        "MAT_Stone_Pilgrimage"
+      ],
+      "approximate_triangle_count": 172,
+      "origin_strategy": "Centered on prefab XY bounds; Z origin placed at lowest bounding point for placement.",
+      "bounds_min": [
+        -6.59,
+        -0.495,
+        -0.0
+      ],
+      "bounds_max": [
+        6.59,
+        0.438,
+        4.651
+      ],
+      "dimensions_m": [
+        13.181,
+        0.932,
+        4.651
+      ],
+      "matching_prefixes": [
+        "ELAR_WardsAndProps_WardlineScannerMonolith_Left_03",
+        "ELAR_WardsAndProps_WardlineScannerMonolith_Right_03"
+      ],
+      "notes": "Matched ward monolith pair with inward scanning silhouettes, root bindings and cyan rune cuts."
+    },
+    {
+      "id": "elarthalas_rootroad",
+      "zone": "Elar'Thalas Approach",
+      "category": "Terrain Module",
+      "source_blend": "assets/blender/elarthalas_approach_visual_benchmark_v002.blend",
+      "blend_path": "assets/prefabs/blender/elarthalas_rootroad.blend",
+      "glb_path": "assets/prefabs/glb/elarthalas_rootroad.glb",
+      "preview_path": "assets/prefabs/previews/elarthalas_rootroad_preview.png",
+      "object_count": 34,
+      "object_names": [
+        "PREFAB_elarthalas_rootroad_00_ELAR_Terrain_SacredRootroad_TaperedLivingRootBed_OrganicSilhouette",
+        "PREFAB_elarthalas_rootroad_01_ELAR_Terrain_SacredRootroad_MossyStoneWalkableCore_ClearRoute",
+        "PREFAB_elarthalas_rootroad_02_ELAR_Terrain_SacredRootroad_UnevenEmbeddedStoneSlab_00",
+        "PREFAB_elarthalas_rootroad_03_ELAR_Terrain_SacredRootroad_UnevenEmbeddedStoneSlab_01",
+        "PREFAB_elarthalas_rootroad_04_ELAR_Terrain_SacredRootroad_UnevenEmbeddedStoneSlab_02",
+        "PREFAB_elarthalas_rootroad_05_ELAR_Terrain_SacredRootroad_UnevenEmbeddedStoneSlab_03",
+        "PREFAB_elarthalas_rootroad_06_ELAR_Terrain_SacredRootroad_UnevenEmbeddedStoneSlab_04",
+        "PREFAB_elarthalas_rootroad_07_ELAR_Terrain_SacredRootroad_UnevenEmbeddedStoneSlab_05",
+        "PREFAB_elarthalas_rootroad_08_ELAR_Terrain_SacredRootroad_UnevenEmbeddedStoneSlab_06",
+        "PREFAB_elarthalas_rootroad_09_ELAR_Terrain_SacredRootroad_UnevenEmbeddedStoneSlab_07",
+        "PREFAB_elarthalas_rootroad_10_ELAR_Terrain_SacredRootroad_BrokenUnevenRootSplit_00",
+        "PREFAB_elarthalas_rootroad_11_ELAR_Terrain_SacredRootroad_BrokenUnevenRootSplit_01",
+        "PREFAB_elarthalas_rootroad_12_ELAR_Terrain_SacredRootroad_BrokenUnevenRootSplit_02",
+        "PREFAB_elarthalas_rootroad_13_ELAR_Terrain_SacredRootroad_BrokenUnevenRootSplit_03",
+        "PREFAB_elarthalas_rootroad_14_ELAR_Terrain_SacredRootroad_BraidedRootBorder_Left_00",
+        "PREFAB_elarthalas_rootroad_15_ELAR_Terrain_SacredRootroad_BraidedRootBorder_Left_01",
+        "PREFAB_elarthalas_rootroad_16_ELAR_Terrain_SacredRootroad_BraidedRootBorder_Left_02",
+        "PREFAB_elarthalas_rootroad_17_ELAR_Terrain_SacredRootroad_BraidedRootBorder_Left_03",
+        "PREFAB_elarthalas_rootroad_18_ELAR_Terrain_SacredRootroad_BraidedRootBorder_Left_04",
+        "PREFAB_elarthalas_rootroad_19_ELAR_Terrain_SacredRootroad_BraidedRootBorder_Left_05",
+        "PREFAB_elarthalas_rootroad_20_ELAR_Terrain_SacredRootroad_BraidedRootBorder_Left_06",
+        "PREFAB_elarthalas_rootroad_21_ELAR_Terrain_SacredRootroad_BraidedRootBorder_Left_07",
+        "PREFAB_elarthalas_rootroad_22_ELAR_Terrain_SacredRootroad_BraidedRootBorder_Right_00",
+        "PREFAB_elarthalas_rootroad_23_ELAR_Terrain_SacredRootroad_BraidedRootBorder_Right_01",
+        "PREFAB_elarthalas_rootroad_24_ELAR_Terrain_SacredRootroad_BraidedRootBorder_Right_02",
+        "PREFAB_elarthalas_rootroad_25_ELAR_Terrain_SacredRootroad_BraidedRootBorder_Right_03",
+        "PREFAB_elarthalas_rootroad_26_ELAR_Terrain_SacredRootroad_BraidedRootBorder_Right_04",
+        "PREFAB_elarthalas_rootroad_27_ELAR_Terrain_SacredRootroad_BraidedRootBorder_Right_05",
+        "PREFAB_elarthalas_rootroad_28_ELAR_Terrain_SacredRootroad_BraidedRootBorder_Right_06",
+        "PREFAB_elarthalas_rootroad_29_ELAR_Terrain_SacredRootroad_BraidedRootBorder_Right_07",
+        "PREFAB_elarthalas_rootroad_30_ELAR_Terrain_SacredRootroad_CenterGuideRuneMemoryShard_00",
+        "PREFAB_elarthalas_rootroad_31_ELAR_Terrain_SacredRootroad_CenterGuideRuneMemoryShard_02",
+        "PREFAB_elarthalas_rootroad_32_ELAR_Terrain_SacredRootroad_CenterGuideRuneMemoryShard_04",
+        "PREFAB_elarthalas_rootroad_33_ELAR_Terrain_SacredRootroad_CenterGuideRuneMemoryShard_06"
+      ],
+      "material_names": [
+        "MAT_Path_DarkRootShadow",
+        "MAT_Path_MossyStone",
+        "MAT_Path_SacredRoot",
+        "MAT_Path_StoneHighlight",
+        "MAT_Rune_Cyan_Emission"
+      ],
+      "approximate_triangle_count": 328,
+      "origin_strategy": "Centered on prefab XY bounds; Z origin placed at lowest bounding point for placement.",
+      "bounds_min": [
+        -4.21,
+        -16.806,
+        0.0
+      ],
+      "bounds_max": [
+        4.21,
+        16.806,
+        0.7
+      ],
+      "dimensions_m": [
+        8.42,
+        33.611,
+        0.7
+      ],
+      "matching_prefixes": [
+        "ELAR_Terrain_SacredRootroad_"
+      ],
+      "notes": "Raised sacred rootroad module with embedded slabs, root borders and guide runes."
+    },
+    {
+      "id": "elarthalas_greenspire_shelter",
+      "zone": "Elar'Thalas Approach",
+      "category": "Camp Architecture",
+      "source_blend": "assets/blender/elarthalas_approach_visual_benchmark_v002.blend",
+      "blend_path": "assets/prefabs/blender/elarthalas_greenspire_shelter.blend",
+      "glb_path": "assets/prefabs/glb/elarthalas_greenspire_shelter.glb",
+      "preview_path": "assets/prefabs/previews/elarthalas_greenspire_shelter_preview.png",
+      "object_count": 6,
+      "object_names": [
+        "PREFAB_elarthalas_greenspire_shelter_00_ELAR_WardsAndProps_GreenspireCamp_RootShelterRoof",
+        "PREFAB_elarthalas_greenspire_shelter_01_ELAR_WardsAndProps_GreenspireCamp_RootShelterBase",
+        "PREFAB_elarthalas_greenspire_shelter_02_ELAR_WardsAndProps_GreenspireCamp_RootShelterLivingRib_00",
+        "PREFAB_elarthalas_greenspire_shelter_03_ELAR_WardsAndProps_GreenspireCamp_RootShelterLivingRib_01",
+        "PREFAB_elarthalas_greenspire_shelter_04_ELAR_WardsAndProps_GreenspireCamp_VerdantForwardBanner",
+        "PREFAB_elarthalas_greenspire_shelter_05_ELAR_WardsAndProps_GreenspireCamp_WarmPerimeterLantern_00"
+      ],
+      "material_names": [
+        "MAT_Banner_VerdantGreen",
+        "MAT_Bark_DarkRoot",
+        "MAT_Bark_WarmBrown",
+        "MAT_CampCloth_Green",
+        "MAT_GoldTrim",
+        "MAT_Lantern_Warm_Emission",
+        "MAT_Wood_GoldenTrim"
+      ],
+      "approximate_triangle_count": 164,
+      "origin_strategy": "Centered on prefab XY bounds; Z origin placed at lowest bounding point for placement.",
+      "bounds_min": [
+        -1.576,
+        -1.698,
+        0.0
+      ],
+      "bounds_max": [
+        1.576,
+        1.721,
+        2.985
+      ],
+      "dimensions_m": [
+        3.152,
+        3.419,
+        2.985
+      ],
+      "matching_prefixes": [
+        "ELAR_WardsAndProps_GreenspireCamp_RootShelter",
+        "ELAR_WardsAndProps_GreenspireCamp_VerdantForwardBanner",
+        "ELAR_WardsAndProps_GreenspireCamp_WarmPerimeterLantern_00"
+      ],
+      "notes": "Compact Sylvaen forward shelter prefab with a banner and a warm camp lantern."
+    },
+    {
+      "id": "elarthalas_high_elf_intrusion_device",
+      "zone": "Elar'Thalas Approach",
+      "category": "Aelthar Intrusion",
+      "source_blend": "assets/blender/elarthalas_approach_visual_benchmark_v002.blend",
+      "blend_path": "assets/prefabs/blender/elarthalas_high_elf_intrusion_device.blend",
+      "glb_path": "assets/prefabs/glb/elarthalas_high_elf_intrusion_device.glb",
+      "preview_path": "assets/prefabs/previews/elarthalas_high_elf_intrusion_device_preview.png",
+      "object_count": 14,
+      "object_names": [
+        "PREFAB_elarthalas_high_elf_intrusion_device_00_ELAR_ArcaneIntrusion_HighElfProbePylon_00",
+        "PREFAB_elarthalas_high_elf_intrusion_device_01_ELAR_ArcaneIntrusion_VioletScanCircle_00",
+        "PREFAB_elarthalas_high_elf_intrusion_device_02_ELAR_ArcaneIntrusion_HighElfProbePylon_00_ColdGoldFocusingGem",
+        "PREFAB_elarthalas_high_elf_intrusion_device_03_ELAR_ArcaneIntrusion_HighElfProbePylon_00_VioletSurveyBeam",
+        "PREFAB_elarthalas_high_elf_intrusion_device_04_ELAR_ArcaneIntrusion_HighElfTriangulationFrame_00",
+        "PREFAB_elarthalas_high_elf_intrusion_device_05_ELAR_ArcaneIntrusion_AeltharSilverBlueShard_Main",
+        "PREFAB_elarthalas_high_elf_intrusion_device_06_ELAR_ArcaneIntrusion_AeltharTripodLeg_00",
+        "PREFAB_elarthalas_high_elf_intrusion_device_07_ELAR_ArcaneIntrusion_AeltharAngularScanLine_00",
+        "PREFAB_elarthalas_high_elf_intrusion_device_08_ELAR_ArcaneIntrusion_AeltharTripodLeg_01",
+        "PREFAB_elarthalas_high_elf_intrusion_device_09_ELAR_ArcaneIntrusion_AeltharAngularScanLine_01",
+        "PREFAB_elarthalas_high_elf_intrusion_device_10_ELAR_ArcaneIntrusion_AeltharTripodLeg_02",
+        "PREFAB_elarthalas_high_elf_intrusion_device_11_ELAR_ArcaneIntrusion_AeltharAngularScanLine_02",
+        "PREFAB_elarthalas_high_elf_intrusion_device_12_ELAR_ArcaneIntrusion_BrokenWardMonolith_FallenPaleBlade",
+        "PREFAB_elarthalas_high_elf_intrusion_device_13_ELAR_ArcaneIntrusion_BrokenWardMonolith_CrackedCyanRune"
+      ],
+      "material_names": [
+        "MAT_HighElf_ArcaneViolet",
+        "MAT_HighElf_ColdGold",
+        "MAT_HighElf_SilverBlue",
+        "MAT_HighElf_SilverBlue_Emission",
+        "MAT_MemoryGlass_CyanGreen",
+        "MAT_MemoryStorm_Violet",
+        "MAT_Stone_PaleArchive"
+      ],
+      "approximate_triangle_count": 168,
+      "origin_strategy": "Centered on prefab XY bounds; Z origin placed at lowest bounding point for placement.",
+      "bounds_min": [
+        -2.514,
+        -1.795,
+        0.0
+      ],
+      "bounds_max": [
+        2.514,
+        1.795,
+        2.719
+      ],
+      "dimensions_m": [
+        5.028,
+        3.59,
+        2.719
+      ],
+      "matching_prefixes": [
+        "ELAR_ArcaneIntrusion_HighElfProbePylon_00",
+        "ELAR_ArcaneIntrusion_VioletScanCircle_00",
+        "ELAR_ArcaneIntrusion_HighElfTriangulationFrame_00",
+        "ELAR_ArcaneIntrusion_Aelthar",
+        "ELAR_ArcaneIntrusion_BrokenWardMonolith_"
+      ],
+      "notes": "Foreign angular silver-blue arcane intrusion device with broken ward contrast."
+    },
+    {
+      "id": "memory_wastes_dead_god_shrine",
+      "zone": "The Memory Wastes",
+      "category": "Hero Landmark",
+      "source_blend": "assets/blender/memory_wastes_visual_benchmark_v002.blend",
+      "blend_path": "assets/prefabs/blender/memory_wastes_dead_god_shrine.blend",
+      "glb_path": "assets/prefabs/glb/memory_wastes_dead_god_shrine.glb",
+      "preview_path": "assets/prefabs/previews/memory_wastes_dead_god_shrine_preview.png",
+      "object_count": 26,
+      "object_names": [
+        "PREFAB_memory_wastes_dead_god_shrine_00_WASTE_DeadGodShrine_BrokenRibMonolith_00",
+        "PREFAB_memory_wastes_dead_god_shrine_01_WASTE_DeadGodShrine_BrokenRibMonolith_01",
+        "PREFAB_memory_wastes_dead_god_shrine_02_WASTE_DeadGodShrine_BrokenRibMonolith_02",
+        "PREFAB_memory_wastes_dead_god_shrine_03_WASTE_DeadGodShrine_FallenIdolFace",
+        "PREFAB_memory_wastes_dead_god_shrine_04_WASTE_DeadGodShrine_CrackedMemoryEye",
+        "PREFAB_memory_wastes_dead_god_shrine_05_WASTE_DeadGodShrine_FallenCrownArc_Left",
+        "PREFAB_memory_wastes_dead_god_shrine_06_WASTE_DeadGodShrine_FallenCrownArc_Right",
+        "PREFAB_memory_wastes_dead_god_shrine_07_WASTE_DeadGodShrine_BrokenNamePlate",
+        "PREFAB_memory_wastes_dead_god_shrine_08_WASTE_DeadGodShrine_BrokenHaloSigilSegment_00",
+        "PREFAB_memory_wastes_dead_god_shrine_09_WASTE_DeadGodShrine_BrokenHaloSigilSegment_01",
+        "PREFAB_memory_wastes_dead_god_shrine_10_WASTE_DeadGodShrine_BrokenHaloSigilSegment_02",
+        "PREFAB_memory_wastes_dead_god_shrine_11_WASTE_DeadGodShrine_BrokenHaloSigilSegment_03",
+        "PREFAB_memory_wastes_dead_god_shrine_12_WASTE_DeadGodShrine_BrokenHaloSigilSegment_04",
+        "PREFAB_memory_wastes_dead_god_shrine_13_WASTE_DeadGodShrine_BrokenHaloSigil_MissingGodEye",
+        "PREFAB_memory_wastes_dead_god_shrine_14_WASTE_DeadGodShrine_MajorCrackedCircularHalo_ReadableDivineRuin_00",
+        "PREFAB_memory_wastes_dead_god_shrine_15_WASTE_DeadGodShrine_MajorCrackedCircularHalo_ReadableDivineRuin_01",
+        "PREFAB_memory_wastes_dead_god_shrine_16_WASTE_DeadGodShrine_MajorCrackedCircularHalo_ReadableDivineRuin_02",
+        "PREFAB_memory_wastes_dead_god_shrine_17_WASTE_DeadGodShrine_MajorCrackedCircularHalo_ReadableDivineRuin_03",
+        "PREFAB_memory_wastes_dead_god_shrine_18_WASTE_DeadGodShrine_ShatteredDivineSigilGroundPiece_00",
+        "PREFAB_memory_wastes_dead_god_shrine_19_WASTE_DeadGodShrine_ShatteredDivineSigilGroundPiece_01",
+        "PREFAB_memory_wastes_dead_god_shrine_20_WASTE_DeadGodShrine_ShatteredDivineSigilGroundPiece_02",
+        "PREFAB_memory_wastes_dead_god_shrine_21_WASTE_DeadGodShrine_ShatteredDivineSigilGroundPiece_03",
+        "PREFAB_memory_wastes_dead_god_shrine_22_WASTE_DeadGodShrine_CrackedStoneAltar",
+        "PREFAB_memory_wastes_dead_god_shrine_23_WASTE_DeadGodShrine_AltarCrack_PaleGoldLeak",
+        "PREFAB_memory_wastes_dead_god_shrine_24_WASTE_DeadGodShrine_MissingNameRuneSlab",
+        "PREFAB_memory_wastes_dead_god_shrine_25_WASTE_DeadGodShrine_PaleGoldLightColumn_ErasedName"
+      ],
+      "material_names": [
+        "MAT_DeadGod_Shadow",
+        "MAT_DeadGod_Stone",
+        "MAT_LostDivinity_PaleGold_Emission",
+        "MAT_Stone_DarkCrevice",
+        "MAT_Waste_DivinityStainSoft"
+      ],
+      "approximate_triangle_count": 322,
+      "origin_strategy": "Centered on prefab XY bounds; Z origin placed at lowest bounding point for placement.",
+      "bounds_min": [
+        -3.109,
+        -1.941,
+        0.0
+      ],
+      "bounds_max": [
+        3.071,
+        2.036,
+        4.963
+      ],
+      "dimensions_m": [
+        6.18,
+        3.977,
+        4.963
+      ],
+      "matching_prefixes": [
+        "WASTE_DeadGodShrine_"
+      ],
+      "notes": "Dead God Shrine kit: broken halo, cracked altar, missing-name slab and pale divine leakage."
+    },
+    {
+      "id": "memory_wastes_lost_ruin_arch",
+      "zone": "The Memory Wastes",
+      "category": "Lost Civilization Ruin",
+      "source_blend": "assets/blender/memory_wastes_visual_benchmark_v002.blend",
+      "blend_path": "assets/prefabs/blender/memory_wastes_lost_ruin_arch.blend",
+      "glb_path": "assets/prefabs/glb/memory_wastes_lost_ruin_arch.glb",
+      "preview_path": "assets/prefabs/previews/memory_wastes_lost_ruin_arch_preview.png",
+      "object_count": 6,
+      "object_names": [
+        "PREFAB_memory_wastes_lost_ruin_arch_00_WASTE_OranynRuins_LargePartManifestedArchiveArch_Left_FloatingColumn",
+        "PREFAB_memory_wastes_lost_ruin_arch_01_WASTE_OranynRuins_LargePartManifestedArchiveArch_Right_FloatingColumn",
+        "PREFAB_memory_wastes_lost_ruin_arch_02_WASTE_OranynRuins_LargeBrokenArchiveArch_HalfManifestedSpan_00",
+        "PREFAB_memory_wastes_lost_ruin_arch_03_WASTE_OranynRuins_LargeBrokenArchiveArch_HalfManifestedSpan_01",
+        "PREFAB_memory_wastes_lost_ruin_arch_04_WASTE_OranynRuins_LargeBrokenArchiveArch_HalfManifestedSpan_02",
+        "PREFAB_memory_wastes_lost_ruin_arch_05_WASTE_OranynRuins_LargeBrokenArchiveArch_HalfManifestedSpan_03"
+      ],
+      "material_names": [
+        "MAT_Waste_GhostRuinSoft"
+      ],
+      "approximate_triangle_count": 88,
+      "origin_strategy": "Centered on prefab XY bounds; Z origin placed at lowest bounding point for placement.",
+      "bounds_min": [
+        -4.244,
+        -0.504,
+        0.0
+      ],
+      "bounds_max": [
+        4.267,
+        0.504,
+        5.163
+      ],
+      "dimensions_m": [
+        8.511,
+        1.008,
+        5.163
+      ],
+      "matching_prefixes": [
+        "WASTE_OranynRuins_LargePartManifestedArchiveArch_",
+        "WASTE_OranynRuins_LargeBrokenArchiveArch_"
+      ],
+      "notes": "Partially manifested Oranyn archive arch, useful for ghost ruin dressing."
+    },
+    {
+      "id": "memory_wastes_worldroot_rift",
+      "zone": "The Memory Wastes",
+      "category": "Hero Rift",
+      "source_blend": "assets/blender/memory_wastes_visual_benchmark_v002.blend",
+      "blend_path": "assets/prefabs/blender/memory_wastes_worldroot_rift.blend",
+      "glb_path": "assets/prefabs/glb/memory_wastes_worldroot_rift.glb",
+      "preview_path": "assets/prefabs/previews/memory_wastes_worldroot_rift_preview.png",
+      "object_count": 52,
+      "object_names": [
+        "PREFAB_memory_wastes_worldroot_rift_00_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_CrackedRootFissure_VoidMouth",
+        "PREFAB_memory_wastes_worldroot_rift_01_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_CyanGoldPressureLightInsideFissure",
+        "PREFAB_memory_wastes_worldroot_rift_02_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_BrokenGroundPlate_00",
+        "PREFAB_memory_wastes_worldroot_rift_03_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_BrokenGroundPlate_01",
+        "PREFAB_memory_wastes_worldroot_rift_04_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_BrokenGroundPlate_02",
+        "PREFAB_memory_wastes_worldroot_rift_05_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_BrokenGroundPlate_03",
+        "PREFAB_memory_wastes_worldroot_rift_06_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_BrokenGroundPlate_04",
+        "PREFAB_memory_wastes_worldroot_rift_07_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_GroundMemoryTear",
+        "PREFAB_memory_wastes_worldroot_rift_08_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_BlackRootSplit",
+        "PREFAB_memory_wastes_worldroot_rift_09_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_CyanPressureLightColumn_FromBelow",
+        "PREFAB_memory_wastes_worldroot_rift_10_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_VioletInstabilityLightSlash",
+        "PREFAB_memory_wastes_worldroot_rift_11_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_PaleGoldLostMemoryBeam",
+        "PREFAB_memory_wastes_worldroot_rift_12_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_TallRootFiberSpire_ScaleAnchor",
+        "PREFAB_memory_wastes_worldroot_rift_13_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_TallRootFiberSpire_CyanNerveCut",
+        "PREFAB_memory_wastes_worldroot_rift_14_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_JaggedRootMaw_00",
+        "PREFAB_memory_wastes_worldroot_rift_15_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_JaggedRootMaw_00_InnerGlow",
+        "PREFAB_memory_wastes_worldroot_rift_16_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_JaggedRootMaw_01",
+        "PREFAB_memory_wastes_worldroot_rift_17_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_JaggedRootMaw_01_InnerGlow",
+        "PREFAB_memory_wastes_worldroot_rift_18_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_JaggedRootMaw_02",
+        "PREFAB_memory_wastes_worldroot_rift_19_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_JaggedRootMaw_02_InnerGlow",
+        "PREFAB_memory_wastes_worldroot_rift_20_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_JaggedRootMaw_03",
+        "PREFAB_memory_wastes_worldroot_rift_21_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_JaggedRootMaw_03_InnerGlow",
+        "PREFAB_memory_wastes_worldroot_rift_22_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_PulledRootFiber_00",
+        "PREFAB_memory_wastes_worldroot_rift_23_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_NerveGlow_00",
+        "PREFAB_memory_wastes_worldroot_rift_24_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_PulledRootFiber_01",
+        "PREFAB_memory_wastes_worldroot_rift_25_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_PulledRootFiber_02",
+        "PREFAB_memory_wastes_worldroot_rift_26_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_NerveGlow_02",
+        "PREFAB_memory_wastes_worldroot_rift_27_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_PulledRootFiber_03",
+        "PREFAB_memory_wastes_worldroot_rift_28_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_PulledRootFiber_04",
+        "PREFAB_memory_wastes_worldroot_rift_29_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_NerveGlow_04",
+        "PREFAB_memory_wastes_worldroot_rift_30_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_PulledRootFiber_05",
+        "PREFAB_memory_wastes_worldroot_rift_31_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_PulledRootFiber_06",
+        "PREFAB_memory_wastes_worldroot_rift_32_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_NerveGlow_06",
+        "PREFAB_memory_wastes_worldroot_rift_33_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_PulledRootFiber_07",
+        "PREFAB_memory_wastes_worldroot_rift_34_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_PulledRootFiber_08",
+        "PREFAB_memory_wastes_worldroot_rift_35_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_NerveGlow_08",
+        "PREFAB_memory_wastes_worldroot_rift_36_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_PulledRootFiber_09",
+        "PREFAB_memory_wastes_worldroot_rift_37_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_FragmentedVerticalMemorySlash_00",
+        "PREFAB_memory_wastes_worldroot_rift_38_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_FragmentedVerticalMemorySlash_01",
+        "PREFAB_memory_wastes_worldroot_rift_39_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_FragmentedVerticalMemorySlash_02",
+        "PREFAB_memory_wastes_worldroot_rift_40_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_FragmentedVerticalMemorySlash_03",
+        "PREFAB_memory_wastes_worldroot_rift_41_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_FragmentedVerticalMemorySlash_04",
+        "PREFAB_memory_wastes_worldroot_rift_42_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_ShedArchiveShard_00",
+        "PREFAB_memory_wastes_worldroot_rift_43_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_ShedArchiveShard_01",
+        "PREFAB_memory_wastes_worldroot_rift_44_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_ShedArchiveShard_02",
+        "PREFAB_memory_wastes_worldroot_rift_45_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_ShedArchiveShard_03",
+        "PREFAB_memory_wastes_worldroot_rift_46_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_OrbitingMemoryShard_00",
+        "PREFAB_memory_wastes_worldroot_rift_47_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_OrbitingMemoryShard_01",
+        "PREFAB_memory_wastes_worldroot_rift_48_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_OrbitingMemoryShard_02",
+        "PREFAB_memory_wastes_worldroot_rift_49_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_OrbitingMemoryShard_03",
+        "PREFAB_memory_wastes_worldroot_rift_50_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_OrbitingMemoryShard_04",
+        "PREFAB_memory_wastes_worldroot_rift_51_WASTE_RootRiftsAndStorms_WorldrootSheddingRift_OrbitingMemoryShard_05"
+      ],
+      "material_names": [
+        "MAT_Bark_DarkRoot",
+        "MAT_Echo_GhostBlueWhite",
+        "MAT_Grass_Dark",
+        "MAT_LostDivinity_PaleGold_Emission",
+        "MAT_MemoryStorm_Cyan",
+        "MAT_Stone_DarkCrevice",
+        "MAT_WasteGround",
+        "MAT_Waste_DivinityStainSoft",
+        "MAT_Waste_EchoStainSoft",
+        "MAT_Waste_RiftCyanDeep",
+        "MAT_Waste_RiftVioletControlled"
+      ],
+      "approximate_triangle_count": 643,
+      "origin_strategy": "Centered on prefab XY bounds; Z origin placed at lowest bounding point for placement.",
+      "bounds_min": [
+        -5.632,
+        -2.272,
+        0.0
+      ],
+      "bounds_max": [
+        5.632,
+        2.272,
+        6.796
+      ],
+      "dimensions_m": [
+        11.265,
+        4.544,
+        6.796
+      ],
+      "matching_prefixes": [
+        "WASTE_RootRiftsAndStorms_WorldrootSheddingRift_"
+      ],
+      "notes": "Worldroot shedding rift with cracked root fissure, root fibers, memory shards and controlled glow."
+    },
+    {
+      "id": "memory_wastes_echo_battlefield_props",
+      "zone": "The Memory Wastes",
+      "category": "Echo Battlefield",
+      "source_blend": "assets/blender/memory_wastes_visual_benchmark_v002.blend",
+      "blend_path": "assets/prefabs/blender/memory_wastes_echo_battlefield_props.blend",
+      "glb_path": "assets/prefabs/glb/memory_wastes_echo_battlefield_props.glb",
+      "preview_path": "assets/prefabs/previews/memory_wastes_echo_battlefield_props_preview.png",
+      "object_count": 27,
+      "object_names": [
+        "PREFAB_memory_wastes_echo_battlefield_props_00_WASTE_EchoBattlefield_CircularMemoryStain_BluePastOverlap",
+        "PREFAB_memory_wastes_echo_battlefield_props_01_WASTE_EchoBattlefield_GhostBanner_00_Pole",
+        "PREFAB_memory_wastes_echo_battlefield_props_02_WASTE_EchoBattlefield_GhostBanner_00_TornEchoCloth",
+        "PREFAB_memory_wastes_echo_battlefield_props_03_WASTE_EchoBattlefield_GhostBanner_01_Pole",
+        "PREFAB_memory_wastes_echo_battlefield_props_04_WASTE_EchoBattlefield_GhostBanner_01_TornEchoCloth",
+        "PREFAB_memory_wastes_echo_battlefield_props_05_WASTE_EchoBattlefield_GhostBanner_02_Pole",
+        "PREFAB_memory_wastes_echo_battlefield_props_06_WASTE_EchoBattlefield_GhostBanner_02_TornEchoCloth",
+        "PREFAB_memory_wastes_echo_battlefield_props_07_WASTE_EchoBattlefield_EmbeddedWeapon_00_BrokenSpear",
+        "PREFAB_memory_wastes_echo_battlefield_props_08_WASTE_EchoBattlefield_ShieldFragment_00",
+        "PREFAB_memory_wastes_echo_battlefield_props_09_WASTE_EchoBattlefield_EmbeddedWeapon_01_BrokenSpear",
+        "PREFAB_memory_wastes_echo_battlefield_props_10_WASTE_EchoBattlefield_ShieldFragment_01",
+        "PREFAB_memory_wastes_echo_battlefield_props_11_WASTE_EchoBattlefield_EmbeddedWeapon_02_BrokenSpear",
+        "PREFAB_memory_wastes_echo_battlefield_props_12_WASTE_EchoBattlefield_ShieldFragment_02",
+        "PREFAB_memory_wastes_echo_battlefield_props_13_WASTE_EchoBattlefield_EmbeddedWeapon_03_BrokenSpear",
+        "PREFAB_memory_wastes_echo_battlefield_props_14_WASTE_EchoBattlefield_ShieldFragment_03",
+        "PREFAB_memory_wastes_echo_battlefield_props_15_WASTE_EchoBattlefield_LostSoldierEcho_00_EchoBody",
+        "PREFAB_memory_wastes_echo_battlefield_props_16_WASTE_EchoBattlefield_LostSoldierEcho_00_EchoHead",
+        "PREFAB_memory_wastes_echo_battlefield_props_17_WASTE_EchoBattlefield_LostSoldierEcho_00_EchoShoulderTrace",
+        "PREFAB_memory_wastes_echo_battlefield_props_18_WASTE_EchoBattlefield_LostSoldierEcho_01_EchoBody",
+        "PREFAB_memory_wastes_echo_battlefield_props_19_WASTE_EchoBattlefield_LostSoldierEcho_01_EchoHead",
+        "PREFAB_memory_wastes_echo_battlefield_props_20_WASTE_EchoBattlefield_LostSoldierEcho_01_EchoShoulderTrace",
+        "PREFAB_memory_wastes_echo_battlefield_props_21_WASTE_EchoBattlefield_LostSoldierEcho_02_EchoBody",
+        "PREFAB_memory_wastes_echo_battlefield_props_22_WASTE_EchoBattlefield_LostSoldierEcho_02_EchoHead",
+        "PREFAB_memory_wastes_echo_battlefield_props_23_WASTE_EchoBattlefield_LostSoldierEcho_02_EchoShoulderTrace",
+        "PREFAB_memory_wastes_echo_battlefield_props_24_WASTE_EchoBattlefield_LostSoldierEcho_03_EchoBody",
+        "PREFAB_memory_wastes_echo_battlefield_props_25_WASTE_EchoBattlefield_LostSoldierEcho_03_EchoHead",
+        "PREFAB_memory_wastes_echo_battlefield_props_26_WASTE_EchoBattlefield_LostSoldierEcho_03_EchoShoulderTrace"
+      ],
+      "material_names": [
+        "MAT_Echo_GhostBlueWhite",
+        "MAT_Path_DarkRootShadow",
+        "MAT_Stone_MossyGray",
+        "MAT_Stone_Pilgrimage",
+        "MAT_Waste_EchoStainSoft"
+      ],
+      "approximate_triangle_count": 396,
+      "origin_strategy": "Centered on prefab XY bounds; Z origin placed at lowest bounding point for placement.",
+      "bounds_min": [
+        -4.629,
+        -2.833,
+        0.0
+      ],
+      "bounds_max": [
+        4.629,
+        3.303,
+        2.201
+      ],
+      "dimensions_m": [
+        9.258,
+        6.135,
+        2.201
+      ],
+      "matching_prefixes": [
+        "WASTE_EchoBattlefield_"
+      ],
+      "notes": "Echo battlefield dressing set: ghost banners, weapons, shield fragments and soldier echoes."
+    },
+    {
+      "id": "memory_wastes_memory_island_base",
+      "zone": "The Memory Wastes",
+      "category": "Terrain Module",
+      "source_blend": "assets/blender/memory_wastes_visual_benchmark_v002.blend",
+      "blend_path": "assets/prefabs/blender/memory_wastes_memory_island_base.blend",
+      "glb_path": "assets/prefabs/glb/memory_wastes_memory_island_base.glb",
+      "preview_path": "assets/prefabs/previews/memory_wastes_memory_island_base_preview.png",
+      "object_count": 9,
+      "object_names": [
+        "PREFAB_memory_wastes_memory_island_base_00_WASTE_Terrain_WorldrootSheddingRiftIsland_FragmentedPlate",
+        "PREFAB_memory_wastes_memory_island_base_01_WASTE_Terrain_WorldrootSheddingRiftIsland_MossMemorySkin",
+        "PREFAB_memory_wastes_memory_island_base_02_WASTE_Terrain_WorldrootSheddingRiftIsland_VoidDropShadow",
+        "PREFAB_memory_wastes_memory_island_base_03_WASTE_Terrain_WorldrootSheddingRiftIsland_BrokenEdgeStrata_00",
+        "PREFAB_memory_wastes_memory_island_base_04_WASTE_Terrain_WorldrootSheddingRiftIsland_BrokenEdgeStrata_01",
+        "PREFAB_memory_wastes_memory_island_base_05_WASTE_Terrain_WorldrootSheddingRiftIsland_BrokenEdgeStrata_02",
+        "PREFAB_memory_wastes_memory_island_base_06_WASTE_Terrain_WorldrootSheddingRiftIsland_SilhouetteMemoryCliffShard_00",
+        "PREFAB_memory_wastes_memory_island_base_07_WASTE_Terrain_WorldrootSheddingRiftIsland_SilhouetteMemoryCliffShard_01",
+        "PREFAB_memory_wastes_memory_island_base_08_WASTE_Terrain_WorldrootSheddingRiftIsland_SilhouetteMemoryCliffShard_02"
+      ],
+      "material_names": [
+        "MAT_DeadGod_Shadow",
+        "MAT_Grass_Dark",
+        "MAT_Stone_DarkCrevice",
+        "MAT_Stone_MossyGray",
+        "MAT_WasteGround"
+      ],
+      "approximate_triangle_count": 91,
+      "origin_strategy": "Centered on prefab XY bounds; Z origin placed at lowest bounding point for placement.",
+      "bounds_min": [
+        -11.4,
+        -6.868,
+        0.0
+      ],
+      "bounds_max": [
+        11.216,
+        6.558,
+        0.86
+      ],
+      "dimensions_m": [
+        22.615,
+        13.426,
+        0.86
+      ],
+      "matching_prefixes": [
+        "WASTE_Terrain_WorldrootSheddingRiftIsland_"
+      ],
+      "notes": "Reusable fragmented memory island base with broken strata and void drop shadow."
+    }
+  ],
+  "limitations": [
+    "Prefabs are extracted from current zone-scene geometry and are not final collision-ready game assets.",
+    "Origins are centered for placement at the prefab footprint base; some large landmark groups may still need manual pivot tuning in-engine.",
+    "Preview renders use neutral studio lighting and are not intended to match final in-zone lighting."
+  ],
+  "latest_thornveil_prefab_replacement_pass": {
+    "id": "thornveil_prefab_replacement_pass_v001",
+    "zone": "Thornveil Enclave",
+    "source_scene": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\blender\\heartbough_glade_entrance_v001.blend",
+    "outputs": {
+      "blend": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\blender\\heartbough_glade_entrance_v001.blend",
+      "glb": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\exports\\heartbough_glade_entrance_v001.glb",
+      "render_2560x1440": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\heartbough_glade_entrance_v001_2560x1440.png",
+      "render_1920x1080": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\heartbough_glade_entrance_v001_1920x1080.png",
+      "quality_report": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\reports\\heartbough_glade_entrance_quality_report.md",
+      "terrain_integration_report": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\reports\\terrain_integration_report.md",
+      "readability_report": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\reports\\readability_report.md"
+    },
+    "created_or_replaced_prefab_families": [
+      {
+        "family": "TREE_WORLDROOT_HERO",
+        "purpose": "Foreground/midground ancient living Worldroot silhouettes with twisted trunk, exposed roots, cyan bark cracks, vines, and asymmetrical canopy blobs.",
+        "object_count": 200
+      },
+      {
+        "family": "TREE_WORLDROOT_VILLAGE",
+        "purpose": "Medium platform-support trees for the village architecture.",
+        "object_count": 198
+      },
+      {
+        "family": "TREE_WORLDROOT_BACKGROUND",
+        "purpose": "Dark organic background tree silhouettes that close the horizon.",
+        "object_count": 195
+      },
+      {
+        "family": "ARCH_SYLVAEN_TREEHOUSE_SMALL",
+        "purpose": "Small grown treehouse with bark shell, cyan window, leaf roof, balcony, lantern, and Verdant motif.",
+        "object_count": 21
+      },
+      {
+        "family": "ARCH_SYLVAEN_TREEHOUSE_MEDIUM",
+        "purpose": "Medium grown treehouse variant integrated into living trunks.",
+        "object_count": 21
+      },
+      {
+        "family": "ARCH_SYLVAEN_TREEHOUSE_HUB",
+        "purpose": "Hub-scale Memory Archive treehouse variant for the center read.",
+        "object_count": 21
+      },
+      {
+        "family": "ARCH_ROOTBRIDGE",
+        "purpose": "Straight, curved, and stair living-root bridge modules with clear walkable centers, root rails, vine bindings, moss, and sparse guide-runes.",
+        "object_count": 76
+      },
+      {
+        "family": "ENV_PATH",
+        "purpose": "Mossy stone path tiles, root borders, and elevation steps replacing flat circular path reads.",
+        "object_count": 72
+      }
+    ],
+    "cyan_debug_reduction": {
+      "crystal_clusters_kept": 4,
+      "route_wayfinding_stones_kept": 2,
+      "rule": "Cyan is reserved for Worldroot crystals, windows, bark cracks, route runes, and memory markers."
+    },
+    "layout_preservation": "Camera, player spawn, central path axis, village placement, bridge line, and scene bounds are preserved."
+  }
+}

@@ -1,0 +1,1829 @@
+{
+  "scene": "The Memory Wastes Vista Benchmark",
+  "file_stem": "memory_wastes_vista_benchmark_v001",
+  "purpose": "separate art-direction vista benchmark, not gameplay/collision terrain",
+  "collections": [
+    "VISTA_Foreground_SafeCamp",
+    "VISTA_Midground_LostCivilizationRuins",
+    "VISTA_Midground_DeadGodShrine",
+    "VISTA_FarMid_WorldrootSheddingRift",
+    "VISTA_Background_MemoryArchipelago",
+    "VISTA_Traversal_MemoryBridges",
+    "VISTA_Characters",
+    "VISTA_LightingRender"
+  ],
+  "object_counts": {
+    "VISTA_Foreground_SafeCamp": 18,
+    "VISTA_Midground_LostCivilizationRuins": 23,
+    "VISTA_Midground_DeadGodShrine": 18,
+    "VISTA_FarMid_WorldrootSheddingRift": 39,
+    "VISTA_Background_MemoryArchipelago": 69,
+    "VISTA_Traversal_MemoryBridges": 10,
+    "VISTA_Characters": 12,
+    "VISTA_LightingRender": 9
+  },
+  "objects": [
+    {
+      "name": "SAFE_CAMP_ForegroundLowFoothold_IrregularFloatingIslandTop",
+      "collection": "VISTA_Foreground_SafeCamp",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainTop_MutedMoss"
+      ],
+      "approximate_triangles": 40
+    },
+    {
+      "name": "SAFE_CAMP_ForegroundLowFoothold_MutedMossSkin_AsymmetricalMemorySurface",
+      "collection": "VISTA_Foreground_SafeCamp",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainTop_MutedMoss"
+      ],
+      "approximate_triangles": 9
+    },
+    {
+      "name": "SAFE_CAMP_ForegroundLowFoothold_TaperedUnderside_HangingMemoryMass",
+      "collection": "VISTA_Foreground_SafeCamp",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainUnderside_Void"
+      ],
+      "approximate_triangles": 32
+    },
+    {
+      "name": "SAFE_CAMP_ForegroundLowFoothold_BrokenLowerStrata_DarkMemoryEdge_00",
+      "collection": "VISTA_Foreground_SafeCamp",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainSide_DarkStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SAFE_CAMP_ForegroundLowFoothold_BrokenLowerStrata_DarkMemoryEdge_01",
+      "collection": "VISTA_Foreground_SafeCamp",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainSide_DarkStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SAFE_CAMP_ForegroundLowFoothold_BrokenLowerStrata_DarkMemoryEdge_02",
+      "collection": "VISTA_Foreground_SafeCamp",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainSide_DarkStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SAFE_CAMP_ProtectedWarmCyanGlow_NotMainFocal",
+      "collection": "VISTA_Foreground_SafeCamp",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_SafeGlow"
+      ],
+      "approximate_triangles": 34
+    },
+    {
+      "name": "SAFE_CAMP_RootShelter_GreenMemoryCanvas",
+      "collection": "VISTA_Foreground_SafeCamp",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_SafeCampGreen"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "SAFE_CAMP_RootShelter_LivingRootRib_00",
+      "collection": "VISTA_Foreground_SafeCamp",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_RootDark"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SAFE_CAMP_RootShelter_LivingRootRib_01",
+      "collection": "VISTA_Foreground_SafeCamp",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_RootDark"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SAFE_CAMP_RootShelter_LivingRootRib_02",
+      "collection": "VISTA_Foreground_SafeCamp",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_RootDark"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SAFE_CAMP_VerdantBanner_Pole",
+      "collection": "VISTA_Foreground_SafeCamp",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_RootWarm"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SAFE_CAMP_VerdantBanner_GreenCloth",
+      "collection": "VISTA_Foreground_SafeCamp",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_BannerVerdant"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SAFE_CAMP_VerdantBanner_SmallGoldLeafMotif",
+      "collection": "VISTA_Foreground_SafeCamp",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_CampGold"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SAFE_CAMP_ArchiveTable_RootWood",
+      "collection": "VISTA_Foreground_SafeCamp",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_RootWarm"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SAFE_CAMP_ArchiveTable_CyanMemoryMap",
+      "collection": "VISTA_Foreground_SafeCamp",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_SafeGlow"
+      ],
+      "approximate_triangles": 16
+    },
+    {
+      "name": "SAFE_CAMP_MemoryBrazier_RootBowl",
+      "collection": "VISTA_Foreground_SafeCamp",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_RootDark"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "SAFE_CAMP_MemoryBrazier_ProtectedCyanFlame",
+      "collection": "VISTA_Foreground_SafeCamp",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_CyanMemory"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "LOST_RUINS_MidLeftElevatedHalfManifestedIsland_IrregularFloatingIslandTop",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainTop_MutedMoss"
+      ],
+      "approximate_triangles": 40
+    },
+    {
+      "name": "LOST_RUINS_MidLeftElevatedHalfManifestedIsland_MutedMossSkin_AsymmetricalMemorySurface",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainTop_MutedMoss"
+      ],
+      "approximate_triangles": 9
+    },
+    {
+      "name": "LOST_RUINS_MidLeftElevatedHalfManifestedIsland_TaperedUnderside_HangingMemoryMass",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainUnderside_Void"
+      ],
+      "approximate_triangles": 32
+    },
+    {
+      "name": "LOST_RUINS_MidLeftElevatedHalfManifestedIsland_BrokenLowerStrata_DarkMemoryEdge_00",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainSide_DarkStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "LOST_RUINS_MidLeftElevatedHalfManifestedIsland_BrokenLowerStrata_DarkMemoryEdge_01",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainSide_DarkStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "LOST_RUINS_MidLeftElevatedHalfManifestedIsland_BrokenLowerStrata_DarkMemoryEdge_02",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainSide_DarkStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "LOST_RUINS_GreatBrokenArch_LeftColumn",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "LOST_RUINS_GreatBrokenArch_RightColumn",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "LOST_RUINS_GreatBrokenArch_LeftCrown",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "LOST_RUINS_GreatBrokenArch_RightCrown",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "LOST_RUINS_PartialColumn_NotFullyTouchingGround_00",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "LOST_RUINS_GhostCyanCrack_Column_00",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_CyanDim"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "LOST_RUINS_PartialColumn_NotFullyTouchingGround_01",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "LOST_RUINS_GhostCyanCrack_Column_01",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_CyanDim"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "LOST_RUINS_PartialColumn_NotFullyTouchingGround_02",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "LOST_RUINS_GhostCyanCrack_Column_02",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_CyanDim"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "LOST_RUINS_IncompleteFloatingStair_00",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "LOST_RUINS_IncompleteFloatingStair_01",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "LOST_RUINS_IncompleteFloatingStair_02",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "LOST_RUINS_IncompleteFloatingStair_03",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "LOST_RUINS_FloatingWallPiece_OutOfAlignment_00",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "LOST_RUINS_FloatingWallPiece_OutOfAlignment_01",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "LOST_RUINS_FloatingWallPiece_OutOfAlignment_02",
+      "collection": "VISTA_Midground_LostCivilizationRuins",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "DEAD_GOD_SHRINE_MidRightIsolatedCeremonialIsland_IrregularFloatingIslandTop",
+      "collection": "VISTA_Midground_DeadGodShrine",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainTop_MutedMoss"
+      ],
+      "approximate_triangles": 40
+    },
+    {
+      "name": "DEAD_GOD_SHRINE_MidRightIsolatedCeremonialIsland_MutedMossSkin_AsymmetricalMemorySurface",
+      "collection": "VISTA_Midground_DeadGodShrine",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainTop_MutedMoss"
+      ],
+      "approximate_triangles": 9
+    },
+    {
+      "name": "DEAD_GOD_SHRINE_MidRightIsolatedCeremonialIsland_TaperedUnderside_HangingMemoryMass",
+      "collection": "VISTA_Midground_DeadGodShrine",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainUnderside_Void"
+      ],
+      "approximate_triangles": 32
+    },
+    {
+      "name": "DEAD_GOD_SHRINE_MidRightIsolatedCeremonialIsland_BrokenLowerStrata_DarkMemoryEdge_00",
+      "collection": "VISTA_Midground_DeadGodShrine",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainSide_DarkStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "DEAD_GOD_SHRINE_MidRightIsolatedCeremonialIsland_BrokenLowerStrata_DarkMemoryEdge_01",
+      "collection": "VISTA_Midground_DeadGodShrine",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainSide_DarkStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "DEAD_GOD_SHRINE_MidRightIsolatedCeremonialIsland_BrokenLowerStrata_DarkMemoryEdge_02",
+      "collection": "VISTA_Midground_DeadGodShrine",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainSide_DarkStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "DEAD_GOD_SHRINE_PaleGoldSacredGroundStain",
+      "collection": "VISTA_Midground_DeadGodShrine",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_PaleGold"
+      ],
+      "approximate_triangles": 36
+    },
+    {
+      "name": "DEAD_GOD_SHRINE_CrackedCircularHalo_Segment_00",
+      "collection": "VISTA_Midground_DeadGodShrine",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DeadStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "DEAD_GOD_SHRINE_CrackedCircularHalo_Segment_01",
+      "collection": "VISTA_Midground_DeadGodShrine",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_PaleGold"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "DEAD_GOD_SHRINE_CrackedCircularHalo_Segment_03",
+      "collection": "VISTA_Midground_DeadGodShrine",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_PaleGold"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "DEAD_GOD_SHRINE_BrokenAltar_CoreStone",
+      "collection": "VISTA_Midground_DeadGodShrine",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DeadStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "DEAD_GOD_SHRINE_MissingNameRuneSlab",
+      "collection": "VISTA_Midground_DeadGodShrine",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DeadStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "DEAD_GOD_SHRINE_PaleGoldVerticalLight_DivineRemnant",
+      "collection": "VISTA_Midground_DeadGodShrine",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_PaleGold"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "DEAD_GOD_SHRINE_ShatteredDivineSigil_Fragment_00",
+      "collection": "VISTA_Midground_DeadGodShrine",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DeadStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "DEAD_GOD_SHRINE_ShatteredDivineSigil_Fragment_01",
+      "collection": "VISTA_Midground_DeadGodShrine",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_PaleGold"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "DEAD_GOD_SHRINE_ShatteredDivineSigil_Fragment_02",
+      "collection": "VISTA_Midground_DeadGodShrine",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DeadStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "DEAD_GOD_SHRINE_ShatteredDivineSigil_Fragment_03",
+      "collection": "VISTA_Midground_DeadGodShrine",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_PaleGold"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "DEAD_GOD_SHRINE_ShatteredDivineSigil_Fragment_04",
+      "collection": "VISTA_Midground_DeadGodShrine",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DeadStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_FarMidDominantSplitIsland_IrregularFloatingIslandTop",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainTop_MutedMoss"
+      ],
+      "approximate_triangles": 40
+    },
+    {
+      "name": "WORLDROOT_RIFT_FarMidDominantSplitIsland_MutedMossSkin_AsymmetricalMemorySurface",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainTop_MutedMoss"
+      ],
+      "approximate_triangles": 9
+    },
+    {
+      "name": "WORLDROOT_RIFT_FarMidDominantSplitIsland_TaperedUnderside_HangingMemoryMass",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainUnderside_Void"
+      ],
+      "approximate_triangles": 32
+    },
+    {
+      "name": "WORLDROOT_RIFT_FarMidDominantSplitIsland_BrokenLowerStrata_DarkMemoryEdge_00",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainSide_DarkStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_FarMidDominantSplitIsland_BrokenLowerStrata_DarkMemoryEdge_01",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainSide_DarkStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_FarMidDominantSplitIsland_BrokenLowerStrata_DarkMemoryEdge_02",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainSide_DarkStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_CyanMemoryLight_FromBelow",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_CyanMemory"
+      ],
+      "approximate_triangles": 48
+    },
+    {
+      "name": "WORLDROOT_RIFT_BlackRootMouth_WideCrack",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainUnderside_Void"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_VioletInstabilityEdge_Left",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_VioletInstability"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_CyanMemoryEdge_Right",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_CyanMemory"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_ExposedRootFiber_Nerve_00",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_RootDark"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_ExposedRootFiber_Nerve_01",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_RootDark"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_CyanPulseInsideNerve_01",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_CyanMemory"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_ExposedRootFiber_Nerve_02",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_RootDark"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_ExposedRootFiber_Nerve_03",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_RootDark"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_CyanPulseInsideNerve_03",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_CyanMemory"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_ExposedRootFiber_Nerve_04",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_RootDark"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_ExposedRootFiber_Nerve_05",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_RootDark"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_CyanPulseInsideNerve_05",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_CyanMemory"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_ExposedRootFiber_Nerve_06",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_RootDark"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_CyanPulseInsideNerve_06",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_CyanMemory"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_ExposedRootFiber_Nerve_07",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_RootDark"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_LiftedBrokenTerrainPlate_00",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainTop_MutedMoss"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_LiftedBrokenTerrainPlate_01",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainSide_DarkStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_LiftedBrokenTerrainPlate_02",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainTop_MutedMoss"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_LiftedBrokenTerrainPlate_03",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_VioletInstability"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_LiftedBrokenTerrainPlate_04",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "WORLDROOT_RIFT_DominantVerticalMemoryPlume_00_Vista_CyanMemory",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_CyanMemory"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "WORLDROOT_RIFT_DominantVerticalMemoryPlume_01_Vista_VioletInstability",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_VioletInstability"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "WORLDROOT_RIFT_DominantVerticalMemoryPlume_02_Vista_PaleGold",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_PaleGold"
+      ],
+      "approximate_triangles": 24
+    },
+    {
+      "name": "WORLDROOT_RIFT_UpdraftPulledMemoryShard_00",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_CyanMemory"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "WORLDROOT_RIFT_UpdraftPulledMemoryShard_01",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_VioletInstability"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "WORLDROOT_RIFT_UpdraftPulledMemoryShard_02",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_PaleGold"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "WORLDROOT_RIFT_UpdraftPulledMemoryShard_03",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_CyanMemory"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "WORLDROOT_RIFT_UpdraftPulledMemoryShard_04",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_VioletInstability"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "WORLDROOT_RIFT_UpdraftPulledMemoryShard_05",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_VioletInstability"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "WORLDROOT_RIFT_UpdraftPulledMemoryShard_06",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_PaleGold"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "WORLDROOT_RIFT_UpdraftPulledMemoryShard_07",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_VioletInstability"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "WORLDROOT_RIFT_UpdraftPulledMemoryShard_08",
+      "collection": "VISTA_FarMid_WorldrootSheddingRift",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_CyanMemory"
+      ],
+      "approximate_triangles": 10
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantFloatingIsland_00",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantIsland"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_00_00",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_00_01",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_00_02",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantFloatingIsland_01",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantIsland"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_01_00",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_01_01",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_01_02",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantBrokenArchHint_01",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantFloatingIsland_02",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantIsland"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_02_00",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_02_01",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_02_02",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantFloatingIsland_03",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantIsland"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_03_00",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_03_01",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_03_02",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantFloatingIsland_04",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantIsland"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_04_00",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_04_01",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_04_02",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantBrokenArchHint_04",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantFloatingIsland_05",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantIsland"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_05_00",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_05_01",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_05_02",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantFloatingIsland_06",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantIsland"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_06_00",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_06_01",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_06_02",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantFloatingIsland_07",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantIsland"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_07_00",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_07_01",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_07_02",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantBrokenArchHint_07",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantFloatingIsland_08",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantIsland"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_08_00",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_08_01",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_08_02",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantFloatingIsland_09",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantIsland"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_09_00",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_09_01",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_09_02",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantFloatingIsland_10",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantIsland"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_10_00",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_10_01",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_10_02",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantFloatingIsland_11",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantIsland"
+      ],
+      "approximate_triangles": 8
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_11_00",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_11_01",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_Archipelago_DistantRuinTrace_11_02",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_FallingMemoryMasonryFragment_00",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_FallingMemoryMasonryFragment_01",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_FallingMemoryMasonryFragment_02",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "BACKGROUND_FallingMemoryMasonryFragment_03",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_DistantRuin"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ECHO_BATTLEFIELD_SecondaryIsland_DarkWarMemoryStain",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_BattleStain"
+      ],
+      "approximate_triangles": 28
+    },
+    {
+      "name": "ECHO_BATTLEFIELD_EmbeddedSpearMemory_00",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostBlue"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ECHO_BATTLEFIELD_EmbeddedSpearMemory_01",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostBlue"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ECHO_BATTLEFIELD_EmbeddedSpearMemory_02",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostBlue"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ECHO_BATTLEFIELD_EmbeddedSpearMemory_03",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostBlue"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ECHO_BATTLEFIELD_SpectralSoldierEcho_00_BodyCloak",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostBlue"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ECHO_BATTLEFIELD_SpectralSoldierEcho_00_Head",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostBlue"
+      ],
+      "approximate_triangles": 32
+    },
+    {
+      "name": "ECHO_BATTLEFIELD_SpectralSoldierEcho_00_ShoulderSilhouette",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostBlue"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ECHO_BATTLEFIELD_SpectralSoldierEcho_01_BodyCloak",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostBlue"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ECHO_BATTLEFIELD_SpectralSoldierEcho_01_Head",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostBlue"
+      ],
+      "approximate_triangles": 32
+    },
+    {
+      "name": "ECHO_BATTLEFIELD_SpectralSoldierEcho_01_ShoulderSilhouette",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostBlue"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "ECHO_BATTLEFIELD_SpectralSoldierEcho_02_BodyCloak",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostBlue"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "ECHO_BATTLEFIELD_SpectralSoldierEcho_02_Head",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostBlue"
+      ],
+      "approximate_triangles": 32
+    },
+    {
+      "name": "ECHO_BATTLEFIELD_SpectralSoldierEcho_02_ShoulderSilhouette",
+      "collection": "VISTA_Background_MemoryArchipelago",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostBlue"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "TRAVERSAL_SafeCampToRift_BrokenMemorySteppingStone_00",
+      "collection": "VISTA_Traversal_MemoryBridges",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_TerrainSide_DarkStone"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "TRAVERSAL_SafeCampToRift_BrokenMemorySteppingStone_01",
+      "collection": "VISTA_Traversal_MemoryBridges",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostBlue"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "TRAVERSAL_SafeCampToRift_BrokenMemorySteppingStone_02",
+      "collection": "VISTA_Traversal_MemoryBridges",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_CyanDim"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "TRAVERSAL_SafeCampToRift_BrokenMemorySteppingStone_03",
+      "collection": "VISTA_Traversal_MemoryBridges",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_CyanDim"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "TRAVERSAL_ToLostRuins_PaleMemoryBridgeFragment_00",
+      "collection": "VISTA_Traversal_MemoryBridges",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostBlue"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "TRAVERSAL_ToLostRuins_PaleMemoryBridgeFragment_01",
+      "collection": "VISTA_Traversal_MemoryBridges",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostBlue"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "TRAVERSAL_ToLostRuins_PaleMemoryBridgeFragment_02",
+      "collection": "VISTA_Traversal_MemoryBridges",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_GhostBlue"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "TRAVERSAL_ToDeadGodShrine_PaleGoldMemoryBridgeFragment_00",
+      "collection": "VISTA_Traversal_MemoryBridges",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_PaleGold"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "TRAVERSAL_ToDeadGodShrine_PaleGoldMemoryBridgeFragment_01",
+      "collection": "VISTA_Traversal_MemoryBridges",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_PaleGold"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "TRAVERSAL_ToDeadGodShrine_PaleGoldMemoryBridgeFragment_02",
+      "collection": "VISTA_Traversal_MemoryBridges",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_PaleGold"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SAFE_CAMP_SylvaenMemoryKeeperSilhouette_BodyCloak",
+      "collection": "VISTA_Characters",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_Npc"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "SAFE_CAMP_SylvaenMemoryKeeperSilhouette_Head",
+      "collection": "VISTA_Characters",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_Npc"
+      ],
+      "approximate_triangles": 32
+    },
+    {
+      "name": "SAFE_CAMP_SylvaenMemoryKeeperSilhouette_ShoulderSilhouette",
+      "collection": "VISTA_Characters",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_Npc"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SAFE_CAMP_SylvaenMemoryKeeperSilhouette_StaffOrSpearScaleLine",
+      "collection": "VISTA_Characters",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_RootWarm"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SAFE_CAMP_SylvaenRootGuardianSilhouette_BodyCloak",
+      "collection": "VISTA_Characters",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_Npc"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "SAFE_CAMP_SylvaenRootGuardianSilhouette_Head",
+      "collection": "VISTA_Characters",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_Npc"
+      ],
+      "approximate_triangles": 32
+    },
+    {
+      "name": "SAFE_CAMP_SylvaenRootGuardianSilhouette_ShoulderSilhouette",
+      "collection": "VISTA_Characters",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_Npc"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "SAFE_CAMP_SylvaenRootGuardianSilhouette_StaffOrSpearScaleLine",
+      "collection": "VISTA_Characters",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_RootWarm"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "PLAYER_ForegroundSylvaenThirdPersonPlaceholder_BodyCloak",
+      "collection": "VISTA_Characters",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_Player"
+      ],
+      "approximate_triangles": 20
+    },
+    {
+      "name": "PLAYER_ForegroundSylvaenThirdPersonPlaceholder_Head",
+      "collection": "VISTA_Characters",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_Player"
+      ],
+      "approximate_triangles": 32
+    },
+    {
+      "name": "PLAYER_ForegroundSylvaenThirdPersonPlaceholder_ShoulderSilhouette",
+      "collection": "VISTA_Characters",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_Player"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "PLAYER_ForegroundSylvaenThirdPersonPlaceholder_StaffOrSpearScaleLine",
+      "collection": "VISTA_Characters",
+      "type": "MESH",
+      "materials": [
+        "MAT_Vista_RootWarm"
+      ],
+      "approximate_triangles": 12
+    },
+    {
+      "name": "VISTA_Lighting_SoftBrokenMemorySun",
+      "collection": "VISTA_LightingRender",
+      "type": "LIGHT",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "VISTA_Lighting_BlueVioletAtmosphereFill",
+      "collection": "VISTA_LightingRender",
+      "type": "LIGHT",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "VISTA_Lighting_MemoryAccent_00_SafeCamp",
+      "collection": "VISTA_LightingRender",
+      "type": "LIGHT",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "VISTA_Lighting_MemoryAccent_01_LostRuins",
+      "collection": "VISTA_LightingRender",
+      "type": "LIGHT",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "VISTA_Lighting_MemoryAccent_02_DeadGod",
+      "collection": "VISTA_LightingRender",
+      "type": "LIGHT",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "VISTA_Lighting_MemoryAccent_03_RiftCyan",
+      "collection": "VISTA_LightingRender",
+      "type": "LIGHT",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "VISTA_Lighting_MemoryAccent_04_RiftViolet",
+      "collection": "VISTA_LightingRender",
+      "type": "LIGHT",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "VISTA_Camera_ThirdPersonMemoryArchipelago",
+      "collection": "VISTA_LightingRender",
+      "type": "CAMERA",
+      "materials": [],
+      "approximate_triangles": 0
+    },
+    {
+      "name": "VISTA_Camera_TopdownCompositionRead",
+      "collection": "VISTA_LightingRender",
+      "type": "CAMERA",
+      "materials": [],
+      "approximate_triangles": 0
+    }
+  ],
+  "material_names": [
+    "MAT_Vista_BackdropBlueViolet",
+    "MAT_Vista_BackdropMist",
+    "MAT_Vista_BannerVerdant",
+    "MAT_Vista_BattleStain",
+    "MAT_Vista_CampGold",
+    "MAT_Vista_CyanDim",
+    "MAT_Vista_CyanMemory",
+    "MAT_Vista_DeadStone",
+    "MAT_Vista_DistantIsland",
+    "MAT_Vista_DistantRuin",
+    "MAT_Vista_GhostBlue",
+    "MAT_Vista_GhostStone",
+    "MAT_Vista_Npc",
+    "MAT_Vista_PaleGold",
+    "MAT_Vista_Player",
+    "MAT_Vista_RootDark",
+    "MAT_Vista_RootWarm",
+    "MAT_Vista_SafeCampGreen",
+    "MAT_Vista_SafeGlow",
+    "MAT_Vista_TerrainSide_DarkStone",
+    "MAT_Vista_TerrainTop_MutedMoss",
+    "MAT_Vista_TerrainUnderside_Void",
+    "MAT_Vista_VioletInstability"
+  ],
+  "approximate_total_triangles": 2710,
+  "render_paths": [
+    "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\memory_wastes_vista_benchmark_render_2560x1440.png",
+    "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\renders\\memory_wastes_vista_benchmark_topdown.png"
+  ],
+  "export_paths": {
+    "blend": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\blender\\memory_wastes_vista_benchmark_v001.blend",
+    "glb": "C:\\Users\\Admin\\Documents\\New project\\WorldofEldara-analysis\\assets\\exports\\memory_wastes_vista_benchmark_v001.glb"
+  },
+  "qa": {
+    "non_prefixed_materials": [],
+    "unnamed_primitives": []
+  }
+}
